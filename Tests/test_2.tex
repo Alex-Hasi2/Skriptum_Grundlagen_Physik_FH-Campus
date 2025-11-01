@@ -1,0 +1,426 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+
+\usepackage{tikz}
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{angle-symbol-degree = ^\circ}
+\sisetup{locale = DE, separate-uncertainty, inter-unit-product = {},
+range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\include{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+% \rhead{Physikalische Grundlagen}
+% \lhead{FH Campus Wien}
+\cfoot{\thepage}
+
+\begin{document}
+% Command to add the logo to the top left of the first page
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \hspace{2.0cm}% Move logo to the right from the page edge
+    \raisebox{-5.cm}{% Move logo down from the page edge
+      \includegraphics[width=4cm]{Bilder/Allgemein/LogoFHCampus.png}% The logo file
+    }%
+  }%
+}
+
+\begin{center}
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 2. Schriftliche Prüfung: 09.07.2025} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\vspace{1cm}
+
+\noindent
+\begin{tabular}{ll}
+    \textbf{Vorname:} & \underline{\hspace{8cm}} \\[0.3cm]
+    \textbf{Nachname:} & \underline{\hspace{8cm}} \\
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{itemize}[label={$\Diamond$}]
+    \item Sie haben 90 min Zeit.
+    \item Es sind keine Unterlagen erlaubt.
+    \item Sie dürfen einen Taschenrechner verwenden.
+    \item Geben Sie klare und verständliche Antworten!
+    \item Schreiben Sie leserlich!
+    \item Streichen Sie alle bis auf eine Lösung durch!
+    \item Jeglicher Versuch unerlaubte Hilfsmittel zu verwenden oder von KommilitonInnen abzuschreiben, wird mit einer negativen Bewertung des Tests geahndet.
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{center}
+    \textbf{Viel Erfolg!}
+\end{center}
+
+\vspace{1cm}
+
+\begin{flushright}
+    \renewcommand{\arraystretch}{1.23} % This increases the row height by 50%
+    \begin{tabular}{l p{2.3cm}}
+        \hline
+        \noalign{\vskip 0.15cm}
+        \textbf{\Large{Punkte:}} & \textbf{\Large{/50}} \\
+        \noalign{\vskip 0.1cm}
+        \hline
+        Beispiel 1: & /8 \\ 
+        Beispiel 2: & /8 \\ 
+        Beispiel 3: & /13 \\ 
+        Beispiel 4: & /11 \\ 
+        Beispiel 5: & /10 \\
+    \end{tabular}
+\end{flushright}
+
+\newpage
+
+\section*{Beispiel 1 - Saft im Tiefkühler}
+
+Sie haben um 22 Uhr \SI{3.5}{\litre} Saft ($\rho_{\text{Saft}}=\SI{1.1}{\kilogram\per\deci\metre\cubed}$) eingekocht und dann mit einer Temperatur von $T_{\text{Saft}}=\SI{85}{\degreeCelsius}$ in den Tiefkühlschrank gelegt, damit er schneller abkühlt. Der Tiefkühlschrank hat eine konstante und verlustfreie Kühlleistung von \SI{120}{\watt}. Sie vergessen die Flasche über Nacht im Gefrierfach und schauen um 7 Uhr morgens wieder nach der Flasche.
+
+\subsection*{Aufgaben}
+Finden Sie den Saft gefroren vor? \\
+Angenommen, der Saft hat eine spezifische Wärmekapazität $c_{\text{Saft}}=\SI{4.2}{\kilo\joule\per\kilogram\per\kelvin}$ und eine spezifische Schmelzwärme von $\lambda_{\text{Schmelz}}=\SI{333.5}{\kilo\joule\per\kilogram}$.
+Wie lange dauert es, bis der gesamte Saft bei \SI{0}{\degreeCelsius} gefroren ist?
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Skizzieren Sie den zeitlichen Ablauf in einem Temperatur-Zeit-Diagramm ($T_{\text{Saft}}$ über t).
+    \item Berechnen Sie die Energie, die abgeführt werden muss, um den Saft auf \SI{0}{\degreeCelsius} abzukühlen.
+    \item Berechnen Sie die Energie, die abgeführt werden muss, damit der gesamte Saft gefriert.
+    \item Berechnen Sie die Gesamtzeit (in \si{\hour}), die das Gefrierfach für diesen Prozess benötigt.
+    \item Fazit?
+\end{enumerate}
+
+% \vfill 
+% \begin{flushright}
+%     \renewcommand{\arraystretch}{1.23} % This increases the row height by 50%
+%     \begin{tabular}{l p{1.1cm}}
+%         \hline
+%         \noalign{\vskip 0.15cm}
+%         \textbf{\large{Punkte:}} & \textbf{\large{/8}} \\
+%         \noalign{\vskip 0.1cm}
+%         \hline
+%         1) & /2 \\ 
+%         2) & /2 \\ 
+%         3) & /1 \\ 
+%         4) & /2 \\ 
+%         5) & /1 \\
+%     \end{tabular}
+% \end{flushright}
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /8}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} \\
+\quad/1 & \quad/2 & \quad/2 & \quad/1 & \quad/2 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+
+\newpage
+\section*{Beispiel 2 - Idealer Überhöhungswinkel}
+
+\begin{center}
+    % Placeholder for the image
+    \includegraphics[width=0.5\textwidth]{Bilder/Test/2terAntritt/idealerÜberhöhungswinkel.png}
+\end{center}
+
+Eine Autobahnausfahrt wird als überhöhte Kurve gebaut, um die Fahrsicherheit zu erhöhen. Die Kurvenüberhöhung sorgt dafür, dass ein Teil der Normalkraft als Zentripetalkraft wirkt und das Fahrzeug in der Spur hält. Am idealen Überhöhungswinkel ist keine Reibungskraft notwendig, um das Auto in der Spur zu halten, wenn die passende Geschwindigkeit gefahren wird.
+
+\subsection*{Aufgabe}
+Berechnen Sie den idealen Überhöhungswinkel für eine Kurve mit einem Radius von $r=\SI{120}{\metre}$, für die eine Geschwindigkeit von \SI{80}{\kilo\metre\per\hour} vorgesehen ist.
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Zeichnen Sie die wirkenden Kräfte in das Diagramm ein. \\
+    \textbf{Tipp:} Keine Reibungskraft am idealen Überhöhungswinkel!
+    \item Stellen Sie das Kräftegleichgewicht in $x$- und $y$-Richtung auf, wobei Sie berücksichtigen sollen, dass in eine der Richtungen eine Netto-Zentripetalkraft wirken soll.
+    \item Leiten Sie aus dem Kräftegleichgewicht die Formel für den idealen Überhöhungswinkel $\theta_{\text{opt}}$ her, indem Sie die beiden Gleichungen geeignet dividieren. Lösung: $\theta_{\text{opt}} = \arctan(v^{2}/(r\cdot g))$
+    \item Berechnen Sie den optimalen Überhöhungswinkel für die angegebene Kurve in Grad.
+    \item Erklären Sie, welche Kraft das Auto in der Spur halten würde, wenn es mit einer deutlich langsameren Geschwindigkeit als \SI{80}{\kilo\metre\per\hour} (ideale Geschwindigkeit) durch die überhöhte Kurve fahren würde. Zeichnen Sie die Richtung der Kraft in einer neuen Skizze ein!
+\end{enumerate}
+
+% \vfill 
+% \begin{flushright}
+%     \renewcommand{\arraystretch}{1.23} % This increases the row height by 50%
+%     \begin{tabular}{l p{1.1cm}}
+%         \hline
+%         \noalign{\vskip 0.15cm}
+%         \textbf{\large{Punkte:}} & \textbf{\large{/8}} \\
+%         \noalign{\vskip 0.1cm}
+%         \hline
+%         1) & /1 \\ 
+%         2) & /2 \\ 
+%         3) & /2 \\ 
+%         4) & /1 \\ 
+%         5) & /2 \\
+%     \end{tabular}
+% \end{flushright}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /8}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} \\
+\quad/1 & \quad/2 & \quad/2 & \quad/1 & \quad/2 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+
+\newpage
+\section*{Beispiel 3 - Idealer Kreisprozess}
+
+\subsection*{Angabe}
+Sie entwerfen eine Wärmekraftmaschine auf Basis eines einatomigen idealen Gases, das einen Kreisprozess aus zwei isobaren und zwei isochoren Prozessen durchläuft (siehe Skizze).
+
+\begin{center}
+    \begin{tikzpicture}
+        % Place the image in a node named "image"
+        % The anchor is set to the bottom-left corner and inner sep is removed
+        \node[anchor=south west, inner sep=0] (image) {\includegraphics[width=0.8\textwidth]{Bilder/Test/2terAntritt/idealerKreisprozess.png}};
+
+        % Start a new scope, defining a relative coordinate system on the image
+        % x-vector goes from origin to bottom-right, y-vector goes from origin to top-left
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+            % Place the labels using relative coordinates (0 to 1)
+            % I've made them bold and red for better visibility
+            \node[black, font=\bf] at (0.28, 0.83) {(1)};
+            \node[black, font=\bf] at (0.78, 0.83) {(2)};
+            \node[black, font=\bf] at (0.78, 0.25) {(3)};
+            \node[black, font=\bf] at (0.28, 0.25) {(4)};
+        \end{scope}
+    \end{tikzpicture}
+\end{center}
+Gegeben sind die Anzahl der Mol mit $n=\SI{1}{\mole}$ und die universelle Gaskonstante $R = \SI{8.314}{\joule\per(\mole\cdot\kelvin)}$, sowie die molare Wärmekapazität bei konstantem Volumen $C_{V}=3R/2$ und die molare Wärmekapazität bei konstantem Druck $C_{p}=5R/2$. \\
+Die Zustandsgleichung eines idealen Gases lautet $$p\cdot V=n\cdot R\cdot T \mDot$$ \\
+Die benötigte Wärme eines idealen Gases für eine Temperaturänderung von $\Delta T$ hängt bei speziellen Prozessen nur von der Temperaturänderung und dem Prozess ab: 
+$$\Delta Q=n\cdot C_{V}\cdot\Delta T \quad\text{bzw.}\quad \Delta Q=n\cdot C_{p}\cdot\Delta T \mDot$$
+
+\subsection*{Aufgabenstellung}
+\begin{enumerate}
+    \item Geben Sie die Zustandsvariablen $(p, V, T)$ an den vier Eckpunkten des Kreisprozesses an.
+    \item Beschriften Sie die Seiten nach
+        \begin{enumerate}[label=\alph*), itemsep=1pt]
+            \item der Art des Prozesses (isobar oder isochor)
+            \item dem volumetrischen Vorgang (Expansion oder Kompression)
+            \item dem thermischen Vorgang (Abkühlung oder Erhitzung).
+        \end{enumerate}
+    \item Berechnen Sie die aufgenommene bzw. abgegebene Arbeit in den einzelnen Teilschritten.
+    \item Wie lautet der 1. Hauptsatz der Thermodynamik. Benennen Sie die Variablen!
+    \item Berechnen Sie die zugeführte bzw. abgegebene Wärme in den einzelnen Teilschritten mithilfe der oben gegebenen Formel.
+    \item Zeigen Sie mithilfe von (3) und (5), dass für diesen Kreisprozess die innere Energie $\Delta U$ nicht zunimmt.
+    \item Die gesamte zugeführte Wärme beträgt $\Delta Q_{\text{zu}}=\SI{24.5}{\kilo\joule}$, die gesamte abgeführte Wärme beträgt $\Delta Q_{\text{ab}}=\SI{-18.5}{\kilo\joule}$. Die verrichtete Arbeit der Maschine beträgt $\Delta W=\SI{-6}{\kilo\joule}$. Berechnen Sie den Wirkungsgrad der Maschine.
+\end{enumerate}
+
+\vfill
+% Punkte Beispiel 3
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c | c | c|}
+\hline
+\multicolumn{7}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /13}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} & \textbf{6)} & \textbf{7)} \\
+\quad/\num{2} & \quad/\num{3} & \quad/\num{2.5} & \quad/\num{1} & \quad/\num{2} & \quad/\num{1.5} & \quad/\num{1} \\
+\hline
+\end{tabular}
+\end{flushright}
+
+
+\newpage
+\section*{Beispiel 4 - Statischer Auftrieb}
+\noindent
+\begin{minipage}[t]{0.65\textwidth}
+    \vspace{0pt}
+    Sie und Ihre Freunde kommen auf die Idee mithilfe von Helium-Ballonen schweben zu wollen. Ein Heliumballon wiegt \SI{3}{\gram} und hat ein Fassungsvermögen von \SI{4.5}{\litre}. Die Umgebungsluft hat eine Dichte von $\rho_{\text{Luft}}=\SI{1.23}{\kilogram\per\metre\cubed}$ während Helium eine Dichte von $\rho_{\text{He}}=\SI{0.18}{\kilogram\per\metre\cubed}$ hat. Die Erdbeschleunigung beträgt \SI{9.81}{\metre\per\second\squared}.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\textwidth}
+    \vspace{1pt}
+    \centering
+    \includegraphics[height=2.5cm]{Bilder/Test/2terAntritt/balloons.png}%
+\end{minipage}
+
+\subsection*{Aufgaben}
+\begin{enumerate}
+    \item Wie groß ist die Nettoauftriebskraft eines einzelnen Heliumballons? Berechnen Sie zuerst den reinen Auftrieb (Archimedisches Prinzip) und ziehen Sie dann die Gewichte des Ballons und des Heliums ab.
+    \item Wie viele solcher Heliumballons brauchen Sie, um eine Person mit einer Masse von \SI{80}{\kilogram} zum Schweben zu bringen?
+    \item Sie nehmen nun mehr Ballons als Sie zum Schweben brauchen. Warum gibt es eine maximale Steighöhe?
+    \item Vergleichen Sie den Auftrieb in der Atmosphäre mit dem Auftrieb unter Wasser. Welcher Unterschied besteht bezüglich der Dichteänderung als Funktion der Höhe/Tiefe? Begründen Sie Ihre Entscheidung!
+    \begin{itemize}[label={$\square$}]
+        \item Es gibt keinen Unterschied - beide Dichten nehmen mit zunehmender Höhe ab.
+        \item Die Dichte von Wasser erhöht sich viel stärker mit zunehmender Tiefe als die Dichte von Luft mit zunehmender Höhe abnimmt.
+        \item Die Dichte von Luft nimmt mit zunehmender Höhe erheblich ab, während die Dichte von Wasser mit zunehmender Tiefe nahezu konstant bleibt.
+        \item Die Dichte von Wasser erhöht sich in der Tiefe und die Dichte von Luft verringert sich in der Höhe.
+    \end{itemize}
+    \item Sie füllen bei einem Tauchgang in \SI{100}{\metre} Tiefe einen Ballon mit Luft aus Ihrer Druckluftflasche und verknoten ihn. Beschreiben Sie was geschieht, wenn Sie den Ballon loslassen.
+\end{enumerate}
+
+\vfill
+% Punkte Beispiel 4
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /11}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} \\
+\quad/\num{3} & \quad/\num{1.5} & \quad/\num{1.5} & \quad/\num{3} & \quad/\num{2} \\
+\hline
+\end{tabular}
+\end{flushright}
+
+
+\newpage
+\section*{Beispiel 5 - Multiple-Choice}
+% \begin{enumerate}[itemsep=14pt]
+%     \item Welches der folgenden Axiome beschreibt das zweite Newtonsche Gesetz?
+%     \begin{itemize}[itemsep=1pt,topsep=0pt]
+
+\begin{enumerate}[label=\arabic*.,itemsep=14pt]
+    \item Welches der folgenden Axiome beschreibt das zweite Newtonsche Gesetz?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Die Änderung der Bewegung (durch eine Beschleunigung) ist proportional zur einwirkenden Kraft.
+        \item Die Gesamtenergie in einem isolierten System bleibt konstant.
+        \item Kräfte treten immer paarweise auf. Übt Körper A eine Kraft auf Körper B aus, so übt Körper B eine gleich große, aber entgegengesetzt gerichtete Kraft auf Körper A aus.
+        \item Jeder Körper verharrt im Zustand der Ruhe oder der gleichförmig geradlinigen Bewegung, solange keine äußeren Kräfte auf ihn wirken.
+    \end{itemize}
+
+    \item Welcher Hauptsatz der Thermodynamik besagt, dass Energie weder erzeugt noch vernichtet werden kann, sondern nur umgewandelt wird?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Der nullte Hauptsatz der Thermodynamik.
+        \item Der erste Hauptsatz der Thermodynamik.
+        \item Der zweite Hauptsatz der Thermodynamik.
+        \item Der dritte Hauptsatz der Thermodynamik.
+    \end{itemize}
+
+    \item Wie nennt man die Beschleunigung, die für eine gleichförmigen Kreisbewegung notwendig ist?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Zentrifugalbeschleunigung
+        \item Tangentialbeschleunigung
+        \item Coriolisbeschleunigung
+        \item Zentripetalbeschleunigung
+    \end{itemize}
+
+    \item Scheinkräfte (Trägheitskräfte) ergeben sich typischerweise in welcher Art von Bezugssystemen?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item In Inertialsystemen
+        \item In ruhenden Bezugssystemen
+        \item In beschleunigten Bezugssystemen
+        \item In Bezugssystemen mit konstanter Geschwindigkeit
+    \end{itemize}
+
+    \item Welche Aussage trifft auf die Arbeit in einem konservativen Kraftfeld zu?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Die verrichtete Arbeit hängt vom gewählten Weg ab.
+        \item Es gibt keine potenzielle Energie im Kraftfeld.
+        \item Die Kraft wirkt immer senkrecht zur Bewegungsrichtung.
+        \item Die verrichtete Arbeit entlang eines geschlossenen Weges ist null.
+    \end{itemize}
+
+    \newpage
+    \item Aus welchen SI-Basiseinheiten setzt sich ein Joule (\si{\joule}) zusammen?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \si{\kilogram \cdot\metre\cdot\second^{-1}}
+        \item \si{\kilogram \cdot\metre^{2} \cdot\, \second^{-1}}
+        \item \si{\kilogram \cdot \metre^{3} \cdot\, \second^{-1}}
+        \item \si{\kilogram \cdot \metre \cdot \second^{-2}}
+        \item \si{\kilogram \cdot \metre^{2} \cdot\, \second}
+        \item \si{\kilogram \cdot \metre^{2} \cdot\, \second^{-2}}
+        \item \si{\kilogram \cdot \metre^{2} \cdot \, \second^{2} }
+    \end{itemize}
+    
+    \item Was bleibt bei einem adiabatischen Prozess konstant?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Die Wärme
+        \item Die Temperatur
+        \item Der Druck
+        \item Die Energie
+    \end{itemize}
+
+    \item Welche Formel beschreibt die Druckzunahme $\Delta p$ in einer Flüssigkeit in Abhängigkeit von der Tiefe h?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item $\Delta p=nRT/(h^{3})$
+        \item $\Delta p=\rho h^{3}v$
+        \item $\Delta p=mgh$
+        \item $\Delta p=F/h^{2}$
+        \item $\Delta p=\rho gh$
+    \end{itemize}
+    
+    \item Welche Einheit hat die physikalische Größe Arbeit?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Watt [\si{\watt}]
+        \item Newton [\si{\newton}]
+        \item Joule [\si{\joule}]
+        \item Pascal [\si{\pascal}]
+        \item Newtonmeter [\si{\newton\metre}]
+    \end{itemize}
+    
+    \item Welche Einheit hat das Produkt $p \cdot V$ in der idealen Gasgleichung?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Pascal [\si{\pascal}]
+        \item Kubikmeter [\si{\metre\cubed}]
+        \item Newton [\si{\newton}]
+        \item Joule [\si{\joule}]
+        \item Watt [\si{\watt}]
+    \end{itemize}
+
+    \newpage
+    \item Welchen Wert ergibt das Integral $\int_{-3}^{8}F\cdot ds$, wenn $F=2$ ist.
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item 0
+        \item 10
+        \item 73
+        \item 22
+        \item -8
+        \item 11
+    \end{itemize}
+
+    \item Ordnen Sie folgende Aussage dem passenden Newtonschen Axiom zu: Eine Person, auf die eine Gewichtskraft von \SI{800}{\newton} wirkt, zieht die Erde ebenfalls mit \SI{800}{\newton} an.
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item 0. Newtonsche Axiom
+        \item 2. Newtonsche Axiom
+        \item 1. Newtonsche Axiom
+        \item 3. Newtonsche Axiom
+    \end{itemize}
+
+\end{enumerate}
+
+% Punkte Beispiel 5
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /10}}}\\
+\hline
+\end{tabular}
+\end{flushright}
+
+\end{document}

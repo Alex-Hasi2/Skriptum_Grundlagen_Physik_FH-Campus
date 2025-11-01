@@ -1,0 +1,311 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+
+\usepackage{tikz}
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{angle-symbol-degree = ^\circ}
+\sisetup{locale = DE, separate-uncertainty, inter-unit-product = {},
+range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\include{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+% \rhead{Physikalische Grundlagen}
+% \lhead{FH Campus Wien}
+\cfoot{\thepage}
+
+\begin{document}
+% Command to add the logo to the top left of the first page
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \hspace{2.0cm}% Move logo to the right from the page edge
+    \raisebox{-5.cm}{% Move logo down from the page edge
+      \includegraphics[width=5cm]{Bilder/Allgemein/logo_hcw.png}% The logo file
+    }%
+  }%
+}
+
+\begin{center}
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 3. Schriftliche Prüfung: 08.09.2025} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\vspace{1cm}
+
+\noindent
+\begin{tabular}{ll}
+    \textbf{Vorname:} & \underline{\hspace{8cm}} \\[0.3cm]
+    \textbf{Nachname:} & \underline{\hspace{8cm}} \\
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{itemize}[label={$\Diamond$}]
+    \item Sie haben 90 min Zeit.
+    \item Es sind keine Unterlagen erlaubt.
+    \item Sie dürfen einen Taschenrechner verwenden.
+    \item Geben Sie klare und verständliche Antworten!
+    \item Schreiben Sie leserlich!
+    \item Streichen Sie alle bis auf eine Lösung durch!
+    \item Jeglicher Versuch unerlaubte Hilfsmittel zu verwenden oder von KommilitonInnen \\ abzuschreiben, wird mit einer negativen Bewertung des Tests geahndet.
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{center}
+    \textbf{Viel Erfolg!}
+\end{center}
+
+\vspace{4cm}
+
+\begin{flushright}
+    \renewcommand{\arraystretch}{1.23} % This increases the row height by 50%
+    \begin{tabular}{l p{2.3cm}}
+        \hline
+        \noalign{\vskip 0.15cm}
+        \textbf{\Large{Punkte:}} & \textbf{\Large{/50}} \\
+        \noalign{\vskip 0.1cm}
+        \hline
+        Beispiel 1: & /12 \\ 
+        Beispiel 2: & /15 \\ 
+        Beispiel 3: & /13 \\ 
+        Beispiel 4: & /10
+    \end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 1 -------------------------
+\section*{Beispiel 1 - Heißes Metall in Wasser}
+
+\begin{minipage}[t]{0.6\textwidth}
+    \vspace{0pt}
+    Eine massive Eisenkugel mit einer Masse von $m_{\text{Kugel}} = \SI{500}{\gram}$ hat nach der Schmelze eine Temperatur von $T_{\text{Kugel}} = \SI{250}{\celsius}$. Anschließend wird sie schnell in ein Gefäß mit \SI{5}{\litre} Wasser gegeben, das eine Anfangstemperatur von $T_{\text{Wasser}} = \SI{20}{\degreeCelsius}$ hat.\\
+    \newline
+    Gegeben sind die spezifische Wärmekapazität von Wasser $c_{\text{Wasser}} = \SI{4,18}{\kilo\joule\per(\kilogram\cdot\kelvin)}$, die spezifische Wärmekapazität von Eisen $c_{\text{Eisen}} = \SI{0,45}{\kilo\joule\per(\kilogram\cdot\kelvin)}$ und die Dichte von Wasser $\rho_{\text{Wasser}} = \SI{1}{\kilogram\per\deci\meter\cubed}$. 
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\textwidth}
+    \vspace{0pt}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Bilder/Test/3terAntritt/kugel_in_wasser_3.jpeg}
+\end{minipage}
+
+\subsection*{Aufgabe}
+Berechnen Sie die Endtemperatur (Mischtemperatur) $T_{\text{Misch}}$, die sich im thermischen Gleichgewicht einstellt. Nehmen Sie an, dass keine Wärme an die Umgebung verloren geht.
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Stellen Sie die Formel für die vom Wasser aufgenommene Wärme $Q_{\text{Wasser,auf}}$ auf. Drücken Sie diese als Funktion der gesuchten Mischtemperatur $T_{\text{Misch}}$ aus.
+    \item Stellen Sie die Formel für die von der Eisenkugel abgegebene Wärme $Q_{\text{Eisen,ab}}$ auf. Drücken Sie auch diese als Funktion der gesuchten Mischtemperatur $T_{\text{Misch}}$ aus.
+    \item Nutzen Sie den Grundsatz des thermischen Gleichgewichts, indem Sie die beiden Wärmen gleichsetzen ($Q_{\text{Wasser,auf}} = Q_{\text{Eisen,ab}}$). Lösen Sie die resultierende Gleichung nach der Mischtemperatur $T_{\text{Misch}}$ auf.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c|}
+\hline
+\multicolumn{3}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /12}}}\\
+\hline
+% \textbf{1)} & \textbf{2)} & \textbf{3)} \\
+% \quad/3 & \quad/3 & \quad/6 \\
+% \hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 2 -------------------------
+\section*{Beispiel 2 - Rutsche mit Reibung}
+\begin{minipage}[t]{0.5\textwidth}
+    \vspace{0pt}
+    Ein Kind mit einer Masse von $m = \SI{35}{\kilogram}$ startet aus dem Stillstand ($v_0 = \SI{0}{\meter\per\second}$) am oberen Ende einer geraden Rutsche. Die Rutsche hat eine Höhe von $h = \SI{3}{\metre}$ und eine Länge von $L = \SI{5}{\metre}$. Während des Rutschens wirkt eine konstante Gleitreibungskraft zwischen dem Kind und der Rutsche. Der Gleitreibungskoeffizient beträgt $\mu_{\text{Gleit}} = 0,2$. Die Erdbeschleunigung lautet $g = \SI{9,81}{\metre\per\second\squared}$.
+    \end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}
+    \vspace{0pt}
+    \centering
+    \includegraphics[width=0.99\textwidth]{Bilder/Test/3terAntritt/kind_rutsche.png}
+\end{minipage}
+
+\subsection*{Aufgabe}
+Berechnen Sie die Geschwindigkeit des Kindes am unteren Ende der Rutsche. 
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Tragen Sie alle wirkenden Kräfte ein (Gewichtskraft, Normalkraft, Gleitreibungskraft) in der Grafik ein!
+    \item Berechnen Sie den Neigungswinkel $\theta$ der Rutsche.
+    \item Zerlegen Sie die Gewichtskraft in eine Komponente senkrecht, $F_{G, \perp}$, und eine parallel, $F_{G, \parallel}$, zur Rutsche. Geben Sie die Formeln für $F_{G, \perp}$ und $F_{G, \parallel}$ und deren Zahlenwerte an.
+    \item Berechnen Sie die Normalkraft $F_N$, die auf das Kind wirkt. Berechnen Sie die Gleitreibungskraft $F_{R, \text{Gleit}}$ mithilfe der Normalkraft.
+    \item Geben Sie die Hangabtriebskraft $F_A$ an, also die Komponente der Gewichtskraft, die das Kind die Rutsche hinab beschleunigt.
+    \item Berechnen Sie die resultierende Nettokraft in Bewegungsrichtung ($x$-Richtung) und bestimmen Sie daraus die konstante Beschleunigung des Kindes entlang der Rutsche.
+    \item Für die gleichförmig beschleunigte Bewegung ergibt sich der Weg $s$ und die Geschwindigkeit $v$ zu
+    \begin{gather*}
+        s(t) = s_0 + v_0\cdot t + \frac{1}{2}a\cdot t^2 \mComma\\
+        v(t) = v_0 + a \cdot t \mDot
+    \end{gather*}
+    Leiten Sie aus diesen zeitabhängigen Formeln eine Formel für $v(L)$ her. Also die Geschwindigkeit des Kindes nachdem es unter dem Einfluss der Beschleunigung $a$ eine Strecke $s = L$ zurückgelegt hat. \\
+    Tipp: Überlegen Sie, was für die Anfangsbedingungen $s_0$ und $v_0$ gilt. \\
+    \textit{Lösung: } $v = \sqrt{2 a L}$
+    \item Verwenden Sie die soeben hergeleitete Formel, um die Endgeschwindigkeit nach der zurückgelegten Strecke $L$ zu berechnen.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{| c | c | c | c | c | c | c | c |}
+\hline
+\multicolumn{8}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /15}}}\\
+\hline
+% \textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} & \textbf{6)} & \textbf{7)} & \textbf{8)} \\
+% \quad/2 & \quad/1,5 & \quad/2 & \quad/2,5 & \quad/1,5 & \quad/2 & \quad/2,5 & \quad/1 \\
+% \hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+% ------------------------- BEISPIEL 3 -------------------------
+\section*{Beispiel 3 - Holzklotz im Wasser}
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{Bilder/Test/3terAntritt/holzklotz_eintauchen.png}
+\end{center}
+Ein quaderförmiger Holzklotz mit einer Kantenlänge von $L = \SI{20}{\centi\metre}$ und einer Dichte von $\rho_{\text{Holz}} = \SI{750}{\kilogram\per\metre\cubed}$ wird in ein Wasserbecken gelegt. Die Dichte von Wasser beträgt $\rho_{\text{Wasser}} = \SI{1000}{\kilogram\per\metre\cubed}$.
+
+\subsection*{Aufgabe}
+Berechnen Sie eine Formel für die Eintauchtiefe $h$ des Holzklotzes! Wie tief taucht der Holzklotz in der Angabe in das Wasser ein?
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Formulieren Sie die Bedingung für das Schwimmen eines Körpers. Welche beiden Kräfte müssen sich im Gleichgewicht befinden?
+    \item Berechnen Sie das Gesamtvolumen $V_{\text{ges}}$ des Holzklotzes und daraus seine Gewichtskraft $F_G$ (als Funktion der Kantenlänge $L$).
+    \item Stellen Sie eine Formel für die Auftriebskraft $F_A$ auf. Diese soll vom Volumen des eingetauchten Teils des Klotzes ($V_{\text{ein}}$) abhängen.
+    \item Das eingetauchte Volumen $V_{\text{ein}}$ kann durch die Grundfläche $A = L^2$ des Klotzes und die gesuchte Eintauchtiefe $h$ ausgedrückt werden. Setzen Sie dies in die Formel für die Auftriebskraft aus (3) ein.
+    \item Setzen Sie die Formel für die Gewichtskraft aus (2) und die der Auftriebskraft aus (4) in (1) ein und lösen Sie die Gleichung nach der Eintauchtiefe $h$ auf.\\
+    \textit{Lösung:} $h = L \cdot (\rho_{\text{Holz}}/\rho_{\text{Wasser}})$
+    \item Wie tief taucht der Holzblock aus der Angabe ein? 
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c | c|}
+\hline
+\multicolumn{6}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /13}}}\\
+\hline
+% \textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} & \textbf{6)} \\
+% \quad/1 & \quad/2 & \quad/2,5 & \quad/2,5 & \quad/3,5 & \quad/1,5 \\
+% \hline
+\end{tabular}
+\end{flushright}
+
+
+\newpage
+% ------------------------- BEISPIEL 4 -------------------------
+\section*{Beispiel 4 - Multiple-Choice}
+\textit{Tragen Sie die gesuchte Antwort ein oder kreuzen Sie die korrekte Antwort an. Pro Frage ist nur eine Antwort richtig.}
+
+\begin{enumerate}[label=\arabic*.,itemsep=18pt]
+    \item Was ist die SI-Einheit der Leistung?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Joule [\si{\joule}]
+        \item Watt [\si{\watt}]
+        \item Newton [\si{\newton}]
+        \item Pascal [\si{\pascal}]
+    \end{itemize}
+
+    \item Aus welchen SI-Basiseinheiten ist ein Joule zusammengesetzt?
+    $$ 1\,\si{J} = \underline{\hspace{3cm}} .$$
+
+    \item Ein Objekt mit Masse $m$ wird auf die doppelte Geschwindigkeit beschleunigt. Um welchen Faktor ändert sich seine kinetische Energie?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Faktor 2
+        \item Faktor 8
+        \item Faktor 4
+        \item Faktor $\sqrt{2}$
+    \end{itemize}
+
+    \item Welche Aussage über Reibungskräfte ist im Allgemeinen korrekt?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Die Gleitreibungskraft ist größer als die maximale Haftreibungskraft.
+        \item Die maximale Haftreibungskraft ist größer als die Gleitreibungskraft.
+        \item Haft- und Gleitreibungskraft sind immer gleich groß.
+        \item Reibungskräfte sind immer proportional zur Kontaktfläche.
+    \end{itemize}
+
+    \item Bei einem isochoren Prozess eines idealen Gases bleibt welche Zustandsgröße konstant?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Der Druck
+        \item Die innere Energie
+        \item Die Temperatur
+        \item Das Volumen
+    \end{itemize}
+    
+    \item Nach dem Archimedischen Prinzip ist die Auftriebskraft auf einen vollständig in einer Flüssigkeit eingetauchten Körper gleich:
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item dem Gewicht des Körpers.
+        \item dem Volumen des Körpers mal der Erdbeschleunigung.
+        \item dem Gewicht der vom Körper verdrängten Flüssigkeit.
+        \item der Dichte des Körpers mal seinem Volumen.
+    \end{itemize}
+
+    \newpage
+    \item Der erste Hauptsatz der Thermodynamik ($\Delta U = Q + W$) ist eine spezielle Formulierung des...
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Impulserhaltungssatzes.
+        \item Energieerhaltungssatzes.
+        \item Drehimpulserhaltungssatzes.
+        \item Massenerhaltungssatzes.
+    \end{itemize}
+    
+    \item Ein Auto ($m=\SI{1000}{\kg}$) fährt mit $v = \SI{10}{\metre\per\second}$ durch eine Kurve mit $r = \SI{50}{\metre}$. Wie groß ist die benötigte Zentripetalkraft?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \SI{1000}{\newton}
+        \item \SI{2000}{\newton}
+        \item \SI{5000}{\newton}
+        \item \SI{200}{\newton}
+    \end{itemize}
+
+    \item Der Wirkungsgrad $\eta$ einer Wärmekraftmaschine ist definiert als das Verhältnis von\\[9pt] \underline{\hspace{3.5cm}} \;zu\; \underline{\hspace{3.5cm}}.
+    
+    \item Wie lautet der Name der Zustandsgleichung für reale Gase, die das Eigenvolumen der Gasteilchen und die Anziehungskräfte zwischen ihnen berücksichtigt? \\[9pt]
+    \underline{\hspace{6cm}}
+
+    \item Die absolute Temperatur $T$ eines idealen Gases ist ein direktes Maß für die ...
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item mittlere potentielle Energie der Gasteilchen.
+        \item mittlere Geschwindigkeit der Gasteilchen.
+        \item mittlere kinetische Energie der Gasteilchen.
+        \item Gesamtanzahl der Gasteilchen.
+    \end{itemize}
+\end{enumerate}
+
+% Punkte Beispiel 5
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /10}}}\\
+\hline
+\end{tabular}
+\end{flushright}
+
+
+
+
+\end{document}

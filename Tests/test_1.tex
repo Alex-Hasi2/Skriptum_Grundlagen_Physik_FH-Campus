@@ -1,0 +1,322 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Erforderlich für die Platzierung des Logos
+
+% --- siunitx Konfiguration ---
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    angle-symbol-degree = ^\circ,
+    locale = DE, 
+    separate-uncertainty, 
+    inter-unit-product = \cdot, % Multiplikationspunkt zwischen Einheiten
+    range-units = brackets, 
+    list-units = single, 
+    per-mode=symbol-or-fraction
+}
+
+% --- Seitenlayout ---
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+% --- Kopf- und Fußzeile ---
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+% --- Benutzerdefinierte Befehle (aus defs.tex) ---
+\newcommand{\mDot}{\,.}
+\newcommand{\mComma}{\, ,\,}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\eqexcl}{\stackrel{!}{=}}
+
+\begin{document}
+% --- Logo auf der ersten Seite oben links ---
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \hspace{2.0cm}%
+    \raisebox{-5.cm}{%
+      \includegraphics[width=4cm]{Bilder/Allgemein/LogoFHCampus.png}% Logo-Datei hier anpassen
+    }%
+  }%
+}
+
+% --- Titelblock ---
+\begin{center}
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 1. Schriftliche Prüfung: 17.06.2025} \\[1em]
+    {\large Studiengang: CLINICAL ENGINEERING}
+\end{center}
+
+\vspace{1cm}
+
+% --- Studenteninformation ---
+\noindent
+\begin{tabular}{ll}
+    \textbf{Vorname:} & \underline{\hspace{8cm}} \\[0.5cm]
+    \textbf{Nachname:} & \underline{\hspace{8cm}} \\
+\end{tabular}
+
+\vspace{1cm}
+
+% --- Anweisungen ---
+\begin{itemize}[label={$\Diamond$}]
+    \item Sie haben 90 min Zeit.
+    \item Es sind keine Unterlagen erlaubt.
+    \item Sie dürfen einen Taschenrechner verwenden.
+    \item Geben Sie klare und verständliche Antworten!
+    \item Schreiben Sie leserlich!
+    \item Streichen Sie alle bis auf eine Lösung durch!
+    \item Jeglicher Versuch unerlaubte Hilfsmittel zu verwenden oder von KommilitonInnen abzuschreiben, wird mit einer negativen Bewertung des Tests geahndet.
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{center}
+    \textbf{Viel Erfolg!}
+\end{center}
+
+\vspace{1cm}
+
+% --- Punktetabelle ---
+\begin{flushright}
+    \renewcommand{\arraystretch}{1.2} 
+    \begin{tabular}{l p{2.3cm}}
+        \hline
+        \noalign{\vskip 0.15cm}
+        \textbf{\Large{Punkte:}} & \textbf{\Large{/50}} \\
+        \noalign{\vskip 0.1cm}
+        \hline
+        Beispiel 1: & /10 \\ 
+        Beispiel 2: & /8 \\ 
+        Beispiel 3: & /9 \\ 
+        Beispiel 4: & /9 \\ 
+        Beispiel 5: & /8 \\
+        Beispiel 6: & /6 \\
+    \end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 1 -------------------------
+\section*{Beispiel 1 - Wasserkocher vergessen}
+
+\begin{minipage}[t]{0.6\textwidth}
+    \vspace{0pt}
+    Ein Wasserkocher habe eine Heizleistung von \SI{2000}{\watt}. Sie haben \SI{1}{\litre} Wasser ($\rho_{W}=\SI{1}{\kilogram\per\deci\metre\cubed}$) für Tee bei $T=\SI{20}{\degreeCelsius}$ eingefüllt und den Wasserkocher eingeschaltet. Ihr Wasserkocher hat \textbf{keine Selbstabschaltung} und Sie gehen \SI{25}{\minute} einkaufen.
+    \vspace{0.5cm}
+    
+    Wenn das Wasser eine spezifische Wärmekapazität $c_{W}=\SI{4,18}{\kilo\joule\per(\kilogram\cdot\kelvin)}$ hat und eine spezifische Verdampfungswärme von $\lambda_{\text{verd}}=\SI{2256}{\kilo\joule\per\kilogram}$, kommen Sie dann rechtzeitig vom Einkaufen zurück, bevor das gesamte Wasser verdampft ist und der Kocher zu verschmoren droht?
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\textwidth}
+    \vspace{0pt}
+    \centering
+    \includegraphics[width=\textwidth]{Bilder/Test/1terAntritt/wasserkocher.png}
+\end{minipage}
+
+\subsection*{Aufgaben bzw. Vorgehen}
+\begin{enumerate}
+    \item Skizzieren Sie den zeitlichen Ablauf in einem Diagramm ($T_{W}$ über t)! Beschriften Sie die einzelnen Abschnitte des Prozesses!
+    \item Berechnen Sie die Energie zum Erhitzen des Wassers auf \SI{100}{\degreeCelsius}.
+    \item Berechnen Sie die Verdampfungswärme, die zum Verdampfen des Wassers benötigt wird.
+    \item Berechnen Sie, wie viel Energie der Wasserkocher in \SI{25}{\minute} liefert.
+    \item Fazit?
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /10}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} \\
+\quad/2 & \quad/2 & \quad/2 & \quad/2 & \quad/2 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 2 -------------------------
+\section*{Beispiel 2 - Jump-Bag}
+
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{Bilder/Test/1terAntritt/jump_bag.png}
+\end{center}
+
+Zwei Männer mit jeweils \SI{80}{\kilogram} Körpermasse springen gemeinsam von einem Sprungturm mit \SI{6}{\metre} Höhe auf einen „Jump-Bag". Dort übertragen Sie Ihre gesamte kinetische Energie verlustfrei auf eine Frau am anderen Ende, die eine Masse von $m_{\text{Frau}}=\SI{65}{\kilogram}$ hat. Es gibt keine Reibungsverluste oder anders gearteten Verluste.
+
+\subsection*{Aufgaben}
+\begin{enumerate}[itemsep=10pt]
+    \item Wie lautet die Bewegungsform der Frau nach der Energieübertragung? Begründen Sie Ihre Entscheidung! 
+    \begin{itemize}[label={$\square$}, itemsep=2pt, topsep=1pt]
+        \item Gleichförmige Bewegung
+        \item Gleichförmig beschleunigte Bewegung
+        \item Gleichförmige Kreisbewegung
+    \end{itemize}
+    \item Berechnen Sie die maximale Flughöhe $h_{\text{max}}$ der Frau!
+    \item Mit welcher maximalen Geschwindigkeit $v_{\text{max}}$ kommt sie auf der Wasseroberfläche bei $h=0$ m auf?
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c|}
+\hline
+\multicolumn{3}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /8}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} \\
+\quad/2 & \quad/3 & \quad/3 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 3 -------------------------
+\section*{Beispiel 3 - Ideales Gas}
+Die Zustandsgleichung eines idealen Gases mit Volumen $V$ [\si{\metre\cubed}], Druck p [\si{\pascal}] und der Temperatur T [\si{\kelvin}] lautet
+$$p \cdot V = n \cdot R \cdot T \mComma$$
+wobei $n$ [\si{\mole}] die Anzahl der Mole des Gases ist und $R = \SI{8,314}{\joule\per\mole\per\kelvin}$. Betrachten Sie ein ideales Gas mit $n=1$ mol.
+\subsection*{Aufgaben}
+\begin{enumerate}[itemsep=8pt]
+    \item In der Grafik ist eine Isotherme eingezeichnet und mit (I) markiert. Welche Temperatur hat diese Isotherme?
+    \item Zeichnen Sie eine weitere Isotherme mit $T=\SI{250}{\kelvin}$ ein und markieren Sie sie mit (II).
+    \item Zeichnen Sie eine beliebige Isobare ein und beschriften Sie sie mit (III).
+    \item Zeichnen Sie eine beliebige Isochore ein und beschriften Sie sie mit (IV).
+    \item Berechnen Sie das Volumen eines idealen Gases unter Normalbedingungen, d.h. $n = 1$ mol, $p=\SI{1,013}{\bar}$, $T=\SI{0}{\degreeCelsius}$!
+\end{enumerate}
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{Bilder/Test/1terAntritt/ideales_gas.png}
+\end{center}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /9}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} \\
+\quad/2 & \quad/2 & \quad/1 & \quad/1 & \quad/3 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 4 -------------------------
+\section*{Beispiel 4 - Carnot'scher Kreisprozess}
+Der Carnot'sche Kreisprozess beschreibt eine theoretische Wärmekraftmaschine, die einen Zyklus aus 4 dynamischen Prozessen durchläuft, bevor es zum Ausgangszustand zurückkehrt. Diese 4 Schritte sind (ungeordnete Reihenfolge):
+\begin{itemize}[label={$\Diamond$}, itemsep=2pt, topsep=4pt, leftmargin=2cm]
+    \item Isotherme Expansion
+    \item Adiabatische Expansion
+    \item Isotherme Kompression
+    \item Adiabatische Kompression
+\end{itemize}
+Als Wirkungsgrad $\eta$ der Maschine definiert man die von ihr verrichtete Arbeit $\Delta W$ dividiert durch die aufgenommene Wärmeenergie $\Delta Q_{1}$:
+$$\eta= \left|\frac{\Delta W}{\Delta Q_{1}}\right| = \frac{T_{1}-T_{2}}{T_{1}}$$
+wobei $T_{1}>T_{2}$ gilt.
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{Bilder/Test/1terAntritt/kreisprozess_waermekraftmaschine.png}
+\end{center}
+
+\subsection*{Aufgaben}
+\begin{enumerate}
+    \item Ordnen Sie die 4 Schritte den richtigen Seiten in der Grafik zu.
+    \item In welchen Schritten verrichtet die Maschine eine Arbeit ($\Delta W_{ij}<0$) und in welchen Schritten wird Arbeit zugeführt ($\Delta W_{ij}>0$)? Tragen Sie die Arbeit mit Pfeilen auf den jeweiligen Seiten ein!
+    \item Woran erkennt man in der Grafik, dass eine Nettoarbeit $\Delta W<0$ von der Maschine verrichtet wird? Tragen Sie die Nettoarbeit $\Delta W$ in der Grafik ein!
+    \item Wie maximieren Sie den physikalischen Wirkungsgrad dieser Wärmekraftmaschine? Was ergeben sich für technische Schwierigkeiten, um diesen Wirkungsgrad praktisch zu erreichen?
+\end{enumerate}
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c|}
+\hline
+\multicolumn{4}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /9}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} \\
+\quad/2 & \quad/2 & \quad/2 & \quad/3 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 5 -------------------------
+\section*{Beispiel 5 - Phasendiagramm}
+
+In der Grafik sehen Sie das Phasendiagramm von Wasser ($H_{2}O$).
+\begin{center}
+    \includegraphics[width=0.44\textwidth]{Bilder/Test/1terAntritt/phasendiagramm_wasser.png}
+\end{center}
+
+\subsection*{Aufgaben}
+\begin{enumerate}[itemsep=8pt]
+    \item Beschriften Sie die Schmelzkurve, die Dampfdruckkurve und die Sublimationskurve in der Grafik!
+    \item Welches Vorzeichen hat die Ableitung $\frac{\dd p}{\dd T}$ entlang dieser drei Kurven?
+    \item Die Schmelzwärme wird beschrieben durch folgende Gleichung:
+    $$\Lambda_{\text{Schmelz}} = T \frac{\dd p}{\dd T}(V_{\text{Fl}} - V_{\text{Fest}})$$
+    Erklären Sie anhand dieser Formel und der Grafik die Anomalie des Wassers.
+    \item Erklären Sie, was passieren würde, wenn Sie eine Glasflasche bis zum Rand mit Wasser bei $T=\SI{20}{\degreeCelsius}$ füllen und verschlossen in den Gefrierschrank legen, um es gefrieren zu lassen!
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c|}
+\hline
+\multicolumn{4}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /8}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} \\
+\quad/2 & \quad/1 & \quad/3 & \quad/2 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 6 -------------------------
+\section*{Beispiel 6 - Raumstation}
+\begin{minipage}[t]{0.55\textwidth}
+    \vspace{0pt}
+    Sie entwerfen eine Raumstation, die aus einem großen, ringförmigen Habitat besteht. Der Ring dreht sich im Weltraum, um durch Zentrifugalkraft eine künstliche Schwerkraft zu erzeugen. \\
+    Der Ring hat einen Durchmesser von \SI{300}{\metre} und soll so konstruiert werden, dass die Bewohner auf der Innenseite des Rings dieselbe Beschleunigung erfahren wie auf der Erde, also $g=\SI{9.81}{\metre\per\second\squared}$.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.42\textwidth}
+    \vspace{0pt}
+    \includegraphics[width=\textwidth]{Bilder/Test/1terAntritt/raumstation.png}
+    \centering
+\end{minipage}
+
+
+\subsection*{Aufgaben}
+\begin{enumerate}
+    \item Berechnen Sie, mit welcher Winkelgeschwindigkeit ($\omega$ in \si{\radian\per\second}) sich der Ring drehen muss, damit die Bewohner genau die Erdbeschleunigung g spüren.
+    \item Geben Sie zusätzlich an, wie viele Umdrehungen pro Minute das sind. \\
+    Tipp: $\omega=2\pi f$, wobei $[f]=\si{\per\second}$.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c|}
+\hline
+\multicolumn{2}{|l|}{\textbf{\large{Punkte: \quad /6}}}\\
+\hline
+\textbf{1)} & \textbf{2)} \\
+\quad/3 & \quad/3 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\end{document}

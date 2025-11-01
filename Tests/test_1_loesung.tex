@@ -1,0 +1,216 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction
+}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\include{defs} % Einbinden Ihrer benutzerdefinierten Befehle
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+\noindent
+\vspace{9cm}
+\begin{center}
+    {\Huge \textbf{Lösung}} \\[1.5em]
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 1. Schriftliche Prüfung: 17.06.2025} \\[1em]
+    {\large Studiengang: Clinical Engineering} 
+\end{center}
+
+\newpage
+
+\section*{Lösung Beispiel 1 – Wasserkocher vergessen}
+
+\begin{enumerate}
+    \item \textbf{Skizzieren Sie den zeitlichen Ablauf in einem Diagramm ($T_{W}$ über t)!} \\
+    Das Diagramm zeigt zunächst einen linearen Anstieg der Temperatur von \SI{20}{\degreeCelsius} auf \SI{100}{\degreeCelsius}. Anschließend bleibt die Temperatur für die Dauer des Verdampfungsprozesses konstant bei \SI{100}{\degreeCelsius}.
+    
+    \begin{center}
+        % Placeholder für die Grafik, Pfad ggf. anpassen
+        % \includegraphics[width=0.5\textwidth]{Bilder/Test/loesung_wasserkocher.png}
+        \textit{[Platzhalter für Temperatur-Zeit-Diagramm]}
+    \end{center}
+
+    \item \textbf{Berechnen Sie die Energie zum Erhitzen des Wassers auf \SI{100}{\degreeCelsius}.} \\
+    Die Masse des Wassers beträgt 
+    $$m_W = \rho_W \cdot V = \SI{1}{\kilogram\per\deci\metre\cubed} \cdot \SI{1}{\litre} = \SI{1}{\kilogram} \mDot$$ 
+    Damit wird die Wärme zum Erhitzen
+    $$Q_{1} = m_{W} \cdot c_{W} \cdot \Delta T = \SI{1}{\kg} \cdot \SI{4,18}{\kilo\joule\per\kilogram\per\kelvin} \cdot (\SI{100}{\celsius} - \SI{20}{\celsius}) = \SI{334,4}{\kilo\joule} \mDot$$
+
+    \item \textbf{Berechnen Sie die Verdampfungswärme, die zum Verdampfen des Wassers benötigt wird.} \\
+    $$Q_{2} = m_{W} \cdot \lambda_{\text{verd}} = \SI{1}{\kg} \cdot \SI{2256}{\kilo\joule\per\kilogram} = \SI{2256}{\kilo\joule} \mDot $$
+
+    \item \textbf{Berechnen Sie, wie viel Energie der Wasserkocher in \SI{25}{\minute} liefert.} \\
+    Die Zeit in SI-Einheiten ist 
+    $$t = \SI{25}{\minute} = 25 \cdot 60\,\si{\second} = \SI{1500}{\second} \mDot$$
+    Somit wird in dieser Zeit ingesamt 
+    $$E_{\text{Kocher}} = P \cdot t = \SI{2000}{\watt} \cdot \SI{1500}{\second} = \SI{3000000}{\joule} = \SI{3000}{\kilo\joule} $$
+    abgegeben.
+
+    \item \textbf{Fazit?} \\
+    Die Gesamtenergie, die benötigt wird, um das Wasser zu erhitzen und vollständig zu verdampfen, beträgt:
+    $$Q_{\text{ges}} = Q_1 + Q_2 = \SI{334,4}{\kilo\joule} + \SI{2256}{\kilo\joule} = \SI{2590,4}{\kilo\joule} \mDot$$
+    Da der Wasserkocher mit \SI{3000}{\kilo\joule} deutlich mehr Energie liefert als die benötigten \SI{2590,4}{\kilo\joule}, kommen Sie nicht rechtzeitig zurück. Das gesamte Wasser ist verdampft und der Kocher droht durchzuschmoren.
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 2 – Jump-Bag}
+\begin{enumerate}[itemsep=10pt]
+    \item \textbf{Wie lautet die Bewegungsform der Frau nach der Energieübertragung? Begründen Sie!} \\
+    \begin{itemize}[label=$\boxtimes$, itemsep=0pt, topsep=0pt]
+        \item \textbf{Gleichförmig beschleunigte Bewegung}
+    \end{itemize}
+    \textbf{Begründung:} Nach dem Verlassen des Kissens wirkt auf die Frau nur noch die konstante Erdbeschleunigung. Eine Bewegung unter dem Einfluss einer konstanten Kraft bzw. Beschleunigung ist eine gleichförmig beschleunigte Bewegung (vertikaler Wurf).
+
+    \item \textbf{Berechnen Sie die maximale Flughöhe $h_{\text{max}}$ der Frau!} \\
+    Die potentielle Energie der beiden Männer auf dem Turm wird vollständig auf die Frau übertragen.
+    $$E_{\text{pot, Männer}} = (2 \cdot m_{\text{Mann}}) \cdot g \cdot H = (2 \cdot \SI{80}{\kg}) \cdot \SI{9,81}{\m\per\s\squared} \cdot \SI{6}{\m} = \SI{9417,6}{\joule}$$
+    Am höchsten Punkt ihrer Flugbahn ist die gesamte Energie der Frau in potentielle Energie umgewandelt:
+    $$E_{\text{ges, Frau}} = E_{\text{pot, Frau}}(h_\text{max}) = m_{\text{Frau}} \cdot g \cdot h_{\text{max}}$$
+    Daraus folgt für die maximale Höhe:
+    $$h_{\text{max}} = \frac{E_{\text{pot, Männer}}}{m_{\text{Frau}} \cdot g} = \frac{\SI{9417,6}{\joule}}{\SI{65}{\kg} \cdot \SI{9,81}{\m\per\s\squared}} \approx \SI{14,77}{\metre} \mDot$$
+
+    \item \textbf{Mit welcher maximalen Geschwindigkeit $v_{\text{max}}$ kommt sie auf der Wasseroberfläche bei $h=0$ m auf?} \\
+    Beim Aufprall auf die Wasseroberfläche ($h=0$) ist ihre gesamte Energie in kinetische Energie umgewandelt.
+    $$E_{\text{ges, Frau}} = E_{\text{kin, Frau}} = \frac{1}{2} m_{\text{Frau}} v_{\text{max}}^2 = \SI{9417,6}{\joule}$$
+    Daraus folgt für die maximale Geschwindigkeit:
+    $$v_{\text{max}} = \sqrt{\frac{2 \cdot E_{\text{ges, Frau}}}{m_{\text{Frau}}}} = \sqrt{\frac{2 \cdot \SI{9417,6}{\joule}}{\SI{65}{\kg}}} \approx \SI{17,02}{\metre\per\second} \approx \SI{61,27}{\kilo\metre\per\hour} \mDot$$
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 3 – Ideales Gas}
+
+\begin{enumerate}[itemsep=8pt]
+    \item \textbf{Welche Temperatur hat diese Isotherme (I)?} \\
+    Man liest einen Punkt von der Isotherme (I) ab, z.B. $(p_1, V_1) = (\SI{100000}{\pascal}, \SI{0,04}{\metre\cubed})$. Die Temperatur berechnet sich mit der idealen Gasgleichung:
+    $$T_1 = \frac{p_1 V_1}{n R} = \frac{\SI{100000}{\pascal} \cdot \SI{0,04}{\metre\cubed}}{\SI{1}{\mole} \cdot \SI{8,314}{\joule\per\mole\per\kelvin}} \approx \SI{481,1}{\kelvin} \mDot$$
+
+    \item \textbf{Zeichnen Sie eine weitere Isotherme mit $T=\SI{250}{\kelvin}$ ein (II).} \\
+    Die Isotherme (II) wurde in die Grafik eingezeichnet. Sie verläuft unterhalb der Isotherme (I), da die Temperatur geringer ist. Die Punkte der Isotherme müssen über 
+    $$ p(V) = \frac{n R T}{V} = \frac{1 \cdot 8,314 \cdot 250}{V}$$ 
+    bzw. 
+    $$ V(p) = \frac{n R T}{p} = \frac{1 \cdot 8,314 \cdot 250}{p}$$ 
+    berechnet werden:
+    \begin{center}
+    \begin{tabular}{c|c}
+        $V$   & $p$  \\
+        \hline
+        0,005 & 415.700 \\
+        0,01 & 207.850 \\
+        0,02 & 103.925 \\
+        0,03 & 69.283 \\
+        0,04 & 51.963 \\
+        0,05 & 41.570 \\
+    \end{tabular}
+    \end{center}
+    \item \textbf{Zeichnen Sie eine beliebige Isobare ein (III).} \\
+    Eine Isobare ist eine horizontale Linie im p-V-Diagramm (konstanter Druck). Sie wurde als (III) eingezeichnet.
+
+    \item \textbf{Zeichnen Sie eine beliebige Isochore ein (IV).} \\
+    Eine Isochore ist eine vertikale Linie im p-V-Diagramm (konstantes Volumen). Sie wurde als (IV) eingezeichnet.
+    
+    \begin{center}
+        \includegraphics[width=0.78\textwidth]{Bilder/Test/1terAntritt/ideales_gas_loesung.png}
+    \end{center}
+
+    \item \textbf{Berechnen Sie das Volumen eines idealen Gases unter Normalbedingungen!} \\
+    Normalbedingungen: $p = \SI{1,013}{\bar} = \SI{101300}{\pascal}$, $T = \SI{0}{\degreeCelsius} = \SI{273,15}{\kelvin}$.
+    $$V = \frac{n R T}{p} = \frac{\SI{1}{\mole} \cdot \SI{8,314}{\joule\per\mole\per\kelvin} \cdot \SI{273,15}{\kelvin}}{\SI{101300}{\pascal}} \approx \SI{0,0224}{\metre\cubed} = \SI{22,4}{\litre} \mDot$$
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 4 – Carnot'scher Kreisprozess}
+\begin{enumerate}[itemsep=8pt]
+    \item \textbf{Ordnen Sie die 4 Schritte den richtigen Seiten in der Grafik zu.} \\
+    \begin{itemize}
+        \item $1 \rightarrow 2$: Isotherme Expansion (Volumen nimmt zu, Wärme $\Delta Q_1$ wird zugeführt)
+        \item $2 \rightarrow 3$: Adiabatische Expansion (Volumen nimmt zu, keine Wärmeübertragung)
+        \item $3 \rightarrow 4$: Isotherme Kompression (Volumen nimmt ab, Wärme $\Delta Q_2$ wird abgeführt)
+        \item $4 \rightarrow 1$: Adiabatische Kompression (Volumen nimmt ab, keine Wärmeübertragung)
+    \end{itemize}
+    Adiabaten verlaufen im ($p,V$)-Diagramm steiler als Isothermen.
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{Bilder/Test/1terAntritt/carnot_prozess_loesung.png}
+    \end{center}
+
+    \item \textbf{In welchen Schritten wird Arbeit verrichtet bzw. zugeführt?} \\
+    Bei jeder Expansion ($1 \rightarrow 2$ und $2 \rightarrow 3$) verrichtet das Gas Arbeit ($\Delta W < 0$).
+    Bei jeder Kompression ($3 \rightarrow 4$ und $4 \rightarrow 1$) wird Arbeit am Gas verrichtet ($\Delta W > 0$). Die Pfeile sind in der Grafik eingetragen.
+
+    \item \textbf{Woran erkennt man, dass eine Nettoarbeit $\Delta W<0$ verrichtet wird?} \\
+    Die von der Maschine verrichtete Nettoarbeit entspricht der von den Kurven umschlossenen Fläche im ($p,V$)-Diagramm. Da der Prozess im Uhrzeigersinn durchlaufen wird, ist die Fläche positiv, was einer vom System abgegebenen (negativen) Arbeit $\Delta W$ entspricht.
+
+    \item \textbf{Wie maximieren Sie den Wirkungsgrad? Technische Schwierigkeiten?} \\
+    Der Wirkungsgrad $\eta = \frac{T_1 - T_2}{T_1} = 1 - \frac{T_2}{T_1}$ wird maximiert, indem die Temperatur $T_1$ des warmen Reservoirs so hoch wie möglich und die Temperatur $T_2$ des kalten Reservoirs so niedrig wie möglich ist.
+    \\
+    \textbf{Technische Schwierigkeiten:}
+    \begin{itemize}
+        \item \textbf{Hohe Temperatur $T_1$:} Die maximale Temperatur ist durch die Hitzebeständigkeit der Materialien des Motors begrenzt.
+        \item \textbf{Niedrige Temperatur $T_2$:} Die niedrigste erreichbare Temperatur ist in der Praxis meist die Umgebungstemperatur. Eine aktive Kühlung darunter wäre sehr energieaufwändig. Außerdem ist es schwierig in der kurzen Zeit des Zyklus ausreichend Wärme abzutransportieren.
+        \item \textbf{Prozessführung:} Isotherme und adiabatische Zustandsänderungen sind in der Praxis nur annähernd und langsam realisierbar, was der geforderten Leistung von Motoren widerspricht.
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 5 – Phasendiagramm}
+
+\begin{enumerate}[itemsep=8pt]
+    \item \textbf{Beschriften Sie die Kurven in der Grafik!} \\
+    Die Beschriftung ist in der Grafik ersichtlich.
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{Bilder/Test/1terAntritt/phasendiagramm_wasser_loesung.png}
+    \end{center}
+
+    \item \textbf{Welches Vorzeichen hat die Ableitung $\frac{\dd p}{\dd T}$ entlang dieser drei Kurven?} \\
+    \begin{itemize}[topsep=1pt]
+        \item \textbf{Sublimationskurve} ($p_{\text{Sub}}(T)$): $\frac{\dd p}{\dd T} > 0$ (positive Steigung)
+        \item \textbf{Dampfdruckkurve} ($p_{\text{Dampf}}(T)$): $\frac{\dd p}{\dd T} > 0$ (positive Steigung)
+        \item \textbf{Schmelzkurve} ($p_{\text{Schm}}(T)$): $\frac{\dd p}{\dd T} < 0$ (negative Steigung)
+    \end{itemize}
+
+    \item \textbf{Erklären Sie anhand dieser Formel und der Grafik die Anomalie des Wassers.} \\
+    Die Schmelzwärme $\Lambda_{\text{Schmelz}}$ und die absolute Temperatur $T$ sind stets positiv. Wie oben festgestellt, ist die Steigung der Schmelzkurve $\frac{\dd p}{\dd T}$ für Wasser negativ. Damit die Gleichung
+    $$\Lambda_{\text{Schmelz}} = T \cdot \underbrace{\frac{\dd p}{\dd T}}_{<0} \cdot (V_{\text{Fl}} - V_{\text{Fest}})$$
+    erfüllt ist, muss der Term $(V_{\text{Fl}} - V_{\text{Fest}})$ ebenfalls negativ sein. Das bedeutet $V_{\text{Fl}} < V_{\text{Fest}}$. Festes Wasser (Eis) hat also ein größeres Volumen (und eine geringere Dichte) als flüssiges Wasser. Das ist die Dichteanomalie des Wassers.
+
+    \item \textbf{Erklären Sie, was mit der Glasflasche im Gefrierschrank passiert!} \\
+    Da sich Wasser beim Gefrieren ausdehnt (Anomalie), vergrößert sich sein Volumen. In einer verschlossenen, vollen Flasche kann sich das Eis nicht ausdehnen. Der entstehende Druck wird so groß, dass die Glasflasche platzt.
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 6 – Raumstation}
+\begin{enumerate}
+    \item \textbf{Berechnen Sie, mit welcher Winkelgeschwindigkeit ($\omega$) sich der Ring drehen muss.} \\
+    Der Radius des Rings beträgt $r = d/2 = \SI{300}{\metre} / 2 = \SI{150}{\metre}$. Die künstliche Schwerkraft wird durch die Zentripetalbeschleunigung erzeugt, die gleich $g$ sein soll.
+    $$a_{Zp} = \omega^2 \cdot r \eqexcl g$$
+    Umstellen nach der Winkelgeschwindigkeit $\omega$:
+    $$\omega = \sqrt{\frac{g}{r}} = \sqrt{\frac{\SI{9,81}{\metre\per\second\squared}}{\SI{150}{\metre}}} \approx \SI{0,2557}{\radian\per\second} \mDot$$
+
+    \item \textbf{Geben Sie zusätzlich an, wie viele Umdrehungen pro Minute das sind.} \\
+    Zuerst wird die Frequenz $f$ in Hertz (\si{\per\second}) berechnet:
+    $$f = \frac{\omega}{2\pi} = \frac{\SI{0,2557}{\radian\per\second}}{2\pi} \approx \SI{0,0407}{\per\second}$$
+    Umrechnung in Umdrehungen pro Minute:
+    $$f_{\text{rpm}} = f \cdot \SI{60}{\second\per\minute} = \SI{0,0407}{\per\second} \cdot \SI{60}{\second\per\minute} \approx \SI{2,44}{\per\minute} \mDot$$
+    Die Raumstation muss sich also etwa 2,44 Mal pro Minute drehen.
+\end{enumerate}
+
+\end{document}

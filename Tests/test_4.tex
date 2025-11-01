@@ -1,0 +1,326 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+
+\usepackage{tikz}
+\usepackage[b]{esvect} % For \vv (option [d] is a nice default)
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{angle-symbol-degree = ^\circ}
+\sisetup{locale = DE, separate-uncertainty, inter-unit-product = {},
+range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\include{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+% \rhead{Physikalische Grundlagen}
+% \lhead{FH Campus Wien}
+\cfoot{\thepage}
+
+\begin{document}
+% Command to add the logo to the top left of the first page
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \hspace{2.0cm}% Move logo to the right from the page edge
+    \raisebox{-5.cm}{% Move logo down from the page edge
+      \includegraphics[width=4cm]{Bilder/Allgemein/LogoFHCampus.png}% The logo file
+    }%
+  }%
+}
+
+\begin{center}
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 4. Schriftliche Prüfung: 14.10.2025} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\vspace{1cm}
+
+\noindent
+\begin{tabular}{ll}
+    \textbf{Vorname:} & \underline{\hspace{8cm}} \\[0.3cm]
+    \textbf{Nachname:} & \underline{\hspace{8cm}} \\
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{itemize}[label={$\Diamond$}]
+    \item Sie haben 90 min Zeit.
+    \item Es sind keine Unterlagen erlaubt.
+    \item Sie dürfen einen Taschenrechner verwenden.
+    \item Geben Sie klare und verständliche Antworten!
+    \item Schreiben Sie leserlich!
+    \item Streichen Sie alle bis auf eine Lösung durch!
+    \item Jeglicher Versuch unerlaubte Hilfsmittel zu verwenden oder von KommilitonInnen abzuschreiben, wird mit einer negativen Bewertung des Tests geahndet.
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{center}
+    \textbf{Viel Erfolg!}
+\end{center}
+
+\vspace{1cm}
+
+\begin{flushright}
+    \renewcommand{\arraystretch}{1.23} % This increases the row height by 50%
+    \begin{tabular}{l p{2.3cm}}
+        \hline
+        \noalign{\vskip 0.15cm}
+        \textbf{\Large{Punkte:}} & \textbf{\Large{/50}} \\
+        \noalign{\vskip 0.1cm}
+        \hline
+        Beispiel 1: & /13 \\ 
+        Beispiel 2: & /14 \\ 
+        Beispiel 3: & /13 \\ 
+        Beispiel 4: & /10 \\
+    \end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 1 -------------------------
+\section*{Beispiel 1 - Energieerhaltung bei einer Feder}
+
+Ein Block mit der Masse $m = \SI{2}{\kilogram}$ wird gegen eine horizontale Feder mit der Federkonstante $k = \SI{800}{\newton\per\meter}$ gedrückt und komprimiert diese um $\Delta x_0 = -\SI{20}{\centi\meter}$. Nachdem der Block losgelassen wird (siehe Skizze), gleitet er \textbf{reibungsfrei} über eine horizontale Fläche und anschließend eine Rampe hinauf. Die Erdbeschleunigung beträgt $g = \SI{9,81}{\metre\per\second\squared}$. Für die Feder gilt das Hooksche Gesetz 
+\begin{equation*}
+    F_{\text{Feder}} = -k \cdot \Delta x
+\end{equation*}
+\begin{center}
+    \centering
+    \includegraphics[width=0.85\textwidth]{Bilder/Test/4terAntritt/Block-Feder-Rampe.png}
+\end{center}
+    
+\subsection*{Aufgabe}
+Berechnen Sie die maximale Höhe $h$, die der Block auf der Rampe erreicht.
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Formulieren Sie den (mechanischen) Energieerhaltungssatz für dieses System. \\
+    Tipp: Welche Energieformen sind zu den unterschiedlichen Zeitpunkten der Bewegung vorhanden?
+    \item Berechnen Sie eine Formel für die potenzielle Energie $E_{\text{pot,Feder}}$, die anfangs in der komprimierten Feder gespeichert ist und geben Sie anschließend den numerischen Wert an. \\
+    Tipp: $W_\mathrm{Feder} = \int F_\mathrm{Feder} \cdot \dd (\Delta x) = -E_\mathrm{pot,Feder}$ 
+    \item Beschreiben Sie, was mit der potenziellen Energie des Blocks passiert, nachdem er von der Feder beschleunigt wurde. Welche Geschwindigkeit $v$ hat der Block am Fuße der Rampe?
+    \item Am höchsten Punkt der Rampe, den der Block erreicht, ist die gesamte kinetische Energie in potenzielle Energie $E_{\text{pot,Höhe}}$ umgewandelt worden. Geben Sie eine Formel für die maximale Höhe $h$ als Funktion der Anfangsauslenkung $\Delta x_0$ an. \\ 
+    Berechnen Sie auch den numerischen Wert.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c |}
+\hline
+\multicolumn{4}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /13}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} \\
+\quad/\num{2} & \quad/\num{4} & \quad/\num{3} & \quad/\num{4} \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 2 -------------------------
+\section*{Beispiel 2 - Konisches Pendel}
+
+Ein Ball der Masse $m=\SI{0.5}{\kilogram}$ ist an einem Seil der Länge $l=\SI{1.5}{\meter}$ aufgehängt und rotiert auf einer horizontalen Kreisbahn mit einem Radius von $r=\SI{0.8}{\meter}$. Auf den Ball wirken die Gewichtskraft $\ivecS{F}{G}$ und die Seilkraft $\ivecS{F}{S}$.
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{Bilder/Uebungsaufgaben/thetherbal_angabe.png}
+\end{center}
+
+\subsection*{Aufgabe}
+Berechnen Sie die Winkelgeschwindigkeit $\omega$ des Balls.
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Zeichnen Sie ein Freikörperdiagramm mit allen auf den Ball wirkenden Kräften in der $(x,z)$-Ebene und teilen Sie dabei die Seilkraft dementsprechend in $F_{S,x}$ und $F_{S,z}$ auf.
+    \item Geben Sie eine Formel für den Winkel $\theta$ des Seils zur Vertikalen mithilfe der gegebenen Längen $l$ und $r$. Berechnen Sie auch den numerischen Wert!
+    \item Stellen Sie das Kräftegleichgewicht in vertikaler Richtung ($z$-Richtung) auf. Beachten Sie, dass sich der Ball in dieser Richtung nicht bewegen soll. \\
+    Lösen Sie die entstandene Gleichung nach dem Betrag der Seilkraft $F_S$ auf.
+    \item Stellen Sie das Kräftegleichgewicht in horizontaler ($x$-Richtung) auf. Die resultierende Kraft in horizontaler Richtung ist die notwendige Zentripetalkraft $F_{\text{Zp}}$.
+    \item Setzen Sie den Ausdruck für die Seilkraft $F_S$ aus (3) in die Gleichung aus (4) ein und lösen Sie die resultierende Gleichung nach der Winkelgeschwindigkeit $\omega$ auf. Wie hängt die Winkelgeschwindigkeit $\omega$ mit $g,r,\theta$ zusammen? \\ Berechnen Sie auch den numerischen Wert von $\omega$.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /14}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} \\
+\quad/\num{2} & \quad/\num{2} & \quad/\num{4} & \quad/\num{2} & \quad/\num{4} \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 3 -------------------------
+\section*{Beispiel 3 - Mischtemperatur}
+
+Ein \SI{400}{\gram} schweres Stück Kupfer mit einer Temperatur von $T_{\text{Cu}} = \SI{95}{\celsius}$ wird in ein wärmeisoliertes Gefäß mit \SI{1.2}{\litre} Glykol gegeben, das eine Anfangstemperatur von $T_{\text{Glykol}} = \SI{18}{\degreeCelsius}$ hat.
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{Bilder/Test/3terAntritt/kugel_in_wasser_3.jpeg}
+\end{center}
+
+Gegeben sind:
+\begin{itemize}
+    \item Spezifische Wärmekapazität von Kupfer: $c_{\text{Cu}} = \SI{0.385}{\kilo\joule\per(\kilogram\cdot\kelvin)}$
+    \item Spezifische Wärmekapazität von Glykol: $c_{\text{Glykol}} = \SI{2.40}{\kilo\joule\per(\kilogram\cdot\kelvin)}$
+    \item Dichte von Glykol: $\rho_{\text{Glykol}} = \SI{1.11}{\kilogram\per\deci\meter\cubed}$
+\end{itemize}
+
+\subsection*{Aufgabe}
+Berechnen Sie die Endtemperatur (Mischtemperatur) $T_{\text{Misch}}$, die sich im thermischen Gleichgewicht einstellt.
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Formulieren Sie den Grundsatz des thermischen Gleichgewichts in einem isolierten System. Welche Beziehung besteht zwischen der vom Kupfer abgegebenen und der vom Glykol aufgenommenen Wärme?
+    \item Berechnen Sie zunächst die Masse des Glykols.
+    \item Stellen Sie eine Formel für die vom Kupfer abgegebene Wärme $Q_{\text{ab}}$ als Funktion von $T_{\text{Misch}}$ auf.
+    \item Stellen Sie eine Formel für die vom Glykol aufgenommene Wärme $Q_{\text{auf}}$ als Funktion von $T_{\text{Misch}}$ auf.
+    \item Setzen Sie die beiden Wärmeformeln gleich und lösen Sie die resultierende Gleichung nach der Mischtemperatur $T_{\text{Misch}}$ auf. Berechnen Sie die Mischtemperatur $T_{\text{Misch}}$, die sich einstellt.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /13}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} \\
+\quad/\num{1} & \quad/\num{2} & \quad/\num{2} & \quad/\num{2} & \quad/\num{6} \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+% ------------------------- BEISPIEL 4 -------------------------
+\section*{Beispiel 4 - Single-Choice}
+\textit{Kreuzen Sie die korrekte Antwort an. Pro Frage ist nur eine Antwort richtig.}
+
+\begin{enumerate}[label=\arabic*.,itemsep=18pt]
+    \item Was ist die SI-Einheit der Kraft?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Joule [\si{\joule}]
+        \item Watt [\si{\watt}]
+        \item Newton [\si{\newton}]
+        \item Pascal [\si{\pascal}]
+    \end{itemize}
+
+    \item Aus welchen SI-Basiseinheiten ist ein Pascal (\si{\pascal}) zusammengesetzt?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \si{\kilogram \cdot \metre^{-1} \cdot\, \second^{-2}}
+        \item \si{\kilogram \cdot\metre^{2} \cdot\, \second^{-2}}
+        \item \si{\kilogram \cdot\metre^{-1} \cdot\, \second^{-1}}
+        \item \si{\kilogram \cdot\metre \cdot\, \second^{-2}}
+    \end{itemize}
+
+    \item Ein Auto ($m=\SI{1200}{\kg}$) beschleunigt von \SI{50}{\kilo\meter\per\hour} auf \SI{100}{\kilo\meter\per\hour}. Um welchen Faktor erhöht sich seine kinetische Energie?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Faktor 2
+        \item Faktor 4
+        \item Faktor $\sqrt{2}$
+        \item Faktor 8
+    \end{itemize}
+
+    \item Bei einem adiabatischen Prozess eines idealen Gases bleibt was konstant?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Der Druck
+        \item Die innere Energie
+        \item Die Temperatur
+        \item Die Wärme
+        \item Die Arbeit
+    \end{itemize}
+
+    \item Ein Planet hat den doppelten Radius und die doppelte Masse der Erde. Wie groß ist die Fallbeschleunigung $g'$ an seiner Oberfläche im Vergleich zur Erdbeschleunigung $g$? \\
+    ($g = GM/R^2$)
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item $g' = 2g$
+        \item $g' = g$
+        \item $g' = g/2$
+        \item $g' = g/4$
+    \end{itemize}
+
+    \item Der erste Hauptsatz der Thermodynamik ($\Delta U = Q + W$) ist eine Formulierung des...
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Impulserhaltungssatzes.
+        \item Energieerhaltungssatzes.
+        \item Drehimpulserhaltungssatzes.
+        \item Massenerhaltungssatzes.
+    \end{itemize}
+
+    \newpage
+    \item Welche der folgenden Aussagen beschreibt das 3. Newtonsche Axiom?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Ein Körper bleibt in Ruhe, wenn keine Kraft auf ihn wirkt.
+        \item Die Beschleunigung ist proportional zur Kraft ($F=ma$).
+        \item Kräfte treten immer paarweise auf; übt Körper A eine Kraft auf B aus, übt B eine gleich große, entgegengesetzte Kraft auf A aus.
+        \item Die Energie in einem abgeschlossenen System ist konstant.
+    \end{itemize}
+
+    \item Ein Rad mit Radius $r=\SI{0.5}{\meter}$ dreht sich mit einer Winkelgeschwindigkeit von $\omega = \SI{4}{\radian\per\second}$. Wie groß ist die Bahngeschwindigkeit $v$ eines Punktes am Rand des Rades?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \SI{1}{\meter\per\second}
+        \item \SI{2}{\meter\per\second}
+        \item \SI{4}{\meter\per\second}
+        \item \SI{8}{\meter\per\second}
+    \end{itemize}
+
+    \item Welche Größe wird in der Einheit Watt (\si{\watt}) gemessen?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Energie
+        \item Arbeit
+        \item Kraft
+        \item Leistung
+    \end{itemize}
+
+    \item Ein Objekt wird über eine Strecke von \SI{5}{\meter} mit einer konstanten Kraft von \SI{20}{\newton} verschoben, die parallel zum Weg wirkt. Welche Arbeit wird verrichtet?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \SI{4}{\joule}
+        \item \SI{25}{\joule}
+        \item \SI{100}{\joule}
+        \item \SI{0.25}{\joule}
+    \end{itemize}
+    
+    \item Sie tragen einen Koffer mit $m = \SI{3}{\kilo\gram}$ auf einer ebenen Strecke von $s = \SI{500}{\meter}$ unter dem Einfluss der Erdbeschleunigung $g$. Welche Arbeit wird dabei verrichtet? 
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \SI{0}{\joule}
+        \item \SI{1500}{\joule}
+        \item \SI{14715}{\joule}
+        \item Es kommt auf die Geschwindigkeit an.
+    \end{itemize}
+
+    \item Scheinkräfte treten in welcher Art von Bezugssystemen auf?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item In Inertialsystemen
+        \item Nur in rotierenden Bezugssystemen
+        \item In beschleunigten Bezugssystemen
+        \item In allen Bezugssystemen
+    \end{itemize}
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|l c|}
+\hline
+\multicolumn{2}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /10}}}\\
+\hline
+\end{tabular}
+\end{flushright}
+
+\end{document}

@@ -1,0 +1,184 @@
+\documentclass[11pt, a4paper, ngerman]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction,
+    range-phrase = { bis }
+}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\include{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+\noindent
+\vspace{9cm}
+\begin{center}
+    {\Huge \textbf{Lösung}} \\[1.5em]
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large Freiwillige Selbsteinschätzung} \\[1em]
+    {\large Studiengang: Clinical Engineering} 
+\end{center}
+
+\newpage
+
+\section*{Lösung Beispiel 1 – Eiswürfel in Limonade}
+
+\begin{enumerate}
+    \item \textbf{Reicht die Wärme der Limonade zum Schmelzen?} \\
+    Zuerst berechnen wir die Masse der Eiswürfel:
+    $$ m_{\text{Eis}} = 2 \cdot \SI{25}{\gram} = \SI{50}{\gram} = \SI{0,05}{\kilogram} \mDot $$
+    Die zum Schmelzen des Eises benötigte Energie (Schmelzwärme) ist:
+    $$ Q_{\text{Schmelz}} = m_{\text{Eis}} \cdot \lambda_{\text{Schmelz}} = \SI{0,05}{\kg} \cdot \SI{332,8}{\kilo\joule\per\kilogram} = \SI{16,64}{\kilo\joule} \mDot $$
+    Die maximal verfügbare Wärme der Limonade beim Abkühlen von \SI{33}{\degreeCelsius} auf \SI{0}{\degreeCelsius} ist:
+    $$ Q_{\text{Limo, max}} = m_{\text{Limo}} \cdot c_{\text{Limo}} \cdot \Delta T = \SI{0,24}{\kg} \cdot \SI{4,18}{\kilo\joule\per\kilogram\per\kelvin} \cdot (\SI{33}{\kelvin}) = \SI{33,1}{\kilo\joule} \mDot $$
+    Da $Q_{\text{Limo, max}} > Q_{\text{Schmelz}}$ (\SI{33,1}{\kilo\joule} > \SI{16,64}{\kilo\joule}), schmelzen die Eiswürfel vollständig.
+
+    \item \textbf{Berechnung der Endtemperatur $T_{\text{Ende}}$} \\
+    Wir setzen die von der Limonade abgegebene Wärme gleich der vom Eis aufgenommenen Wärme (Schmelzen + Erwärmen).
+    $$ Q_{\text{Limo, abgegeben}} = Q_{\text{Eis, aufgenommen}} $$
+    $$ m_{\text{Limo}} c_{\text{Limo}} \underbrace{(T_{\text{Limo,Anfang}} - T_{\text{Ende}})}_{>0} = m_{\text{Eis}} \lambda_{\text{Schmelz}} + m_{\text{Eis}} c_{\text{Wasser}} \underbrace{(T_{\text{Ende}} - T_{\text{Eis,Anfang}})}_{>0} $$
+    Wir setzen die Werte ein (Temperaturen in Celsius, da es sich um Differenzen bzw. eine Endtemperatur handelt):
+    $$ \SI{0,24}{\kg} \cdot \SI{4180}{\joule\per\kg\per\kelvin} \cdot (\SI{33}{\celsius} - T_{\text{Ende}}) = \SI{16640}{\joule} + \SI{0,05}{\kg} \cdot \SI{4180}{\joule\per\kg\per\kelvin} \cdot (T_{\text{Ende}} - \SI{0}{\celsius}) $$
+    $$ \num{1003,2} \cdot (\num{33} - T_{\text{Ende}}) = \num{16640} + \num{209} \cdot T_{\text{Ende}} $$
+    $$ \num{33105,6} - \num{1003,2} \cdot T_{\text{Ende}} = \num{16640} + \num{209} \cdot T_{\text{Ende}} $$
+    $$ \num{16465,6} = \num{1212,2} \cdot T_{\text{Ende}} $$
+    $$ T_{\text{Ende}} = \frac{\num{16465,6}}{\num{1212,2}} \approx \SI{13,58}{\celsius} $$
+    Die Endtemperatur der Mischung beträgt ca. \SI{13,6}{\celsius}.
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 2 - Reibungsfreies Schieben}
+
+\begin{enumerate}
+    \item \textbf{Kräfteskizze für Masse m} \\
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{Bilder/Test/FreiwilligerSelbsttest/schiefe_ebene_loesung.png}
+    \end{center}
+    Auf die Masse $m$ wirken die Gewichtskraft $F_G = mg$ (senkrecht nach unten) und die Normalkraft $F_N$ (senkrecht zur Auflagefläche). Das System wird mit $a_x$ nach rechts beschleunigt.
+    
+    \item \textbf{Kräftegleichgewicht in $x$- und $y$-Richtung} \\
+    Wir zerlegen die Normalkraft $F_N$ in ihre $x$- und $y$-Komponenten.
+    $$ \sum F_y = F_N \cos(\theta) - mg \eqexcl 0 \quad \Rightarrow \quad (1) \ F_N \cos(\theta) = mg $$
+    In $x$-Richtung bewirkt die resultierende Kraft die Beschleunigung $a_x$:
+    $$ \sum F_x = F_N \sin(\theta) + 0  \eqexcl m a_x \quad \Rightarrow \quad (2) \ F_N \sin(\theta) = m a_x $$
+
+    \item \textbf{Herleitung der Beschleunigung $a_x$} \\
+    Aus Gleichung (1) erhalten wir für die Normalkraft:
+    $$ F_N = \frac{mg}{\cos(\theta)} $$
+    Dies setzen wir in Gleichung (2) ein:
+    \begin{gather*}
+        \left(\frac{mg}{\cos(\theta)}\right) \sin(\theta) = m a_x \\
+        \implies mg \tan(\theta) = m a_x \\
+         a_x = g \tan(\theta)
+    \end{gather*}
+    
+    \item \textbf{Berechnung der Gesamtkraft $F$} \\
+    Die Kraft $F$ muss die Gesamtmasse $M+m$ mit der Beschleunigung $a_x$ bewegen:
+    $$ F = (M+m) a_x = (M+m) g \tan(\theta) \mDot$$
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 3 – Warme Autoreifen}
+
+\begin{enumerate}
+    \item \textbf{Druck bei \SI{10}{\degreeCelsius}} \\
+    Für ein ideales Gas bei konstantem Volumen können wir die beiden Volumina gleichsetzen:
+    \begin{align*}
+        \frac{n \cdot R \cdot T_1}{p_1} &= \frac{n \cdot R \cdot T_2}{p_2} \\
+        \implies \frac{p_1}{T_1} &= \frac{p_2}{T_2}
+    \end{align*}
+    Die Temperaturen müssen in Kelvin umgerechnet werden:
+    $T_1 = \SI{40}{\degreeCelsius} = \SI{313,15}{\kelvin}$ \\
+    $T_2 = \SI{10}{\degreeCelsius} = \SI{283,15}{\kelvin}$ \\
+    Nun lösen wir nach $p_2$ auf:
+    $$ p_2 = p_1 \cdot \frac{T_2}{T_1} = \SI{2,2}{bar} \cdot \frac{\SI{283,15}{\kelvin}}{\SI{313,15}{\kelvin}} \approx \SI{1,99}{bar} $$
+    Der Druck im Reifen beträgt bei \SI{10}{\degreeCelsius} ca. \SI{1,99}{bar}.
+
+    \item \textbf{Anzahl der Mol im Reifen} \\
+    Wir verwenden die ideale Gasgleichung $pV = nRT$ und lösen nach $n$ auf. Die Einheiten müssen SI-konform sein: \\
+    $p = \SI{2,2}{bar} = \SI{220000}{\pascal}$ \\
+    $V = \SI{40}{\litre} = \SI{0,04}{\metre\cubed}$ \\
+    $T = \SI{40}{\celsius} = \SI{313,15}{\kelvin}$
+    $$ n = \frac{pV}{RT} = \frac{\SI{220000}{\pascal} \cdot \SI{0,04}{\metre\cubed}}{\SI{8,314}{\joule\per(\mole\cdot\kelvin)} \cdot \SI{313,15}{\kelvin}} \approx \SI{3,38}{mol} $$
+    
+    \item \textbf{Phasendiagramm} \\
+    Der typische Betriebsbereich eines Autoreifens (Drücke um \SIrange{2}{3}{bar} und Temperaturen von \zB \SIrange{-40}{50}{\celsius}) liegt im Phasendiagramm von Luft weit im gasförmigen Bereich. Eine Verflüssigung oder Erstarrung ist unter normalen Bedingungen ausgeschlossen.
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{Bilder/Test/FreiwilligerSelbsttest/phasendiagramm_luft_loesung.png}
+    \end{center}
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 4 - Thermische Ausdehnung}
+
+\begin{enumerate}
+    \item \textbf{Längenänderungen $\Delta l$ und $\Delta b$} \\
+    Gemäß der Formel für die lineare Ausdehnung gilt:
+    $$ \Delta l = \alpha l \Delta T \quad \text{und} \quad \Delta b = \alpha b \Delta T $$
+
+    \item \textbf{Formel für die Flächenänderung $\Delta A$} \\
+    Die neue Fläche $A'$ ist das Produkt der neuen Seitenlängen $l' = l + \Delta l$ und $b' = b + \Delta b$. Die Flächenänderung $\Delta A = A' - A$:
+    $$ \Delta A = \underbrace{(l + \Delta l)(b + \Delta b)}_{A'} - \underbrace{l\cdot b}_A = l \Delta b + b \Delta l + \Delta l \Delta b $$
+    
+    \item \textbf{Vereinfachung} \\
+    Wir ersetzen $\Delta l$ und $\Delta b$ mit den Ausdrücken aus (1):
+    $$ \Delta A = l (\alpha b \Delta T) + b (\alpha l \Delta T) + (\alpha l \Delta T)(\alpha b \Delta T) $$
+    $$ \implies \Delta A = 2\alpha (l b) \Delta T + (l b) (\alpha \Delta T)^2 $$
+    Da $A = l b$ und der Term $(\alpha \Delta T)^2$ laut Angabe vernachlässigbar ist, ergibt sich:
+    $$ \Delta A \approx 2\alpha A \Delta T \mDot$$
+    
+    \item \textbf{Numerisches Beispiel} \\
+    Eisenplatte mit $\alpha = \SI{12e-6}{\kelvin^{-1}}$ mit $l = \SI{2,3}{\meter}$ und $b = \SI{1,2}{\meter}$ bei einer Erwärmung um $\Delta T = \SI{40}{\celsius}$. \\
+    Zuerst berechnen wir die Anfangsfläche $A$:
+    $$ A = l \cdot b = \SI{2,3}{\m} \cdot \SI{1,2}{\m} = \SI{2,76}{\metre\squared} $$
+    Nun setzen wir die Werte in die hergeleitete Formel ein:
+    $$ \Delta A = 2 \cdot (\SI{12e-6}{\kelvin^{-1}}) \cdot \SI{2,76}{\metre\squared} \cdot \SI{40}{\kelvin} \approx \SI{0,00265}{\metre\squared} = \SI{26,5}{\centi\metre\squared} $$
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 5 - Looping}
+
+\begin{enumerate}
+    \item \textbf{Geschwindigkeit am höchsten Punkt} \\
+    Am höchsten Punkt des Loopings muss die Zentripetalkraft mindestens so groß sein wie die Gewichtskraft. Im Grenzfall ($F_N=0$) liefert die Gewichtskraft allein die gesamte Zentripetalkraft:
+    \begin{align*}
+        F_G &= F_{\text{Zp}} \\
+        \implies mg &= \frac{m v_{\text{oben}}^2}{r}
+    \end{align*}
+    Daraus folgt für die Geschwindigkeit am höchsten Punkt ($r = d/2 = \SI{15}{\m}$):
+    $$ v_{\text{oben}} = \sqrt{gr} = \sqrt{\SI{9,81}{\m\per\s\squared} \cdot \SI{15}{\m}} \approx \SI{12,13}{\m\per\s} $$
+
+    \item \textbf{Anfangsgeschwindigkeit mittels Energieerhaltung} \\
+    Die Gesamtenergie am Start ($h=0$) muss gleich der Gesamtenergie am höchsten Punkt ($h=d=2r$) sein.
+    $$ E_{\text{unten}} = E_{\text{oben}} \implies \frac{1}{2}m v_{0,\text{min}}^2 = \frac{1}{2}m v_{\text{oben}}^2 + mg(2r) $$
+    Wir setzen $v_{\text{oben}}^2 = gr$ aus (1) ein:
+    $$ \frac{1}{2}m v_{0,\text{min}}^2 = \frac{1}{2}m(gr) + 2mgr = \frac{5}{2}mgr $$
+    Auflösen nach $v_{0,\text{min}}$:
+    $$ v_{0,\text{min}}^2 = 5gr \implies v_{0,\text{min}} = \sqrt{5gr} $$
+
+    \item \textbf{Numerische Berechnung} \\
+    Wir setzen die gegebenen Werte ein:
+    $$ v_{0,\text{min}} = \sqrt{5 \cdot \SI{9,81}{\m\per\s\squared} \cdot \SI{15}{\m}} = \sqrt{\SI{735,75}{\m\squared\per\s\squared}} \approx \SI{27,12}{\m\per\s} $$
+    Umrechnung in \si{\kilo\metre\per\hour}:
+    $$ v_{0,\text{min}} \approx \SI{27,12}{\m\per\s} \cdot 3,6 \approx \SI{97,65}{\kilo\metre\per\hour} $$
+\end{enumerate}
+
+\end{document}

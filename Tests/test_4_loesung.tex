@@ -1,0 +1,254 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+
+\usepackage{tikz}
+\usepackage[b]{esvect} % For \vv (option [d] is a nice default)
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction
+}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\include{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+\noindent
+\vspace{9cm}
+\begin{center}
+    {\Huge \textbf{Lösung}} \\[1.5em]
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    % --- Angepasstes Datum ---
+    {\large 4. Schriftliche Prüfung: 14.10.2025} \\[1em]
+    {\large Studiengang: Clinical Engineering} 
+\end{center}
+
+\newpage
+
+% ------------------------- LÖSUNG BEISPIEL 1 -------------------------
+\section*{Lösung Beispiel 1 - Energieerhaltung bei einer Feder}
+
+\begin{enumerate}
+    \item \textbf{Formulieren Sie den (mechanischen) Energieerhaltungssatz für dieses System.} \\
+    Da die Bewegung reibungsfrei ist, bleibt die mechanische Gesamtenergie erhalten: 
+    \begin{enumerate}
+        \item Am Anfang (A) ist die gesamte Energie als potenzielle Energie in der Feder gespeichert ($E_A = E_{\text{pot,Feder}}$)
+        \item Am Fuße der Rampe (Mitte [M]) ist die gesamte Energie in Form von kinetischer Energie des Blocks gespeichert ($E_M = E_{\text{kin,Block}}$) 
+        \item Am höchsten Punkt der Rampe (Ende [E]) ist die Geschwindigkeit null, und die gesamte Energie ist in potenzielle Energie der Höhe umgewandelt ($E_E = E_{\text{pot,Block}}$)
+        \end{enumerate}
+        Daher gilt:
+    $$ E_\text{pot,Feder} + E_\text{kin,Block} + E_\text{pot,Block} = \const \mDot $$
+    
+
+    \item \textbf{Berechnen Sie eine Formel für die potenzielle Energie $E_{\text{pot,Feder}}$.} \\
+    Die in der Feder gespeicherte potenzielle Energie entspricht der Arbeit, die verrichtet werden muss, um sie zu komprimieren. Mit dem Hookschen Gesetz $F_{\text{Feder}} = k \cdot \Delta x$ ergibt sich die Arbeit aus dem Integral der Kraft über den Weg:
+    \begin{multline}
+        W_\text{Feder} = \int_{0}^{\Delta x_0} F_{\text{Feder}} \cdot \dd(\Delta x) = \int_{0}^{\Delta x_0} -k \cdot \Delta x \cdot \dd(\Delta x) = \\
+        -\frac{1}{2} k \Delta x^2 \bigg|_{0}^{\Delta x_0} =  -\frac{1}{2} k \Delta x_0^2 = -E_{\text{pot,Feder}} \mDot
+    \end{multline}
+    Lösen des Integrals führt damit zur Formel für die potenzielle Energie:
+    $$ E_{\text{pot,Feder}} = \frac{1}{2}k (\Delta x_0)^2 \mDot$$
+    Einsetzen der Werte ($\Delta x_0 = -\SI{20}{\centi\meter} = -\SI{0.2}{\meter}$):
+    $$ E_{\text{pot,Feder}} = \frac{1}{2} \cdot \left(\SI{800}{\newton\per\meter}\right) \cdot (-\SI{0.2}{\meter})^2 = \SI{16}{\joule} $$
+    
+    \item \textbf{Beschreiben Sie, was mit der Energie des Blocks passiert.} \\
+    Nach dem Loslassen wird die potenzielle Energie der Feder vollständig in kinetische Energie des Blocks umgewandelt ($E_{\text{kin}} = \frac{1}{2}mv^2$). Am Fuße der Rampe ist die kinetische Energie also $E_{\text{kin}} = \SI{16}{\joule}$. Die Geschwindigkeit beträgt:
+    $$ v = \sqrt{\frac{2 E_{\text{kin}}}{m}} = \sqrt{\frac{2 \cdot \SI{16}{\joule}}{\SI{2}{\kilogram}}} = \SI{4}{\meter\per\second} = \SI{14.4}{\kilo\meter\per\hour}$$
+
+    \item \textbf{Geben Sie eine Formel für die maximale Höhe $h$ an als Funktion von $\Delta x_0$.} \\
+    Die potentielle Energie auf der maximalen Höhe $h$ ist $ E_{\text{pot,Höhe}} = mgh$.
+    Gleichsetzen der potenziellen Energien liefert
+    $$ E_{\text{pot,Feder}} = E_{\text{pot,Höhe}} \Rightarrow \frac{1}{2}k(\Delta x_0)^2 = mgh $$
+    Wir lösen nach $h$ auf:
+    $$ h = \frac{E_{\text{pot,Feder}}}{mg} = \frac{\frac{1}{2}k(\Delta x_0)^2}{mg} = \frac{k(\Delta x_0)^2}{2mg}$$
+    Einsetzen der Werte:
+    $$ h = \frac{\SI{800}{\newton\per\meter} \cdot (\SI{0.2}{\meter})^2}{2 \cdot \SI{2}{\kilogram} \cdot \SI{9.81}{\metre\per\second\squared}} \approx \SI{0.815}{\meter} $$
+    Der Block erreicht eine maximale Höhe von ca. \SI{81.5}{\centi\meter}.
+\end{enumerate}
+
+\newpage
+
+% ------------------------- LÖSUNG BEISPIEL 2 -------------------------
+\section*{Lösung Beispiel 2 - Konisches Pendel}
+
+\begin{enumerate}
+    \item \textbf{Zeichnen Sie ein Freikörperdiagramm.} \\
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{Bilder/Uebungsaufgaben/thetherbal_Kraftschnitt.png}
+    \end{center}
+    Die wirkenden Kräfte sind die Gewichtskraft $\vec{F}_G = m\vec{g}$ (nach unten) und die Seilkraft $\vec{F}_S$ (entlang des Seils). Die Seilkraft wird in eine vertikale Komponente $F_{S,z}$ und eine horizontale (zentripetale) Komponente $F_{S,x}$ zerlegt.
+    
+    \item \textbf{Geben Sie eine Formel für den Winkel $\theta$ an und berechnen Sie ihn.} \\
+    Aus der Geometrie ergibt sich ein rechtwinkliges Dreieck mit Hypotenuse $l$ und Gegenkathete $r$.
+    $$ \sin(\theta) = \frac{r}{l} \implies \theta = \arcsin\left(\frac{r}{l}\right) $$
+    $$ \theta = \arcsin\left(\frac{\SI{0.8}{\meter}}{\SI{1.5}{\meter}}\right) \approx \SI{32.23}{\degree} $$
+
+    \item \textbf{Stellen Sie das Kräftegleichgewicht in z-Richtung auf und lösen Sie nach $F_S$.} \\
+    Die vertikale Komponente der Seilkraft muss die Gewichtskraft ausgleichen, da keine vertikale Beschleunigung stattfindet.
+    $$ \sum F_z = F_S \cos(\theta) - mg = 0 $$
+    $$ F_S = \frac{mg}{\cos(\theta)} = \frac{\SI{0.5}{\kg} \cdot \SI{9.81}{\m\per\s\squared}}{\cos(\SI{32.23}{\degree})} \approx \SI{5.80}{\newton} $$
+    
+    \item \textbf{Stellen Sie das Kräftegleichgewicht in x-Richtung auf.} \\
+    Die horizontale Komponente der Seilkraft wirkt als Zentripetalkraft.
+    $$ \sum F_x = F_S \sin(\theta) = F_{\text{Zp}} = m \omega^2 r $$
+
+    \item \textbf{Setzen Sie die Ausdrücke zusammen und lösen Sie nach $\omega$.} \\
+    Wir setzen den Ausdruck für $F_S$ aus (3) in die Gleichung aus (4) ein:
+    $$ \left(\frac{mg}{\cos(\theta)}\right) \sin(\theta) = m \omega^2 r $$
+    $$ mg \tan(\theta) = m \omega^2 r $$
+    Wir kürzen die Masse $m$ und lösen nach $\omega$ auf:
+    $$ \omega^2 = \frac{g \tan(\theta)}{r} \implies \omega = \sqrt{\frac{g \tan(\theta)}{r}} = \sqrt{\frac{g}{r} \tan\left(\arcsin\left(\frac{r}{l}\right)\right)}$$
+    Einsetzen der Werte ergibt die Kreisfrequenz der rotierenden Masse:
+    $$ \omega = \sqrt{\frac{\SI{9.81}{\m\per\s\squared} \cdot \tan(\SI{32.23}{\degree})}{\SI{0.8}{\meter}}} \approx \sqrt{\frac{\num{6.18}}{\num{0.8}}} \approx \SI{2.78}{\radian\per\second} $$
+\end{enumerate}
+
+\newpage
+
+% ------------------------- LÖSUNG BEISPIEL 3 -------------------------
+\section*{Lösung Beispiel 3 - Mischtemperatur}
+
+\begin{enumerate}
+    \item \textbf{Grundsatz des thermischen Gleichgewichts:}
+    In einem isolierten System ist die Summe der ausgetauschten Wärmemengen null. Das bedeutet, die vom wärmeren Körper (Kupfer) abgegebene Wärme $Q_{\text{ab}}$ ist gleich der vom kälteren Körper (Glykol) aufgenommenen Wärme $Q_{\text{auf}}$.
+    $$ Q_{\text{ab}} = Q_{\text{auf}} $$
+
+    \item \textbf{Masse des Glykols:}
+    $$ m_{\text{Glykol}} = \rho_{\text{Glykol}} \cdot V = \SI{1.11}{\kilogram\per\deci\meter\cubed} \cdot \SI{1.2}{\litre} = \SI{1.332}{\kilogram} $$
+
+    \item \textbf{Abgegebene Wärme des Kupfers:}
+    $$ Q_{\text{ab}} = m_{\text{Cu}} \cdot c_{\text{Cu}} \cdot (T_{\text{Cu}} - T_{\text{Misch}}) $$
+    
+    \item \textbf{Aufgenommene Wärme des Glykols:}
+    $$ Q_{\text{auf}} = m_{\text{Glykol}} \cdot c_{\text{Glykol}} \cdot (T_{\text{Misch}} - T_{\text{Glykol}}) $$
+
+    \item \textbf{Gleichsetzen und $T_{\text{Misch}}$ berechnen:}
+    $$ m_{\text{Cu}} c_{\text{Cu}} (T_{\text{Cu}} - T_{\text{Misch}}) = m_{\text{Glykol}} c_{\text{Glykol}} (T_{\text{Misch}} - T_{\text{Glykol}}) $$
+    $$ T_{\text{Misch}} = \frac{m_{\text{Cu}} c_{\text{Cu}} T_{\text{Cu}} + m_{\text{Glykol}} c_{\text{Glykol}} T_{\text{Glykol}}}{m_{\text{Cu}} c_{\text{Cu}} + m_{\text{Glykol}} c_{\text{Glykol}}} $$
+    Einsetzen der Werte (Masse in kg):
+    $$ T_{\text{Misch}} = \frac{(\SI{0.4}{\kg} \cdot \SI{0.385}{\frac{\kilo\joule}{\kg\K}} \cdot \SI{95}{\celsius}) + (\SI{1.332}{\kg} \cdot \SI{2.40}{\frac{\kilo\joule}{\kg\K}} \cdot \SI{18}{\celsius})}{(\SI{0.4}{\kg} \cdot \SI{0.385}{\frac{\kilo\joule}{\kg\K}}) + (\SI{1.332}{\kg} \cdot \SI{2.40}{\frac{\kilo\joule}{\kg\K}})} $$
+    $$ T_{\text{Misch}} = \frac{\num{14.63} + \num{57.5424}}{\num{0.154} + \num{3.1968}} = \frac{\num{72.1724}}{\num{3.3508}} \approx \SI{21.54}{\celsius} $$
+\end{enumerate}
+
+\newpage
+
+% ------------------------- LÖSUNG BEISPIEL 4 -------------------------
+\section*{Lösung Beispiel 4 - Single-Choice}
+
+\begin{enumerate}[label=\arabic*.,itemsep=18pt]
+    \item Was ist die SI-Einheit der Kraft?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Joule [\si{\joule}]
+        \item Watt [\si{\watt}]
+        \item[$\boxtimes$] Newton [\si{\newton}]
+        \item Pascal [\si{\pascal}]
+    \end{itemize}
+
+    \item Aus welchen SI-Basiseinheiten ist ein Pascal (\si{\pascal}) zusammengesetzt?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item[$\boxtimes$] \si{\kilogram \cdot \metre^{-1} \cdot\, \second^{-2}} ($\text{Pa} = \text{N}/\text{m}^2 = (\text{kg} \cdot \text{m}/\text{s}^2)/\text{m}^2$)
+        \item \si{\kilogram \cdot\metre^{2} \cdot\, \second^{-2}}
+        \item \si{\kilogram \cdot\metre^{-1} \cdot\, \second^{-1}}
+        \item \si{\kilogram \cdot\metre \cdot\, \second^{-2}}
+    \end{itemize}
+
+    \item Ein Auto ($m=\SI{1200}{\kg}$) beschleunigt von \SI{50}{\kilo\meter\per\hour} auf \SI{100}{\kilo\meter\per\hour}. Um welchen Faktor erhöht sich seine kinetische Energie?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Faktor 2
+        \item[$\boxtimes$] Faktor 4 ($E_{\text{kin}} \propto v^2$. Bei doppelter Geschwindigkeit $v \to 2v$ wird die Energie $E_{\text{kin}} \propto (2v)^2 \propto 4v^2$)
+        \item Faktor $\sqrt{2}$
+        \item Faktor 8
+    \end{itemize}
+
+    \item Bei einem adiabatischen Prozess eines idealen Gases bleibt was konstant?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Der Druck
+        \item Die innere Energie
+        \item Die Temperatur
+        \item[$\boxtimes$] Die Wärme ($\Delta Q = 0$)
+        \item Die Arbeit
+    \end{itemize}
+
+    \item Ein Planet hat den doppelten Radius und die doppelte Masse der Erde. Wie groß ist die Fallbeschleunigung $g'$ an seiner Oberfläche im Vergleich zur Erdbeschleunigung $g$? ($g = GM/R^2$)
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item $g' = 2g$
+        \item $g' = g$
+        \item[$\boxtimes$] $g' = g/2$ ($g' = G(2M)/(2R)^2 = G(2M)/(4R^2) = (1/2) \cdot GM/R^2 = g/2$)
+        \item $g' = g/4$
+    \end{itemize}
+
+    \item Der erste Hauptsatz der Thermodynamik ($\Delta U = Q + W$) ist eine Formulierung des...
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Impulserhaltungssatzes.
+        \item[$\boxtimes$] Energieerhaltungssatzes.
+        \item Drehimpulserhaltungssatzes.
+        \item Massenerhaltungssatzes.
+    \end{itemize}
+    
+    \newpage
+    \item Welche der folgenden Aussagen beschreibt das 3. Newtonsche Axiom?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Ein Körper bleibt in Ruhe, wenn keine Kraft auf ihn wirkt. (1. Axiom)
+        \item Die Beschleunigung ist proportional zur Kraft ($F=ma$). (2. Axiom)
+        \item[$\boxtimes$] Kräfte treten immer paarweise auf; übt Körper A eine Kraft auf B aus, übt B eine gleich große, entgegengesetzte Kraft auf A aus.
+        \item Die Energie in einem abgeschlossenen System ist konstant. (Energieerhaltungssatz)
+    \end{itemize}
+
+    \item Ein Rad mit Radius $r=\SI{0.5}{\meter}$ dreht sich mit einer Winkelgeschwindigkeit von $\omega = \SI{4}{\radian\per\second}$. Wie groß ist die Bahngeschwindigkeit $v$ eines Punktes am Rand des Rades?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \SI{1}{\meter\per\second}
+        \item[$\boxtimes$] \SI{2}{\meter\per\second} ($v = \omega \cdot r = \SI{4}{\radian\per\second} \cdot \SI{0.5}{\meter} = \SI{2}{\meter\per\second}$)
+        \item \SI{4}{\meter\per\second}
+        \item \SI{8}{\meter\per\second}
+    \end{itemize}
+
+    \item Welche Größe wird in der Einheit Watt (\si{\watt}) gemessen?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Energie
+        \item Arbeit
+        \item Kraft
+        \item[$\boxtimes$] Leistung
+    \end{itemize}
+
+    \item Ein Objekt wird über eine Strecke von \SI{5}{\meter} mit einer konstanten Kraft von \SI{20}{\newton} verschoben, die parallel zum Weg wirkt. Welche Arbeit wird verrichtet?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \SI{4}{\joule}
+        \item \SI{25}{\joule}
+        \item[$\boxtimes$] \SI{100}{\joule} ($W = F \cdot s = \SI{20}{\newton} \cdot \SI{5}{\meter} = \SI{100}{\joule}$)
+        \item \SI{0.25}{\joule}
+    \end{itemize}
+    
+    \item Sie tragen einen Koffer mit $m = \SI{3}{\kilo\gram}$ auf einer ebenen Strecke von $s = \SI{500}{\meter}$ unter dem Einfluss der Erdbeschleunigung $g$. Welche Arbeit wird dabei verrichtet?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item[$\boxtimes$] \SI{0}{\joule} (Die Haltekraft wirkt vertikal, der Weg ist horizontal. Da die Kraft senkrecht zum Weg steht, ist die Arbeit $W = \vec{F} \cdot \vec{s} = 0$.)
+        \item \SI{1500}{\joule}
+        \item \SI{14715}{\joule}
+        \item Es kommt auf die Geschwindigkeit an.
+    \end{itemize}
+
+    \item Scheinkräfte treten in welcher Art von Bezugssystemen auf?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item In Inertialsystemen
+        \item Nur in rotierenden Bezugssystemen
+        \item[$\boxtimes$] In beschleunigten Bezugssystemen
+        \item In allen Bezugssystemen
+    \end{itemize}
+\end{enumerate}
+
+\end{document}

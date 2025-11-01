@@ -1,0 +1,1015 @@
+\documentclass[ngerman]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{lmodern} % Sorgt für eine schönere Schrift
+\usepackage[dvipsnames, table]{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{colortbl}
+\usepackage{enumitem} % for lists
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{cancel}
+
+\usepackage{caption}
+\captionsetup{
+  format=plain, % Kein Einzug
+  labelfont=it, % Kursiv für "Abbildung X"
+  textfont=normal, % Normaler Text für die restliche Caption
+}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta, angles, calc, quotes}
+\usepackage{subcaption} % needed for labelphantom
+% \usepackage{subfigure} % outdated and replaced by subcaption
+
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{nicematrix} % nicematrix statt tabularx laden
+
+\usepackage{multicol}
+\usepackage{multirow}
+
+\usepackage{makecell} 
+\renewcommand\theadfont{\bfseries} 
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\usepackage{eurosym}  % euro symbol € 
+\usepackage{amsmath,amssymb,latexsym,amsfonts,bbm, bm, bbold}
+\usepackage{mathtools}
+\usepackage[b]{esvect} % For \vv (option [d] is a nice default)
+
+% \usepackage{unicode-math} % clashes with si-unit x
+\usepackage{dsfont,relsize}
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\DeclareSIUnit{\calorie}{cal}
+\DeclareSIUnit{\bar}{bar}
+
+\sisetup{
+    locale = DE, 
+    angle-symbol-degree = ^\circ
+    separate-uncertainty, 
+    inter-unit-product = \,,
+    range-units = single, 
+    list-units = single, 
+    per-mode=symbol-or-fraction,
+    range-phrase = { bis }
+}
+
+%\crefname{subsection}{subsection}{subsections}
+\definecolor{mygreen}{rgb}{0.831, 0.929, 0.855}
+\definecolor{myred}{rgb}{0.973, 0.843, 0.855}
+\definecolor{mygray}{rgb}{0.902, 0.902, 0.902}
+\definecolor{boxcol_title_navyblue}{RGB}{20, 50, 120} 
+%tikz colors
+\definecolor{pointblue}{HTML}{004A8F}
+\definecolor{darkyellow}{HTML}{ffd900}
+\definecolor{purpleCol}{HTML}{a834eb}
+\definecolor{purpleColFade}{HTML}{ccb2db}
+% integral
+\definecolor{figOrange}{RGB}{230, 145, 56}
+\definecolor{figGreen}{RGB}{39, 174, 96}
+\definecolor{figRed}{RGB}{192, 57, 43}
+\definecolor{figGrayFill}{RGB}{245, 245, 245}
+\definecolor{figGrayBorder}{RGB}{170, 170, 170}
+% colors for the cref package
+\definecolor{myblue}{RGB}{51,51,255}
+\definecolor{myRefcolor}{RGB}{51,51,200}
+\definecolor{myCiteColor}{RGB}{33,140,33}
+
+
+% the next 4 lines are needed to be able to reference subfigures properly
+\newcommand{\labelphantom}[1]{%
+  \parbox{0pt}{\phantomsubcaption\label{#1}}%
+}
+
+\usepackage[nameinlink]{cleveref}
+\hypersetup{
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Physikalische Grundlagen},    % title
+    pdfauthor={Schumer Alexander},     % author
+    pdfnewwindow=false,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linktoc=page,
+    linkcolor=blue,  %Violet % color of internal links (change box color with linkbordercolor)
+    citecolor=myCiteColor, %ForestGreen % color of links to bibliography
+    filecolor=blue,      % color of file links
+    urlcolor=blue,           % color of external links
+    pdfborder={0 0 0}
+}	
+% \creflabelformat{subfigure}{#1~(#2)}
+
+
+% --- EIGENE BOX-UMGEBUNG DEFINIEREN ---
+\definecolor{boxcol_back_lorange}{RGB}{255, 232, 201} % Gelb/Orange-Tons
+\definecolor{boxcol_title_orange}{RGB}{254, 204, 75} % Gelb/Orange-Tons
+\definecolor{boxcol_frame_orange}{RGB}{245, 196, 75} % Gelb/Orange-Tons
+\newtcolorbox{rememberbox}[2][]{
+  colback=boxcol_back_lorange,   % Hintergrundfarbe der Box
+  colframe=boxcol_frame_orange,         % Rahmenfarbe
+  coltitle=black,                % Farbe des Titels
+  colbacktitle=boxcol_title_orange,   % Hintergrundfarbe der Box
+  fonttitle=\bfseries,
+  leftrule=4mm,
+  boxsep=6pt,         % Innerer Abstand
+  arc=1mm,            % Scharfe Ecken (keine Rundung)
+  enhanced, 
+  before skip balanced=0.5cm,
+  after skip balanced=0.5cm,
+  % drop shadow,
+  % sharp corners,      % Alternative für scharfe Ecken
+  fontupper=\normalsize, % Schriftgröße im Inneren
+  title={#2}, #1
+}
+
+\definecolor{boxcol_back_lblue}{RGB}{239, 247, 255} % Blau (hell)-Ton
+\definecolor{boxcol_title_blue}{RGB}{167, 209, 255} % Blau (dunkel)-Ton
+\newtcolorbox{examplebox}[2][]{
+  colback=boxcol_back_lblue,   % Hintergrundfarbe
+  colframe=boxcol_title_blue,  % Rahmenfarbe (hier identisch zum Hintergrund)
+  fonttitle=\bfseries,
+  coltitle=black,
+  boxsep=5pt,         % Innerer Abstand
+  arc=1mm,            % Scharfe Ecken (keine Rundung)
+  enhanced,
+  before skip balanced=0.5cm,
+  after skip balanced=0.5cm,
+  sharp corners,      % Alternative für scharfe Ecken
+  fontupper=\normalsize, % Schriftgröße im Inneren
+  title={#2}, #1
+}
+
+\definecolor{boxcol_back_lred}{RGB}{255, 239, 239} % rot (hell)-Ton
+\definecolor{boxcol_title_red}{RGB}{255, 167, 167} % rot (dunkel)-Ton
+\definecolor{boxcol_frame_red}{RGB}{245, 98, 75} % rot-Tons
+\newtcolorbox{importantbox}[2][]{
+  colback=boxcol_back_lred,   % Hintergrundfarbe der Box
+  colframe=boxcol_frame_red,         % Rahmenfarbe
+  coltitle=black,                % Farbe des Titels
+  colbacktitle=boxcol_title_red,   % Hintergrundfarbe der Box
+  fonttitle=\bfseries,
+  leftrule=4mm,
+  boxsep=6pt,         % Innerer Abstand
+  arc=1mm,            % Scharfe Ecken (keine Rundung)
+  enhanced, 
+  before skip balanced=0.5cm,
+  after skip balanced=0.5cm,
+  % drop shadow,
+  % sharp corners,      % Alternative für scharfe Ecken
+  fontupper=\normalsize, % Schriftgröße im Inneren
+  title={#2}, #1
+}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\include{defs}
+
+\title{Physikalische Grundlagen}
+\subtitle{HKLS ILV| SS2025}
+\author{Dr. Dipl.-Ing. Alexander Schumer}
+\date{Juli 2025}
+
+% ----------------------------------------------------------------
+% ----------------------------------------------------------------
+% -------------   BEGIN DOCUMENT    --------------------------
+% ----------------------------------------------------------------
+% ----------------------------------------------------------------
+% \includeonly{chapter_Allgemeines, chapter_Grundlagen}
+% \includeonly{chapter_0_titlepage}
+
+% \includeonly{chapter_0_titlepage, chapter_1-Allgemeines, chapter_2-Grundlagen, chapter_3-MaßeinheitenMessverfahren, chapter_4-MessgenauigkeitMessfehler, chapter_App-MathematischeEinschübe}
+% \includeonly{chapter_0_titlepage, chapter_2-Grundlagen}
+\includeonly{chapter_0_titlepage}
+
+\begin{document}
+\include{chapter_0_titlepage}
+\tableofcontents
+
+% \include{chapter_1-Allgemeines}
+% \include{chapter_2-Grundlagen}
+%\include{chapter_3-MaßeinheitenMessverfahren}
+%\include{chapter_4-MessgenauigkeitMessfehler}
+%\include{chapter_5-Kinematik}
+%\include{chapter_6-Dynamik}
+% \include{chapter_7-Gravitation}
+%\include{chapter_8-Arbeit-Energie}
+
+
+% ---------------------------------------------------------
+% ---------------------------------------------------------
+% ---------------------------------------------------------
+
+
+
+\chapter{Wärmelehre}\label{chap: Waermelehre}
+Die Erkenntnis, dass Wärme eine Form von Energie ist -- genauer gesagt, die mikroskopische Bewegungsenergie der Atome und Moleküle eines Körpers -- und dass mechanische Arbeit direkt in Wärme umgewandelt werden kann, ist eine der fundamentalen Säulen der modernen Physik. Diese Einsicht, die uns heute fast selbstverständlich erscheint, wurde maßgeblich durch die Arbeiten von Pionieren wie Julius Robert Mayer geprägt, der 1842 das Prinzip der Energieerhaltung bei der Umwandlung von mechanischer in thermische Energie formulierte.
+
+Die Entwicklung der \textbf{kinetischen Gastheorie} im 19. Jahrhundert lieferte schließlich die mikroskopische Deutung der Wärmeenergie als die Summe der kinetischen und potenziellen Energien der Moleküle eines Körpers.
+
+\section{Temperatur und kinetische Gastheorie}\label{sec: Temperatur_kinetische_Gastheorie}
+In der kinetischen Gastheorie wird die Temperatur eines Systems direkt mit der durchschnittlichen kinetischen Energie seiner Teilchen verknüpft. Die \textbf{absolute Temperatur} $T$, gemessen in Kelvin (\si{\kelvin}), ist proportional zur mittleren kinetischen Energie $\overline{E_\mathrm{kin}}$ der Moleküle:
+\begin{equation}\label{eq:def_temperatur_kinetisch}
+    \overline{E_\mathrm{kin}} = \frac{1}{2}m\overline{v^2} = \frac{3}{2} k_B T \mDot
+\end{equation}
+Hierbei ist $m$ die Masse eines Moleküls, $\overline{v^2}$ das mittlere Geschwindigkeitsquadrat und $k_B = \SI{1.380649e-23}{\joule\per\kelvin}$ die \textbf{Boltzmann-Konstante}. Diese Gleichung ist eine der zentralen Aussagen der kinetischen Gastheorie und verbindet die makroskopische Größe der Temperatur mit der mikroskopischen Welt der Teilchenbewegung.
+
+\begin{rememberbox}{Das thermodynamische System}
+    Als thermodynamisches System bezeichnen wir eine Ansammlung von Atomen oder Molekülen, die mit ihrer Umgebung Energie in Form von Wärme oder mechanischer Arbeit austauschen kann. Ein solches System wird durch makroskopische Zustandsgrößen wie Temperatur, Druck, Volumen und Teilchenzahl beschrieben.
+\end{rememberbox}
+
+\section{Temperaturmessung und Skalen}\label{sec: Temperaturmessung_Skalen}
+Zur Messung der Temperatur können prinzipiell alle physikalischen Eigenschaften genutzt werden, die sich vorhersagbar mit der Temperatur ändern. Beispiele hierfür sind:
+\begin{itemize}[itemsep=1.5pt]
+    \item Die \textbf{thermische Ausdehnung} von Festkörpern, Flüssigkeiten oder Gasen.
+    \item Der \textbf{elektrische Widerstand} von Materialien, der bei Metallen typischerweise mit der Temperatur ansteigt.
+    \item Die \textbf{elektrische Kontaktspannung} zwischen zwei unterschiedlichen Metallen (Thermoelement).
+    \item Die \textbf{Strahlungsleistung}, die von einem heißen Körper emittiert wird.
+\end{itemize}
+Geräte zur Temperaturmessung werden als \textbf{Thermometer} bezeichnet. Die Funktionsweise und Genauigkeit eines Thermometers hängen von der gewählten physikalischen Eigenschaft und der definierten Temperaturskala ab. Im alltäglichen Gebrauch findet man vor allem Thermometer auf Basis der Volumenänderung von Flüssigkeiten (\textbf{Flüssigkeitsthermometer}) oder Thermometer auf Basis der Änderung der Kontaktspannung zwischen zwei Metallen (\textbf{Thermoelemente}). 
+
+\subsection{Die Celsius- und Fahrenheit-Skala}\label{subsec: Celsius_Fahrenheit}
+Historisch wurden verschiedene Temperaturskalen entwickelt, die auf unterschiedlichen Fixpunkten basieren.
+
+\paragraph{Celsius-Skala}
+Der schwedische Astronom Anders Celsius schlug 1742 eine Skala vor, die auf zwei leicht reproduzierbaren Fixpunkten basiert:
+\begin{itemize}
+    \item \textbf{\SI{0}{\celsius}} entspricht dem Schmelzpunkt von Eis.
+    \item \textbf{\SI{100}{\celsius}} entspricht dem Siedepunkt von Wasser bei Normaldruck (\SI{1013.25}{\hecto\pascal}).
+\end{itemize}
+Der Bereich zwischen diesen beiden Punkten wird in 100 gleiche Teile unterteilt, die Grade Celsius ($\si{\celsius}$) genannt werden. Jedes Skalenteil entspricht daher $\SI{1}{\celsius}$.
+
+\paragraph{Fahrenheit-Skala}
+Diese Skala, die heute vor allem in den USA gebräuchlich ist, wurde von Daniel Gabriel Fahrenheit definiert. Ihre Fixpunkte sind der Schmelzpunkt einer speziellen Eis-Salz-Mischung (\SI{0}{\degree F} $\approx \SI{-17.8}{\celsius}$) und die angenommene menschliche Körpertemperatur (\SI{100}{\degree F} $\approx \SI{37.8}{\celsius}$). Auf dieser Skala gefriert Wasser bei \SI{32}{\degree F} und siedet bei \SI{212}{\degree F}. Auch auf dieser Skala wird der Bereich zwischen \SI{0}{\degree F} und \SI{100}{\degree F} in 100 Skalenteile eingeteilt. 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Bilder/Kapitel_Waermelehre/fixpunkte_celsius_fahrenheit.png}
+    \caption{Vergleich der Celsius- und Fahrenheit-Skala mit ihren jeweiligen Fixpunkten (in rot).}
+    \label{fig: temp_skalen_vergleich}
+\end{figure}
+
+Die Umrechnung von Fahrenheit ($T_F$) nach Celsius ($T_C$) erfolgt über folgende Formel:
+\begin{equation}\label{eq:fahrenheit_celsius_umrechnung}
+    T_C\, [\si{\celsius}] = \frac{5}{9} (T_F\, [\si{\degree F}]- 32) \mDot
+\end{equation}
+
+\subsection{Die Kelvin-Skala}\label{subsec: Kelvin_Skala}
+Die physikalisch fundamentale Skala ist die \textbf{absolute Temperaturskala} oder \textbf{Kelvin-Skala}, benannt nach Lord Kelvin. Sie ist die SI-Basiseinheit der Temperatur.
+Im Gegensatz zur Celsius-Skala benötigt die Kelvin-Skala eigentlich nur einen einzigen Fixpunkt:
+\begin{itemize}
+    \item Der \textbf{absolute Nullpunkt} bei \SI{0}{\kelvin} ist so gesehen kein Fixpunkt. Dies ist die theoretisch tiefstmögliche Temperatur, bei der die Teilchen eines Systems ihre geringstmögliche Energie besitzen.
+    \item Der zweite Referenzpunkt ist der \textbf{Tripelpunkt von Wasser}. Dies ist der Punkt, an dem die feste, flüssige und gasförmige Phase von Wasser im thermodynamischen Gleichgewicht existieren. Seine Temperatur ist per Definition exakt auf \SI{273.16}{\kelvin} festgelegt, was \SI{0.01}{\celsius} entspricht.
+\end{itemize}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/phasendiagramm_wasser.png}
+    \caption{Schematisches Phasendiagramm $(T, p)$ von Wasser, das den Tripelpunkt zeigt, an dem alle drei Phasen (fest, flüssig, gasförmig) koexistieren.}
+    \label{fig: phasendiagramm_wasser}
+\end{figure}
+
+Die Celsius-Skala ist heute über die Kelvin-Skala definiert. Die Umrechnung lautet:
+\begin{equation}\label{eq: kelvin_celsius_umrechnung}
+    T_C\, [\si{\celsius}] = T\,[\si{\kelvin}] - \num{273.15} \mDot
+\end{equation}
+
+\begin{importantbox}[]{Temperaturdifferenzen}
+    Die Einteilung der Kelvin- und der Celsius-Skala ist identisch. Das bedeutet, eine Temperaturdifferenz von \SI{1}{\kelvin} entspricht exakt einer Temperaturdifferenz von \SI{1}{\celsius}:
+    \begin{equation}
+        \Delta T = \SI{1}{\kelvin} \,\Longleftrightarrow \,\Delta T = \SI{1}{\celsius}
+    \end{equation}
+\end{importantbox}
+
+
+\subsection{Flüssigkeitsthermometer}\label{subsec: fluessigkeitsthermometer}
+Das wohl bekannteste Messinstrument ist das \textbf{Flüssigkeitsthermometer}. Es nutzt die thermische Ausdehnung von Flüssigkeiten, um die Temperatur anzuzeigen. Typischerweise wird dafür Quecksilber (Hg) oder gefärbter Alkohol in einem dünnen Glasröhrchen (Kapillare) verwendet.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.22\linewidth]{Bilder/Kapitel_Waermelehre/hg_alkohol_fluessigthermometer_vergleich.png}
+    \caption{Vergleich eines Quecksilber- (Hg) und eines Alkoholthermometers. Das unterschiedliche Ausdehnungsverhalten der Flüssigkeiten führt zu einer nicht-linearen Skala, wenn eine hohe Genauigkeit erforderlich ist.}
+    \label{fig: hg_alkohol_thermometer}
+\end{figure}
+Die angezeigte Temperaturskala hängt dabei nicht nur von der Art der Flüssigkeit ab, sondern auch von der Glasart des Röhrchens, da sich auch das Glas selbst ausdehnt. Ein wichtiger Punkt ist, dass sich die Flüssigkeiten im Allgemeinen nicht perfekt linear über den gesamten Temperaturbereich ausdehnen. Vergleicht man beispielsweise ein Alkohol- mit einem Quecksilberthermometer, die beide bei \SI{0}{\celsius} und \SI{100}{\celsius} kalibriert wurden, können bei Zwischentemperaturen leicht unterschiedliche Werte angezeigt werden. Für alltägliche Zwecke ist diese Abweichung oft vernachlässigbar, für präzise wissenschaftliche Messungen sind jedoch gleichmäßigere Skalen erforderlich, wie sie beispielsweise Gasthermometer bieten.
+
+
+
+
+\section{Thermische Ausdehnung}\label{sec: thermische_Ausdehnung}
+Die meisten Materialien dehnen sich bei Erwärmung aus und ziehen sich bei Abkühlung zusammen. Dieses Phänomen ist die Grundlage für viele Thermometer und muss in technischen Anwendungen, wie dem Brückenbau oder bei Eisenbahnschienen, berücksichtigt werden.
+
+\subsection{Lineare Ausdehnung fester Körper}\label{subsec: lineare_ausdehnung}
+Betrachten wir einen Stab der Länge $L_0$ bei einer Anfangstemperatur $T_0$, dargestellt in \cref{fig: lineare_ausdehnung_L0_L}. Erwärmt man den Stab auf eine Temperatur $T = T_0 + \Delta T$, so ändert sich seine Länge. Für einen begrenzten Temperaturbereich ist die Längenänderung $\Delta L = L-L_0$ in guter Näherung proportional zur Temperaturänderung $\Delta T = T - T_0$ und zur ursprünglichen Länge $L_0$:
+\begin{equation}\label{eq: lineare_ausdehnung_delta_L}
+    \Delta L = \alpha \cdot L_0 \cdot \Delta T \mDot
+\end{equation}
+Die Längenänderung $\Delta L$ fällt demnach größer aus, je länger der Stab $(L_0)$ bei der Ausgangstemperatur ist und je mehr man ihn erhitzt ($\Delta T$). Die neue Länge $L(T)$ ist somit:
+\begin{equation}\label{eq: lineare_ausdehnung_L_T}
+    L(\Delta T) =L_0 + \Delta L =  L_0 (1 + \alpha \cdot \Delta T) \mDot
+\end{equation}
+Der Proportionalitätsfaktor $\alpha$ wird als \textbf{linearer Längenausdehnungskoeffizient} bezeichnet. Er ist eine materialspezifische Eigenschaft und gibt die relative Längenänderung pro Kelvin an. Aus \cref{eq: lineare_ausdehnung_delta_L} erhalten wir
+\begin{equation}\label{eq: def_L_von_DeltaT}
+    \alpha = \frac{1}{L_0} \frac{\Delta L}{\Delta T} \mComma 
+\end{equation}
+wobei $[\alpha] = \si{\kelvin^{-1}}$.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/lineare_ausdehnung_L0_L.png}
+    \caption{Ein Stab der Länge $L_0$ bei Temperatur $T_0$ dehnt sich bei einer Erwärmung auf $T = T_0 + \Delta T$ auf die Länge $L = L_0 + \Delta L$ aus.}
+    \label{fig: lineare_ausdehnung_L0_L}
+\end{figure}
+Genauere Messungen zeigen, dass der Ausdehnungskoeffizient $\alpha$ schwach von der Temperatur abhängt. Für die meisten technischen Anwendungen ist die Annahme eines konstanten Wertes jedoch eine ausreichend gute Näherung. Die in \Cref{tab: lineare_ausdehnungskoeffizienten} zusammengefassten linearen Ausdehnungskoeffizienten verdeutlichen, wie stark sich die Längenausdehnung verschiedener Materialien unterscheiden kann – teilweise um zwei Größenordnungen oder mehr.
+\begin{table}[htb]
+    \centering
+    \caption{Linearer Längenausdehnungskoeffizient $\alpha$ verschiedener fester Stoffe bei Raumtemperatur.}
+    \label{tab: lineare_ausdehnungskoeffizienten}
+    \vspace{4pt}
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Fester Stoff} & \textbf{Linearer Ausdehnungskoeffizient $\alpha$ (\SI{e-6}{\kelvin^{-1}})} \\
+        \midrule
+        Aluminium     & 23,8 \\
+        Eisen         & 12   \\
+        V2A-Stahl     & 16   \\
+        Kupfer        & 16,8 \\
+        Natrium       & 71   \\
+        Wolfram       & 4,3  \\
+        Invar         & 1,5  \\
+        Hartgummi     & 75--100 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\subsection{Nichtlineare Ausdehnung}\label{subsec: nichtlineare_ausdehnung}
+Für größere Temperaturänderungen oder bei Materialien, die ein ausgeprägt nichtlineares Verhalten zeigen, reicht die lineare Näherung aus \cref{eq: lineare_ausdehnung_L_T} nicht mehr aus. In solchen Fällen muss die Temperaturabhängigkeit des Ausdehnungskoeffizienten $\alpha$ selbst berücksichtigt werden. Eine genauere Beschreibung wird oft durch einen quadratischen Ansatz erreicht:
+\begin{equation}\label{eq: alpha_von_DeltaT}
+    \alpha(\Delta T) = \alpha_0 + \beta \cdot \Delta T \mDot
+\end{equation}
+Hierbei ist $\alpha_0$ der lineare Ausdehnungskoeffizient bei der Referenztemperatur $T_0$ und $\beta$ ist ein weiterer materialabhängiger Koeffizient, der den quadratischen Anteil der Ausdehnung beschreibt. Setzt man diesen temperaturabhängigen Koeffizienten in die Längengleichung ein, erhält man:
+\begin{equation}\label{eq:nichtlineare_ausdehnung}
+    L(\Delta T) = L_0 (1+ \alpha(\Delta T)\cdot \Delta T) = L_0 (1 + \alpha_0 \Delta T + \beta \Delta T^2) \mDot
+\end{equation}
+Der Term $\beta \Delta T^2$ repräsentiert die Abweichung von der linearen Ausdehnung.
+
+\begin{examplebox}[]{Beispiel: Nichtlineare Ausdehnung von Aluminium}
+    Für Aluminium bei \SI{0}{\celsius} betragen die Ausdehnungskoeffizienten etwa $\alpha_0 = \SI{23.8e-6}{\kelvin^{-1}}$ und $\beta = \SI{1.8e-8}{\kelvin^{-2}}$. Das Verhältnis der quadratischen Ausdehnung zur linearen Ausdehnung beträgt in diesem Fall
+    \begin{equation}
+        \frac{\beta \Delta T^2}{\alpha_0 \Delta T} = \frac{\beta \Delta T}{\alpha_0} = \frac{\num{1.8e-8}}{\num{23.8e-6}} \cdot \Delta T \approx \num{7.56e-4} \Delta T \mDot
+    \end{equation}
+    Bei einer Erhöhung der Temperatur um $\Delta T = \SI{100}{\celsius}$ ändert sich der lineare Ausdehnungskoeffizient von $\alpha_0$ auf $\alpha_0(1+\num{0.0756})$. Der nichtlineare Anteil macht in diesem Fall also bereits etwa \SI{7.56}{\percent} der gesamten Ausdehnung aus.
+\end{examplebox}
+
+\subsection{Bimetallthermometer}\label{subsec: Bimetallthermometer}
+Das Prinzip der unterschiedlichen thermischen Ausdehnung wird im \textbf{Bimetallthermometer} genutzt. Hierbei werden zwei Streifen aus unterschiedlichen Metallen (z.B. Stahl und Kupfer) fest miteinander verbunden. Da die Metalle unterschiedliche Ausdehnungskoeffizienten haben, krümmt sich der Verbundstreifen bei einer Temperaturänderung. Im Ausgangszustand $T_0$ haben beide Materialien dieselbe Länge, siehe \cref{fig: bimetallstreifen_bimetallthermometer}. Das Material des schwarzen Streifens hat einen höheren Ausdehnungskoeffizienten $\alpha_\text{schwarz} > \alpha_\text{rot}$. Bei Erwärmung biegt sich der Bimetallstreifen so, dass das Material mit dem größeren Ausdehnungskoeffizienten länger wird. Je größer der Unterschied in den Ausdehnungskoeffizienten, desto größer ist die Biegung. \\
+
+Diese Krümmung kann auf eine geeichte Skala übertragen werden, um die Temperatur anzuzeigen. Dazu rollt man den Bimetallstreifen auf und befestigt ihn derart, dass eine Erwärmung $\Delta T$ über einen Zeiger auf einer geeigneten Skala ablesbar wird. 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/bimetallthermometer_beschreibung.png}
+    \caption{(Links) Funktionsweise eines Bimetallstreifens. Das Material mit dem größeren $\alpha$ (schwarz) dehnt sich stärker aus und zwingt den Streifen zur Krümmung. (Rechts) In einem Zeigerthermometer wird ein aufgerollter Bimetallstreifen verwendet, um eine Drehbewegung zu erzeugen.}
+    \label{fig: bimetallstreifen_bimetallthermometer}
+\end{figure}
+
+\subsection{Volumenausdehnung}\label{subsec: volumenausdehnung}
+Analog zur linearen Ausdehnung erfahren Körper auch eine Volumenausdehnung. Der \textbf{Volumenausdehnungskoeffizient} $\gamma$ (auch kubischer Ausdehnungskoeffizient) ist analog zu \cref{eq: def_L_von_DeltaT} definiert als:
+\begin{equation}
+    \gamma = \frac{1}{V_0} \frac{\Delta V}{\Delta T} \mDot
+\end{equation}
+Die Volumenänderung $\Delta V$ bei einer Temperaturänderung $\Delta T$ ist gegeben durch:
+\begin{equation}\label{eq: volumenausdehnung}
+    \Delta V = \gamma \cdot V_0 \cdot \Delta T \quad \implies \quad V(\Delta T) = V_0 (1 + \gamma \cdot \Delta T) \mDot
+\end{equation}
+Für homogene, isotrope Festkörper, die sich in alle Richtungen gleich ausdehnen, gilt der Zusammenhang:
+\begin{equation}
+    \gamma \approx 3\alpha \mComma
+\end{equation}
+wenn $\alpha$ der lineare Längenausdehnungskoeffizient ist. Diese Näherung ergibt sich aus 
+\begin{equation}
+    V(\Delta T) = L(\Delta T)^3 = [L_0 \cdot (1+\alpha\Delta T)]^3 = V_0\cdot(1+\alpha\Delta T)^3 \mDot
+\end{equation} 
+Der kubische Term ergibt 
+\begin{equation}
+    (1+\alpha \Delta T)^3 = 1 + 3\alpha \Delta T + 3\alpha^2 \Delta T^2 + \alpha^3 \Delta T^3 
+\end{equation}
+und für Festkörper gilt meist $\alpha\Delta T \ll 1$. Daher können die quadratischen und kubischen Terme in $\Delta T$ vernachlässigt werden. Somit bleibt 
+\begin{equation}
+    (1+\alpha \cdot \Delta T)^3 \approx 1 + 3\alpha \Delta T = 1 + \gamma \Delta T\mComma
+\end{equation}
+sofern $\alpha \Delta T \ll 1$. 
+In \cref{tab: volumen_ausdehnungskoeffizienten} sind einige Volumenausdehnungskoeffizienten für verschiedene feste, flüssige und gasförmige Stoffe aufgezählt. 
+\begin{table}[htb]
+    \centering
+    \caption{Volumenausdehnungskoeffiziente $\gamma$ für ausgewählte feste, flüssige und gasförmige Stoffe.}
+    \label{tab: volumen_ausdehnungskoeffizienten}
+    \vspace{4pt}
+    \begin{tabular}{llc}
+        \toprule
+        \textbf{Stoff} & \textbf{Phase} & \textbf{Ausdehnungskoeffizient $\gamma$ (\SI{e-6}{\kelvin^{-1}})} \\
+        \midrule
+        Aluminium      & fest           & 75   \\
+        Eisen          & fest           & 35   \\
+        Kupfer         & fest           & 50   \\
+        \midrule
+        Benzin         & flüssig        & 950  \\
+        Quecksilber    & flüssig        & 180  \\
+        Ethanol        & flüssig        & 1100 \\
+        Wasser         & flüssig        & 210  \\ % Korrigierter Wert, 2 aus PDF ist zu niedrig für den Bereich bis 100°C
+        \midrule
+        Ideales Gas    & gasförmig      & 3661 \\
+        Helium (He)    & gasförmig      & 3660 \\
+        Argon (Ar)     & gasförmig      & 3671 \\
+        Sauerstoff ($\text{O}_2$) & gasförmig  & 3674 \\
+        Kohlendioxid ($\text{CO}_2$) & gasförmig & 3726 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\subsection{Ausdehnung von Gasen (Gesetze von Gay-Lussac)}\label{subsec: ausdehnung_gase}
+Auch Gase dehnen sich bei Erwärmung aus, jedoch deutlich stärker als Festkörper oder Flüssigkeiten. Die Ausdehnungskoeffizienten von Gasen sind ungefähr 2--3 Größenordnungen größer als die von festen oder flüssigen Körpern. Die Gesetze von Gay-Lussac beschreiben dieses Verhalten für ideale Gase:
+\begin{enumerate}
+    \item \textbf{Bei konstantem Druck (isobar):} Hält man den Druck eines Gases konstant, so ist das Volumen direkt proportional zur \textbf{absoluten Temperatur} $T$ (in Kelvin). Wir starten mit der Volumenausdehnung als Funktion der Celsius-Temperatur:
+    \begin{equation}\label{eq: gay_lussac_isobar}
+        V(\vartheta) = V_0(1 + \gamma \vartheta), % \quad \text{oder} \quad \frac{V}{T} = \const
+    \end{equation}
+    wobei für ideale Gase $\gamma = \dfrac{1}{\num{273.15}}\,\si{\celsius^{-1}}$ ist und $\vartheta$ die Temperatur in $\si{\celsius}$ ist. Bezieht man die Volumenänderung auf eine Referenztemperatur von $\vartheta_0 = \SI{0}{\celsius}$ ($T_0 = \SI{273.15}{\kelvin}$), so lässt sich \cref{eq: gay_lussac_isobar} auch auf die absolute Temperatur $T$ umformen  
+    \begin{equation} \begin{gathered}
+        V(\vartheta) = V_0(1+\gamma \vartheta) = V_0 \left(1 + \frac{\vartheta}{\num{273.15}} \right) = V_0\left( \frac{\num{273.15} + \vartheta}{\num{273.15}} \right) = \\
+        \implies V(T) = V_0 \left( \frac{T}{T_0} \right) \mDot
+    \end{gathered}\end{equation}
+    Somit findet man, dass 
+    \begin{equation}\label{eq: gay_lussac_V_ueber_V0}
+        \frac{V}{V_0} = \frac{T}{T_0} \quad \text{oder} \quad \frac{V}{T} = \const \mDot
+    \end{equation}
+    \item \textbf{Bei konstantem Volumen (isochor):} Hält man das Volumen eines Gases konstant, so ist der Druck eines Gases direkt proportional zur absoluten Temperatur. Auch hier beginnt man mit der Druckänderung als Funktion der Celsius-Temperatur $\vartheta$
+    \begin{equation}
+        p(\vartheta) = p_0(1 + \gamma_p \vartheta)
+    \end{equation}
+    und formt dies auf die absolute Temperatur $T$ (in Kelvin) um. Somit erhält man 
+    \begin{equation}\label{eq: gay_lussac_p_ueber_p0}
+        \frac{p}{p_0} = \frac{T}{T_0} \quad \text{oder} \quad \frac{p}{T} = \const \mDot
+    \end{equation}
+\end{enumerate}
+Diese beiden Gesetze werden in dem Gesetz von Gay-Lussac zusammengefasst, indem man die \cref{eq: gay_lussac_V_ueber_V0,eq: gay_lussac_p_ueber_p0} etwas umformt, wie hier dargestellt für die isochore Druckänderung: 
+\begin{align}
+    \frac{p}{T} &= \frac{p_0}{T_0} \nonumber \\
+    \implies p &= p_0 \cdot \frac{T}{T_0} \nonumber \\
+    \implies p - p_0 &=  \left( p_0 \cdot \frac{T}{T_0} \right) - p_0 = p_0 \left( \frac{T}{T_0} - 1 \right) = p_0 \left( \frac{T - T_0}{T_0} \right) = \nonumber \\
+    &= \frac{p_0}{T_0} \left( T - T_0 \right) \mDot
+\end{align}
+Somit folgt für die Druckänderung 
+\begin{equation}
+    (p-p_0) \propto (T-T_0) \mDot
+\end{equation}
+
+\begin{importantbox}[]{Gesetz von Gay-Lussac}
+    Das Gay-Lussac Gesetz beschreibt die Druckänderung bei konstantem Volumen (isochor) und die Volumenänderung bei konstantem Druck (isobar)
+    \begin{equation}\begin{aligned}
+        (p - p_0) &\propto (T - T_0) \mComma \quad \text{für konstantes Volumen}\\
+        (V - V_0) &\propto (T - T_0) \mComma \quad \text{für konstanten Druck.}
+    \end{aligned}\end{equation}
+\end{importantbox}
+
+\subsection{Gasthermometer}\label{subsec: Gasthermometer}
+Bei einem \textbf{Gasthermometer} mit konstantem Volumen dient die Druckänderung als Maß für die Temperatur. Da sich Gase sehr gleichmäßig ausdehnen, sind Gasthermometer besonders präzise und werden zur Kalibrierung anderer Thermometer verwendet. 
+\begin{rememberbox}{Gasthermometer}
+    Bei einem Gasthermometer wird die Temperatur indirekt über das Druckverhältnis bestimmt:
+    \begin{equation}
+        T[\si{\celsius}] = \frac{p_T - p_0}{p_{100} - p_0} \cdot \SI{100}{\celsius} \mComma
+    \end{equation}
+    wobei $p_T$ der Druck bei der zu messenden Temperatur und $p_0$ bzw. $p_{100}$ die Drücke am Gefrier- bzw. Siedepunkt von Wasser sind. Diese beiden Punkte sind vorab zu kalibrieren. 
+\end{rememberbox}
+Die Funktionsweise eines Gasthermometers erklärt sich anhand der \cref{fig: gasthermometer}. Das Volumen in $B_1$ wird konstant gehalten, indem der bewegliche Behälter $B_3$ so justiert wird (nach oben oder unten bewegt wird), dass der Quecksilberspiegel in $B_2$ immer auf der Nullmarke steht. Der Druck in $B_1$ ist dann proportional zur Höhendifferenz $h$. Der Druck im Gefäß $B_1$ ist direkt proportional zur Höhendifferenz $h$, da $\Delta p = \rho_\text{Hg} \cdot g\cdot h$. Damit wird die Druckmessung rein durch einen Höhendifferenzmessung bewerkstelligt.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/gasthermometer.png}
+    \caption{Aufbau eines Gasthermometers mit konstantem Volumen.}
+    \label{fig: gasthermometer}
+\end{figure}
+
+
+\section{Das ideale Gas und die Zustandsgleichung}\label{sec: ideales_gas}
+Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren Raum aus und lassen sich leicht komprimieren. Das liegt daran, dass der mittlere Abstand zwischen den Gasmolekülen sehr viel größer ist als bei Flüssigkeiten oder Festkörpern.
+
+\subsection{Das Gesetz von Boyle-Mariotte}\label{subsec: boyle_mariotte}
+Experimente zeigen, dass für eine abgeschlossene Gasmenge bei \textbf{konstanter Temperatur (isotherm)} das Produkt aus Druck $p$ und Volumen $V$ konstant ist:
+\begin{equation}\label{eq: boyle_mariotte_gesetz}
+    p \cdot V = \const \mDot
+\end{equation}
+Dieses Gesetz ist als das \textbf{Gesetz von Boyle-Mariotte} bekannt. Es besagt, dass bei konstanter Temperatur Druck und Volumen umgekehrt proportional zueinander sind. Der Zahlenwert der Konstanten hängt dabei von der Temperatur ab. Daraus folgt auch, dass die Dichte $\rho = M/V$ eines Gases proportional zum Druck ist.
+
+\subsection{Die ideale Gasgleichung}\label{subsec: ideale_gasgleichung}
+Fasst man das Gesetz von Boyle-Mariotte und die Gesetze von Gay-Lussac zusammen, gelangt man zur \textbf{allgemeinen Zustandsgleichung für ideale Gase}:
+\begin{equation}\label{eq:ideale_gasgleichung}
+    p \cdot V = N \cdot k_B \cdot T
+\end{equation}
+Hierbei ist $N$ die Anzahl der Teilchen (Atome oder Moleküle) im Volumen $V$. Diese Gleichung verknüpft die drei makroskopischen Zustandsgrößen Druck, Volumen und Temperatur.
+
+\section{Die barometrische Höhenformel}\label{sec: barometrische_hoehenformel}
+Der Luftdruck, den wir auf der Erdoberfläche messen, entsteht durch die Gewichtskraft der darüber liegenden Luftsäule. Da die Dichte der Luft mit der Höhe abnimmt, ist auch der Druck nicht konstant. Wir wollen eine Formel für die Druckabhängigkeit von der Höhe $h$ herleiten.
+
+Eine infinitesimale Druckänderung $dp$ bei einer Höhenänderung $dh$ ist durch das Gewicht der Luftschicht $dh$ gegeben:
+\begin{equation}
+    dp = -\rho(h) \cdot g \cdot dh \mComma
+\end{equation}
+wobei $\rho(h)$ die Dichte in der Höhe $h$ ist. Das negative Vorzeichen zeigt, dass der Druck mit zunehmender Höhe abnimmt.
+
+Im Gegensatz zu einer inkompressiblen Flüssigkeit ist die Dichte der Luft vom Druck abhängig. Aus dem Gesetz von Boyle-Mariotte folgt für eine isotherme Atmosphäre ($T = \text{konst.}$), dass $\rho/p = \text{konst.} = \rho_0/p_0$. Wir können also $\rho$ ersetzen:
+\begin{equation}
+    dp = - \frac{\rho_0}{p_0} p \cdot g \cdot dh \implies \frac{dp}{p} = -\frac{\rho_0 g}{p_0} dh \mDot
+\end{equation}
+Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$) bis zur Höhe $h$ (mit Druck $p(h)$) liefert:
+\begin{equation}
+    \int_{p_0}^{p(h)} \frac{1}{p} dp = -\int_0^h \frac{\rho_0 g}{p_0} dh \implies \ln\left(\frac{p(h)}{p_0}\right) = -\frac{\rho_0 g}{p_0} h \mDot
+\end{equation}
+
+\begin{importantbox}{Barometrische Höhenformel}
+    Durch Auflösen nach $p(h)$ erhält man die \textbf{barometrische Höhenformel} für eine isotherme Atmosphäre:
+    \begin{equation}\label{eq:barometrische_hoehenformel}
+        p(h) = p_0 \cdot e^{-\frac{\rho_0 g}{p_0}h} = p_0 \cdot e^{-h/H}
+    \end{equation}
+    Der Druck in der Atmosphäre nimmt exponentiell mit der Höhe ab. Die Größe $H = p_0/(\rho_0 g)$ wird als Skalenhöhe bezeichnet und beträgt für Luft bei \SI{0}{\celsius} etwa \SI{8}{\kilo\meter}. In einer Höhe von ca. \SI{5.5}{\kilo\meter} beträgt der Luftdruck nur noch die Hälfte des Bodenwertes.
+\end{importantbox}
+
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/barometrische_hoehenformel_plot.png}
+%     \caption{Der exponentielle Abfall des Luftdrucks mit der Höhe in einer idealisierten isothermen Atmosphäre.}
+%     \label{fig:barometrische_hoehenformel_plot}
+% \end{figure}
+
+\section{Kinetische Gastheorie}\label{sec: kinetische_gastheorie}
+Die kinetische Gastheorie, entwickelt in der zweiten Hälfte des 19. Jahrhunderts, erklärt die makroskopischen Eigenschaften von Gasen (wie Druck und Temperatur) durch die Bewegung und die Wechselwirkung der Gasatome auf mikroskopischer Ebene.
+
+\subsection{Das Modell des idealen Gases}\label{subsec: modell_ideales_gas}
+Das Modell des idealen Gases basiert auf folgenden Annahmen:
+\begin{itemize}
+    \item Das Gas besteht aus einer großen Anzahl von Teilchen (Atomen/Molekülen), die als punktförmige Massen betrachtet werden können. Ihr Eigenvolumen ist vernachlässigbar gegenüber dem Gesamtvolumen.
+    \item Die Teilchen bewegen sich zufällig (statistisch verteilt) in alle Richtungen.
+    \item Zwischen den Teilchen gibt es keine anziehenden oder abstoßenden Kräfte, außer bei direkten Kollisionen.
+    \item Alle Stöße der Teilchen untereinander und mit den Wänden des Behälters sind vollkommen elastisch, d.h., die kinetische Gesamtenergie bleibt erhalten.
+\end{itemize}
+
+\subsection{Herleitung des Gasdrucks}\label{subsec: herleitung_gasdruck}
+Der Druck, den ein Gas auf eine Wand ausübt, entsteht durch den Impulsübertrag der unzähligen Teilchen, die pro Zeiteinheit auf die Wand prallen.
+Betrachten wir ein Teilchen der Masse $m$, das sich mit der Geschwindigkeitskomponente $v_x$ auf eine Wand in der y-z-Ebene zubewegt. Beim elastischen Stoß kehrt sich die x-Komponente der Geschwindigkeit um ($-v_x$), während die anderen Komponenten unverändert bleiben. Der Impulsübertrag auf die Wand beträgt daher:
+\begin{equation}
+    \Delta p_x = p_{x,\text{nachher}} - p_{x,\text{vorher}} = mv_x - (-mv_x) = 2mv_x
+\end{equation}
+
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[width=0.35\linewidth]{Bilder/Kapitel_Waermelehre/impulsuebertrag_wand.png}
+%     \caption{Ein Teilchen stößt elastisch mit der Wand. Nur die zur Wand normale Geschwindigkeitskomponente ($v_x$) wird umgekehrt, was zu einem Impulsübertrag von $\Delta p = 2mv_x$ führt.}
+%     \label{fig:impulsuebertrag_wand}
+% \end{figure}
+
+Durch eine detaillierte Betrachtung aller Teilchen, die in einer Zeit $\Delta t$ auf eine Fläche $A$ treffen, kann man den Gesamtdruck herleiten. Das Ergebnis dieser Herleitung lautet:
+\begin{equation}\label{eq:druck_kinetisch}
+    p = \frac{1}{3} n m \overline{v^2} \mComma
+\end{equation}
+wobei $n=N/V$ die Teilchendichte (Anzahl der Teilchen pro Volumen) und $\overline{v^2}$ das mittlere Geschwindigkeitsquadrat aller Teilchen ist.
+
+\begin{rememberbox}{Druck, Energie und Temperatur}
+    Man kann \cref{eq:druck_kinetisch} umschreiben zu:
+    \begin{equation}
+        p = \frac{2}{3} n \left(\frac{1}{2}m\overline{v^2}\right) = \frac{2}{3} n \overline{E_\mathrm{kin}}
+    \end{equation}
+    Der Druck ist also direkt proportional zur Teilchendichte und zur mittleren kinetischen Energie der Gasteilchen. Vergleicht man dies mit der idealen Gasgleichung $p = (N/V)k_B T = n k_B T$, so erhält man erneut den fundamentalen Zusammenhang aus \cref{eq:def_temperatur_kinetisch}:
+    \begin{equation}
+        \overline{E_\mathrm{kin}} = \frac{1}{2}m\overline{v^2} = \frac{3}{2}k_B T \mDot
+    \end{equation}
+\end{rememberbox}
+
+\section{Maxwell-Boltzmann-Verteilung}\label{sec: maxwell_boltzmann_verteilung}
+In einem Gas haben nicht alle Teilchen die gleiche Geschwindigkeit. Ihre Geschwindigkeiten sind statistisch verteilt. Die \textbf{Maxwell-Boltzmann-Verteilungsfunktion} $f(v)$ beschreibt, welcher Anteil der Moleküle eine Geschwindigkeit im Intervall zwischen $v$ und $v+dv$ besitzt.
+Die Verteilungsfunktion lautet:
+\begin{equation}\label{eq:maxwell_boltzmann}
+    f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 e^{-\frac{mv^2}{2k_B T}}
+\end{equation}
+
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Waermelehre/maxwell_boltzmann_verteilung.png}
+%     \caption{Maxwell-Boltzmann-Verteilung für Wasserstoff (H) und Helium (He) bei verschiedenen Temperaturen. Mit steigender Temperatur wird die Verteilung breiter und verschiebt sich zu höheren Geschwindigkeiten. Schwerere Teilchen (He) sind bei gleicher Temperatur im Mittel langsamer.}
+%     \label{fig:maxwell_boltzmann_verteilung}
+% \end{figure}
+
+Aus dieser Verteilung lassen sich verschiedene charakteristische Geschwindigkeiten berechnen:
+\begin{itemize}
+    \item \textbf{Die wahrscheinlichste Geschwindigkeit $v_W$}: Die Geschwindigkeit am Maximum der Verteilung.
+    \begin{equation}
+        v_W = \sqrt{\frac{2k_B T}{m}}
+    \end{equation}
+    \item \textbf{Die mittlere Geschwindigkeit $\overline{v}$}: Der Durchschnittswert aller Geschwindigkeiten.
+    \begin{equation}
+        \overline{v} = \int_0^\infty v f(v) dv = \sqrt{\frac{8k_B T}{\pi m}} \approx 1.13 \, v_W
+    \end{equation}
+    \item \textbf{Die mittlere quadratische Geschwindigkeit $\sqrt{\overline{v^2}}$} (rms-Geschwindigkeit): Die Wurzel aus dem mittleren Geschwindigkeitsquadrat, die direkt mit der kinetischen Energie zusammenhängt.
+    \begin{equation}
+        \sqrt{\overline{v^2}} = \left(\int_0^\infty v^2 f(v) dv\right)^{1/2} = \sqrt{\frac{3k_B T}{m}} \approx 1.22 \, v_W
+    \end{equation}
+\end{itemize}
+
+\begin{examplebox}{Beispiel: Stickstoff in der Luft}
+    Für Stickstoffmoleküle ($N_2$) mit $m \approx \SI{4.67e-26}{\kilo\gram}$ bei Raumtemperatur ($T = \SI{300}{\kelvin}$) ergeben sich folgende Werte:
+    \begin{itemize}
+        \item $v_W \approx \SI{422}{\meter\per\second}$
+        \item $\overline{v} \approx \SI{476}{\meter\per\second}$
+        \item $\sqrt{\overline{v^2}} \approx \SI{517}{\meter\per\second}$
+    \end{itemize}
+    Diese Geschwindigkeiten sind bemerkenswert hoch und liegen im Bereich der Schallgeschwindigkeit.
+\end{examplebox}
+
+\section{Wärmemenge und Wärmekapazität}\label{sec: waermemenge_waermekapazitaet}
+Führt man einem Körper Energie zu, beispielsweise durch mechanische Arbeit $\Delta W$, so steigt in der Regel seine Temperatur um einen Betrag $\Delta T$. Die Energie, die zu einer Temperaturänderung führt, wird als \textbf{Wärmemenge} $\Delta Q$ bezeichnet. Für diesen Prozess gilt der Energieerhaltungssatz:
+\begin{equation}\label{eq:waermemenge_def}
+    \Delta Q = c \cdot m \cdot \Delta T \mComma
+\end{equation}
+wobei $m$ die Masse des Körpers ist. Der Proportionalitätsfaktor $c$ ist eine Materialkonstante und wird \textbf{spezifische Wärmekapazität} genannt. Sie gibt an, wie viel Energie notwendig ist, um die Temperatur von \SI{1}{\kilo\gram} eines Stoffes um \SI{1}{\kelvin} (oder \SI{1}{\celsius}) zu erhöhen. Ihre Einheit ist $[\si{\joule\per\kilogram\per\kelvin}]$.
+
+Das Produkt aus Masse und spezifischer Wärmekapazität wird als \textbf{Wärmekapazität} $C$ des gesamten Körpers bezeichnet:
+\begin{equation}
+    C = m \cdot c \mDot
+\end{equation}
+
+\begin{rememberbox}{Die Einheit Kalorie}
+    Historisch wurde für die Wärmemenge oft die Einheit \textbf{Kalorie} (\si{\calorie}) verwendet. Eine Kalorie ist definiert als die Wärmemenge, die benötigt wird, um \SI{1}{\gram} Wasser von \SI{15}{\celsius} auf \SI{16}{\celsius} zu erwärmen. Heute ist die SI-Einheit für Energie, das Joule, gebräuchlich. Der Umrechnungsfaktor beträgt experimentell:
+    \begin{equation}
+        \SI{1}{\calorie} = \SI{4.1868}{\joule} \mDot
+    \end{equation}
+\end{rememberbox}
+
+\subsection{Molare Größen und die Gasgleichung}\label{subsec: molare_groessen}
+In der Thermodynamik, insbesondere bei Gasen, ist es oft praktischer, Stoffmengen in \textbf{Mol} anzugeben.
+\begin{itemize}
+    \item \textbf{Ein Mol} ist die Stoffmenge, die genauso viele Teilchen enthält, wie Atome in \SI{12}{\gram} des Kohlenstoff-Isotops ${}^{12}C$ enthalten sind.
+    \item Diese Anzahl an Teilchen pro Mol ist eine universelle Konstante, die \textbf{Avogadro-Konstante} $N_A$:
+    \begin{equation}
+        N_A = \SI{6.022e23}{\per\mol}
+    \end{equation}
+    \item Das \textbf{Molvolumen} $V_M$ ist das Volumen, das ein Mol eines Stoffes einnimmt. Für ideale Gase unter Normbedingungen ($p=\SI{1}{bar}$, $T=\SI{0}{\celsius}$) beträgt es $V_M = \SI{22.7}{\deci\meter\cubed}$.
+\end{itemize}
+
+Die ideale Gasgleichung (\cref{eq:ideale_gasgleichung}) lässt sich auch in molarer Form schreiben. Für $v$ Mole eines Gases mit Gesamtvolumen $V = v \cdot V_M$ gilt:
+\begin{equation}\label{eq:ideale_gasgleichung_molar}
+    p \cdot V = v \cdot R \cdot T \mComma
+\end{equation}
+wobei $R$ die \textbf{allgemeine Gaskonstante} ist. Sie ist das Produkt aus der Boltzmann-Konstante und der Avogadro-Konstante:
+\begin{equation}
+    R = N_A \cdot k_B \approx \SI{8.314}{\joule\per\mol\per\kelvin} \mDot
+\end{equation}
+
+\subsection{Wärmekapazität von Gasen}\label{subsec: waermekapazitaet_gase}
+Auch für Gase kann die zugeführte Wärmemenge über die Anzahl der Mole $v$ und die \textbf{molare Wärmekapazität} $C_m$ ausgedrückt werden:
+\begin{equation}
+    \Delta Q = v \cdot C_m \cdot \Delta T \mDot
+\end{equation}
+Die molare Wärmekapazität hängt davon ab, welche Zustandsgröße während der Wärmezufuhr konstant gehalten wird. Für ideale Gase unterscheidet man:
+\begin{itemize}
+    \item \textbf{Molare Wärmekapazität bei konstantem Volumen ($C_V$):} Die gesamte zugeführte Wärme erhöht nur die innere Energie.
+    \begin{equation}
+        C_V = \frac{f}{2}R
+    \end{equation}
+    \item \textbf{Molare Wärmekapazität bei konstantem Druck ($C_p$):} Ein Teil der Wärme wird für die Expansionsarbeit gegen den äußeren Druck aufgewendet.
+    \begin{equation}
+        C_p = C_V + R = \frac{f+2}{2}R
+    \end{equation}
+\end{itemize}
+Hier ist $f$ die Anzahl der \textbf{Freiheitsgrade} des Gasmoleküls, welche sich aus Translation, Rotation und Vibration zusammensetzen kann ($f=f_\text{trans} + f_\text{rot} + f_\text{vib}$).
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Waermelehre/Cv_gase.png}
+    \caption{Die molare Wärmekapazität $C_V$ (normiert auf $R$) für verschiedene Gase als Funktion der Temperatur. Man erkennt, dass mit steigender Temperatur mehr Freiheitsgrade (Rotation, Vibration) angeregt werden, was zu einer Erhöhung von $C_V$ führt. Helium (He), als einatomiges Gas, hat konstant $f=3$ Freiheitsgrade.}
+    \label{fig:cv_gase}
+\end{figure}
+
+\subsection{Innere Energie}\label{subsec: innere_energie}
+Die \textbf{innere Energie} $U$ eines Systems ist die Summe aller Energien seiner Teilchen – also die Summe aus kinetischer Energie (Translation, Rotation, Vibration) und potenzieller Energie durch intermolekulare Kräfte. Für ein ideales Gas mit $N$ Teilchen und $f$ Freiheitsgraden, bei dem die potenzielle Energie vernachlässigt wird, ist die innere Energie nur von der Temperatur abhängig:
+\begin{equation}
+    U = N \cdot \overline{E_\mathrm{kin}} = N \cdot \frac{f}{2} k_B T = v \cdot \frac{f}{2} R T \mDot
+\end{equation}
+Im thermischen Gleichgewicht verteilt sich die Energie gleichmäßig auf alle Freiheitsgrade (Gleichverteilungssatz).
+
+\subsection{Wärmekapazität von Festkörpern}\label{subsec: waermekapazitaet_festkoerper}
+In Festkörpern sind die Atome in einem Gitter gebunden. Sie können nicht translatieren oder rotieren, sondern nur um ihre Gleichgewichtslage schwingen. Jedes Atom hat 3 Schwingungsfreiheitsgrade, und jede Schwingung trägt sowohl kinetische als auch potenzielle Energie bei, was zu insgesamt $f=6$ Freiheitsgraden pro Atom führt. Nach dem Gleichverteilungssatz wäre die molare Wärmekapazität somit konstant:
+\begin{equation}\label{eq:dulong_petit}
+    C_V = \frac{6}{2} R = 3R \approx \SI{25}{\joule\per\mol\per\kelvin} \mDot
+\end{equation}
+Dieses Ergebnis ist als das \textbf{Gesetz von Dulong-Petit} bekannt und gilt für viele Festkörper bei Raumtemperatur recht gut. Bei tiefen Temperaturen werden die Schwingungsmoden jedoch "eingefroren", und die Wärmekapazität sinkt gegen null, was nur quantenmechanisch erklärt werden kann.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/Cv_festkoerper.png}
+    \caption{Temperaturabhängigkeit der molaren Wärmekapazität $C_V$ für die Festkörper Blei (Pb), Kupfer (Cu) und Kohlenstoff (C). Bei hohen Temperaturen nähern sich die Werte dem Grenzwert des Dulong-Petit-Gesetzes von $C_V/R = 3$ an.}
+    \label{fig:cv_festkoerper}
+\end{figure}
+
+\section{Phasenübergänge}\label{sec: phasenuebergaenge}
+Die Zustände fest, flüssig und gasförmig werden als \textbf{Aggregatzustände} oder \textbf{Phasen} eines Stoffes bezeichnet. Die Übergänge zwischen diesen Phasen haben spezifische Namen, wie Schmelzen, Gefrieren, Verdampfen, Kondensieren, Sublimieren und Resublimieren.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/phasenuebergaenge.png}
+    \caption{Die drei Aggregatzustände und die Übergänge zwischen ihnen.}
+    \label{fig:phasenuebergaenge}
+\end{figure}
+
+\subsection{Schmelz- und Verdampfungswärme}\label{subsec: schmelz_verdampfungswaerme}
+Führt man einem Stoff bei einem Phasenübergang kontinuierlich Wärme zu, bleibt seine Temperatur konstant, bis die gesamte Substanz ihre Phase geändert hat. Die zugeführte Energie wird nicht zur Erhöhung der kinetischen Energie der Teilchen (Temperaturerhöhung), sondern zur Änderung ihrer potenziellen Energie (Aufbrechen von Bindungen) verwendet. Diese Energie wird als \textbf{latente Wärme} bezeichnet.
+
+\begin{itemize}
+    \item Die \textbf{spezifische Schmelzwärme} $\lambda_s$ ist die Energiemenge, die benötigt wird, um \SI{1}{\kilo\gram} eines festen Stoffes bei konstanter Schmelztemperatur zu verflüssigen.
+    \item Die \textbf{spezifische Verdampfungswärme} $\lambda_v$ ist die Energiemenge, die benötigt wird, um \SI{1}{\kilo\gram} einer Flüssigkeit bei konstanter Siedetemperatur zu verdampfen.
+\end{itemize}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Waermelehre/erwaermungskurve_wasser.png}
+    \caption{Temperaturverlauf beim Erwärmen von Eis mit konstanter Wärmezufuhr. Während der Phasenübergänge (Schmelzen bei \SI{0}{\celsius}, Verdampfen bei \SI{100}{\celsius}) bleibt die Temperatur konstant, da die zugeführte Energie als latente Wärme zum Aufbrechen der Bindungen im Gitter bzw. in der Flüssigkeit benötigt wird.}
+    \label{fig:erwaermungskurve_wasser}
+\end{figure}
+
+\section{Reale Gase und Phasendiagramme}\label{sec: reale_gase_phasendiagramme}
+Das ideale Gasmodell vernachlässigt sowohl das Eigenvolumen der Teilchen als auch die Anziehungskräfte zwischen ihnen. Bei hohem Druck und niedriger Temperatur, wenn die Teilchen nahe beieinander sind, werden diese Effekte jedoch relevant und das Verhalten realer Gase weicht von der idealen Gasgleichung ab.
+
+\subsection{Die Van-der-Waals-Gleichung}\label{subsec: van_der_waals}
+Eine verbesserte Zustandsgleichung für reale Gase ist die \textbf{Van-der-Waals-Gleichung}:
+\begin{equation}\label{eq:van_der_waals}
+    \left( p + a \frac{v^2}{V^2} \right) (V - v b) = v R T
+\end{equation}
+Hierbei korrigiert der Term $a$ den Druckabfall durch die Anziehungskräfte zwischen den Teilchen (Kohäsionsdruck), und der Term $b$ berücksichtigt das von den Teilchen selbst eingenommene Volumen (Kovolumen).
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Waermelehre/vanderwaals_isothermen.png}
+    \caption{Van-der-Waals-Isothermen für $\text{CO}_2$. Unterhalb einer kritischen Temperatur zeigen die Isothermen einen Bereich, in dem Gas und Flüssigkeit koexistieren. Komprimiert man das Gas entlang der $T=\SI{273}{\kelvin}$-Isotherme, beginnt es bei Punkt A zu kondensieren. Entlang der Linie A-C bleibt der Druck konstant, während der Flüssigkeitsanteil zunimmt, bis bei C das gesamte Gas verflüssigt ist.}
+    \label{fig:vanderwaals_isothermen}
+\end{figure}
+
+\subsection{Phasendiagramme}\label{subsec: phasendiagramme}
+Ein \textbf{Phasendiagramm} stellt in einem Druck-Temperatur-Diagramm (p-T-Diagramm) die Existenzbereiche der verschiedenen Phasen eines Stoffes dar.
+\begin{itemize}
+    \item Die \textbf{Dampfdruckkurve} trennt die flüssige und die gasförmige Phase.
+    \item Die \textbf{Schmelzkurve} trennt die feste und die flüssige Phase.
+    \item Die \textbf{Sublimationskurve} trennt die feste und die gasförmige Phase.
+\end{itemize}
+Der Schnittpunkt der drei Kurven ist der \textbf{Tripelpunkt}, an dem alle drei Phasen im Gleichgewicht koexistieren können.
+
+\begin{figure}[htb]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/phasendiagramm_co2.png}
+        \caption{Phasendiagramm von $\text{CO}_2$. Die Schmelzkurve hat eine positive Steigung, was bedeutet, dass der Schmelzpunkt mit steigendem Druck zunimmt.}
+        \label{fig:phasendiagramm_co2}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/phasendiagramm_h2o.png}
+        \caption{Phasendiagramm von Wasser ($\text{H}_2\text{O}$). Die Schmelzkurve hat eine negative Steigung. Dies ist die \textbf{Anomalie des Wassers}: Eis hat eine geringere Dichte als flüssiges Wasser, weshalb es schwimmt und unter Druck schmelzen kann.}
+        \label{fig:phasendiagramm_h2o}
+    \end{minipage}
+\end{figure}
+
+\chapter{Die Hauptsätze der Thermodynamik}\label{chap: Hauptsaetze_Thermodynamik}
+Die Hauptsätze der Thermodynamik sind fundamentale Prinzipien, die den Umgang mit Energie, insbesondere Wärme, und die Richtung thermodynamischer Prozesse beschreiben.
+
+\section{Grundbegriffe und der Erste Hauptsatz}\label{sec: erster_hauptsatz}
+Ein thermodynamisches System wird durch seine \textbf{Zustandsgrößen} wie Druck $p$, Volumen $V$, Temperatur $T$ und die innere Energie $U$ charakterisiert. Der \textbf{Erste Hauptsatz der Thermodynamik} ist eine Formulierung des Energieerhaltungssatzes. Er besagt, dass die Änderung der inneren Energie $\Delta U$ eines Systems gleich der Summe der ihm zugeführten Wärme $\Delta Q$ und der an ihm verrichteten Arbeit $\Delta W$ ist:
+\begin{equation}\label{eq:erster_hauptsatz}
+    \Delta U = \Delta Q + \Delta W \mDot
+\end{equation}
+In differentieller Form schreibt man:
+\begin{equation}
+    dU = dQ + dW \mDot
+\end{equation}
+Die Arbeit, die mit einer Volumenänderung verbunden ist, nennt man Volumenarbeit. Komprimiert man ein Gas (Volumenänderung $dV < 0$), wird am System Arbeit verrichtet ($dW > 0$). Expandiert es ($dV > 0$), verrichtet das System Arbeit ($dW < 0$). Es gilt:
+\begin{equation}\label{eq:volumenarbeit}
+    dW = -p_{ext} \cdot dV
+\end{equation}
+Damit lautet der erste Hauptsatz für Prozesse, die nur Volumenarbeit beinhalten:
+\begin{equation}
+    dU = dQ - p \cdot dV \mDot
+\end{equation}
+
+\subsection{Spezielle Zustandsänderungen}\label{subsec: spezielle_zustaende}
+\begin{itemize}
+    \item \textbf{Isochorer Prozess ($V = \text{konst.}$):} Da $dV=0$, wird keine Volumenarbeit verrichtet ($dW=0$). Die gesamte zugeführte Wärme geht in die innere Energie: $dQ = dU$.
+    \item \textbf{Isobarer Prozess ($p = \text{konst.}$):} Die zugeführte Wärme erhöht sowohl die innere Energie als auch das Volumen: $dQ = dU + p \cdot dV$. Man führt die Zustandsgröße \textbf{Enthalpie} $H = U + pV$ ein, für die bei isobaren Prozessen gilt: $dH = dQ$.
+    \item \textbf{Isothermer Prozess ($T = \text{konst.}$):} Für ein ideales Gas hängt die innere Energie nur von der Temperatur ab, also ist $dU=0$. Der erste Hauptsatz wird zu $dQ = -dW = p \cdot dV$. Die gesamte zugeführte Wärme wird in Arbeit umgewandelt.
+    \item \textbf{Adiabatischer Prozess ($Q = \text{konst.}$):} Es wird keine Wärme mit der Umgebung ausgetauscht ($dQ=0$). Der erste Hauptsatz lautet $dU = dW = -p \cdot dV$. Jede Arbeit, die das System leistet, geht zulasten seiner inneren Energie, was zu einer Abkühlung führt.
+\end{itemize}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Hauptsaetze/pv_diagramm_prozesse.png}
+    \caption{Darstellung der vier speziellen Zustandsänderungen in einem p-V-Diagramm. Isothermen ($T=\text{konst.}$) sind Hyperbeln. Adiabaten ($Q=\text{konst.}$) verlaufen steiler als Isothermen, da sich das Gas bei der Expansion abkühlt.}
+    \label{fig:pv_diagramm_prozesse}
+\end{figure}
+
+\section{Der Zweite Hauptsatz der Thermodynamik}\label{sec: zweiter_hauptsatz}
+Während der erste Hauptsatz nur die Energiebilanz betrachtet, trifft der zweite Hauptsatz eine Aussage über die \textbf{Richtung} von Prozessen und die \textbf{Qualität} von Energie. Er erklärt, warum manche Prozesse in der Natur spontan ablaufen und andere nicht. Es gibt mehrere äquivalente Formulierungen:
+\begin{itemize}
+    \item \textbf(Formulierung nach Clausius): Wärme fließt von selbst immer nur von einem wärmeren zu einem kälteren Körper, niemals umgekehrt.
+    \item \textbf(Formulierung nach Kelvin/Thomson): Es ist unmöglich, eine periodisch arbeitende Maschine zu bauen, die einem Wärmereservoir Wärme entzieht und diese vollständig in Arbeit umwandelt, ohne sonstige Veränderungen zu bewirken (Verbot des Perpetuum mobile zweiter Art).
+\end{itemize}
+Der zweite Hauptsatz impliziert, dass Prozesse in isolierten Systemen immer in Richtung eines Zustands größerer "Unordnung" oder Wahrscheinlichkeit ablaufen. Diese Prozesse sind \textbf{irreversibel}.
+
+\section{Der Carnot'sche Kreisprozess und der Wirkungsgrad}\label{sec: carnot_prozess}
+Der Carnot-Prozess ist ein idealisierter, reversibler Kreisprozess, der aus vier Schritten besteht: zwei isotherme und zwei adiabatische Zustandsänderungen. Er beschreibt die theoretisch maximale Effizienz, mit der eine Wärmekraftmaschine Wärme in Arbeit umwandeln kann.
+Die Maschine nimmt dabei eine Wärmemenge $Q_1$ von einem heißen Reservoir der Temperatur $T_1$ auf, verrichtet die Arbeit $W$ und gibt die Abwärme $Q_2$ an ein kaltes Reservoir der Temperatur $T_2$ ab.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Bilder/Kapitel_Hauptsaetze/carnot_prozess.png}
+    \caption{Der Carnot-Prozess im p-V-Diagramm. Die von der Kurve umschlossene Fläche entspricht der pro Zyklus verrichteten Nettoarbeit $\Delta W$.}
+    \label{fig:carnot_prozess}
+\end{figure}
+
+\begin{importantbox}{Der Carnot-Wirkungsgrad}
+    Der \textbf{Wirkungsgrad} $\eta$ einer Wärmekraftmaschine ist das Verhältnis der gewonnenen Arbeit zur aufgewendeten Wärmeenergie, $\eta = |\Delta W / \Delta Q_1|$. Für den idealen Carnot-Prozess hängt der Wirkungsgrad nur von den Temperaturen der beiden Wärmereservoirs ab:
+    \begin{equation}\label{eq:carnot_wirkungsgrad}
+        \eta_{\text{Carnot}} = \frac{T_1 - T_2}{T_1} = 1 - \frac{T_2}{T_1}
+    \end{equation}
+    Der Wirkungsgrad ist immer kleiner als 1 (bzw. 100\%), da $T_2 > 0$ sein muss. Dies ist eine direkte Konsequenz des zweiten Hauptsatzes: Es ist unmöglich, die gesamte zugeführte Wärme in Arbeit umzuwandeln; ein Teil muss immer als Abwärme abgeführt werden. Keine reale Wärmekraftmaschine kann einen höheren Wirkungsgrad als die Carnot-Maschine haben, die zwischen denselben Temperaturen arbeitet.
+\end{importantbox}
+
+\section{Entropie}\label{sec: entropie}
+Der zweite Hauptsatz führt zur Definition einer neuen Zustandsgröße, der \textbf{Entropie} $S$. Die Änderung der Entropie ist für einen reversiblen Prozess definiert als:
+\begin{equation}\label{eq:entropie_def}
+    dS = \frac{dQ_{\text{rev}}}{T}
+\end{equation}
+Die Entropie ist ein Maß für die "Unordnung" oder die Anzahl der mikroskopischen Realisierungsmöglichkeiten (Mikrozustände) eines makroskopischen Zustands. In einem abgeschlossenen System kann die Entropie bei irreversiblen Prozessen nur zunehmen oder (bei reversiblen Prozessen) konstant bleiben. Sie nimmt niemals ab. Dies ist eine weitere, fundamentale Formulierung des zweiten Hauptsatzes.
+
+\section{Der Dritte Hauptsatz der Thermodynamik}\label{sec: dritter_hauptsatz}
+Der dritte Hauptsatz, auch Nernst-Theorem genannt, macht eine Aussage über das Verhalten der Entropie am absoluten Nullpunkt:
+\begin{importantbox}{Dritter Hauptsatz der Thermodynamik}
+    Die Entropie eines perfekt kristallinen, reinen Stoffes nähert sich für $T \to 0$ dem Wert null.
+    \begin{equation}
+        \lim_{T \to 0} S(T) = 0
+    \end{equation}
+    Am absoluten Nullpunkt befindet sich das System in seinem energetisch tiefstmöglichen Zustand, dem Grundzustand. Dieser Zustand maximaler Ordnung hat nur eine einzige Realisierungsmöglichkeit, weshalb die Entropie null ist. Eine Konsequenz des dritten Hauptsatzes ist, dass der absolute Nullpunkt unerreichbar ist.
+\end{importantbox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\appendix
+
+\chapter{Herleitungen}
+\section{Kapitel Kinematik}
+\subsubsection{Bogenlänge und Sehnenlänge}\label{subsubsec: herleitung_bogenlänge_sehnenlänge}
+Wir möchten zeigen, dass im Grenzübergang $\Delta \varphi \to 0$, die Sehnenlänge gegen die Bogenlänge konvergiert
+\begin{equation*}\label{eq: question_sehnenlänge_gleich_bogenlänge}
+    \lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| \eqquestion \Delta s \mDot
+\end{equation*}
+In \cref{fig: bogenlänge_sehnenlänge} ist exemplarisch die Bogenlänge $\Delta s$ für einen Kreissektor mit dem Winkel $\Delta \varphi$ zusammen mit der Länge $|\Delta \ivec{r}|$ der Sehne $\overline{AB}$ gezeichnet. 
+
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.45\linewidth}{!}{
+    \begin{tikzpicture}[
+        vec/.style={-{Stealth}, ultra thick, red!50!black},
+        point/.style={fill, circle, inner sep=1.pt}
+        ]
+        \def\myradius{4.5cm} % Radius des Kreises
+        \def\angleA{110}     % Winkel für Punkt A (in Grad)
+        \def\angleB{140}     % Winkel für Punkt B (in Grad)
+        \def\vecLen{3cm}      % Länge der Geschwindigkeitsvektoren
+        \def\fontSize{\large}
+        % --- 2. Koordinaten definieren ---
+        \coordinate (C) at (0,0);
+        \coordinate (A) at (\angleA:\myradius);
+        \coordinate (B) at (\angleB:\myradius);
+        \coordinate (M_chord) at ($(A)!0.35!(B)$);
+        \coordinate (M_arc) at ({(5*\angleA+5*\angleB)/(10)}:\myradius);
+        % --- 3. Kreisbahn zeichnen ---
+        % Zeichnet das Bogenstück, das etwas über A und B hinausgeht.
+        \draw[thick] (\angleA-20:\myradius) arc (\angleA-20:\angleB+25:\myradius);
+        \draw[line width=2.0pt, red] (\angleA:\myradius) arc (\angleA:\angleB:\myradius);
+
+        % --- 4. Radien und Punkte zeichnen ---
+        \draw (C) -- (A);
+        \draw (C) -- (B) node[pos=0.5, below left=1pt] {\fontSize $R$};
+        % --- 5. Winkel und Bogenlänge beschriften ---
+        \draw[-{Stealth}] (\angleA:1.8cm) arc (\angleA:\angleB:1.8cm);
+        \node at ({(\angleA+\angleB)/2}:1.3cm) {\fontSize $\Delta \varphi$}; 
+        \draw[dashed, blue, line width=1.1pt] (A) -- (B);
+        % Für Δr: Linie vom Mittelpunkt der Sehne (A)--(B)
+        \draw[-, thick, blue] (M_chord) -- (-1.7,2.6) node[below] {\fontSize $|\Delta \ivec{r}|$};
+        % Für Δs: Linie vom Mittelpunkt des Bogens zwischen A und B
+        \draw[-, thick, red] (M_arc) -- (-2.3,3.1) node[below=0.0pt] {\fontSize $\Delta s$};
+        \draw[vec] (C) -- (A) node[pos=0.3, right=1.5pt] {\fontSize $\ivecS{r}{A}$};
+        \draw[vec] (C) -- (B) node[pos=0.2, left=3.0pt] {\fontSize $\ivecS{r}{B}$};
+        \node[point, label={[label distance=3pt]below:C}] at (C) {};
+        \node[point, label={[label distance=0pt]above:A}] at (A) {};
+        \node[point, label={[label distance=2pt]below:B}] at (B) {};
+    \end{tikzpicture}
+    }
+    \caption{Die Bogenlänge $\Delta s$ (rote Linie) ist über den simplen Zusammenhang $\Delta s = R \cdot \Delta \varphi$ gegeben. Die Länge der Sehne $\overline{AB}$ (blau strichlierte Linie) berechnet sich jedoch aus $|\Delta \protect\ivec{r}| = |\protect\ivecS{r}{B}-\protect\ivecS{r}{A}|$.}     
+    \label{fig: bogenlänge_sehnenlänge}
+\end{figure}
+
+Die Bogenlänge ergibt sich aus der bekannten Formel $\Delta s = R \Delta \varphi$. Die Sehnenlänge erhalten wir über den Betrag der Differenz der beiden Ortsvektoren 
+\begin{equation*}
+    \ivecS{r}{A} = \icolTwo{\cos(\varphi)}{\sin(\varphi)} \mComma \quad \ivecS{r}{B} = \icolTwo{\cos(\varphi +\Delta \varphi)}{\sin(\varphi +\Delta \varphi)}\mDot
+\end{equation*} 
+Da die Sehnenlänge vom Winkel $\varphi$ unabhängig ist, setzen wir \oBdA $\varphi = 0$, wodurch 
+\begin{equation}\label{eq: rA_rB_sehnenlänge}
+    \ivecS{r}{A} = \icolTwo{1}{0} \mComma \quad \ivecS{r}{B} = \icolTwo{\cos(\Delta \varphi)}{\sin(\Delta \varphi)}\mComma
+\end{equation} 
+wird. Mithilfe der beiden Vektoren in \cref{eq: rA_rB_sehnenlänge} berechnet sich die Sehnenlänge zu 
+\begin{multline}
+    |\Delta \ivec{r}| = |\ivecS{r}{B}-\ivecS{r}{A}| = R\left|\icolTwo{\cos(\Delta \varphi)}{\sin(\Delta \varphi)} - \icolTwo{1}{0}\right| = \\
+    R\sqrt{(\cos(\Delta \varphi)-1)^2 + (\sin(\Delta \varphi))^2} = \\
+    R\sqrt{\cos^2(\Delta \varphi) - 2\cos(\Delta \varphi) + 1^2 + \sin^2(\Delta \varphi)} = \\
+    R\sqrt{2-2 \cos(\Delta \varphi)} = R\sqrt{2}\sqrt{1-\cos(\Delta \varphi)} \mComma
+\end{multline}
+wobei wir $\cos^2(\Delta \varphi) + \sin^2(\Delta \varphi) = 1$ verwendet haben. Unter Zuhilfenahme der Halbwinkelidentität $1-\cos(\Delta \varphi) = 2\sin^2(\Delta \varphi/2)$ erhalten wir einen exakten Ausdruck für die Sehnenlänge
+\begin{equation}\label{eq: sehnenlänge_exakt_sinus}
+    |\Delta \ivec{r}| = R\sqrt{2}\sqrt{1-\cos(\Delta \varphi)} = R \sqrt{2}\sqrt{2\sin^2\left( \frac{\Delta\varphi}{2} \right)} = 2R\cdot \sin\left( \frac{\Delta \varphi}{2} \right)  \mDot
+\end{equation}
+Nun verwenden wir die Approximation des Sinus für kleine Winkel $\Delta \varphi$, die besagt, dass 
+\begin{equation}
+    \sin(\Delta \varphi) \approx \Delta \varphi + \bigO[\Delta \varphi^3] \mComma \quad \Delta \varphi \ll 1\mDot
+\end{equation}
+Damit nähern wir den exakten Wert in \cref{eq: sehnenlänge_exakt_sinus} an und erhalten 
+\begin{equation} \label{eq: näherund_sehnenlänge_kleinwinkel}
+    |\Delta \ivec{r}| = 2R\cdot \sin\left( \frac{\Delta \varphi}{2} \right) \approx 2R \cdot \frac{\Delta \varphi}{2} = R \cdot \Delta\varphi \mDot
+\end{equation}
+Die Näherung für die Sehnenlänge $|\Delta \ivec{r}|$ in \cref{eq: näherund_sehnenlänge_kleinwinkel} entspricht aber genau der Bogenlänge $\Delta s = R\cdot \Delta\varphi$. \\
+
+Damit haben wir gezeigt, dass 
+\begin{equation}\label{eq: sehnenlänge_gleich_bogenlänge}
+    \lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| = \Delta s \mComma
+\end{equation}
+
+
+
+
+\newpage
+%\include{chapter_App-MathematischeEinschübe}
+
+\newpage
+\chapter{Literaturempfehlungen}
+\cite{Feilhauer2020a}
+In diesem Kapitel finden Sie eine Auswahl an grundlegenden Lehrbüchern, die Ihr Verständnis der Experimentalphysik vertiefen und hervorragende Begleiter auf Ihrem akademischen Weg sind. Diese Werke haben sich als Standardwerke der theoretischen und experimentellen Physik etabliert und bieten eine ausgezeichnete Ergänzung zu den Vorlesungen. 
+Die hier empfohlenen Bücher sind wertvolle Ressourcen, um die in den Vorlesungen behandelten Themen zu vertiefen und das Wissen zu festigen. Es kann sich durchaus lohnen, in eines dieser Standardwerke zu investieren und als ständigen Begleiter während des Studiums und auch außerhalb des Studiums zu nutzen.
+\vspace{1cm}
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}[b]{0.28\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/Literatur/Demtröder.jpg}
+        % \caption{(Links) Demtröder, Wolfgang: Experimentalphysik
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.253\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/Literatur/Tipler.jpg}
+        % \caption{Tipler, Paul A.; Mosca, Gene: Physik für Wissenschaftler und Ingenieure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.262\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Bilder/Literatur/Giancoli.jpg}
+        % \caption{Giancoli, Douglas C.: Physik: Prinzipien mit Anwendungen}
+    \end{minipage}
+     \caption{(Links) Demtröder, Wolfgang: Experimentalphysik. (Mitte) Tipler, Paul A.; Mosca, Gene: Physik für Wissenschaftler und Ingenieure. (Rechts) Giancoli, Douglas C.: Physik: Prinzipien mit Anwendungen.} 
+    \label{fig: recommended_books_minipage}
+\end{figure}
+
+% \backmatter
+%\phantomsection %needed for the correct anchor point of the bibliography 
+%\addcontentsline{toc}{chapter}{Bibliography}
+
+% \bibliographystyle{abbrv}
+\bibliographystyle{alex_phd.bst}
+\bibliography{skriptum_bib.bib}
+
+
+\end{document}

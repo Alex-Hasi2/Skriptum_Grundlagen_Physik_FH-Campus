@@ -1,0 +1,288 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+
+% --- siunitx Konfiguration ---
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    angle-symbol-degree = ^\circ,
+    locale = DE, 
+    separate-uncertainty, 
+    inter-unit-product = \cdot, % Multiplikationspunkt zwischen Einheiten
+    range-units = brackets, 
+    list-units = single, 
+    per-mode=symbol-or-fraction
+}
+
+% --- Seitenlayout ---
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+% --- Benutzerdefinierte Befehle (aus defs.tex) ---
+\newcommand{\mDot}{\,.}
+\newcommand{\mComma}{\, ,\,}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\eqexcl}{\stackrel{!}{=}}
+
+% --- Kopf- und Fußzeile ---
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+% --- Titelseite ---
+\noindent
+\vspace{9cm}
+\begin{center}
+    {\Huge \textbf{Lösung}} \\[1.5em]
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 3. Schriftliche Prüfung: 08.09.2025} \\[1em]
+    {\large Studiengang: Clinical Engineering} 
+\end{center}
+
+\newpage
+
+% ------------------------- LÖSUNG BEISPIEL 1 -------------------------
+\section*{Lösung Beispiel 1 - Heißes Metall in Wasser}
+
+Zuerst wird die Masse des Wassers berechnet:
+$$ m_{\text{Wasser}} = \rho_{\text{Wasser}} \cdot V_{\text{Wasser}} = \SI{1}{\kilogram\per\deci\metre\cubed} \cdot \SI{5}{\litre} = \SI{5}{\kilogram} \mDot $$
+
+\begin{enumerate}
+    \item \textbf{Stellen Sie die Formel für die vom Wasser aufgenommene Wärme $Q_{\text{Wasser,auf}}$ auf.} \\
+    Die vom Wasser aufgenommene Wärme berechnet sich aus der Masse, der spezifischen Wärmekapazität und der Temperaturdifferenz zwischen der Endtemperatur $T_{\text{Misch}}$ und der Anfangstemperatur $T_{\text{Wasser}}$.
+    $$ Q_{\text{Wasser,auf}} = m_{\text{Wasser}} \cdot c_{\text{Wasser}} \cdot (T_{\text{Misch}} - T_{\text{Wasser}}) $$
+    Das Wasser wird sich erwärmen, daher ist $(T_{\text{Misch}} - T_{\text{Wasser}}) > 0$. 
+
+    \item \textbf{Stellen Sie die Formel für die von der Eisenkugel abgegebene Wärme $Q_{\text{Eisen,ab}}$ auf.} \\
+    Analog dazu gibt die heiße Eisenkugel Wärme ab, bis sie die Mischtemperatur erreicht hat. Die Temperaturdifferenz ist hier die anfängliche Temperatur der Kugel $T_{\text{Kugel}}$ abzüglich der Mischtemperatur $T_{\text{Misch}}$.
+    $$ Q_{\text{Eisen,ab}} = m_{\text{Kugel}} \cdot c_{\text{Eisen}} \cdot (T_{\text{Kugel}} - T_{\text{Misch}}) $$
+    Die Eisenkugel kühlt sich ab, daher ist $(T_{\text{Kugel}} - T_{\text{Misch}}) > 0$. 
+
+    
+    \item \textbf{Nutzen Sie den Grundsatz des thermischen Gleichgewichts, indem Sie die beiden Wärmen gleichsetzen ($Q_{\text{Wasser,auf}} = Q_{\text{Eisen,ab}}$). Lösen Sie die resultierende Gleichung nach der Mischtemperatur $T_{\text{Misch}}$ auf.} \\
+    Im thermischen Gleichgewicht ist die aufgenommene Wärme gleich der abgegebenen Wärme:
+    \begin{align*}
+        Q_{\text{Wasser,auf}} &\eqexcl Q_{\text{Eisen,ab}} \\
+        m_{\text{Wasser}} \cdot c_{\text{Wasser}} \cdot (T_{\text{Misch}} - T_{\text{Wasser}}) &= m_{\text{Kugel}} \cdot c_{\text{Eisen}} \cdot (T_{\text{Kugel}} - T_{\text{Misch}})
+    \end{align*}
+    Diese Gleichung wird nun nach $T_{\text{Misch}}$ umgeformt:
+    \begin{align*}
+        m_W c_W T_{\text{Misch}} - m_W c_W T_W &= m_E c_E T_E - m_E c_E T_{\text{Misch}} && | \; + m_E c_E T_{\text{Misch}} \\
+        (m_W c_W + m_E c_E) T_{\text{Misch}} - m_W c_W T_W &= m_E c_E T_E && | \; + m_W c_W T_W \\
+        (m_W c_W + m_E c_E) T_{\text{Misch}} &= m_E c_E T_E + m_W c_W T_W  && | : (\ldots) \\
+        T_{\text{Misch}} &= \frac{m_E c_E T_E + m_W c_W T_W}{m_W c_W + m_E c_E}
+    \end{align*}
+    Nun werden die gegebenen Werte eingesetzt:
+    \begin{align*}
+        T_{\text{Misch}} &= \frac{ \SI{0,5}{\kilo\gram} \cdot \SI{0,45}{\kilo\joule\per\kilo\gram\per\kelvin} \cdot \SI{250}{\celsius} + \SI{5}{\kilo\gram} \cdot \SI{4,18}{\kilo\joule\per\kilo\gram\per\kelvin} \cdot \SI{20}{\celsius}}{ \SI{5}{\kilo\gram} \cdot \SI{4,18}{\kilo\joule\per\kilo\gram\per\kelvin} + \SI{0,5}{\kilo\gram} \cdot \SI{0,45}{\kilo\joule\per\kilo\gram\per\kelvin}} \\
+        T_{\text{Misch}} &= \frac{ \num{474,25} }{ \num{21,125}} \,\si{\celsius} \approx \SI{22,45}{\celsius}
+    \end{align*}
+    Die Mischtemperatur beträgt also rund \textbf{\SI{22,45}{\degreeCelsius}}.
+
+\end{enumerate}
+
+
+
+\section*{Lösung Beispiel 2 - Rutsche mit Reibung}
+
+\begin{enumerate}
+    \item \textbf{Tragen Sie alle wirkenden Kräfte in der Grafik ein!} \\
+    Die wirkenden Kräfte sind die Gewichtskraft $F_G$ (vertikal nach unten), die Normalkraft $F_N$ (senkrecht zur Rutschfläche) und die Gleitreibungskraft $F_{R, \text{Gleit}}$ (entgegen der Bewegungsrichtung, also die Rutsche hinauf).
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{Bilder/Test/3terAntritt/kind_rutsche_lösung.png}
+    \end{center}
+
+    \item \textbf{Berechnen Sie den Neigungswinkel $\theta$ der Rutsche.} \\
+    Der Winkel $\theta$ kann über die Höhe $h$ und die Länge $L$ der Rutsche mit dem Sinus bestimmt werden:
+    $$ \sin(\theta) = \frac{\text{Gegenkathete}}{\text{Hypotenuse}} = \frac{h}{L} = \frac{\SI{3}{\metre}}{\SI{5}{\metre}} = 0,6 $$
+    $$ \theta = \arcsin(0,6) \approx \SI{36,87}{\degree} = \SI{0.6435}{\radian} \mDot $$
+
+    \item \textbf{Zerlegen Sie die Gewichtskraft in eine Komponente senkrecht, $F_{G, \perp}$, und eine parallel, $F_{G, \parallel}$, zur Rutsche.} \\
+    Die Gewichtskraft ist 
+    $$F_G = m \cdot g = \SI{35}{\kg} \cdot \SI{9,81}{\m\per\s\squared} = \SI{343,35}{\newton} \mDot$$
+    Die Zerlegung der Gewichtskraft ist $F_{G,x} = F_{G,\parallel}$ und $F_{G,y} = F_{G, \perp}$: 
+    $$ F_{G,x} = F_{G, \parallel} = F_G \cdot \sin(\theta) = \SI{343,35}{\newton} \cdot 0,6 = \SI{206,01}{\newton} $$
+    $$ F_{G,y} = F_{G, \perp} = F_G \cdot \cos(\theta) = \SI{343,35}{\newton} \cdot 0,8 = \SI{274,68}{\newton} $$
+    
+    % \item \textbf{Berechnen Sie die Normalkraft und daraus die Gleitreibungskraft $F_{R, \text{Gleit}}$.} \\
+    % Die Normalkraft $F_N$ entspricht genau der Komponente $F_{G, \perp}$, somit ist $F_N = F_G\cdot \cos(\theta) = \SI{274,68}{\newton}$.
+    % Die Gleitreibungskraft ist das Produkt aus dem Gleitreibungskoeffizienten und der Normalkraft:
+    % $$ F_{R, \text{Gleit}} = \mu_{\text{Gleit}} \cdot F_N = 0,2 \cdot \SI{274,68}{\newton} = \SI{54,936}{\newton} $$
+
+   \item \textbf{Berechnen Sie die Normalkraft $F_N$ und die Gleitreibungskraft $F_{R, \text{Gleit}}$.} \\
+    Die Normalkraft wirkt der senkrechten Komponente der Gewichtskraft entgegen und ist daher betragsmäßig gleich groß:
+    $$ F_N = F_{G, \perp} = F_G \cdot \cos(\theta) = \SI{274,68}{\newton} $$
+    Daraus ergibt sich die Gleitreibungskraft:
+    $$ F_{R, \text{Gleit}} = \mu_{\text{Gleit}} \cdot F_N = 0,2 \cdot \SI{274,68}{\newton} = \SI{54,936}{\newton} $$
+
+    \item \textbf{Berechnen Sie die Hangabtriebskraft $F_A$.} \\
+    Die Hangabtriebskraft ist die Kraft, die das Kind die Rutsche hinabzieht. Sie entspricht der parallelen Komponente der Gewichtskraft:
+    $$ F_A = F_{G, \parallel} = \SI{206,01}{\newton} $$
+
+    \item \textbf{Berechnen Sie die resultierende Nettokraft und die Beschleunigung.} \\
+    Die Nettokraft $F_{\text{netto}}$ in Bewegungsrichtung ($x$-Richtung) ist die Differenz aus Hangabtriebskraft und der entgegenwirkenden Gleitreibungskraft.
+    $$ F_{\text{netto}} = F_A - F_{R, \text{Gleit}} = \SI{206,01}{\newton} - \SI{54,936}{\newton} = \SI{151,074}{\newton} \mDot$$
+    Nach dem zweiten Newtonschen Gesetz ($F=ma$) ergibt sich die Beschleunigung $a$:
+    $$ a_\text{netto} = \frac{F_{\text{netto}}}{m} = \frac{\SI{151,074}{\newton}}{\SI{35}{\kg}} \approx \SI{4,316}{\metre\per\second\squared} $$
+
+    
+
+
+
+    \item \textbf{Leiten Sie aus diesen zeitabhängigen Formeln eine Formel für $v(L)$ her.} \\
+    Die gegebenen Formeln sind:
+    \begin{gather*}
+        s(t) = s_0 + v_0\cdot t + \frac{1}{2}a\cdot t^2 \\
+        v(t) = v_0 + a \cdot t
+    \end{gather*}
+    Die Anfangsbedingungen sind \textbf{Start aus dem Stillstand} ($v_0 = 0$) am \textbf{Startpunkt} ($s_0 = 0$). Die Gleichungen vereinfachen sich zu:
+    \begin{gather*}
+        s(t) = \frac{1}{2}a\cdot t^2\\
+        v(t) = a \cdot t
+    \end{gather*}
+    Aus der ersten Gleichung erhalten wir für $s = L$
+    $$ L = \frac{1}{2}a \cdot t^2 \implies t = \sqrt{\frac{2 L}{a}}$$
+    Dies setzen wir in die zweite Gleichung ein und erhalten die gesuchte Beziehung
+    $$ v = a \sqrt{\frac{2 L}{a}} = \sqrt{\frac{2L a^2}{a}}\implies \boldsymbol{v = \sqrt{2aL}} $$
+
+    \item \textbf{Verwenden Sie die soeben hergeleitete Formel, um die Endgeschwindigkeit nach der zurückgelegten Strecke $L$ zu berechnen.} \\
+    Mit der in Schritt 6 berechneten Beschleunigung $a$ und der Streckenlänge $L$ erhalten wir:
+    $$ v = \sqrt{2 \cdot a \cdot L} = \sqrt{2 \cdot \SI{4,316}{\m\per\s\squared} \cdot \SI{5}{\m}} = \sqrt{\SI{43,16}{\m\squared\per\s\squared}} \approx \SI{6,57}{\metre\per\second} $$
+    Die Endgeschwindigkeit des Kindes beträgt somit ca. \textbf{\SI{6,57}{\metre\per\second}}.
+\end{enumerate}
+
+
+\newpage
+\section*{Lösung Beispiel 3 - Holzklotz im Wasser}
+
+\begin{enumerate}
+    \item \textbf{Formulieren Sie die Bedingung für das Schwimmen eines Körpers.} \\
+    Ein Körper schwimmt, wenn sich seine abwärts gerichtete Gewichtskraft ($F_G$) und die aufwärts gerichtete Auftriebskraft ($F_A$) im Gleichgewicht befinden. Es gilt also:
+    $$ F_G = F_A $$
+
+    \item \textbf{Berechnen Sie das Gesamtvolumen $V_{\text{ges}}$ des Holzklotzes und daraus seine Gewichtskraft $F_G$.} \\
+    Die Kantenlänge beträgt $L = \SI{20}{\centi\metre} = \SI{0,2}{\metre}$. Das Gesamtvolumen des Würfels ist:
+    $$ V_{\text{ges}} = L^3 = (\SI{0,2}{\metre})^3 = \SI{0,008}{\metre\cubed} \mDot$$
+    Die Gewichtskraft ist das Produkt aus Dichte, Volumen und Erdbeschleunigung:
+    $$ F_G = \rho_{\text{Holz}} \cdot V_{\text{ges}} \cdot g = \rho_{\text{Holz}} \cdot L^3 \cdot g =  \SI{750}{\kg\per\m\cubed} \cdot \SI{0,008}{\m\cubed} \cdot \SI{9,81}{\m\per\s\squared} = \SI{58,86}{\newton} \mDot$$
+
+    \item \textbf{Stellen Sie eine Formel für die Auftriebskraft $F_A$ auf.} \\
+    Nach dem Archimedischen Prinzip entspricht die Auftriebskraft dem Gewicht der verdrängten Flüssigkeit (hier Wasser). Sie hängt vom eingetauchten Volumen $V_{\text{ein}}$ ab
+    $$ F_A = \rho_{\text{Wasser}} \cdot V_{\text{ein}} \cdot g \mDot$$
+
+    \item \textbf{Drücken Sie das eingetauchte Volumen $V_{\text{ein}}$ durch die Eintauchtiefe $h$ aus.} \\
+    Das eingetauchte Volumen ist das Produkt aus der Grundfläche $A = L^2$ des Klotzes und der gesuchten Eintauchtiefe $h$
+    $$ V_{\text{ein}} = A \cdot h = L^2 \cdot h \mDot$$
+    Eingesetzt in die Formel für die Auftriebskraft ergibt sich:
+    $$ F_A = \rho_{\text{Wasser}} \cdot V_{\text{ein}} \cdot g = \rho_{\text{Wasser}} \cdot L^2 \cdot h \cdot g $$
+
+    \item \textbf{Setzen Sie die Kräfte gleich und lösen Sie nach der Eintauchtiefe $h$ auf.} \\
+    Wir setzen die in (1) formulierte Gleichgewichtsbedingung mit den hergeleiteten Termen an:
+    \begin{align*}
+        F_G &= F_A \\
+        \rho_{\text{Holz}} \cdot V_{\text{ges}} \cdot g &= \rho_{\text{Wasser}} \cdot V_{\text{ein}} \cdot g \\
+        \rho_{\text{Holz}} \cdot L^3 \cdot g &= \rho_{\text{Wasser}} \cdot L^2 \cdot h \cdot g
+    \end{align*}
+    Wir können auf beiden Seiten durch $g$ und $L^2$ kürzen:
+    $$ \rho_{\text{Holz}} \cdot L = \rho_{\text{Wasser}} \cdot h $$
+    Nun lösen wir nach $h$ auf:
+    $$ h = L \cdot \frac{\rho_{\text{Holz}}}{\rho_{\text{Wasser}}} $$
+    \item \textbf{Wie tief taucht der Holzblock ein?}
+    Einsetzen der Zahlenwerte:
+    $$ h = \SI{0,2}{\metre} \cdot \frac{\SI{750}{\kg\per\m\cubed}}{\SI{1000}{\kg\per\m\cubed}} = \SI{0,2}{\metre} \cdot 0,75 = \SI{0,15}{\metre} $$
+    Die Eintauchtiefe des Holzklotzes beträgt \textbf{\SI{15}{\centi\metre}}.
+\end{enumerate}
+
+
+\newpage
+\section*{Lösung Beispiel 4 - Multiple-Choice}
+
+\begin{enumerate}[label=\arabic*.,itemsep=18pt]
+    \item Was ist die SI-Einheit der Leistung?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Joule [\si{\joule}]
+        \item[$\boxtimes$] Watt [\si{\watt}]
+        \item Newton [\si{\newton}]
+        \item Pascal [\si{\pascal}]
+    \end{itemize}
+
+    \item Aus welchen SI-Basiseinheiten ist ein Joule zusammengesetzt?
+    $$ 1\,\si{J} = \textbf{\si{\kilogram\cdot\metre\squared\per\second\squared}} $$
+
+    \item Ein Objekt mit Masse $m$ wird auf die doppelte Geschwindigkeit beschleunigt. Um welchen Faktor ändert sich seine kinetische Energie? ($E_{\text{kin}} \propto v^2 \implies (2v)^2 = 4v^2$)
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Faktor 2
+        \item Faktor 8
+        \item[$\boxtimes$] Faktor 4
+        \item Faktor $\sqrt{2}$
+    \end{itemize}
+
+    \item Welche Aussage über Reibungskräfte ist im Allgemeinen korrekt?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Die Gleitreibungskraft ist größer als die maximale Haftreibungskraft.
+        \item[$\boxtimes$] Die maximale Haftreibungskraft ist größer als die Gleitreibungskraft.
+        \item Haft- und Gleitreibungskraft sind immer gleich groß.
+        \item Reibungskräfte sind immer proportional zur Kontaktfläche.
+    \end{itemize}
+
+    \item Bei einem isochoren Prozess eines idealen Gases bleibt welche Zustandsgröße konstant?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Der Druck
+        \item Die innere Energie
+        \item Die Temperatur
+        \item[$\boxtimes$] Das Volumen
+    \end{itemize}
+    
+    \item Nach dem Archimedischen Prinzip ist die Auftriebskraft auf einen vollständig in einer Flüssigkeit eingetauchten Körper gleich:
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item dem Gewicht des Körpers.
+        \item dem Volumen des Körpers mal der Erdbeschleunigung.
+        \item[$\boxtimes$] dem Gewicht der vom Körper verdrängten Flüssigkeit.
+        \item der Dichte des Körpers mal seinem Volumen.
+    \end{itemize}
+
+    \newpage
+    \item Der erste Hauptsatz der Thermodynamik ($\Delta U = Q + W$) ist eine spezielle Formulierung des...
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Impulserhaltungssatzes.
+        \item[$\boxtimes$] Energieerhaltungssatzes.
+        \item Drehimpulserhaltungssatzes.
+        \item Massenerhaltungssatzes.
+    \end{itemize}
+    
+    \item Ein Auto ($m=\SI{1000}{\kg}$) fährt mit $v = \SI{10}{\metre\per\second}$ durch eine Kurve mit $r = \SI{50}{\metre}$. Wie groß ist die benötigte Zentripetalkraft?
+    ($F_Z = \frac{mv^2}{r} = \frac{\SI{1000}{\kg} \cdot (\SI{10}{\m\per\s})^2}{\SI{50}{\m}} = \SI{2000}{\newton}$)
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \SI{1000}{\newton}
+        \item[$\boxtimes$] \SI{2000}{\newton}
+        \item \SI{5000}{\newton}
+        \item \SI{200}{\newton}
+    \end{itemize}
+
+    \item Der Wirkungsgrad $\eta$ einer Wärmekraftmaschine ist definiert als das Verhältnis von \\[9pt] \textbf{gewonnener (Netto-)Arbeit} zu \textbf{zugeführter Wärme}.
+    
+    \item Wie lautet der Name der Zustandsgleichung für reale Gase, die das Eigenvolumen der Gasteilchen und die Anziehungskräfte zwischen ihnen berücksichtigt? \\[9pt]
+    \textbf{Van-der-Waals-Gleichung}
+
+    \item Die absolute Temperatur $T$ eines idealen Gases ist ein direktes Maß für die ...
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item mittlere potentielle Energie der Gasteilchen.
+        \item mittlere Geschwindigkeit der Gasteilchen.
+        \item[$\boxtimes$] mittlere kinetische Energie der Gasteilchen.
+        \item Gesamtanzahl der Gasteilchen.
+    \end{itemize}
+\end{enumerate}
+
+
+
+\end{document}

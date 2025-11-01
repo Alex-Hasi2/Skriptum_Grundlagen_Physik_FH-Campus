@@ -1,0 +1,562 @@
+\chapter{Arbeit und Energie}\label{chap: Arbeit_und_Energie}
+In der Mechanik sind die Konzepte von Arbeit und Energie von zentraler Bedeutung, da sie es ermöglichen, komplexe Bewegungsvorgänge auf eine oft einfachere Weise zu analysieren, als es allein mit den Newtonschen Axiomen möglich wäre. Sie bilden die Grundlage für einen der fundamentalsten Sätze der Physik: den Energieerhaltungssatz.
+
+\section{Mechanische Arbeit}\label{sec: mechanische_arbeit}
+In der Alltagssprache wird der Begriff \gDQ{Arbeit} vielfältig verwendet, doch in der Physik besitzt er eine präzise Definition.
+
+\begin{rememberbox}[]{Definition: Mechanische Arbeit}
+    Mechanische Arbeit $W$ (\textit{Engl.:} \gDQ{work}) ist die Übertragung von Energie von einem System auf ein anderes durch das Wirken einer Kraft entlang eines Weges. Arbeit ist eine skalare Größe, die positiv, negativ oder null sein kann. 
+    \begin{itemize}[itemsep=1pt]
+        \item Die von einem Körper A an einem Körper B verrichtete Arbeit $W$ ist \textbf{positiv}, wenn Energie von A auf B übertragen wird. A leistet eine Arbeit, $W > 0$.
+        \item Sie ist \textbf{negativ}, wenn Energie von B auf A übertragen wird. An A wird eine Arbeit verrichtet $W < 0$. 
+        \item Wird keine Energie übertragen, ist die Arbeit \textbf{null}. 
+    \end{itemize}
+\end{rememberbox}
+
+Legt ein Massepunkt, der sich im Einfluss eines Kraftfeldes $\ivec{F}(\ivec{r})$ befindet, ein kleines, geradliniges Wegstück $\Delta\ivec{r}$ zurück, so verrichtet die Kraft an dem Massenpunkt die Arbeit $\Delta W$. Diese wird durch das Skalarprodukt von Kraft und Weg definiert: 
+\begin{equation}\label{eq: arbeit_infinitesimal}
+    \Delta W = \ivec{F}(\ivec{r}) \cdot \Delta\ivec{r} \mDot
+\end{equation}
+Beachte, dass es sich bei der Multiplikation in \cref{eq: arbeit_infinitesimal} um ein inneres Produkt (Skalarprodukt) aus $\ivec{F}$ und $\Delta \ivec{r}$ handelt und die Arbeit damit ein Skalar ist. Nur die Komponente der Kraft, die parallel zum Wegstück $\Delta\ivec{r}$ liegt, trägt zur Arbeit bei. Eine Kraft, die senkrecht zum Weg wirkt, verrichtet keine Arbeit, da das Skalarprodukt in diesem Fall null ist: 
+\begin{equation}
+    \ivec{F} \cdot \Delta \ivec{r} = 0 \Longleftrightarrow W = 0 \mDot
+\end{equation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_ArbeitEnergie/bahnkurve_def_arbeit.png}
+    \caption{Ein Massenpunkt bewegt sich unter dem Einfluss der Kraft $\protect\ivec{F}$ entlang seiner Bahnkurve das Wegelement $\Delta \protect\ivec{r}$ zurück und verrichtet dabei die Arbeit $\Delta W = \protect\ivec{F} \cdot \Delta \protect\ivec{r}$.}
+    \label{fig: bahnkurve_arbeit_delta_r}
+\end{figure}
+
+Bewegt sich der Massenpunkt entlang einer beliebigen Bahnkurve von einem Punkt $P_1$ nach $P_2$, dargestellt in \cref{fig: bahnkurve_arbeit_delta_r} so setzt sich die Gesamtarbeit aus den Beiträgen aller kleinen Wegstücke $\Delta\ivecS{r}{i}$ zusammen:
+\begin{equation}
+    W = \sum_{i} \Delta W_{i} = \sum_{i} \ivec{F}(\ivecS{r}{i}) \cdot \Delta\ivecS{r}{i} \mDot
+\end{equation}
+Im Grenzwert unendlich kleiner Wegstücke ($\Delta\ivec{r} \to \dd\ivec{r}$) geht diese Summe in ein Wegintegral (auch Linienintegral genannt) über. Dies ist die allgemeine Formel für die von einer Kraft $\ivec{F}$ entlang eines Weges $\mathcal{C}$ von $P_1$ nach $P_2$ verrichtete Arbeit. 
+
+\begin{importantbox}[]{Definition: Arbeit als Wegintegral}
+    Die von einer Kraft $\ivec{F}(\ivec{r})$ entlang einer Bahnkurve $\mathcal{C}$ von einem Punkt $P_1$ zu einem Punkt $P_2$ verrichtete Arbeit $W$ ist durch das Wegintegral
+    \begin{equation}\label{eq: arbeit_wegintegral}
+        W = \int_{\mathcal{C}: P_1}^{P_2} \ivec{F}(\ivec{r}) \cdot \dd\ivec{r}
+    \end{equation}
+    gegeben.
+\end{importantbox}
+
+\begin{rememberbox}[]{Einheit der Arbeit}
+    Die SI-Einheit der Arbeit ist das \textbf{Joule (J)}. Es gilt:
+    \begin{equation}
+        [W] = \SI{1}{\newton\meter} = \SI{1}{\joule} \mDot
+    \end{equation}
+    Die Einheit der Arbeit ist identisch mit der der Energie. 
+\end{rememberbox}
+
+Zur praktischen Berechnung kann das Linienintegral in kartesischen Koordinaten in eine Summe von drei gewöhnlichen Integralen zerlegt werden. Das Skalarprodukt lautet ausgeschrieben:
+\begin{equation}
+    \ivec{F}(\ivec{r}) \cdot \dd\ivec{r} = F_x \dd x + F_y \dd y + F_z \dd z \mDot
+\end{equation}
+Damit berechnet sich die Arbeit über:
+\begin{equation}\label{eq: arbeit_integral_komponenten}\begin{aligned}
+    W &= \int_{P_1}^{P_2} \ivec{F}(\ivec{r}) \cdot \dd \ivec{r} \\
+    &= \int_{x_1}^{x_2} F_x(x,y,z) \dd x + \int_{y_1}^{y_2} F_y(x,y,z) \dd y + \int_{z_1}^{z_2} F_z(x,y,z) \dd z \mComma
+\end{aligned}\end{equation}
+wobei $P_1 = (x_1, y_1, z_1)$ und $P_2 = (x_2, y_2, z_2)$. 
+
+\section{Kraftfelder}\label{sec: kraftfelder}
+Ein Kraftfeld ist ein Raumbereich, in dem auf einen Probekörper an jedem Punkt eine definierte Kraft (nach Betrag und Richtung) wirkt: 
+\begin{equation}
+    \ivec{F} = \ivec{F}(\ivec{r}) = \ivec{F}(x,y,z)
+\end{equation}Man unterscheidet zwischen konservativen und nicht-konservativen Kraftfeldern, je nachdem, ob die verrichtete Arbeit vom gewählten Weg abhängt.
+\begin{examplebox}[breakable]{Kraftfeld: Schwerefeld der Erde}
+Das Schwerefeld der Erde ist ein klassisches Beispiel für ein Kraftfeld. In guter Näherung kann es als Zentralkraftfeld beschrieben werden, bei dem die Kraft auf eine Probemasse $m$ stets zum Erdmittelpunkt gerichtet ist. Solche Zentralkraftfelder sind immer konservativ, wie wir sehen werden.
+
+Die Kraft, die auf die Masse $m$ im Abstand $r$ vom Erdmittelpunkt wirkt, ist durch das Newtonsche Gravitationsgesetz gegeben. Das Kraftfeld der Erdanziehung, wobei der Ursprung des Koordinatensystems im Erdmittelpunkt liegt, lautet:
+\begin{equation}\label{eq: gravitationsgesetz_erde}
+    \ivecS{F}{\text{G}}(x,y,z) = \ivecS{F}{\text{G}}(r) = -G \frac{M_\text{E} \cdot m}{r^2} \ivecS{e}{r} \mDot
+\end{equation}
+mit $r = \sqrt{x^2 + y^2 + z^2}$. Hierbei ist die Gravitationskonstante $G \approx \SI{6.674e-11}{\newton\meter\squared\per\kilogram\squared}$, die Erdmasse $M_\text{E} \approx \SI{5.972e24}{\kilogram}$ und der radial vom Erdmittelpunkt nach außen zeigende Einheitsvektor $\ivecS{e}{r}$.\\
+
+Wir berechnen die Anziehungskraft auf eine Probemasse von $m = \SI{1}{\kilo\gram}$ an zwei verschiedenen Orten. Der mittlere Erdradius beträgt $R_\text{E} \approx \SI{6371}{\kilo\meter}$.
+
+\begin{itemize}[itemsep=1.5pt]
+    \item \textbf{Auf Seehöhe} ($r = R_\text{E} = \SI{6371e3}{\meter}$):
+    \begin{equation}
+        |\ivecS{F}{\text{G}}(r)| = G \frac{M_\text{E} \cdot m}{r^2} \approx \num{6.674e-11} \cdot \frac{\num{5.972e24} \cdot \num{1}}{(\num{6.371e6})^2} \approx \SI{9.82}{\newton} \mDot
+    \end{equation}
+    Dies entspricht ungefähr der bekannten Erdbeschleunigung von $g \approx \SI{9.82}{\meter\per\second\squared}$.
+
+    \item \textbf{Auf dem Mount Everest} ($h_{\text{MtE}} \approx \SI{8849}{\meter}$):
+    Der Abstand zum Erdmittelpunkt ist nun $r = R_\text{E} + h_{\text{MtE}} = \SI{6371000}{\meter} + \SI{8849}{\meter} = \SI{6379849}{\meter}$.
+    \begin{equation}
+        |\ivecS{F}{\text{G}}(r)| = G \frac{M_\text{E} \cdot m}{r^2} \approx \num{6.674e-11} \cdot \frac{\num{5.972e24} \cdot \num{1}}{(\num{6.379849e6})^2} \approx \SI{9.79}{\newton} \mDot
+    \end{equation}
+\end{itemize}
+Wie erwartet, ist die Anziehungskraft auf dem Gipfel des Mount Everest geringfügig schwächer als auf Seehöhe, da der Abstand zum Erdmittelpunkt größer ist.
+\end{examplebox}
+
+\subsection{Nicht-konservative Kraftfelder}\label{subsec: nicht-konservative_kraftfelder}
+Bei einem nicht-konservativen Kraftfeld hängt die Arbeit, die beim Bewegen eines Massenpunktes von $P_1$ nach $P_2$ verrichtet wird, vom gewählten Weg ab. Dies ist exemplarisch in \cref{fig: nichtkonservatives_feld_wegabhaengig} dargestellt. Hier unterscheiden sich die Kräfte entlang des Weges $\ivecS{r}{O}$ und $\ivecS{r}{U}$, sodass für die Arbeit entlang der zwei verschiedenen Wege $\mathcal{C}_O$ (oberer Weg) und $\mathcal{C}_U$ (unterer Weg) gilt: 
+\begin{equation}\label{eq: arbeit_nicht_konservativ}
+    W_O = \int_{\mathcal{C}_O: P_1}^{P_2} \ivec{F}(\ivec{r}) \cdot \dd\ivec{r} \neq \int_{\mathcal{C}_U: P_1}^{P_2} \ivec{F}(\ivec{r}) \cdot \dd\ivec{r} = W_U \mDot
+\end{equation}
+Folglich ist die Arbeit, die auf einem geschlossenen Pfad (\zB von $P_1$ nach $P_2$ über $\mathcal{C}_O$ und zurück von $P_2$ nach $P_1$ über $\mathcal{C}_U$) verrichtet wird, ungleich null
+\begin{equation}\label{eq: arbeit_nicht_konservativ_geschlossen}
+    \oint \ivec{F}(\ivec{r}) \cdot \dd\ivec{r} \neq 0 \mComma
+\end{equation}
+weshalb solche Kraftfelder \textbf{nicht konservativ} genannt werden. Typische Beispiele für nicht-konservative Kräfte sind Reibungskräfte oder zeitlich veränderliche Kräfte.
+\begin{figure}[h!]
+    \centering
+    \resizebox{0.55\linewidth}{!}{
+    \begin{tikzpicture}[
+            font=\large,
+            point/.style={circle, fill=orange, draw=black, thick, inner sep=3.1pt},
+            label_box/.style={fill=white, draw=gray, fill opacity=0.95, text opacity=1, rounded corners=2pt, inner sep=4pt}
+        ]
+        \coordinate (P1) at (-3, -2.5);
+        \coordinate (P2) at (3.5, 1.5);
+        % 1. Hintergrundbild platzieren
+        \node at (0,0) {\includegraphics[width=10cm]{Bilder/Kapitel_ArbeitEnergie/force_field.pdf}};
+        % 4. Kurvenpfad von P1 nach P2 zeichnen
+        \draw[line width=1.0mm, black] (P1) .. controls (-3.5, 0) and (-2, 2.5) .. (0, 2.2)
+            .. controls (2, 1.9) and (3, 2.5) .. (P2);
+        \draw[line width=1.0mm, black] (P1) .. controls (-2.5, -4.1) and (-0.5, -3.5) .. (1, -3) 
+             .. controls (2.5, -2) and (2.5, 0) .. (P2);
+        % 5. Punkte P1 und P2 setzen und beschriften
+        \node[point, label={[label_box, label distance=0.0cm]225:$P_1$}] at (P1) {};
+        \node[point, label={[label_box, label distance=0.0cm]45:$P_2$}] at (P2) {};
+        
+        % 6. Beschriftungen für die Pfadsegmente hinzufügen
+        \node[label_box, font=\Large] at (-2.2, 2.5) {$\ivecS{r}{O}(x,y)$};
+        \node[label_box, font=\Large] at (2.4, -3.2) {$\ivecS{r}{U}(x,y)$};
+    \end{tikzpicture}
+    }
+    \caption{Die blauen Pfeile stellen die ortsabhängige Kraft an jedem Punkt $(x,y)$ dar. In einem nicht-konservativen Kraftfeld hängt die verrichtete Arbeit, um einen Körper von $P_1$ nach $P_2$ zu bewegen, vom Weg ab ($W_O \neq W_U$). Ein typisches Beispiel sind Reibungskräfte.}
+    \label{fig: nichtkonservatives_feld_wegabhaengig}
+\end{figure}
+
+\subsection{Konservative Kraftfelder}\label{subsec: konservative_kraftfelder}
+Für konservative Kräfte ist die verrichtete Arbeit zwischen zwei Punkten $P_1$ und $P_2$ \textbf{unabhängig} vom zurückgelegten Weg, 
+\begin{equation}\label{eq: arbeit_konservativ}
+    W = \int_{\mathcal{C}_O: P_1}^{P_2} \ivec{F}(\ivec{r}) \cdot \dd\ivec{r} = \int_{\mathcal{C}_U: P_1}^{P_2} \ivec{F}(\ivec{r}) \cdot \dd\ivec{r} \mDot
+\end{equation}
+Daraus folgt direkt, dass die Arbeit entlang eines beliebigen geschlossenen Weges in einem konservativen Kraftfeld immer null ist: 
+\begin{equation}\label{eq: arbeit_konservativ_geschlossen}
+    \oint \ivec{F}(\ivec{r}) \cdot \dd\ivec{r} = 0 \mDot
+\end{equation}
+Das kommt daher, weil eine Richtungsumkehr das Vorzeichen des Integrals ändert
+\begin{equation}
+    \int_{\mathcal{C}_O: P_1}^{P_2} \ivec{F}(\ivec{r}) \cdot \dd\ivec{r} = - \int_{\mathcal{C}_O: P_2}^{P_1} \ivec{F}(\ivec{r}) \cdot \dd\ivec{r}
+\end{equation}
+und somit jeder geschlossene Weg zurück zum Ausgangspunkt ein verschwindendes Integral ergibt. Beispiele für konservative Kräfte sind die Gravitationskraft und die elektrostatische Coulomb-Kraft. Im Allgemeinen sind alle Zentralkräfte, deren Betrag nur vom Abstand abhängt ($\ivec{F} \sim F(r)\ivecS{e}{r}$), konservativ. 
+
+\begin{importantbox}{Eigenschaft konservativer Kräfte}
+    Bei konservativen Kräften hängt die verrichtete Arbeit nur vom Start- und Endpunkt der Bewegung ab, nicht aber vom Weg dazwischen. 
+\end{importantbox}
+
+\begin{figure}[h!]
+    \centering
+    \resizebox{0.7\linewidth}{!}{
+    \begin{tikzpicture}[
+        font=\large,
+        point/.style={circle, fill=orange, draw=black, thick, inner sep=2.8pt},
+        label_box/.style={fill=white, draw=gray, fill opacity=0.8, text opacity=1, rounded corners=2pt, inner sep=3pt}]
+    
+        \def\innerradius{2.75} % Radius des Kreises
+        \def\outerradius{4.75}
+        \def\angleA{30}     % Winkel für Punkt A (in Grad)
+        \def\angleB{110}     % Winkel für Punkt B (in Grad)
+        \coordinate (O) at (0.5, 0.42); 
+        \coordinate (P1) at ($(O) + (\angleA:\innerradius)$); 
+        \coordinate (P2) at ($(O) + (\angleB:\outerradius)$); 
+    
+        % 1. Hintergrundbild aus der PDF-Datei platzieren
+        \node at (0,0) {\includegraphics[width=12cm]{Bilder/Kapitel_ArbeitEnergie/grav_field_example.pdf}};
+    
+        \draw[line width=2.6pt, dashed, black] (0.5,0.42) ++({\innerradius*cos(\angleA)}, {\innerradius*sin(\angleA)}) 
+            arc (\angleA:110:\innerradius);
+        \draw[line width=2.6pt, dashed, black] (0.5,0.42) ++({\outerradius*cos(\angleA)}, {\outerradius*sin(\angleA)}) 
+            arc (\angleA:110:\outerradius);
+        \draw[line width=2.6pt, black] (0.5,0.42) ++({\innerradius*cos(\angleA)}, {\innerradius*sin(\angleA)} ) -- 
+            ++({2*cos(\angleA)},{2*sin(\angleA)});
+        \draw[line width=2.6pt, black] (0.5,0.42) ++({\innerradius*cos(\angleB)}, {\innerradius*sin(\angleB)} ) -- 
+        ++({2*cos(\angleB)},{2*sin(\angleB)});
+    
+         % 6. Beschriftungen für die Pfadsegmente hinzufügen
+        \node[label_box, font=\Large] at (4.3, 4.8) {$\ivecS{r}{O}(x,y)$};
+        \node[label_box, font=\Large] at (-1.8, 3.0) {$\ivecS{r}{U}(x,y)$};
+        
+        % --- Beschriftungen und Punkte ---
+        \node[point, label={[label_box,label distance=0.1cm]below:$\ivec{P}_1$}] at (P1) {};
+        \node[point, label={[label_box,label distance=0.1cm]left:$\ivec{P}_2$}] at (P2) {};
+    \end{tikzpicture}
+    }
+    \caption{Ein konservatives Zentralkraftfeld mit $\protect\ivec{F} = \protect\ivec{F}(r)$. Die Arbeit von $P_1$ nach $P_2$ ist für alle Wege gleich. Entlang der gestrichelten Kreisbahnen wird keine Arbeit verrichtet, da die Kraft senkrecht zum Weg steht. Die Arbeit entlang der durchgezogenen Linien hebt sich jeweils gegenseitig auf.}
+    \label{fig: konservatives_kraftfeld}
+\end{figure}
+
+\section{Leistung}\label{sec: leistung}
+Die Definition der Arbeit beinhaltet keine Information über die Zeitspanne, in der die Arbeit verrichtet wird. Um dies zu quantifizieren, führt man die physikalische Größe der Leistung ein.
+
+\begin{rememberbox}[]{Definition: Leistung}
+    Die Leistung $P$ ist die Rate, mit der Arbeit verrichtet wird. Sie gibt an, wie viel Energie pro Zeiteinheit übertragen wird,
+    \begin{equation}\label{eq: leistung_def}
+        P = \frac{\dd W}{\dd t} \mDot
+    \end{equation}
+    Die SI-Einheit der Leistung ist das \textbf{Watt (W)}. Es gilt:
+    \begin{equation}
+        [P] = \SI{1}{\joule\per\second} = \SI{1}{\watt} \mDot
+    \end{equation}
+\end{rememberbox}
+
+Ein Massenpunkt, der sich mit der Geschwindigkeit $\ivec{v}$ bewegt, erfahre im Zeitintervall $\dd t$ eine infinitesimale Verschiebung von $\dd\ivec{r} = \ivec{v}\dd t$. Die in dieser Zeit von einer Kraft $\ivec{F}$ verrichtete Arbeit ist 
+\begin{equation}
+    \dd W = \ivec{F} \cdot \dd\ivec{r} = \ivec{F} \cdot \ivec{v}\dd t \mDot
+\end{equation} 
+Setzt man dies in die Definition der Leistung ein, erhält man eine sehr nützliche Formel: 
+\begin{equation}\label{eq: leistung_vektoriell}
+    P = \frac{\dd W}{\dd t} = \frac{\ivec{F} \cdot \ivec{v}\dd t}{\dd t} = \ivec{F} \cdot \ivec{v} \mDot
+\end{equation}
+
+\begin{examplebox}[breakable,sidebyside, sidebyside align=top seam, lower separated=false, righthand width=3.5cm]{Leistung eines Motors}
+    Ein Motor soll über einen reibungsfreien Seilzug eine Last von Ziegelsteinen mit einer Gewichtskraft von $F_\text{G} = \SI{800}{\newton}$ um eine Höhe von $h = \SI{10}{\meter}$ in einer Zeit von $t = \SI{20}{\second}$ heben. Welche durchschnittliche Leistung muss der Motor aufbringen? \\
+
+    \textbf{Lösung:}\\
+    Um die Last mit konstanter Geschwindigkeit zu heben, muss der Motor eine Kraft aufbringen, die der Gewichtskraft entgegengesetzt und betragsmäßig gleich ist: 
+    $\ivecS{F}{\text{Motor}} = -\ivecS{F}{\text{G}}$, also $|\ivecS{F}{\text{Motor}}| = \SI{800}{\newton}$. 
+    Die konstante Geschwindigkeit des Anhebens beträgt:
+    \begin{equation}
+        v = \frac{\Delta y}{\Delta t} = \frac{\SI{10}{\meter}}{\SI{20}{\second}} = \SI{0.5}{\meter\per\second} \mDot
+    \end{equation}
+    Da die Kraft des Motors und die Geschwindigkeit in die gleiche Richtung zeigen, ist der Winkel zwischen ihnen $\theta = \SI{0}{\degree}$. Die Leistung errechnet sich somit zu:
+    \begin{equation}\begin{aligned}
+        P &= \ivecS{F}{\text{Motor}} \cdot \ivec{v} = |\ivecS{F}{\text{Motor}}| \cdot |\ivec{v}| \cdot \cos(\SI{0}{\degree}) \\
+        &= \SI{800}{\newton} \cdot \SI{0.5}{\meter\per\second} = \SI{400}{\watt} \mDot
+    \end{aligned}\end{equation}
+    \tcblower
+     \begin{center}
+        \includegraphics[width=0.9\linewidth]{Bilder/Kapitel_ArbeitEnergie/leistung_motor_beispiel.png}
+    \end{center}
+\end{examplebox}
+
+\section{Energie}\label{sec: energie}
+Das Konzept der Energie ist eines der wichtigsten vereinheitlichenden Prinzipien in allen Naturwissenschaften. 
+\begin{rememberbox}{Definition: Energie}
+    Die Energie eines Systems ist dessen Fähigkeit, Arbeit zu verrichten. Energie ist, wie die Arbeit, eine skalare Größe. 
+\end{rememberbox}
+Energie kann in verschiedenen Formen auftreten, wie \zB kinetische Energie (Bewegungsenergie), potenzielle Energie (Lageenergie) oder Wärmeenergie. Ein fundamentales Prinzip ist der Energieerhaltungssatz:
+\begin{importantbox}{Energieerhaltungssatz}
+    Energie kann nicht erzeugt oder vernichtet, sondern nur von einer Form in eine andere umgewandelt werden. Die Gesamtenergie eines abgeschlossenen Systems bleibt konstant. 
+\end{importantbox}
+Das gilt ganz grundsätzlich auch in jeder alltäglichen Situation, in der \gDQ{Verluste} aufzutreten scheinen. Energie geht niemals wirklich \gDQ{verloren}, sie wird lediglich in andere, oft weniger nützliche, Energieformen umgewandelt.
+
+\begin{examplebox}[breakable]{Beispiel: Energieumwandlung beim Autofahren}
+    Betrachten wir ein Auto, das mit konstanter Geschwindigkeit fährt. Seine Hauptenergieform ist die \textbf{kinetische Energie} (Bewegungsenergie). Um die Geschwindigkeit zu halten, muss das Auto konstant Energie nachführen, ansonsten würde das Auto langsamer werden. Man könnte meinen, dass also durchwegs Energie \gDQ{verloren} gehe, aber tatsächlich wurde sie nur umgewandelt:
+    \begin{itemize}
+        \item \textbf{Rollreibung:} Die Reibung zwischen den Reifen und der Straße erzeugt Wärme. Die kinetische Energie des Autos wird in Wärmeenergie in den Reifen und im Straßenbelag umgewandelt.
+        \item \textbf{Luftreibung:} Das Auto muss die Luft vor sich verdrängen. Diese Wechselwirkung erwärmt die Luftmoleküle. Ein Teil der kinetischen Energie wird also in Wärmeenergie der umgebenden Luft umgewandelt.
+        \item \textbf{Motor-Ineffizienz:} Weniger als die Hälfte der chemischen Energie des Brennstoffs kann in mechanische Energie an den Antriebsstrang übertragen werden. Auch das Getriebe und andere bewegliche Teile tragen durch Reibung zur Wärmeerzeugung bei.
+    \end{itemize}
+    Die ursprüngliche kinetische Energie des Fahrzeugs wird also nicht vernichtet, sondern vollständig in andere Energieformen -- hauptsächlich Wärme und zu einem kleinen Teil auch Schallenergie -- umgewandelt. Der Energieerhaltungssatz bleibt somit erfüllt, wenn man die Systemgrenze so zieht, dass alle Körper, die Energie aufnehmen oder abgegeben mitberücksichtigt. 
+\end{examplebox}
+
+\subsection{Kinetische Energie}\label{subsec: kinetische_energie}
+Wenn eine resultierende äußere Kraft\footnote{Als \gDQ{äußere Kraft} bezeichnet man eine Kraft, die nicht zum betrachteten System gehört. Diese Kraft kann demnach die Energie des Systems ändern} an einem freien Körper Arbeit verrichtet, führt dies zu einer Änderung seiner Bewegungsenergie. Betrachten wir eine konstante Kraft $\ivec{F} = F_x \ivecS{e}{x}$, die auf eine Masse $m$ entlang der $x$-Achse wirkt. Die verrichtete Arbeit ist:
+\begin{equation}\label{eq: arbeit_integration_entlang_x}
+    W = \int_{x_\text{A}}^{x_\text{E}} F_x \cdot \dd x \mDot
+\end{equation}
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.65\linewidth}{!}{
+    \begin{tikzpicture}[
+        particle/.style={
+            draw=black,
+            fill=yellow!60!orange!70, % Eine passende gelb-orange Füllfarbe
+            minimum size=0.7cm
+        },
+        force_arrow/.style={
+            -Stealth, % Pfeilspitze vom Typ "Stealth"
+            blue!80!cyan,
+            very thick, opacity=0.15
+        }
+        ]    
+        % 5. Das externe Kraftfeld (blaue Pfeile)
+        \begin{scope}[yshift=-0cm]
+            \foreach \y in {-1.5, -0.9, -0.3, 0.3, 0.9, 1.5, 2.1, 2.7} {
+                \foreach \x in {-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7} {
+                    \draw[force_arrow] (\x, \y) -- ++(0.7, 0);
+                }
+            }
+        \end{scope}
+        % 1. Die Systemgrenze (gestricheltes Rechteck mit abgerundeten Ecken)
+        \draw[gray, dashed, dash pattern=on 5pt off 4pt, rounded corners=12pt, line width=1.1pt, fill=white, fill opacity=0.4] (-2, -1) rectangle (6.8,2.25) node[anchor=north east, pos=0.94, gray, fill=white, fill opacity=0.8, text opacity=1] {\large Systemgrenze};
+    
+        \draw[-{Stealth}, line width=1.2pt] (-1.4, 0) -- (5.95, 0) node[right] {\large $x$};
+        \draw[-{Stealth}, line width=1.2pt] (0, -1.5) -- (0, 2.6) node[above=3pt] {\large $y$};
+        \foreach \x in {-1, 0, 1, 2, 3,4,5} {
+            \draw[line width=1.2pt] (\x, -0.15) -- (\x, 0.15);
+        };
+        
+        \node[particle, circle] (left_particle) at (1, 0.5) {};
+        \node[particle, circle,dashed,  draw=gray, fill opacity=0.86] at (4, 0.5) {};    
+        \draw[-{Stealth[length=3.3mm]}, red, line width=2pt] (left_particle.north) ++(-0.5, 0.3) -- ++(1.4, 0)
+              node[midway, above=2pt] {\Large $\ivec{v}$};
+        \node[] at (1,-0.5) {\large $x_\text{A}$};
+        \node[] at (4,-0.5) {\large $x_\text{E}$};
+        % 6. Die Formel für die externe Kraft
+        \node[below=0cm, blue!70!white] at (-1,-1.6) {\large $F_x^{\text{ext}}(x) = \text{const}$};
+    \end{tikzpicture}
+    }
+    \caption{Eine konstante äußere Kraft $F_x^{\text{ext}}$ wirkt auf ein Teilchen, das sich von $x_\text{A}$ nach $x_\text{E}$ bewegt. Dabei wird an dem Teilchen eine Arbeit verrichtet, die zur Erhöhung der Geschwindigkeit $v_x$ und damit zu einer Erhöhung der kinetischen Energie führt.}
+    \label{fig: placeholder}
+\end{figure}
+
+Nach dem zweiten Newtonschen Axiom ist 
+\begin{equation}
+    F_x = m a_x = m \frac{\dd v_x}{\dd t} \mDot
+\end{equation}
+Die Formel für die Kraft setzen wir in \cref{eq: arbeit_integration_entlang_x} ein, schreiben das Integral mithilfe der Kettenregel um und erhalten
+\begin{align*}
+    W &= \int_{x_\text{A}}^{x_\text{E}} m \frac{\dd v_x}{\dd t} \dd x 
+      = \int_{v_\text{A}}^{v_\text{E}} m \underbrace{\frac{\dd x}{\dd t}}_{v_x} \dd v_x 
+      = \int_{v_\text{A}}^{v_\text{E}} m v_x \dd v_x \\
+      &= \left. \frac{1}{2} m v_x^2 \right|_{v_\text{A}}^{v_\text{E}} 
+      = \frac{1}{2} m v_\text{E}^2 - \frac{1}{2} m v_\text{A}^2 \mDot
+\end{align*}
+Das Verrichten einer Arbeit hat also zu einer Änderung der Geschwindigkeit geführt. Dieser Zusammenhang führt zur Definition der kinetischen Energie.
+
+\begin{importantbox}[]{Definition: Kinetische Energie}
+    Die kinetische Energie (Bewegungsenergie) eines Körpers der Masse $m$, der sich mit dem Tempo $v = |\ivec{v}|$ bewegt, ist
+    \begin{equation}\label{eq:kinetische_energie}
+        E_{\text{kin}} = \frac{1}{2}mv^2 \mDot
+    \end{equation}
+    Die kinetische Energie hängt nur vom Betrag der Geschwindigkeit ab, $v^2 = |\ivec{v}|^2$. 
+\end{importantbox}
+Das obige Ergebnis -- 
+\begin{equation}
+    W = \frac{1}{2} m v_\text{E}^2 - \frac{1}{2} m v_\text{A}^2 = E_{\text{kin,E}} - E_{\text{kin,A}} = \Delta E_{\text{kin}}    
+\end{equation}
+-- ist als Arbeit-Energie-Satz bekannt.
+
+\begin{rememberbox}[]{Arbeit-Energie-Satz}
+    Die von allen äußeren Kräften an einem freien Körper verrichtete Gesamtarbeit $W_{\text{ges}}$ entspricht der Änderung seiner kinetischen Energie $\Delta E_{\text{kin}}$
+    \begin{equation}\label{eq:arbeit_energie_satz}
+        W_{\text{ges}} = \Delta E_{\text{kin}}\mDot
+    \end{equation}
+\end{rememberbox}
+
+\subsection{Potenzielle Energie}\label{subsec: potentielle_energie}
+Während die Arbeit an einem freien Teilchen nur dessen kinetische Energie ändert, kann die \textbf{Arbeit}, die \textbf{an einem System} (\zB Erde-Teilchen-System) mit inneren konservativen Kräften verrichtet wird, als \textbf{potenzielle Energie (Lageenergie)} gespeichert werden. 
+\begin{figure}[htb]
+    \centering
+    \resizebox{0.5\linewidth}{!}{    
+    \begin{tikzpicture}[
+        particle/.style={
+            draw=black,
+            fill=yellow!60!orange!70, % Eine passende gelb-orange Füllfarbe
+            minimum size=0.7cm
+        },
+        force_arrow/.style={
+            -Stealth, % Pfeilspitze vom Typ "Stealth"
+            blue!80!cyan,
+            very thick, opacity=0.15
+        }
+        ]    
+        % 5. Das externe Kraftfeld (blaue Pfeile)
+        \begin{scope}[yshift=-0cm]
+            \foreach \y in {-2,0,2,4,6,8,10} {
+                \foreach \x in {-3,-1,1,3,5,7} {
+                    \draw[force_arrow] (\x, \y) -- ++(0, 0.8);
+                }
+            }
+        \end{scope}
+        % 1. Die Systemgrenze (gestricheltes Rechteck mit abgerundeten Ecken)
+        \draw[gray, dashed, dash pattern=on 5pt off 4pt, rounded corners=12pt, line width=1.1pt, fill=white, fill opacity=0.4] (-2, -1) rectangle (6.5,9.5) node[anchor=north east, pos=0.96, gray, fill=white, fill opacity=0.8, text opacity=1] {\Large Systemgrenze};
+    
+        \draw[-{Stealth}, line width=1.2pt] (-2.4, 0) -- (5.95, 0) node[right] {\large $x$};
+        \draw[-{Stealth}, line width=1.2pt] (-1.1, -1.5) -- (-1.1, 6) node[above=3pt] {\large $y$};
+        
+        \node[particle, circle] (lower_particle) at (2, 4.9) [label={[label distance=0.05cm]0:\large $h_\text{A}$}] {};
+        \node[particle, circle,dashed,  draw=gray, fill opacity=0.86] (upper_particle) at (2, 7.8) [label={[label distance=0.05cm]0:\large $h_\text{E}$}] {};
+        \draw[-{Stealth[length=3.3mm]}, red, line width=2pt] (lower_particle.south) ++(0, -0.1) -- ++(0, -1.2)
+              node[midway, left=2pt] {\Large $\vec{F}_{\text{G}}(h_\text{A})$};
+        \draw[-{Stealth[length=3.3mm]}, red!40!white, line width=2pt] (upper_particle.south) ++(0, -0.1) -- ++(0, -1.2) node[midway, left=2pt] {\Large $\vec{F}_{\text{G}}(h_\text{E})$};
+        \node[circle, fill=purple!70!cyan, minimum size=6cm] at (2,0) {\Large Erde};
+    
+        % 6. Die Formel für die externe Kraft
+        \node[below=0cm, blue!70!white] at (6.5,-2.2) {\large $F_y^{\text{ext}}(y) = \text{const}$};
+    \end{tikzpicture}
+    }
+    \caption{Eine konstante äußere Kraft $F_y^{\text{ext}}$ wirkt auf ein Teilchen, das Teil eines Systems (Erde-Teilchen) ist. Das Teilchen wird dabei von $h_\text{A}$ nach $h_\text{E}$ gehoben. Dabei wird an dem Erde-Teilchen System eine Arbeit verrichtet, die zur Erhöhung der potenziellen Energie führt.}
+    \label{fig: lageenergie_erde_teilchen}
+\end{figure}
+
+Betrachten wir das orangefarbene Teilchen der Masse $m$ in \cref{fig: lageenergie_erde_teilchen}, das von einer externen Kraft $F_{y}^{\text{ext}}(y) = \const$ (\zB unsere Hand) von der Höhe $h_{\text{A}}$ auf die Höhe $h_E$ langsam angehoben wird, wobei wir annehmen, dass $h_\text{A}$ und $h_\text{E}$ viel kleiner als der Erdradius sind, sodass die Gravitationskraft als konstant angesehen werden kann. Die externe Kraft muss daher genau der Gravitationskraft entgegenwirken, weshalb $F_y^{\text{ext}} = mg$. Die von der externen Kraft verrichtete Arbeit ist:
+\begin{equation}
+    W^{\text{ext}} = \int_{h_{\text{A}}}^{h_{\text{E}}} F_y^{\text{ext}} \dd y = \int_{h_{\text{A}}}^{h_{\text{E}}} mg\, \dd y = mg\cdot y \,\bigg|_{h_{\text{A}}}^{h_{\text{E}}} = mg \left( h_{\text{E}} - h_{\text{A}} \right) = mg \Delta h\mDot
+\end{equation}
+Da die Bewegung langsam erfolgt, ist die Geschwindigkeitsänderung und somit $\Delta E_{\text{kin}} \approx 0$. Die zugeführte Arbeit $W$ wurde also im System als Lageenergie gespeichert. Diese gespeicherte Energie nennen wir potenzielle Energie. Die Änderung der potenziellen Energie ist gleich der von der \textit{externen Kraft} verrichteten Arbeit:
+\begin{equation}
+    W^{\text{ext}} = \Delta E_{\text{pot}} \mDot
+\end{equation}
+Wenn wir die Situation aus der Sicht des konservativen Kraftfeldes (hier: Gravitationsfeld) betrachten, so wird gegen das Gravitationsfeld Arbeit verrichtet $W_{\text{G}} = -W^{\text{ext}} = -mg \Delta h$. Die externe Arbeit leistet gegen das Gravitationskraftfeld eine Arbeit und erhöht dabei die potenzielle Energie des Systems. Dies motiviert die folgende allgemeine Definition für konservative Kräfte:
+{\text{ext}}
+\begin{importantbox}[]{Definition: Potenzielle Energie}
+    Die Änderung der potenziellen Energie $\Delta E_{\text{pot}}$ in einem konservativen Kraftfeld ist definiert als die negative Arbeit, die vom konservativen Kraftfeld $\ivec{F} = \ivec{F}_{\text{kons}}$ verrichtet wird: 
+    \begin{equation}\label{eq: potenzielle_energie_def}
+        W^{\text{int}} = \int_{P_1}^{P_2} \ivec{F} \cdot \dd\ivec{r} \defeq -\Delta E_{\text{pot}}\mComma
+    \end{equation}
+    wobei $\Delta E_{\text{pot}} = E_{\text{pot}}(P_2) - E_{\text{pot}}(P_1) $. Folglich gilt:
+    \begin{itemize}[itemsep=1.5pt]
+        \item Verrichtet das Feld Arbeit ($W^{\text{int}} > 0$ für $\ivec{F} \cdot \dd \ivec{r} > 0$), \textbf{sinkt} die potenzielle Energie. 
+        \item Wird gegen das Feld Arbeit verrichtet ($W^{\text{int}} < 0$ für $\ivec{F} \cdot \dd \ivec{r} < 0$), \textbf{steigt} die potenzielle Energie. 
+    \end{itemize}
+    Der absolute Wert der potenziellen Energie ist nicht festgelegt; nur ihre Differenz ist physikalisch relevant. Man kann den Nullpunkt der potenziellen Energie beliebig wählen. 
+\end{importantbox}
+
+\begin{examplebox}[breakable]{Beispiel: Potenzielle Energie im Schwerefeld der Erde}
+    Wir betrachten eine Masse von $m = \SI{15}{\kilo\gram}$, die in der Nähe der Erdoberfläche gehoben und gesenkt wird. Das Gravitationsfeld übt eine konstante Kraft $\ivecS{F}{\text{G}} = m\cdot\ivec{g}$ aus, wobei die Erdbeschleunigung $\ivec{g}$ in die $-z$-Richtung zeigt und $g \approx \SI{9.81}{\meter\per\second\squared}$. Wir legen den Nullpunkt der potenziellen Energie auf die Erdoberfläche bei $z=0$, wodurch $h = \Delta h$. 
+
+    \begin{enumerate}
+        \item \textbf{Anheben der Masse um \SI{3}{\meter}:}
+        Um die Masse um die Höhe $h = \SI{3}{\meter}$ anzuheben, muss eine externe Kraft entgegen der Schwerkraft wirken, die mindestens so groß ist wie die Gewichtskraft $\ivec{F}^{\text{ext}} = -\ivecS{F}{\text{G}} = +m g \ivecS{e}{z}$. Die Arbeit $W^{\text{ext}}$, die von dieser externen Kraft verrichtet wird, beträgt:
+        \begin{equation}
+            W^{\text{ext}} = \int_0^{h} \ivec{F}^{\text{ext}} \cdot \dd \ivec{r}  = m \cdot g \cdot h = \SI{15}{\kilo\gram} \cdot \SI{9.81}{\meter\per\second\squared} \cdot \SI{3}{\meter} = \SI{441.45}{\joule} \mDot
+        \end{equation}
+        Diese verrichtete Arbeit wird vollständig in eine Erhöhung der potenziellen Energie der Masse umgewandelt. Die Änderung der potenziellen Energie ist also positiv:
+        \begin{equation}
+            \Delta E_{\text{pot}} = E_{\text{pot}}(h) - E_{\text{pot}}(0) = W^{\text{ext}} = \SI{+441.45}{\joule} \mDot
+        \end{equation}
+        Gleichzeitig verrichtet das konservative Gravitationsfeld eine negative Arbeit $W_\text{G} = W^{\text{int}} = -W^{\text{ext}}$, da die Gravitationskraft der Bewegungsrichtung entgegengesetzt ist ($\ivec{g} \propto -\dd \ivec{r}$). Gemäß der Definition ist 
+        \begin{equation}
+            \Delta E_{\text{pot}} = -W^{\text{int}} = -(-\SI{441.45}{\joule}) = \SI{+441.45}{\joule} \mDot
+        \end{equation}
+
+        \item \textbf{Absenken der Masse um \SI{3}{\meter}:}
+        Wird die Masse nun wieder auf ihre ursprüngliche Höhe ($z=0$) abgesenkt, verrichtet das Gravitationsfeld positive Arbeit, da die Kraft des Feldes nun in die gleiche Richtung wie die Bewegung zeigt:
+        \begin{equation}
+             W_\text{G} = W^{\text{int}} = \int_h^{0} \ivecS{F}{\text{G}} \cdot \dd \ivec{r} = m \cdot g \cdot h = \SI{441.45}{\joule} \mDot
+        \end{equation}
+        Die potenzielle Energie der Masse nimmt dabei ab, da die Änderung der potenziellen Energie gleich der negativen Arbeit ist, die vom konservativen Feld verrichtet wird:
+         \begin{equation}
+            \Delta E_{\text{pot}} = E_{\text{pot}}(0) - E_{\text{pot}}(h) = - W_\text{G} = \SI{-441.45}{\joule} \mDot
+        \end{equation}
+        Die potenzielle Energie, die beim Anheben gespeichert wurde, wird beim Absenken wieder freigesetzt.
+    \end{enumerate}
+\end{examplebox}
+
+\section{Erhaltung der mechanischen Energie}\label{sec: erhaltung_mechanische_energie}
+Wir kombinieren nun die bisherigen Erkenntnisse für ein System, in dem nur konservative Kräfte wirken. Aus dem Arbeit-Energie-Satz wissen wir, dass die vom Feld verrichtete Arbeit die kinetische Energie ändert:
+\begin{equation}
+    W = \Delta E_{\text{kin}} = E_{\text{kin}}(P_2) - E_{\text{kin}}(P_1) \mDot
+\end{equation}
+Gleichzeitig gilt nach der Definition der potenziellen Energie:
+\begin{equation}
+    W = -\Delta E_{\text{pot}} = -(E_{\text{pot}}(P_2) - E_{\text{pot}}(P_1)) = E_{\text{pot}}(P_1) - E_{\text{pot}}(P_2) \mDot
+\end{equation}
+Durch Gleichsetzen der beiden Ausdrücke für $W$ erhalten wir: 
+\begin{equation}
+    E_{\text{kin}}(P_2) - E_{\text{kin}}(P_1) = E_{\text{pot}}(P_1) - E_{\text{pot}}(P_2) \mDot
+\end{equation}
+Umsortieren der Terme nach den Punkten $P_1$ und $P_2$ führt zum Erhaltungssatz der mechanischen Energie:
+\begin{equation}
+    E_{\text{kin}}(P_1) + E_{\text{pot}}(P_1) = E_{\text{kin}}(P_2) + E_{\text{pot}}(P_2) \mDot
+\end{equation}
+
+\begin{importantbox}{Erhaltungssatz der mechanischen Energie}
+    In einem abgeschlossenen System, in dem nur konservative Kräfte wirken, ist die Summe aus kinetischer und potenzieller Energie – die mechanische Gesamtenergie $E$ – zu allen Zeiten konstant. 
+    \begin{equation}\label{eq:mechanische_energieerhaltung}
+        E_{\text{mech}} = E_{\text{kin}} + E_{\text{pot}} = \const \mDot
+    \end{equation}
+\end{importantbox}
+
+
+\section{Das Federpendel}\label{sec: beispiel_federpendel}
+Wir betrachten einen Block, der reibungsfrei auf einem Tisch gleiten kann und dabei, befestigt an einer Feder, schwingt. Dies ist ein Paradebeispiel für die Anwendung der Energieerhaltung.
+
+\subsection{Arbeit einer Feder}\label{subsec: arbeit_feder}
+Eine ideale Feder übt eine Kraft aus, die durch das Hookesche Gesetz beschrieben wird. Wenn die Ruhelage der Feder bei $x_0=0$ liegt, ist die Federkraft:
+\begin{equation}
+    F_x = -kx \mComma
+\end{equation}
+wobei $k$ die Federkonstante und $x$ die momentane Auslenkung aus der Ruhelage ist. Obwohl auf den Block auch noch die Gewichtskraft und die Normalkraft vom Tisch wirken, verrichten diese beiden Kräfte keine Arbeit, da sie normal auf die Bewegungsrichtung stehen. \\
+
+Die Arbeit, die von der Feder verrichtet wird, wenn der Block von einer Anfangsposition $x_\text{A}$ zu einer Endposition $x_\text{E}$ bewegt wird, ist:
+\begin{equation}\label{eq: arbeit_feder}
+    W_{\text{Feder}} = \int_{x_\text{A}}^{x_\text{E}} F_x \cdot \dd x = \int_{x_\text{A}}^{x_\text{E}} (-kx) \dd x = \left. -k \frac{x^2}{2}\right|_{x_\text{A}}^{x_\text{E}} = -\left(\frac{1}{2}k x_\text{E}^2 - \frac{1}{2}k x_\text{A}^2 \right) \mDot
+\end{equation}
+Da die Arbeit nur von den Endpunkten abhängt, ist die Federkraft eine konservative Kraft. Das Resultat zeigt, dass für 
+\begin{itemize}
+    \item $x_\text{E} > x_\text{A} \Rightarrow W_\text{Feder} < 0$ -- die Feder verrichtet Arbeit am Block, 
+    \item $x_\text{A} > x_\text{E} \Rightarrow W_\text{Feder} > 0$ -- der Block verrichtet Arbeit an der Feder.
+\end{itemize}
+
+\subsection{Potenzielle Energie einer Feder}\label{subsec: potentielle_energie_feder}
+Wir können die potenzielle Energie der Feder mit \cref{eq: potenzielle_energie_def} und \cref{eq: arbeit_feder} bestimmen. Wir definieren den Nullpunkt der potenziellen Energie in der Ruhelage der Feder, \gDh $E_{\text{pot}}(x=0) \defeq 0$. Die potenzielle Energie bei einer Auslenkung von $0$ nach $x$ ist dann:
+\begin{align*}
+    \Delta E_{\text{pot}} = E_{\text{pot}}(x) - \underbrace{E_{\text{pot}}(0)}_{=0} &= -W_{\text{Feder}} = -\left[-\left( \frac{1}{2}k x^2 - \frac{1}{2}k \cdot 0^2 \right)\right] \\
+    \Rightarrow E_{\text{pot}}(x) &= \frac{1}{2}kx^2 \mDot
+\end{align*}
+
+\begin{rememberbox}{Potenzielle Energie einer Feder}
+    Die in einer um $x$ aus ihrer Ruhelage ausgelenkten Feder gespeicherte potenzielle Energie beträgt:
+    \begin{equation}\label{eq:potenzielle_energie_feder}
+        E_{\text{pot}}^{\text{Feder}} = \frac{1}{2}kx^2 \mDot
+    \end{equation}
+\end{rememberbox}
+
+\subsection{Energieerhaltung beim Federpendel}\label{subsec: energieerhaltung_federpendel}
+Für das System aus Masse und (masseloser) Feder lautet die mechanische Gesamtenergie:
+\begin{equation}
+    E_{\text{mech}} = E_{\text{kin}} + E_{\text{pot}} = \frac{1}{2}mv^2 + \frac{1}{2}kx^2 \mDot
+\end{equation}
+Da keine nicht-konservativen Kräfte (wie Reibung) wirken, bleibt diese Gesamtenergie erhalten. Die Energie wird nur periodisch zwischen potenzieller und kinetischer Energie umgewandelt, während ihre Summe konstant bleibt.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Bilder/Kapitel_ArbeitEnergie/energieerhaltung_federpendel.png}
+    \caption{Die, auf die Gesamtenergie normierte, potenzielle (blau), kinetische (orangen) und konstante Gesamtenergie (grün) eines idealen Federpendels als Funktion der normierten Auslenkung $x/x_\text{max}$.}
+    \label{fig: federpendel_energie_diagramm}
+\end{figure}
+
+\begin{examplebox}[breakable]{Schwingung eines Federpendels}
+    Ein Block mit Masse $m$ wird an einer Feder mit Federkonstante $k$ befestigt. Das System wird um eine Strecke $x_\text{S}$ ausgelenkt und aus der Ruhe losgelassen. 
+
+    \textbf{1. Anfangszustand (maximale Auslenkung $x=x_\text{S}$):}\\
+    
+    Der Block ist anfangs in Ruhe ($v=0$), also ist die kinetische Energie null. Die potenzielle Energie ist demnach maximal.
+    \begin{equation}\label{eq: e_total_feder_max_auslenkung}
+        E_{\text{total}} = E_{\text{kin}} + E_{\text{pot}} = 0 + \frac{1}{2}kx_\text{S}^2 = \frac{1}{2}kx_\text{S}^2 \mDot
+    \end{equation}
+
+    \textbf{2. Zustand in der Ruhelage ($x=0$):}
+    Wenn der Block die Ruhelage durchläuft, ist die potenzielle Energie der Feder null (per Definition). Die gesamte Energie liegt als kinetische Energie vor. Die Geschwindigkeit ist hier maximal ($v=v_{\text{max}}$).
+    \begin{equation}\label{eq: e_total_feder_ruhelage}
+        E_{\text{total}} = E_{\text{kin}} + E_{\text{pot}} = \frac{1}{2}mv_{\text{max}}^2 + 0 \mDot
+    \end{equation}
+    Durch Gleichsetzen von \cref{eq: e_total_feder_max_auslenkung,eq: e_total_feder_ruhelage} findet man die maximale Geschwindigkeit
+    \begin{equation}
+        \frac{1}{2}kx_\text{S}^2 = \frac{1}{2}mv_{\text{max}}^2 \implies v_{\text{max}} = \sqrt{\frac{k}{m}} \cdot |x_\text{S}| \mDot
+    \end{equation}
+\end{examplebox}
+
+
+
+
+\section{Allgemeiner Energieerhaltungssatz}\label{sec: allgemeiner_energieerhaltungssatz}
+In der realen, makroskopischen Welt treten oft nicht-konservative Kräfte wie Reibung auf. Diese Kräfte sind \textbf{dissipativ}, das heißt, sie wandeln mechanische Energie in andere Energieformen um, typischerweise in Wärmeenergie (innere Energie). Dadurch nimmt die mechanische Gesamtenergie eines Systems ab.
+
+Der Energieerhaltungssatz ist jedoch ein universelles Prinzip, wenn man \textit{alle} Energieformen berücksichtigt.
+\begin{importantbox}{Allgemeiner Energieerhaltungssatz}
+    Die Gesamtenergie eines \textbf{abgeschlossenen} (isolierten) Systems ist immer konstant. Energie kann ihre Form ändern (z.B. mechanisch, thermisch, chemisch, nuklear, elektromagnetisch), aber die Gesamtsumme bleibt erhalten. 
+    \begin{equation}
+        E_{\text{total}} = E_{\text{mech}} + E_{\text{Wärme}} + E_{\text{chem}} + E_{\text{Kern}} + \dots = \const
+    \end{equation}
+    Für ein \textbf{offenes} System kann sich die Gesamtenergie ändern, aber nur um den Betrag, der mit der Umgebung ausgetauscht wird. 
+\end{importantbox}
+Zwei Beispiele für nichtkonservative Systeme: 
+\begin{itemize}
+    \item Bei chemischen Reaktionen kann die Summe aus mechanischer Energie und Wärmeenergie unter Umständen nicht erhalten bleiben, wenn ein Anteil der Energie in gewissen Molekülstrukturen und deren Umwandlung gespeichert wird. 
+    \item Bei der Kernspaltung, zerfällt ein Atom in kleinere Atome. Das größere Ausgangsatom hat eine größere Bindungsenergie als die Zerfallsprodukte und ein Teil der dabei freiwerdenden Energie, wird in Form von elektromagnetische Strahlung abgegeben [$\beta$- und $\gamma$-Strahlung]). 
+\end{itemize}
+
+
+

@@ -1,0 +1,282 @@
+\chapter{Gravitation}\label{chap: gravitation}
+
+Die Erforschung des Himmels und der Bewegung der Gestirne zählt zu den ältesten wissenschaftlichen Bestrebungen der Menschheit. Über Jahrhunderte dominierte das geozentrische Weltbild von Ptolemäus, welches die Erde im Zentrum des Universums sah. Erst im 16. Jahrhundert revolutionierte Nikolaus Kopernikus mit seinem heliozentrischen Modell, das die Sonne in den Mittelpunkt rückte, dieses Dogma. Obwohl das kopernikanische Modell in seiner ursprünglichen Form noch von perfekten Kreisbahnen ausging, legte es den Grundstein für eine präzisere Beschreibung des Kosmos.
+
+Auf diesem Fundament baute Johannes Kepler auf. Anhand der außerordentlich genauen und umfangreichen astronomischen Daten, die ein Kollege, Tycho Brahe, über Jahrzehnte gesammelt hatte, gelang es Kepler, die tatsächliche Form der Planetenbahnen zu entschlüsseln. Er erkannte, dass die Planeten sich nicht auf Kreisen, sondern auf Ellipsen bewegen und dass ihre Geschwindigkeit entlang dieser Bahn variiert. Diese revolutionären Erkenntnisse fasste er zwischen 1609 und 1619 in drei fundamentalen Gesetzen zusammen, die nicht nur die Planetenbewegung exakt beschrieben, sondern auch den Weg für Isaac Newtons universelles Gravitationsgesetz ebneten.
+
+\section{Die Keplerschen Gesetze} \label{sec: keplerschen_gesetze}
+
+\subsection{Erstes Keplersches Gesetz}\label{subsec: kepler1}
+Das erste Gesetz bricht mit der antiken Vorstellung perfekter Kreisbahnen.
+
+\begin{rememberbox}[]{1. Keplersches Gesetz (Planetengesetz)}
+Die Planeten bewegen sich auf Ellipsen, in deren einem Brennpunkt die Sonne steht. 
+\end{rememberbox}
+
+Eine Ellipse ist geometrisch definiert als die Menge aller Punkte, für die die Summe der Abstände zu zwei festen Punkten, den Brennpunkten, konstant ist. Im Kontext der Planetenbahnen ist diese Ellipse dargestellt in \cref{fig: kepler1_ellipse} befindet sich die Sonne in einem dieser Brennpunkte. Der sonnennächste Punkt der Bahn wird als \textbf{Perihel} und der sonnenfernste als \textbf{Aphel} bezeichnet. Die Länge der großen Halbachse wird mit $a$ und die der kleinen Halbachse mit $b$ beschrieben. Die numerische Exzentrizität $\varepsilon$ beziffert die Abweichung der Ellipse von einer Kreisform -- für $\varepsilon = 0$ wird die Ellipse zu einem Kreis.
+
+\begin{figure}[htb]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/planetenbahn_aphel_perihel.png} 
+    \resizebox{0.55\linewidth}{!}{
+    \begin{tikzpicture}
+        [dot/.style={circle, fill=black}]
+        % --- Definitionen ---
+        % Diese Werte können Sie anpassen, um die Form der Ellipse zu ändern
+        \def\a{3}      % Große Halbachse
+        \def\e{0.50}    % Numerische Exzentrizität (epsilon)
+        \pgfmathsetmacro{\b}{\a*sqrt(1-\e^2)} % Kleine Halbachse
+        \pgfmathsetmacro{\f}{\a*\e}           % Abstand des Brennpunkts vom Zentrum
+        \def\planetangle{40}                  % Winkel für die Position des Planeten
+        % --- Achsen zeichnen ---
+        \draw (-\a - 1.0, 0) -- (\a + 1.0, 0); % Horizontale Achse
+        \draw (0, -\b - 0.7) -- (0, \b + 0.7); % Vertikale Achse
+        % --- Elliptische Umlaufbahn ---
+        \draw[green!30!black, line width=1mm, smooth] (0,0) ellipse (\a cm and \b cm);
+        % --- Sonne (S) im Brennpunkt ---
+        % Ein Knoten für den Punkt und das Label "S" darunter
+        \node[dot,inner sep=2.5pt, label={[label distance=1.mm]below:Sonne}] (sun) at (\f,0) {};
+        % --- Planet ---
+        % Positioniert den Planeten auf der Ellipse
+        \coordinate (planet_pos) at (\planetangle:\a cm and \b cm);
+        \node[dot,inner sep=2.0pt,label=above right:Planet] at (planet_pos) {};
+        % --- Vektor r(t) ---Stealth, length=2mm
+        \draw[-{Stealth[length=3mm, width=2mm]}, line width=0.5mm] (sun) -- (planet_pos) 
+              node[pos=0.65, left=2pt] {\large $\vec{r}(t)$};
+        % --- Beschriftungen ---
+        \node[anchor=south east, inner sep=3pt] at (-\a,0) {Aphel};
+        \node[anchor=south west, inner sep=3pt] at (\a,0) {Perihel};
+        \node[anchor=north, inner sep=3pt] at (-\a/2, 0) {\large $a$};
+        \node[anchor=west, inner sep=3pt] at (0, \b/2) {\large $b$};
+        % Abstand 'a * epsilon'
+        % Striche im Zentrum und am Brennpunkt zur Markierung der Distanz
+        \draw[line width=0.5mm] (0, 10pt) -- (0, 4pt);
+        \draw[line width=0.5mm] (\f, 10pt) -- (\f, 4pt);
+        \node[anchor=south] at (\f/2, 0.2) {\large $a \cdot \varepsilon$};
+        \draw[|{Latex}-{Latex}|] (0,0.24) -- ({\a*\e},0.24);
+    \end{tikzpicture}
+    }
+    \caption{Eine elliptische Planetenbahn um die Sonne, die in einem der beiden Brennpunkte steht. Dargestellt sind die große Halbachse $a$, die kleine Halbachse $b$ sowie Perihel, Aphel und der Ortsvektor $\protect\ivec{r}$ (Fahrstrahl) eines Planeten.}
+    \label{fig: kepler1_ellipse}
+\end{figure}
+
+\subsection{Zweites Keplersches Gesetz}
+\label{ssec:kepler2}
+Das zweite Gesetz beschreibt die Geschwindigkeit eines Planeten auf seiner Umlaufbahn.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweites_keplersches_gesetz.png} 
+    \caption{Veranschaulichung des zweiten Keplerschen Gesetzes. In gleichen Zeitintervallen $\Delta t$ überstreicht der Fahrstrahl $\protect\ivec{r}(t)$ gleiche Flächen ($A_1 = A_2$).}
+    \label{fig: kepler2_flaechensatz}
+\end{figure}
+\begin{rememberbox}[]{2. Keplersches Gesetz (Flächensatz)}
+Der Fahrstrahl (der Verbindungsvektor von der Sonne zum Planeten) überstreicht in gleichen Zeiten gleiche Flächen. 
+\end{rememberbox}
+
+Das bedeutet, dass ein Planet sich schneller bewegt, wenn er sich näher an der Sonne befindet (im Perihel), und langsamer, wenn er weiter entfernt ist (im Aphel). Wenn die in der \cref{fig: kepler2_flaechensatz} dargestellten Flächen $A_1$ (nahe dem Aphel) und $A_2$ (nahe dem Perihel) in derselben Zeitspanne $\Delta t$ überstrichen werden, so sind diese Flächen gleich groß: $A_1 = A_2$. 
+
+\paragraph{Herleitung aus der Drehimpulserhaltung}
+Das zweite Keplersche Gesetz ist eine direkte Konsequenz der \textbf{Drehimpulserhaltung} für eine Zentralkraft. Betrachten wir ein infinitesimales Zeitintervall $\dd t$, in dem der Planet eine Strecke $\dd\ivec{s} = |\ivec{v}| \dd t$ zurücklegt, dargestellt in \cref{fig: kepler2_herleitung}. Die dabei überstrichene Fläche $\dd A$ kann durch die Fläche eines Dreiecks mit den Eckpunkten ($S, P_1, P_2$) angenähert werden. Die Seitenlängen betragen $\ivec{r}(t)$, $\ivec{r}(t+\dd t)$ und $\dd\ivec{r}$, wobei $\dd \ivec{r} = \ivec{r}(t+\dd t) - \ivec{r}(t)$. Wir wissen ja bereits aus \cref{subsubsec: herleitung_bogenlänge_sehnenlänge}, dass $\lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| = \Delta s$ (\cref{eq: sehnenlänge_gleich_bogenlänge}), weshalb diese Näherung für $\dd t \to 0$ gegen die Fläche $\dd A$ konvergiert.
+\begin{figure}[htb]
+    \centering
+     %\includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweites_keplersches_gesetz_Zeitintervall.png} 
+    \resizebox{0.55\linewidth}{!}{
+    \begin{tikzpicture}[
+        vec/.style={-{Stealth}, ultra thick, red!50!black},
+        point/.style={fill, circle, inner sep=0.2pt}, 
+        arrow_2/.style={-{Stealth[length=4mm, width=2mm]}, line width=1.6pt, black}
+        ]
+        \def\myradius{6.5cm} % Radius des Kreises
+        \def\angleA{0}     % Winkel für Punkt A (in Grad)
+        \def\angleB{35}     % Winkel für Punkt B (in Grad)
+        \def\vecLen{2.1cm}      % Länge der Geschwindigkeitsvektoren
+        \def\fontSize{\large}
+        % --- 2. Koordinaten definieren ---
+        \coordinate (C) at (0,0);
+        \coordinate (A) at (\angleA:\myradius);
+        \coordinate (B) at (\angleB:\myradius);    
+        % --- 3. Kreisbahn zeichnen ---
+        \draw[thick] (\angleA-10:\myradius) arc (\angleA-10:\angleB+10:\myradius);
+        \path[fill=red!10, draw=black] (C) -- (A) arc (\angleA:\angleB:\myradius) -- cycle;    
+        % --- 4. Radien und Punkte zeichnen ---
+        \draw[arrow_2] (C) -- (A) node[pos=0.5, below=2pt,sloped] {\large $\ivec{r}(t)$};
+        \draw[arrow_2] (C) -- (B) node[pos=0.5, above=2pt,sloped] {\large $\ivec{r}(t+\dd t)$};
+        % --- 5. Winkel und Bogenlänge beschriften ---
+        \draw[-{Stealth}] (\angleA:1.8cm) arc (\angleA:\angleB:1.8cm);
+        \node at ({(\angleA+\angleB)/2}:1.3cm) {\fontSize $\dd \varphi$};
+        % --- 6. Geschwindigkeitsvektoren ---
+        \draw[vec] (A) -- ++(\angleA+90:\vecLen) node[pos=0.5, right=3.0pt] {\fontSize $\ivec{v}(t)$};
+        \draw[dashed, black, line width=1.1pt] (A) -- (B);
+        % Für Δr: Linie vom Mittelpunkt der Sehne (A)--(B)
+        \coordinate (M_chord) at ($(A)!0.35!(B)$);
+        \draw[-, thick, black] (M_chord) -- (5.5,0.7) node[below] {\fontSize $\dd \ivec{r}$};
+        
+        % Für Δs: Linie vom Mittelpunkt des Bogens zwischen A und B
+        \coordinate (M_arc) at ({(3*\angleA+7*\angleB)/(10)}:\myradius);
+        \node[font=\large, right=3pt] at (M_arc) {\fontSize $\dd s = |\ivec{v}|\, \dd t$};
+    
+        \node[point, label={[label distance=3pt]below:$S$}] at (C) {};
+        \node[point, label={[label distance=0pt]below right:$P_1$}] at (A) {};
+        \node[point, label={[label distance=1pt]above right:$P_2$}] at (B) {};
+    
+        \node[font=\Large\bfseries] at (barycentric cs:C=1,A=1.2,B=1.2) {$\dd A$};
+    \end{tikzpicture}
+    }
+    \caption{Das infinitesimale Flächenelement $\dd A$, das vom Fahrstrahl $\protect\ivec{r}(t)$ in der Zeit $\dd t$ überstrichen wird.}
+    \label{fig: kepler2_herleitung}
+\end{figure}
+
+Die Fläche dieses Dreiecks ist die Hälfte des Betrags des Kreuzprodukts\footnote{Der Betrag des Kreuzprodukts ergibt die Fläche des aufgespannten Parallelogramms.} der beiden aufspannenden Vektoren:
+\begin{equation}\label{eq: dA_element}
+    \dd A = \frac{1}{2} |\ivec{r} \times \dd\ivec{r}|  \mDot
+\end{equation}
+Die differentielle Verschiebung kann im Limes durch $\dd \ivec{r} \approx \dd \ivec{s} = \ivec{v} \dd t$ ersetzt werden und man erhält
+\begin{equation}
+    \dd A = \frac{1}{2} |\ivec{r} \times \ivec{v} \dd t|
+\end{equation}
+Die \textbf{Flächengeschwindigkeit} ist somit die zeitliche Änderung der Fläche
+\begin{equation}\label{eq: flaechengeschwindigkeit}
+    \frac{\dd A}{\dd t} = \frac{1}{2} |\ivec{r}(t) \times \ivec{v}(t)| \mDot
+\end{equation}
+Wenn wir den Impuls $\ivec{p} = m\ivec{v}$ einsetzen, indem wir $\ivec{v}$ durch $\ivec{p}$ ersetzen und dafür die rechte Seite durch $m$ dividieren, erkennen wir den Zusammenhang mit dem Drehimpuls $\ivec{L} = \ivec{r} \times \ivec{p}$:
+\begin{equation}
+    \frac{\dd A}{\dd t} = \frac{1}{2m} |\ivec{r}(t) \times \ivec{p}(t)| = \frac{|\ivec{L}(t)|}{2m}
+    \label{eq:flaechengeschwindigkeit_drehimpuls}
+\end{equation}
+Da das zweite Keplersche Gesetz besagt, dass die Flächengeschwindigkeit konstant ist ($\dd A/\dd t = \const$), folgt daraus direkt, dass auch der Betrag des Drehimpulses $|\ivec{L}|$ konstant sein muss. Dies ist immer der Fall, wenn die wirkende Kraft (hier die Gravitationskraft) eine Zentralkraft ist, d.h. immer auf das Zentrum (die Sonne) gerichtet ist.
+
+
+
+
+\subsection{Drittes Keplersches Gesetz}
+\label{ssec:kepler3}
+Das dritte Gesetz stellt einen Zusammenhang zwischen den Umlaufzeiten und den Bahngrößen der Planeten her.
+
+\begin{rememberbox}{3. Keplersches Gesetz (Periodengesetz)}
+Die Quadrate der Umlaufzeiten ($T_1, T_2$) zweier Planeten verhalten sich wie die Kuben (dritten Potenzen) der großen Halbachsen ($a_1, a_2$) ihrer Bahnen. 
+\begin{equation}\label{eq: kepler3}
+    \frac{T_1^2}{T_2^2} = \frac{a_1^3}{a_2^3} \mDot
+\end{equation}
+\end{rememberbox}
+Dies impliziert, dass der Quotient $T^2/a^3 = \const$ für alle Planeten, die um dasselbe Zentralgestirn (die Sonne) kreisen. Planeten auf größeren Bahnen benötigen also überproportional länger für einen Umlauf.
+
+\section{Newtonsches Gravitationsgesetz}\label{sec: newton_gravitation}
+Während Keplers Gesetze die Planetenbewegungen phänomenologisch beschrieben, war es Isaac Newton, der die dahinterliegende physikalische Ursache aufdeckte. Er postulierte, dass dieselbe Kraft, die einen Apfel zu Boden fallen lässt, auch die Planeten auf ihren Bahnen um die Sonne hält: die universelle \textbf{Massenanziehung} oder \textbf{Gravitation}. In diesem Abschnitt möchten wir zeigen, dass die Form der Gravitationskraft direkt aus den Keplerschen Gesetzen folgt.\\ 
+
+Nach Newtons drittem Axiom (\gDQ{Actio gleich Reactio}) muss die Anziehungskraft zwischen zwei Körpern proportional zu beiden Massen, $m_1$ und $m_2$, sein: 
+\begin{equation}
+    F_{\text{G}} \propto m_1 \cdot m_2 \mDot
+\end{equation}
+Nun setzen wir einen Proportionalitätsfaktor $G$ ein. Außerdem wissen wir aus dem zweiten Keplerschen Gesetz, dass die Kraft vom Abstand $r$ der beiden Massen abhängen muss: 
+\begin{equation}
+    F_{\text{G}} = G \cdot m_1 \cdot m_2 \cdot f(r) \mDot
+\end{equation}
+Die genaue funktionale Abstandsabhängigkeit $f(r)$ dieser Kraft leitete Newton aus dem dritten Keplerschen Gesetz her, indem er den Spezialfall einer kreisförmigen Planetenbahn betrachtete ($\varepsilon=0$, also $a=r$) -- siehe \cref{fig: planet_kreisbahn}. 
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.45\linewidth}{!}{
+    % Planetenbahn um die Sonne als Ellipse (Aphel, Perihel, Fahrstrahl)
+    \begin{tikzpicture}[dot/.style={circle, fill=black}]
+        % Diese Werte können Sie anpassen, um die Form der Ellipse zu ändern
+        \def\a{3}      % Große Halbachse
+        \def\e{0.0}    % Numerische Exzentrizität (epsilon)
+        \pgfmathsetmacro{\b}{\a*sqrt(1-\e^2)} % Kleine Halbachse
+        \pgfmathsetmacro{\f}{\a*\e}           % Abstand des Brennpunkts vom Zentrum
+        \def\planetangle{40}                  % Winkel für die Position des Planeten
+        % --- Achsen zeichnen ---
+        \draw (-\a - 1.0, 0) -- (\a + 1.0, 0); % Horizontale Achse
+        \draw (0, -\b - 0.7) -- (0, \b + 0.7); % Vertikale Achse
+        % --- Elliptische Umlaufbahn ---
+        \draw[green!50!blue, line width=1mm, smooth] (0,0) ellipse (\a cm and \b cm);
+        % --- Sonne (S) im Brennpunkt ---
+        \node[dot,inner sep=2.5pt, label={[label distance=0.2mm]below right:Sonne}] (sun) at (\f,0) {};
+        % --- Planet ---
+        % Positioniert den Planeten auf der Ellipse
+        \coordinate (planet_pos) at (\planetangle:\a cm and \b cm);
+        \node[dot,inner sep=2.0pt,label=above right:Planet] at (planet_pos) {};
+        % --- Vektor r(t) ---Stealth, length=2mm
+        \draw[-{Stealth[length=3mm, width=2mm]}, line width=0.5mm] (sun) -- (planet_pos) 
+              node[pos=0.65, left=5pt] {\large $\vec{r}(t)$};
+        % --- Beschriftungen ---
+        \node[anchor=north, inner sep=3pt] at (-\a/2, 0) {\large $a = r$};
+        % Striche im Zentrum und am Brennpunkt zur Markierung der Distanz
+    \end{tikzpicture}   
+    }
+    \caption{Ein Planet, der eine Kreisbahn um die Sonne ausführt.}
+    \label{fig: planet_kreisbahn}
+\end{figure}
+Für eine gleichförmige Kreisbewegung mit Radius $r$ und Winkelgeschwindigkeit $\omega$ muss die Gravitationskraft $F_{\text{G}}$ die benötigte Zentripetalkraft $F_{\text{Zp}}$ aufbringen, um einen Planeten der Masse $m$ auf seiner Bahn zu halten: 
+\begin{equation}\label{eq: grav_vs_zentri}\begin{gathered}
+    F_\text{G} = F_\text{Zp} \\
+    \implies G \cdot M \cdot m \cdot f(r) = m \omega^2 r
+\end{gathered}\end{equation}
+wobei $m$ die Planetenmasse, $M$ die Sonnenmasse und $G$ die Gravitationskonstante ist.
+
+Das dritte Keplerschen Gesetz, $T^2/a^3 = \const$, wird für eine Kreisbahn ($a=r$) zu $T^2/r^3 = c = \const$. Mit der allgemeinen Beziehung für Umlaufzeiten $T = 2\pi/\omega$ folgt:
+\begin{equation}\label{eq: omega_from_kepler3}
+    \frac{T^2}{r^3} = \frac{(2\pi/\omega)^2}{r^3} = c \quad \implies \quad \omega^2 = \frac{4\pi^2}{c} \frac{1}{r^3} \mDot
+\end{equation}
+Setzt man diesen Ausdruck für $\omega^2$ in Gleichung \ref{eq: grav_vs_zentri} ein, erhält man:
+\begin{equation}
+    G \cdot M \cdot m \cdot f(r) = m \left( \frac{4\pi^2}{c} \frac{1}{r^3} \right) r = \left( \frac{4\pi^2}{c} \right) \cdot m \cdot \frac{1}{r^2}
+\end{equation}
+Durch Vergleich der Terme erkennt man, dass $4\pi^2 /c = G\cdot M$ und dass die Abstandsabhängigkeit der Kraft $f(r) = 1/r^2$ sein muss. Durch diese Betrachtung findet man demnach wiederum das Newtonsche Gravitationsgesetz. 
+
+\begin{rememberbox}[]{Newtonsches Gravitationsgesetz}
+Zwei beliebige Massenpunkte $m_1$ und $m_2$ im Abstand $r$ ziehen sich mit einer Kraft $\ivecS{F}{\text{G}}$ an, deren Betrag proportional zum Produkt der Massen und umgekehrt proportional zum Quadrat ihres Abstandes ist. 
+\begin{equation}
+    \ivecS{F}{\text{G}, 2 \to 1} = -G \frac{m_1 m_2}{r^2} \ivecS{e}{2\rightarrow 1}
+    \label{eq:newton_gravitation}
+\end{equation}
+Die \textbf{Gravitationskonstante} hat den Wert $G \approx \SI{6.67e-11}{\newton\metre\squared\per\kilogram\squared}$. 
+\end{rememberbox}
+
+\section{Erste kosmische Geschwindigkeit (Umlaufgeschwindigkeit)}\label{sec: erste_kosmische_geschwindigkeit}
+Coming soon ...
+
+\section{Zweite kosmische Geschwindigkeit (Fluchtgeschwindigkeit)}\label{sec: zweite_kosmische_geschwindigkeit}
+Mit dem Gravitationsgesetz können wir berechnen, welche Geschwindigkeit ein Objekt benötigt, um das Schwerefeld eines Himmelskörpers, wie zum Beispiel der Erde, dauerhaft zu verlassen. Diese Geschwindigkeit wird als zweite kosmische Geschwindigkeit oder \textbf{Fluchtgeschwindigkeit} bezeichnet.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweite_kosmische_geschwindigkeit.png} 
+    \caption{Ein Objekt wird von der Oberfläche eines Himmelskörpers (Masse $M$, Radius $R$) mit der Anfangsgeschwindigkeit $\protect\ivec{v}_0$ senkrecht nach oben abgefeuert.}
+    \label{fig: zweite_kosmische_geschwindigkeit}
+\end{figure}
+Im Gegensatz zur konstanten Erdbeschleunigung $g$ in Bodennähe ist die Gravitationsbeschleunigung allgemein ortsabhängig: $a(r) = -GM/r^2$. Wir betrachten ein Objekt der Masse $m$, das von der Erdoberfläche (Radius $R$) senkrecht nach oben geschossen wird. Da die Beschleunigung vom Ort $r$ und nicht von der Zeit $t$ abhängt, formen wir den Beschleunigungsterm um, wobei wir nur an den Beträgen der Größen interessiert sind und daher nicht vektoriell rechnen:
+\begin{equation}\label{eq: a_v_dv_dr}
+    a = \frac{\dd v}{\dd t} = \frac{\dd v}{\dd r} \frac{\dd r}{\dd t} = v \frac{\dd v}{\dd r} \mDot  
+\end{equation}
+Setzen wir dies in die Bewegungsgleichung ein, erhalten wir eine Differentialgleichung, die durch Trennung der Variablen lösbar ist:
+\begin{equation}\label{eq: dgl_flucht}
+    a= v \frac{\dd v}{\dd r} = -\frac{GM}{r^2} \quad \implies \quad v \, \dd v = -\frac{GM}{r^2} \, \dd r
+\end{equation}
+Wir integrieren nun von den Anfangsbedingungen -- Start an der Erdoberfläche $r_0 = R$ mit Anfangsgeschwindigkeit $v_0$ -- bis zu einem variablen Endpunkt (Höhe $r_\text{f}$ mit Endgeschwindigkeit $v_\text{f}$): 
+\begin{align}
+    \int_{v_0}^{v_{\text{f}}} v \, \dd v &= \int_{R}^{r_{\text{f}}} -\frac{GM}{r^2} \, \dd r \\
+    \left. \frac{1}{2} v^2 \right|_{v_0}^{v_{\text{f}}} &= \left. \frac{GM}{r} \right|_{R}^{r_{\text{f}}} \\
+    \frac{1}{2}(v_{\text{f}}^2 - v_0^2) &= GM \left( \frac{1}{r_{\text{f}}} - \frac{1}{R} \right) \mDot
+\end{align}
+Auflösen nach der Endgeschwindigkeit $v_{\text{f}}^2$ ergibt:
+\begin{equation}\label{eq: vf_general}
+    v_{\text{f}}^2 = v_0^2 + 2GM \left( \frac{1}{r_{\text{f}}} - \frac{1}{R} \right)\mDot
+\end{equation}
+Um die maximale Höhe $h_{\text{max}}$ zu finden, die bei einer Anfangsgeschwindigkeit $v_0$ erreicht wird, ersetzen wir $r_{\text{f}}$ durch $r_{\text{f}} = R + h_{max}$. Für den Umkehrpunkt gilt außerdem $v_{\text{f}} = 0$: 
+\begin{equation}
+    0 = v_0^2 - 2GM \left( \frac{1}{R} - \frac{1}{R+h_{max}} \right) = v_0^2 - 2GM \frac{h_{max}}{R(R+h_{max})} \mDot
+\end{equation}
+Mit der Erdbeschleunigung an der Oberfläche, $g = GM/R^2$, lässt sich dies umformen zu
+\begin{equation}\label{eq: hmax}
+    v_0^2 = \frac{2gR h_{max}}{R+h_{max}} \quad \implies \quad h_{max} = \frac{v_0^2 R}{2gR - v_0^2} \mDot
+\end{equation}
+Aus dieser Gleichung wird ersichtlich, dass die maximale Höhe $h_{max}$ unendlich wird, wenn der Nenner gegen Null geht. Dies geschieht, wenn die Anfangsgeschwindigkeit $v_0$ einen kritischen Wert erreicht.
+
+\begin{importantbox}{Zweite kosmische Geschwindigkeit $v_{II}$}
+Die Fluchtgeschwindigkeit ist die minimale Anfangsgeschwindigkeit, die ein Objekt benötigt, um das Gravitationsfeld eines Himmelskörpers ohne weiteren Antrieb zu verlassen ($h_{max} \to \infty$). Man erhält sie, indem man den Nenner in Gleichung \ref{eq: hmax} gleich null setzt:
+\begin{equation}
+    v_0^2 = 2gR \quad \implies \quad v_0 = v_{II} = \sqrt{2gR}
+    \label{eq:v_escape}
+\end{equation}
+Für die Erde beträgt die Fluchtgeschwindigkeit etwa $\SI{11.2}{\kilo\metre\per\second}$. 
+\end{importantbox}
+

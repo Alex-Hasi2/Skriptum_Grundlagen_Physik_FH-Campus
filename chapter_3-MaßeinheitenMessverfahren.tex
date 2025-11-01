@@ -1,0 +1,309 @@
+\chapter{Maßeinheiten und Messverfahren}\label{chap: MasseinheitenMessverfahren}
+Eine objektive Naturbeschreibung soll durch quantitative (zahlenmäßige) Zusammenhänge dargestellt werden. Dies wird durch das Messen physikalischer Größen erreicht. Dies bedarf Einigkeit über die Maßeinheit von physikalischen Größen. Grundlage dafür ist ein international einheitliches System von Maßeinheiten, das \textit{Internationale Einheitensystem} (SI).
+\subsubsection{Was ist eine Messung?}
+Eine Messung ist fundamental ein Vergleich. Man vergleicht die zu messende Eigenschaft eines Objekts (\zB die Länge eines Tisches) mit einer bekannten Größe derselben Art (\zB dem Urmeter). Das Ergebnis der Messung, der Messwert, gibt an, wie oft die Maßeinheit in der zu messenden Größe enthalten ist.
+\begin{importantbox}[]{}
+    Eine Messung ist immer ein Vergleich zweier Größen. Jede Messung besteht aus zwei Teilen: dem \textbf{Zahlenwert} und der \textbf{Einheit} (Maßeinheit).
+\end{importantbox}
+Um die Wiederholbarkeit einer Messung zu garantieren, definiert man Normale (Standards), mit denen eine physikalische Größe verglichen werden sol, wie beispielsweise das Urmeter. Da nicht jede Messung mit diesem ausgezeichneten Normal verglichen werden kann, werden Kopien angefertigt, die als Messstandards ausgegeben werden. Damit Messgeräte vergleichbar und korrekt eingestellt sind, müssen Messgeräte regelmäßig überprüft werden. Hierbei unterscheidet man drei wesentliche Verfahren:
+
+\begin{rememberbox}[]{}
+Der Vergleich mit dem Normal ist die \textbf{Eichung}. Die Eichung entspricht einer Qualitätsprüfung des Messgeräts (keine Manipulation des Geräts). 
+
+Die \textbf{Kalibrierung} ist die Ermittlung des Zusammenhangs zwischen Ausgabewerten eines Messgeräts und den zugehörigen Werten des Normals. 
+
+Die \textbf{Justierung} ist ein Eingriff am Messgerät, bei dem es auf einen Sollwert eingestellt wird.
+\end{rememberbox}
+Eine Eichung ist eine (meist rechtlich verpflichtende) Feststellung der Abweichung des Messwerts vom gültigen Normal (Standard). Bei der Kalibrierung wird der Zusammenhang zwischen den angezeigten Messwerten und den Sollwerten (des Normals) eruiert. Schließlich wird ein Messgerät mittels Justierung bestmöglich auf die Sollwerte eingestellt. \\
+
+Jede physikalische Größe kann prinzipiell nicht genauer gemessen werden, als das entsprechende Normal definiert ist. \\
+Es stellt sich nun die Frage, wie viele Grundgrößen und damit Normale braucht man in der Physik? 
+
+\section{SI-Basiseinheiten}\label{sec: SI-Basiseinheiten}
+Die gesamte moderne Physik und Technik basiert auf einem System von nur sieben fundamentalen Grundgrößen, den sogenannten SI-Basiseinheiten (Le Système International d’Unités). Alle anderen physikalischen Einheiten (wie Geschwindigkeit, Kraft oder Energie) können von diesen sieben abgeleitet werden.
+\begin{rememberbox}[]{}
+Es gibt 7 Basiseinheiten und daraus leitet man alle anderen Einheiten durch Multiplikation oder Division ab.
+\end{rememberbox}
+
+\begin{center}
+\begin{NiceTabularX}{\textwidth}{X c c c} % NiceTabularX verwenden
+\CodeBefore
+  \rowcolor{boxcol_title_blue}{1} % Färbt die erste Zeile
+  \rowcolors{2}{white}{boxcol_back_lblue} 
+\Body
+\toprule
+\textbf{Größe} & \textbf{Einheit} & \textbf{Einheitensymbol} & \textbf{Formelsymbol} \\
+\midrule
+Zeit & Sekunde & \si{\second} & $t$ \\
+Länge & Meter & \si{\meter} & $\ivec{s}$ \\
+Masse & Kilogramm & \si{\kilogram} & $m$ \\
+elektrische Stromstärke & Ampere & \si{\ampere} & $I$ \\
+Temperatur & Kelvin & \si{\kelvin} & $T$ \\
+Stoffmenge & Mol & \si{\mol} & $n$ \\
+Lichtstärke & Candela & \si{\candela} & $I_V$ \\
+\bottomrule
+\end{NiceTabularX}
+\end{center}
+\vspace{1cm}
+
+\subsection{Zeit}\label{subsec: SI-Zeit}
+Im Alltag werden oft größere, von der Sekunde abgeleitete Einheiten wie die Minute oder die Stunde verwendet. Die moderne Definition der Sekunde über die Schwingungen einer Atomuhr wurde eingeführt, da die frühere astronomische Definition, die auf der Erdrotation basierte, für wissenschaftliche Zwecke nicht ausreichend konstant und präzise ist.
+\begin{importantbox}[]{Sekunde}
+Die Maßeinheit der \textbf{Zeit} ist die \textbf{Sekunde}. Das Formelzeichen der Zeit ist $t$ und das Einheitszeichen der Sekunde ist $\si{\second}$. 
+\tcblower
+Eine Sekunde ist über einen Hyperfeinstrukturübergang\footnotemark{} des $^{133}\text{Cs}$ Atoms definiert. Indem man die Frequenz dieses Übergangs mit $\nu = \SI{9 162 631 770}{\hertz}$ definiert, ist eine Sekunde die Zeitdauer von $\num{9 162 631 770}$ Schwingungen dieser Strahlung.  
+\end{importantbox}
+\footnotetext{Neben den Hauptquantenzahlen und der Feinstrukturaufspaltung gibt es noch die Hyperfeinstrukturaufspaltung. Sie entsteht durch die Kopplung des magnetischen Moments des Atomkerns $\mu_I$ mit dem Magnetfeld der Elektronen $B_J$.}
+
+\subsection{Länge}\label{subsec: SI-Länge}
+Die ursprüngliche Definition des Meters aus dem 18. Jahrhundert war als der zehnmillionste Teil der Entfernung vom Nordpol zum Äquator festgelegt, was die enge historische Verbindung zur Vermessung der Erde verdeutlicht. Heute ist die hochpräzise Längenmessung, etwa mittels Laser-Interferometrie, eine direkte technologische Anwendung seiner Definition über die Lichtgeschwindigkeit.
+\begin{importantbox}[]{Meter}
+Die Maßeinheit der \textbf{Länge} ist der \textbf{Meter}. Das Formelzeichen der Länge ist $s$ und das Einheitszeichen des Meters ist $\si{\meter}$. 
+\tcblower
+Indem die Lichtgeschwindigkeit im Vakuum auf $c = \SI{299 792 458}{\meter\per\second}$ festgelegt wurde\footnotemark{}, ist ein Meter genau die Länge, die Licht in $(1/\num{299 792 458})\,\si{\second}$ zurücklegt.
+\end{importantbox}
+\footnotetext{Das ist höchst praktikabel, da aus der Speziellen Relativitätstheorie nur hervorgeht, dass es eine konstante Lichtgeschwindigkeit im Vakuum geben muss. Ihr Zahlenwert ist aber frei wählbar.}
+
+\subsection{Masse}\label{subsec: SI-Masse}
+Es ist wichtig, die Masse als eine intrinsische Eigenschaft von Materie vom Gewicht zu unterscheiden, welches die Kraft darstellt, die durch die Gravitation auf eine Masse wirkt $F_G = m\cdot g$. Die Neudefinition von 2018 war notwendig, da das physische Urkilogramm über die Zeit an Masse verlor und somit keine stabile Referenz mehr darstellte.
+\begin{importantbox}[]{Kilogramm}
+Die Maßeinheit der \textbf{Masse} ist das \textbf{Kilogramm}. Das Formelzeichen der Masse ist $m$ und das Einheitszeichen des Kilogramms ist $\si{\kilo\gram}$. 
+\tcblower
+Seit 2018 ist die Masse über den Zahlenwert des Planckschen Wirkungsquantums $h = \num{6.62607015e-34}$ festgelegt\footnotemark{}. Die Einheit von $h$ ist $[h] = \si{\kilo\gram \meter^2 \second^{-1}}$.
+\end{importantbox}
+\footnotetext{Seit 1799 (bzw. 1889) war die Masse über das Urkilogramm definiert: Ein Platin-Iridium Zylinder dessen Masse mit $\SI{1}{\kilo\gram}$ definiert wurde.}
+
+\subsection{Stoffmenge}\label{subsec: SI-Stoffmenge}
+Das Mol dient in der Chemie als unverzichtbare Brücke, um die unsichtbare mikroskopische Welt der Atome und Moleküle mit der makroskopischen Welt zu verbinden, die wir im Labor wiegen können. Es erlaubt Chemikern, Reaktionsgleichungen nicht nur qualitativ, sondern auch quantitativ zu beschreiben und umzusetzen.
+\begin{importantbox}[]{Mol}
+Die Maßeinheit der \textbf{Stoffmenge} ist das \textbf{Mol}. Das Formelzeichen der Stoffmenge ist $n$ und das Einheitszeichen ist \si{\mol}.
+\tcblower
+Ein Mol enthält genau \num{6.02214076e23} Einzelteilchen. Der Zahlenwert entspricht der Avogadro-Konstante $N_A$, welche die Einheit $\si{\mol^{-1}}$ hat.\footnotemark{}
+\end{importantbox}
+\footnotetext{Die Definition hat sich ebenfalls 2018 geändert. Davor war $\SI{1}{\mol}$ die Stoffmenge, die aus ebenso vielen Teilchen besteht, wie Atome in \SI{0.012}{\kilo\gram} $^{12}\text{C}$ enthalten sind.}
+Die Anzahl der Teilchen $N$ in $n$ Mole ist $N = n \cdot N_A$.
+
+\subsection{Elektrische Stromstärke}\label{subsec: SI-Stromstärke}
+Ein Ampere beschreibt die Flussrate elektrischer Ladung -- es entspricht einem Fluss von etwa $\num{6.24e18}$ Elementarladungen (\zB Elektronen) pro Sekunde durch den Querschnitt eines Leiters. Diese Einheit ist die Grundlage für viele andere elektrische Maßeinheiten wie Volt oder Ohm.
+\begin{importantbox}[]{Ampere}
+Die Maßeinheit der \textbf{elektrischen Stromstärke} ist das \textbf{Ampere}. Das Formelzeichen der Stromstärke ist $I$ und das Einheitszeichen von Ampere ist \si{\ampere}.
+\tcblower
+Seit 2018 ist das Ampere über den Zahlenwert der Elementarladung $e = \num{1.602176634e-19}$ festgelegt.\footnotemark{} Die Einheit von $e$ ist eigentlich Coulomb \si{\coulomb}, dies entspricht aber $\SI{1}{\coulomb} = \SI{1}{\ampere\second}$.
+\end{importantbox}
+\footnotetext{Vor der Neudefinition war das Ampere höchst umständlich über die Kraft zwischen zwei stromdurchflossenen, unendlich langen dünnen Leitern definiert.}
+
+\subsection{Temperatur}\label{subsec: SI-Temperatur}
+Die Kelvin-Skala ist eine absolute Temperaturskala, die am absoluten Nullpunkt ($\SI{0}{\kelvin}$) beginnt – der theoretisch kältesten möglichen Temperatur, bei der keine thermische Bewegung der Teilchen mehr stattfindet. Eine Temperaturdifferenz von einem Kelvin entspricht exakt der von einem Grad Celsius, jedoch sind die Nullpunkte verschoben, $\SI{0}{\celsius} = \SI{273.15}{\kelvin}$.
+\begin{importantbox}[]{Kelvin}
+Die Maßeinheit der \textbf{Temperatur} ist das \textbf{Kelvin}. Das Formelzeichen der Temperatur ist $T$ und das Einheitszeichen ist \si{\kelvin}.
+\tcblower
+Die Temperatur ist ebenfalls seit 2018 über den Zahlenwert einer Naturkonstante definiert. Der Zahlenwert der Boltzmann-Konstanten wurde mit $k = \num{1.380649e-23}$ festgelegt.\footnotemark{} Die Einheit von $k$ ist $[k] = \si{\kilogram\meter^2\second^{-2}\kelvin^{-1}}$.
+\end{importantbox}
+\footnotetext{Von 1954 an war die Temperatur über den Tripelpunkt des Wassers definiert: \SI{1}{\kelvin} ist der $273,16$te Teil der thermodynamischen Temperatur des Tripelpunktes von Wasser.}
+
+\subsection{Lichtstärke}\label{subsec: SI-Lichtstärke}
+Die Candela ist eine photometrische Größe, das heißt, sie berücksichtigt die unterschiedliche Helligkeitsempfindlichkeit des menschlichen Auges für verschiedene Farben. Unser Auge ist für grünes Licht, nahe der Frequenz in der Definition, am empfindlichsten, weshalb eine grüne Lichtquelle bei gleicher physikalischer Leistung als heller wahrgenommen wird als etwa eine rote oder blaue.
+\begin{importantbox}[]{Candela}
+Die Maßeinheit der \textbf{Lichtstärke} ist die \textbf{Candela}. Das Formelzeichen der Lichtstärke ist $I_v$ und das Einheitszeichen von Candela ist \si{\candela}.
+\tcblower
+Die Candela ist gleich der Lichtstärke einer Strahlungsquelle in einer gegebenen Richtung, welche eine monochromatische Strahlung mit einer Frequenz von $\SI{540e12}{\hertz}$ aussendet und deren Strahlstärke $\frac{\SI{1}{\watt}}{\SI{683}{\steradian}}$ in dieser Richtung beträgt.\footnotemark{}
+\end{importantbox}
+\footnotetext{Das \textbf{Steradiant} ist die Einheit des Raumwinkels.}
+
+
+\section{Winkeleinheiten}\label{sec: Winkeleinheiten}
+Die beiden folgenden Winkeleinheiten sind keine der $7$ Basisgrößen, aber deren Verwendungen hat sich in den Naturwissenschaften universell durchgesetzt, dass sie hier behandelt werden sollen.
+\subsection{Ebener Winkel}\label{subsec: ebener_Winkel}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Bilder/Kapitel_Grundlagen/radiant_Circle.png} 
+    \caption{Die Bogenlänge $L$ eines Kreissektors mit Radius $r$ und Winkel $\alpha$.}
+\end{figure}
+Der \textbf{Radiant} ist ein Winkelmaß, bei dem der Winkel durch die entsprechende Länge des Kreisbogens im Einheitskreis angegeben wird. Die Bogenlänge eines Kreissektors ist $L = r \cdot \alpha$.
+\begin{importantbox}[]{}
+    $\SI{1}{\radian}$ ist jener Winkel, der im Einheitskreis ($r = \SI{1}{\meter}$) eine Bogenlänge von $\SI{1}{\meter}$ ergibt: $\alpha = L/r$. 
+\end{importantbox}
+
+Das Formelzeichen eines ebenen Winkels ist meist ein griechischer Buchstabe $\alpha, \beta, \gamma, \ldots$ und das Einheitszeichen ist $\si{\radian}$. Radiant ist \textbf{einheitenlos}, hat aber dennoch ein Einheitszeichen.
+
+Die Umrechnung von Radiant auf Grad erfolgt über die Bogenlänge des gesamten Einheitskreises:
+\begin{equation*}\begin{aligned}
+    2\pi\,\si{\radian} &= \ang{360} \\
+    \Rightarrow \SI{1}{\radian} &= \frac{\ang{360}}{2\pi} \approx 57,2958^\circ
+\end{aligned}\end{equation*}
+
+\subsection{Raumwinkel}\label{subsec: Raumwinkel}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Bilder/Kapitel_Grundlagen/steradiant_sphere.png} 
+    \caption{Der Kegel mit Öffnungswinkel $\Omega$ schneidet aus der Kugeloberfläche (Radius $r$) die Fläche $A$.}
+\end{figure}
+Der Steradiant ist die Maßeinheit für den Raumwinkel. Unter dem Raumwinkel $\Omega$ versteht man das Verhältnis $\Omega = A/r^2$, wobei $r$ der Kugelradius und $A$ der Teil der Kugeloberfläche ist, der von einem Kegel mit Öffnungswinkel $\Omega$ und der Spitze im Mittelpunkt der Kugel ausgeschnitten wird.
+
+\begin{importantbox}[]{}
+    $\SI{1}{\steradian}$ ist jener Raumwinkel (eines Kegels), der auf der Oberfläche der Einheitskugel ($r = \SI{1}{\meter}$) eine Fläche von $\SI{1}{\meter^2}$ ausschneidet: $\Omega = A/r^2$. 
+\end{importantbox}
+
+Das Formelzeichen des Raumwinkels ist $\Omega$, das Einheitszeichen ist \si{\steradian}.
+
+Steradiant ist ebenfalls \textbf{einheitenlos} hat aber dennoch ein Einheitszeichen. Die Oberfläche einer Kugel ist $S = 4\pi r^2$. Durch das Bilden des Verhältnisses $\Omega = A/r^2$ wird der Raumwinkel einheitenlos und unabhängig vom Radius der Kugel. 
+
+
+\section{Darstellung von Zahlenwerten und Einheiten}\label{sec: Zahlenwerte_Einheiten} 
+\begin{itemize}
+    \item \textbf{Variablen und Formelsymbole} werden in der Regel \textit{kursiv} geschrieben. \newline
+    \textbf{Zahlenwerte und Einheitensymbole} werden \textbf{nicht} kursiv geschrieben.
+
+    \item Zwischen dem Zahlenwert und der Einheit wird ein Leerzeichen eingefügt. 
+
+    \item Einheiten sind keine Abkürzungen und haben daher keinen Abkürzungspunkt.
+
+    \item Einheitensymbole haben keine Mehrzahl.
+
+    \item Verhältnisse werden in der Wissenschaft nicht mittels \gDQ{p} (per) in der Einheit ausgedrückt, da p für das Präfix \gDQ{pico} reserviert ist. 
+    Stattdessen können Verhältnisse mit negativen Exponenten oder mit dem Geteiltzeichen (/) dargestellt werden. 
+    Keine Doppelbrüche verwenden! Zur besseren Lesbarkeit darf (muss eventuell) geklammert werden.
+
+    \item Intervalle können entweder mittels Halbgeviertstrichs (--) oder dem Zwischenwort \gDQ{bis} angegeben werden.
+
+    \item Messtoleranzen werden mittels $\pm$ angegeben. Die Einheit kann dabei auch zweimal angegeben werden.
+\end{itemize}
+
+\subsection*{Beispiele}
+
+\renewcommand{\arraystretch}{1.5} % Erhöht den Zeilenabstand in der Tabelle
+\begin{tabular}{p{0.3\linewidth} p{0.3\linewidth} p{0.4\linewidth}}
+    \cellcolor{mygreen} \textbf{Richtig} & \cellcolor{myred} \textbf{Falsch} & \cellcolor{mygray} \textbf{Begründung} \\
+    \hline
+    $v = \frac{s}{t}$ & v = s/t & Variablen nicht kursiv \\
+    \hline
+    $U = R \cdot I$ & U = R * I & Variablen nicht kursiv \\
+    \hline
+    $U = \SI{230}{\volt}$ & $U = 230\si{\volt}$ & Kein Leerzeichen \\
+    \hline
+    $R = \SI{3}{\ohm}$ & $R = 3\mathit{\Omega}$ & Einheitensymbol kursiv \\
+    \hline
+    $\mathit{\Omega} = \SI{3}{\steradian}$ & $\Omega = \SI{3}{\steradian}$ & Formelzeichen nicht kursiv \\
+    \hline
+    $s = \SI{3}{\centi\meter}$ & $s = \SI{3}{\centi\meter}.$ & mit Punkt \\
+    \hline
+    $s = \SI{3}{\centi\meter}$ & $s = \SI{3}{cms}$ & Einheiten haben keinen Plural \\
+    \hline
+    $n = \SI{15000}{\minute^{-1}}$ & $n = \num{15000}\,\mathrm{rpm}$ & rpm ist keine anerkannte Einheit \\
+    \hline
+    $v = \SI{30}{\kilo\meter\per\hour}$ & $v = \num{30}\,\mathrm{kph}$ & kph ist keine anerkannte Einheit \\
+    \hline
+    $\frac{\si{\meter^2}}{\si{\second^2 \ampere}}$, \si{\meter^2 \per(\second^2\ampere)}, \si{\meter^2 \second^{-2}\ampere^{-1}} & $\frac{\si{\meter^2}}{\si{\second^2}}/\si{\ampere}$, $\si{\meter\per\second^2\per\ampere}$ & Doppelbruch, mehrdeutig \\
+    \hline
+    $\SIrange{1}{3}{\mega\hertz}$, $\numrange[range-phrase = \text{--}]{1}{3}\,\si{\mega\hertz}$ & \texttt{1-3 MHz} & falscher Strich/Hyphen \\
+    \hline
+    \SI{1}{\mega\hertz} bis \SI{3}{\mega\hertz} & $1-3 \si{\mega\hertz}$ & falscher Strich/Hyphen\\
+    \hline
+    $123 \pm \SI{5}{\gram}$, \SI{123(5)}{\gram} &  &  \\
+\end{tabular}
+
+\section{Umrechnung von Einheiten}\label{sec: Umrechnung_Einheiten}
+Zwei physikalische Größen $A, B$ lassen sich nur dann sinnvoll addieren oder subtrahieren,  
+\begin{equation}
+    C = A \pm B \mComma
+\end{equation}
+wenn sie nicht nur dieselben Dimensionen, sondern auch dieselben Einheiten besitzen.
+Oftmals werden einfache Umrechnungen im Kopf durchgeführt, wenn die Einheiten nicht ident sind, wie zum Beispiel $\SI{3}{\meter} + \SI{20}{\centi\meter} = \SI{3.2}{\meter}$. Dieses Beispiel dient lediglich der Illustration und solche Gleichungen sollten vermieden werden. \\
+
+Das Umrechnen von Einheiten in andere Maßeinheiten ist in der Praxis häufig notwendig. Es kann zum Beispiel gewünscht oder notwendig sein, Ergebnisse in andere Einheiten umzurechnen:
+\begin{gather}
+    \SI{0.00176}{\second} = \SI{1.76}{\milli\second} \mComma \label{eq: Umrechnung_s_ms}\\
+    \SI{3}{\kilo\watt\hour} = \SI{10.8}{\mega\joule} \mDot \label{eq: Umrechnung_kwh_mj}    
+\end{gather}
+Im ersten Fall, \cref{eq: Umrechnung_s_ms}, wird die Einheit mittels Präfix skaliert. Hat man noch wenig Erfahrung damit, geht man am besten Schrittweise vor:  
+\begin{equation}
+    \SI{0.00176}{\second} = \num{0.00176}\cdot \underbrace{10^3\cdot 10^{-3}}_{1} \,\si{\second} = \num{1.76} \cdot \underbrace{10^{-3}}_{\textrm{milli}} \,\si{\second} =\SI{1.76}{\milli\second}\mDot
+\end{equation}
+Im zweiten Fall, \cref{eq: Umrechnung_kwh_mj}, wird in eine gänzlich andere Einheit umgerechnet, nämlich von $\textrm{Wh}$ in $\si{\joule}$. Auch hier geht man am besten Schrittweise vor. Zunächst bestimmen wir die Umrechnung der einzelnen Teile, 
+\begin{gather*}
+    \SI{1}{\watt} = \SI{1}{\joule\per\second}\; , \\
+    \SI{1}{\hour} = \SI{60}{\minute} = 60\cdot 60 \si{\second} = \SI{3600}{\second}\mDot\\
+\end{gather*}
+Damit wandeln wir nun die $\SI{3}{\kilo\watt\hour}$ um:
+\begin{equation}
+    3 \underbrace{\textrm{k}}_{10^3} \underbrace{\textrm{W}}_{\si{\joule/\second}} \underbrace{\textrm{h}}_{\SI{3600}{\second}} = 3\cdot \underbrace{\left(10^3 \frac{\si{\joule}}{\si{\second}} \right)}_{\si{\kilo\watt}} \cdot \underbrace{(\SI{3600}{\second})}_{\si{\hour}} = 3\cdot 3600\cdot 10^3 \si{\joule} = 10800 \cdot 10^3 \si{\joule} = \SI{10.8}{\mega\joule}\mDot
+\end{equation}
+Oft kann man Berechnungen einfach anhand der Einheiten durchführen, indem man mit der Einheit der gesuchten Größe beginnt. 
+
+\begin{rememberbox}[]{}
+    Es gibt nur eine Möglichkeit dieselben Einheiten auf zulässige Weise zu einer neuen physikalischen Größe zusammenzusetzen. Einheiten sind demnach eindeutig.
+\end{rememberbox}
+
+\begin{examplebox}[]{Beispiel}
+    \textbf{Kosten pro gefahrenem Kilometer}
+    Sie fragen sich, wie viel jeder gefahrene Kilometer mit dem Auto kostet. Das Ergebnis wird also die Einheit [€/km] haben. Sie haben aber nur den Preis pro Liter Treibstoff [$\num{1.56}$ €/l] und wissen, dass ihr Auto $\num{5.2}$ Liter pro $\SI{100}{\kilo\meter}$ verbraucht. \\
+    
+    \textit{Lösung:}
+    \begin{gather*}
+        \frac{\sEUR}{\si{\kilo\meter}} = \frac{\sEUR}{\si{\liter}} \cdot \frac{\si{\liter}}{\si{\kilo\meter}} \\
+        \num{1.56}\,\frac{\sEUR}{\si{\liter}} \cdot \num{5.2}\,\frac{\si{\liter}}{\SI{100}{\kilo\meter}} = \num{8.112}\,\frac{\sEUR}{\SI{100}{\kilo\meter}} \approx \num{0.08}\,\frac{\sEUR}{\si{\kilo\meter}}
+    \end{gather*}
+    Bei einem Preis von $\num{1.56}$ €/l und einem Verbrauch von $\num{5.2}$ Liter pro $\SI{100}{\kilo\meter}$ kostet jeder gefahrene Kilometer $\num{0.08}$ €.
+\end{examplebox}
+
+\section{Dimensionsanalyse}\label{sec: Dimensionsanalyse}
+Die Dimension einer physikalischen Größe gibt an, was gemessen wird, zum Beispiel eine \textit{Masse}, \textit{Länge} oder \textit{Zeit}. Auf der Suche nach Zusammenhängen zwischen physikalischen Größen abstrahiert man Einheiten auf ihre Dimensionen (so eliminiert man Präfixe). Es spielt zunächst keine Rolle, ob die Länge in einer Formel in $\si{\meter}$ oder $\si{\centi\meter}$ angegeben wird. Man gibt die Dimension einer Größe oft in eckigen Klammern an
+\begin{center}
+\begin{NiceTabularX}{\textwidth}{X c X c} % NiceTabularX verwenden
+\CodeBefore
+  \rowcolor{boxcol_title_blue}{1} % Färbt die erste Zeile
+  \rowcolors{2}{white}{boxcol_back_lblue} 
+\Body
+\toprule
+\textbf{Größe} & \textbf{Zeichen} & \textbf{Dimension} & \textbf{Einheit} \\ \midrule
+Flächeninhalt & $A$ & $[A] = L^2$ & $\Unit{m^2}$ \\ \hline
+Volumen & $V$ & $[V] = L^3$ & $\Unit{m^3}$ \\ \hline
+Geschwindigkeit & $v$ & $[v] = L/T$ & $\Unit{m/s}$ \\ \hline
+Beschleunigung & $a$ & $[a] = L/T^2$ & $\Unit{m/s^2}$ \\ \hline
+Kraft & $F$ & $[F] = M L/T^2$ & $\Unit{kg \cdot m/s^2}$ \\ \hline
+Druck & $p$ & $[p] = M/(L \cdot T^2)$ & $\Unit{kg/(m \cdot s^2)}$ \\ \hline
+Dichte & $\rho$ & $[\rho] = M/L^3$ & $\Unit{kg/m^3}$ \\ \hline
+Energie & $E$ & $[E] = ML^2/T^2$ & $\Unit{kg \cdot m^2/s^2}$ \\ \hline
+\bottomrule
+\end{NiceTabularX}
+\end{center}
+
+
+\begin{examplebox}[]{Beispiel}
+\textbf{Die Dimension des Drucks} \\
+Der Druck $p$ in einer bewegten Flüssigkeit hängt von ihrer Dichte $\rho$ und von ihrer Geschwindigkeit $v$ ab. Gesucht ist eine einfache Kombination von Dichte und Geschwindigkeit, die die richtige Dimension des Drucks ergibt.
+
+\textbf{Problembeschreibung:} Der Druck hat die Dimension $[p] = \frac{M}{L \cdot T^2}$, die Dichte die Dimension $[\rho] = \frac{M}{L^3}$ und die Geschwindigkeit die Dimension $[v] = \frac{L}{T}$. \newline
+
+\textbf{Lösung:}
+Die Masse kommt im gesuchten Druck im Zähler mit dem Exponenten $1$ vor und ebenso in der Dichte. Demnach muss die Dichte ebenso im Nenner stehen und zwar mit dem Exponenten 1. Für die Geschwindigkeit setzen wir zunächst eine variable Hochzahl an 
+\begin{equation*}\begin{aligned}
+    [p] &= [\rho]\cdot [v]^x \mComma  \\
+    \frac{M}{L T^2} &= \frac{M}{L^3} \left(\frac{L}{T}\right)^x \mDot \\
+\end{aligned}\end{equation*} 
+Im Nenner benötigen wir ein $T^2$, das wir nur von der Geschwindigkeit bekommen können und daher versuchen wir es mit $x = 2$: 
+\begin{equation*}\begin{aligned}
+    [p] = \frac{M}{L T^2} &= \frac{M}{L^{\cancel{3}}} \frac{\cancel{L^2}}{T^2} = [\rho]\cdot [v]^2\\
+    \frac{M}{L T^2} &=  \frac{M}{L T^2}  
+\end{aligned} \end{equation*}  \QEDA
+\end{examplebox}
+
+\begin{examplebox}[]{Beispiel}
+\textbf{Die Dimension der kinetischen Energie} \\
+Die kinetische Energie (Bewegungsenergie) eines Körpers $E_\kin$ ($[E_\kin] = \si{\joule}$) hängt von der Masse $m$ ($[m] = \si{\kilo\gram}$) des Körpers und dessen Geschwindigkeit $v$ ($[v] = \si{\meter/\second}$) ab. Ermitteln Sie den Zusammenhang zwischen Energie und den beiden anderen Größen!
+
+\textbf{Lösung:}
+Wie oben erwähnt, kann es nur eine Multiplikation oder Division der Größen mit unterschiedlichen Potenzen sein. Negative Hochzahlen drücken dabei Brüche aus. Joule ersetzen wir laut Tabelle durch die Basiseinheiten $\si{\kilo\gram\meter^2/\second^2}$. Wir setzen daher variable Hochzahlen an. \textit{Merke:} Es werden nur die Einheiten gleichgesetzt nicht die physikalischen Größen!
+
+\begin{equation*}\begin{gathered}
+    \underbrace{\si{\joule}}_{\si{\kilogram}\cdot \frac{\si{\meter^2}}{\si{\second^2}} } = [E_\kin] = [m]^x \cdot [v]^y = \si{\kilo\gram}^x \cdot \left( \frac{\si{\meter}}{\si{\second}}\right)^y \\
+    \si{\kilogram}\cdot \frac{\si{\meter^2}}{\si{\second^2}} = \si{\kilogram}^x\cdot \frac{\si{\meter^y}}{\si{\second^y}} \\
+    \Rightarrow x = 1,\; y = 2
+\end{gathered}\end{equation*} 
+Damit folgt, dass 
+\begin{equation*}
+    E_\kin \propto m\cdot v^2 \mDot
+\end{equation*}  
+Wir können damit nur eine Proportionalität ableiten, da eine Multiplikation (Division) einer Zahl auf der rechten (oder linken) Seite die Einheit nicht verändert. \QEDA
+\end{examplebox}
+

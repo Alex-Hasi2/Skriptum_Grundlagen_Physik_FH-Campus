@@ -1,0 +1,212 @@
+\documentclass[ngerman]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{lmodern} % Sorgt für eine schönere Schrift
+\usepackage[dvipsnames, table]{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{colortbl}
+\usepackage{enumitem} % for lists
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{cancel}
+
+\usepackage{caption}
+\captionsetup{
+  format=plain, % Kein Einzug
+  labelfont=it, % Kursiv für "Abbildung X"
+  textfont=normal, % Normaler Text für die restliche Caption
+}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta, angles, calc, quotes}
+\usepackage{subcaption} % needed for labelphantom
+% \usepackage{subfigure} % outdated and replaced by subcaption
+
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{nicematrix} % nicematrix statt tabularx laden
+
+\usepackage{multicol}
+\usepackage{multirow}
+
+\usepackage{makecell} 
+\renewcommand\theadfont{\bfseries} 
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\usepackage{eurosym}  % euro symbol € 
+\usepackage{amsmath,amssymb,latexsym,amsfonts,bbm, bm, bbold}
+\usepackage{mathtools}
+\usepackage[b]{esvect} % For \vv (option [d] is a nice default)
+
+% \usepackage{unicode-math} % clashes with si-unit x
+\usepackage{dsfont,relsize}
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\DeclareSIUnit{\calorie}{cal}
+\sisetup{
+    locale = DE, 
+    angle-symbol-degree = ^\circ
+    separate-uncertainty, 
+    inter-unit-product = \,,
+    range-units = brackets, 
+    list-units = single, 
+    per-mode=symbol-or-fraction,
+    range-phrase = { bis }
+}
+
+%\crefname{subsection}{subsection}{subsections}
+\definecolor{mygreen}{rgb}{0.831, 0.929, 0.855}
+\definecolor{myred}{rgb}{0.973, 0.843, 0.855}
+\definecolor{mygray}{rgb}{0.902, 0.902, 0.902}
+\definecolor{boxcol_title_navyblue}{RGB}{20, 50, 120} 
+%tikz colors
+\definecolor{pointblue}{HTML}{004A8F}
+\definecolor{darkyellow}{HTML}{ffd900}
+\definecolor{purpleCol}{HTML}{a834eb}
+\definecolor{purpleColFade}{HTML}{ccb2db}
+% integral
+\definecolor{figOrange}{RGB}{230, 145, 56}
+\definecolor{figGreen}{RGB}{39, 174, 96}
+\definecolor{figRed}{RGB}{192, 57, 43}
+\definecolor{figGrayFill}{RGB}{245, 245, 245}
+\definecolor{figGrayBorder}{RGB}{170, 170, 170}
+% colors for the cref package
+\definecolor{myblue}{RGB}{51,51,255}
+\definecolor{myRefcolor}{RGB}{51,51,200}
+\definecolor{myCiteColor}{RGB}{33,140,33}
+
+
+% the next 4 lines are needed to be able to reference subfigures properly
+\newcommand{\labelphantom}[1]{%
+  \parbox{0pt}{\phantomsubcaption\label{#1}}%
+}
+
+\usepackage[nameinlink]{cleveref}
+\hypersetup{
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Physikalische Grundlagen},    % title
+    pdfauthor={Schumer Alexander},     % author
+    pdfnewwindow=false,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linktoc=page,
+    linkcolor=blue,  %Violet % color of internal links (change box color with linkbordercolor)
+    citecolor=myCiteColor, %ForestGreen % color of links to bibliography
+    filecolor=blue,      % color of file links
+    urlcolor=blue,           % color of external links
+    pdfborder={0 0 0}
+}	
+% \creflabelformat{subfigure}{#1~(#2)}
+
+
+% --- EIGENE BOX-UMGEBUNG DEFINIEREN ---
+\definecolor{boxcol_back_lorange}{RGB}{255, 232, 201} % Gelb/Orange-Tons
+\definecolor{boxcol_title_orange}{RGB}{254, 204, 75} % Gelb/Orange-Tons
+\definecolor{boxcol_frame_orange}{RGB}{245, 196, 75} % Gelb/Orange-Tons
+\newtcolorbox{rememberbox}[2][]{
+  colback=boxcol_back_lorange,   % Hintergrundfarbe der Box
+  colframe=boxcol_frame_orange,         % Rahmenfarbe
+  coltitle=black,                % Farbe des Titels
+  colbacktitle=boxcol_title_orange,   % Hintergrundfarbe der Box
+  fonttitle=\bfseries,
+  leftrule=4mm,
+  boxsep=6pt,         % Innerer Abstand
+  arc=1mm,            % Scharfe Ecken (keine Rundung)
+  enhanced, 
+  before skip balanced=0.5cm,
+  after skip balanced=0.5cm,
+  % drop shadow,
+  % sharp corners,      % Alternative für scharfe Ecken
+  fontupper=\normalsize, % Schriftgröße im Inneren
+  title={#2}, #1
+}
+
+\definecolor{boxcol_back_lblue}{RGB}{239, 247, 255} % Blau (hell)-Ton
+\definecolor{boxcol_title_blue}{RGB}{167, 209, 255} % Blau (dunkel)-Ton
+\newtcolorbox{examplebox}[2][]{
+  colback=boxcol_back_lblue,   % Hintergrundfarbe
+  colframe=boxcol_title_blue,  % Rahmenfarbe (hier identisch zum Hintergrund)
+  fonttitle=\bfseries,
+  coltitle=black,
+  boxsep=5pt,         % Innerer Abstand
+  arc=1mm,            % Scharfe Ecken (keine Rundung)
+  enhanced,
+  before skip balanced=0.5cm,
+  after skip balanced=0.5cm,
+  sharp corners,      % Alternative für scharfe Ecken
+  fontupper=\normalsize, % Schriftgröße im Inneren
+  title={#2}, #1
+}
+
+\definecolor{boxcol_back_lred}{RGB}{255, 239, 239} % rot (hell)-Ton
+\definecolor{boxcol_title_red}{RGB}{255, 167, 167} % rot (dunkel)-Ton
+\definecolor{boxcol_frame_red}{RGB}{245, 98, 75} % rot-Tons
+\newtcolorbox{importantbox}[2][]{
+  colback=boxcol_back_lred,   % Hintergrundfarbe der Box
+  colframe=boxcol_frame_red,         % Rahmenfarbe
+  coltitle=black,                % Farbe des Titels
+  colbacktitle=boxcol_title_red,   % Hintergrundfarbe der Box
+  fonttitle=\bfseries,
+  leftrule=4mm,
+  boxsep=6pt,         % Innerer Abstand
+  arc=1mm,            % Scharfe Ecken (keine Rundung)
+  enhanced, 
+  before skip balanced=0.5cm,
+  after skip balanced=0.5cm,
+  % drop shadow,
+  % sharp corners,      % Alternative für scharfe Ecken
+  fontupper=\normalsize, % Schriftgröße im Inneren
+  title={#2}, #1
+}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\include{defs}
+
+\title{Physikalische Grundlagen}
+\subtitle{HKLS ILV| SS2025}
+\author{Dr. Dipl.-Ing. Alexander Schumer}
+\date{Juli 2025}
+
+
+
+\begin{document}
+
+\begin{equation}\label{eq:wasserkocher_erhitzen}
+        Q_{1} = m_{W} \cdot c_{W} \cdot \Delta T = \SI{1}{\kg} \cdot \SI{4.18}{\kilo\joule\per\kilogram\per\kelvin} \cdot (\SI{100}{\celsius} - \SI{20}{\celsius}) = \SI{334.4}{\kilo\joule} \mDot
+\end{equation}
+
+
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+ & \textbf{Messwerte} [\si{\second}] && \\
+\hline
+1. & \num{2.08} & & \\
+2. & \num{2.02} & & \textbf{Mittelwert [\si{\second}]}\\
+3. & \num{2.06} & &  \SI{2.00}{\second} \\
+4. & \num{1.98} & &  \\
+5. & \num{1.96} & & \textbf{Standardabweichung [\si{\second}]} \\
+6. & \num{2.00} & & $\SI{0.045216}{\second} \approx \SI{0.05}{\second}$ \\
+7. & \num{2.02} & & \\
+8. & \num{1.94} & & \textbf{Mittlerer Fehler des}\\
+9. & \num{1.98} & & \textbf{arithmetischen Mittels} [\si{\second}]\\
+10. & \num{1.96} & & $\SI{0.014298}{\second} \approx \SI{0.01}{\second}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+
+
+
+
+\end{document}

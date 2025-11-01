@@ -1,0 +1,303 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction
+}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\include{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+\noindent
+\vspace{9cm}
+\begin{center}
+    {\Huge \textbf{Lösung}} \\[1.5em]
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 2. Schriftliche Prüfung: 09.07.2025} \\[1em]
+    {\large Studiengang: Clinical Engineering} 
+\end{center}
+
+\newpage
+
+\section*{Lösung Beispiel 1 – Saft im Tiefkühler}
+
+\begin{enumerate}
+    \item \textbf{Skizzieren Sie den zeitlichen Ablauf in einem Temperatur-Zeit-Diagramm.} \\
+    
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{Bilder/Test/2terAntritt/loesung_saft.png}
+    \end{center}
+
+    \item \textbf{Berechnen Sie die Energie, die abgeführt werden muss, um den Saft auf \SI{0}{\degreeCelsius} abzukühlen.} \\
+    Zuerst wird die Masse des Saftes berechnet:
+    $$m_{\text{Saft}} = \rho_{\text{Saft}} \cdot V_{\text{Saft}} = \SI{1,1}{\kilogram\per\deci\metre\cubed} \cdot \SI{3,5}{\litre} = \SI{3,85}{\kilogram} \mDot $$ \\
+    Die Wärme, die für die Abkühlung abgeführt werden muss, ist:
+    $$Q_{1} = m_{\text{Saft}} \cdot c_{\text{Saft}} \cdot \Delta T = \SI{3,85}{\kg} \cdot \SI{4,2}{\kilo\joule\per\kilogram\per\kelvin} \cdot \SI{85}{\kelvin} = \SI{1374,45}{\kilo\joule} \mDot$$
+
+    \item \textbf{Berechnen Sie die Energie, die abgeführt werden muss, damit der gesamte Saft gefriert.} \\
+    Damit der Saft gefriert, muss die Schmelzwärme abgeführt werden:
+    $$Q_{2} = m_{\text{Saft}} \cdot \lambda_{\text{Schmelz}} = \SI{3,85}{\kg} \cdot \SI{333,5}{\kilo\joule\per\kilogram} = \SI{1283,98}{\kilo\joule} \mDot $$
+
+    \item \textbf{Berechnen Sie die Gesamtzeit (in \si{\hour}), die für diesen Prozess benötigt wird.} \\
+    Die gesamte abzuführende Energie ist die Summe aus Abkühlung und Gefrieren:
+    $$\Delta Q = Q_{1} + Q_{2} = \SI{1374,45}{\kilo\joule} + \SI{1283,98}{\kilo\joule} = \SI{2658,43}{\kilo\joule}\mDot $$ \\
+    Die benötigte Zeit dafür ergibt sich aus $P = \frac{E}{t}$ zu:
+    $$t = \frac{E}{P} = \frac{\SI{2658430}{\joule}}{\SI{120}{\watt}} = \SI{22153,5}{\second} \approx \SI{6,15}{\hour} \mDot$$
+    Beachte, dass sich nur bei Verwendung von SI-Einheiten ohne Präfixe (\textit{kilo}) die korrekte Zeit ergibt.
+    
+    \item \textbf{Fazit?} \\
+    Der Prozess dauert ca. \SI{6,15}{\hour}. Von 22 Uhr bis 7 Uhr morgens sind 9 Stunden vergangen. Da \SI{9}{\hour} > \SI{6,15}{\hour}, ist der Saft nicht nur vollständig gefroren, sondern bereits weiter im festen Zustand abgekühlt.
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 2 - Idealer Überhöhungswinkel}
+
+\begin{enumerate}
+    \item \textbf{Zeichnen Sie die wirkenden Kräfte in das Diagramm ein.} \\
+    Tipp: Keine Reibungskraft am idealen Überhöhungswinkel!
+     \begin{center}
+        \includegraphics[width=0.5\textwidth]{Bilder/Test/2terAntritt/lösung_überhöhung.png}
+    \end{center}
+    Die wirkenden Kräfte sind die Gewichtskraft $F_G$ (vertikal nach unten) und die Normalkraft $F_N$ (senkrecht zur Fahrbahn). Bei idealer Geschwindigkeit gibt es keine Reibungskraft (oranger Pfeil).
+    
+    \item \textbf{Stellen Sie das Kräftegleichgewicht in $x$- und $y$-Richtung auf.} \\
+    In $y$-Richtung heben sich die Kräfte auf und somit wirkt in diese Richtung keine Kraft. In $x$-Richtung wirkt die resultierende Kraft als Zentripetalkraft.
+    $$ \sum_i F_{i, y} = F_{N} \cdot \cos(\theta) - m \cdot g \eqexcl 0 \quad \Rightarrow \quad (1) \ F_{N} \cdot \cos(\theta) = mg $$
+    $$ \sum_i F_{i, x} = F_{N} \cdot \sin(\theta) \eqexcl F_{\text{Zp}} = \frac{mv^{2}}{r} \quad \Rightarrow \quad (2) \ F_{N} \cdot \sin(\theta) = \frac{mv^{2}}{r} $$
+
+    \item \textbf{Leiten Sie aus dem Kräftegleichgewicht die Formel für den idealen Überhöhungswinkel $\theta_{opt}$ her.} Lösung: $\theta_{opt} = \arctan(v^2/(r\cdot g))$ \\
+    Dividiert man Gleichung (2) durch Gleichung (1), erhält man:
+    $$ \frac{F_{N}\sin(\theta)}{F_{N}\cos(\theta)} = \frac{mv^{2}/r}{mg} \quad \Rightarrow \quad \tan(\theta) = \frac{v^{2}}{r \cdot g} $$
+    Daraus folgt für den idealen Überhöhungswinkel:
+    $$ \theta_{\text{opt}} = \arctan\left(\frac{v^{2}}{r \cdot g}\right) \mDot$$
+
+    \item \textbf{Berechnen Sie den optimalen Überhöhungswinkel für die angegebene Kurve in Grad.} \\
+    Zuerst wird die Geschwindigkeit in SI-Einheiten umgerechnet: $v = \SI{80}{\kilo\metre\per\hour} = \SI{22,22}{\metre\per\second}$.
+    $$ \theta_{\text{opt}} = \arctan\left(\frac{(\SI{22,22}{\m\per\s})^{2}}{\SI{120}{\m} \cdot \SI{9,81}{\m\per\s\squared}}\right) = \arctan(0,4194) \approx \SI{0,397}{\radian} = \SI{22,76}{\degree} $$
+    Auch hier müssen wieder kompatible Einheiten im Argument verwendet werden – die einfachste Möglichkeit bietet die Verwendung SI-Einheiten.
+    
+    \item \textbf{Erklären Sie, welche Kraft wirkt, wenn das Auto langsamer fährt.} \\
+    Fährt das Auto langsamer als die ideale Geschwindigkeit, ist die benötigte Zentripetalkraft geringer. Die horizontale Komponente der Normalkraft ist jedoch unverändert und somit zu groß. Das Auto würde daher die Kurve nach innen hinabrutschen. Die \textbf{Haftreibungskraft} wirkt dieser Tendenz entgegen, also parallel zur Fahrbahn nach außen (den Hang hinauf).
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 3 – Idealer Kreisprozess}
+
+\begin{enumerate}
+    \item \textbf{Geben Sie die Zustandsvariablen $(p,V,T)$ an den vier Eckpunkten an.} \\
+    Aus dem Diagramm abgelesen und mit der idealen Gasgleichung 
+    $$T_i = \frac{p_i V_i}{n R}$$ 
+    berechnet:
+    \begin{itemize}
+        \item Punkt (1): $p_1 = \SI{400}{\kilo\pascal}$, $V_1 = \SI{0,01}{\metre\cubed}$, $T_1 = \SI{481,1}{\kelvin}$
+        \item Punkt (2): $p_2 = \SI{400}{\kilo\pascal}$, $V_2 = \SI{0,03}{\metre\cubed}$, $T_2 = \SI{1443,4}{\kelvin}$
+        \item Punkt (3): $p_3 = \SI{100}{\kilo\pascal}$, $V_3 = \SI{0,03}{\metre\cubed}$, $T_3 = \SI{360,8}{\kelvin}$
+        \item Punkt (4): $p_4 = \SI{100}{\kilo\pascal}$, $V_4 = \SI{0,01}{\metre\cubed}$, $T_4 = \SI{120,3}{\kelvin}$
+    \end{itemize}
+
+    \item \textbf{Beschriften Sie die Seiten.} \\
+    Die Beschriftung ist im Diagramm ersichtlich.
+     \begin{center}
+        \includegraphics[width=0.65\textwidth]{Bilder/Test/2terAntritt/lösung_kreisprozess.png}
+    \end{center}
+
+    \item \textbf{Berechnen Sie die Arbeit in den einzelnen Teilschritten.} \\
+    Bei isochoren Prozessen ($V=\const \implies \dd V = 0$) ist die Arbeit Null, daher ist 
+    $$W_{23} = 0 \quad \text{und} \quad W_{41} = 0 \mDot$$ \\
+    Bei isobaren Prozessen ($p=\const$) gilt $W = -\int p \cdot \dd V$. Da $p = \const$ wird daraus $W = -p\cdot \Delta V$: 
+    $$W_{12} = -p_1(V_2 - V_1) = -\num{400e3}(\num{0,03} - \num{0,01}) = \SI{-8000}{\joule}$$
+    $$W_{34} = -p_3(V_4 - V_3) = -\num{100e3}(\num{0,01} - \num{0,03}) = \SI{+2000}{\joule}$$
+    Im Schritt $1 \rightarrow 2$ wird Arbeit vom System geleistet/abgegeben ($W < 0$), während im Schritt $3 \rightarrow 4$ vom System Arbeit aufgenommen wird ($W > 0$).
+    
+    \item \textbf{Wie lautet der 1. Hauptsatz der Thermodynamik?} \\
+    $$\Delta U = \Delta Q + \Delta W$$ \\
+    Dabei ist $\Delta U$ die Änderung der inneren Energie, $\Delta Q$ die zu- oder abgeführte Wärme und $\Delta W$ die am System verrichtete oder vom System geleistete Arbeit.
+    
+    \item \textbf{Berechnen Sie die Wärme in den einzelnen Teilschritten.} \\
+    Für die isochoren Prozess ($\Delta W = 0$) gilt 
+    $$ Q = \Delta U = n C_V \Delta T . $$
+    Für die isobaren Prozesse gilt 
+    $$ Q = \Delta U - W = n C_p \Delta T .$$
+    Aus $R = \SI{8,314}{\mol^{-1}\cdot\,\kelvin^{-1}}$ ergibt sich $C_p = \SI{20,785}{\mol^{-1}\cdot\,\kelvin^{-1}}$ und $C_V = \SI{12,471}{\mol^{-1}\cdot\,\kelvin^{-1}}$. Man findet daher für die Wärme der Teilprozesse
+    \begin{gather*}
+    Q_{12} = n C_p (T_2 - T_1) = \SI{20,001}{\kilo\joule} \\
+    Q_{23} = n C_V (T_3 - T_2) = \SI{-13,501}{\kilo\joule} \\
+    Q_{34} = n C_p (T_4 - T_3) = \SI{-4,999}{\kilo\joule} \\
+    Q_{41} = n C_V (T_1 - T_4) = \SI{4,500}{\kilo\joule}
+    \end{gather*}
+    \item \textbf{Zeigen Sie mithilfe von (3) und (5), dass die innere Energie $\Delta U$ für den Kreisprozess nicht zunimmt.} \\
+    Für einen vollständigen Kreisprozess muss die Gesamtänderung der inneren Energie Null sein.
+    $$\Delta U_{ges} = \sum Q_{ij} + \sum W_{ij} = (\SI{20,0} - \SI{13,5} - \SI{5,0} + \SI{4,5}) + (\SI{-8,0} + \SI{2,0}) = (\SI{6,0}) + (\SI{-6,0}) = \SI{0}{\kilo\joule} \mDot$$
+    
+    \item \textbf{Berechnen Sie den Wirkungsgrad der Maschine.} \\
+    Der Wirkungsgrad ist das Verhältnis von verrichteter Arbeit zu zugeführter Wärme:
+    $$\eta = \left| \frac{\Delta W}{\Delta Q_{\text{zu}}} \right| = \frac{\SI{6}{\kilo\joule}}{\SI{24,5}{\kilo\joule}} = 0,244 = \SI{24,4}{\percent}$$
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 4 - Statischer Auftrieb}
+
+\begin{enumerate}
+    \item \textbf{Wie groß ist die Nettoauftriebskraft eines einzelnen Heliumballons?} \\
+    a. Auftriebskraft nach Archimedes: 
+    $$F_A = \rho_{\text{Luft}} \cdot V_{\text{Ballon}} \cdot g = \SI{1,23}{\kg\per\m\cubed} \cdot \SI{0,0045}{\m\cubed} \cdot \SI{9,81}{\m\per\s\squared} \approx \SI{0,054}{\newton}$$ \\
+    b. Gewichtskraft des gefüllten Ballons: 
+    $$F_{G,\text{ges}} = (m_{\text{Ballon}} + \rho_{\text{He}} \cdot V_{\text{Ballon}}) \cdot g = (\SI{0,003}{\kg} + \SI{0,18}{\kg\per\m\cubed} \cdot \SI{0,0045}{\m\cubed}) \cdot g \approx \SI{0,037}{\newton}$$ \\
+    c. Nettoauftriebskraft: 
+    $$F_{A,\text{netto}} = F_A - F_{G,\text{ges}} = \SI{0,054}{\N} - \SI{0,037}{\N} = \SI{0,017}{\newton}$$
+    
+    \item \textbf{Wie viele solcher Heliumballons brauchen Sie, um eine Person mit einer Masse von \SI{80}{\kilogram} zum Schweben zu bringen?} \\
+    Gewichtskraft der Person: 
+    $$F_{G,\text{Person}} = m \cdot g = \SI{80}{\kg} \cdot \SI{9,81}{\m\per\s\squared} = \SI{784,8}{\newton} \mDot $$ \\
+    Anzahl der Ballons: 
+    $$n = \frac{F_{G,\text{Person}}}{F_{A,\text{netto}}} = \frac{\SI{784,8}{\N}}{\SI{0,017}{\N}} \approx 46164,7 \mDot$$ 
+    Man benötigt also \textbf{46165 Ballons}.
+    
+    \item \textbf{Sie nehmen nun mehr Ballons als Sie zum Schweben brauchen. Warum gibt es eine maximale Steighöhe?} \\
+    Die Dichte der Atmosphäre nimmt mit zunehmender Höhe ab. Dadurch sinkt die Auftriebskraft ($F_A = \rho_{\text{Luft}}(h) \cdot V \cdot g$). Die maximale Höhe ist erreicht, wenn die Auftriebskraft gleich der Gewichtskraft der Ballons ist.
+    
+    \item \textbf{Vergleichen Sie den Auftrieb in der Atmosphäre mit dem unter Wasser.} \\
+    \begin{itemize}[itemsep = 4pt,topsep=1pt]
+        \item[$\square$] Es gibt keinen Unterschied - beide Dichten nehmen mit zunehmender Höhe ab.
+        \item[$\square$] Die Dichte von Wasser erhöht sich viel stärker mit zunehmender Tiefe als die Dichte von Luft mit zunehmender Höhe abnimmt.
+        \item[$\boxtimes$] \textbf{Die Dichte von Luft nimmt mit zunehmender Höhe erheblich ab, während die Dichte von Wasser mit zunehmender Tiefe nahezu konstant bleibt.}
+        \item[$\square$] Die Dichte von Wasser erhöht sich in der Tiefe und die Dichte von Luft verringert sich in der Höhe.
+    \end{itemize}
+
+    \item \textbf{Sie füllen bei einem Tauchgang in \SI{100}{\metre} Tiefe einen Ballon mit Luft aus Ihrer Druckluftflasche und verknoten ihn. Beschreiben Sie nun was nun mit dem Ballon geschieht.} \\
+    Beim Aufsteigen des Ballons nimmt der Umgebungsdruck des Wassers ab. Nach dem Gesetz von Boyle-Mariotte dehnt sich die kompressible Luft im Ballon bei sinkendem Außendruck aus, sein Volumen vergrößert sich. Da die Auftriebskraft direkt vom verdrängten Volumen abhängt, nimmt sie während des Aufstiegs kontinuierlich zu. Dies führt zu einem immer schneller werdenden, beschleunigten Aufstieg. Hält das Material der Ausdehnung nicht stand, platzt der Ballon.
+\end{enumerate}
+
+\newpage
+\section*{Lösung Beispiel 5 - Multiple-Choice}
+
+\begin{enumerate}[label=\arabic*.,itemsep=14pt]
+    \item Welches der folgenden Axiome beschreibt das zweite Newtonsche Gesetz?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item[$\boxtimes$] Die Änderung der Bewegung (durch eine Beschleunigung) ist proportional zur einwirkenden Kraft.
+        \item Die Gesamtenergie in einem isolierten System bleibt konstant.
+        \item Kräfte treten immer paarweise auf. Übt Körper A eine Kraft auf Körper B aus, so übt Körper B eine gleich große, aber entgegengesetzt gerichtete Kraft auf Körper A aus.
+        \item Jeder Körper verharrt im Zustand der Ruhe oder der gleichförmig geradlinigen Bewegung, solange keine äußeren Kräfte auf ihn wirken.
+    \end{itemize}
+
+    \item Welcher Hauptsatz der Thermodynamik besagt, dass Energie weder erzeugt noch vernichtet werden kann, sondern nur umgewandelt wird?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item Der nullte Hauptsatz der Thermodynamik.
+        \item[$\boxtimes$] Der erste Hauptsatz der Thermodynamik.
+        \item Der zweite Hauptsatz der Thermodynamik.
+        \item Der dritte Hauptsatz der Thermodynamik.
+    \end{itemize}
+
+    \item Wie nennt man die Beschleunigung, die für eine gleichförmigen Kreisbewegung notwendig ist?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item Zentrifugalbeschleunigung
+        \item Tangentialbeschleunigung
+        \item Coriolisbeschleunigung
+        \item[$\boxtimes$] Zentripetalbeschleunigung
+    \end{itemize}
+
+    \item Scheinkräfte (Trägheitskräfte) ergeben sich typischerweise in welcher Art von Bezugssystemen?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item In Inertialsystemen
+        \item In ruhenden Bezugssystemen
+        \item[$\boxtimes$] In beschleunigten Bezugssystemen
+        \item In Bezugssystemen mit konstanter Geschwindigkeit
+    \end{itemize}
+
+    \item Welche Aussage trifft auf die Arbeit in einem konservativen Kraftfeld zu?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item Die verrichtete Arbeit hängt vom gewählten Weg ab.
+        \item Es gibt keine potenzielle Energie im Kraftfeld.
+        \item Die Kraft wirkt immer senkrecht zur Bewegungsrichtung.
+        \item[$\boxtimes$] Die verrichtete Arbeit entlang eines geschlossenen Weges ist null.
+    \end{itemize}
+
+    \newpage
+    \item Aus welchen SI-Basiseinheiten setzt sich ein Joule (\si{\joule}) zusammen?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item \si{\kilogram \cdot\metre\cdot\second^{-1}}
+        \item \si{\kilogram \cdot\metre^{2} \cdot\, \second^{-1}}
+        \item \si{\kilogram \cdot \metre^3 \cdot \second^{-1}}
+        \item \si{\kilogram \cdot \metre \cdot\, \second^{-2}}
+        \item \si{\kilogram \cdot \metre^2 \cdot\, \second}
+        \item[$\boxtimes$] \si{\kilogram \cdot \metre^2 \cdot\, \second^{-2}}
+        \item \si{\kilogram \cdot \metre^2 \cdot\, \second^{2}}
+    \end{itemize}
+    
+    \item Was bleibt bei einem adiabatischen Prozess konstant?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item[$\boxtimes$] Die Wärme
+        \item Die Temperatur
+        \item Der Druck
+        \item Die Energie
+    \end{itemize}
+
+    \item Welche Formel beschreibt die Druckzunahme $\Delta p$ in einer Flüssigkeit in Abhängigkeit von der Tiefe h?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item $\Delta p= nRT/V$
+        \item $\Delta p = mv$ 
+        \item $\Delta p = mgh$ 
+        \item $\Delta p = F/A$
+        \item[$\boxtimes$] $\Delta p=\rho g h$
+    \end{itemize}
+    
+    \item Welche Einheit hat die physikalische Größe Arbeit?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item Watt [\si{\watt}]
+        \item Newton [\si{\newton}]
+        \item[$\boxtimes$] Joule [\si{\joule}]
+        \item Pascal [\si{\pascal}]
+    \end{itemize}
+    
+    \item Welche Einheit hat das Produkt $p \cdot V$ in der idealen Gasgleichung?
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item Pascal [\si{\pascal}]
+        \item Kubikmeter [\si{\meter\cubed}]
+        \item Newton [\si{\newton}]
+        \item[$\boxtimes$] Joule [\si{\joule}]
+    \end{itemize}
+
+    \item Welchen Wert ergibt das Integral $\int_{-3}^{8}F\cdot ds$, wenn $F=2$ ist.
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item 0
+        \item 10
+        \item 73
+        \item[$\boxtimes$] 22 ($F \cdot \Delta s = 2 \cdot (8 - (-3)) = 2 \cdot 11 = 22$)
+        \item -8
+        \item 11
+    \end{itemize}
+
+    \item Ordnen Sie folgende Aussage dem passenden Newtonschen Axiom zu: Eine Person, auf die eine Gewichtskraft von \SI{800}{\newton} wirkt, zieht die Erde ebenfalls mit \SI{800}{\newton} an.
+    \begin{itemize}[label=$\square$,itemsep=1pt,topsep=0pt]
+        \item 0. Newtonsche Axiom
+        \item 2. Newtonsche Axiom
+        \item 1. Newtonsche Axiom
+        \item[$\boxtimes$] 3. Newtonsche Axiom
+    \end{itemize}
+
+\end{enumerate}
+
+
+
+
+
+\end{document}

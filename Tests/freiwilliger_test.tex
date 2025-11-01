@@ -1,0 +1,243 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction
+}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\include{defs} % Assuming your defs.tex is in the same directory
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+% Command to add the logo to the top left of the first page
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \hspace{2.0cm}% Move logo to the right from the page edge
+    \raisebox{-5.cm}{% Move logo down from the page edge
+      \includegraphics[width=4cm]{Bilder/Allgemein/LogoFHCampus.png}% The logo file
+    }%
+  }%
+}
+
+\begin{center}
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large Freiwillige Selbsteinschätzung} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\vspace{1cm}
+
+\noindent
+\vspace{1cm}
+
+\begin{itemize}[label={$\Diamond$}]
+    \item Sie haben 90 min Zeit.
+    \item Es sind keine Unterlagen erlaubt.
+    \item Sie dürfen einen Taschenrechner verwenden.
+    \item Geben Sie klare und verständliche Antworten!
+    \item Schreiben Sie leserlich!
+    \item Streichen Sie alle bis auf eine Lösung durch!
+\end{itemize}
+
+\vspace{2cm}
+
+
+\begin{flushright}
+    \renewcommand{\arraystretch}{1.23}
+    \begin{tabular}{l p{2.3cm}}
+        \hline
+        \noalign{\vskip 0.15cm}
+        \textbf{\Large{Punkte:}} & \textbf{\Large{/50}} \\
+        \noalign{\vskip 0.1cm}
+        \hline
+        Beispiel 1: & /12 \\ 
+        Beispiel 2: & /12 \\ 
+        Beispiel 3: & /8 \\ 
+        Beispiel 4: & /8 \\ 
+        Beispiel 5: & /10 \\
+    \end{tabular}
+\end{flushright}
+
+\newpage
+
+\section*{Beispiel 1 - Eiswürfel in Limonade}
+
+\noindent
+\begin{minipage}[t]{0.65\textwidth}
+    \vspace{0pt}
+    Ihr Krug mit Limonade stand bei einer Außentemperatur von \SI{33}{\degreeCelsius} den ganzen Tag auf einem Gartentisch im Freien. Sie gießen nun \SI{0,24}{\kilogram} der Limonade in einen Styroporbecher und geben 2 Eiswürfel hinein, die jeweils \SI{25}{\gram} schwer sind und eine Temperatur von \SI{0}{\degreeCelsius} haben.
+    \\
+    Gegeben: $c_{\text{Wasser}} = c_{\text{Limonade}} = \SI{4,18}{\kilo\joule\per\kilogram\per\kelvin}$, \\
+    $\lambda_{\text{Schmelz}} = \SI{332,8}{\kilo\joule\per\kilogram}$.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\textwidth}
+    \vspace{1pt}
+    \centering
+    \includegraphics[height=3.5cm]{Bilder/Test/FreiwilligerSelbsttest/limonade.png}
+\end{minipage}
+
+\subsection*{Aufgabe}
+Welche Temperatur hat die Limonade im Becher, nachdem sich ein thermisches Gleichgewicht eingestellt hat? Nehmen Sie dabei an, dass keine Wärme an die Umgebung abgeführt wird.
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Bestimmen Sie zunächst, ob die Wärmemenge der Limonade ausreicht, die beiden Eiswürfel zu schmelzen. Berechnen Sie, wie viel Wärme der Limonade damit entzogen wurde und welche neue Limonadentemperatur sich einstellt.
+    \item Berechnen Sie die gesuchte Endtemperatur $T_{\text{Ende}}$, die sich einstellt, wenn die von der Limonade abgegebene Wärmemenge $Q_{\text{Li,ab}}$ gleich der von dem geschmolzenen Wasser aufgenommenen Wärmemenge $Q_{\text{W,auf}}$ wird.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c |}
+\hline
+\multicolumn{2}{|l|}{\textbf{\large{Punkte: \quad\quad /12}}}\\
+\hline
+\textbf{1)} & \textbf{2)} \\
+\quad/6 & \quad/6 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+\section*{Beispiel 2 - Reibungsfreies Schieben einer schiefen Ebene}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{Bilder/Test/FreiwilligerSelbsttest/schiefe_ebene.png}
+\end{center}
+Ein kleiner Block mit der Masse $m$ ruht auf der geneigten Seite eines dreieckigen Blocks mit der Masse $M$, der selbst wiederum auf einem Tisch ruht. Nehmen Sie an, dass alle Flächen reibungsfrei sind und bestimmen Sie die Kraft $F$, die auf $M$ ausgeübt werden muss, damit $m$ in einer relativ zu $M$ festen Position bleibt (d.h. $m$ bewegt sich auf der schiefen Ebene nicht auf oder ab).
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Zeichnen Sie alle wirkenden Kräfte auf $m$ ein. Beachten Sie, dass alle Flächen reibungsfrei sind.
+    \item Schreiben Sie die Kräftesummen in die $x$- und $y$-Richtung auf und verwenden Sie, dass $\sum F_{x} = m a_{x}$ und $\sum F_{y} = 0$.
+    \item Berechnen Sie die benötigte Beschleunigung $a_x$. \\ \textbf{Tipp:} Bestimmen Sie $F_N$ aus der $y$-Gleichung und ersetzen Sie dann $F_N$ in der $x$-Gleichung.
+    \item Die benötigte Kraft $F$ wirkt auf das Gesamtsystem $m+M$. Wie lautet daher die Gesamtkraft $F$, die auf den Block $M$ wirken muss?
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c|}
+\hline
+\multicolumn{4}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /12}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} \\
+\quad/3 & \quad/3 & \quad/3 & \quad/3 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+
+\newpage
+\section*{Beispiel 3 - Warme Autoreifen}
+\noindent
+\begin{minipage}[t]{0.6\textwidth}
+    \vspace{0pt}
+    Ein Autoreifen wird nach einer längeren Fahrt an einer Tankstelle bis zu einem Druck von \SI{2,2}{bar} bei \SI{40}{\degreeCelsius} mit Luft gefüllt. Am nächsten Tag hat es \SI{10}{\degreeCelsius} Außentemperatur und Sie fragen sich, welcher Druck nun in den Reifen am Beginn der Ausfahrt herrscht. Nehmen Sie an, dass das Volumen der Reifen gleich bleibt und die Luft sich annähernd wie ein ideales Gas verhält.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\textwidth}
+    \vspace{1pt}
+    \centering
+    \includegraphics[height=4cm]{Bilder/Test/FreiwilligerSelbsttest/autoreifen.png}
+\end{minipage}
+\subsection*{Aufgaben}
+\begin{enumerate}
+    \item Berechnen Sie den Druck in den Reifen, wenn die Luft im Reifen eine Temperatur von \SI{10}{\degreeCelsius} hat.
+    \item Wie viel Mol Luft beinhaltet ein Autoreifen mit $V=\SI{40}{\litre}$? \\ (Achtung: Verwenden Sie dieses Volumen nicht in (1)!) \\ Gegeben: $R = \SI{8,314}{\joule\per(\mole\cdot\kelvin)}$.
+    \item Das unten abgebildete Phasendiagramm soll das Phasendiagramm des Luftgemischs im Reifen darstellen. Müssen Sie befürchten, dass sich das Luftgemisch im Reifen an kalten Wintertagen verflüssigt oder gar erstarrt? Zeichnen Sie den relevanten Bereich im Phasendiagramm ein!
+\end{enumerate}
+\begin{center}
+    \includegraphics[width=0.45\textwidth]{Bilder/Test/FreiwilligerSelbsttest/phasendiagramm_luft.png}
+\end{center}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c |}
+\hline
+\multicolumn{3}{|l|}{\textbf{\large{Punkte: \quad\quad /8}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} \\
+\quad/3 & \quad/3 & \quad/2 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+\section*{Beispiel 4 - Thermische Ausdehnung}
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{Bilder/Test/FreiwilligerSelbsttest/platte_laengenausdehnung.png}
+\end{center}
+Eine rechtwinklige Platte der Länge $l$ und Breite $b$ hat den linearen Ausdehnungskoeffizienten $\alpha$. Zeigen Sie, dass die Flächenänderung der Platte aufgrund der Temperaturänderung $\Delta T$ gegeben ist durch
+$$\Delta A = 2\alpha A \Delta T,$$
+wenn Änderungen proportional zu $(\alpha \Delta T)^2$ vernachlässigt werden. Die lineare Ausdehnung sei wie gewohnt $\Delta L = \alpha L \Delta T$.
+
+\subsection*{Vorgehen}
+\begin{enumerate}[itemsep=8pt]
+    \item Geben Sie die Längenänderungen $\Delta l$ und $\Delta b$ entlang der Länge und Breite der Platte an.
+    \item Geben Sie eine Formel für die Flächenänderung $\Delta A$ als Funktion von $l, \Delta l, b, \Delta b$ an.
+    \item Ersetzen Sie $\Delta l$ und $\Delta b$ durch die lineare Ausdehnung [aus (1)] und vereinfachen Sie das Ergebnis, um auf das obige Resultat zu kommen.
+    \item Wie groß ist die Flächenänderung $\Delta A$ für eine Eisenplatte ($\alpha = \SI{12e-6}{\kelvin^{-1}}$) mit $l = \SI{2,3}{\metre}$ und $b = \SI{1,2}{\metre}$ bei einer Erwärmung um \SI{40}{\degreeCelsius}?
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c|}
+\hline
+\multicolumn{4}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /8}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} \\
+\quad/1 & \quad/2 & \quad/3 & \quad/2 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+\section*{Beispiel 5 - Looping}
+\begin{center}
+    \includegraphics[width=0.35\textwidth]{Bilder/Test/FreiwilligerSelbsttest/looping.png}
+\end{center}
+Ein Wagen mit 10 Passagieren und einer Masse von $M = \SI{1,5}{t}$ fährt auf einer reibungsfreien Achterbahn mit der Anfangsgeschwindigkeit $v_0$ einen kreisförmigen Looping mit Durchmesser $d = \SI{30}{\metre}$. Berechnen Sie die minimale Anfangsgeschwindigkeit $v_{0,\text{min}}$, die benötigt wird, damit der Looping durchfahren werden kann, ohne abzustürzen bzw. stehen zu bleiben. \\
+Gegeben: $g = \SI{9,81}{\metre\per\second\squared}$
+
+\subsection*{Vorgehen}
+\begin{enumerate}[itemsep=8pt]
+    \item Welche Geschwindigkeit muss am höchsten Punkt noch vorhanden sein, damit die Zentrifugalkraft (=Zentripetalkraft) die Gravitationskraft gerade noch ausgleicht? (Grenzfall: Normalkraft = 0)
+    \item Verwenden Sie die Energieerhaltung, um die Anfangsenergie am Fuße des Loopings und die Energie am höchsten Punkt gleichzusetzen und somit die nötige Anfangsgeschwindigkeit $v_{0,\text{min}}$ zu berechnen.
+    \item Wie groß ist die minimale Geschwindigkeit für die gegebenen Werte, mit der der Wagen starten muss, um gerade noch den höchsten Punkt des Loopings zu erreichen, ohne den Kontakt zur Bahn zu verlieren oder stehen zu bleiben?
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c |}
+\hline
+\multicolumn{3}{|l|}{\textbf{\large{Punkte: \quad\quad /10}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} \\
+\quad/4 & \quad/4 & \quad/2 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\end{document}
