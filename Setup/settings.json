@@ -1,0 +1,125 @@
+{
+    "latex-workshop.latex.tools": [
+ {
+  "name": "latexmk",
+  "command": "latexmk",
+  "args": [
+   "-synctex=1",
+   "-interaction=nonstopmode",
+   "-file-line-error",
+   "-pdf",
+   "-outdir=%OUTDIR%",
+   "%DOC%"
+  ],
+  "env": {}
+ },
+ {
+  "name": "xelatex",
+  "command": "xelatex",
+  "args": [
+   "-synctex=1",
+   "-interaction=nonstopmode",
+   "-file-line-error",
+   "%DOC%"
+  ],
+  "env": {}
+ },
+ {
+  "name": "pdflatex",
+  "command": "pdflatex",
+  "args": [
+   "-synctex=1",
+   "-interaction=nonstopmode",
+   "-file-line-error",
+   "%DOC%"
+  ],
+  "env": {}
+ },
+ {
+  "name": "bibtex",
+  "command": "bibtex",
+  "args": [
+   "%DOCFILE%"
+  ],
+  "env": {}
+ }
+],
+
+"latex-workshop.latex.recipes": [
+ {
+  "name": "pdfLaTeX",
+  "tools": [
+   "pdflatex"
+  ]
+ },
+ {
+  "name": "latexmk 🔃",
+  "tools": [
+   "latexmk"
+  ]
+ },
+ {
+  "name": "xelatex",
+  "tools": [
+   "xelatex"
+  ]
+ },
+ {
+  "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
+  "tools": [
+   "pdflatex",
+   "bibtex",
+   "pdflatex",
+   "pdflatex"
+  ]
+ },
+ {
+ "name": "xelatex ➞ bibtex ➞ xelatex`×2",
+ "tools": [
+   "xelatex",
+   "bibtex",
+   "xelatex",
+   "xelatex"
+  ]
+ }
+],
+"workbench.colorTheme": "Overleaf Theme",
+"editor.tokenColorCustomizations": {
+    "[Overleaf Theme]": {
+      "comments": "#40a6c5", 
+      "keywords": "#00a128",
+      "functions": "#008f24",
+      "variables": "#bb76e3",
+      "types": "#353535",
+      "numbers": "#63546a", 
+      "textMateRules": [
+        {
+          "scope": 
+            ["constant.other.general.math.tex", "constant.character.math.tex", "constant.other.math.tex",
+            "entity.name.section.latex", "punctuation.definition.constant.math.tex"], 
+          "settings": {"foreground": "#000000"}
+        },
+        {
+          "scope": "markup.bold.textbf.latex",
+          "settings": {"foreground": "#000000", "fontStyle": "bold"}
+        },
+        {
+          "scope": "constant.other.reference.label.latex",
+          "settings": {"foreground": "#62009b"}
+        },
+        {
+          "scope": "support.class.math.block.tex",
+          "settings": {"foreground": "#000000"}
+        },
+        {
+          "scope": ["punctuation.definition.string.begin.tex", "punctuation.definition.string.end.tex"],
+          "settings": {"foreground": "#e37351"}
+        },
+        {
+          "scope": "variable.parameter.function.latex",
+          "settings": {"foreground": "#8C8DC6"}
+        }
+      ]
+    }
+  }
+}
