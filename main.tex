@@ -46,13 +46,10 @@
 \usepackage{dsfont,relsize}
 
 \usepackage{siunitx}
-\DeclareSIUnit{\litre}{l}
-\DeclareSIUnit{\calorie}{cal}
-\DeclareSIUnit{\bar}{bar}
 
 \sisetup{
     locale = DE, 
-    angle-symbol-degree = ^\circ
+    angle-symbol-degree = ^\circ,
     separate-uncertainty, 
     inter-unit-product = \,,
     range-units = single, 
@@ -60,6 +57,10 @@
     per-mode=symbol-or-fraction,
     range-phrase = { bis }
 }
+\DeclareSIUnit{\litre}{l}
+\DeclareSIUnit{\calorie}{cal}
+\DeclareSIUnit{\bar}{bar}
+\DeclareSIUnit{\fahrenheit}{\SIUnitSymbolDegree F}
 
 %\crefname{subsection}{subsection}{subsections}
 \definecolor{mygreen}{rgb}{0.831, 0.929, 0.855}
@@ -174,7 +175,7 @@
 
 \title{Physikalische Grundlagen}
 \subtitle{HKLS ILV| SS2025}
-\author{Dr. Dipl.-Ing. Alexander Schumer}
+\author{Dr.\ Dipl.-Ing. Alexander Schumer}
 \date{Juli 2025}
 
 % ----------------------------------------------------------------
@@ -247,7 +248,7 @@ Der schwedische Astronom Anders Celsius schlug 1742 eine Skala vor, die auf zwei
 Der Bereich zwischen diesen beiden Punkten wird in 100 gleiche Teile unterteilt, die Grade Celsius ($\si{\celsius}$) genannt werden. Jedes Skalenteil entspricht daher $\SI{1}{\celsius}$.
 
 \paragraph{Fahrenheit-Skala}
-Diese Skala, die heute vor allem in den USA gebräuchlich ist, wurde von Daniel Gabriel Fahrenheit definiert. Ihre Fixpunkte sind der Schmelzpunkt einer speziellen Eis-Salz-Mischung (\SI{0}{\degree F} $\approx \SI{-17.8}{\celsius}$) und die angenommene menschliche Körpertemperatur (\SI{100}{\degree F} $\approx \SI{37.8}{\celsius}$). Auf dieser Skala gefriert Wasser bei \SI{32}{\degree F} und siedet bei \SI{212}{\degree F}. Auch auf dieser Skala wird der Bereich zwischen \SI{0}{\degree F} und \SI{100}{\degree F} in 100 Skalenteile eingeteilt. 
+Diese Skala, die heute vor allem in den USA gebräuchlich ist, wurde von Daniel Gabriel Fahrenheit definiert. Ihre Fixpunkte sind der Schmelzpunkt einer speziellen Eis-Salz-Mischung (\SI{0}{\fahrenheit} $\approx \SI{-17.8}{\celsius}$) und die angenommene menschliche Körpertemperatur (\SI{100}{\fahrenheit} $\approx \SI{37.8}{\celsius}$). Auf dieser Skala gefriert Wasser bei \SI{32}{\fahrenheit} und siedet bei \SI{212}{\fahrenheit}. Auch auf dieser Skala wird der Bereich zwischen \SI{0}{\fahrenheit} und \SI{100}{\fahrenheit} in 100 Skalenteile eingeteilt. 
 
 \begin{figure}[htb]
     \centering
@@ -258,7 +259,7 @@ Diese Skala, die heute vor allem in den USA gebräuchlich ist, wurde von Daniel 
 
 Die Umrechnung von Fahrenheit ($T_F$) nach Celsius ($T_C$) erfolgt über folgende Formel:
 \begin{equation}\label{eq:fahrenheit_celsius_umrechnung}
-    T_C\, [\si{\celsius}] = \frac{5}{9} (T_F\, [\si{\degree F}]- 32) \mDot
+    T_C\, [\si{\celsius}] = \frac{5}{9} (T_F\, [\si{\fahrenheit}]- 32) \mDot
 \end{equation}
 
 \subsection{Die Kelvin-Skala}\label{subsec: Kelvin_Skala}
@@ -389,7 +390,7 @@ Die Volumenänderung $\Delta V$ bei einer Temperaturänderung $\Delta T$ ist geg
 \end{equation}
 Für homogene, isotrope Festkörper, die sich in alle Richtungen gleich ausdehnen, gilt der Zusammenhang:
 \begin{equation}
-    \gamma \approx 3\alpha \mComma
+    \gamma = 3\alpha \mComma
 \end{equation}
 wenn $\alpha$ der lineare Längenausdehnungskoeffizient ist. Diese Näherung ergibt sich aus 
 \begin{equation}
@@ -434,20 +435,20 @@ In \cref{tab: volumen_ausdehnungskoeffizienten} sind einige Volumenausdehnungsko
 
 
 \subsection{Ausdehnung von Gasen (Gesetze von Gay-Lussac)}\label{subsec: ausdehnung_gase}
-Auch Gase dehnen sich bei Erwärmung aus, jedoch deutlich stärker als Festkörper oder Flüssigkeiten. Die Ausdehnungskoeffizienten von Gasen sind ungefähr 2--3 Größenordnungen größer als die von festen oder flüssigen Körpern. Die Gesetze von Gay-Lussac beschreiben dieses Verhalten für ideale Gase:
+Auch Gase dehnen sich bei Erwärmung aus, jedoch deutlich stärker als Festkörper oder Flüssigkeiten. Die Ausdehnungskoeffizienten von Gasen sind ungefähr \qtyrange{2}{3}{} Größenordnungen größer als die von festen oder flüssigen Körpern. Die Gesetze von Gay-Lussac beschreiben dieses Verhalten für ideale Gase:
 \begin{enumerate}
-    \item \textbf{Bei konstantem Druck (isobar):} Hält man den Druck eines Gases konstant, so ist das Volumen direkt proportional zur \textbf{absoluten Temperatur} $T$ (in Kelvin). Wir starten mit der Volumenausdehnung als Funktion der Celsius-Temperatur:
+    \item \textbf{Bei konstantem Druck (isobar):} Hält man den Druck eines Gases konstant, so ist das Volumen direkt proportional zur \textbf{absoluten Temperatur} $T$ (in Kelvin). Wir starten mit der Volumenausdehnung als Funktion der Celsius-Temperatur $\vartheta$:
     \begin{equation}\label{eq: gay_lussac_isobar}
         V(\vartheta) = V_0(1 + \gamma \vartheta), % \quad \text{oder} \quad \frac{V}{T} = \const
     \end{equation}
-    wobei für ideale Gase $\gamma = \dfrac{1}{\num{273.15}}\,\si{\celsius^{-1}}$ ist und $\vartheta$ die Temperatur in $\si{\celsius}$ ist. Bezieht man die Volumenänderung auf eine Referenztemperatur von $\vartheta_0 = \SI{0}{\celsius}$ ($T_0 = \SI{273.15}{\kelvin}$), so lässt sich \cref{eq: gay_lussac_isobar} auch auf die absolute Temperatur $T$ umformen  
+    wobei für ideale Gase $\gamma = \dfrac{1}{\num{273.15}}\,\si{\celsius^{-1}}$ eine Konstante ist und $\vartheta$ die Temperatur in $\si{\celsius}$ ist. Bezieht man die Volumenänderung auf eine Referenztemperatur von $\vartheta_0 = \SI{0}{\celsius}$ ($T_0 = \SI{273.15}{\kelvin}$), so lässt sich \cref{eq: gay_lussac_isobar} auch auf die absolute Temperatur $T = \qty{273.15} + \vartheta$ umformen  
     \begin{equation} \begin{gathered}
         V(\vartheta) = V_0(1+\gamma \vartheta) = V_0 \left(1 + \frac{\vartheta}{\num{273.15}} \right) = V_0\left( \frac{\num{273.15} + \vartheta}{\num{273.15}} \right) = \\
         \implies V(T) = V_0 \left( \frac{T}{T_0} \right) \mDot
     \end{gathered}\end{equation}
     Somit findet man, dass 
     \begin{equation}\label{eq: gay_lussac_V_ueber_V0}
-        \frac{V}{V_0} = \frac{T}{T_0} \quad \text{oder} \quad \frac{V}{T} = \const \mDot
+        \frac{V}{V_0} = \frac{T}{T_0} \quad \text{oder} \quad \frac{V}{T} = \frac{V_0}{T_0} = \const \mDot
     \end{equation}
     \item \textbf{Bei konstantem Volumen (isochor):} Hält man das Volumen eines Gases konstant, so ist der Druck eines Gases direkt proportional zur absoluten Temperatur. Auch hier beginnt man mit der Druckänderung als Funktion der Celsius-Temperatur $\vartheta$
     \begin{equation}
@@ -455,21 +456,21 @@ Auch Gase dehnen sich bei Erwärmung aus, jedoch deutlich stärker als Festkörp
     \end{equation}
     und formt dies auf die absolute Temperatur $T$ (in Kelvin) um. Somit erhält man 
     \begin{equation}\label{eq: gay_lussac_p_ueber_p0}
-        \frac{p}{p_0} = \frac{T}{T_0} \quad \text{oder} \quad \frac{p}{T} = \const \mDot
+        \frac{p}{p_0} = \frac{T}{T_0} \quad \text{oder} \quad \frac{p}{T} = \frac{p_0}{T_0} = \const \mDot
     \end{equation}
 \end{enumerate}
-Diese beiden Gesetze werden in dem Gesetz von Gay-Lussac zusammengefasst, indem man die \cref{eq: gay_lussac_V_ueber_V0,eq: gay_lussac_p_ueber_p0} etwas umformt, wie hier dargestellt für die isochore Druckänderung: 
+Diese beiden Gesetze werden in dem Gesetz von Gay-Lussac zusammengefasst, indem man die \cref{eq: gay_lussac_V_ueber_V0,eq: gay_lussac_p_ueber_p0} etwas umformt, wie im Folgenden für die isochore Druckänderung dargestellt: 
 \begin{align}
     \frac{p}{T} &= \frac{p_0}{T_0} \nonumber \\
-    \implies p &= p_0 \cdot \frac{T}{T_0} \nonumber \\
-    \implies p - p_0 &=  \left( p_0 \cdot \frac{T}{T_0} \right) - p_0 = p_0 \left( \frac{T}{T_0} - 1 \right) = p_0 \left( \frac{T - T_0}{T_0} \right) = \nonumber \\
+    p &= p_0 \cdot \frac{T}{T_0} \nonumber \\
+    p - p_0 &=  \left( p_0 \cdot \frac{T}{T_0} \right) - p_0 = p_0 \left( \frac{T}{T_0} - 1 \right) = p_0 \left( \frac{T - T_0}{T_0} \right) = \nonumber \\
     &= \frac{p_0}{T_0} \left( T - T_0 \right) \mDot
 \end{align}
 Somit folgt für die Druckänderung 
 \begin{equation}
     (p-p_0) \propto (T-T_0) \mDot
 \end{equation}
-
+Die Volumenänderung bei konstantem Druck lässt sich analog herleiten. Zusammengefasst ergibt sich das sogenannte \textit{Gesetz von Gay-Lussac}.
 \begin{importantbox}[]{Gesetz von Gay-Lussac}
     Das Gay-Lussac Gesetz beschreibt die Druckänderung bei konstantem Volumen (isochor) und die Volumenänderung bei konstantem Druck (isobar)
     \begin{equation}\begin{aligned}
@@ -479,23 +480,49 @@ Somit folgt für die Druckänderung
 \end{importantbox}
 
 \subsection{Gasthermometer}\label{subsec: Gasthermometer}
-Bei einem \textbf{Gasthermometer} mit konstantem Volumen dient die Druckänderung als Maß für die Temperatur. Da sich Gase sehr gleichmäßig ausdehnen, sind Gasthermometer besonders präzise und werden zur Kalibrierung anderer Thermometer verwendet. 
-\begin{rememberbox}{Gasthermometer}
-    Bei einem Gasthermometer wird die Temperatur indirekt über das Druckverhältnis bestimmt:
-    \begin{equation}
-        T[\si{\celsius}] = \frac{p_T - p_0}{p_{100} - p_0} \cdot \SI{100}{\celsius} \mComma
-    \end{equation}
-    wobei $p_T$ der Druck bei der zu messenden Temperatur und $p_0$ bzw. $p_{100}$ die Drücke am Gefrier- bzw. Siedepunkt von Wasser sind. Diese beiden Punkte sind vorab zu kalibrieren. 
-\end{rememberbox}
-Die Funktionsweise eines Gasthermometers erklärt sich anhand der \cref{fig: gasthermometer}. Das Volumen, das das Gas in $B_1$ einnimmt, wird konstant gehalten, indem der bewegliche Behälter $B_3$ so justiert wird (nach oben oder unten bewegt wird), dass der Quecksilberspiegel in $B_2$ immer auf der Nullmarke steht. Der Druck im Gefäß $B_1$ ist direkt proportional zur Höhendifferenz $h$, da $\Delta p = \rho_\text{Hg} \cdot g\cdot h$. Damit wird die Druckmessung rein durch einen Höhendifferenzmessung bewerkstelligt.
+Bei einem \textbf{Gasthermometer} mit konstantem Volumen dient die Druckänderung als Maß für die Temperatur. Da sich Gase sehr gleichmäßig ausdehnen und Flüssigkeiten näherungsweise inkompressibel sind, sind Gasthermometer besonders präzise und werden zur Kalibrierung anderer Thermometer verwendet. 
+
+Die Funktionsweise eines Gasthermometers erklärt sich anhand der \cref{fig: gasthermometer}. Das System besteht aus einem mit Gas gefüllten Kolben ($B_1$), der über einen flexiblen Schlauch mit einem Quecksilber-Manometer verbunden ist. Das entscheidende Anwendungsmerkmal eines Gasthermometers ist das \textbf{konstante Volumen}:
+Um eine Messung durchzuführen, wird der bewegliche Behälter $B_3$ vertikal so verschoben, dass der Quecksilberspiegel im Schenkel $B_2$ exakt auf der Referenzmarke (bei 0) steht. Damit nimmt das Gas in $B_1$ immer dasselbe Volumen ein.\\
+
+Der absolute Druck $p$ im Inneren des Gasgefäßes $B_1$ wird durch die Höhendifferenz $h$ zwischen den beiden Quecksilbersäulen bestimmt. Der Druck $p$ des Gases in $B_1$ muss genau den äußeren Luftdruck $p_{\atm}$ und den hydrostatischen Druck der Quecksilbersäule kompensieren:
+\begin{equation}\label{eq: druck_gasthermometer}
+    p = p_{\atm} + \rho_{\text{Hg}} \cdot g \cdot h \mDot
+\end{equation}
+Hierbei ist $\rho_{\text{Hg}}$ die Dichte des Quecksilbers und $g$ die Erdbeschleunigung.
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/gasthermometer.png}
-    \caption{Aufbau eines Gasthermometers mit konstantem Volumen.}
-    \label{fig: gasthermometer}
+    \caption{Aufbau eines Gasthermometers mit konstantem Volumen. Der Behälter $B_3$ wird gehoben oder gesenkt, um den Meniskus in $B_2$ stets bei der Nullmarke zu halten.}\label{fig: gasthermometer}
 \end{figure}
 
+\subsubsection*{Kalibrierung}
+Um dem gemessenen Druck eine Temperatur in Grad Celsius zuzuordnen, muss das Thermometer kalibriert werden. Dazu werden zwei Fixpunkte genutzt, üblicherweise der Gefrierpunkt und der Siedepunkt von Wasser.
+
+\begin{enumerate}
+    \item \textbf{Messung am Eispunkt ($\SI{0}{\celsius}$):}
+    Das Gefäß $B_1$ wird in ein Eiswasserbad getaucht. Nachdem sich das thermische Gleichgewicht eingestellt hat, wird $B_3$ justiert, bis der Pegel in $B_2$ wieder bei Null steht. Man misst die Höhendifferenz $h_0$ und berechnet den Druck $p_0$:
+    \begin{equation}
+        p_0 = p_{\text{atm}} + \rho_{\text{Hg}} \cdot g \cdot h_0 \mDot
+    \end{equation}
+    
+    \item \textbf{Messung am Siedepunkt ($\SI{100}{\celsius}$):}
+    Anschließend wird das Gefäß in kochendes Wasser (oder Dampf) gebracht. Durch die Erwärmung steigt der Druck, wodurch das Quecksilber in $B_2$ nach unten gedrückt würde. Um das Volumen konstant zu halten, muss $B_3$ stark angehoben werden, bis der Pegel in $B_2$ wieder die Nullmarke erreicht. Die neue Höhendifferenz $h_{100}$ liefert den Druck $p_{100}$:
+    \begin{equation}
+        p_{100} = p_{\text{atm}} + \rho_{\text{Hg}} \cdot g \cdot h_{100} \mDot
+    \end{equation}
+\end{enumerate}
+
+Da der Druck bei konstantem Volumen linear mit der Temperatur steigt (Gesetz von Amontons), kann nun für jeden beliebigen gemessenen Druck $p_T$ die zugehörige Temperatur $T$ interpoliert werden.
+
+\begin{rememberbox}{Temperaturskala am Gasthermometer}
+    Die Temperatur $T$ in Grad Celsius ergibt sich aus dem Verhältnis der Druckänderung zur Druckdifferenz der beiden Fixpunkte:
+    \begin{equation}\label{eq: formel_gasthermometer_celsius}
+        T[\si{\celsius}] = \frac{p_T - p_0}{p_{100} - p_0} \cdot \SI{100}{\celsius} \mDot
+    \end{equation}
+    Hierbei ist $p_T$ der Druck bei der zu messenden Temperatur und $p_0$ bzw. $p_{100}$ sind die Drücke am Gefrier- bzw. Siedepunkt von Wasser.
+\end{rememberbox}
 
 \section{Das ideale Gas und die Zustandsgleichung}\label{sec: ideales_gas}
 Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren Raum aus und lassen sich leicht komprimieren. Das liegt daran, dass der mittlere Abstand zwischen den Gasmolekülen sehr viel größer ist als bei Flüssigkeiten oder Festkörpern.
