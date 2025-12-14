@@ -483,7 +483,7 @@ Die Volumenänderung bei konstantem Druck lässt sich analog herleiten. Zusammen
 Bei einem \textbf{Gasthermometer} mit konstantem Volumen dient die Druckänderung als Maß für die Temperatur. Da sich Gase sehr gleichmäßig ausdehnen und Flüssigkeiten näherungsweise inkompressibel sind, sind Gasthermometer besonders präzise und werden zur Kalibrierung anderer Thermometer verwendet. 
 
 Die Funktionsweise eines Gasthermometers erklärt sich anhand der \cref{fig: gasthermometer}. Das System besteht aus einem mit Gas gefüllten Kolben ($B_1$), der über einen flexiblen Schlauch mit einem Quecksilber-Manometer verbunden ist. Das entscheidende Anwendungsmerkmal eines Gasthermometers ist das \textbf{konstante Volumen}:
-Um eine Messung durchzuführen, wird der bewegliche Behälter $B_3$ vertikal so verschoben, dass der Quecksilberspiegel im Schenkel $B_2$ exakt auf der Referenzmarke (bei 0) steht. Damit nimmt das Gas in $B_1$ immer dasselbe Volumen ein.\\
+Um eine Messung durchzuführen, wird der bewegliche Behälter $B_3$ vertikal so verschoben, dass der Quecksilberspiegel im Schenkel $B_2$ exakt auf der Referenzmarke (bei $h=0$) steht. Damit nimmt das Gas in $B_1$ immer dasselbe Volumen ein.\\
 
 Der absolute Druck $p$ im Inneren des Gasgefäßes $B_1$ wird durch die Höhendifferenz $h$ zwischen den beiden Quecksilbersäulen bestimmt. Der Druck $p$ des Gases in $B_1$ muss genau den äußeren Luftdruck $p_{\atm}$ und den hydrostatischen Druck der Quecksilbersäule kompensieren:
 \begin{equation}\label{eq: druck_gasthermometer}
@@ -524,22 +524,38 @@ Da der Druck bei konstantem Volumen linear mit der Temperatur steigt (Gesetz von
     Hierbei ist $p_T$ der Druck bei der zu messenden Temperatur und $p_0$ bzw. $p_{100}$ sind die Drücke am Gefrier- bzw. Siedepunkt von Wasser.
 \end{rememberbox}
 
-\section{Das ideale Gas und die Zustandsgleichung}\label{sec: ideales_gas}
-Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren Raum aus und lassen sich leicht komprimieren. Das liegt daran, dass der mittlere Abstand zwischen den Gasmolekülen sehr viel größer ist als bei Flüssigkeiten oder Festkörpern.
+\subsubsection{Herleitung der Formel}
+Die Herleitung von \cref{eq: formel_gasthermometer_celsius} basiert auf der Annahme, dass sich der Druck eines idealen Gases bei konstantem Volumen linear mit der Temperatur ändert (Gesetz von Amontons). Geometrisch entspricht dies einer Geraden im $(p, T)$-Diagramm, die durch zwei experimentell bestimmte Punkte verläuft: Den Eispunkt $(p_0, T_0)$ und den Siedepunkt $(p_{100}, T_{100})$ von Wasser. Wir verwenden die Zweipunktform der Geradengleichung mit dem unbekannten Punkt $(p_T, T)$:
+\begin{equation}\begin{aligned}
+    \frac{T - T_{0}}{p_T - p_{0}} &= \frac{T_{100} - T_{0}}{p_{100} - p_{0}} \mComma \\
+    \frac{T - 0}{p_T - p_0} &= \frac{100 - 0}{p_{100} - p_0} \mDot
+\end{aligned}\end{equation}
+Durch Umformen nach $T$ folgt direkt die gesuchte Beziehung:
+\begin{align}
+    \frac{T}{p_T - p_0} &= \frac{100}{p_{100} - p_0} & | \cdot (p_T - p_0) \notag \\
+    T &= \frac{100}{p_{100} - p_0} \cdot (p_T - p_0) \notag \\
+    T &= \frac{p_T - p_0}{p_{100} - p_0} \cdot \SI{100}{\celsius} \mDot \label{eq: herleitung_ende}
+\end{align}
+Diese lineare Skala ist die \textbf{empirische Celsiusskala} des Gasthermometers.
+\subsubsection*{Vereinfachung in der Praxis}
+In der Praxis ist es oft nicht nötig, die absoluten Drücke zu berechnen. Setzen wir die Definition des hydrostatischen Drucks $p = p_{\text{atm}} + \rho_{\text{Hg}} g h$ in die Temperaturformel ein, so sehen wir, dass sich der Atmosphärendruck $p_{\text{atm}}$ durch die Differenzbildung eliminiert:
+\begin{align}
+    p_T - p_0 &= (p_{\text{atm}} + \rho_{\text{Hg}} g h_T) - (p_{\text{atm}} + \rho_{\text{Hg}} g h_0) \notag \\
+    &= \rho_{\text{Hg}} g (h_T - h_0) \mDot
+\end{align}
+Dasselbe gilt für den Nenner ($p_{100} - p_0$). Setzt man dies in \cref{eq: formel_gasthermometer_celsius} ein, kürzen sich auch die Dichte $\rho_{\text{Hg}}$ und die Erdbeschleunigung $g$ heraus:
 
-\subsection{Das Gesetz von Boyle-Mariotte}\label{subsec: boyle_mariotte}
-Experimente zeigen, dass für eine abgeschlossene Gasmenge bei \textbf{konstanter Temperatur (isotherm)} das Produkt aus Druck $p$ und Volumen $V$ konstant ist:
-\begin{equation}\label{eq: boyle_mariotte_gesetz}
-    p \cdot V = \const \mDot
+\begin{equation}
+    T = \frac{\cancel{\rho_{\text{Hg}} g} (h_T - h_0)}{\cancel{\rho_{\text{Hg}} g} (h_{100} - h_0)} \cdot 100 
+    = \frac{h_T - h_0}{h_{100} - h_0} \cdot \SI{100}{\celsius} \mDot
 \end{equation}
-Dieses Gesetz ist als das \textbf{Gesetz von Boyle-Mariotte} bekannt. Es besagt, dass bei konstanter Temperatur Druck und Volumen umgekehrt proportional zueinander sind. Der Zahlenwert der Konstanten hängt dabei von der Temperatur ab. Daraus folgt auch, dass die Dichte $\rho = M/V$ eines Gases proportional zum Druck ist.
 
-\subsection{Die ideale Gasgleichung}\label{subsec: ideale_gasgleichung}
-Fasst man das Gesetz von Boyle-Mariotte und die Gesetze von Gay-Lussac zusammen, gelangt man zur \textbf{allgemeinen Zustandsgleichung für ideale Gase}:
-\begin{equation}\label{eq:ideale_gasgleichung}
-    p \cdot V = N \cdot k_B \cdot T
-\end{equation}
-Hierbei ist $N$ die Anzahl der Teilchen (Atome oder Moleküle) im Volumen $V$. Diese Gleichung verknüpft die drei makroskopischen Zustandsgrößen Druck, Volumen und Temperatur.
+\begin{importantbox}{Praktische Messung}
+    Solange der Atmosphärendruck während der Kalibrierung und Messung konstant bleibt, genügt es, die \textbf{Höhendifferenzen} der Quecksilbersäulen zu messen. Die Temperatur ist proportional zum Verhältnis der Höhenänderungen:
+    \begin{equation}
+        T[\si{\celsius}] = \frac{h_T - h_0}{h_{100} - h_0} \cdot \SI{100}{\celsius} \mDot
+    \end{equation}
+\end{importantbox}
 
 \section{Die barometrische Höhenformel}\label{sec: barometrische_hoehenformel}
 Der Luftdruck, den wir auf der Erdoberfläche messen, entsteht durch die Gewichtskraft der darüber liegenden Luftsäule. Da die Dichte der Luft mit der Höhe abnimmt, ist auch der Druck nicht konstant. Wir wollen eine Formel für die Druckabhängigkeit von der Höhe $h$ herleiten.
@@ -573,6 +589,25 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$) bis zur
 %     \caption{Der exponentielle Abfall des Luftdrucks mit der Höhe in einer idealisierten isothermen Atmosphäre.}
 %     \label{fig: barometrische_hoehenformel_plot}
 % \end{figure}
+
+\section{Das ideale Gas und die Zustandsgleichung}\label{sec: ideales_gas}
+Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren Raum aus und lassen sich leicht komprimieren. Das liegt daran, dass der mittlere Abstand zwischen den Gasmolekülen sehr viel größer ist als bei Flüssigkeiten oder Festkörpern.
+
+\subsection{Das Gesetz von Boyle-Mariotte}\label{subsec: boyle_mariotte}
+Experimente zeigen, dass für eine abgeschlossene Gasmenge bei \textbf{konstanter Temperatur (isotherm)} das Produkt aus Druck $p$ und Volumen $V$ konstant ist:
+\begin{equation}\label{eq: boyle_mariotte_gesetz}
+    p \cdot V = \const \mDot
+\end{equation}
+Dieses Gesetz ist als das \textbf{Gesetz von Boyle-Mariotte} bekannt. Es besagt, dass bei konstanter Temperatur Druck und Volumen umgekehrt proportional zueinander sind. Der Zahlenwert der Konstanten hängt dabei von der Temperatur ab. Daraus folgt auch, dass die Dichte $\rho = M/V$ eines Gases proportional zum Druck ist.
+
+\subsection{Die ideale Gasgleichung}\label{subsec: ideale_gasgleichung}
+Fasst man das Gesetz von Boyle-Mariotte und die Gesetze von Gay-Lussac zusammen, gelangt man zur \textbf{allgemeinen Zustandsgleichung für ideale Gase}:
+\begin{equation}\label{eq:ideale_gasgleichung}
+    p \cdot V = N \cdot k_B \cdot T
+\end{equation}
+Hierbei ist $N$ die Anzahl der Teilchen (Atome oder Moleküle) im Volumen $V$. Diese Gleichung verknüpft die drei makroskopischen Zustandsgrößen Druck, Volumen und Temperatur.
+
+
 
 \section{Kinetische Gastheorie}\label{sec: kinetische_gastheorie}
 Die kinetische Gastheorie, entwickelt in der zweiten Hälfte des 19. Jahrhunderts, erklärt die makroskopischen Eigenschaften von Gasen (wie Druck und Temperatur) durch die Bewegung und die Wechselwirkung der Gasatome auf mikroskopischer Ebene.
