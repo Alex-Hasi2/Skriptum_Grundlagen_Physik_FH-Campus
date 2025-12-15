@@ -586,7 +586,7 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dich
 Laut dieser isothermen Näherung erhält man für den Luftdruck auf der Spitze des Mount Everest (\SI{8849}{\meter}) nur noch $\approx \SI{34.5}{\percent}$ des Luftdrucks auf Meereshöhe, was nur ungefähr $\SI{2}{\percent}$ vom realen Wert abweicht. 
 \begin{figure}[tb]
     \centering
-    \resizebox{0.35\linewidth}{!}{
+    \resizebox{0.45\linewidth}{!}{
     \begin{tikzpicture}[>=Latex]
         % Parameter
         \def\cylW{3.5}       % Breite des Zylinders
@@ -637,9 +637,9 @@ Laut dieser isothermen Näherung erhält man für den Luftdruck auf der Spitze d
     \caption{Mit zunehmender Höhe $h$ nimmt das Gewicht der darüberliegenden Luftsäule ab, wodurch Druck und Dichte sinken.}\label{fig: luftsaeule_hoehenformel_anschauung}
 \end{figure}
 Die \textbf{Druckabnahme} einer isothermen Lufthülle folgt also einem \textbf{Exponentialgesetz} im Gegensatz zur \textbf{linearen Druckabnahme in einer Flüssigkeit}. Die Lufthülle der Erde hat also keine scharfe Grenze. In der realen Erdatmosphäre ändert sich die Temperatur mit der Höhe. Die barometrische Höhenformel ist für die untere Atmosphäre eine gute Näherung. 
-\begin{figure} % [H] erzwingt Position "genau hier"
+\begin{figure}[tb]
     \centering
-    \includegraphics[width=0.7\textwidth]{Bilder/Kapitel_Waermelehre/hoehenformel.pdf}
+    \includegraphics[width=0.6\textwidth]{Bilder/Kapitel_Waermelehre/hoehenformel.pdf}
     \caption{Der exponentiell abnehmende Luftdruck $p(z)$ über der Höhe $h$ in km.}\label{fig: barom_hoehenformel_grafik}
 \end{figure}
 
@@ -661,7 +661,7 @@ Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren 
 \subsection{Das Gesetz von Boyle-Mariotte}\label{subsec: boyle_mariotte}
 \begin{figure}[tb]
     \centering
-    \resizebox{0.35\linewidth}{!}{
+    \resizebox{0.25\linewidth}{!}{
     \begin{tikzpicture}[>=Latex] % Setzt den Standard-Pfeilspitzen-Typ
         % Parameter für einfache Größenanpassung
         \def\cylW{3.0}   % Breite des Zylinders
@@ -717,6 +717,67 @@ Das Modell des idealen Gases basiert auf folgenden Annahmen:
 \end{itemize}
 
 \subsection{Herleitung des Gasdrucks}\label{subsec: herleitung_gasdruck}
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.5\linewidth}{!}{
+    \begin{tikzpicture}[>=Latex, font=\large]
+        % --- Definitionen für Konsistenz ---
+        \definecolor{myblue}{RGB}{0, 102, 204} % Dunkelblau
+        \def\wallHeight{3.0}
+        \def\wallWidth{1.0}
+        
+        \def\xBall{2.2} % x-Position des Balls
+        \def\yBall{2.0} % y-Position des Balls
+        \def\factPos{0.75} % Faktor für die Position des ausgehenden Balls
+        
+        \def\vecLenX{1.3} % Länge der x-Vektorkomponente
+        \def\vecLenY{\yBall*\vecLenX/\xBall} % Länge der y-Vektorkomponente
+
+        % Koordinaten oben und unten mit gleichem Winkel
+        \coordinate (O) at (0,0); % Aufprallpunkt
+        \coordinate (BallIn) at (-\xBall, -\yBall); % Position Ball unten
+        \coordinate (BallOut) at (-\factPos*\xBall, \factPos*\yBall); % Position Ball oben
+
+        % 1. Wand (rechts)
+        \fill[red!15] (0, -\wallHeight) rectangle (\wallWidth, \wallHeight);
+        \draw[thick] (0, -\wallHeight) -- (0, \wallHeight);
+
+        % 2. Hilfslinien für die Bahn (dünn)
+        \draw[thin, gray] (BallIn) -- (O);
+        \draw[thin, gray] (O) -- (BallOut);
+
+        % 3. Impulsänderung Delta p (Pfeil nach rechts aus der Wand)
+        \draw[->, thick] (O) -- (2.5, 0) node[right] {$\Delta p = 2mv_x$};
+
+        % --- UNTEN: Eingehender Ball (Dunkelblau) ---
+        \filldraw[fill=myblue, draw=black] (BallIn) circle (0.25);
+        
+        % Vektoren unten
+        % vx (schwarz, horizontal)
+        \draw[->, thick] (BallIn) -- ++(\vecLenX, 0) node[midway, below] {$v_x$};
+        % vy (gestrichelt, vertikal)
+        \draw[->, thick] (BallIn) ++(\vecLenX, 0) -- ++(0, \vecLenY) node[midway, right] {$v_y$};
+        % v (rot, diagonal)
+        \draw[->, red, thick] (BallIn) -- ++(\vecLenX, \vecLenY) node[midway, above left] {$\vec{v}$};
+
+        % % --- OBEN: Ausgehender Ball (Hellblau, gestrichelt) ---
+        \filldraw[fill=myblue!30, draw=black, dashed] (BallOut) circle (0.25);
+        
+        % Vektoren oben
+        % vy (schwarz, vertikal nach oben)
+        \draw[->, thick] (BallOut) -- ++(0, \vecLenY) node[midway, right] {$v_y$};
+        % -vx (schwarz, horizontal nach links, startet an der Spitze von vy)
+        \draw[->, thick] (BallOut) ++(0, \vecLenY) -- ++(-\vecLenX, 0) node[midway, above] {$-v_x$};
+        % v (rot, diagonal nach links oben)
+        \draw[->, red, thick] (BallOut) -- ++(-\vecLenX, \vecLenY) node[midway, below left] {$\vec{v}$};
+
+        % 4. Textbeschriftung Mitte
+        \node[below right, align=left] at (-3.25, 0.45) {$\Delta v_x = 2v_x$\\ $\Delta v_y = 0$};
+    \end{tikzpicture}
+    }
+    \caption{Impulsübertragung beim elastischen Stoß auf eine Wand beträgt $\Delta p = 2mv_x$, wenn $v_x$ die Geschwindigkeitskomponente senkrecht zur Wand ist.}\label{fig: impulsuebertrag_wand}
+\end{figure}
+
 Der Druck, den ein Gas auf eine Wand ausübt, entsteht durch den Impulsübertrag der unzähligen Teilchen, die pro Zeiteinheit auf die Wand prallen.
 Betrachten wir ein Teilchen der Masse $m$, das sich mit der Geschwindigkeitskomponente $v_x$ auf eine Wand in der y-z-Ebene zubewegt. Beim elastischen Stoß kehrt sich die x-Komponente der Geschwindigkeit um ($-v_x$), während die anderen Komponenten unverändert bleiben. Der Impulsübertrag auf die Wand beträgt daher:
 \begin{equation}
@@ -736,6 +797,13 @@ Durch eine detaillierte Betrachtung aller Teilchen, die in einer Zeit $\Delta t$
 \end{equation}
 wobei $n=N/V$ die Teilchendichte (Anzahl der Teilchen pro Volumen) und $\overline{v^2}$ das mittlere Geschwindigkeitsquadrat aller Teilchen ist.
 
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Bilder/Kapitel_Waermelehre/particles_in_box.pdf}
+    \caption{Im kleinen Volumenelement $V_S$ erreichen alle Teilchen mit Geschwindigkeit $v_x$ die Wand $A$ im Zeitintervall $\dd t$, weil die Seitenlänge des Quaders $\dd s=v_x \dd t$.}\label{fig: teilchen_in_box}
+\end{figure}
+
+
 \begin{rememberbox}{Druck, Energie und Temperatur}
     Man kann \cref{eq:druck_kinetisch} umschreiben zu:
     \begin{equation}
@@ -748,6 +816,55 @@ wobei $n=N/V$ die Teilchendichte (Anzahl der Teilchen pro Volumen) und $\overlin
 \end{rememberbox}
 
 \section{Maxwell-Boltzmann-Verteilung}\label{sec: maxwell_boltzmann_verteilung}
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.5\linewidth}{!}{
+        \begin{tikzpicture}[
+                >=Latex, 
+                font=\large,
+                % Definition der Funktion
+                declare function={
+                    gauss(\x) = 3.5 * exp(-0.22 * \x^2);
+                }
+            ]
+                % Parameter für den Streifen
+                \def\vpos{1.1}       
+                \def\dv{0.6}         
+                \def\vend{\vpos+\dv} 
+
+                % 1. Fläche füllen
+                \fill[red!15] (\vpos, 0) -- (\vpos, {gauss(\vpos)})
+                    -- plot[domain=\vpos:\vend, samples=50] (\x, {gauss(\x)})
+                    -- (\vend, 0) -- cycle;
+
+                % 2. Achsen
+                \draw[->, thick] (0,0) -- (6,0) node[below] {\Large $v$};
+                \draw[->, thick] (0,0) -- (0,4) node[left] {\large $f(v)$};
+                \node[below left] at (0,-0.1) {$0$};
+
+                % 3. Graph
+                \draw[red!85!black, ultra thick, samples=100, domain=0:5.5] 
+                    plot (\x, {gauss(\x)});
+
+                % 4. Begrenzungslinien
+                \draw[thick] (\vpos, 0) -- (\vpos, {gauss(\vpos)});
+                \draw[thick] (\vend, 0) -- (\vend, {gauss(\vend)});
+
+                % 5. Beschriftung x-Achse
+                % Align the labels at the same vertical level using baseline and positioning
+                \node[below=6pt] at (\vpos, 0) {$v$};
+                \node[below right=4pt] at (\vend-0.25, 0) {$v + \dd v$};
+
+                % 6. Pfeile für dv
+                \draw[->] (\vpos - 0.8, 0.6) -- (\vpos, 0.6) node[midway, above] {$\dd v$};
+                \draw[->] (\vend + 0.8, 0.6) -- (\vend, 0.6); 
+
+                % 7. Beschriftung Fläche
+                \draw[-, thick] (\vpos + 0.45*\dv, {gauss(\vpos)*0.6}) -- ++(0.5, 1.7) node[above right] {$f(v)\,\dd v$};
+        \end{tikzpicture}
+}
+    \caption{Die Fläche $f(v)\dd v$ gibt die Anzahl der Moleküle mit Geschwindigkeitsbeträgen zwischen $v$ und $v+\dd v$ an.}\label{fig: f-v-dv_verteilung_anschauung}
+\end{figure}
 In einem Gas haben nicht alle Teilchen die gleiche Geschwindigkeit. Ihre Geschwindigkeiten sind statistisch verteilt. Die \textbf{Maxwell-Boltzmann-Verteilungsfunktion} $f(v)$ beschreibt, welcher Anteil der Moleküle eine Geschwindigkeit im Intervall zwischen $v$ und $v+dv$ besitzt.
 Die Verteilungsfunktion lautet:
 \begin{equation}\label{eq:maxwell_boltzmann}

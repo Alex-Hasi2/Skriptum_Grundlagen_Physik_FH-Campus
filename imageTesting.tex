@@ -27,7 +27,7 @@
 }
 
 \newcommand{\ehat}[1]{\hat{\bm{e}}_{#1}}
-
+\newcommand{\dd}{\mathrm{d}}
 
 
 
@@ -36,55 +36,212 @@
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
- 
-% Eine Luftsäule 
-\begin{tikzpicture}[>=Latex]
-        % Parameter
-        \def\cylW{3.5}       % Breite des Zylinders
-        \def\cylH{5.0}       % Höhe
-        \def\hBase{1.2}      % Höhe h
-        \def\dh{1.8}         % Abstand dh (relative Höhe zu h)
-        \def\hTop{\hBase+\dh}% Höhe h + dh
-        \def\hNull{0.7}
 
-        % 1. Füllung (Linearer Farbverlauf orange -> weiß)
-        % 'middle color' kann optional für feinere Steuerung genutzt werden, 
-        % hier reicht bottom zu top.
-        \shade[bottom color=orange!60, top color=white] 
-            (0,\hBase) rectangle (\cylW, \cylH);
 
-        % 2. Zylinderwände (nur links und rechts)
-        \draw[thick] (0,0) -- (0,\cylH);
-        \draw[thick] (\cylW,0) -- (\cylW,\cylH);
+% % Minimal working example: Eine Gaußsche Verteilungsfunktion f(v) = 3.5 * exp(-0.15 * v^2) wird geplottet
+% % Zeigt, wie declare function anzuwenden ist.
+% \begin{tikzpicture}[
+%     % Hier wird die Funktion korrekt deklariert
+%     % Syntax: Name(\Variable) = Mathematischer Ausdruck;
+%     declare function={
+%         gauss(\v) = 3.5 * exp(-0.15 * \v^2);
+%     }
+% ]
+%     % Gitter zur Orientierung
+%     \draw[help lines] (0,0) grid (5,4);
+    
+%     % Achsen
+%     \draw[->] (0,0) -- (5.2,0) node[right] {$v$};
+%     \draw[->] (0,0) -- (0,4.2) node[above] {$f(v)$};
 
-        % 3. Markierungslinien
-        % Untere Linie bei h (dick orange + gestrichelt schwarz für den Effekt)
-        \draw[line width=4pt, orange] (0, \hBase) -- (\cylW, \hBase);
-        \draw[thick, dashed] (0, \hBase) -- (\cylW, \hBase);
-        % Obere Linie bei h + dh (nur gestrichelt)
-        \draw[thick, dashed] (0, \hTop) -- (\cylW, \hTop);
+%     % Plotten der Funktion
+%     % Hier rufen wir einfach {gauss(\x)} auf
+%     \draw[red, thick, samples=100, domain=0:5] 
+%         plot (\x, {gauss(\x)});
 
-        % 4. Koordinatenachse z (links außen)
-        \draw[->, ultra thick] (-1.1, 3*\cylH/4) -- (-1.1, \cylH) node[right, midway] {\Large $z$};
+%     % Beispiel für einen Punkt auf der Kurve bei v=2
+%     \fill[blue] (2, {gauss(2)}) circle (2pt) node[above right] {Wert bei $v=2$};
 
-        % 5. Druck-Pfeil p(z) (von oben kommend)
-        \draw[->, ultra thick] (\cylW/2, \cylH + 0.5) -- (\cylW/2, \hBase + 0.2) 
-            node[right=0.1, pos=0.05] {\Large $p(z)$};
+% \end{tikzpicture}
 
-        % 6. Beschriftungen
-        % Links (Höhen)
-        \node[left=0.2] at (0, \hBase) {\large $h$};
-        \node[left=0.2] at (0, \hTop) {\large $h + dh$};
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
 
-        % Rechts (Dichte/Druck Werte)
-        \node[right=0.2] at (\cylW, \hBase) {\large $\rho(h), p(h)$};
-        % Multiline Node für den oberen Text
-        \node[right=0.2, align=left] at (\cylW, \hTop) {\large $\rho(h + dh),$ \\ \large $p(h + dh)$};
+% % Maxwell-Boltzmann Verteilungsfunktion mit markiertem Flächeninhalt f(v) dv in rot
+% % Eine Gaußsche Verteilungsfunktion f(v) = 3.5 * exp(-0.22 * v^2) wird geplottet
 
-        % Mitte (Fläche A) - in orange
-        \node[orange!90!black] at (\cylW/2, \hBase - 0.6) {\Large $A$};
+\begin{tikzpicture}[
+        >=Latex, 
+        font=\large,
+        % Definition der Funktion
+        declare function={
+            gauss(\x) = 3.5 * exp(-0.22 * \x^2);
+        }
+    ]
+        % Parameter für den Streifen
+        \def\vpos{1.1}       
+        \def\dv{0.6}         
+        \def\vend{\vpos+\dv} 
+
+        % 1. Fläche füllen
+        \fill[red!15] (\vpos, 0) -- (\vpos, {gauss(\vpos)})
+            -- plot[domain=\vpos:\vend, samples=50] (\x, {gauss(\x)})
+            -- (\vend, 0) -- cycle;
+
+        % 2. Achsen
+        \draw[->, thick] (0,0) -- (6,0) node[below] {\Large $v$};
+        \draw[->, thick] (0,0) -- (0,4) node[left] {\large $f(v)$};
+        \node[below left] at (0,-0.1) {$0$};
+
+        % 3. Graph
+        \draw[red!85!black, ultra thick, samples=100, domain=0:5.5] 
+            plot (\x, {gauss(\x)});
+
+        % 4. Begrenzungslinien
+        \draw[thick] (\vpos, 0) -- (\vpos, {gauss(\vpos)});
+        \draw[thick] (\vend, 0) -- (\vend, {gauss(\vend)});
+
+        % 5. Beschriftung x-Achse
+        % Align the labels at the same vertical level using baseline and positioning
+        \node[below=6pt] at (\vpos, 0) {$v$};
+        \node[below right=4pt] at (\vend-0.25, 0) {$v + \dd v$};
+
+        % 6. Pfeile für dv
+        \draw[->] (\vpos - 0.8, 0.6) -- (\vpos, 0.6) node[midway, above] {$\dd v$};
+        \draw[->] (\vend + 0.8, 0.6) -- (\vend, 0.6); 
+
+        % 7. Beschriftung Fläche
+        \draw[-, thick] (\vpos + 0.45*\dv, {gauss(\vpos)*0.6}) -- ++(0.5, 1.7) node[above right] {$f(v)\,\dd v$};
 
 \end{tikzpicture}
+
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% % Impulsübertragung eines elastischen Stoßes eines Balls auf eine Wand
+% % Der Ball prallt mit Geschwindigkeit v_x, v_y auf die Wand und wird mit -v_x, v_y reflektiert
+
+% \begin{tikzpicture}[>=Latex, font=\large]
+%     % --- Definitionen für Konsistenz ---
+%     \def\wallHeight{3.0}
+%     \def\wallWidth{1.0}
+    
+%     \def\xBall{2.2} % x-Position des Balls
+%     \def\yBall{2.0} % y-Position des Balls
+%     \def\factPos{0.75} % Faktor für die Position des ausgehenden Balls
+    
+%     \def\vecLenX{1.3} % Länge der x-Vektorkomponente
+%     \def\vecLenY{\yBall*\vecLenX/\xBall} % Länge der y-Vektorkomponente
+
+
+%     \definecolor{myblue}{RGB}{0, 102, 204} % Dunkelblau
+
+%     % Koordinaten oben und unten mit gleichem Winkel
+%     \coordinate (O) at (0,0); % Aufprallpunkt
+%     \coordinate (BallIn) at (-\xBall, -\yBall); % Position Ball unten
+%     \coordinate (BallOut) at (-\factPos*\xBall, \factPos*\yBall); % Position Ball oben
+
+%     % 1. Wand (rechts)
+%     \fill[red!15] (0, -\wallHeight) rectangle (\wallWidth, \wallHeight);
+%     \draw[thick] (0, -\wallHeight) -- (0, \wallHeight);
+
+%     % 2. Hilfslinien für die Bahn (dünn)
+%     \draw[thin, gray] (BallIn) -- (O);
+%     \draw[thin, gray] (O) -- (BallOut);
+
+%     % 3. Impulsänderung Delta p (Pfeil nach rechts aus der Wand)
+%     \draw[->, thick] (O) -- (2.5, 0) node[right] {$\Delta p = 2mv_x$};
+
+%     % --- UNTEN: Eingehender Ball (Dunkelblau) ---
+%     \filldraw[fill=myblue, draw=black] (BallIn) circle (0.25);
+    
+%     % Vektoren unten
+%     % vx (schwarz, horizontal)
+%     \draw[->, thick] (BallIn) -- ++(\vecLenX, 0) node[midway, below] {$v_x$};
+%     % vy (gestrichelt, vertikal)
+%     \draw[->, thick] (BallIn) ++(\vecLenX, 0) -- ++(0, \vecLenY) node[midway, right] {$v_y$};
+%     % v (rot, diagonal)
+%     \draw[->, red, thick] (BallIn) -- ++(\vecLenX, \vecLenY) node[midway, above left] {$\vec{v}$};
+
+
+%     % % --- OBEN: Ausgehender Ball (Hellblau, gestrichelt) ---
+%     \filldraw[fill=myblue!30, draw=black, dashed] (BallOut) circle (0.25);
+    
+%     % Vektoren oben
+%     % vy (schwarz, vertikal nach oben)
+%     \draw[->, thick] (BallOut) -- ++(0, \vecLenY) node[midway, right] {$v_y$};
+%     % -vx (schwarz, horizontal nach links, startet an der Spitze von vy)
+%     \draw[->, thick] (BallOut) ++(0, \vecLenY) -- ++(-\vecLenX, 0) node[midway, above] {$-v_x$};
+%     % v (rot, diagonal nach links oben)
+%     \draw[->, red, thick] (BallOut) -- ++(-\vecLenX, \vecLenY) node[midway, below left] {$\vec{v}$};
+
+%     % 4. Textbeschriftung Mitte
+%     \node[below right, align=left] at (-3.25, 0.45) {$\Delta v_x = 2v_x$,\\ $\Delta v_y = 0$};
+
+% \end{tikzpicture}
+
+
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+ 
+% % Eine Luftsäule mit Höhenmarkierungen und Druckpfeil p(z)
+% % Die Luftsäule ist mit einem orangen Farbverlauf gefüllt / Die Fläche A der Luftsäule ist in Orange beschriftet
+% \begin{tikzpicture}[>=Latex]
+%         % Parameter
+%         \def\cylW{3.5}       % Breite des Zylinders
+%         \def\cylH{5.0}       % Höhe
+%         \def\hBase{1.2}      % Höhe h
+%         \def\dh{1.8}         % Abstand dh (relative Höhe zu h)
+%         \def\hTop{\hBase+\dh}% Höhe h + dh
+%         \def\hNull{0.7}
+
+%         % 1. Füllung (Linearer Farbverlauf orange -> weiß)
+%         % 'middle color' kann optional für feinere Steuerung genutzt werden, 
+%         % hier reicht bottom zu top.
+%         \shade[bottom color=orange!60, top color=white] 
+%             (0,\hBase) rectangle (\cylW, \cylH);
+
+%         % 2. Zylinderwände (nur links und rechts)
+%         \draw[thick] (0,0) -- (0,\cylH);
+%         \draw[thick] (\cylW,0) -- (\cylW,\cylH);
+
+%         % 3. Markierungslinien
+%         % Untere Linie bei h (dick orange + gestrichelt schwarz für den Effekt)
+%         \draw[line width=4pt, orange] (0, \hBase) -- (\cylW, \hBase);
+%         \draw[thick, dashed] (0, \hBase) -- (\cylW, \hBase);
+%         % Obere Linie bei h + dh (nur gestrichelt)
+%         \draw[thick, dashed] (0, \hTop) -- (\cylW, \hTop);
+
+%         % 4. Koordinatenachse z (links außen)
+%         \draw[->, ultra thick] (-1.1, 3*\cylH/4) -- (-1.1, \cylH) node[right, midway] {\Large $z$};
+
+%         % 5. Druck-Pfeil p(z) (von oben kommend)
+%         \draw[->, ultra thick] (\cylW/2, \cylH + 0.5) -- (\cylW/2, \hBase + 0.2) 
+%             node[right=0.1, pos=0.05] {\Large $p(z)$};
+
+%         % 6. Beschriftungen
+%         % Links (Höhen)
+%         \node[left=0.2] at (0, \hBase) {\large $h$};
+%         \node[left=0.2] at (0, \hTop) {\large $h + dh$};
+
+%         % Rechts (Dichte/Druck Werte)
+%         \node[right=0.2] at (\cylW, \hBase) {\large $\rho(h), p(h)$};
+%         % Multiline Node für den oberen Text
+%         \node[right=0.2, align=left] at (\cylW, \hTop) {\large $\rho(h + dh),$ \\ \large $p(h + dh)$};
+
+%         % Mitte (Fläche A) - in orange
+%         \node[orange!90!black] at (\cylW/2, \hBase - 0.6) {\Large $A$};
+
+% \end{tikzpicture}
 
 
 
