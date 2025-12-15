@@ -35,6 +35,7 @@
 \renewcommand\theadfont{\bfseries} 
 
 \usepackage{graphicx}
+% \usepackage{float}
 \usepackage{epstopdf}
 
 \usepackage{eurosym}  % euro symbol € 
@@ -582,6 +583,7 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dich
     \end{equation}
     Der Druck in der Atmosphäre nimmt exponentiell mit der Höhe ab. Die Größe $H = p_0/(\rho_0 g)$ wird als Skalenhöhe bezeichnet und beträgt für Luft bei \SI{0}{\celsius} etwa \SI{8}{\kilo\meter}. In einer Höhe von ca. \SI{5.5}{\kilo\meter} beträgt der Luftdruck nur noch die Hälfte des Bodenwertes.
 \end{importantbox}
+Laut dieser isothermen Näherung erhält man für den Luftdruck auf der Spitze des Mount Everest (\SI{8849}{\meter}) nur noch $\approx \SI{34.5}{\percent}$ des Luftdrucks auf Meereshöhe, was nur ungefähr $\SI{2}{\percent}$ vom realen Wert abweicht. 
 \begin{figure}[tb]
     \centering
     \resizebox{0.35\linewidth}{!}{
@@ -634,13 +636,24 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dich
     }
     \caption{Mit zunehmender Höhe $h$ nimmt das Gewicht der darüberliegenden Luftsäule ab, wodurch Druck und Dichte sinken.}\label{fig: luftsaeule_hoehenformel_anschauung}
 \end{figure}
-% \begin{figure}[htb]
-%     asdf
-%     \centering
-%     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/barometrische_hoehenformel_plot.png}
-%     \caption{Der exponentielle Abfall des Luftdrucks mit der Höhe in einer idealisierten isothermen Atmosphäre.}
-%     \label{fig: barometrische_hoehenformel_plot}
-% \end{figure}
+Die \textbf{Druckabnahme} einer isothermen Lufthülle folgt also einem \textbf{Exponentialgesetz} im Gegensatz zur \textbf{linearen Druckabnahme in einer Flüssigkeit}. Die Lufthülle der Erde hat also keine scharfe Grenze. In der realen Erdatmosphäre ändert sich die Temperatur mit der Höhe. Die barometrische Höhenformel ist für die untere Atmosphäre eine gute Näherung. 
+\begin{figure} % [H] erzwingt Position "genau hier"
+    \centering
+    \includegraphics[width=0.7\textwidth]{Bilder/Kapitel_Waermelehre/hoehenformel.pdf}
+    \caption{Der exponentiell abnehmende Luftdruck $p(z)$ über der Höhe $h$ in km.}\label{fig: barom_hoehenformel_grafik}
+\end{figure}
+
+
+\subsubsection{Archimedisches Prinzip}
+Gleich wie bei Flüssigkeiten gilt auch in Gasen das Archimedische Prinzip:
+\begin{rememberbox}{Archimedisches Prinzip für Gase}
+    Ein in ein Gas eingetauchter Körper erfährt eine Auftriebskraft $F_A$, die dem Gewicht des von ihm verdrängten Gases entspricht:
+    \begin{equation}\label{eq: auftrieb_gase}
+        F_{\text{Auf}} = \rho_{\text{Gas}} \cdot V_{\text{Körper}} \cdot g = m_{\text{verdr. Gas}} \cdot g = F_{\text{Gew}} \mDot
+    \end{equation}
+    Die Auftriebskraft wirkt jedoch der Gewichtskraft des Körpers entgegen, $\ivecS{F}{\text{Gew}} = -\ivecS{F}{\text{Auf}}$.
+\end{rememberbox}
+Für Gase ist die Dichte $\rho_{\text{Gas}}$ eigentlich nicht konstant über die Höhe des Körpers. In der Praxis ist die Variation jedoch meist vernachlässigbar klein, weshalb \cref{eq: auftrieb_gase} praktisch exakt ist.
 
 \section{Das ideale Gas und die Zustandsgleichung}\label{sec: ideales_gas}
 Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren Raum aus und lassen sich leicht komprimieren. Das liegt daran, dass der mittlere Abstand zwischen den Gasmolekülen sehr viel größer ist als bei Flüssigkeiten oder Festkörpern.
@@ -651,9 +664,9 @@ Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren 
     \resizebox{0.35\linewidth}{!}{
     \begin{tikzpicture}[>=Latex] % Setzt den Standard-Pfeilspitzen-Typ
         % Parameter für einfache Größenanpassung
-        \def\cylW{4.0}   % Breite des Zylinders
-        \def\cylH{4.5}   % Höhe der Wände
-        \def\pistY{2.9}  % y-Position des Kolbenbodens
+        \def\cylW{3.0}   % Breite des Zylinders
+        \def\cylH{3.8}   % Höhe der Wände
+        \def\pistY{2.6}  % y-Position des Kolbenbodens
         \def\pistH{0.7}  % Dicke des Kolbens
 
         % 1. Zylinder (Wände links, rechts und Boden)
@@ -664,14 +677,14 @@ Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren 
         \filldraw[fill=red!45, draw=black, thick] (0, \pistY) rectangle (\cylW, \pistY+\pistH);
 
         % 3. Beschriftung Gasvolumen (mittig im unteren Bereich)
-        \node at (0.5*\cylW, 0.5*\pistY) {\LARGE $V; p$};
+        \node at (0.5*\cylW, 0.5*\pistY) {\large $V; p$};
 
         % 4. Pfeil für den äußeren Druck p
         % Startet etwas oberhalb der Zylinderwände und zeigt auf den Kolben
         \draw[-{Stealth[length=3mm, width=3mm]},line width=1.1pt] (0.5*\cylW, \cylH + 0.5) -- (0.5*\cylW, \pistY+\pistH);
         
         % Beschriftung p über dem Pfeil
-        \node[above] at (0.5*\cylW, \cylH + 0.5) {\LARGE $p_\text{atm}$};
+        \node[above] at (0.5*\cylW, \cylH + 0.5) {\large $p_\text{atm}$};
     \end{tikzpicture}
     }
     \caption{Durch einen beweglichen Kolben kann das Volumen $V$ und der Druck $p$ eines Gases verändert werden, wobei der äußere Druck $p_\atm$ konstant bleibt.}\label{fig: kolben_zylinder_gas_pV}
