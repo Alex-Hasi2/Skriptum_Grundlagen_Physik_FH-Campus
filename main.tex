@@ -558,19 +558,19 @@ Dasselbe gilt für den Nenner ($p_{100} - p_0$). Setzt man dies in \cref{eq: for
 \end{importantbox}
 
 \section{Die barometrische Höhenformel}\label{sec: barometrische_hoehenformel}
-Der Luftdruck, den wir auf der Erdoberfläche messen, entsteht durch die Gewichtskraft der darüber liegenden Luftsäule. Da die Dichte der Luft mit der Höhe abnimmt, ist auch der Druck nicht konstant. Wir wollen eine Formel für die Druckabhängigkeit von der Höhe $h$ herleiten.
+Der Luftdruck, den wir auf der Erdoberfläche messen, entsteht durch die Gewichtskraft der darüber liegenden Luftsäule (siehe \cref{fig: luftsaeule_hoehenformel_anschauung}). Da die Dichte der Luft mit der Höhe abnimmt, ist auch der Druck nicht konstant. Wir wollen eine Formel für den Druck als Funktion der Höhe $h$ herleiten.
 
-Eine infinitesimale Druckänderung $dp$ bei einer Höhenänderung $dh$ ist durch das Gewicht der Luftschicht $dh$ gegeben:
+Bei einem infinitesimalen Höhenanstieg von $h$ auf $h + \dd h$ nimmt das Gewicht der Luftsäule um $\rho\cdot g \cdot \dd V = \rho\cdot g \cdot A \cdot \dd h$ ab und daher sinkt der Druck $p$ um
 \begin{equation}
     dp = -\rho(h) \cdot g \cdot dh \mComma
 \end{equation}
 wobei $\rho(h)$ die Dichte in der Höhe $h$ ist. Das negative Vorzeichen zeigt, dass der Druck mit zunehmender Höhe abnimmt.
 
-Im Gegensatz zu einer inkompressiblen Flüssigkeit ist die Dichte der Luft vom Druck abhängig. Aus dem Gesetz von Boyle-Mariotte folgt für eine isotherme Atmosphäre ($T = \text{konst.}$), dass $\rho/p = \text{konst.} = \rho_0/p_0$. Wir können also $\rho$ ersetzen:
+Im Gegensatz zu einer inkompressiblen Flüssigkeit ist die Dichte der Luft vom Druck abhängig. Aus dem Gesetz von Boyle-Mariotte folgt für eine isotherme Atmosphäre ($T = \const$), dass $\rho/p = \const = \rho_0/p_0$. Wir können also $\rho$ ersetzen:
 \begin{equation}
     dp = - \frac{\rho_0}{p_0} p \cdot g \cdot dh \implies \frac{dp}{p} = -\frac{\rho_0 g}{p_0} dh \mDot
 \end{equation}
-Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$) bis zur Höhe $h$ (mit Druck $p(h)$) liefert:
+Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dichte $\rho_0$) bis zur Höhe $h$ (mit Druck $p(h)$) liefert:
 \begin{equation}
     \int_{p_0}^{p(h)} \frac{1}{p} dp = -\int_0^h \frac{\rho_0 g}{p_0} dh \implies \ln\left(\frac{p(h)}{p_0}\right) = -\frac{\rho_0 g}{p_0} h \mDot
 \end{equation}
@@ -582,8 +582,60 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$) bis zur
     \end{equation}
     Der Druck in der Atmosphäre nimmt exponentiell mit der Höhe ab. Die Größe $H = p_0/(\rho_0 g)$ wird als Skalenhöhe bezeichnet und beträgt für Luft bei \SI{0}{\celsius} etwa \SI{8}{\kilo\meter}. In einer Höhe von ca. \SI{5.5}{\kilo\meter} beträgt der Luftdruck nur noch die Hälfte des Bodenwertes.
 \end{importantbox}
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.35\linewidth}{!}{
+    \begin{tikzpicture}[>=Latex]
+        % Parameter
+        \def\cylW{3.5}       % Breite des Zylinders
+        \def\cylH{5.0}       % Höhe
+        \def\hBase{1.2}      % Höhe h
+        \def\dh{1.8}         % Abstand dh (relative Höhe zu h)
+        \def\hTop{\hBase+\dh}% Höhe h + dh
+        \def\hNull{0.7}
 
+        % 1. Füllung (Linearer Farbverlauf orange -> weiß)
+        % 'middle color' kann optional für feinere Steuerung genutzt werden, 
+        % hier reicht bottom zu top.
+        \shade[bottom color=orange!60, top color=white] 
+            (0,\hBase) rectangle (\cylW, \cylH);
+
+        % 2. Zylinderwände (nur links und rechts)
+        \draw[thick] (0,0) -- (0,\cylH);
+        \draw[thick] (\cylW,0) -- (\cylW,\cylH);
+
+        % 3. Markierungslinien
+        % Untere Linie bei h (dick orange + gestrichelt schwarz für den Effekt)
+        \draw[line width=4pt, orange] (0, \hBase) -- (\cylW, \hBase);
+        \draw[thick, dashed] (0, \hBase) -- (\cylW, \hBase);
+        % Obere Linie bei h + dh (nur gestrichelt)
+        \draw[thick, dashed] (0, \hTop) -- (\cylW, \hTop);
+
+        % 4. Koordinatenachse z (links außen)
+        \draw[->, ultra thick] (-1.1, 3*\cylH/4) -- (-1.1, \cylH) node[right, midway] {\Large $z$};
+
+        % 5. Druck-Pfeil p(z) (von oben kommend)
+        \draw[->, ultra thick] (\cylW/2, \cylH + 0.5) -- (\cylW/2, \hBase + 0.2) 
+            node[right=0.1, pos=0.05] {\Large $p(z)$};
+
+        % 6. Beschriftungen
+        % Links (Höhen)
+        \node[left=0.2] at (0, \hBase) {\large $h$};
+        \node[left=0.2] at (0, \hTop) {\large $h + dh$};
+
+        % Rechts (Dichte/Druck Werte)
+        \node[right=0.2] at (\cylW, \hBase) {\large $\rho(h), p(h)$};
+        % Multiline Node für den oberen Text
+        \node[right=0.2, align=left] at (\cylW, \hTop) {\large $\rho(h + dh),$ \\ \large $p(h + dh)$};
+
+        % Mitte (Fläche A) - in orange
+        \node[orange!90!black] at (\cylW/2, \hBase - 0.6) {\Large $A$};
+    \end{tikzpicture}
+    }
+    \caption{Mit zunehmender Höhe $h$ nimmt das Gewicht der darüberliegenden Luftsäule ab, wodurch Druck und Dichte sinken.}\label{fig: luftsaeule_hoehenformel_anschauung}
+\end{figure}
 % \begin{figure}[htb]
+%     asdf
 %     \centering
 %     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/barometrische_hoehenformel_plot.png}
 %     \caption{Der exponentielle Abfall des Luftdrucks mit der Höhe in einer idealisierten isothermen Atmosphäre.}
@@ -594,6 +646,36 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$) bis zur
 Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren Raum aus und lassen sich leicht komprimieren. Das liegt daran, dass der mittlere Abstand zwischen den Gasmolekülen sehr viel größer ist als bei Flüssigkeiten oder Festkörpern.
 
 \subsection{Das Gesetz von Boyle-Mariotte}\label{subsec: boyle_mariotte}
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.35\linewidth}{!}{
+    \begin{tikzpicture}[>=Latex] % Setzt den Standard-Pfeilspitzen-Typ
+        % Parameter für einfache Größenanpassung
+        \def\cylW{4.0}   % Breite des Zylinders
+        \def\cylH{4.5}   % Höhe der Wände
+        \def\pistY{2.9}  % y-Position des Kolbenbodens
+        \def\pistH{0.7}  % Dicke des Kolbens
+
+        % 1. Zylinder (Wände links, rechts und Boden)
+        \draw[thick] (0, \cylH) -- (0, 0) -- (\cylW, 0) -- (\cylW, \cylH);
+
+        % 2. Kolben
+        % fill=red!45 mischt 45% Rot mit Weiß (Lachsfarbe)
+        \filldraw[fill=red!45, draw=black, thick] (0, \pistY) rectangle (\cylW, \pistY+\pistH);
+
+        % 3. Beschriftung Gasvolumen (mittig im unteren Bereich)
+        \node at (0.5*\cylW, 0.5*\pistY) {\LARGE $V; p$};
+
+        % 4. Pfeil für den äußeren Druck p
+        % Startet etwas oberhalb der Zylinderwände und zeigt auf den Kolben
+        \draw[-{Stealth[length=3mm, width=3mm]},line width=1.1pt] (0.5*\cylW, \cylH + 0.5) -- (0.5*\cylW, \pistY+\pistH);
+        
+        % Beschriftung p über dem Pfeil
+        \node[above] at (0.5*\cylW, \cylH + 0.5) {\LARGE $p_\text{atm}$};
+    \end{tikzpicture}
+    }
+    \caption{Durch einen beweglichen Kolben kann das Volumen $V$ und der Druck $p$ eines Gases verändert werden, wobei der äußere Druck $p_\atm$ konstant bleibt.}\label{fig: kolben_zylinder_gas_pV}
+\end{figure}
 Experimente zeigen, dass für eine abgeschlossene Gasmenge bei \textbf{konstanter Temperatur (isotherm)} das Produkt aus Druck $p$ und Volumen $V$ konstant ist:
 \begin{equation}\label{eq: boyle_mariotte_gesetz}
     p \cdot V = \const \mDot

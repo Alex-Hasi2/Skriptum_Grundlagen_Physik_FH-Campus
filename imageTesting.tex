@@ -17,7 +17,7 @@
 \DeclareSIUnit{\bar}{bar}
 \sisetup{
     locale = DE, 
-    angle-symbol-degree = ^\circ
+    angle-symbol-degree = ^\circ,
     separate-uncertainty, 
     inter-unit-product = {},
     range-units = brackets, 
@@ -33,68 +33,156 @@
 
 \begin{document}
 
-
-
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
+ 
+% Eine Luftsäule 
+\begin{tikzpicture}[>=Latex]
+        % Parameter
+        \def\cylW{3.5}       % Breite des Zylinders
+        \def\cylH{5.0}       % Höhe
+        \def\hBase{1.2}      % Höhe h
+        \def\dh{1.8}         % Abstand dh (relative Höhe zu h)
+        \def\hTop{\hBase+\dh}% Höhe h + dh
+        \def\hNull{0.7}
 
+        % 1. Füllung (Linearer Farbverlauf orange -> weiß)
+        % 'middle color' kann optional für feinere Steuerung genutzt werden, 
+        % hier reicht bottom zu top.
+        \shade[bottom color=orange!60, top color=white] 
+            (0,\hBase) rectangle (\cylW, \cylH);
 
+        % 2. Zylinderwände (nur links und rechts)
+        \draw[thick] (0,0) -- (0,\cylH);
+        \draw[thick] (\cylW,0) -- (\cylW,\cylH);
 
-\begin{tikzpicture}[
-    axis/.style={-{Stealth}, line width=1.2pt},
-    box/.style={draw, fill=blue!15, minimum height=0.8cm, align=center}
-]
+        % 3. Markierungslinien
+        % Untere Linie bei h (dick orange + gestrichelt schwarz für den Effekt)
+        \draw[line width=4pt, orange] (0, \hBase) -- (\cylW, \hBase);
+        \draw[thick, dashed] (0, \hBase) -- (\cylW, \hBase);
+        % Obere Linie bei h + dh (nur gestrichelt)
+        \draw[thick, dashed] (0, \hTop) -- (\cylW, \hTop);
 
-\def\xTzero{0.3}      % Startzeit 0 s
-\def\xTone{2.5}    % Zeitpunkt t1 (skaliert)
-\def\xTtwo{10}      % Zeitpunkt t2 (skaliert)
+        % 4. Koordinatenachse z (links außen)
+        \draw[->, ultra thick] (-1.1, 3*\cylH/4) -- (-1.1, \cylH) node[right, midway] {\Large $z$};
 
-\def\yInitial{1.5}  % Starttemperatur 20 °C
-\def\yBoil{5.5}     % Siedetemperatur 100 °C
-\def\yBoxCenter{6.5} % y-Position der Boxen
+        % 5. Druck-Pfeil p(z) (von oben kommend)
+        \draw[->, ultra thick] (\cylW/2, \cylH + 0.5) -- (\cylW/2, \hBase + 0.2) 
+            node[right=0.1, pos=0.05] {\Large $p(z)$};
 
-% Achsen zeichnen
-\draw[axis,line width=1.8pt] (-0.5, 0) -- (12, 0) node[right] {\Large $t \,[\si{\second}]$};
-\draw[axis,line width=1.8pt] (0, -0.5) -- (0, 7) node[above] {\Large $T\, [\si{\celsius}]$};
+        % 6. Beschriftungen
+        % Links (Höhen)
+        \node[left=0.2] at (0, \hBase) {\large $h$};
+        \node[left=0.2] at (0, \hTop) {\large $h + dh$};
 
-% Ticks auf den Achsen
-\draw[line width=1pt] (\xTzero, -0.15) -- (\xTzero, 0.15); % Tick bei 0
-\draw[line width=1pt] (\xTone, -0.15) -- (\xTone, 0.15); % Tick bei 0
-\draw[line width=1pt] (\xTtwo, -0.15) -- (\xTtwo, 0.15); % Tick bei 0
-\draw[line width=1pt] (-0.15, \yInitial) -- (0.15, \yInitial);
-\draw[line width=1pt] (-0.15, \yBoil) -- (0.15, \yBoil);
+        % Rechts (Dichte/Druck Werte)
+        \node[right=0.2] at (\cylW, \hBase) {\large $\rho(h), p(h)$};
+        % Multiline Node für den oberen Text
+        \node[right=0.2, align=left] at (\cylW, \hTop) {\large $\rho(h + dh),$ \\ \large $p(h + dh)$};
 
-% Achsenbeschriftungen
-\node[left] at (-0.15, \yInitial) {\large $\SI{20}{\celsius}$};
-\node[left] at (-0.15, \yBoil) {\large $\SI{100}{\celsius}$};
-\node[below] at (\xTzero, -0.15) {\large $0$};
-\node[below] at (\xTone, -0.15) {\large $t_1$};
-\node[below] at (\xTtwo, -0.15) {\large $t_2$};
-
-% Temperaturverlauf
-\draw[line width=1.4pt, black] (\xTzero, \yInitial) -- (\xTone, \yBoil) -- (\xTtwo, \yBoil);
-% Gestrichelte Hilfslinien
-\draw[dotted] (\xTone, 0) -- (\xTone, \yBoil);
-\draw[dotted] (\xTtwo, 0) -- (\xTtwo, \yBoil);
-% Markierungspunkt am Ende
-\filldraw[black] (\xTtwo, \yBoil) circle (2.5pt);
-
-% Anmerkung mit Pfeil
-\draw[-{Stealth},, thick] (\xTtwo-1, \yBoil-1.1) -- (\xTtwo-0.1, \yBoil-0.1);
-\node[above left, align=left] at (\xTtwo-1, \yBoil-1.6) {Wasser komplett verdampft};
-
-% Boxen für die Phasen
-% Berechnung der Breiten und Positionen
-\pgfmathsetmacro{\widthPhaseOne}{\xTone - \xTzero}
-\pgfmathsetmacro{\widthPhaseTwo}{\xTtwo - \xTone}
-\pgfmathsetmacro{\centerPhaseOne}{(\xTone + \xTzero) / 2}
-\pgfmathsetmacro{\centerPhaseTwo}{(\xTtwo + \xTone) / 2}
-
-\node[box, text width=\widthPhaseOne cm-0.2cm] at (\centerPhaseOne, \yBoxCenter) {Erwärmen};
-\node[box, text width=\widthPhaseTwo cm-0.2cm] at (\centerPhaseTwo, \yBoxCenter) {Sieden / Verdampfen};
+        % Mitte (Fläche A) - in orange
+        \node[orange!90!black] at (\cylW/2, \hBase - 0.6) {\Large $A$};
 
 \end{tikzpicture}
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein Kolben mit einem beweglichen Stopfen, der die Volumenänderung anzeigt
+% Der Kolben hat Volumen V und Druck p | Der Außen wirkt der ebenso der Druck p
+% \begin{tikzpicture}[>=Latex] % Setzt den Standard-Pfeilspitzen-Typ
+%         % Parameter für einfache Größenanpassung
+%         \def\cylW{4.0}   % Breite des Zylinders
+%         \def\cylH{4.5}   % Höhe der Wände
+%         \def\pistY{2.9}  % y-Position des Kolbenbodens
+%         \def\pistH{0.7}  % Dicke des Kolbens
+
+%         % 1. Zylinder (Wände links, rechts und Boden)
+%         \draw[thick] (0, \cylH) -- (0, 0) -- (\cylW, 0) -- (\cylW, \cylH);
+
+%         % 2. Kolben
+%         % fill=red!45 mischt 45% Rot mit Weiß (Lachsfarbe)
+%         \filldraw[fill=red!45, draw=black, thick] (0, \pistY) rectangle (\cylW, \pistY+\pistH);
+
+%         % 3. Beschriftung Gasvolumen (mittig im unteren Bereich)
+%         \node at (0.5*\cylW, 0.5*\pistY) {\LARGE $V; p$};
+
+%         % 4. Pfeil für den äußeren Druck p
+%         % Startet etwas oberhalb der Zylinderwände und zeigt auf den Kolben
+%         \draw[-{Stealth[length=3mm, width=3mm]},line width=1.1pt] (0.5*\cylW, \cylH + 0.5) -- (0.5*\cylW, \pistY+\pistH);
+        
+%         % Beschriftung p über dem Pfeil
+%         \node[above] at (0.5*\cylW, \cylH + 0.5) {\LARGE $p_\text{atm}$};
+% \end{tikzpicture}
+
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+
+% % Zeit-Temperatur Diagramm für das Erhitzen und Sieden von Wasser (20 auf 100 Grad)
+% % --- mit Beschriftungsboxen für Erwärmen und Sieden/Verdampfen ---
+% \begin{tikzpicture}[
+%     axis/.style={-{Stealth}, line width=1.2pt},
+%     box/.style={draw, fill=blue!15, minimum height=0.8cm, align=center}
+% ]
+
+% \def\xTzero{0.3}      % Startzeit 0 s
+% \def\xTone{2.5}    % Zeitpunkt t1 (skaliert)
+% \def\xTtwo{10}      % Zeitpunkt t2 (skaliert)
+
+% \def\yInitial{1.5}  % Starttemperatur 20 °C
+% \def\yBoil{5.5}     % Siedetemperatur 100 °C
+% \def\yBoxCenter{6.5} % y-Position der Boxen
+
+% % Achsen zeichnen
+% \draw[axis,line width=1.8pt] (-0.5, 0) -- (12, 0) node[right] {\Large $t \,[\si{\second}]$};
+% \draw[axis,line width=1.8pt] (0, -0.5) -- (0, 7) node[above] {\Large $T\, [\si{\celsius}]$};
+
+% % Ticks auf den Achsen
+% \draw[line width=1pt] (\xTzero, -0.15) -- (\xTzero, 0.15); % Tick bei 0
+% \draw[line width=1pt] (\xTone, -0.15) -- (\xTone, 0.15); % Tick bei 0
+% \draw[line width=1pt] (\xTtwo, -0.15) -- (\xTtwo, 0.15); % Tick bei 0
+% \draw[line width=1pt] (-0.15, \yInitial) -- (0.15, \yInitial);
+% \draw[line width=1pt] (-0.15, \yBoil) -- (0.15, \yBoil);
+
+% % Achsenbeschriftungen
+% \node[left] at (-0.15, \yInitial) {\large $\SI{20}{\celsius}$};
+% \node[left] at (-0.15, \yBoil) {\large $\SI{100}{\celsius}$};
+% \node[below] at (\xTzero, -0.15) {\large $0$};
+% \node[below] at (\xTone, -0.15) {\large $t_1$};
+% \node[below] at (\xTtwo, -0.15) {\large $t_2$};
+
+% % Temperaturverlauf
+% \draw[line width=1.4pt, black] (\xTzero, \yInitial) -- (\xTone, \yBoil) -- (\xTtwo, \yBoil);
+% % Gestrichelte Hilfslinien
+% \draw[dotted] (\xTone, 0) -- (\xTone, \yBoil);
+% \draw[dotted] (\xTtwo, 0) -- (\xTtwo, \yBoil);
+% % Markierungspunkt am Ende
+% \filldraw[black] (\xTtwo, \yBoil) circle (2.5pt);
+
+% % Anmerkung mit Pfeil
+% \draw[-{Stealth},, thick] (\xTtwo-1, \yBoil-1.1) -- (\xTtwo-0.1, \yBoil-0.1);
+% \node[above left, align=left] at (\xTtwo-1, \yBoil-1.6) {Wasser komplett verdampft};
+
+% % Boxen für die Phasen
+% % Berechnung der Breiten und Positionen
+% \pgfmathsetmacro{\widthPhaseOne}{\xTone - \xTzero}
+% \pgfmathsetmacro{\widthPhaseTwo}{\xTtwo - \xTone}
+% \pgfmathsetmacro{\centerPhaseOne}{(\xTone + \xTzero) / 2}
+% \pgfmathsetmacro{\centerPhaseTwo}{(\xTtwo + \xTone) / 2}
+
+% \node[box, text width=\widthPhaseOne cm-0.2cm] at (\centerPhaseOne, \yBoxCenter) {Erwärmen};
+% \node[box, text width=\widthPhaseTwo cm-0.2cm] at (\centerPhaseTwo, \yBoxCenter) {Sieden / Verdampfen};
+
+% \end{tikzpicture}
 
 
 
