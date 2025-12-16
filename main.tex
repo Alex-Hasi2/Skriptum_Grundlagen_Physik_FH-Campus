@@ -18,7 +18,8 @@
 }
 
 \usepackage{tikz}
-\usetikzlibrary{positioning,arrows.meta, angles, calc, quotes}
+\usetikzlibrary{positioning,arrows.meta, angles, calc, quotes, decorations.pathmorphing, decorations.pathreplacing, decorations.markings, patterns}
+
 \usepackage{subcaption} % needed for labelphantom
 % \usepackage{subfigure} % outdated and replaced by subcaption
 
@@ -217,7 +218,7 @@ Die Erkenntnis, dass Wärme eine Form von Energie ist -- genauer gesagt, die mik
 Die Entwicklung der \textbf{kinetischen Gastheorie} im 19. Jahrhundert lieferte schließlich die mikroskopische Deutung der Wärmeenergie als die Summe der kinetischen und potenziellen Energien der Moleküle eines Körpers.
 
 \section{Temperatur und kinetische Gastheorie}\label{sec: Temperatur_kinetische_Gastheorie}
-In der kinetischen Gastheorie wird die Temperatur eines Systems direkt mit der durchschnittlichen kinetischen Energie seiner Teilchen verknüpft. Die \textbf{absolute Temperatur} $T$, gemessen in Kelvin (\si{\kelvin}), ist proportional zur mittleren kinetischen Energie $\overline{E_\mathrm{kin}}$ der Moleküle:
+In der kinetischen Gastheorie wird die Temperatur eines Systems direkt mit der durchschnittlichen kinetischen Energie seiner Teilchen verknüpft. Die \textbf{absolute Temperatur} $T$, gemessen in Kelvin (\si{\kelvin}), ist proportional zur mittleren kinetischen Energie der Translation $\overline{E_\mathrm{kin}}$ der Moleküle:
 \begin{equation}\label{eq:def_temperatur_kinetisch}
     \overline{E_\mathrm{kin}} = \frac{1}{2}m\overline{v^2} = \frac{3}{2} k_B T \mDot
 \end{equation}
@@ -254,12 +255,11 @@ Diese Skala, die heute vor allem in den USA gebräuchlich ist, wurde von Daniel 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.55\linewidth]{Bilder/Kapitel_Waermelehre/fixpunkte_celsius_fahrenheit.png}
-    \caption{Vergleich der Celsius- und Fahrenheit-Skala mit ihren jeweiligen Fixpunkten (in rot).}
-    \label{fig: temp_skalen_vergleich}
+    \caption{Vergleich der Celsius- und Fahrenheit-Skala mit ihren jeweiligen Fixpunkten (in rot).}\label{fig: temp_skalen_vergleich}
 \end{figure}
 
 Die Umrechnung von Fahrenheit ($T_F$) nach Celsius ($T_C$) erfolgt über folgende Formel:
-\begin{equation}\label{eq:fahrenheit_celsius_umrechnung}
+\begin{equation}\label{eq: fahrenheit_celsius_umrechnung}
     T_C\, [\si{\celsius}] = \frac{5}{9} (T_F\, [\si{\fahrenheit}]- 32) \mDot
 \end{equation}
 
@@ -274,8 +274,7 @@ Im Gegensatz zur Celsius-Skala benötigt die Kelvin-Skala eigentlich nur einen e
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/phasendiagramm_wasser.png}
-    \caption{Schematisches Phasendiagramm $(T, p)$ von Wasser, das den Tripelpunkt zeigt, an dem alle drei Phasen (fest, flüssig, gasförmig) koexistieren.}
-    \label{fig: phasendiagramm_wasser}
+    \caption{Schematisches Phasendiagramm $(T, p)$ von Wasser, das den Tripelpunkt zeigt, an dem alle drei Phasen (fest, flüssig, gasförmig) koexistieren.}\label{fig: phasendiagramm_wasser}
 \end{figure}
 
 Die Celsius-Skala ist heute über die Kelvin-Skala definiert. Die Umrechnung lautet:
@@ -296,8 +295,7 @@ Das wohl bekannteste Messinstrument ist das \textbf{Flüssigkeitsthermometer}. E
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.22\linewidth]{Bilder/Kapitel_Waermelehre/hg_alkohol_fluessigthermometer_vergleich.png}
-    \caption{Vergleich eines Quecksilber- (Hg) und eines Alkoholthermometers. Das unterschiedliche Ausdehnungsverhalten der Flüssigkeiten führt zu einer nicht-linearen Skala, wenn eine hohe Genauigkeit erforderlich ist.}
-    \label{fig: hg_alkohol_thermometer}
+    \caption{Vergleich eines Quecksilber- (Hg) und eines Alkoholthermometers. Das unterschiedliche Ausdehnungsverhalten der Flüssigkeiten führt zu einer nicht-linearen Skala, wenn eine hohe Genauigkeit erforderlich ist.}\label{fig: hg_alkohol_thermometer}
 \end{figure}
 Die angezeigte Temperaturskala hängt dabei nicht nur von der Art der Flüssigkeit ab, sondern auch von der Glasart des Röhrchens, da sich auch das Glas selbst ausdehnt. Ein wichtiger Punkt ist, dass sich die Flüssigkeiten im Allgemeinen nicht perfekt linear über den gesamten Temperaturbereich ausdehnen. Vergleicht man beispielsweise ein Alkohol- mit einem Quecksilberthermometer, die beide bei \SI{0}{\celsius} und \SI{100}{\celsius} kalibriert wurden, können bei Zwischentemperaturen leicht unterschiedliche Werte angezeigt werden. Für alltägliche Zwecke ist diese Abweichung oft vernachlässigbar, für präzise wissenschaftliche Messungen sind jedoch gleichmäßigere Skalen erforderlich, wie sie beispielsweise Gasthermometer bieten.
 
@@ -324,14 +322,12 @@ wobei $[\alpha] = \si{\kelvin^{-1}}$.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/lineare_ausdehnung_L0_L.png}
-    \caption{Ein Stab der Länge $L_0$ bei Temperatur $T_0$ dehnt sich bei einer Erwärmung auf $T = T_0 + \Delta T$ auf die Länge $L = L_0 + \Delta L$ aus.}
-    \label{fig: lineare_ausdehnung_L0_L}
+    \caption{Ein Stab der Länge $L_0$ bei Temperatur $T_0$ dehnt sich bei einer Erwärmung auf $T = T_0 + \Delta T$ auf die Länge $L = L_0 + \Delta L$ aus.}\label{fig: lineare_ausdehnung_L0_L}
 \end{figure}
 Genauere Messungen zeigen, dass der Ausdehnungskoeffizient $\alpha$ schwach von der Temperatur abhängt. Für die meisten technischen Anwendungen ist die Annahme eines konstanten Wertes jedoch eine ausreichend gute Näherung. Die in \Cref{tab: lineare_ausdehnungskoeffizienten} zusammengefassten linearen Ausdehnungskoeffizienten verdeutlichen, wie stark sich die Längenausdehnung verschiedener Materialien unterscheiden kann – teilweise um zwei Größenordnungen oder mehr.
 \begin{table}[htb]
     \centering
-    \caption{Linearer Längenausdehnungskoeffizient $\alpha$ verschiedener fester Stoffe bei Raumtemperatur.}
-    \label{tab: lineare_ausdehnungskoeffizienten}
+    \caption{Linearer Längenausdehnungskoeffizient $\alpha$ verschiedener fester Stoffe bei Raumtemperatur.}\label{tab: lineare_ausdehnungskoeffizienten}
     \vspace{4pt}
     \begin{tabular}{lc}
         \toprule
@@ -376,8 +372,7 @@ Diese Krümmung kann auf eine geeichte Skala übertragen werden, um die Temperat
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/bimetallthermometer_beschreibung.png}
-    \caption{(Links) Funktionsweise eines Bimetallstreifens. Das Material mit dem größeren $\alpha$ (schwarz) dehnt sich stärker aus und zwingt den Streifen zur Krümmung. (Rechts) In einem Zeigerthermometer wird ein aufgerollter Bimetallstreifen verwendet, um eine Drehbewegung zu erzeugen.}
-    \label{fig: bimetallstreifen_bimetallthermometer}
+    \caption{(Links) Funktionsweise eines Bimetallstreifens. Das Material mit dem größeren $\alpha$ (schwarz) dehnt sich stärker aus und zwingt den Streifen zur Krümmung. (Rechts) In einem Zeigerthermometer wird ein aufgerollter Bimetallstreifen verwendet, um eine Drehbewegung zu erzeugen.}\label{fig: bimetallstreifen_bimetallthermometer}
 \end{figure}
 
 \subsection{Volumenausdehnung}\label{subsec: volumenausdehnung}
@@ -395,22 +390,21 @@ Für homogene, isotrope Festkörper, die sich in alle Richtungen gleich ausdehne
 \end{equation}
 wenn $\alpha$ der lineare Längenausdehnungskoeffizient ist. Diese Näherung ergibt sich aus 
 \begin{equation}
-    V(\Delta T) = L(\Delta T)^3 = [L_0 \cdot (1+\alpha\Delta T)]^3 = V_0\cdot(1+\alpha\Delta T)^3 \mDot
+    V(\Delta T) = L{(\Delta T)}^3 = {[L_0 \cdot (1+\alpha\Delta T)]}^3 = V_0\cdot{(1+\alpha\Delta T)}^3 \mDot
 \end{equation} 
 Der kubische Term ergibt 
 \begin{equation}
-    (1+\alpha \Delta T)^3 = 1 + 3\alpha \Delta T + 3\alpha^2 \Delta T^2 + \alpha^3 \Delta T^3 
+    {(1+\alpha \Delta T)}^3 = 1 + 3\alpha \Delta T + 3\alpha^2 \Delta T^2 + \alpha^3 \Delta T^3 
 \end{equation}
 und für Festkörper gilt meist $\alpha\Delta T \ll 1$. Daher können die quadratischen und kubischen Terme in $\Delta T$ vernachlässigt werden. Somit bleibt 
 \begin{equation}
-    (1+\alpha \cdot \Delta T)^3 \approx 1 + 3\alpha \Delta T = 1 + \gamma \Delta T\mComma
+    {(1+\alpha \cdot \Delta T)}^3 \approx 1 + 3\alpha \Delta T = 1 + \gamma \Delta T\mComma
 \end{equation}
 sofern $\alpha \Delta T \ll 1$. 
 In \cref{tab: volumen_ausdehnungskoeffizienten} sind einige Volumenausdehnungskoeffizienten für verschiedene feste, flüssige und gasförmige Stoffe aufgezählt. 
 \begin{table}[htb]
     \centering
-    \caption{Volumenausdehnungskoeffiziente $\gamma$ für ausgewählte feste, flüssige und gasförmige Stoffe.}
-    \label{tab: volumen_ausdehnungskoeffizienten}
+    \caption{Volumenausdehnungskoeffizienten $\gamma$ für ausgewählte feste, flüssige und gasförmige Stoffe.}\label{tab: volumen_ausdehnungskoeffizienten}
     \vspace{4pt}
     \begin{tabular}{llc}
         \toprule
@@ -558,32 +552,83 @@ Dasselbe gilt für den Nenner ($p_{100} - p_0$). Setzt man dies in \cref{eq: for
     \end{equation}
 \end{importantbox}
 
-\section{Die barometrische Höhenformel}\label{sec: barometrische_hoehenformel}
-Der Luftdruck, den wir auf der Erdoberfläche messen, entsteht durch die Gewichtskraft der darüber liegenden Luftsäule (siehe \cref{fig: luftsaeule_hoehenformel_anschauung}). Da die Dichte der Luft mit der Höhe abnimmt, ist auch der Druck nicht konstant. Wir wollen eine Formel für den Druck als Funktion der Höhe $h$ herleiten.
 
-Bei einem infinitesimalen Höhenanstieg von $h$ auf $h + \dd h$ nimmt das Gewicht der Luftsäule um $\rho\cdot g \cdot \dd V = \rho\cdot g \cdot A \cdot \dd h$ ab und daher sinkt der Druck $p$ um
-\begin{equation}
-    dp = -\rho(h) \cdot g \cdot dh \mComma
-\end{equation}
-wobei $\rho(h)$ die Dichte in der Höhe $h$ ist. Das negative Vorzeichen zeigt, dass der Druck mit zunehmender Höhe abnimmt.
 
-Im Gegensatz zu einer inkompressiblen Flüssigkeit ist die Dichte der Luft vom Druck abhängig. Aus dem Gesetz von Boyle-Mariotte folgt für eine isotherme Atmosphäre ($T = \const$), dass $\rho/p = \const = \rho_0/p_0$. Wir können also $\rho$ ersetzen:
-\begin{equation}
-    dp = - \frac{\rho_0}{p_0} p \cdot g \cdot dh \implies \frac{dp}{p} = -\frac{\rho_0 g}{p_0} dh \mDot
-\end{equation}
-Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dichte $\rho_0$) bis zur Höhe $h$ (mit Druck $p(h)$) liefert:
-\begin{equation}
-    \int_{p_0}^{p(h)} \frac{1}{p} dp = -\int_0^h \frac{\rho_0 g}{p_0} dh \implies \ln\left(\frac{p(h)}{p_0}\right) = -\frac{\rho_0 g}{p_0} h \mDot
-\end{equation}
 
-\begin{importantbox}{Barometrische Höhenformel}
-    Durch Auflösen nach $p(h)$ erhält man die \textbf{barometrische Höhenformel} für eine isotherme Atmosphäre:
-    \begin{equation}\label{eq: barometrische_hoehenformel}
-        p(h) = p_0 \cdot e^{-\frac{\rho_0 g}{p_0}h} = p_0 \cdot e^{-h/H}
+
+\section{Das ideale Gas und die Zustandsgleichung}\label{sec: ideales_gas}
+Die Funktionsweise des Gasthermometers in \cref{subsec: Gasthermometer} basierte auf der Beobachtung, dass der Druck eines Gases linear mit der Temperatur steigt, sofern das Volumen konstant gehalten wird (Gesetz von Amontons). Dies ist jedoch nur einer von mehreren Aspekten, wie sich Gase verhalten.
+
+Im Gegensatz zu Festkörpern und Flüssigkeiten, deren Teilchen dicht gepackt sind und starke Bindungskräfte aufweisen, füllen Gase jeden verfügbaren Raum aus und lassen sich leicht komprimieren. Um das Verhalten von Gasen vollständig zu beschreiben, benötigen wir einen Zusammenhang zwischen allen drei Zustandsgrößen: Druck $p$, Volumen $V$ und Temperatur $T$.
+
+Wir betrachten hierzu das Modell des \textbf{idealen Gases}. In diesem idealisierten Modell vernachlässigen wir das Eigenvolumen der Gasteilchen sowie die Kräfte zwischen ihnen.
+
+\subsection{Das Gesetz von Boyle-Mariotte (Isotherme Zustandsänderung)}\label{subsec: boyle_mariotte}
+Während das Gasthermometer bei konstantem Volumen arbeitet, betrachten wir nun, was passiert, wenn wir das Volumen ändern, aber die Temperatur konstant halten ($T = \const$).
+Ein solches Experiment lässt sich mit einem Kolben in einem Zylinder durchführen (siehe \cref{fig: kolben_zylinder_gas_pV}). Drückt man den Kolben langsam herunter, verringert sich das Volumen. Gleichzeitig beobachtet man, dass der Druck im Inneren steigt.
+
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.35\linewidth}{!}{
+    \begin{tikzpicture}[>=Latex] 
+        % Parameter für einfache Größenanpassung
+        \def\cylW{3.2}   % Breite des Zylinders
+        \def\cylH{3.8}   % Höhe der Wände
+        \def\pistY{2.0}  % y-Position des Kolbenbodens (etwas tiefer gesetzt für Kompression)
+        \def\pistH{0.5}  % Dicke des Kolbens
+
+        % 1. Zylinder
+        \draw[thick] (0, \cylH) -- (0, 0) -- (\cylW, 0) -- (\cylW, \cylH);
+        % 2. Kolben
+        \filldraw[fill=red!20, draw=black, thick] (0, \pistY) rectangle (\cylW, \pistY+\pistH);
+        
+        % 3. Gas (Punkte)
+        \foreach \i in {1,...,50} {
+            \fill[blue!70] (0.03 + rnd*\cylW*0.96, 0.03 + rnd*\pistY*0.96) circle (1.5pt);
+        }
+        
+        % 4. Beschriftung 
+        \node[draw , fill=white] at (0.5*\cylW, 0.5*\pistY) {\large $V, p$};
+        \node[right=0.1] at (\cylW, 0.5*\pistY) {\large $T=\const$};
+        
+        % 5. Kraft Pfeil
+        \draw[-{Stealth}, ultra thick] (0.5*\cylW, \cylH + 0.5) -- (0.5*\cylW, \pistY+\pistH);
+        \node[right] at (0.5*\cylW, \cylH + 0.2) {Kompression};
+    \end{tikzpicture}
+    }
+    \caption{Gesetz von Boyle-Mariotte: Wird das Volumen $V$ bei konstanter Temperatur verringert, steigt der Druck $p$, da die Teilchen pro Zeiteinheit öfter gegen die Wand stoßen.}\label{fig: kolben_zylinder_gas_pV}
+\end{figure}
+
+Robert Boyle und Edme Mariotte fanden unabhängig voneinander heraus, dass für eine abgeschlossene Gasmenge bei \textbf{konstanter Temperatur} der Druck umgekehrt proportional zum Volumen ist ($p \propto 1/V$). Das bedeutet, das Produkt aus Druck und Volumen ist konstant:
+\begin{equation}\label{eq: boyle_mariotte_gesetz}
+    p \cdot V = \const \qquad (\text{für } T = \const) \mDot
+\end{equation}
+Halbiert man beispielsweise das Volumen eines Gases bei konstanter Temperatur, verdoppelt sich sein Druck.
+
+\subsection{Die ideale Gasgleichung}\label{subsec: ideale_gasgleichung}
+Fassen wir nun die experimentellen Befunde zusammen:
+\begin{enumerate}
+    \item \textbf{Gesetz von Amontons (Isochor):} $p \propto T$ (bei $V=\const$)
+    \item \textbf{Gesetz von Gay-Lussac (Isobar):} $V \propto T$ (bei $p=\const$)
+    \item \textbf{Gesetz von Boyle-Mariotte (Isotherm):} $p \propto 1/V$ (bei $T=\const$)
+\end{enumerate}
+Alle drei Gesetze sind Spezialfälle einer einzigen, fundamentalen Beziehung. Kombiniert man die Proportionalitäten ($p \propto T$ und $p \propto 1/V$), erhält man:
+\begin{equation}
+    p \propto \frac{T}{V} \quad \Longleftrightarrow \quad p \cdot V \propto T \mDot
+\end{equation}
+Um aus der Proportionalität eine Gleichung zu machen, benötigen wir eine Proportionalitätskonstante. Diese hängt von der Menge des Gases ab.
+
+\begin{importantbox}{Ideale Gasgleichung}
+    Betrachten wir die Anzahl der Teilchen $N$ im Gas, so erhalten wir die \textbf{thermische Zustandsgleichung idealer Gase}:
+    \begin{equation}\label{eq: ideale_gasgleichung}
+        p \cdot V = N \cdot k_B \cdot T
     \end{equation}
-    Der Druck in der Atmosphäre nimmt exponentiell mit der Höhe ab. Die Größe $H = p_0/(\rho_0 g)$ wird als Skalenhöhe bezeichnet und beträgt für Luft bei \SI{0}{\celsius} etwa \SI{8}{\kilo\meter}. In einer Höhe von ca. \SI{5.5}{\kilo\meter} beträgt der Luftdruck nur noch die Hälfte des Bodenwertes.
+    Hierbei ist $p$ der absolute Druck in \si{\pascal}, $V$ das Volumen in \si{\cubic\meter}, $N$ die absolute Anzahl der Gasteilchen, $T$ die absolute Temperatur in \si{\kelvin} und $k_B \approx \SI{1.38e-23}{\joule\per\kelvin}$ die Boltzmann-Konstante.
 \end{importantbox}
-Laut dieser isothermen Näherung erhält man für den Luftdruck auf der Spitze des Mount Everest (\SI{8849}{\meter}) nur noch $\approx \SI{34.5}{\percent}$ des Luftdrucks auf Meereshöhe, was nur ungefähr $\SI{2}{\percent}$ vom realen Wert abweicht. 
+Diese Gleichung ist das Herzstück der Wärmelehre für Gase. Sie erlaubt es, eine unbekannte Größe zu berechnen, wenn die anderen bekannt sind. Zudem impliziert sie alle vorherigen Gesetze: Ist zum Beispiel $T$ konstant, wird die rechte Seite zu einer Konstanten und wir erhalten wieder $p \cdot V = \text{const}$ (Boyle-Mariotte).
+
+
+\section{Die barometrische Höhenformel}\label{sec: barometrische_hoehenformel}
 \begin{figure}[tb]
     \centering
     \resizebox{0.45\linewidth}{!}{
@@ -636,13 +681,141 @@ Laut dieser isothermen Näherung erhält man für den Luftdruck auf der Spitze d
     }
     \caption{Mit zunehmender Höhe $h$ nimmt das Gewicht der darüberliegenden Luftsäule ab, wodurch Druck und Dichte sinken.}\label{fig: luftsaeule_hoehenformel_anschauung}
 \end{figure}
+Der Luftdruck, den wir auf der Erdoberfläche messen, entsteht durch die Gewichtskraft der darüber liegenden Luftsäule (siehe \cref{fig: luftsaeule_hoehenformel_anschauung}). Da die Dichte der Luft mit der Höhe abnimmt, ist auch der Druck nicht konstant. Wir wollen eine Formel für den Druck als Funktion der Höhe $h$ herleiten.
+
+Bei einem infinitesimalen Höhenanstieg von $h$ auf $h + \dd h$ nimmt das Gewicht der Luftsäule um $\rho\cdot g \cdot \dd V = \rho\cdot g \cdot A \cdot \dd h$ ab und daher sinkt der Druck $p$ um
+\begin{equation}
+    dp = -\rho(h) \cdot g \cdot dh \mComma
+\end{equation}
+wobei $\rho(h)$ die Dichte in der Höhe $h$ ist. Das negative Vorzeichen zeigt, dass der Druck mit zunehmender Höhe abnimmt.
+
+Im Gegensatz zu einer inkompressiblen Flüssigkeit ist die Dichte der Luft vom Druck abhängig. Aus dem Gesetz von Boyle-Mariotte folgt für eine isotherme Atmosphäre ($T = \const$), dass $\rho/p = \const = \rho_0/p_0$. Wir können also $\rho$ ersetzen:
+\begin{equation}
+    dp = - \frac{\rho_0}{p_0} p \cdot g \cdot dh \implies \frac{dp}{p} = -\frac{\rho_0 g}{p_0} dh \mDot
+\end{equation}
+Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dichte $\rho_0$) bis zur Höhe $h$ (mit Druck $p(h)$) liefert:
+\begin{equation}
+    \int_{p_0}^{p(h)} \frac{1}{p} dp = -\int_0^h \frac{\rho_0 g}{p_0} dh \implies \ln\left(\frac{p(h)}{p_0}\right) = -\frac{\rho_0 g}{p_0} h \mDot
+\end{equation}
+
+\begin{importantbox}{Barometrische Höhenformel}
+    Durch Auflösen nach $p(h)$ erhält man die \textbf{barometrische Höhenformel} für eine isotherme Atmosphäre:
+    \begin{equation}\label{eq: barometrische_hoehenformel}
+        p(h) = p_0 \cdot e^{-\frac{\rho_0 g}{p_0}h} = p_0 \cdot e^{-h/H} \mDot
+    \end{equation}
+    Der Druck in der Atmosphäre nimmt exponentiell mit der Höhe ab (siehe \cref{fig: barometrische_hoehenformel_exp_abnahme}). Die Größe $H = p_0/(\rho_0 g)$ wird als Skalenhöhe bezeichnet und beträgt für Luft bei \SI{0}{\celsius} etwa \SI{8}{\kilo\meter}. In einer Höhe von ca. \SI{5.8}{\kilo\meter} beträgt der Luftdruck nur noch die Hälfte des Bodenwertes.
+\end{importantbox}
+Laut dieser isothermen Näherung erhält man für den Luftdruck auf der Spitze des Mount Everest (\SI{8849}{\meter}) nur noch $\approx \SI{34.5}{\percent}$ des Luftdrucks auf Meereshöhe, was nur ungefähr $\SI{2}{\percent}$ vom realen Wert abweicht. 
+
 Die \textbf{Druckabnahme} einer isothermen Lufthülle folgt also einem \textbf{Exponentialgesetz} im Gegensatz zur \textbf{linearen Druckabnahme in einer Flüssigkeit}. Die Lufthülle der Erde hat also keine scharfe Grenze. In der realen Erdatmosphäre ändert sich die Temperatur mit der Höhe. Die barometrische Höhenformel ist für die untere Atmosphäre eine gute Näherung. 
 \begin{figure}[tb]
     \centering
-    \includegraphics[width=0.6\textwidth]{Bilder/Kapitel_Waermelehre/hoehenformel.pdf}
-    \caption{Der exponentiell abnehmende Luftdruck $p(z)$ über der Höhe $h$ in km.}\label{fig: barom_hoehenformel_grafik}
+    \includegraphics[width=0.4\textwidth]{Bilder/Kapitel_Waermelehre/hoehenformel.pdf}
+    \caption{Der exponentiell abnehmende Luftdruck $p(z)$ über der Höhe $h$ in km.}\label{fig: barom_hoehenformel_grafik}\label{fig: barometrische_hoehenformel_exp_abnahme}
 \end{figure}
 
+
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.40\linewidth}{!}{
+        \begin{tikzpicture}[>=Latex]
+            % =========================
+            % Gemeinsame Parameter
+            % =========================
+            \def\cylW{4.4}       % Breite des Zylinders
+            \def\cylH{5.0}       % Gesamthöhe
+            \def\hBase{1.2}      % Referenzhöhe h (etwas angehoben, damit man sie sieht)
+            \def\dh{1.0}         % Abstand dh
+            \def\offset{8.0}     % Abstand zwischen den Zylindern
+            \def\AOffset{0.4}    % Vertikaler Versatz für die A-Beschriftung
+            % ============================================================
+            % LINKER ZYLINDER: GAS (Kompressibel)
+            % ============================================================
+            \begin{scope}
+                \node[above, font=\bfseries] at (\cylW/2, \cylH+0.5) {Gas (kompressibel)};
+
+                % 1. Füllung: Linearer Farbverlauf (orange -> weiß)
+                % Visualisiert abnehmende Dichte mit der Höhe
+                \shade[bottom color=orange!60, top color=white] (0,0) rectangle (\cylW, \cylH*0.99);
+
+                % 2. Zylinderwände
+                \draw[thick] (0,0) -- (0,\cylH);
+                \draw[thick] (\cylW,0) -- (\cylW,\cylH);
+                \draw[thick] (0,0) -- (\cylW,0); % Boden
+
+                % 3. Markierungslinien für das Volumenelement
+                % Untere Linie bei h
+                \draw[line width=4pt, orange!80!black, opacity=0.7] (0, \hBase) -- (\cylW, \hBase);
+
+                % 4. Koordinatenachse z
+                \draw[->, ultra thick] (-1.4, \cylH*0.7) -- (-1.4, \cylH) node[right, above] {\Large $z$};
+                
+                % 5. Druck-Pfeil und Formel
+                % Exponentielle Abnahme
+                \draw[->, ultra thick, orange!90!black] (\cylW/2, \cylH-1.2) -- (\cylW/2, \hBase+0.1) 
+                    node[pos=-0.2, align=center, fill=white, fill opacity=0.0, text opacity=1, rounded corners] 
+                    {$p(z) = p_0 \cdot e^{-\frac{z}{H}}$\\[0.3em] \small (Exponentielle Abnahme)};
+
+                % 6. Beschriftungen
+                % Links (Höhen)
+                \node[left=0.2] at (0, \hBase) {\large $p(h), \rho(h)$};
+                \draw[line width=2pt] (-0.2, \hBase) -- (0.0, \hBase); % Tick mark
+                % p_0
+                \node[left=0.2] at (0, 0) {\large $p_0, \rho_0$};
+                \draw[line width=2pt] (-0.2, 0.03) -- (0.0, 0.03); % Tick mark
+
+                % Rechts (Dichte/Druck Werte)
+                % Dichte variiert mit der Höhe
+
+                % Mitte (Fläche A)
+                \node[orange!90!black, font=\bfseries] at (\cylW/2, \hBase - \AOffset) {\Large $A$};
+            \end{scope}
+
+            % ============================================================
+            % RECHTER ZYLINDER: FLÜSSIGKEIT (Inkompressibel)
+            % ============================================================
+            \begin{scope}[xshift=\offset cm]
+                \node[above, font=\bfseries] at (\cylW/2, \cylH+0.5) {Flüssigkeit (inkompressibel)};
+
+                % 1. Füllung: Solide Farbe (blau)
+                % Visualisiert konstante Dichte
+                \fill[blue!40] (0,0) rectangle (\cylW, \cylH);
+                % Optional: Eine leichte Schattierung für 3D-Effekt, aber die Dichte wirkt konstant
+                \shade[left color=blue!50, right color=blue!30, opacity=0.3] (0,0) rectangle (\cylW, \cylH);
+
+
+                % 2. Zylinderwände
+                \draw[thick] (0,0) -- (0,\cylH);
+                \draw[thick] (\cylW,0) -- (\cylW,\cylH);
+                \draw[thick] (0,0) -- (\cylW,0); % Boden
+                % Wasseroberfläche andeuten
+                \draw[thick, blue!80!black, decorate, decoration={snake, amplitude=1pt, segment length=5pt}] (0,\cylH) -- (\cylW,\cylH);
+
+                % 3. Markierungslinien
+                % Untere Linie bei h
+                \draw[line width=4pt, blue!80!black, opacity=0.7] (0, \hBase) -- (\cylW, \hBase);
+
+                % 5. Druck-Pfeil und Formel
+                % Lineare Abnahme mit der Höhe (oder Zunahme mit der Tiefe)
+                \draw[->, ultra thick, blue!90!black] (\cylW/2, \cylH-1.2) -- (\cylW/2, \hBase+0.1) 
+                    node[pos=-0.2, align=center, fill=white, fill opacity=0.0, text opacity=1, rounded corners] 
+                    {$p(z) = p_{0} - \rho g z$\\[0.3em] \small (Lineare Abnahme)};
+
+                % 6. Beschriftungen
+                % Links (Höhen)
+                \node[left=0.2] at (0, \hBase) {\large $p(h), \rho_0$};
+                \draw[line width=2pt] (-0.2, \hBase) -- (0.0, \hBase);
+
+                \node[left=0.2] at (0, 0) {\large $p_0, \rho_0$};
+                \draw[line width=2pt] (-0.2, 0.03) -- (0.0, 0.03);
+
+                % Mitte (Fläche A)
+                \node[blue!90!black, font=\bfseries] at (\cylW/2, \hBase - \AOffset) {\Large $A$};
+            \end{scope}
+        \end{tikzpicture}
+    }
+    \caption{Gegenüberstellung von Gas (kompressibel) und Flüssigkeit (inkompressibel) bezüglich Druck- und Dichteverteilung. Gase zeigen einen exponentiellen Druckabfall mit steigender Höhe, während Flüssigkeiten eine lineare Abnahme aufweisen.}\label{fig: gassaeule_fluessigkeit_gegenueberstellung}
+\end{figure}
 
 \subsubsection{Archimedisches Prinzip}
 Gleich wie bei Flüssigkeiten gilt auch in Gasen das Archimedische Prinzip:
@@ -654,53 +827,6 @@ Gleich wie bei Flüssigkeiten gilt auch in Gasen das Archimedische Prinzip:
     Die Auftriebskraft wirkt jedoch der Gewichtskraft des Körpers entgegen, $\ivecS{F}{\text{Gew}} = -\ivecS{F}{\text{Auf}}$.
 \end{rememberbox}
 Für Gase ist die Dichte $\rho_{\text{Gas}}$ eigentlich nicht konstant über die Höhe des Körpers. In der Praxis ist die Variation jedoch meist vernachlässigbar klein, weshalb \cref{eq: auftrieb_gase} praktisch exakt ist.
-
-\section{Das ideale Gas und die Zustandsgleichung}\label{sec: ideales_gas}
-Im Gegensatz zu Festkörpern und Flüssigkeiten füllen Gase jeden verfügbaren Raum aus und lassen sich leicht komprimieren. Das liegt daran, dass der mittlere Abstand zwischen den Gasmolekülen sehr viel größer ist als bei Flüssigkeiten oder Festkörpern.
-
-\subsection{Das Gesetz von Boyle-Mariotte}\label{subsec: boyle_mariotte}
-\begin{figure}[tb]
-    \centering
-    \resizebox{0.25\linewidth}{!}{
-    \begin{tikzpicture}[>=Latex] % Setzt den Standard-Pfeilspitzen-Typ
-        % Parameter für einfache Größenanpassung
-        \def\cylW{3.0}   % Breite des Zylinders
-        \def\cylH{3.8}   % Höhe der Wände
-        \def\pistY{2.6}  % y-Position des Kolbenbodens
-        \def\pistH{0.7}  % Dicke des Kolbens
-
-        % 1. Zylinder (Wände links, rechts und Boden)
-        \draw[thick] (0, \cylH) -- (0, 0) -- (\cylW, 0) -- (\cylW, \cylH);
-
-        % 2. Kolben
-        % fill=red!45 mischt 45% Rot mit Weiß (Lachsfarbe)
-        \filldraw[fill=red!45, draw=black, thick] (0, \pistY) rectangle (\cylW, \pistY+\pistH);
-
-        % 3. Beschriftung Gasvolumen (mittig im unteren Bereich)
-        \node at (0.5*\cylW, 0.5*\pistY) {\large $V; p$};
-
-        % 4. Pfeil für den äußeren Druck p
-        % Startet etwas oberhalb der Zylinderwände und zeigt auf den Kolben
-        \draw[-{Stealth[length=3mm, width=3mm]},line width=1.1pt] (0.5*\cylW, \cylH + 0.5) -- (0.5*\cylW, \pistY+\pistH);
-        
-        % Beschriftung p über dem Pfeil
-        \node[above] at (0.5*\cylW, \cylH + 0.5) {\large $p_\text{atm}$};
-    \end{tikzpicture}
-    }
-    \caption{Durch einen beweglichen Kolben kann das Volumen $V$ und der Druck $p$ eines Gases verändert werden, wobei der äußere Druck $p_\atm$ konstant bleibt.}\label{fig: kolben_zylinder_gas_pV}
-\end{figure}
-Experimente zeigen, dass für eine abgeschlossene Gasmenge bei \textbf{konstanter Temperatur (isotherm)} das Produkt aus Druck $p$ und Volumen $V$ konstant ist:
-\begin{equation}\label{eq: boyle_mariotte_gesetz}
-    p \cdot V = \const \mDot
-\end{equation}
-Dieses Gesetz ist als das \textbf{Gesetz von Boyle-Mariotte} bekannt. Es besagt, dass bei konstanter Temperatur Druck und Volumen umgekehrt proportional zueinander sind. Der Zahlenwert der Konstanten hängt dabei von der Temperatur ab. Daraus folgt auch, dass die Dichte $\rho = M/V$ eines Gases proportional zum Druck ist.
-
-\subsection{Die ideale Gasgleichung}\label{subsec: ideale_gasgleichung}
-Fasst man das Gesetz von Boyle-Mariotte und die Gesetze von Gay-Lussac zusammen, gelangt man zur \textbf{allgemeinen Zustandsgleichung für ideale Gase}:
-\begin{equation}\label{eq:ideale_gasgleichung}
-    p \cdot V = N \cdot k_B \cdot T
-\end{equation}
-Hierbei ist $N$ die Anzahl der Teilchen (Atome oder Moleküle) im Volumen $V$. Diese Gleichung verknüpft die drei makroskopischen Zustandsgrößen Druck, Volumen und Temperatur.
 
 
 
@@ -1086,17 +1212,17 @@ Damit lautet der erste Hauptsatz für Prozesse, die nur Volumenarbeit beinhalten
 
 \subsection{Spezielle Zustandsänderungen}\label{subsec: spezielle_zustaende}
 \begin{itemize}
-    \item \textbf{Isochorer Prozess ($V = \text{konst.}$):} Da $dV=0$, wird keine Volumenarbeit verrichtet ($dW=0$). Die gesamte zugeführte Wärme geht in die innere Energie: $dQ = dU$.
-    \item \textbf{Isobarer Prozess ($p = \text{konst.}$):} Die zugeführte Wärme erhöht sowohl die innere Energie als auch das Volumen: $dQ = dU + p \cdot dV$. Man führt die Zustandsgröße \textbf{Enthalpie} $H = U + pV$ ein, für die bei isobaren Prozessen gilt: $dH = dQ$.
-    \item \textbf{Isothermer Prozess ($T = \text{konst.}$):} Für ein ideales Gas hängt die innere Energie nur von der Temperatur ab, also ist $dU=0$. Der erste Hauptsatz wird zu $dQ = -dW = p \cdot dV$. Die gesamte zugeführte Wärme wird in Arbeit umgewandelt.
-    \item \textbf{Adiabatischer Prozess ($Q = \text{konst.}$):} Es wird keine Wärme mit der Umgebung ausgetauscht ($dQ=0$). Der erste Hauptsatz lautet $dU = dW = -p \cdot dV$. Jede Arbeit, die das System leistet, geht zulasten seiner inneren Energie, was zu einer Abkühlung führt.
+    \item \textbf{Isochorer Prozess ($V = \const$):} Da $dV=0$, wird keine Volumenarbeit verrichtet ($dW=0$). Die gesamte zugeführte Wärme geht in die innere Energie: $dQ = dU$.
+    \item \textbf{Isobarer Prozess ($p = \const$):} Die zugeführte Wärme erhöht sowohl die innere Energie als auch das Volumen: $dQ = dU + p \cdot dV$. Man führt die Zustandsgröße \textbf{Enthalpie} $H = U + pV$ ein, für die bei isobaren Prozessen gilt: $dH = dQ$.
+    \item \textbf{Isothermer Prozess ($T = \const$):} Für ein ideales Gas hängt die innere Energie nur von der Temperatur ab, also ist $dU=0$. Der erste Hauptsatz wird zu $dQ = -dW = p \cdot dV$. Die gesamte zugeführte Wärme wird in Arbeit umgewandelt.
+    \item \textbf{Adiabatischer Prozess ($Q = \const$):} Es wird keine Wärme mit der Umgebung ausgetauscht ($dQ=0$). Der erste Hauptsatz lautet $dU = dW = -p \cdot dV$. Jede Arbeit, die das System leistet, geht zulasten seiner inneren Energie, was zu einer Abkühlung führt.
 \end{itemize}
 
 \begin{figure}[htb]
     \centering
     % \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Hauptsaetze/pv_diagramm_prozesse.png}
     \includegraphics[width=0.7\linewidth]{Bilder/Allgemein/placeholder.png}
-    \caption{Darstellung der vier speziellen Zustandsänderungen in einem p-V-Diagramm. Isothermen ($T=\text{konst.}$) sind Hyperbeln. Adiabaten ($Q=\text{konst.}$) verlaufen steiler als Isothermen, da sich das Gas bei der Expansion abkühlt.}
+    \caption{Darstellung der vier speziellen Zustandsänderungen in einem p-V-Diagramm. Isothermen ($T=\const$) sind Hyperbeln. Adiabaten ($Q=\const$) verlaufen steiler als Isothermen, da sich das Gas bei der Expansion abkühlt.}
     \label{fig: pv_diagramm_prozesse}
 \end{figure}
 
