@@ -61,7 +61,7 @@
 }
 \DeclareSIUnit{\litre}{l}
 \DeclareSIUnit{\calorie}{cal}
-\DeclareSIUnit{\bar}{bar}
+\DeclareSIUnit{\barPr}{bar}
 \DeclareSIUnit{\fahrenheit}{\SIUnitSymbolDegree F}
 
 %\crefname{subsection}{subsection}{subsections}
@@ -629,6 +629,7 @@ Diese Gleichung ist das Herzstück der Wärmelehre für Gase. Sie erlaubt es, ei
 
 
 \section{Die barometrische Höhenformel}\label{sec: barometrische_hoehenformel}
+
 \begin{figure}[tb]
     \centering
     \resizebox{0.45\linewidth}{!}{
@@ -681,6 +682,7 @@ Diese Gleichung ist das Herzstück der Wärmelehre für Gase. Sie erlaubt es, ei
     }
     \caption{Mit zunehmender Höhe $h$ nimmt das Gewicht der darüberliegenden Luftsäule ab, wodurch Druck und Dichte sinken.}\label{fig: luftsaeule_hoehenformel_anschauung}
 \end{figure}
+
 Der Luftdruck, den wir auf der Erdoberfläche messen, entsteht durch die Gewichtskraft der darüber liegenden Luftsäule (siehe \cref{fig: luftsaeule_hoehenformel_anschauung}). Da die Dichte der Luft mit der Höhe abnimmt, ist auch der Druck nicht konstant. Wir wollen eine Formel für den Druck als Funktion der Höhe $h$ herleiten.
 
 Bei einem infinitesimalen Höhenanstieg von $h$ auf $h + \dd h$ nimmt das Gewicht der Luftsäule um $\rho\cdot g \cdot \dd V = \rho\cdot g \cdot A \cdot \dd h$ ab und daher sinkt der Druck $p$ um
@@ -697,7 +699,11 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dich
 \begin{equation}
     \int_{p_0}^{p(h)} \frac{1}{p} dp = -\int_0^h \frac{\rho_0 g}{p_0} dh \implies \ln\left(\frac{p(h)}{p_0}\right) = -\frac{\rho_0 g}{p_0} h \mDot
 \end{equation}
-
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Bilder/Kapitel_Waermelehre/hoehenformel.pdf}
+    \caption{Der exponentiell abnehmende Luftdruck $p(z)$ über der Höhe $h$ in km.}\label{fig: barom_hoehenformel_grafik}\label{fig: barometrische_hoehenformel_exp_abnahme}
+\end{figure}
 \begin{importantbox}{Barometrische Höhenformel}
     Durch Auflösen nach $p(h)$ erhält man die \textbf{barometrische Höhenformel} für eine isotherme Atmosphäre:
     \begin{equation}\label{eq: barometrische_hoehenformel}
@@ -707,17 +713,11 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dich
 \end{importantbox}
 Laut dieser isothermen Näherung erhält man für den Luftdruck auf der Spitze des Mount Everest (\SI{8849}{\meter}) nur noch $\approx \SI{34.5}{\percent}$ des Luftdrucks auf Meereshöhe, was nur ungefähr $\SI{2}{\percent}$ vom realen Wert abweicht. 
 
-Die \textbf{Druckabnahme} einer isothermen Lufthülle folgt also einem \textbf{Exponentialgesetz} im Gegensatz zur \textbf{linearen Druckabnahme in einer Flüssigkeit}. Die Lufthülle der Erde hat also keine scharfe Grenze. In der realen Erdatmosphäre ändert sich die Temperatur mit der Höhe. Die barometrische Höhenformel ist für die untere Atmosphäre eine gute Näherung. 
-\begin{figure}[tb]
-    \centering
-    \includegraphics[width=0.4\textwidth]{Bilder/Kapitel_Waermelehre/hoehenformel.pdf}
-    \caption{Der exponentiell abnehmende Luftdruck $p(z)$ über der Höhe $h$ in km.}\label{fig: barom_hoehenformel_grafik}\label{fig: barometrische_hoehenformel_exp_abnahme}
-\end{figure}
-
+Die \textbf{Druckabnahme} einer isothermen Lufthülle folgt also einem \textbf{Exponentialgesetz} im Gegensatz zur \textbf{linearen Druckabnahme in einer Flüssigkeit}. Dieser Unterschied ist in \cref{fig: gassaeule_fluessigkeit_gegenueberstellung} dargestellt. Die Kompressibilität der Luft führt zu einer exponentiellen (schneller als linear) Abnahme des Drucks. Die Lufthülle der Erde hat jedoch keine scharfe Grenze. In der realen Erdatmosphäre ändert sich die Temperatur allerdings mit der Höhe, weshalb die barometrische Höhenformel nur für die untere Atmosphäre eine gute Näherung darstellt. 
 
 \begin{figure}[tb]
     \centering
-    \resizebox{0.40\linewidth}{!}{
+    \resizebox{0.90\linewidth}{!}{
         \begin{tikzpicture}[>=Latex]
             % =========================
             % Gemeinsame Parameter
@@ -831,8 +831,9 @@ Für Gase ist die Dichte $\rho_{\text{Gas}}$ eigentlich nicht konstant über die
 
 
 \section{Kinetische Gastheorie}\label{sec: kinetische_gastheorie}
-Die kinetische Gastheorie, entwickelt in der zweiten Hälfte des 19. Jahrhunderts, erklärt die makroskopischen Eigenschaften von Gasen (wie Druck und Temperatur) durch die Bewegung und die Wechselwirkung der Gasatome auf mikroskopischer Ebene.
+Die kinetische Gastheorie, entwickelt in der zweiten Hälfte des 19. Jahrhunderts unter anderem von James Clerk Maxwell, Ludwig Boltzmann und Rudolf Clausius, erklärt die makroskopischen Eigenschaften von Gasen (wie Druck und Temperatur) durch die Bewegung und die Wechselwirkung der Gasatome auf mikroskopischer Ebene.
 
+Das einfachste Gasmodell ist das des idealen Gases, bei dem die Gasteilchen als punktförmige, nicht wechselwirkende Massen betrachtet werden, die sich mit statistisch verteilten Geschwindigkeiten bewegen und elastische Stöße ausführen.
 \subsection{Das Modell des idealen Gases}\label{subsec: modell_ideales_gas}
 Das Modell des idealen Gases basiert auf folgenden Annahmen:
 \begin{itemize}
@@ -841,9 +842,11 @@ Das Modell des idealen Gases basiert auf folgenden Annahmen:
     \item Zwischen den Teilchen gibt es keine anziehenden oder abstoßenden Kräfte, außer bei direkten Kollisionen.
     \item Alle Stöße der Teilchen untereinander und mit den Wänden des Behälters sind vollkommen elastisch, d.h., die kinetische Gesamtenergie bleibt erhalten.
 \end{itemize}
+\textit{Erklärendes Beispiel:} Um zu beurteilen, ob ein reales Gas als ideales Gas betrachtet werden kann, vergleichen wir den mittleren Abstand $\lrangle{r}$ der Gasteilchen mit ihrem effektiven Durchmesser $r_0$. Ist der mittlere Abstand deutlich größer als der Durchmesser ($r_0/\lrangle{r} \ll 1$), sind die Wechselwirkungen zwischen den Teilchen vernachlässigbar, und das Gas verhält sich ideal.
+Bei einem Druck von \SI{1}{\barPr} und Raumtemperatur enthält \SI{1}{\centi\meter\cubed} eines Gases etwa $3\cdot 10^{19}$ Moleküle. Ihr mittlerer Abstand ist dann $\lrangle{r} \approx \SI{3}{\nano\meter}$. Für Heliumatome ist $r_0 \approx \SI{0.05}{\nano\meter}$, weshalb $r_0/\lrangle{r} \approx \qty{0.017} \ll 1$. Helium ist daher bei einem Druck von \SI{1}{\barPr} als ideales Gas zu betrachten.
 
 \subsection{Herleitung des Gasdrucks}\label{subsec: herleitung_gasdruck}
-\begin{figure}[tb]
+\begin{figure}[htb]
     \centering
     \resizebox{0.5\linewidth}{!}{
     \begin{tikzpicture}[>=Latex, font=\large]
@@ -899,23 +902,32 @@ Das Modell des idealen Gases basiert auf folgenden Annahmen:
 
         % 4. Textbeschriftung Mitte
         \node[below right, align=left] at (-3.25, 0.45) {$\Delta v_x = 2v_x$\\ $\Delta v_y = 0$};
+        
+        % 5. Koordinatenachsen x,y
+                \draw[->, ultra thick] (2.5,1.5) -- (3.5, 1.5) node[right] {\Large $x$};
+                \draw[->, ultra thick] (2.5,1.5) -- (2.5, 2.5) node[above] {\Large $y$};
     \end{tikzpicture}
     }
     \caption{Impulsübertragung beim elastischen Stoß auf eine Wand beträgt $\Delta p = 2mv_x$, wenn $v_x$ die Geschwindigkeitskomponente senkrecht zur Wand ist.}\label{fig: impulsuebertrag_wand}
 \end{figure}
 
 Der Druck, den ein Gas auf eine Wand ausübt, entsteht durch den Impulsübertrag der unzähligen Teilchen, die pro Zeiteinheit auf die Wand prallen.
-Betrachten wir ein Teilchen der Masse $m$, das sich mit der Geschwindigkeitskomponente $v_x$ auf eine Wand in der y-z-Ebene zubewegt. Beim elastischen Stoß kehrt sich die x-Komponente der Geschwindigkeit um ($-v_x$), während die anderen Komponenten unverändert bleiben. Der Impulsübertrag auf die Wand beträgt daher:
+In \cref{fig: impulsuebertrag_wand} betrachten wir ein Teilchen der Masse $m$, das sich mit der Geschwindigkeitskomponente $v_x$ auf eine Wand in der $(y,z)$-Ebene zubewegt. Beim elastischen Stoß kehrt sich die $x$-Komponente der Geschwindigkeit um ($v_x \rightarrow -v_x$), während die anderen Komponenten unverändert bleiben. Der Impulsübertrag auf die Wand entspricht der negativen Änderung des Impulses des Teilchens:
 \begin{equation}
-    \Delta p_x = p_{x,\text{nachher}} - p_{x,\text{vorher}} = mv_x - (-mv_x) = 2mv_x
+    \Delta p_{x, \text{Wand}} = -(p_{x,\text{nachher}} - p_{x,\text{vorher}}) = -(-mv_x - mv_x) = 2mv_x
 \end{equation}
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[width=0.35\linewidth]{Bilder/Kapitel_Waermelehre/impulsuebertrag_wand.png}
-%     \caption{Ein Teilchen stößt elastisch mit der Wand. Nur die zur Wand normale Geschwindigkeitskomponente ($v_x$) wird umgekehrt, was zu einem Impulsübertrag von $\Delta p = 2mv_x$ führt.}
-%     \label{fig:impulsuebertrag_wand}
-% \end{figure}
+Der Impulsübertrag findet demnach immer durch die Normalkomponente der Geschwindigkeit zur Wand statt. Wir erinnern uns, dass der Impuls $\ivec{p} = m\cdot \ivec{v}$ ist und eine Kraft $\ivec{F}$ gleich der zeitlichen Änderung des Impulses ist:
+\begin{equation}
+    \ivec{F} = \frac{\dd \ivec{p}}{\dd t} \mDot
+\end{equation}
+ Um den Druck $p$ zu berechnen, betrachten wir ein kleines Flächenelement $A$ der Wand. Der Druck ist definiert als die Kraft pro Fläche:
+\begin{equation}
+    p = \frac{F}{A} = \frac{\dd \ivec{p}/\dd t}{A} = \frac{\dd}{\dd t} \left( \frac{\text{auf Fläche $A$ übertragener Impuls}}{\text{Fläche $A$}}\right)  \mDot 
+\end{equation}
+Die Schwierigkeit besteht darin, den gesamten Impuls zu bestimmen, der in der Zeit $\Delta t$ auf die Fläche $A$ übertragen wird, da viele Teilchen mit unterschiedlichen Geschwindigkeiten auf die Wand prallen. 
+
+Hierzu betrachten wir ein kleines Volumenelement $V_S$ vor der Wand, das alle Teilchen enthält, die in der Zeit $\Delta t$ die Wand erreichen können (siehe \cref{fig: teilchen_in_box}). Die Seitenlänge dieses Quaders in $x$-Richtung ist $\dd s = v_x \cdot \dd t$, da nur Teilchen mit der Geschwindigkeitskomponente $v_x$ die Wand in dieser Zeit erreichen können. Die anderen Seitenlängen sind so gewählt, dass sie alle Teilchen mit dieser $v_x$-Komponente umfassen.
 
 Durch eine detaillierte Betrachtung aller Teilchen, die in einer Zeit $\Delta t$ auf eine Fläche $A$ treffen, kann man den Gesamtdruck herleiten. Das Ergebnis dieser Herleitung lautet:
 \begin{equation}\label{eq:druck_kinetisch}
@@ -1060,7 +1072,7 @@ In der Thermodynamik, insbesondere bei Gasen, ist es oft praktischer, Stoffmenge
     \item Das \textbf{Molvolumen} $V_M$ ist das Volumen, das ein Mol eines Stoffes einnimmt. Für ideale Gase unter Normbedingungen ($p=\SI{1}{bar}$, $T=\SI{0}{\celsius}$) beträgt es $V_M = \SI{22.7}{\deci\meter\cubed}$.
 \end{itemize}
 
-Die ideale Gasgleichung (\cref{eq:ideale_gasgleichung}) lässt sich auch in molarer Form schreiben. Für $v$ Mole eines Gases mit Gesamtvolumen $V = v \cdot V_M$ gilt:
+Die ideale Gasgleichung (\cref{eq: ideale_gasgleichung}) lässt sich auch in molarer Form schreiben. Für $v$ Mole eines Gases mit Gesamtvolumen $V = v \cdot V_M$ gilt:
 \begin{equation}\label{eq:ideale_gasgleichung_molar}
     p \cdot V = v \cdot R \cdot T \mComma
 \end{equation}

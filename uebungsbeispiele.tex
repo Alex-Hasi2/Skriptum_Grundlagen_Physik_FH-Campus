@@ -54,7 +54,7 @@
 \usepackage{siunitx}
 \DeclareSIUnit{\litre}{l}
 \DeclareSIUnit{\calorie}{cal}
-\DeclareSIUnit{\bar}{bar}
+\DeclareSIUnit{\barPr}{bar}
 \DeclareSIUnit{\atm}{atm}
 \sisetup{
     locale = DE, 
@@ -191,7 +191,7 @@
     \vfill % Fills the space in the middle of the page
 
     % Author
-    {\large Dr. Dipl.-Ing. Alexander Schumer\par}
+    {\large Dr.\ Dipl.-Ing. Alexander Schumer\par}
     \vspace{1cm}
 
     % Date
@@ -222,7 +222,7 @@ Bilden Sie die erste Ableitung folgender Funktionen:
 
 \begin{aufgabebox}{Integralrechnung}{integral_fx_OS_US}
 Betrachten Sie die Funktion
-\begin{equation}\label{eq:integral_func}
+\begin{equation}\label{eq: integral_func}
     f(x)=\frac{1}{2}x^{3}-3x^{2}+\frac{3}{2}x+5 \mComma
 \end{equation}
 \begin{center}
@@ -260,9 +260,8 @@ Betrachten Sie die Funktion
             % --- KORRIGIERTE FUNKTION ---
             {0.5*x*x*x - 3*x*x + 1.5*x + 5}; 
         \end{axis}
-    \end{tikzpicture}
-    %\captionof{figure}{Graph der Funktion $f(x)$ aus \Cref{eq:integral_func}.}
-    \label{fig:integral_func_aufg}
+    \end{tikzpicture}\label{fig: integral_func_aufg}
+    %\captionof{figure}{Graph der Funktion $f(x)$ aus \Cref{eq: integral_func}.}
 \end{center}
 die in der Abbildung dargestellt ist.
 \begin{enumerate}
@@ -273,7 +272,7 @@ die in der Abbildung dargestellt ist.
     \end{enumerate}
     jeweils mit der Schrittweite $\Delta x = \num{0.5}$. Skizzieren Sie die entsprechenden Rechtecke.
     \item Berechnen Sie das unbestimmte Integral der Funktion $f(x)$, die sogenannte Stammfunktion $F(x)$. Beachten Sie die Integrationskonstante C.
-    \item Verwenden Sie den ersten Hauptsatz der Integralrechnung, um nun die exakte Fläche in den Intervallen $[-1,2]$ und $[2, 5]$ separat zu berechnen. Setzen Sie das Resultat in Relation zu den Schätzungen aus 1).
+    \item Verwenden Sie den ersten Hauptsatz der Integralrechnung, um nun die exakte Fläche in den Intervallen $[-1,2]$ und $[2, 5]$ separat zu berechnen. Setzen Sie das Resultat in Relation zu den Schätzungen aus (1).
     \item Was ergibt das Integral über $f(x)$ von $x = -1$ bis $x = 5$?
 \end{enumerate}
 \end{aufgabebox}
@@ -389,7 +388,7 @@ Bei einem Test mit $N=2000$ Studierenden, bei dem es 10 Punkte zu erreichen gab,
         f(x)=\frac{1}{6}\sin^2\left(\frac{x}{4}\right) \mComma
     \end{equation}
     die in der Abbildung dargestellt ist. Für Wahrscheinlichkeitsdichten gilt 
-    $$\int_{0}^{10}f(x)\dd x=1 \mDot$$
+    $$ \int_{0}^{10}f(x)\dd x=1 \mDot $$
     % \begin{center}
     %     \includegraphics[width=0.6\textwidth]{Bilder/Uebungsaufgaben/wahrscheinlichkeitsverteilung_dx.png}
     % \end{center}
@@ -483,11 +482,11 @@ Um tatsächliche Wahrscheinlichkeiten zu bekommen, dass die Punktezahl in einem 
     
     \item \textbf{Gebrochenrationale Funktion:}
     \begin{itemize}
-        \item \textit{Weg (a) - Quotientenregel:} $f_5(x) = \frac{u(x)}{v(x)}$ mit $u(x)=1, v(x)=4x^5$.
+        \item \textit{Weg (a): Quotientenregel:} $f_5(x) = \frac{u(x)}{v(x)}$ mit $u(x)=1, v(x)=4x^5$.
         \begin{equation}
              f_{5}'(x)=\frac{u'v - uv'}{v^2} = \frac{0\cdot4x^{5}-1\cdot20x^{4}}{(4x^{5})^{2}}=-\frac{20x^{4}}{16x^{10}}=-\frac{5}{4x^{6}}
         \end{equation}
-        \item \textit{Weg (b) - Potenzregel:} $f_5(x) = \frac{1}{4}x^{-5}$.
+        \item \textit{Weg (b): Potenzregel:} $f_5(x) = \frac{1}{4}x^{-5}$.
         \begin{equation}
             f_{5}'(x)=\frac{1}{4}(-5x^{-6})=-\frac{5}{4x^{6}}
         \end{equation}
@@ -706,12 +705,12 @@ Um tatsächliche Wahrscheinlichkeiten zu bekommen, dass die Punktezahl in einem 
         x^2+y^2+4x-6y+9 &= 0 \\
         (x^2+4x) + (y^2-6y) + 9 &= 0 \\
         (x^2+4x\underbrace{+4-4}_{\text{quadr. Erg.}}) + (y^2-6y\underbrace{+9-9}_{\text{quadr. Erg.}}) + 9 &= 0 \\
-        (x+2)^2 - 4 + (y-3)^2 - 9 + 9 &= 0 \\
-        (x+2)^2 + (y-3)^2 - 4 &= 0
+        {(x+2)}^2 - 4 + {(y-3)}^2 - 9 + 9 &= 0 \\
+        {(x+2)}^2 + {(y-3)}^2 - 4 &= 0
     \end{align*}
     Daraus folgt die finale Kreisgleichung:
     \begin{equation}\label{eq:kreisgleichung_final}
-        (x+2)^2 + (y-3)^2 = 4 = 2^2
+        {(x+2)}^2 + {(y-3)}^2 = 4 = 2^2
     \end{equation}
     Dies ist die Gleichung eines Kreises mit dem Mittelpunkt $M\ipTwo{-2}{3}$ und dem Radius $r = 2$.
 
@@ -719,12 +718,12 @@ Um tatsächliche Wahrscheinlichkeiten zu bekommen, dass die Punktezahl in einem 
     \begin{itemize}
         \item \textbf{Punkt} $Q\ipTwo{-5}{-5}$\textbf{:}
         \begin{equation*}
-            (-5+2)^2 + (-5-3)^2 = (-3)^2 + (-8)^2 = 9 + 64 = 73
+            {(-5+2)}^2 + {(-5-3)}^2 = {(-3)}^2 + {(-8)}^2 = 9 + 64 = 73
         \end{equation*}
         Da $73 \neq 4$, liegt $Q$ nicht auf dem Kreis. Da $73 > 4$, liegt der Punkt außerhalb des Kreises.
         \item \textbf{Punkt} $S\ipTwo{-4}{3}$\textbf{:}
         \begin{equation*}
-            (-4+2)^2 + (3-3)^2 = (-2)^2 + 0^2 = 4
+            {(-4+2)}^2 + {(3-3)}^2 = {(-2)}^2 + 0^2 = 4
         \end{equation*}
         Da $4 = 4$, liegt $S$ exakt auf dem Kreis.
     \end{itemize}
@@ -734,7 +733,8 @@ Um tatsächliche Wahrscheinlichkeiten zu bekommen, dass die Punktezahl in einem 
         \item \textbf{Innerhalb ($I$):} Der Abstand zum Mittelpunkt $M\ipTwo{-2}{3}$ muss kleiner als der Radius $r=2$ sein. Jeder Punkt im $x$-Intervall $[-4, 0]$ und $y$-Intervall $[1, 5]$ ist ein Kandidat. Wir wählen $I = \ipTwo{-3}{4}$ und überprüfen 
         $$I = (-3+2)^2 + (4-3)^2 = (-1)^2 + (1)^2 = 1+1 = 2 < 4 \mDot$$
         Der Punkt $I\ipTwo{-3}{4}$ liegt daher innerhalb des Kreises.
-        \begin{center}\begin{tikzpicture}
+        \begin{center}
+            \begin{tikzpicture}
             \begin{axis}[
                 xlabel={$x$},
                 ylabel={$y$},
@@ -763,15 +763,16 @@ Um tatsächliche Wahrscheinlichkeiten zu bekommen, dass die Punktezahl in einem 
             \draw[{Stealth}-{Stealth}, red, thick] (axis cs:-4,1.) -- (axis cs:0,1.);
             \draw[{Stealth}-{Stealth}, red, thick] (axis cs:-4.,1) -- (axis cs:-4.,5);
             \end{axis}
-        \end{tikzpicture}\end{center}
+            \end{tikzpicture}
+        \end{center}
         \item \textbf{Außerhalb ($O$):} Der Abstand zum Mittelpunkt muss größer als $r=2$ sein.
         Beispiel: $O = (10|0)$, da $$(10+2)^2 + (0-3)^2 = 144+9=153 > 4 \mDot$$
         
         \item \textbf{Auf dem Kreis ($P$):} Wir wählen eine $x$-Koordinate aus dem Intervall der möglichen $x$-Werte $[-4, 0]$, \zB $x=-1$, und berechnen das zugehörige $y$:
         \begin{align*}
-            (-1+2)^2 + (y-3)^2 &= 4 \\
-            1 + (y-3)^2 &= 4 \\
-            (y-3)^2 &= 3 \implies y-3 = \pm\sqrt{3} \implies y = 3 \pm \sqrt{3}
+            {(-1+2)}^2 + {(y-3)}^2 &= 4 \\
+            1 + {(y-3)}^2 &= 4 \\
+            {(y-3)}^2 &= 3 \implies y-3 = \pm\sqrt{3} \implies y = 3 \pm \sqrt{3}
         \end{align*}
         Beispiel: $P = \ipTwo{-1}{3+\sqrt{3}}$.
     \end{itemize}
@@ -1058,7 +1059,7 @@ Rechnen Sie die Einheiten auf der linken Seite in die Einheiten auf der rechten 
     \text{4.} \quad & \SI{1}{\kWh} &&=\quad \underline{\hspace{1.5cm}} \;\si{\joule} \\
     \text{5.} \quad & \SI[product-units=repeat]{15000}{\ampere\hour} &&=\quad \underline{\hspace{1.5cm}} \;\si{\kWh} \\
     & \multicolumn{2}{l}{\footnotesize{(bei $U = \SI{3,7}{\volt}$)}} \\
-    \text{6.} \quad & \SI{101325}{\pascal} &&=\quad \underline{\hspace{1.5cm}} \;\si{\bar} \\
+    \text{6.} \quad & \SI{101325}{\pascal} &&=\quad \underline{\hspace{1.5cm}} \;\si{\barPr} \\
     \text{7.} \quad & \SI{19,3}{\gram\per\centi\meter\cubed} &&=\quad \underline{\hspace{1.5cm}} \;\si{\kilo\gram\per\meter\cubed} \\
     \text{8.} \quad & 120\,\text{PS} &&=\quad \underline{\hspace{1.5cm}} \;\si{\kilo\watt} \\
     & \multicolumn{2}{l}{\footnotesize{($1\,\text{PS} = \SI{735.5}{\watt}$)}} \\
@@ -1114,7 +1115,7 @@ Lösen Sie folgende Beispiele, indem Sie die Einheiten der physikalischen Größ
         \textbf{Begründung:} Dies ist eine konkrete, überprüfbare Behauptung. Man kann ein Experiment durchführen, um sie zu bestätigen (verifizieren) oder zu widerlegen (falsifizieren), was sie zu einer klassischen Hypothese macht.
     \end{solutiontermbox}
     \begin{solutiontermbox}{Satz}
-        Für $n>2$ gibt es keine pos. ganzen Zahlen $a, b, c$, die $a^n + b^n = c^n$ erfüllen.
+        Für $n>2$ gibt es keine pos.\ ganzen Zahlen $a, b, c$, die $a^n + b^n = c^n$ erfüllen.
         \tcblower
         \textbf{Begründung:} Dies war jahrhundertelang eine berühmte Vermutung (Hypothese). Seit dem Beweis durch Andrew Wiles im Jahr 1994 ist es ein bewiesener mathematischer Satz (der Große Fermatsche Satz).
     \end{solutiontermbox}
@@ -1189,9 +1190,9 @@ Umrechnen von Einheiten:
         \SI{55500}{\watt\hour} = \frac{\num{55500}}{\num{1000}} \si{\kilo\watt\hour} = \SI{55.5}{\kilo\watt\hour}
     \end{equation}
 
-    \item Die Definition von Bar ist $\SI{1}{\bar} = \SI{e5}{\pascal}$.
+    \item Die Definition von Bar ist $\SI{1}{\barPr} = \SI{e5}{\pascal}$.
     \begin{equation}
-        \SI{101325}{\pascal} = \frac{\num{101325}}{\num{e5}}\,\si{\bar} = \SI{1.01325}{\bar}
+        \SI{101325}{\pascal} = \frac{\num{101325}}{\num{e5}}\,\si{\barPr} = \SI{1.01325}{\barPr}
     \end{equation}
 
     \item Der Umrechnungsfaktor beträgt 1000, da $\SI{1}{\gram} = \SI{e-3}{\kilo\gram}$ und \\$\SI{1}{\centi\meter\cubed} = (\SI{e-2}{\meter})^3 = \SI{e-6}{\meter\cubed}$.
@@ -1231,8 +1232,8 @@ Umrechnen von Einheiten:
     \end{equation}
     Nun setzen wir dies in den Einheitenansatz ein:
     \begin{equation}\begin{aligned}
-        [p] &= [\rho]^x [v]^y \\
-        \si{\kilo\gram} \cdot \si{\meter}^{-1} \cdot \si{\second}^{-2} = \frac{\si{\kilo\gram}}{\si{\meter\cdot\second\squared}} &= \left(\frac{\si{\kilo\gram}}{\si{\meter\cubed}}\right)^x \cdot \left(\frac{\si{\meter}}{\si{\second}}\right)^y \\
+        [p] &= {[\rho]}^x {[v]}^y \\
+        \si{\kilo\gram} \cdot \si{\meter}^{-1} \cdot \si{\second}^{-2} = \frac{\si{\kilo\gram}}{\si{\meter\cdot\second\squared}} &= {\left(\frac{\si{\kilo\gram}}{\si{\meter\cubed}}\right)}^x \cdot {\left(\frac{\si{\meter}}{\si{\second}}\right)}^y \\
         &= \frac{\si{\kilo\gram}^x \cdot \si{\meter}^y}{\si{\meter}^{3x} \cdot \si{\second}^y} = \si{\kilo\gram}^x \cdot \si{\meter}^{y-3x} \cdot \si{\second}^{-y}
     \end{aligned}\end{equation}
     Durch Vergleich der Exponenten für jede Basiseinheit erhalten wir ein Gleichungssystem:
@@ -1526,7 +1527,7 @@ Ein Teilchen wird unter dem Einfluss der Erdbeschleunigung, die in negative $z$-
 \end{center}
 \begin{enumerate}
     \item Schreiben Sie die Ortskurve $\ivec{r}(t)$ vektoriell an, wobei Sie die geeignete Formel für den Ortsvektor aus dem Skriptum nehmen können.
-    \item Begründen Sie mathematisch auf Basis von 1), warum die Bewegung in $x$-Richtung (horizontale Bewegung) und die Bewegung in $z$-Richtung (vertikale Bewegung) voneinander entkoppelt also unabhängig voneinander sind. 
+    \item Begründen Sie mathematisch auf Basis von (1), warum die Bewegung in $x$-Richtung (horizontale Bewegung) und die Bewegung in $z$-Richtung (vertikale Bewegung) voneinander entkoppelt also unabhängig voneinander sind. 
     \item Stellen Sie die Wurfparabel $z(x)$ auf, die in der Skizze abgebildet ist. Gehen Sie dazu wie folgt vor:
     \begin{enumerate}
         \item Stellen Sie die Bewegungsgleichung $x(t)$ nach der Zeit $t$ um, um $t(x)$ zu erhalten. 
@@ -2922,7 +2923,7 @@ Ein $L = \SI{260}{\meter}$ langes Stück einer Stahlpipeline in Alaska kühlt im
 
 
 \begin{aufgabebox}{Warme Autoreifen}{autoreifen_druck}
-Ein Autoreifen wird nach einer längeren Fahrt an einer Tankstelle bis zu einem Druck von \SI{2.2}{\bar} bei einer Reifentemperatur von \SI{40}{\degreeCelsius} mit Luft gefüllt. Am nächsten Tag ist die Außentemperatur auf \SI{10}{\degreeCelsius} gesunken, und die Reifen haben sich entsprechend abgekühlt.
+Ein Autoreifen wird nach einer längeren Fahrt an einer Tankstelle bis zu einem Druck von \SI{2.2}{\barPr} bei einer Reifentemperatur von \SI{40}{\degreeCelsius} mit Luft gefüllt. Am nächsten Tag ist die Außentemperatur auf \SI{10}{\degreeCelsius} gesunken, und die Reifen haben sich entsprechend abgekühlt.
 \begin{center}
     \includegraphics[width=0.35\linewidth]{Bilder/Uebungsaufgaben/reifen_erwärmung.png}
     \includegraphics[width=0.35\linewidth]{Bilder/Uebungsaufgaben/phasendiagramm_luft_reifen.png}
@@ -2931,8 +2932,8 @@ Nehmen Sie für die folgenden Berechnungen an, dass das Volumen der Reifen konst
 
 \begin{enumerate}
     \item Berechnen Sie den Druck im Reifen bei der neuen Temperatur von \SI{10}{\celsius}.
-    \item Wie viele Mol Luft befinden sich in einem Autoreifen mit einem Volumen von $V = \SI{40}{\litre}$ bei den ursprünglichen \SI{2.2}{\bar} und \SI{40}{\degreeCelsius}? (Gegeben: $R = \SI{8.314}{\joule\per(\mole\cdot\kelvin)}$)
-    \item Skizzieren Sie den typischen Betriebsbereich eines Autoreifens (Drücke um 2 bis 3 \si{\bar}, Temperaturen von ca. -20 bis 50\si{\celsius}) qualitativ in dem Phasendiagramm für Luft ein. Ist unter normalen Bedingungen eine Verflüssigung der Luft im Reifen zu befürchten?
+    \item Wie viele Mol Luft befinden sich in einem Autoreifen mit einem Volumen von $V = \SI{40}{\litre}$ bei den ursprünglichen \SI{2.2}{\barPr} und \SI{40}{\degreeCelsius}? (Gegeben: $R = \SI{8.314}{\joule\per(\mole\cdot\kelvin)}$)
+    \item Skizzieren Sie den typischen Betriebsbereich eines Autoreifens (Drücke um 2 bis 3 \si{\barPr}, Temperaturen von ca. -20 bis 50\si{\celsius}) qualitativ in dem Phasendiagramm für Luft ein. Ist unter normalen Bedingungen eine Verflüssigung der Luft im Reifen zu befürchten?
 \end{enumerate}
 \end{aufgabebox}
 
@@ -3141,9 +3142,9 @@ Die Temperaturänderung beträgt $\Delta T = \SI{60}{\celsius} - (\SI{-50}{\cels
     \end{itemize}
     Nun lösen wir nach dem neuen Druck $p_2$ auf:
     \begin{equation}\label{eq:druck_reifen_neu}
-        p_2 = p_1 \cdot \frac{T_2}{T_1} = \SI{2.2}{\bar} \cdot \frac{\SI{283.15}{\kelvin}}{\SI{313.15}{\kelvin}} \approx \SI{1.99}{\bar}
+        p_2 = p_1 \cdot \frac{T_2}{T_1} = \SI{2.2}{\barPr} \cdot \frac{\SI{283.15}{\kelvin}}{\SI{313.15}{\kelvin}} \approx \SI{1.99}{\barPr}
     \end{equation}
-    Der Druck im Reifen beträgt bei \SI{10}{\degreeCelsius} ca. \SI{1.99}{\bar}.
+    Der Druck im Reifen beträgt bei \SI{10}{\degreeCelsius} ca. \SI{1.99}{\barPr}.
 
     \item \textbf{Anzahl der Mol im Reifen} \\
     Wir verwenden die ideale Gasgleichung und lösen nach der Stoffmenge $n$ auf.
@@ -3152,7 +3153,7 @@ Die Temperaturänderung beträgt $\Delta T = \SI{60}{\celsius} - (\SI{-50}{\cels
     \end{equation}
     Dafür müssen die Einheiten SI-konform sein:
     \begin{itemize}
-        \item $p_1 = \SI{2.2}{\bar} = \SI{2.2e5}{\pascal}$
+        \item $p_1 = \SI{2.2}{\barPr} = \SI{2.2e5}{\pascal}$
         \item $V = \SI{40}{\litre} = \SI{0.04}{\cubic\meter}$
         \item $T_1 = \SI{313.15}{\kelvin}$
     \end{itemize}
@@ -3162,7 +3163,7 @@ Die Temperaturänderung beträgt $\Delta T = \SI{60}{\celsius} - (\SI{-50}{\cels
     \end{equation}
 
     \item \textbf{Phasendiagramm} \\
-    Der typische Betriebsbereich eines Autoreifens liegt bei Drücken um \SIrange{2}{3}{\bar} und Temperaturen von ca. \SIrange{-20}{50}{\celsius}. Dieser Bereich befindet sich im Phasendiagramm von Luft (hauptsächlich Stickstoff und Sauerstoff) weit oberhalb der Siedetemperatur und weit entfernt von der Sublimations- oder Schmelzkurve. Eine Verflüssigung oder Erstarrung ist unter normalen Fahrbedingungen ausgeschlossen.
+    Der typische Betriebsbereich eines Autoreifens liegt bei Drücken um \SIrange{2}{3}{\barPr} und Temperaturen von ca. \SIrange{-20}{50}{\celsius}. Dieser Bereich befindet sich im Phasendiagramm von Luft (hauptsächlich Stickstoff und Sauerstoff) weit oberhalb der Siedetemperatur und weit entfernt von der Sublimations- oder Schmelzkurve. Eine Verflüssigung oder Erstarrung ist unter normalen Fahrbedingungen ausgeschlossen.
     \begin{center}
         \includegraphics[width=0.6\textwidth]{Bilder/Uebungsaufgaben/phasendiagramm_luft_loesung.png}
     \end{center}
@@ -3705,7 +3706,7 @@ wobei $n$ [\si{\mole}] die Stoffmenge des Gases ist und $R = \SI{8.314}{\joule\p
     \item Zeichnen Sie eine weitere Isotherme für eine Temperatur von $T=\SI{250}{\kelvin}$ in das Diagramm ein und markieren Sie sie mit (II).
     \item Zeichnen Sie eine beliebige Isobare ein und beschriften Sie sie mit (III).
     \item Zeichnen Sie eine beliebige Isochore ein und beschriften Sie sie mit (IV).
-    \item Berechnen Sie das Volumen von einem Mol eines idealen Gases unter Normalbedingungen ($p=\SI{1.013}{\bar}$, $T=\SI{0}{\degreeCelsius}$)!
+    \item Berechnen Sie das Volumen von einem Mol eines idealen Gases unter Normalbedingungen ($p=\SI{1.013}{\barPr}$, $T=\SI{0}{\degreeCelsius}$)!
 \end{enumerate}
 \end{aufgabebox}
 
@@ -3719,10 +3720,10 @@ Ein ideales Gas wird dem zyklischen Prozess unterzogen, der in der Abbildung dar
 \end{center}
 Der Prozess durchläuft die folgenden Zustandsänderungen:
 \begin{itemize}
-    \item \textbf{A $\rightarrow$ B:} Der Zyklus beginnt bei Zustand A ($V_A = \SI{1}{\litre}$, $p_A = \SI{2}{\bar}$) mit einer isobaren Expansion (konstanter Druck) bis $V_B = \SI{2.5}{\litre}$.
-    \item \textbf{B $\rightarrow$ C:} Anschließend wird das Gas bei konstantem Volumen (isochor) abgekühlt, bis ein Druck von $p_C = \SI{1}{\bar}$ erreicht ist.
+    \item \textbf{A $\rightarrow$ B:} Der Zyklus beginnt bei Zustand A ($V_A = \SI{1}{\litre}$, $p_A = \SI{2}{\barPr}$) mit einer isobaren Expansion (konstanter Druck) bis $V_B = \SI{2.5}{\litre}$.
+    \item \textbf{B $\rightarrow$ C:} Anschließend wird das Gas bei konstantem Volumen (isochor) abgekühlt, bis ein Druck von $p_C = \SI{1}{\barPr}$ erreicht ist.
     \item \textbf{C $\rightarrow$ D:} Nun wird das Gas bei konstantem Druck (isobar) auf ein Volumen von $V_D = \SI{1}{\litre}$ komprimiert.
-    \item \textbf{D $\rightarrow$ A:} Schließlich wird das Gas bei konstantem Volumen (isochor) erwärmt, bis der Anfangszustand mit $p_A = \SI{2}{\bar}$ wieder erreicht ist.
+    \item \textbf{D $\rightarrow$ A:} Schließlich wird das Gas bei konstantem Volumen (isochor) erwärmt, bis der Anfangszustand mit $p_A = \SI{2}{\barPr}$ wieder erreicht ist.
 \end{itemize}
 Wie groß ist die dem Gas während des gesamten Zyklus zugeführte Arbeit und die ihm netto zugeführte Wärmemenge?
 
@@ -4201,7 +4202,7 @@ Zuerst wird die Masse des Wassers berechnet:
     \end{center}
 
     \item \textbf{Volumen unter Normalbedingungen:}
-    Normalbedingungen: $p = \SI{1.013}{\bar} = \SI{101300}{\pascal}$, $T = \SI{0}{\degreeCelsius} = \SI{273.15}{\kelvin}$.
+    Normalbedingungen: $p = \SI{1.013}{\barPr} = \SI{101300}{\pascal}$, $T = \SI{0}{\degreeCelsius} = \SI{273.15}{\kelvin}$.
     \begin{equation}\label{eq:molarvolumen_normal}
         V = \frac{n R T}{p} = \frac{\SI{1}{\mole} \cdot \SI{8.314}{\joule\per\mole\per\kelvin} \cdot \SI{273.15}{\kelvin}}{\SI{101300}{\pascal}} \approx \SI{0.0224}{\metre\cubed} = \SI{22.4}{\litre} \mDot
     \end{equation}
@@ -4215,7 +4216,7 @@ Zuerst wird die Masse des Wassers berechnet:
     \item \textbf{Berechnung der Arbeit in den Teilschritten:}
     \begin{itemize}
         \item \textbf{A $\rightarrow$ B (Isobare Expansion):}
-        Der Druck ist konstant bei $p_A = \SI{2}{\bar} = \SI{2e5}{\pascal}$. Das Volumen ändert sich von $V_A = \SI{1}{\litre} = \SI{e-3}{\meter\cubed}$ auf $V_B = \SI{2.5}{\litre} = \SI{2.5e-3}{\meter\cubed}$.
+        Der Druck ist konstant bei $p_A = \SI{2}{\barPr} = \SI{2e5}{\pascal}$. Das Volumen ändert sich von $V_A = \SI{1}{\litre} = \SI{e-3}{\meter\cubed}$ auf $V_B = \SI{2.5}{\litre} = \SI{2.5e-3}{\meter\cubed}$.
         \begin{multline}
             W_{AB} = -\int p_A \dd V = -p_A \cdot (V_B - V_A) = \\ -\SI{2e5}{\pascal} \cdot (\SI{2.5e-3} {\meter\cubed} - \SI{1e-3}{\meter\cubed}) = -\SI{300}{\joule} \mDot
         \end{multline}
@@ -4228,7 +4229,7 @@ Zuerst wird die Masse des Wassers berechnet:
         \end{equation}
         
         \item \textbf{C $\rightarrow$ D (Isobare Kompression):}
-        Der Druck ist konstant bei $p_C = \SI{1}{\bar} = \SI{1e5}{\pascal}$. Das Volumen ändert sich von $V_C = \SI{2.5}{\litre}$ auf $V_D = \SI{1}{\litre}$.
+        Der Druck ist konstant bei $p_C = \SI{1}{\barPr} = \SI{1e5}{\pascal}$. Das Volumen ändert sich von $V_C = \SI{2.5}{\litre}$ auf $V_D = \SI{1}{\litre}$.
         \begin{multline}
             W_{CD} = -\int p_A \dd V = -p_C \cdot (V_D - V_C) =\\
             -\SI{1e5}{\pascal} \cdot (\SI{1e-3}{\meter\cubed} - \SI{2.5e-3}{\meter\cubed}) = +\SI{150}{\joule} \mDot
