@@ -1181,7 +1181,109 @@ Da die Verteilung nicht symmetrisch ist, fallen der häufigste Wert und der Mitt
     Diese Geschwindigkeiten sind bemerkenswert hoch und liegen im Bereich der Schallgeschwindigkeit ($v_{\text{Schall}} \approx \SI{343}{\meter\per\second}$ bei Raumtemperatur).
 \end{examplebox}
 
+% NEW SECTION
 \section{Wärmemenge und Wärmekapazität}\label{sec: waermemenge_waermekapazitaet}
+Bisher haben wir gesehen, dass die Temperatur ein Maß für die mikroskopische Bewegungsenergie der Teilchen ist ($T \propto \overline{E_{\text{kin}}}$). 
+Daraus ergibt sich eine direkte Konsequenz: Möchten wir die Temperatur eines Körpers erhöhen, müssen wir die Geschwindigkeit seiner Teilchen erhöhen. Wir müssen dem System also Energie zuführen.
+Diese Energie, die aufgrund einer Temperaturdifferenz zwischen einem System und seiner Umgebung übertragen wird, nennen wir \textbf{Wärme} $Q$ (oder Wärmemenge).
+
+Führt man einem Körper Wärme $\Delta Q$ zu, so steigt in der Regel seine Temperatur um einen Betrag $\Delta T$. Für diesen Prozess gilt:
+\begin{equation}\label{eq:waermemenge_def}
+    \Delta Q = C \cdot \Delta T = c \cdot m \cdot \Delta T \mDot
+\end{equation}
+Die Proportionalitätskonstante $C$ ist die \textbf{Wärmekapazität} des gesamten Körpers. 
+Beziehen wir diese auf die Masse $m$, erhalten wir die Materialkonstante $c$, die \textbf{spezifische Wärmekapazität}.
+Sie gibt an, wie viel Energie notwendig ist, um \SI{1}{\kilo\gram} eines Stoffes um \SI{1}{\kelvin} zu erwärmen. Ihre Einheit ist $[\si{\joule\per\kilogram\per\kelvin}]$.
+
+\begin{rememberbox}{Die Einheit Kalorie}
+    Historisch wurde für die Wärmemenge oft die Einheit \textbf{Kalorie} (\si{\calorie}) verwendet.
+    Eine Kalorie ist definiert als die Wärmemenge, die benötigt wird, um \SI{1}{\gram} Wasser von \SI{14.5}{\celsius} auf \SI{15.5}{\celsius} zu erwärmen.
+    Heute ist die SI-Einheit für Energie, das Joule, gebräuchlich. Der Umrechnungsfaktor beträgt:
+    \begin{equation}
+        \SI{1}{\calorie} = \SI{4.1868}{\joule} \mDot
+    \end{equation}
+\end{rememberbox}
+Im alltäglichen Sprachgebrauch wird hingegen oft von \textbf{Kalorien} (mit großem K) gesprochen, wenn es um den Energiegehalt von Lebensmitteln geht. Dabei ist allerdings eine \textbf{Kilokalorie} (\si{\kilo\calorie}, kcal) gemeint, also \num{1000} Kalorien: 
+\begin{equation}
+    \SI{1}{\kilo\calorie} = \SI{1000}{\calorie} = \SI{4186.8}{\joule} \mDot
+\end{equation}
+
+\subsection{Molare Größen und die innere Energie}\label{subsec: molare_groessen_innere_energie}
+In der Physik der Gase und in der Chemie ist es oft sinnvoller, statt der Masse $m$ die Stoffmenge $\nu$ in \textbf{Mol} zu betrachten, da die physikalischen Eigenschaften (wie der Druck) direkt von der Anzahl der Teilchen abhängen.
+
+Ein Mol enthält exakt $N_A \approx \SI{6.022e23}{}$ Teilchen (Avogadro-Konstante). Die ideale Gasgleichung lässt sich damit in ihrer molaren Form schreiben:
+\begin{equation}\label{eq:ideale_gasgleichung_molar}
+    p \cdot V = \nu \cdot R \cdot T \mComma
+\end{equation}
+wobei $R = N_A \cdot k_B \approx \SI{8.314}{\joule\per\mol\per\kelvin}$ die \textbf{allgemeine Gaskonstante} ist.
+
+\subsubsection{Die Innere Energie idealer Gase}
+Betrachten wir nun die gesamte Energie, die in einem idealen Gas gespeichert ist. Da wir potenzielle Energien zwischen den Teilchen vernachlässigen, ist die \textbf{Innere Energie} $U$ einfach die Summe der kinetischen Energien aller $N$ Teilchen.
+Aus der kinetischen Gastheorie wissen wir, dass pro Freiheitsgrad $f$ eine mittlere Energie von $\frac{1}{2}k_B T$ gespeichert wird (Gleichverteilungssatz).
+Für ein Gas mit $f$ Freiheitsgraden gilt daher:
+\begin{equation}
+    U = N \cdot \overline{E_\mathrm{kin}} = N \cdot \frac{f}{2} k_B T = v \cdot N_A \cdot \frac{f}{2} k_B T \mDot
+\end{equation}
+Da $N_A \cdot k_B = R$, folgt der fundamentale Zusammenhang:
+\begin{equation}\label{eq:innere_energie_f}
+    U(T) = \frac{f}{2} \cdot v \cdot R \cdot T \mDot
+\end{equation}
+Die Innere Energie eines idealen Gases hängt also \textit{nur} von der Temperatur und der Anzahl der Freiheitsgrade ab.
+
+\subsection{Wärmekapazität von Gasen}\label{subsec: waermekapazitaet_gase}
+Da die Innere Energie direkt von $T$ abhängt, können wir nun leicht berechnen, wie viel Wärme wir zuführen müssen, um $T$ zu erhöhen. Dabei müssen wir jedoch unterscheiden, \textit{wie} wir das Gas erwärmen: bei konstantem Volumen oder bei konstantem Druck.
+
+\subsubsection{Bei konstantem Volumen ($C_V$)}
+Halten wir das Volumen fest (isochor), kann das Gas keine mechanische Arbeit verrichten (keine Expansion). Die gesamte zugeführte Wärme $\Delta Q$ fließt direkt in die Erhöhung der Inneren Energie ($\Delta Q = \Delta U$).
+Für ein Mol Gas ($v=1$) folgt aus \cref{eq:innere_energie_f}:
+\begin{equation}
+    C_V = \frac{\Delta Q}{\Delta T} = \frac{\Delta U}{\Delta T} = \frac{d}{dT} \left(\frac{f}{2} R T\right) = \frac{f}{2} R \mDot
+\end{equation}
+Dies ist die \textbf{molare Wärmekapazität bei konstantem Volumen}.
+
+\subsubsection{Bei konstantem Druck ($C_p$)}
+Halten wir den Druck konstant (isobar), dehnt sich das Gas beim Erwärmen aus. Dabei leistet es Arbeit gegen die Umgebung. Wir müssen also \textit{mehr} Wärme zuführen: einen Teil für die Erhöhung der Inneren Energie (Temperaturanstieg) und einen Teil für die Verrichtung der Arbeit.
+Es gilt die Beziehung (Mayer-Relation):
+\begin{equation}
+    C_p = C_V + R = \frac{f}{2}R + R = \frac{f+2}{2} R \mDot
+\end{equation}
+Gase haben also zwei Wärmekapazitäten, wobei stets $C_p > C_V$ ist. Das Verhältnis $\kappa = C_p/C_V$ nennt man Adiabatenexponent.
+
+\begin{figure}[htb]
+    \centering
+    % \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Waermelehre/Cv_gase.png}
+    \includegraphics[width=0.6\linewidth]{Bilder/Allgemein/placeholder.png}
+    \caption{Die molare Wärmekapazität $C_V$ (normiert auf $R$) für verschiedene Gase. 
+    Einatomige Gase (wie He) haben nur Translationsfreiheitsgrade ($f=3 \implies C_V \approx 1.5 R$). 
+    Zweiatomige Gase (wie $H_2$) haben zusätzlich Rotation ($f=5 \implies C_V \approx 2.5 R$). 
+    Bei sehr hohen Temperaturen kommen noch Vibrationen hinzu.}
+    \label{fig:cv_gase}
+\end{figure}
+
+\subsection{Wärmekapazität von Festkörpern}\label{subsec: waermekapazitaet_festkoerper}
+In Festkörpern sind die Atome an feste Gitterplätze gebunden. Sie können nicht frei umherfliegen (keine Translation) und nicht rotieren. Sie können jedoch in drei Raumrichtungen um ihre Ruhelage schwingen.
+Jede Schwingung besitzt im Mittel kinetische Energie \textit{und} potenzielle Energie (wie eine Feder). Pro Raumrichtung zählt man daher 2 energetische Freiheitsgrade.
+Bei 3 Raumrichtungen ergeben sich somit $f = 3 \times 2 = 6$ Freiheitsgrade pro Atom.
+
+Setzen wir dies in unsere Formel für die Wärmekapazität ein, erhalten wir das \textbf{Gesetz von Dulong-Petit}:
+\begin{equation}\label{eq:dulong_petit}
+    C_V = \frac{6}{2} R = 3R \approx \SI{24.9}{\joule\per\mol\per\kelvin} \mDot
+\end{equation}
+Erstaunlicherweise haben fast alle einfachen Festkörper (wie Metalle) bei Raumtemperatur näherungsweise dieselbe molare Wärmekapazität.
+(Hinweis: Bei tiefen Temperaturen weichen Festkörper davon ab, was erst durch die Quantenmechanik erklärt werden konnte).
+
+\begin{figure}[htb]
+    \centering
+    % \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/Cv_festkoerper.png}
+    \includegraphics[width=0.5\linewidth]{Bilder/Allgemein/placeholder.png}
+    \caption{Molare Wärmekapazität fester Stoffe. Bei genügend hoher Temperatur nähern sich viele Stoffe dem klassischen Grenzwert von $3R$ an.}
+    \label{fig:cv_festkoerper}
+\end{figure}
+
+
+
+
+\section{OLD: Wärmemenge und Wärmekapazität}\label{sec: waermemenge_waermekapazitaet}
 Führt man einem Körper Energie zu, beispielsweise durch mechanische Arbeit $\Delta W$, so steigt in der Regel seine Temperatur um einen Betrag $\Delta T$. Die Energie, die zu einer Temperaturänderung führt, wird als \textbf{Wärmemenge} $\Delta Q$ bezeichnet. Für diesen Prozess gilt der Energieerhaltungssatz:
 \begin{equation}\label{eq:waermemenge_def}
     \Delta Q = c \cdot m \cdot \Delta T \mComma
