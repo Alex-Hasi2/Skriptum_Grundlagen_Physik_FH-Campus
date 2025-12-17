@@ -926,35 +926,181 @@ Der Impulsübertrag findet demnach immer durch die Normalkomponente der Geschwin
     p = \frac{F}{A} = \frac{\dd \ivec{p}/\dd t}{A} = \frac{\dd}{\dd t} \left( \frac{\text{auf Fläche $A$ übertragener Impuls}}{\text{Fläche $A$}}\right)  \mDot 
 \end{equation}
 Die Schwierigkeit besteht darin, den gesamten Impuls zu bestimmen, der in der Zeit $\Delta t$ auf die Fläche $A$ übertragen wird, da viele Teilchen mit unterschiedlichen Geschwindigkeiten auf die Wand prallen. 
-
-Hierzu betrachten wir ein kleines Volumenelement $V_S$ vor der Wand, das alle Teilchen enthält, die in der Zeit $\Delta t$ die Wand erreichen können (siehe \cref{fig: teilchen_in_box}). Die Seitenlänge dieses Quaders in $x$-Richtung ist $\dd s = v_x \cdot \dd t$, da nur Teilchen mit der Geschwindigkeitskomponente $v_x$ die Wand in dieser Zeit erreichen können. Die anderen Seitenlängen sind so gewählt, dass sie alle Teilchen mit dieser $v_x$-Komponente umfassen.
-
-Durch eine detaillierte Betrachtung aller Teilchen, die in einer Zeit $\Delta t$ auf eine Fläche $A$ treffen, kann man den Gesamtdruck herleiten. Das Ergebnis dieser Herleitung lautet:
-\begin{equation}\label{eq:druck_kinetisch}
-    p = \frac{1}{3} n m \overline{v^2} \mComma
+Wir betrachten daher zunächst das Volumen $dV$ in \cref{fig: teilchen_in_box}. Damit ein Teilchen innerhalb des Zeitintervalls $\dd t$ auf die rechte (graue) Wand treffen kann, muss es eine genügend große Geschwindigkeitskomponente $v_x$ haben -- die Komponenten $v_y$ und $v_z$ sind bezüglich des Abstands zur rechten Wand unerheblich. Fixieren wir die betrachtete Geschwindigkeit $v_x$, so erreichen nur jene Teilchen die Wand, die maximal einen Abstand $\dd s$ von der Wand haben:
+\begin{equation}
+    \dd s = v_x \cdot \dd t \mDot
 \end{equation}
-wobei $n=N/V$ die Teilchendichte (Anzahl der Teilchen pro Volumen) und $\overline{v^2}$ das mittlere Geschwindigkeitsquadrat aller Teilchen ist.
-
-\begin{figure}[tb]
+Dies definiert ein gedankliches Volumen $V_S$ (siehe \cref{fig: teilchen_in_box}), einen Quader mit der Grundfläche $A$ und der Länge $\dd s$:
+\begin{equation}
+    V_S = A \cdot \dd s = A \cdot v_x \cdot \dd t \mDot
+\end{equation}
+Alle Teilchen in diesem Volumen, die sich auf die Wand zubewegen, werden im Zeitintervall $\dd t$ mit ihr kollidieren. Sei $N$ die Gesamtzahl der Teilchen im Gesamtvolumen $V$ und $n = N/V$ die Teilchendichte. Die Anzahl der Teilchen im Volumen $V_S$ beträgt somit $n \cdot V_S$.
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{Bilder/Kapitel_Waermelehre/particles_in_box.pdf}
     \caption{Im kleinen Volumenelement $V_S$ erreichen alle Teilchen mit Geschwindigkeit $v_x$ die Wand $A$ im Zeitintervall $\dd t$, weil die Seitenlänge des Quaders $\dd s=v_x \dd t$.}\label{fig: teilchen_in_box}
 \end{figure}
+Da sich die Teilchen jedoch statistisch ungeordnet bewegen (siehe \cref{sec: maxwell_boltzmann_verteilung}), bewegt sich im Durchschnitt nur die Hälfte der Teilchen in positive $x$-Richtung (auf die Wand zu), die andere Hälfte bewegt sich davon weg. Die Anzahl der stoßenden Teilchen $\dd N_{\text{Stoß}}$ ist daher:
+\begin{equation}
+    \dd N_{\text{Stoß}} = \frac{1}{2} \cdot n \cdot V_S = \frac{1}{2} n A v_x \dd t \mDot
+\end{equation}
+Der gesamte Impulsübertrag $\dd P$ auf die Wand in der Zeit $\dd t$ ergibt sich aus der Anzahl der Stöße multipliziert mit dem Impulsübertrag pro Stoß ($\Delta p = 2mv_x$):
+\begin{equation}
+    \dd P = \dd N_{\text{Stoß}} \cdot (2 m v_x) = \left( \frac{1}{2} n A v_x \dd t \right) \cdot 2 m v_x = n m v_x^2 A \dd t \mDot
+\end{equation}
+Die Kraft $F$, die auf die Wand wirkt, ist die zeitliche Änderung des Impulses $F = \dd P / \dd t$:
+\begin{equation}
+    F = n m v_x^2 A \mDot
+\end{equation}
+Daraus folgt, dass die Teilchen mit Geschwindigkeit $v_x$ den Druckanteil ($p = F/A$)
+\begin{equation}
+    p = n m v_x^2
+\end{equation}
+ausüben. In einem realen Gas haben nicht alle Teilchen dieselbe Geschwindigkeit $v_x$. Wir müssen daher das mittlere Geschwindigkeitsquadrat $\overline{v_x^2}$ betrachten. Zudem bewegen sich die Teilchen im dreidimensionalen Raum. Aufgrund der \textit{Isotropie des Raumes} (keine Raumrichtung ist ausgezeichnet) muss das mittlere Geschwindigkeitsquadrat in alle drei Richtungen gleich groß sein:
+\begin{equation}
+    \overline{v_x^2} = \overline{v_y^2} = \overline{v_z^2} \mDot
+\end{equation}
+Das Quadrat der Gesamtgeschwindigkeit $\ivec{v}$ setzt sich nach dem Satz des Pythagoras aus den Komponenten zusammen: $\overline{v^2} = \overline{v_x^2} + \overline{v_y^2} + \overline{v_z^2} = 3 \overline{v_x^2}$.
+Daraus folgt für die $x$-Komponente:
+\begin{equation}
+    \overline{v_x^2} = \frac{1}{3} \overline{v^2} \mDot
+\end{equation}
+Setzen wir dies in den Ausdruck für den Druck ein, erhalten wir die Grundgleichung der kinetischen Gastheorie.
 
+\begin{importantbox}{Grundgleichung der kinetischen Gastheorie}
+    Der Druck eines idealen Gases ergibt sich aus der Teilchendichte $n=N/V$, der Masse $m$ eines Teilchens und dem mittleren Geschwindigkeitsquadrat $\overline{v^2}$:
+    \begin{equation}\label{eq: grundglg_kinetische_gastheorie}
+        p = \frac{1}{3} n m \overline{v^2} \mDot
+    \end{equation}
+\end{importantbox}
 
-\begin{rememberbox}{Druck, Energie und Temperatur}
-    Man kann \cref{eq:druck_kinetisch} umschreiben zu:
+\subsubsection{Interpretation als Energiedichte}
+Die Gleichung lässt sich physikalisch sehr anschaulich interpretieren, wenn man sie leicht umformt und die mittlere kinetische Energie eines Teilchens $\overline{\Ekin} = \frac{1}{2}m\overline{v^2}$ einführt:
+\begin{equation}
+    p = \frac{1}{3} n m \overline{v^2} = \frac{2}{3} n \cdot \left( \frac{1}{2} m \overline{v^2} \right) = \frac{2}{3} \cdot \frac{N}{V} \cdot \overline{\Ekin} \mDot
+\end{equation}
+Bringt man das Volumen auf die andere Seite, erhält man
+\begin{equation}\label{eq: druck_energie_beziehung}
+    p \cdot V = \frac{2}{3} N \cdot \overline{\Ekin} \mDot
+\end{equation}
+Vergleicht man dieses Ergebnis mit der idealen Gasgleichung aus der Thermodynamik, $p \cdot V = N \cdot \kB \cdot T$, so findet man den direkten mikroskopischen Zugang zum Begriff der Temperatur.
+
+\begin{rememberbox}{Mikroskopische Deutung der Temperatur}
+    Durch Gleichsetzen von \cref{eq: druck_energie_beziehung} und der idealen Gasgleichung folgt:
     \begin{equation}
-        p = \frac{2}{3} n \left(\frac{1}{2}m\overline{v^2}\right) = \frac{2}{3} n \overline{E_\mathrm{kin}}
+        \frac{2}{3} N \overline{\Ekin} = N \kB T \quad \implies \quad \overline{\Ekin} = \frac{3}{2} \kB T \mDot
     \end{equation}
-    Der Druck ist also direkt proportional zur Teilchendichte und zur mittleren kinetischen Energie der Gasteilchen. Vergleicht man dies mit der idealen Gasgleichung $p = (N/V)k_B T = n k_B T$, so erhält man erneut den fundamentalen Zusammenhang aus \cref{eq:def_temperatur_kinetisch}:
-    \begin{equation}
-        \overline{E_\mathrm{kin}} = \frac{1}{2}m\overline{v^2} = \frac{3}{2}k_B T \mDot
-    \end{equation}
+    Die absolute Temperatur $T$ ist also ein Maß für die mittlere kinetische Energie der Gasteilchen.
 \end{rememberbox}
 
+
 \section{Maxwell-Boltzmann-Verteilung}\label{sec: maxwell_boltzmann_verteilung}
+Im vorangegangenen Abschnitt haben wir den Gasdruck mithilfe des mittleren Geschwindigkeitsquadrats $\overline{v^2}$ hergeleitet. Dies könnte den Eindruck erwecken, dass alle Gasteilchen mit derselben Geschwindigkeit unterwegs sind.
+In der Realität herrscht im Mikrokosmos jedoch ein ständiges Chaos: Die Gasteilchen stoßen permanent miteinander und tauschen dabei kinetische Energie aus. Ein Teilchen kann durch einen zufälligen Stoß stark beschleunigt werden, während ein anderes fast bis zum Stillstand abgebremst wird.
+
+Selbst im thermischen Gleichgewicht, wo makroskopische Größen wie $p$ und $T$ konstant sind, ändern sich die Geschwindigkeiten der einzelnen Teilchen fortwährend.
+Betrachtet man jedoch eine sehr große Anzahl von Teilchen ($N_A \approx \SI{6.022e23}{\mole^{-1}}$), so stellt sich eine zeitlich konstante \textbf{Geschwindigkeitsverteilung} ein.
+
+\subsection{Die Verteilungsfunktion}\label{subsec: verteilungsfunktion}
+Die Wahrscheinlichkeit, ein Teilchen mit einer bestimmten Geschwindigkeit anzutreffen, wird durch die \textbf{Maxwell-Boltzmann-Verteilung} $f(v)$ beschrieben.
+Genauer gesagt gibt die Größe $f(v)\,\dd v$ den Bruchteil der Teilchen an, deren Geschwindigkeitsbetrag im Intervall $[v, v+\dd v]$ liegt (siehe \cref{fig: f-v-dv_verteilung_anschauung}).
+
 \begin{figure}[tb]
+    \centering
+    \resizebox{0.55\linewidth}{!}{
+        \begin{tikzpicture}[
+                >=Latex, 
+                font=\large,
+                declare function={
+                    gauss(\x) = 3.5 * exp(-0.22 * \x^2);
+                }
+            ]
+                \def\vpos{1.1}       
+                \def\dv{0.6}         
+                \def\vend{\vpos+\dv} 
+
+                % 1. Fläche füllen
+                \fill[red!15] (\vpos, 0) -- (\vpos, {gauss(\vpos)})
+                    -- plot[domain=\vpos:\vend, samples=50] (\x, {gauss(\x)})
+                    -- (\vend, 0) -- cycle;
+                % 2. Achsen
+                \draw[->, thick] (0,0) -- (6,0) node[below] {\Large $v$};
+                \draw[->, thick] (0,0) -- (0,4) node[left] {\large $f(v)$};
+                \node[below left] at (0,-0.1) {$0$};
+                % 3. Graph
+                \draw[red!85!black, ultra thick, samples=100, domain=0:5.5] 
+                    plot (\x, {gauss(\x)});
+                % 4. Begrenzungslinien
+                \draw[thick] (\vpos, 0) -- (\vpos, {gauss(\vpos)});
+                \draw[thick] (\vend, 0) -- (\vend, {gauss(\vend)});
+
+                % 5. Beschriftung x-Achse
+                \node[below=6pt] at (\vpos, 0) {$v$};
+                \node[below right=4pt] at (\vend-0.25, 0) {$v + \dd v$};
+
+                % 6. Pfeile für dv
+                \draw[->] (\vpos - 0.8, 0.6) -- (\vpos, 0.6) node[midway, above] {$\dd v$};
+                \draw[->] (\vend + 0.8, 0.6) -- (\vend, 0.6); 
+
+                % 7. Beschriftung Fläche
+                \draw[-, thick] (\vpos + 0.45*\dv, {gauss(\vpos)*0.6}) -- ++(0.5, 1.7) node[above right] {$f(v)\,\dd v$};
+        \end{tikzpicture}
+}
+    \caption{Die schraffierte Fläche $f(v)\dd v$ unter der Kurve entspricht dem Anteil der Moleküle mit Geschwindigkeitsbeträgen im Intervall zwischen $v$ und $v+\dd v$.}\label{fig: f-v-dv_verteilung_anschauung}
+\end{figure}
+
+Die analytische Form dieser Verteilung für den Betrag der Geschwindigkeit $v$ lautet:
+\begin{equation}\label{eq:maxwell_boltzmann}
+    f(v) = \underbrace{4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2}}_{\text{Normierung}} \cdot \underbrace{v^2}_{\text{Geometrie}} \cdot \underbrace{e^{-\frac{mv^2}{2k_B T}}}_{\text{Boltzmann-Faktor}} \mDot
+\end{equation}
+Der Verlauf der Kurve in \cref{fig: f-v-dv_verteilung_anschauung} ergibt sich aus dem Produkt zweier konkurrierender Terme:
+\begin{itemize}
+    \item \textbf{Der geometrische Anteil ($v^2$):} Dieser Term nimmt quadratisch zu. Er berücksichtigt, dass es mit zunehmendem Geschwindigkeitsbetrag rein geometrisch mehr Möglichkeiten für die Geschwindigkeitsvektoren gibt (das Volumen einer Kugelschale im Geschwindigkeitsraum wächst mit $4\pi v^2$).
+    \item \textbf{Der Boltzmann-Faktor ($e^{-E_{kin}/k_B T}$):} Dieser Term fällt exponentiell ab. Er drückt aus, dass Zustände mit sehr hoher Energie extrem unwahrscheinlich sind.
+\end{itemize}
+Das Produkt dieser Terme führt dazu, dass die Kurve bei $v=0$ beginnt, ein Maximum durchläuft (die wahrscheinlichste Geschwindigkeit) und für sehr große Geschwindigkeiten gegen Null geht.
+
+\subsection{Einfluss der Temperatur}
+Die Form der Verteilung hängt stark von der Temperatur $T$ und der Teilchenmasse $m$ ab.
+Erhöht man die Temperatur, steht mehr thermische Energie zur Verfügung. Das Maximum der Kurve verschiebt sich zu höheren Geschwindigkeiten und die Verteilung wird breiter und flacher. Die Fläche unter der Kurve bleibt dabei stets 1 (da die Summe aller Wahrscheinlichkeiten 100\,\% ergeben muss).
+
+
+\subsection{Charakteristische Geschwindigkeiten}
+Da die Verteilung nicht symmetrisch ist, fallen der häufigste Wert und der Mittelwert nicht zusammen. Wir unterscheiden drei wichtige Kennzahlen:
+
+\begin{enumerate}
+    \item \textbf{Die wahrscheinlichste Geschwindigkeit $v_W$}:
+    Sie entspricht dem Maximum der Kurve (dort, wo die Ableitung $f'(v)=0$ ist). Die meisten Teilchen besitzen eine Geschwindigkeit nahe diesem Wert.
+    \begin{equation}
+        v_W = \sqrt{\frac{2k_B T}{m}}
+    \end{equation}
+    
+    \item \textbf{Die mittlere Geschwindigkeit $\overline{v}$}:
+    Dies ist das arithmetische Mittel der Geschwindigkeitsbeträge.
+    \begin{equation}
+        \overline{v} = \sqrt{\frac{8k_B T}{\pi m}} \approx 1{,}13 \, v_W
+    \end{equation}
+    
+    \item \textbf{Die mittlere quadratische Geschwindigkeit $v_{\text{rms}}$}:
+    Die \textit{root-mean-square} velocity ist entscheidend für die kinetische Energie ($\overline{E_{\text{kin}}} \propto \overline{v^2}$). Sie ist etwas größer als die mittlere Geschwindigkeit, da schnelle Teilchen quadratisch stärker ins Gewicht fallen.
+    \begin{equation}
+        v_{\text{rms}} = \sqrt{\overline{v^2}} = \sqrt{\frac{3k_B T}{m}} \approx 1{,}22 \, v_W
+    \end{equation}
+\end{enumerate}
+
+\begin{examplebox}{Beispiel: Stickstoff in der Luft}
+    Für Stickstoffmoleküle ($N_2$) mit $m \approx \SI{4.67e-26}{\kilo\gram}$ bei Raumtemperatur ($T = \SI{300}{\kelvin}$) ergeben sich folgende Werte:
+    \begin{itemize}
+        \item $v_W \approx \SI{422}{\meter\per\second}$
+        \item $\overline{v} \approx \SI{476}{\meter\per\second}$
+        \item $\sqrt{\overline{v^2}} \approx \SI{517}{\meter\per\second}$
+    \end{itemize}
+    Diese Geschwindigkeiten sind bemerkenswert hoch und liegen im Bereich der Schallgeschwindigkeit.
+\end{examplebox}
+
+
+\section{OLD: Maxwell-Boltzmann-Verteilung}\label{sec: maxwell_boltzmann_verteilung}
+\begin{figure}[htb]
     \centering
     \resizebox{0.5\linewidth}{!}{
         \begin{tikzpicture}[
@@ -1390,6 +1536,9 @@ Damit haben wir gezeigt, dass
 \end{equation}
 
 
+\section{Kapitel Wärmelehre}
+\subsection{Herleitung der Maxwell-Boltzmann-Verteilung}\label{subsec: herleitung_maxwell_boltzmann}
+Die Maxwell-Boltzmann-Verteilung beschreibt die Verteilung der Geschwindigkeiten von Teilchen in einem idealen Gas im thermischen Gleichgewicht. Wir leiten diese Verteilung her, indem wir die Annahmen der kinetischen Gastheorie und die Prinzipien der statistischen Mechanik verwenden.
 
 
 \newpage
