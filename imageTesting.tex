@@ -33,102 +33,124 @@
 
 \begin{document}
 
-% Eine Gegenüberstellung von zwei Zylindern: Links ein Gas mit exponentiell abnehmendem Druck und Dichte, rechts eine Flüssigkeit mit konstantem Druck und Dichte
-\begin{tikzpicture}[>=Latex]
-    % =========================
-    % Gemeinsame Parameter
-    % =========================
-    \def\cylW{4.4}       % Breite des Zylinders
-    \def\cylH{5.0}       % Gesamthöhe
-    \def\hBase{1.2}      % Referenzhöhe h (etwas angehoben, damit man sie sieht)
-    \def\dh{1.0}         % Abstand dh
-    \def\offset{8.0}     % Abstand zwischen den Zylindern
-    \def\AOffset{0.5}    % Vertikaler Versatz für die A-Beschriftung
-    % ============================================================
-    % LINKER ZYLINDER: GAS (Kompressibel)
-    % ============================================================
-    \begin{scope}
-        \node[above, font=\bfseries] at (\cylW/2, \cylH+0.5) {Gas (kompressibel)};
 
-        % 1. Füllung: Linearer Farbverlauf (orange -> weiß)
-        % Visualisiert abnehmende Dichte mit der Höhe
-        \shade[bottom color=orange!60, top color=white] (0,0) rectangle (\cylW, \cylH*0.99);
 
-        % 2. Zylinderwände
-        \draw[thick] (0,0) -- (0,\cylH);
-        \draw[thick] (\cylW,0) -- (\cylW,\cylH);
-        \draw[thick] (0,0) -- (\cylW,0); % Boden
-
-        % 3. Markierungslinien für das Volumenelement
-        % Untere Linie bei h
-        \draw[line width=4pt, orange!80!black, opacity=0.7] (0, \hBase) -- (\cylW, \hBase);
-
-        % 4. Koordinatenachse z
-        \draw[->, ultra thick] (-1.4, \cylH*0.7) -- (-1.4, \cylH) node[right, above] {\Large $z$};
+% Eine Darstellung der Maxwell-Boltzmann Verteilung als Produkt von Parabel v^2 (blau strichliert) und Exponentialfunktion e^(-v^2) (grün strichliert) und dem Ergebnis (rot durchgezogen)
+\begin{tikzpicture}[xscale=1.2, yscale=4.5, >=Latex, font=\small]
+        % Achsen
+        \draw[->] (0,0) -- (4,0) node[right] {$v$};
+        \draw[->] (0,0) -- (0,1.1) node[above] {Wahrscheinlichkeit};
         
-        % 5. Druck-Pfeil und Formel
-        % Exponentielle Abnahme
-        \draw[->, ultra thick, orange!90!black] (\cylW/2, \cylH-1.2) -- (\cylW/2, \hBase+0.1) 
-            node[pos=-0.2, align=center, fill=white, fill opacity=0.0, text opacity=1, rounded corners] 
-            {$p(z) = p_0 \cdot e^{-\frac{z}{H}}$\\[0.3em] \small (Exponentielle Abnahme)};
-
-        % 6. Beschriftungen
-        % Links (Höhen)
-        \node[left=0.2] at (0, \hBase) {\large $p(h), \rho(h)$};
-        \draw[line width=2pt] (-0.2, \hBase) -- (0.0, \hBase); % Tick mark
-        % p_0
-        \node[left=0.2] at (0, 0) {\large $p_0, \rho_0$};
-        \draw[line width=2pt] (-0.2, 0.03) -- (0.0, 0.03); % Tick mark
-
-        % Rechts (Dichte/Druck Werte)
-        % Dichte variiert mit der Höhe
-
-        % Mitte (Fläche A)
-        \node[orange!90!black, font=\bfseries] at (\cylW/2, \hBase - \AOffset) {\Large $A$};
-    \end{scope}
-
-    % ============================================================
-    % RECHTER ZYLINDER: FLÜSSIGKEIT (Inkompressibel)
-    % ============================================================
-    \begin{scope}[xshift=\offset cm]
-         \node[above, font=\bfseries] at (\cylW/2, \cylH+0.5) {Flüssigkeit (inkompressibel)};
-
-        % 1. Füllung: Solide Farbe (blau)
-        % Visualisiert konstante Dichte
-        \fill[blue!40] (0,0) rectangle (\cylW, \cylH);
-        % Optional: Eine leichte Schattierung für 3D-Effekt, aber die Dichte wirkt konstant
-        \shade[left color=blue!50, right color=blue!30, opacity=0.3] (0,0) rectangle (\cylW, \cylH);
-
-
-        % 2. Zylinderwände
-        \draw[thick] (0,0) -- (0,\cylH);
-        \draw[thick] (\cylW,0) -- (\cylW,\cylH);
-        \draw[thick] (0,0) -- (\cylW,0); % Boden
-        % Wasseroberfläche andeuten
-        \draw[thick, blue!80!black, decorate, decoration={snake, amplitude=1pt, segment length=5pt}] (0,\cylH) -- (\cylW,\cylH);
-
-        % 3. Markierungslinien
-        % Untere Linie bei h
-        \draw[line width=4pt, blue!80!black, opacity=0.7] (0, \hBase) -- (\cylW, \hBase);
-
-        % 5. Druck-Pfeil und Formel
-        % Lineare Abnahme mit der Höhe (oder Zunahme mit der Tiefe)
-        \draw[->, ultra thick, blue!90!black] (\cylW/2, \cylH-1.2) -- (\cylW/2, \hBase+0.1) 
-            node[pos=-0.2, align=center, fill=white, fill opacity=0.0, text opacity=1, rounded corners] 
-            {$p(z) = p_{0} - \rho g z$\\[0.3em] \small (Lineare Abnahme)};
-
-        % 6. Beschriftungen
-        % Links (Höhen)
-        \node[left=0.2] at (0, \hBase) {\large $p(h), \rho_0$};
-        \draw[line width=2pt] (-0.2, \hBase) -- (0.0, \hBase);
-
-        \node[left=0.2] at (0, 0) {\large $p_0, \rho_0$};
-        \draw[line width=2pt] (-0.2, 0.03) -- (0.0, 0.03);
-
-        % Mitte (Fläche A)
-        \node[blue!90!black, font=\bfseries] at (\cylW/2, \hBase - \AOffset) {\Large $A$};
-    \end{scope}
+        % 1. Parabel (v^2) - Skaliert für die Optik
+        \draw[blue, thick, dashed, domain=0:2.1] plot (\x, {0.2*\x*\x}) node[right] {$v^2$ (Volumen)};
+        
+        % 2. Exponential (e^-v^2)
+        \draw[green!60!black, thick, dashed, domain=0:3.7] plot (\x, {exp(-0.8*\x*\x)}) node[below=1pt, xshift=-1cm] {$e^{-v^2}$ (Boltzmann)};
+        
+        % 3. Produkt (Maxwell-Boltzmann)
+        \draw[red, ultra thick, domain=0:3.7, samples=100] plot (\x, {2.0 * \x^2 * exp(-0.8*\x*\x)}) node[above=4pt] {Resultat $f(v)$};
+        
+        % Beschriftung
+        \node[below left] at (0,0) {0};
 \end{tikzpicture}
+
+
+% Eine Gegenüberstellung von zwei Zylindern: Links ein Gas mit exponentiell abnehmendem Druck und Dichte, rechts eine Flüssigkeit mit konstantem Druck und Dichte
+% \begin{tikzpicture}[>=Latex]
+%     % =========================
+%     % Gemeinsame Parameter
+%     % =========================
+%     \def\cylW{4.4}       % Breite des Zylinders
+%     \def\cylH{5.0}       % Gesamthöhe
+%     \def\hBase{1.2}      % Referenzhöhe h (etwas angehoben, damit man sie sieht)
+%     \def\dh{1.0}         % Abstand dh
+%     \def\offset{8.0}     % Abstand zwischen den Zylindern
+%     \def\AOffset{0.5}    % Vertikaler Versatz für die A-Beschriftung
+%     % ============================================================
+%     % LINKER ZYLINDER: GAS (Kompressibel)
+%     % ============================================================
+%     \begin{scope}
+%         \node[above, font=\bfseries] at (\cylW/2, \cylH+0.5) {Gas (kompressibel)};
+
+%         % 1. Füllung: Linearer Farbverlauf (orange -> weiß)
+%         % Visualisiert abnehmende Dichte mit der Höhe
+%         \shade[bottom color=orange!60, top color=white] (0,0) rectangle (\cylW, \cylH*0.99);
+
+%         % 2. Zylinderwände
+%         \draw[thick] (0,0) -- (0,\cylH);
+%         \draw[thick] (\cylW,0) -- (\cylW,\cylH);
+%         \draw[thick] (0,0) -- (\cylW,0); % Boden
+
+%         % 3. Markierungslinien für das Volumenelement
+%         % Untere Linie bei h
+%         \draw[line width=4pt, orange!80!black, opacity=0.7] (0, \hBase) -- (\cylW, \hBase);
+
+%         % 4. Koordinatenachse z
+%         \draw[->, ultra thick] (-1.4, \cylH*0.7) -- (-1.4, \cylH) node[right, above] {\Large $z$};
+        
+%         % 5. Druck-Pfeil und Formel
+%         % Exponentielle Abnahme
+%         \draw[->, ultra thick, orange!90!black] (\cylW/2, \cylH-1.2) -- (\cylW/2, \hBase+0.1) 
+%             node[pos=-0.2, align=center, fill=white, fill opacity=0.0, text opacity=1, rounded corners] 
+%             {$p(z) = p_0 \cdot e^{-\frac{z}{H}}$\\[0.3em] \small (Exponentielle Abnahme)};
+
+%         % 6. Beschriftungen
+%         % Links (Höhen)
+%         \node[left=0.2] at (0, \hBase) {\large $p(h), \rho(h)$};
+%         \draw[line width=2pt] (-0.2, \hBase) -- (0.0, \hBase); % Tick mark
+%         % p_0
+%         \node[left=0.2] at (0, 0) {\large $p_0, \rho_0$};
+%         \draw[line width=2pt] (-0.2, 0.03) -- (0.0, 0.03); % Tick mark
+
+%         % Rechts (Dichte/Druck Werte)
+%         % Dichte variiert mit der Höhe
+
+%         % Mitte (Fläche A)
+%         \node[orange!90!black, font=\bfseries] at (\cylW/2, \hBase - \AOffset) {\Large $A$};
+%     \end{scope}
+
+%     % ============================================================
+%     % RECHTER ZYLINDER: FLÜSSIGKEIT (Inkompressibel)
+%     % ============================================================
+%     \begin{scope}[xshift=\offset cm]
+%          \node[above, font=\bfseries] at (\cylW/2, \cylH+0.5) {Flüssigkeit (inkompressibel)};
+
+%         % 1. Füllung: Solide Farbe (blau)
+%         % Visualisiert konstante Dichte
+%         \fill[blue!40] (0,0) rectangle (\cylW, \cylH);
+%         % Optional: Eine leichte Schattierung für 3D-Effekt, aber die Dichte wirkt konstant
+%         \shade[left color=blue!50, right color=blue!30, opacity=0.3] (0,0) rectangle (\cylW, \cylH);
+
+
+%         % 2. Zylinderwände
+%         \draw[thick] (0,0) -- (0,\cylH);
+%         \draw[thick] (\cylW,0) -- (\cylW,\cylH);
+%         \draw[thick] (0,0) -- (\cylW,0); % Boden
+%         % Wasseroberfläche andeuten
+%         \draw[thick, blue!80!black, decorate, decoration={snake, amplitude=1pt, segment length=5pt}] (0,\cylH) -- (\cylW,\cylH);
+
+%         % 3. Markierungslinien
+%         % Untere Linie bei h
+%         \draw[line width=4pt, blue!80!black, opacity=0.7] (0, \hBase) -- (\cylW, \hBase);
+
+%         % 5. Druck-Pfeil und Formel
+%         % Lineare Abnahme mit der Höhe (oder Zunahme mit der Tiefe)
+%         \draw[->, ultra thick, blue!90!black] (\cylW/2, \cylH-1.2) -- (\cylW/2, \hBase+0.1) 
+%             node[pos=-0.2, align=center, fill=white, fill opacity=0.0, text opacity=1, rounded corners] 
+%             {$p(z) = p_{0} - \rho g z$\\[0.3em] \small (Lineare Abnahme)};
+
+%         % 6. Beschriftungen
+%         % Links (Höhen)
+%         \node[left=0.2] at (0, \hBase) {\large $p(h), \rho_0$};
+%         \draw[line width=2pt] (-0.2, \hBase) -- (0.0, \hBase);
+
+%         \node[left=0.2] at (0, 0) {\large $p_0, \rho_0$};
+%         \draw[line width=2pt] (-0.2, 0.03) -- (0.0, 0.03);
+
+%         % Mitte (Fläche A)
+%         \node[blue!90!black, font=\bfseries] at (\cylW/2, \hBase - \AOffset) {\Large $A$};
+%     \end{scope}
+% \end{tikzpicture}
 
 
 
@@ -207,6 +229,70 @@
 
 % \end{tikzpicture}
 
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% % Maxwell-Boltzmann Verteilungsfunktion mit markiertem Flächeninhalt f(v) dv in rot
+% % Eine Maxwell-Boltzmann Verteilungsfunktion f(v) = 3 * 10^(-8) * v^2 * exp(-6 * 10^(-6) * v^2) wird geplottet
+
+% Wir skalieren die y-Achse mit Faktor 2500, damit 0.001 zu 2.5cm wird.
+    % Die x-Achse skalieren wir leicht (1.5), damit es breiter wirkt.
+
+% \begin{tikzpicture}[
+%         >=Latex, 
+%         font=\large,
+%         % Definition der Funktion
+%         % Maxwell-Boltzmann Form: f(v) ~ v^2 * exp(-a * v^2)
+%         % Die Konstanten 4.0 und 0.4 sind gewählt, damit die Kurve
+%         % optisch gut in das Koordinatensystem (6x4) passt.
+%         declare function={
+%             mb(\x) = 4.0 * \x^2 * exp(-0.4 * \x^2);
+%         }
+%     ]
+%         % Parameter für den Streifen
+%         % vpos etwas verschoben, damit der Streifen schön auf der Flanke liegt
+%         \def\vpos{1.8}       
+%         \def\dv{0.6}         
+%         \def\vend{\vpos+\dv} 
+
+%         % 1. Fläche füllen (mit mb statt gauss)
+%         \fill[red!15] (\vpos, 0) -- (\vpos, {mb(\vpos)})
+%             -- plot[domain=\vpos:\vend, samples=50] (\x, {mb(\x)})
+%             -- (\vend, 0) -- cycle;
+
+%         % 2. Achsen
+%         \draw[->, thick] (0,0) -- (6,0) node[below] {\Large $v$};
+%         \draw[->, thick] (0,0) -- (0,4) node[left] {\large $f(v)$};
+%         \node[below left] at (0,-0.1) {$0$};
+
+%         % 3. Graph (mit mb statt gauss)
+%         % Startet bei 0, nicht bei einem y-Offset!
+%         \draw[red!85!black, ultra thick, samples=100, domain=0:5.5] 
+%             plot (\x, {mb(\x)});
+
+%         % 4. Begrenzungslinien
+%         \draw[thick] (\vpos, 0) -- (\vpos, {mb(\vpos)});
+%         \draw[thick] (\vend, 0) -- (\vend, {mb(\vend)});
+
+%         % 5. Beschriftung x-Achse
+%         \node[below=6pt] at (\vpos, 0) {$v$};
+%         \node[below right=4pt] at (\vend-0.25, 0) {$v + \dd v$};
+
+%         % 6. Pfeile für dv
+%         % Position der Pfeile leicht angepasst auf y=0.6, das passt gut unter die Kurve
+%         \draw[->] (\vpos - 0.6, 0.6) -- (\vpos, 0.6) node[midway, above] {$\dd v$};
+%         \draw[->] (\vend + 0.6, 0.6) -- (\vend, 0.6); 
+
+%         % 7. Beschriftung Fläche
+%         % Position relativ zum Streifen angepasst
+%         \draw[-, thick] (\vpos + 0.45*\dv, {mb(\vpos)*0.6}) -- ++(0.5, 1.7) node[above right] {$f(v)\,\dd v$};
+
+% \end{tikzpicture}
+
+
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
@@ -258,7 +344,6 @@
 %         \draw[-, thick] (\vpos + 0.45*\dv, {gauss(\vpos)*0.6}) -- ++(0.5, 1.7) node[above right] {$f(v)\,\dd v$};
 
 % \end{tikzpicture}
-
 
 
 

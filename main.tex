@@ -701,7 +701,7 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dich
 \end{equation}
 \begin{figure}[tb]
     \centering
-    \includegraphics[width=0.4\textwidth]{Bilder/Kapitel_Waermelehre/hoehenformel.pdf}
+    \includegraphics[width=0.48\textwidth]{Bilder/Kapitel_Waermelehre/hoehenformel.pdf}
     \caption{Der exponentiell abnehmende Luftdruck $p(z)$ über der Höhe $h$ in km.}\label{fig: barom_hoehenformel_grafik}\label{fig: barometrische_hoehenformel_exp_abnahme}
 \end{figure}
 \begin{importantbox}{Barometrische Höhenformel}
@@ -1002,50 +1002,62 @@ Selbst im thermischen Gleichgewicht, wo makroskopische Größen wie $p$ und $T$ 
 Betrachtet man jedoch eine sehr große Anzahl von Teilchen ($N_A \approx \SI{6.022e23}{\mole^{-1}}$), so stellt sich eine zeitlich konstante \textbf{Geschwindigkeitsverteilung} ein.
 
 \subsection{Die Verteilungsfunktion}\label{subsec: verteilungsfunktion}
-Die Wahrscheinlichkeit, ein Teilchen mit einer bestimmten Geschwindigkeit anzutreffen, wird durch die \textbf{Maxwell-Boltzmann-Verteilung} $f(v)$ beschrieben.
+In der folgenden Erklärung muss dezidiert zwischen den Komponenten der Geschwindigkeit $v_x,v_y,v_z$ und dem Betrag der Geschwindigkeit $v = \sqrt{v_x^2 + v_y^2 + v_z^2}$ unterschieden werden.
+Die Wahrscheinlichkeit, ein Teilchen mit einer bestimmten Geschwindigkeit $v$ anzutreffen, wird durch die \textbf{Maxwell-Boltzmann-Verteilung} $f(v)$ beschrieben.
 Genauer gesagt gibt die Größe $f(v)\,\dd v$ den Bruchteil der Teilchen an, deren Geschwindigkeitsbetrag im Intervall $[v, v+\dd v]$ liegt (siehe \cref{fig: f-v-dv_verteilung_anschauung}).
 
-\begin{figure}[tb]
+\begin{figure}[htb]
     \centering
     \resizebox{0.55\linewidth}{!}{
         \begin{tikzpicture}[
-                >=Latex, 
-                font=\large,
-                declare function={
-                    gauss(\x) = 3.5 * exp(-0.22 * \x^2);
-                }
+            >=Latex, font=\large,
+            % Definition der Funktion
+            % Maxwell-Boltzmann Form: f(v) ~ v^2 * exp(-a * v^2)
+            % Die Konstanten 4.0 und 0.4 sind gewählt, damit die Kurve
+            % optisch gut in das Koordinatensystem (6x4) passt.
+            declare function={
+                mb(\x) = 4.0 * \x^2 * exp(-0.4 * \x^2);
+            }
             ]
-                \def\vpos{1.1}       
-                \def\dv{0.6}         
-                \def\vend{\vpos+\dv} 
+            % Parameter für den Streifen
+            % vpos etwas verschoben, damit der Streifen schön auf der Flanke liegt
+            \def\vpos{1.8}       
+            \def\dv{0.6}         
+            \def\vend{\vpos+\dv} 
 
-                % 1. Fläche füllen
-                \fill[red!15] (\vpos, 0) -- (\vpos, {gauss(\vpos)})
-                    -- plot[domain=\vpos:\vend, samples=50] (\x, {gauss(\x)})
-                    -- (\vend, 0) -- cycle;
-                % 2. Achsen
-                \draw[->, thick] (0,0) -- (6,0) node[below] {\Large $v$};
-                \draw[->, thick] (0,0) -- (0,4) node[left] {\large $f(v)$};
-                \node[below left] at (0,-0.1) {$0$};
-                % 3. Graph
-                \draw[red!85!black, ultra thick, samples=100, domain=0:5.5] 
-                    plot (\x, {gauss(\x)});
-                % 4. Begrenzungslinien
-                \draw[thick] (\vpos, 0) -- (\vpos, {gauss(\vpos)});
-                \draw[thick] (\vend, 0) -- (\vend, {gauss(\vend)});
+            % 1. Fläche füllen (mit mb statt gauss)
+            \fill[red!15] (\vpos, 0) -- (\vpos, {mb(\vpos)})
+                -- plot[domain=\vpos:\vend, samples=50] (\x, {mb(\x)})
+                -- (\vend, 0) -- cycle;
 
-                % 5. Beschriftung x-Achse
-                \node[below=6pt] at (\vpos, 0) {$v$};
-                \node[below right=4pt] at (\vend-0.25, 0) {$v + \dd v$};
+            % 2. Achsen
+            \draw[->, thick] (0,0) -- (6,0) node[below] {\Large $v$};
+            \draw[->, thick] (0,0) -- (0,4) node[left] {\large $f(v)$};
+            \node[below left] at (0,-0.1) {$0$};
 
-                % 6. Pfeile für dv
-                \draw[->] (\vpos - 0.8, 0.6) -- (\vpos, 0.6) node[midway, above] {$\dd v$};
-                \draw[->] (\vend + 0.8, 0.6) -- (\vend, 0.6); 
+            % 3. Graph (mit mb statt gauss)
+            % Startet bei 0, nicht bei einem y-Offset!
+            \draw[red!85!black, ultra thick, samples=100, domain=0:5.5] 
+                plot (\x, {mb(\x)});
 
-                % 7. Beschriftung Fläche
-                \draw[-, thick] (\vpos + 0.45*\dv, {gauss(\vpos)*0.6}) -- ++(0.5, 1.7) node[above right] {$f(v)\,\dd v$};
+            % 4. Begrenzungslinien
+            \draw[thick] (\vpos, 0) -- (\vpos, {mb(\vpos)});
+            \draw[thick] (\vend, 0) -- (\vend, {mb(\vend)});
+
+            % 5. Beschriftung x-Achse
+            \node[below=6pt] at (\vpos, 0) {$v$};
+            \node[below right=4pt] at (\vend-0.25, 0) {$v + \dd v$};
+
+            % 6. Pfeile für dv
+            % Position der Pfeile leicht angepasst auf y=0.6, das passt gut unter die Kurve
+            \draw[->] (\vpos - 0.6, 0.6) -- (\vpos, 0.6) node[midway, above] {$\dd v$};
+            \draw[->] (\vend + 0.6, 0.6) -- (\vend, 0.6); 
+
+            % 7. Beschriftung Fläche
+            % Position relativ zum Streifen angepasst
+            \draw[-, thick] (\vpos + 0.45*\dv, {mb(\vpos)*0.6}) -- ++(0.5, 1.7) node[above right] {$f(v)\,\dd v$};
         \end{tikzpicture}
-}
+    }
     \caption{Die schraffierte Fläche $f(v)\dd v$ unter der Kurve entspricht dem Anteil der Moleküle mit Geschwindigkeitsbeträgen im Intervall zwischen $v$ und $v+\dd v$.}\label{fig: f-v-dv_verteilung_anschauung}
 \end{figure}
 
@@ -1055,15 +1067,86 @@ Die analytische Form dieser Verteilung für den Betrag der Geschwindigkeit $v$ l
 \end{equation}
 Der Verlauf der Kurve in \cref{fig: f-v-dv_verteilung_anschauung} ergibt sich aus dem Produkt zweier konkurrierender Terme:
 \begin{itemize}
-    \item \textbf{Der geometrische Anteil ($v^2$):} Dieser Term nimmt quadratisch zu. Er berücksichtigt, dass es mit zunehmendem Geschwindigkeitsbetrag rein geometrisch mehr Möglichkeiten für die Geschwindigkeitsvektoren gibt (das Volumen einer Kugelschale im Geschwindigkeitsraum wächst mit $4\pi v^2$).
-    \item \textbf{Der Boltzmann-Faktor ($e^{-E_{kin}/k_B T}$):} Dieser Term fällt exponentiell ab. Er drückt aus, dass Zustände mit sehr hoher Energie extrem unwahrscheinlich sind.
+    \item \textbf{Der geometrische Anteil ($v^2$):} Dieser Term nimmt quadratisch zu. Er berücksichtigt, dass es mit zunehmendem Geschwindigkeitsbetrag rein geometrisch mehr Realisierungsmöglichkeiten für die Geschwindigkeit gibt (das Volumen einer Kugelschale im Geschwindigkeitsraum wächst mit $4\pi v^2$).
+    \item \textbf{Der Boltzmann-Faktor ($e^{-E_{kin}/k_B T}$):} Dieser Term fällt exponentiell ab. Er drückt aus, dass Zustände mit sehr hoher Energie (hoher Geschwindigkeit) extrem unwahrscheinlich sind.
 \end{itemize}
-Das Produkt dieser Terme führt dazu, dass die Kurve bei $v=0$ beginnt, ein Maximum durchläuft (die wahrscheinlichste Geschwindigkeit) und für sehr große Geschwindigkeiten gegen Null geht.
+Das Produkt dieser Terme führt dazu, dass die Kurve bei $f(v=0) = 0$ beginnt, ein Maximum durchläuft (die wahrscheinlichste Geschwindigkeit) und für sehr große Geschwindigkeiten gegen Null geht.
+\subsection{Warum ist die Verteilung nicht symmetrisch?}
+Betrachtet man nur eine einzige Richtung (z.\,B. die $x$-Richtung), so verhalten sich die Gasteilchen vollkommen symmetrisch. Bewegungen nach links ($-v_x$) sind genauso wahrscheinlich wie nach rechts ($+v_x$). Die Wahrscheinlichkeit, ein Teilchen mit der Geschwindigkeitskomponente $v_x$ zu finden, folgt einer \textit{Gaußschen Normalverteilung} (Glockenkurve):
+\begin{equation}
+    f(v_x) \propto e^{-\frac{m v_x^2}{2 k_B T}} \mDot
+\end{equation}
+Das Maximum dieser Kurve liegt bei $v_x = 0$. Das bedeutet: Betrachtet man nur eine Komponente, ist \gDQ{Stillstand} der häufigste Zustand.
+
+Warum liegt dann das Maximum der Maxwell-Boltzmann-Verteilung für den \textbf{Betrag der Geschwindigkeit} $v$ \textit{nicht} bei Null?
+
+\subsubsection*{Der Wettstreit zwischen Energie und Entropie}
+Um die Wahrscheinlichkeit für einen bestimmten Betrag $v$ zu erhalten, müssen wir alle Geschwindigkeitsvektoren $\ivec{v}=(v_x, v_y, v_z)$ zusammenzählen, die dieselbe Länge $v$ haben ($v^2 = v_x^2 + v_y^2 + v_z^2$).
+Geometrisch betrachtet liegen alle Vektoren mit Länge $v$ auf der Oberfläche einer Kugel mit Radius $v$.
+
+Die Wahrscheinlichkeit $P(v)$, ein Teilchen mit Geschwindigkeitsbetrag $v$ zu finden, setzt sich aus zwei Faktoren zusammen:
+\begin{enumerate}
+    \item \textbf{Wie schwierig ist es energetisch, diese Geschwindigkeit zu erreichen?} \\
+    Dies wird durch den \textbf{Boltzmann-Faktor} beschrieben. Hohe Energien sind exponentiell unwahrscheinlicher. Die \gDQ{Punktdichte} im Geschwindigkeitsraum nimmt nach außen hin rapide ab.
+    \begin{equation*}
+        \text{Wahrscheinlichkeit pro Zustand} \propto e^{-\frac{m v^2}{2 k_B T}}
+    \end{equation*}
+    
+    \item \textbf{Wie viele Kombinationen $(v_x, v_y, v_z)$ gibt es, um einen Geschwindigkeitsbetrag $v$ zu realisieren?} \\
+    Hier kommt die Geometrie ins Spiel. Alle Vektoren mit Betrag $v$ bilden eine Kugelschale. Die Fläche dieser Kugelschale wächst quadratisch mit dem Radius $v$:
+    \begin{equation*}
+        \text{Anzahl der Zustände (Kugelfläche)} \propto 4\pi v^2
+    \end{equation*}
+\end{enumerate}
+
+
+
+\begin{rememberbox}{Zusammenhang: Wahrscheinlichkeit $\times$ Anzahl der Möglichkeiten}
+    Bei sehr kleinen Geschwindigkeiten ($v \approx 0$) ist der Boltzmann-Faktor groß (ca.\ 1), aber die Kugelschale ist winzig ($v^2 \approx 0$). Es gibt kaum Möglichkeiten, sich \gDQ{langsam} zu bewegen, denn es müssen alle 3 Geschwindigkeitskomponenten gleichzeitig klein sein.
+    
+    Bei sehr großen Geschwindigkeiten ist die Kugelschale riesig ($v^2$ sehr groß), denn es gibt viele Möglichkeiten ein großes $v$ zu realisieren, aber der Boltzmann-Faktor geht gegen Null, weil es sehr unwahrscheinlich ist, dass ein Teilchen durch elastische Stöße so viel Energie erhält.
+    
+    Die Maxwell-Boltzmann-Verteilung ist das Produkt dieser beiden Terme:
+    \begin{equation}
+        f(v) \propto \underbrace{v^2}_{\text{Kugelschale}} \cdot \underbrace{e^{-v^2}}_{\text{Boltzmann-Faktor}} \mComma
+    \end{equation}
+    dargestellt in \cref{fig: entstehung_maxwell_boltzmann}.
+    Das Produkt aus einer steigenden Parabel und einer fallenden Exponentialfunktion erzwingt ein Maximum bei einer Geschwindigkeit $v > 0$ und eine verschwindende Wahrscheinlichkeit bei $v \to \infty$.
+\end{rememberbox}
+
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[xscale=1.2, yscale=4.5, >=Latex, font=\small]
+        % Achsen
+        \draw[->] (0,0) -- (4,0) node[right] {$v$};
+        \draw[->] (0,0) -- (0,1.1) node[above] {Wahrscheinlichkeit};
+        
+        % 1. Parabel (v^2) - Skaliert für die Optik
+        \draw[blue, thick, dashed, domain=0:2.1] plot (\x, {0.2*\x*\x}) node[right] {$v^2$ (Volumen)};
+        
+        % 2. Exponential (e^-v^2)
+        \draw[green!60!black, thick, dashed, domain=0:3.7] plot (\x, {exp(-0.8*\x*\x)}) node[below=1pt, xshift=-1cm] {$e^{-v^2}$ (Boltzmann)};
+        
+        % 3. Produkt (Maxwell-Boltzmann)
+        \draw[red, ultra thick, domain=0:3.7, samples=100] plot (\x, {2.0 * \x^2 * exp(-0.8*\x*\x)}) node[above=4pt] {Resultat $f(v)$};
+        
+        % Beschriftung
+        \node[below left] at (0,0) {0};
+    \end{tikzpicture}
+    \caption{Die Maxwell-Boltzmann-Verteilung (rot) entsteht aus dem Produkt der quadratisch anwachsenden Zustandsdichte (blau) und der exponentiell fallenden Besetzungswahrscheinlichkeit (grün).}
+    \label{fig: entstehung_maxwell_boltzmann}
+\end{figure}
+
 
 \subsection{Einfluss der Temperatur}
 Die Form der Verteilung hängt stark von der Temperatur $T$ und der Teilchenmasse $m$ ab.
 Erhöht man die Temperatur, steht mehr thermische Energie zur Verfügung. Das Maximum der Kurve verschiebt sich zu höheren Geschwindigkeiten und die Verteilung wird breiter und flacher. Die Fläche unter der Kurve bleibt dabei stets 1 (da die Summe aller Wahrscheinlichkeiten 100\,\% ergeben muss).
-
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.63\textwidth]{Bilder/Kapitel_Waermelehre/maxwell-boltzmann_He_T100-1000K.pdf}
+    \caption{Maxwell-Boltzmann-Verteilung für verschiedene Temperaturen $T$ für Helium. Mit steigender Temperatur verschiebt sich das Maximum zu höheren Geschwindigkeiten, und die Verteilung wird breiter.}
+    \label{fig: maxwell_boltzmann_temp_variation_Helium}
+\end{figure}
 
 \subsection{Charakteristische Geschwindigkeiten}
 Da die Verteilung nicht symmetrisch ist, fallen der häufigste Wert und der Mittelwert nicht zusammen. Wir unterscheiden drei wichtige Kennzahlen:
@@ -1081,8 +1164,8 @@ Da die Verteilung nicht symmetrisch ist, fallen der häufigste Wert und der Mitt
         \overline{v} = \sqrt{\frac{8k_B T}{\pi m}} \approx 1{,}13 \, v_W
     \end{equation}
     
-    \item \textbf{Die mittlere quadratische Geschwindigkeit $v_{\text{rms}}$}:
-    Die \textit{root-mean-square} velocity ist entscheidend für die kinetische Energie ($\overline{E_{\text{kin}}} \propto \overline{v^2}$). Sie ist etwas größer als die mittlere Geschwindigkeit, da schnelle Teilchen quadratisch stärker ins Gewicht fallen.
+    \item \textbf{Die mittlere quadratische Geschwindigkeit $\sqrt{\overline{v^2}}$}:
+    Die rms(\textit{root-mean-square})-Geschwindigkeit ist entscheidend für die kinetische Energie ($\overline{E_{\text{kin}}} \propto \overline{v^2}$). Sie ist etwas größer als die mittlere Geschwindigkeit, da schnelle Teilchen quadratisch stärker ins Gewicht fallen.
     \begin{equation}
         v_{\text{rms}} = \sqrt{\overline{v^2}} = \sqrt{\frac{3k_B T}{m}} \approx 1{,}22 \, v_W
     \end{equation}
@@ -1095,97 +1178,7 @@ Da die Verteilung nicht symmetrisch ist, fallen der häufigste Wert und der Mitt
         \item $\overline{v} \approx \SI{476}{\meter\per\second}$
         \item $\sqrt{\overline{v^2}} \approx \SI{517}{\meter\per\second}$
     \end{itemize}
-    Diese Geschwindigkeiten sind bemerkenswert hoch und liegen im Bereich der Schallgeschwindigkeit.
-\end{examplebox}
-
-
-\section{OLD: Maxwell-Boltzmann-Verteilung}\label{sec: maxwell_boltzmann_verteilung}
-\begin{figure}[htb]
-    \centering
-    \resizebox{0.5\linewidth}{!}{
-        \begin{tikzpicture}[
-                >=Latex, 
-                font=\large,
-                % Definition der Funktion
-                declare function={
-                    gauss(\x) = 3.5 * exp(-0.22 * \x^2);
-                }
-            ]
-                % Parameter für den Streifen
-                \def\vpos{1.1}       
-                \def\dv{0.6}         
-                \def\vend{\vpos+\dv} 
-
-                % 1. Fläche füllen
-                \fill[red!15] (\vpos, 0) -- (\vpos, {gauss(\vpos)})
-                    -- plot[domain=\vpos:\vend, samples=50] (\x, {gauss(\x)})
-                    -- (\vend, 0) -- cycle;
-
-                % 2. Achsen
-                \draw[->, thick] (0,0) -- (6,0) node[below] {\Large $v$};
-                \draw[->, thick] (0,0) -- (0,4) node[left] {\large $f(v)$};
-                \node[below left] at (0,-0.1) {$0$};
-
-                % 3. Graph
-                \draw[red!85!black, ultra thick, samples=100, domain=0:5.5] 
-                    plot (\x, {gauss(\x)});
-
-                % 4. Begrenzungslinien
-                \draw[thick] (\vpos, 0) -- (\vpos, {gauss(\vpos)});
-                \draw[thick] (\vend, 0) -- (\vend, {gauss(\vend)});
-
-                % 5. Beschriftung x-Achse
-                % Align the labels at the same vertical level using baseline and positioning
-                \node[below=6pt] at (\vpos, 0) {$v$};
-                \node[below right=4pt] at (\vend-0.25, 0) {$v + \dd v$};
-
-                % 6. Pfeile für dv
-                \draw[->] (\vpos - 0.8, 0.6) -- (\vpos, 0.6) node[midway, above] {$\dd v$};
-                \draw[->] (\vend + 0.8, 0.6) -- (\vend, 0.6); 
-
-                % 7. Beschriftung Fläche
-                \draw[-, thick] (\vpos + 0.45*\dv, {gauss(\vpos)*0.6}) -- ++(0.5, 1.7) node[above right] {$f(v)\,\dd v$};
-        \end{tikzpicture}
-}
-    \caption{Die Fläche $f(v)\dd v$ gibt die Anzahl der Moleküle mit Geschwindigkeitsbeträgen zwischen $v$ und $v+\dd v$ an.}\label{fig: f-v-dv_verteilung_anschauung}
-\end{figure}
-In einem Gas haben nicht alle Teilchen die gleiche Geschwindigkeit. Ihre Geschwindigkeiten sind statistisch verteilt. Die \textbf{Maxwell-Boltzmann-Verteilungsfunktion} $f(v)$ beschreibt, welcher Anteil der Moleküle eine Geschwindigkeit im Intervall zwischen $v$ und $v+dv$ besitzt.
-Die Verteilungsfunktion lautet:
-\begin{equation}\label{eq:maxwell_boltzmann}
-    f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 e^{-\frac{mv^2}{2k_B T}}
-\end{equation}
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Waermelehre/maxwell_boltzmann_verteilung.png}
-%     \caption{Maxwell-Boltzmann-Verteilung für Wasserstoff (H) und Helium (He) bei verschiedenen Temperaturen. Mit steigender Temperatur wird die Verteilung breiter und verschiebt sich zu höheren Geschwindigkeiten. Schwerere Teilchen (He) sind bei gleicher Temperatur im Mittel langsamer.}
-%     \label{fig:maxwell_boltzmann_verteilung}
-% \end{figure}
-
-Aus dieser Verteilung lassen sich verschiedene charakteristische Geschwindigkeiten berechnen:
-\begin{itemize}
-    \item \textbf{Die wahrscheinlichste Geschwindigkeit $v_W$}: Die Geschwindigkeit am Maximum der Verteilung.
-    \begin{equation}
-        v_W = \sqrt{\frac{2k_B T}{m}}
-    \end{equation}
-    \item \textbf{Die mittlere Geschwindigkeit $\overline{v}$}: Der Durchschnittswert aller Geschwindigkeiten.
-    \begin{equation}
-        \overline{v} = \int_0^\infty v f(v) dv = \sqrt{\frac{8k_B T}{\pi m}} \approx 1.13 \, v_W
-    \end{equation}
-    \item \textbf{Die mittlere quadratische Geschwindigkeit $\sqrt{\overline{v^2}}$} (rms-Geschwindigkeit): Die Wurzel aus dem mittleren Geschwindigkeitsquadrat, die direkt mit der kinetischen Energie zusammenhängt.
-    \begin{equation}
-        \sqrt{\overline{v^2}} = \left(\int_0^\infty v^2 f(v) dv\right)^{1/2} = \sqrt{\frac{3k_B T}{m}} \approx 1.22 \, v_W
-    \end{equation}
-\end{itemize}
-
-\begin{examplebox}{Beispiel: Stickstoff in der Luft}
-    Für Stickstoffmoleküle ($N_2$) mit $m \approx \SI{4.67e-26}{\kilo\gram}$ bei Raumtemperatur ($T = \SI{300}{\kelvin}$) ergeben sich folgende Werte:
-    \begin{itemize}
-        \item $v_W \approx \SI{422}{\meter\per\second}$
-        \item $\overline{v} \approx \SI{476}{\meter\per\second}$
-        \item $\sqrt{\overline{v^2}} \approx \SI{517}{\meter\per\second}$
-    \end{itemize}
-    Diese Geschwindigkeiten sind bemerkenswert hoch und liegen im Bereich der Schallgeschwindigkeit.
+    Diese Geschwindigkeiten sind bemerkenswert hoch und liegen im Bereich der Schallgeschwindigkeit ($v_{\text{Schall}} \approx \SI{343}{\meter\per\second}$ bei Raumtemperatur).
 \end{examplebox}
 
 \section{Wärmemenge und Wärmekapazität}\label{sec: waermemenge_waermekapazitaet}
