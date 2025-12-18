@@ -1325,20 +1325,131 @@ Die Zustände fest, flüssig und gasförmig werden als \textbf{Aggregatzustände
 \end{figure}
 Wir wollen in diesem Abschnitt untersuchen, unter welchen Bedingungen diese Phasenübergänge stattfinden, welche Energien dafür benötigt werden und unter welchen Bedingungen verschiedene Phasen koexistieren können.
 
-\subsection{Schmelz- und Verdampfungswärme}\label{subsec: schmelz_verdampfungswaerme}
-Führt man einem Stoff bei einem Phasenübergang kontinuierlich Wärme zu, bleibt seine Temperatur konstant, bis die gesamte Substanz ihre Phase geändert hat. Die zugeführte Energie wird nicht zur Erhöhung der kinetischen Energie der Teilchen (Temperaturerhöhung), sondern zur Änderung ihrer potenziellen Energie (Aufbrechen von Bindungen) verwendet. Diese Energie wird als \textbf{latente Wärme} bezeichnet.
+\subsection{Beispiel: Die Erwärmungskurve von Wasser}\label{subsec: erwaermungskurve_beispiel}
+Betrachten wir ein Experiment, bei dem Eis mit einer Anfangstemperatur von $\SI{-20}{\celsius}$ in einem geschlossenen Gefäß mit einer konstanten Heizleistung erwärmt wird. Man würde erwarten, dass die Temperatur kontinuierlich steigt. Die Messung in \cref{fig: erwaermungskurve_wasser} zeigt jedoch einen anderen Verlauf.
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Waermelehre/temperaturverlauf_erwärmen_von_eis.png}
+%     \caption{Temperaturverlauf beim Erwärmen von Eis mit konstanter Wärmezufuhr. Während der Phasenübergänge (Schmelzen bei $t_1$ bis $t_2$, Verdampfen bei $t_3$ bis $t_4$) bleibt die Temperatur konstant, obwohl weiterhin Wärme zugeführt wird.}\label{fig: erwaermungskurve_wasser}
+% \end{figure}
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[
+            scale=1.0, font=\small,
+            axis/.style={-{Stealth}, line width=1.0pt},
+            box/.style={draw, fill=blue!10, rounded corners=2pt, minimum height=0.6cm, align=center, font=\footnotesize},
+            curve/.style={line width=1.5pt, red!80!black},
+            guide/.style={dashed, thin, gray}
+            ]
 
+            % --- Definition der Koordinaten (Zeit t und Temperatur T) ---
+            % Y-Achse
+            \def\yStart{0.5}   % Start bei z.B. -20 Grad
+            \def\yMelt{2.0}    % 0 Grad
+            \def\yBoil{5.5}    % 100 Grad
+            \def\yEnd{7.0}     % > 100 Grad
+
+            % X-Achse (Zeitpunkte)
+            \def\xZero{0}
+            \def\xOne{1.0}     % Ende Eis-Erwärmung
+            \def\xTwo{2.0}     % Ende Schmelzen
+            \def\xThree{5.0}   % Ende Wasser-Erwärmung
+            \def\xFour{10.0}   % Ende Verdampfen (Langes Plateau!)
+            \def\xEnd{10.6}    % Ende Dampf-Erwärmung
+
+            % Y-Position der Beschriftungsboxen oben
+            \def\yBox{6.3}
+
+            % --- 1. Achsen zeichnen ---
+            \draw[axis] (0, \yMelt) -- (\xEnd+0.5, \yMelt) node[right] {$t \,[\si{\second}]$}; 
+            \draw[axis] (0, 0) -- (0, \yBox+1) node[left] {\large $T\, [\si{\celsius}]$};
+            
+            % --- 2. Ticks und Labels Y-Achse ---
+            \draw[thick] (-0.15, \yStart) -- (0.15, \yStart) node[left=0.3cm] {$T_a$}; % Anfang
+            \draw[thick] (-0.15, \yMelt) -- (0.15, \yMelt) node[left=0.3cm] {$T_s = \SI{0}{\celsius}$};
+            \draw[thick] (-0.15, \yBoil) -- (0.15, \yBoil) node[left=0.3cm] {$T_v = \SI{100}{\celsius}$};
+            \draw[thick, dashed, gray] (0, \yBoil) -- (\xEnd+0.5, \yBoil); % Hilfslinie bei Siedetemp.
+            % --- 3. Kurve zeichnen ---
+            \draw[curve] 
+                (\xZero, \yStart) coordinate (Start)
+                -- (\xOne, \yMelt) coordinate (MeltStart)
+                -- (\xTwo, \yMelt) coordinate (MeltEnd)
+                -- (\xThree, \yBoil) coordinate (BoilStart)
+                -- (\xFour, \yBoil) coordinate (BoilEnd)
+                -- (\xEnd, \yEnd) coordinate (End);
+
+            % --- 4. Hilfslinien & Ticks X-Achse ---
+            % t1
+            \draw[guide] (MeltStart) -- (\xOne, 0) node[below, black] {$t_1$};
+            % t2
+            \draw[guide] (MeltEnd) -- (\xTwo, 0) node[below, black] {$t_2$};
+            % t3
+            \draw[guide] (BoilStart) -- (\xThree, 0) node[below, black] {$t_3$};
+            % t4
+            \draw[guide] (BoilEnd) -- (\xFour, 0) node[below, black] {$t_4$};
+
+            % --- 5. Beschriftungsboxen (Phasen) ---
+            % Schmelzen
+            \node[align=center, text width=1.8cm] at ({(\xOne+\xTwo)/2}, \yMelt+0.5) {Schmelzen};
+            % Verdampfen
+            \node[align=center, text width=3.8cm] at ({(\xThree+\xFour)/2}, \yBoil+0.5) {Verdampfen};
+            
+            % --- 6. Zusätzliche Infos im Plot ---
+            % Aggregatzustände unter die Kurve schreiben
+            \node[red!60!black, font=\footnotesize] at ({(\xZero+\xOne)/2}, \yStart+0.1) {fest};
+            \node[red!60!black, font=\footnotesize] at ({(\xTwo+\xThree)/2}, \yMelt+0.9) {flüssig};
+            \node[red!60!black, font=\footnotesize] at (\xFour+0.86, \yEnd-1.2) {gasförmig};
+
+            % Pfeil für Latente Wärme
+            \draw[<->, >=Latex, thin] (\xThree, \yBoil-0.3) -- (\xFour, \yBoil-0.3) node[midway, below] {$\Delta Q = m \cdot \lambda_v$};
+
+            % dT/dt Pfeile während der Erwärmungsphasen
+            \draw[->, >=Latex, thin] ({(\xZero+\xOne)/2}, \yStart+0.65) -- (\xTwo+0.35, \yStart+0.1) node[right] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(fest)}}$};
+            \draw[->, >=Latex, thin] ({(\xTwo+\xThree)/2 + 0.1}, \yMelt+1.77) -- (\xThree+0.35, \yMelt+1) node[right] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(flüssig)}}$};
+            \draw[->, >=Latex, thin] (\xFour+0.3, \yBoil+1) -- (\xFour-0.35, \yBoil+1.5) node[left] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(gas)}}$};
+    \end{tikzpicture}
+    \caption{Temperaturverlauf beim Erwärmen von Wasser mit konstanter Wärmezufuhr pro Zeiteinheit. Während der Phasenübergänge (Schmelzen bei $t_1$ bis $t_2$, Verdampfen bei $t_3$ bis $t_4$) bleibt die Temperatur konstant, obwohl weiterhin Wärme zugeführt wird.}\label{fig: erwaermungskurve_wasser}
+\end{figure}
+
+Man beobachtet zwei markante Bereiche (Plateaus), in denen die Temperatur trotz Wärmezufuhr konstant bleibt:
+\begin{enumerate}
+    \item Beim Schmelzpunkt ($T_S = \SI{0}{\celsius}$) schmilzt das Eis zu Wasser.
+    \item Beim Siedepunkt ($T_V = \SI{100}{\celsius}$) verdampft das Wasser zu Wasserdampf.
+\end{enumerate}
+Erst wenn die gesamte Substanz den Phasenübergang vollzogen hat, steigt die Temperatur wieder an. Die Steigung der Erwärmungskurve in den Bereichen zwischen den Plateaus hängt von der spezifischen Wärmekapazität des jeweiligen Aggregatzustands ab. Je größer die Wärmekapazität, desto langsamer steigt die Temperatur bei gegebener Wärmezufuhr. Für Wasser gilt:
+\begin{equation}
+    c_\text{Wasser} \approx \SI{4.18}{\kilo\joule\per\kilogram\per\kelvin} > c_\text{Eis} \approx \SI{2.1}{\kilo\joule\per\kilogram\per\kelvin} > c_\text{Dampf} \approx \SI{2.0}{\kilo\joule\per\kilogram\per\kelvin} \mDot
+\end{equation}
+
+\subsection{Schmelz- und Verdampfungswärme}\label{subsec: schmelz_verdampfungswaerme}
+Die im obigen Beispiel beobachteten Temperaturplateaus führen uns zum Begriff der \textbf{latenten Wärme}. Die in diesen Phasen zugeführte Energie wird nicht zur Erhöhung der kinetischen Energie der Teilchen (was wir als Temperaturanstieg messen würden), sondern zur Erhöhung der potenziellen Energie verwendet. Konkret werden Bindungen zwischen den Molekülen gelockert (Schmelzen) oder fast vollständig getrennt (Verdampfen).
+
+Wir definieren daher zwei spezifische Materialkonstanten:
 \begin{itemize}
     \item Die \textbf{spezifische Schmelzwärme} $\lambda_s$ ist die Energiemenge, die benötigt wird, um \SI{1}{\kilo\gram} eines festen Stoffes bei konstanter Schmelztemperatur zu verflüssigen.
     \item Die \textbf{spezifische Verdampfungswärme} $\lambda_v$ ist die Energiemenge, die benötigt wird, um \SI{1}{\kilo\gram} einer Flüssigkeit bei konstanter Siedetemperatur zu verdampfen.
 \end{itemize}
 
-\begin{figure}[htb]
+Beide Größen haben die Einheit $[\lambda] = \si{\joule\per\kilogram}$. In \cref{tab: waermekapazitaet_schmelz_verdampfungswaermen} sind typische Werte für verschiedene Stoffe aufgelistet. Man beachte, dass die Verdampfungswärme meist deutlich größer ist als die Schmelzwärme, da beim Verdampfen die Teilchenbindungen vollständig überwunden werden müssen.
+
+\begin{table}[htb]
     \centering
-    \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Waermelehre/temperaturverlauf_erwärmen_von_eis.png}
-    \caption{Temperaturverlauf beim Erwärmen von Eis mit konstanter Wärmezufuhr. Während der Phasenübergänge (Schmelzen bei \SI{0}{\celsius}, Verdampfen bei \SI{100}{\celsius}) bleibt die Temperatur konstant, da die zugeführte Energie als latente Wärme zum Aufbrechen der Bindungen im Gitter bzw. in der Flüssigkeit benötigt wird.}
-    \label{fig:erwaermungskurve_wasser}
-\end{figure}
+    \caption{Spezifische Wärmekapazität $c$, Schmelzwärme $\lambda_s$ und Verdampfungswärme $\lambda_v$ ausgewählter Stoffe.}\label{tab: waermekapazitaet_schmelz_verdampfungswaermen}
+    \vspace{4pt}
+    \begin{tabular}{l S[table-format=1.3] S[table-format=3.1] S[table-format=5.0]}
+        \toprule
+        \textbf{Stoff} & {\textbf{$c$ (\si{\kilo\joule\per\kilogram\per\kelvin})}} & {\textbf{$\lambda_s$ (\si{\kilo\joule\per\kilogram})}} & {\textbf{$\lambda_v$ (\si{\kilo\joule\per\kilogram})}} \\
+        \midrule
+        Wasser (flüssig)  & 4,182  & {--}   & 2256  \\
+        Quecksilber       & 0,14   & 12,4   & 285   \\
+        Aluminium         & 0,896  & 397    & 10900 \\
+        Eisen             & 0,45   & 277    & 6340  \\
+        Kupfer            & 0,383  & 205    & 4790  \\
+        Eis (\SI{0}{\celsius}) & 2,1    & 332,8  & {--}   \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
 
 \section{Reale Gase und Phasendiagramme}\label{sec: reale_gase_phasendiagramme}
 Das ideale Gasmodell vernachlässigt sowohl das Eigenvolumen der Teilchen als auch die Anziehungskräfte zwischen ihnen. Bei hohem Druck und niedriger Temperatur, wenn die Teilchen nahe beieinander sind, werden diese Effekte jedoch relevant und das Verhalten realer Gase weicht von der idealen Gasgleichung ab.

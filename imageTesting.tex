@@ -34,25 +34,179 @@
 \begin{document}
 
 
+% Zeit-Temperatur Diagramm für Wasser von -20°C Eis bis hin zu Dampf bei 120°C
+
+\begin{tikzpicture}[
+    scale=1.0, font=\small,
+    axis/.style={-{Stealth}, line width=1.0pt},
+    box/.style={draw, fill=blue!10, rounded corners=2pt, minimum height=0.6cm, align=center, font=\footnotesize},
+    curve/.style={line width=1.5pt, red!80!black},
+    guide/.style={dashed, thin, gray}
+]
+
+    % --- Definition der Koordinaten (Zeit t und Temperatur T) ---
+    % Y-Achse
+    \def\yStart{0.5}   % Start bei z.B. -20 Grad
+    \def\yMelt{2.0}    % 0 Grad
+    \def\yBoil{5.5}    % 100 Grad
+    \def\yEnd{7.0}     % > 100 Grad
+
+    % X-Achse (Zeitpunkte)
+    \def\xZero{0}
+    \def\xOne{1.0}     % Ende Eis-Erwärmung
+    \def\xTwo{2.0}     % Ende Schmelzen
+    \def\xThree{5.0}   % Ende Wasser-Erwärmung
+    \def\xFour{10.0}   % Ende Verdampfen (Langes Plateau!)
+    \def\xEnd{10.6}    % Ende Dampf-Erwärmung
+
+    % Y-Position der Beschriftungsboxen oben
+    \def\yBox{6.3}
+
+    % --- 1. Achsen zeichnen ---
+    \draw[axis] (0, \yMelt) -- (\xEnd+0.5, \yMelt) node[right] {$t \,[\si{\second}]$}; 
+    \draw[axis] (0, 0) -- (0, \yBox+1) node[left] {\large $T\, [\si{\celsius}]$};
+    
+    % --- 2. Ticks und Labels Y-Achse ---
+    \draw[thick] (-0.15, \yStart) -- (0.15, \yStart) node[left=0.3cm] {$T_a$}; % Anfang
+    \draw[thick] (-0.15, \yMelt) -- (0.15, \yMelt) node[left=0.3cm] {$T_s = \SI{0}{\celsius}$};
+    \draw[thick] (-0.15, \yBoil) -- (0.15, \yBoil) node[left=0.3cm] {$T_v = \SI{100}{\celsius}$};
+    \draw[thick, dashed, gray] (0, \yBoil) -- (\xEnd+0.5, \yBoil); % Hilfslinie bei Siedetemp.
+    % --- 3. Kurve zeichnen ---
+    \draw[curve] 
+        (\xZero, \yStart) coordinate (Start)
+        -- (\xOne, \yMelt) coordinate (MeltStart)
+        -- (\xTwo, \yMelt) coordinate (MeltEnd)
+        -- (\xThree, \yBoil) coordinate (BoilStart)
+        -- (\xFour, \yBoil) coordinate (BoilEnd)
+        -- (\xEnd, \yEnd) coordinate (End);
+
+    % --- 4. Hilfslinien & Ticks X-Achse ---
+    % t1
+    \draw[guide] (MeltStart) -- (\xOne, 0) node[below, black] {$t_1$};
+    % t2
+    \draw[guide] (MeltEnd) -- (\xTwo, 0) node[below, black] {$t_2$};
+    % t3
+    \draw[guide] (BoilStart) -- (\xThree, 0) node[below, black] {$t_3$};
+    % t4
+    \draw[guide] (BoilEnd) -- (\xFour, 0) node[below, black] {$t_4$};
+
+    % --- 5. Beschriftungsboxen (Phasen) ---
+    % Schmelzen
+    \node[align=center, text width=1.8cm] at ({(\xOne+\xTwo)/2}, \yMelt+0.5) {Schmelzen};
+    % Verdampfen
+    \node[align=center, text width=3.8cm] at ({(\xThree+\xFour)/2}, \yBoil+0.5) {Verdampfen};
+    
+    % --- 6. Zusätzliche Infos im Plot ---
+    % Aggregatzustände unter die Kurve schreiben
+    \node[red!60!black, font=\footnotesize] at ({(\xZero+\xOne)/2}, \yStart+0.1) {fest};
+    \node[red!60!black, font=\footnotesize] at ({(\xTwo+\xThree)/2}, \yMelt+0.9) {flüssig};
+    \node[red!60!black, font=\footnotesize] at (\xFour+0.86, \yEnd-1.2) {gasförmig};
+
+    % Pfeil für Latente Wärme
+    \draw[<->, >=Latex, thin] (\xThree, \yBoil-0.3) -- (\xFour, \yBoil-0.3) node[midway, below] {$\Delta Q = m \cdot \lambda_v$};
+
+    % dT/dt Pfeile während der Erwärmungsphasen
+    \draw[->, >=Latex, thin] ({(\xZero+\xOne)/2}, \yStart+0.65) -- (\xTwo+0.35, \yStart+0.1) node[right] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(fest)}}$};
+    \draw[->, >=Latex, thin] ({(\xTwo+\xThree)/2 + 0.1}, \yMelt+1.77) -- (\xThree+0.35, \yMelt+1) node[right] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(flüssig)}}$};
+    \draw[->, >=Latex, thin] (\xFour+0.3, \yBoil+1) -- (\xFour-0.35, \yBoil+1.5) node[left] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(gas)}}$};
+
+\end{tikzpicture}
+   
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+
+
+
+% % Zeit-Temperatur Diagramm für das Erhitzen und Sieden von Wasser (20 auf 100 Grad)
+% % --- mit Beschriftungsboxen für Erwärmen und Sieden/Verdampfen ---
+% \begin{tikzpicture}[
+%     axis/.style={-{Stealth}, line width=1.2pt},
+%     box/.style={draw, fill=blue!15, minimum height=0.8cm, align=center}
+% ]
+
+% \def\xTzero{0.3}      % Startzeit 0 s
+% \def\xTone{2.5}    % Zeitpunkt t1 (skaliert)
+% \def\xTtwo{10}      % Zeitpunkt t2 (skaliert)
+
+% \def\yInitial{1.5}  % Starttemperatur 20 °C
+% \def\yBoil{5.5}     % Siedetemperatur 100 °C
+% \def\yBoxCenter{6.5} % y-Position der Boxen
+
+% % Achsen zeichnen
+% \draw[axis,line width=1.8pt] (-0.5, 0) -- (12, 0) node[right] {\Large $t \,[\si{\second}]$};
+% \draw[axis,line width=1.8pt] (0, -0.5) -- (0, 7) node[above] {\Large $T\, [\si{\celsius}]$};
+
+% % Ticks auf den Achsen
+% \draw[line width=1pt] (\xTzero, -0.15) -- (\xTzero, 0.15); % Tick bei 0
+% \draw[line width=1pt] (\xTone, -0.15) -- (\xTone, 0.15); % Tick bei 0
+% \draw[line width=1pt] (\xTtwo, -0.15) -- (\xTtwo, 0.15); % Tick bei 0
+% \draw[line width=1pt] (-0.15, \yInitial) -- (0.15, \yInitial);
+% \draw[line width=1pt] (-0.15, \yBoil) -- (0.15, \yBoil);
+
+% % Achsenbeschriftungen
+% \node[left] at (-0.15, \yInitial) {\large $\SI{20}{\celsius}$};
+% \node[left] at (-0.15, \yBoil) {\large $\SI{100}{\celsius}$};
+% \node[below] at (\xTzero, -0.15) {\large $0$};
+% \node[below] at (\xTone, -0.15) {\large $t_1$};
+% \node[below] at (\xTtwo, -0.15) {\large $t_2$};
+
+% % Temperaturverlauf
+% \draw[line width=1.4pt, black] (\xTzero, \yInitial) -- (\xTone, \yBoil) -- (\xTtwo, \yBoil);
+% % Gestrichelte Hilfslinien
+% \draw[dotted] (\xTone, 0) -- (\xTone, \yBoil);
+% \draw[dotted] (\xTtwo, 0) -- (\xTtwo, \yBoil);
+% % Markierungspunkt am Ende
+% \filldraw[black] (\xTtwo, \yBoil) circle (2.5pt);
+
+% % Anmerkung mit Pfeil
+% \draw[-{Stealth},, thick] (\xTtwo-1, \yBoil-1.1) -- (\xTtwo-0.1, \yBoil-0.1);
+% \node[above left, align=left] at (\xTtwo-1, \yBoil-1.6) {Wasser komplett verdampft};
+
+% % Boxen für die Phasen
+% % Berechnung der Breiten und Positionen
+% \pgfmathsetmacro{\widthPhaseOne}{\xTone - \xTzero}
+% \pgfmathsetmacro{\widthPhaseTwo}{\xTtwo - \xTone}
+% \pgfmathsetmacro{\centerPhaseOne}{(\xTone + \xTzero) / 2}
+% \pgfmathsetmacro{\centerPhaseTwo}{(\xTtwo + \xTone) / 2}
+
+% \node[box, text width=\widthPhaseOne cm-0.2cm] at (\centerPhaseOne, \yBoxCenter) {Erwärmen};
+% \node[box, text width=\widthPhaseTwo cm-0.2cm] at (\centerPhaseTwo, \yBoxCenter) {Sieden / Verdampfen};
+
+% \end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+
 
 % Eine Darstellung der Maxwell-Boltzmann Verteilung als Produkt von Parabel v^2 (blau strichliert) und Exponentialfunktion e^(-v^2) (grün strichliert) und dem Ergebnis (rot durchgezogen)
-\begin{tikzpicture}[xscale=1.2, yscale=4.5, >=Latex, font=\small]
-        % Achsen
-        \draw[->] (0,0) -- (4,0) node[right] {$v$};
-        \draw[->] (0,0) -- (0,1.1) node[above] {Wahrscheinlichkeit};
+% \begin{tikzpicture}[xscale=1.2, yscale=4.5, >=Latex, font=\small]
+%         % Achsen
+%         \draw[->] (0,0) -- (4,0) node[right] {$v$};
+%         \draw[->] (0,0) -- (0,1.1) node[above] {Wahrscheinlichkeit};
         
-        % 1. Parabel (v^2) - Skaliert für die Optik
-        \draw[blue, thick, dashed, domain=0:2.1] plot (\x, {0.2*\x*\x}) node[right] {$v^2$ (Volumen)};
+%         % 1. Parabel (v^2) - Skaliert für die Optik
+%         \draw[blue, thick, dashed, domain=0:2.1] plot (\x, {0.2*\x*\x}) node[right] {$v^2$ (Volumen)};
         
-        % 2. Exponential (e^-v^2)
-        \draw[green!60!black, thick, dashed, domain=0:3.7] plot (\x, {exp(-0.8*\x*\x)}) node[below=1pt, xshift=-1cm] {$e^{-v^2}$ (Boltzmann)};
+%         % 2. Exponential (e^-v^2)
+%         \draw[green!60!black, thick, dashed, domain=0:3.7] plot (\x, {exp(-0.8*\x*\x)}) node[below=1pt, xshift=-1cm] {$e^{-v^2}$ (Boltzmann)};
         
-        % 3. Produkt (Maxwell-Boltzmann)
-        \draw[red, ultra thick, domain=0:3.7, samples=100] plot (\x, {2.0 * \x^2 * exp(-0.8*\x*\x)}) node[above=4pt] {Resultat $f(v)$};
+%         % 3. Produkt (Maxwell-Boltzmann)
+%         \draw[red, ultra thick, domain=0:3.7, samples=100] plot (\x, {2.0 * \x^2 * exp(-0.8*\x*\x)}) node[above=4pt] {Resultat $f(v)$};
         
-        % Beschriftung
-        \node[below left] at (0,0) {0};
-\end{tikzpicture}
+%         % Beschriftung
+%         \node[below left] at (0,0) {0};
+% \end{tikzpicture}
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
 
 
 % Eine Gegenüberstellung von zwei Zylindern: Links ein Gas mit exponentiell abnehmendem Druck und Dichte, rechts eine Flüssigkeit mit konstantem Druck und Dichte
@@ -151,6 +305,11 @@
 %         \node[blue!90!black, font=\bfseries] at (\cylW/2, \hBase - \AOffset) {\Large $A$};
 %     \end{scope}
 % \end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
 
 
 
