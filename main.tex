@@ -273,7 +273,7 @@ Im Gegensatz zur Celsius-Skala benötigt die Kelvin-Skala eigentlich nur einen e
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/phasendiagramm_wasser.png}
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/Phasendiagramm_H2O.png}
     \caption{Schematisches Phasendiagramm $(T, p)$ von Wasser, das den Tripelpunkt zeigt, an dem alle drei Phasen (fest, flüssig, gasförmig) koexistieren.}\label{fig: phasendiagramm_wasser}
 \end{figure}
 
@@ -887,7 +887,7 @@ Bei einem Druck von \SI{1}{\barPr} und Raumtemperatur enthält \SI{1}{\centi\met
         % vy (gestrichelt, vertikal)
         \draw[->, thick] (BallIn) ++(\vecLenX, 0) -- ++(0, \vecLenY) node[midway, right] {$v_y$};
         % v (rot, diagonal)
-        \draw[->, red, thick] (BallIn) -- ++(\vecLenX, \vecLenY) node[midway, above left] {$\vec{v}$};
+        \draw[->, red, thick] (BallIn) -- ++(\vecLenX, \vecLenY) node[midway, above left] {$\ivec{v}$};
 
         % % --- OBEN: Ausgehender Ball (Hellblau, gestrichelt) ---
         \filldraw[fill=myblue!30, draw=black, dashed] (BallOut) circle (0.25);
@@ -898,7 +898,7 @@ Bei einem Druck von \SI{1}{\barPr} und Raumtemperatur enthält \SI{1}{\centi\met
         % -vx (schwarz, horizontal nach links, startet an der Spitze von vy)
         \draw[->, thick] (BallOut) ++(0, \vecLenY) -- ++(-\vecLenX, 0) node[midway, above] {$-v_x$};
         % v (rot, diagonal nach links oben)
-        \draw[->, red, thick] (BallOut) -- ++(-\vecLenX, \vecLenY) node[midway, below left] {$\vec{v}$};
+        \draw[->, red, thick] (BallOut) -- ++(-\vecLenX, \vecLenY) node[midway, below left] {$\ivec{v}$};
 
         % 4. Textbeschriftung Mitte
         \node[below right, align=left] at (-3.25, 0.45) {$\Delta v_x = 2v_x$\\ $\Delta v_y = 0$};
@@ -1451,50 +1451,102 @@ Beide Größen haben die Einheit $[\lambda] = \si{\joule\per\kilogram}$. In \cre
 \end{table}
 
 
+
 \section{Reale Gase und Phasendiagramme}\label{sec: reale_gase_phasendiagramme}
 Das ideale Gasmodell vernachlässigt sowohl das Eigenvolumen der Teilchen als auch die Anziehungskräfte zwischen ihnen. Bei hohem Druck und niedriger Temperatur, wenn die Teilchen nahe beieinander sind, werden diese Effekte jedoch relevant und das Verhalten realer Gase weicht von der idealen Gasgleichung ab.
 
 \subsection{Die Van-der-Waals-Gleichung}\label{subsec: van_der_waals}
-Eine verbesserte Zustandsgleichung für reale Gase ist die \textbf{Van-der-Waals-Gleichung}:
-\begin{equation}\label{eq:van_der_waals}
-    \left( p + a \frac{v^2}{V^2} \right) (V - v b) = v R T
+Um reale Gase zu beschreiben, entwickelten Johannes Diderik van der Waals im Jahr 1873 eine angepasste Zustandsgleichung. Wir leiten diese heuristisch her, indem wir zwei Korrekturen an der idealen Gasgleichung ($p V = \nu R T$) vornehmen.
+
+\subsubsection*{1. Volumenkorrektur (Kovolumen)}
+Reale Gasteilchen sind keine punktförmigen Objekte, sondern besitzen ein endliches Eigenvolumen. Das Volumen $V$, in dem sich die Teilchen frei bewegen können, ist daher kleiner als das Volumen des Behälters.
+Wir ersetzen das Volumen $V$ durch das \textbf{effektive Volumen}:
+\begin{equation}
+    V \rightarrow V - \nu \cdot b
 \end{equation}
-Hierbei korrigiert der Term $a$ den Druckabfall durch die Anziehungskräfte zwischen den Teilchen (Kohäsionsdruck), und der Term $b$ berücksichtigt das von den Teilchen selbst eingenommene Volumen (Kovolumen).
+Hierbei ist $b$ das sogenannte \textbf{Kovolumen}, das proportional zum Eigenvolumen der Teilchen eines Mols ist.
 
-\begin{figure}[htb]
-    \centering
-    % \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Waermelehre/vanderwaals_isothermen.png}
-    \includegraphics[width=0.6\linewidth]{Bilder/Allgemein/placeholder.png}
-    \caption{Van-der-Waals-Isothermen für $\text{CO}_2$. Unterhalb einer kritischen Temperatur zeigen die Isothermen einen Bereich, in dem Gas und Flüssigkeit koexistieren. Komprimiert man das Gas entlang der $T=\SI{273}{\kelvin}$-Isotherme, beginnt es bei Punkt A zu kondensieren. Entlang der Linie A-C bleibt der Druck konstant, während der Flüssigkeitsanteil zunimmt, bis bei C das gesamte Gas verflüssigt ist.}
-    \label{fig:vanderwaals_isothermen}
-\end{figure}
+\subsubsection*{2. Druckkorrektur (Binnendruck)}
+Zwischen den Gasteilchen wirken Anziehungskräfte (Van-der-Waals-Kräfte). Befindet sich ein Teilchen im Inneren des Gases, heben sich die Kräfte der Nachbarteilchen im Mittel auf. Ein Teilchen nahe der Wand erfährt jedoch eine resultierende Kraft in das Innere des Gases (siehe Kohäsion). Dadurch wird der Impulsübertrag auf die Wand -- und somit der messbare Druck $p$ -- verringert.
+Um den \gDQ{wahren} thermodynamischen Druck zu erhalten, den das Gas ohne diese Anziehung hätte, müssen wir zum gemessenen Druck $p$ einen Korrekturterm $p_{i}$ (Binnendruck) addieren.
 
-\subsection{Phasendiagramme}\label{subsec: phasendiagramme}
-Ein \textbf{Phasendiagramm} stellt in einem Druck-Temperatur-Diagramm (p-T-Diagramm) die Existenzbereiche der verschiedenen Phasen eines Stoffes dar.
+Dieser Binnendruck ist proportional zur Teilchendichte zum Quadrat ($\rho^2 \propto (\nu/V)^2$), da die Anziehung sowohl von der Anzahl der ziehenden Teilchen als auch von der Anzahl der gezogenen Teilchen abhängt:
+\begin{equation}
+    p \rightarrow p + a \cdot \frac{\nu^2}{V^2}
+\end{equation}
+Der Parameter $a$ ist ein Maß für die Stärke der Anziehungskräfte zwischen den Teilchen.
+
+\begin{importantbox}{Van-der-Waals-Gleichung}
+    Führt man beide Korrekturen in die ideale Gasgleichung ein, erhält man die \textbf{Van-der-Waals-Gleichung}:
+    \begin{equation}\label{eq: van_der_waals}
+        \left( p + a \frac{\nu^2}{V^2} \right) \cdot (V - \nu b) = \nu R T \mDot
+    \end{equation}
+    Hierbei sind $a$ und $b$ materialspezifische Konstanten, die für jedes Gas experimentell bestimmt werden müssen.
+\end{importantbox}
+
+\subsubsection{Isothermen realer Gase}
+Trägt man den Druck $p$ als Funktion des Volumens $V$ für verschiedene Temperaturen auf (Isothermen), so zeigt sich das charakteristische Verhalten realer Gase, wie in \cref{fig: vanderwaals_isothermen} für Kohlendioxid ($\text{CO}_2$) dargestellt.
+
 \begin{itemize}
-    \item Die \textbf{Dampfdruckkurve} trennt die flüssige und die gasförmige Phase.
-    \item Die \textbf{Schmelzkurve} trennt die feste und die flüssige Phase.
-    \item Die \textbf{Sublimationskurve} trennt die feste und die gasförmige Phase.
+    \item \textbf{Hohe Temperaturen ($T > T_K$):} Die Isothermen ähneln Hyperbeln. Das Gas verhält sich näherungsweise wie ein ideales Gas.
+    \item \textbf{Kritische Temperatur ($T_K$):} Bei einer bestimmten Temperatur (für $\text{CO}_2$ ca. \SI{304}{\kelvin}) besitzt die Isotherme einen Sattelpunkt (kritischer Punkt). Oberhalb dieser Temperatur kann das Gas durch Druck allein \textit{nicht} mehr verflüssigt werden.
+    \item \textbf{Niedrige Temperaturen ($T < T_K$):} Die theoretische Van-der-Waals-Kurve zeigt einen schlangenförmigen Verlauf (\gDQ{Van-der-Waals-Schleife}). In der Realität findet hier ein Phasenübergang statt: Das Gas verflüssigt sich. Der Druck bleibt dabei konstant (horizontales Plateau), bis das gesamte Gas kondensiert ist (Maxwell-Konstruktion).
 \end{itemize}
-Der Schnittpunkt der drei Kurven ist der \textbf{Tripelpunkt}, an dem alle drei Phasen im Gleichgewicht koexistieren können.
+Das heißt die van-der-Waals-Gleichung beschreibt das Verhalten realer Gase nur näherungsweise und weicht bei Phasenübergängen vom gemessenen Verhalten ab. Die van-der-Waals-Isotherme in \cref{fig: vanderwaals_isothermen} zeigt dies exemplarisch für $\text{CO}_2$ bei einer Temperatur unterhalb der kritischen Temperatur. Komprimiert man $\text{CO}_2$-Gas bei $T = \SI{0}{\celsius}$, so folgt die gemessene Kurve zunächst der van-der-Waals-Kurve bis zum Punkt $A$. Danach bleibt der Druck konstant (horizontales Plateau) bis zum Punkt $C$, während das Gas verflüssigt wird. Erst danach steigt der Druck wieder an. Zwischen
+$A$ und $C$ können also Gas und Flüssigkeit gleichzeitig existieren
+(Koexistenzbereich). Der steile Anstieg von $p$ nach Erreichen des Punktes $C$ liegt an der im Vergleich mit Gasen sehr kleinen Kompressibilität von Flüssigkeiten.
 
 \begin{figure}[htb]
     \centering
-    \begin{minipage}{0.48\linewidth}
-        \centering
-        % \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/phasendiagramm_co2.png}
-        \includegraphics[width=\linewidth]{Bilder/Allgemein/placeholder.png}
-        \caption{Phasendiagramm von $\text{CO}_2$. Die Schmelzkurve hat eine positive Steigung, was bedeutet, dass der Schmelzpunkt mit steigendem Druck zunimmt.}
-        \label{fig:phasendiagramm_co2}
-    \end{minipage}\hfill
-    \begin{minipage}{0.48\linewidth}
-        \centering
-        % \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/phasendiagramm_h2o.png}
-        \includegraphics[width=\linewidth]{Bilder/Allgemein/placeholder.png}
-        \caption{Phasendiagramm von Wasser ($\text{H}_2\text{O}$). Die Schmelzkurve hat eine negative Steigung. Dies ist die \textbf{Anomalie des Wassers}: Eis hat eine geringere Dichte als flüssiges Wasser, weshalb es schwimmt und unter Druck schmelzen kann.}
-        \label{fig:phasendiagramm_h2o}
-    \end{minipage}
+    \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Waermelehre/van-der-Waals_Isothermen_CO2.png}
+    \caption{Isothermen eines realen Gases ($\text{CO}_2$) nach dem Van-der-Waals-Modell. Unterhalb der kritischen Temperatur $T_K$ treten Bereiche auf (rosa Fläche), in denen Gas und Flüssigkeit koexistieren. Die gestrichelte Linie markiert den Bereich des Phasenübergangs (konstanter Dampfdruck).}\label{fig: vanderwaals_isothermen}
 \end{figure}
+
+\section{Phasendiagramme}\label{sec: phasendiagramme}
+Ein Phasendiagramm (oder Zustandsdiagramm) visualisiert die Existenzbereiche der Aggregatzustände (fest, flüssig, gasförmig) in Abhängigkeit von den Zustandsgrößen Druck $p$ und Temperatur $T$. Die Linien im Diagramm trennen die verschiedenen Phasen und markieren Zustände, in denen zwei Phasen im Gleichgewicht koexistieren.
+
+\begin{itemize}
+    \item \textbf{Sublimationskurve:} Trennt fest und gasförmig.
+    \item \textbf{Siedekurve (Dampfdruckkurve):} Trennt flüssig und gasförmig. Sie endet im kritischen Punkt.
+    \item \textbf{Schmelzkurve:} Trennt fest und flüssig.
+\end{itemize}
+
+Es gibt zwei ausgezeichnete Punkte in einem solchen Diagramm:
+\begin{enumerate}
+    \item \textbf{Der Tripelpunkt:} Hier treffen alle drei Phasengrenzlinien aufeinander. Alle drei Phasen (fest, flüssig, gasförmig) existieren gleichzeitig im thermodynamischen Gleichgewicht. Der Tripelpunkt von Wasser liegt bei $T_{\text{Tr}} = \SI{273.16}{\kelvin}$ und $p_{\text{Tr}} = \SI{6.1}{\hecto\pascal}$ und dient zur Definition der Kelvin-Skala.
+    \item \textbf{Der kritische Punkt:} Er bildet das Ende der Siedekurve. Oberhalb von kritischem Druck $p_K$ und kritischer Temperatur $T_K$ sind Flüssigkeit und Gas nicht mehr unterscheidbar; man spricht von einem überkritischen Fluid.
+\end{enumerate}
+
+\subsection{Vergleich: Wasser und Kohlendioxid}
+Die Phasendiagramme verschiedener Stoffe sehen qualitativ ähnlich aus, weisen aber wichtige Unterschiede auf, insbesondere in der Steigung der Schmelzkurve.
+\begin{figure}[htb]
+    \centering
+    % Wir nutzen subfigure oder minipages für den Vergleich, falls das Paket subcaption geladen ist (im Preamble oben ja).
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/Phasendiagramm_H2O.png}
+        \caption{Phasendiagramm von Wasser: Die Schmelzkurve (fest/flüssig) verläuft nach links oben.}\label{fig: phasendiagramm_wasser}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/Phasendiagramm_CO2.png}
+        \caption{Phasendiagramm von $\text{CO}_2$: Die Schmelzkurve verläuft klassisch nach rechts oben.}
+        \label{fig: phasendiagramm_co2}
+    \end{subfigure}
+    \caption{Gegenüberstellung der Phasendiagramme von Wasser und Kohlendioxid. Die unterschiedlichen Steigungen der Schmelzkurven resultieren aus den Dichteunterschieden zwischen fester und flüssiger Phase.}
+    \label{fig: phasendiagramme_vergleich}
+\end{figure}
+\subsubsection{Wasser ($\text{H}_2\text{O}$) -- Die Anomalie}
+Wie in \cref{fig: phasendiagramme_vergleich} (links) zu sehen ist, besitzt die Schmelzkurve von Wasser eine \textbf{negative Steigung}. Das bedeutet: Erhöht man den Druck auf Eis, sinkt dessen Schmelzpunkt.
+\begin{rememberbox}{Anomalie des Wassers}
+    Da flüssiges Wasser eine höhere Dichte hat als Eis (Eis schwimmt oben), begünstigt eine Druckerhöhung den Zustand mit dem kleineren Volumen -- also die flüssige Phase. Daher schmilzt Eis unter hohem Druck.
+\end{rememberbox}
+
+\subsubsection{Kohlendioxid ($\text{CO}_2$) -- Normales Verhalten}
+Bei den meisten Stoffen, so auch bei $\text{CO}_2$ (siehe \cref{fig: phasendiagramme_vergleich} rechts), ist die Schmelzkurve nach rechts geneigt (\textbf{positive Steigung}). Der Feststoff hat eine höhere Dichte als die Flüssigkeit. Durch Druckerhöhung wird der Festkörper stabilisiert, die Schmelztemperatur steigt.
+
+Eine Besonderheit von $\text{CO}_2$ ist die Lage des Tripelpunkts bei $p_{\text{Tr}} \approx \SI{5.1}{\bar}$. Da unser Atmosphärendruck ($\approx \SI{1}{\bar}$) unterhalb dieses Drucks liegt, gibt es bei Normalbedingungen kein flüssiges $\text{CO}_2$. Festes $\text{CO}_2$ (Trockeneis) geht beim Erwärmen direkt in den gasförmigen Zustand über (Sublimation).
 
 \chapter{Die Hauptsätze der Thermodynamik}\label{chap: Hauptsaetze_Thermodynamik}
 Die Hauptsätze der Thermodynamik sind fundamentale Prinzipien, die den Umgang mit Energie, insbesondere Wärme, und die Richtung thermodynamischer Prozesse beschreiben.
