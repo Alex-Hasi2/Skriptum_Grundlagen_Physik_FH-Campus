@@ -1,0 +1,435 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     18048,        427]
+NotebookOptionsPosition[     17520,        409]
+NotebookOutlinePosition[     17956,        426]
+CellTagsIndexPosition[     17913,        423]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Nu]", "=", "1"}], ",", " ", 
+       RowBox[{"R", "=", "8.3145"}], ",", 
+       RowBox[{"\[Kappa]", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"f", "+", "2"}], ")"}], "/", "f"}]}], ",", " ", 
+       RowBox[{"f", "=", "5"}], ",", " ", "\[IndentingNewLine]", "T1", ",", 
+       "\[IndentingNewLine]", "T2", ",", "\[IndentingNewLine]", "p1", ",", 
+       "p2", ",", "p3", ",", "p4", ",", " ", "\[IndentingNewLine]", "V1", ",",
+        " ", "V2", ",", "V3", ",", "V4"}], "}"}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"T1", "=", "t1v"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"p1", "=", 
+       RowBox[{"p1v", "*", 
+        SuperscriptBox["10", "3"]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"V2", "=", 
+       RowBox[{"v2v", "*", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "3"}]]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"V3", "=", 
+       RowBox[{"v3v", "*", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "3"}]]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"V1", "=", 
+       FractionBox[
+        RowBox[{"\[Nu]", "*", "R", "*", "T1"}], "p1"]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"p2", " ", "=", " ", 
+       FractionBox[
+        RowBox[{"\[Nu]", "*", "R", "*", "T1"}], "V2"]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"p3", " ", "=", " ", 
+       RowBox[{"p2", "  ", 
+        FractionBox[
+         SuperscriptBox["V2", "\[Kappa]"], 
+         SuperscriptBox[
+          RowBox[{"(", "V3", ")"}], "\[Kappa]"]]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"T2", " ", "=", " ", 
+       FractionBox[
+        RowBox[{"p3", "*", "V3"}], 
+        RowBox[{"\[Nu]", "*", "R"}]]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"V4", "=", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FractionBox[
+          RowBox[{"p1", " ", 
+           SuperscriptBox["V1", "\[Kappa]"]}], 
+          RowBox[{"R", " ", "T2", " ", "\[Nu]"}]], ")"}], 
+        FractionBox["1", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "\[Kappa]"}]]]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"p4", " ", "=", " ", 
+       FractionBox[
+        RowBox[{"\[Nu]", "*", "R", "*", "T2"}], "V4"]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Column", "[", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              FractionBox[
+               RowBox[{"\[Nu]", "*", "R", "*", "T1"}], 
+               RowBox[{"V", "*", 
+                SuperscriptBox["10", 
+                 RowBox[{"-", "3"}]]}]], " ", "*", 
+              SuperscriptBox["10", 
+               RowBox[{"-", "5"}]]}], ",", 
+             RowBox[{"(*", " ", 
+              RowBox[{"Isotherme", " ", "|", " ", "Red"}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"p2", "  ", 
+              FractionBox[
+               SuperscriptBox["V2", "\[Kappa]"], 
+               SuperscriptBox[
+                RowBox[{"(", 
+                 RowBox[{"V", "*", 
+                  SuperscriptBox["10", 
+                   RowBox[{"-", "3"}]]}], ")"}], "\[Kappa]"]], " ", "*", 
+              SuperscriptBox["10", 
+               RowBox[{"-", "5"}]]}], ",", " ", 
+             RowBox[{"(*", " ", 
+              RowBox[{"Adiabte", " ", "|", " ", "Blue"}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              FractionBox[
+               RowBox[{"\[Nu]", "*", "R", "*", "T2"}], 
+               RowBox[{"V", "*", 
+                SuperscriptBox["10", 
+                 RowBox[{"-", "3"}]]}]], " ", "*", 
+              SuperscriptBox["10", 
+               RowBox[{"-", "5"}]]}], ",", " ", "\[IndentingNewLine]", 
+             RowBox[{"p4", "  ", 
+              FractionBox[
+               SuperscriptBox["V4", "\[Kappa]"], 
+               SuperscriptBox[
+                RowBox[{"(", 
+                 RowBox[{"V", "*", 
+                  SuperscriptBox["10", 
+                   RowBox[{"-", "3"}]]}], ")"}], "\[Kappa]"]], "*", 
+              SuperscriptBox["10", 
+               RowBox[{"-", "5"}]]}]}], "\[IndentingNewLine]", "}"}], ",", 
+           " ", 
+           RowBox[{"{", 
+            RowBox[{"V", ",", "1", ",", "300"}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"prVlow", ",", "prVup"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"prPlow", ",", "prPup"}], "}"}]}], "}"}]}], ",", " ", 
+           RowBox[{"PlotStyle", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"Red", ",", "Blue"}], "}"}]}], ",", 
+           "\[IndentingNewLine]", " ", 
+           RowBox[{"ImageSize", "\[Rule]", "700"}], ",", " ", 
+           RowBox[{"PlotTheme", "\[Rule]", "\"\<Detailed\>\""}], ",", " ", 
+           RowBox[{"AspectRatio", "->", 
+            RowBox[{"1", "/", "1"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{"GridLinesStyle", "\[Rule]", 
+            RowBox[{"Directive", "[", 
+             RowBox[{
+              RowBox[{"Lighter", "[", 
+               RowBox[{"Gray", ",", "0.8"}], "]"}], ",", " ", 
+              RowBox[{"Thickness", "[", "0.001", "]"}]}], "]"}]}], ",", " ", 
+           "\[IndentingNewLine]", 
+           RowBox[{"PlotLabel", "->", 
+            RowBox[{"{", 
+             RowBox[{"\"\<T1=\>\"", "<>", 
+              RowBox[{"ToString", "[", "T1", "]"}], "<>", "\"\<| T2=\>\"", "<>", 
+              RowBox[{"ToString", "[", "T2", "]"}]}], "}"}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{"#", ",", "21", ",", "Black"}], "]"}], "&"}], ")"}], "/@", 
+             RowBox[{"{", 
+              
+              RowBox[{"\"\<V [\!\(\*SuperscriptBox[\(dm\), \(3\)]\)]\>\"", 
+               ",", "\"\<p [bar]\>\""}], "}"}]}]}], ",", " ", 
+           RowBox[{"FrameStyle", "\[Rule]", 
+            RowBox[{"Directive", "[", "Black", "]"}]}], ",", " ", 
+           "\[IndentingNewLine]", 
+           RowBox[{"FrameTicksStyle", "\[Rule]", 
+            RowBox[{"Directive", "[", 
+             RowBox[{"Black", ",", "12"}], "]"}]}], ",", " ", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Epilog", "\[Rule]", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"PointSize", "[", "0.01", "]"}], ",", "Blue", ",", 
+                RowBox[{"Point", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"V1", "*", 
+                    SuperscriptBox["10", "3"]}], ",", " ", 
+                   RowBox[{"p1", "*", 
+                    SuperscriptBox["10", 
+                    RowBox[{"-", "5"}]]}]}], "}"}], "]"}]}], "}"}], ",", " ", 
+              "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"PointSize", "[", "0.01", "]"}], ",", "Green", ",", 
+                RowBox[{"Point", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"V2", "*", 
+                    SuperscriptBox["10", "3"]}], ",", " ", 
+                   RowBox[{"p2", "*", 
+                    SuperscriptBox["10", 
+                    RowBox[{"-", "5"}]]}]}], "}"}], "]"}]}], "}"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"PointSize", "[", "0.01", "]"}], ",", " ", "Red", ",", 
+                RowBox[{"Point", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"V3", "*", 
+                    SuperscriptBox["10", "3"]}], ",", " ", 
+                   RowBox[{"p3", "*", 
+                    SuperscriptBox["10", 
+                    RowBox[{"-", "5"}]]}]}], "}"}], "]"}]}], "}"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"PointSize", "[", "0.01", "]"}], ",", " ", 
+                RowBox[{"Point", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"V4", "*", 
+                    SuperscriptBox["10", "3"]}], ",", " ", 
+                   RowBox[{"p4", "*", 
+                    SuperscriptBox["10", 
+                    RowBox[{"-", "5"}]]}]}], "}"}], "]"}]}], "}"}]}], 
+             "\[IndentingNewLine]", "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"V1", ",", "p1", ",", 
+            FractionBox["V2", "V1"], ",", 
+            FractionBox["V3", "V2"]}], "}"}], "//", "N"}]}], 
+        "\[IndentingNewLine]", "}"}], "]"}]}]}], "\[IndentingNewLine]", "]"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"t1v", ",", "1200", ",", "\"\<T1\>\""}], "}"}], ",", "200", ",",
+      "5000"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"v2v", ",", "120", ",", "\"\<V2\>\""}], "}"}], ",", "10", ",", 
+     "400"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"v3v", ",", "150", ",", "\"\<V3\>\""}], "}"}], ",", "50", ",", 
+     "500"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"p1v", ",", "150", ",", "\"\<p1\>\""}], "}"}], ",", "50", ",", 
+     "700"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prPup", ",", "2.5", ",", "\"\<pUp\>\""}], "}"}], ",", "0.5", ",",
+      "20"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prPlow", ",", "0", ",", "\"\<plow\>\""}], "}"}], ",", "0", ",",
+      "3"}], "}"}], " ", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prVup", ",", "300", ",", "\"\<VUp\>\""}], "}"}], ",", "100", ",",
+      "800"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prVlow", ",", "0", ",", "\"\<Vlow\>\""}], "}"}], ",", "0", ",",
+      "500"}], "}"}]}], " ", "]"}]], "Input",
+ CellChangeTimes->{3.9750798750812855`*^9},
+ CellLabel->"In[2]:=",ExpressionUUID->"fc986bea-09bf-a846-95a0-5f0746f6c266"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`p1v$$ = 150, $CellContext`prPlow$$ = 
+    0, $CellContext`prPup$$ = 2.5, $CellContext`prVlow$$ = 
+    0, $CellContext`prVup$$ = 300, $CellContext`t1v$$ = 
+    1630., $CellContext`v2v$$ = 123., $CellContext`v3v$$ = 173., 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`t1v$$], 1200, "T1"}, 200, 5000, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`v2v$$], 120, "V2"}, 10, 400, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`v3v$$], 150, "V3"}, 50, 500, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`p1v$$], 150, "p1"}, 50, 700, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`prPup$$], 2.5, "pUp"}, 0.5, 20, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`prPlow$$], 0, "plow"}, 0, 3, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`prVup$$], 300, "VUp"}, 100, 800, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`prVlow$$], 0, "Vlow"}, 0, 500, ControlType -> 
+      Manipulator}}, Typeset`size$$ = {
+    825.3634497642518, {359.15576186082336`, 364.88769566481943`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`p1v$$ = 150, $CellContext`prPlow$$ = 
+        0, $CellContext`prPup$$ = 2.5, $CellContext`prVlow$$ = 
+        0, $CellContext`prVup$$ = 300, $CellContext`t1v$$ = 
+        1200, $CellContext`v2v$$ = 120, $CellContext`v3v$$ = 150}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> 
+      Block[{$CellContext`\[Nu] = 1, $CellContext`R = 
+         8.3145, $CellContext`\[Kappa] = ($CellContext`f + 
+           2)/$CellContext`f, $CellContext`f = 
+         5, $CellContext`T1, $CellContext`T2, $CellContext`p1, \
+$CellContext`p2, $CellContext`p3, $CellContext`p4, $CellContext`V1, \
+$CellContext`V2, $CellContext`V3, $CellContext`V4}, $CellContext`T1 = \
+$CellContext`t1v$$; $CellContext`p1 = $CellContext`p1v$$ 
+          10^3; $CellContext`V2 = $CellContext`v2v$$ 
+          10^(-3); $CellContext`V3 = $CellContext`v3v$$ 
+          10^(-3); $CellContext`V1 = $CellContext`\[Nu] $CellContext`R \
+$CellContext`T1/$CellContext`p1; $CellContext`p2 = $CellContext`\[Nu] \
+$CellContext`R $CellContext`T1/$CellContext`V2; $CellContext`p3 = \
+$CellContext`p2 \
+($CellContext`V2^$CellContext`\[Kappa]/$CellContext`V3^$CellContext`\[Kappa]); \
+$CellContext`T2 = $CellContext`p3 $CellContext`V3/($CellContext`\[Nu] \
+$CellContext`R); $CellContext`V4 = ($CellContext`p1 \
+$CellContext`V1^$CellContext`\[Kappa]/($CellContext`R $CellContext`T2 \
+$CellContext`\[Nu]))^(
+           1/(-1 + $CellContext`\[Kappa])); $CellContext`p4 = $CellContext`\
+\[Nu] $CellContext`R $CellContext`T2/$CellContext`V4; Column[{
+           
+           Plot[{($CellContext`\[Nu] $CellContext`R \
+$CellContext`T1/($CellContext`V 10^(-3))) 
+             10^(-5), $CellContext`p2 \
+($CellContext`V2^$CellContext`\[Kappa]/($CellContext`V 
+               10^(-3))^$CellContext`\[Kappa]) 
+             10^(-5), ($CellContext`\[Nu] $CellContext`R \
+$CellContext`T2/($CellContext`V 10^(-3))) 
+             10^(-5), $CellContext`p4 \
+($CellContext`V4^$CellContext`\[Kappa]/($CellContext`V 
+               10^(-3))^$CellContext`\[Kappa]) 10^(-5)}, {$CellContext`V, 1, 
+             300}, PlotRange -> {{$CellContext`prVlow$$, \
+$CellContext`prVup$$}, {$CellContext`prPlow$$, $CellContext`prPup$$}}, 
+            PlotStyle -> {Red, Blue}, ImageSize -> 700, PlotTheme -> 
+            "Detailed", AspectRatio -> 1/1, GridLinesStyle -> Directive[
+              Lighter[Gray, 0.8], 
+              Thickness[0.001]], 
+            PlotLabel -> {
+             "T1=" <> ToString[$CellContext`T1] <> "| T2=" <> 
+              ToString[$CellContext`T2]}, FrameLabel -> 
+            Map[Style[#, 21, Black]& , {
+              "V [\!\(\*SuperscriptBox[\(dm\), \(3\)]\)]", "p [bar]"}], 
+            FrameStyle -> Directive[Black], FrameTicksStyle -> 
+            Directive[Black, 12], Epilog -> {{
+               PointSize[0.01], Blue, 
+               Point[{$CellContext`V1 10^3, $CellContext`p1 10^(-5)}]}, {
+               PointSize[0.01], Green, 
+               Point[{$CellContext`V2 10^3, $CellContext`p2 10^(-5)}]}, {
+               PointSize[0.01], Red, 
+               Point[{$CellContext`V3 10^3, $CellContext`p3 10^(-5)}]}, {
+               PointSize[0.01], 
+               Point[{$CellContext`V4 10^3, $CellContext`p4 10^(-5)}]}}], 
+           
+           N[{$CellContext`V1, $CellContext`p1, \
+$CellContext`V2/$CellContext`V1, $CellContext`V3/$CellContext`V2}]}]], 
+      "Specifications" :> {{{$CellContext`t1v$$, 1200, "T1"}, 200, 
+         5000}, {{$CellContext`v2v$$, 120, "V2"}, 10, 
+         400}, {{$CellContext`v3v$$, 150, "V3"}, 50, 
+         500}, {{$CellContext`p1v$$, 150, "p1"}, 50, 
+         700}, {{$CellContext`prPup$$, 2.5, "pUp"}, 0.5, 
+         20}, {{$CellContext`prPlow$$, 0, "plow"}, 0, 
+         3}, {{$CellContext`prVup$$, 300, "VUp"}, 100, 
+         800}, {{$CellContext`prVlow$$, 0, "Vlow"}, 0, 500}}, "Options" :> {},
+       "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      1103.5570214312418`, {387.08088741885933`, 392.8128212228554}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.9750798668650074`*^9, 3.9750798755239735`*^9}},
+ CellLabel->"Out[2]=",ExpressionUUID->"768de9f8-1178-7244-9d2a-25b5db41b123"]
+}, Open  ]]
+},
+WindowSize->{1635, 858},
+WindowMargins->{{-59.999999999999986`, Automatic}, {
+  710.5714285714286, Automatic}},
+FrontEndVersion->"14.2 for Microsoft Windows (64-bit) (March 14, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"87b5ad89-83c2-0843-ab56-9df494a235b8"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 10556, 263, 1117, "Input",ExpressionUUID->"fc986bea-09bf-a846-95a0-5f0746f6c266"],
+Cell[11135, 287, 6369, 119, 796, "Output",ExpressionUUID->"768de9f8-1178-7244-9d2a-25b5db41b123"]
+}, Open  ]]
+}
+]
+*)
+

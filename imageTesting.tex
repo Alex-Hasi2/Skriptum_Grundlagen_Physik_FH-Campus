@@ -29,89 +29,256 @@
 \newcommand{\ehat}[1]{\hat{\bm{e}}_{#1}}
 \newcommand{\dd}{\mathrm{d}}
 
-
-
 \begin{document}
 
 
-% Zeit-Temperatur Diagramm für Wasser von -20°C Eis bis hin zu Dampf bei 120°C
 
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% p-V-Diagramm einer isothermen Expansion mit Beschriftungen um die Arbeit zu verdeutlichen
+% die Arbeit W ist das Integral unter der Kurve im p-V-Diagramm
 \begin{tikzpicture}[
-    scale=1.0, font=\small,
-    axis/.style={-{Stealth}, line width=1.0pt},
-    box/.style={draw, fill=blue!10, rounded corners=2pt, minimum height=0.6cm, align=center, font=\footnotesize},
-    curve/.style={line width=1.5pt, red!80!black},
-    guide/.style={dashed, thin, gray}
-]
+        scale=1.1,
+        >=latex, 
+        font=\small
+        ]
+        % Rasterhilfslinien (optional, leicht angedeutet)
+        \draw[step=1cm, gray!20, very thin] (0,0) grid (7.8, 4.8);
 
-    % --- Definition der Koordinaten (Zeit t und Temperatur T) ---
-    % Y-Achse
-    \def\yStart{0.5}   % Start bei z.B. -20 Grad
-    \def\yMelt{2.0}    % 0 Grad
-    \def\yBoil{5.5}    % 100 Grad
-    \def\yEnd{7.0}     % > 100 Grad
+        % --- DECLARE FUNCTION ---
+        % Wir definieren die Isotherme p(x) = k / x
+        % Skalierung: Um visuell dem Bild zu entsprechen. 
+        \tikzset{declare function={
+            isotherm(\v) = 10 / \v;
+        }}
 
-    % X-Achse (Zeitpunkte)
-    \def\xZero{0}
-    \def\xOne{1.0}     % Ende Eis-Erwärmung
-    \def\xTwo{2.0}     % Ende Schmelzen
-    \def\xThree{5.0}   % Ende Wasser-Erwärmung
-    \def\xFour{10.0}   % Ende Verdampfen (Langes Plateau!)
-    \def\xEnd{10.6}    % Ende Dampf-Erwärmung
+        % Definition der Punkte V1 und V2
+        \def\Va{3.0} % Startvolumen
+        \def\Vb{5.5} % Endvolumen
 
-    % Y-Position der Beschriftungsboxen oben
-    \def\yBox{6.3}
+        % 2. Fläche schraffieren/füllen (Das Integral)
+        % Wir füllen den Bereich unter der Kurve zwischen Va und Vb
+        \fill[violet!20] (\Va,0) -- (\Va, {isotherm(\Va)}) 
+            plot[domain=\Va:\Vb, samples=50] (\x, {isotherm(\x)}) 
+            -- (\Vb, 0) -- (\Va,0) -- cycle;
 
-    % --- 1. Achsen zeichnen ---
-    \draw[axis] (0, \yMelt) -- (\xEnd+0.5, \yMelt) node[right] {$t \,[\si{\second}]$}; 
-    \draw[axis] (0, 0) -- (0, \yBox+1) node[left] {\large $T\, [\si{\celsius}]$};
-    
-    % --- 2. Ticks und Labels Y-Achse ---
-    \draw[thick] (-0.15, \yStart) -- (0.15, \yStart) node[left=0.3cm] {$T_a$}; % Anfang
-    \draw[thick] (-0.15, \yMelt) -- (0.15, \yMelt) node[left=0.3cm] {$T_s = \SI{0}{\celsius}$};
-    \draw[thick] (-0.15, \yBoil) -- (0.15, \yBoil) node[left=0.3cm] {$T_v = \SI{100}{\celsius}$};
-    \draw[thick, dashed, gray] (0, \yBoil) -- (\xEnd+0.5, \yBoil); % Hilfslinie bei Siedetemp.
-    % --- 3. Kurve zeichnen ---
-    \draw[curve] 
-        (\xZero, \yStart) coordinate (Start)
-        -- (\xOne, \yMelt) coordinate (MeltStart)
-        -- (\xTwo, \yMelt) coordinate (MeltEnd)
-        -- (\xThree, \yBoil) coordinate (BoilStart)
-        -- (\xFour, \yBoil) coordinate (BoilEnd)
-        -- (\xEnd, \yEnd) coordinate (End);
+        % Label für die Arbeit -W
+        \node[violet!60!black] at (4.1, 1.0) {\Large $-W$};
 
-    % --- 4. Hilfslinien & Ticks X-Achse ---
-    % t1
-    \draw[guide] (MeltStart) -- (\xOne, 0) node[below, black] {$t_1$};
-    % t2
-    \draw[guide] (MeltEnd) -- (\xTwo, 0) node[below, black] {$t_2$};
-    % t3
-    \draw[guide] (BoilStart) -- (\xThree, 0) node[below, black] {$t_3$};
-    % t4
-    \draw[guide] (BoilEnd) -- (\xFour, 0) node[below, black] {$t_4$};
+        % 3. Die Kurve zeichnen (Isotherme)
+        \draw[red, thick, domain=2.1:7.5, samples=100] plot (\x, {isotherm(\x)});
 
-    % --- 5. Beschriftungsboxen (Phasen) ---
-    % Schmelzen
-    \node[align=center, text width=1.8cm] at ({(\xOne+\xTwo)/2}, \yMelt+0.5) {Schmelzen};
-    % Verdampfen
-    \node[align=center, text width=3.8cm] at ({(\xThree+\xFour)/2}, \yBoil+0.5) {Verdampfen};
-    
-    % --- 6. Zusätzliche Infos im Plot ---
-    % Aggregatzustände unter die Kurve schreiben
-    \node[red!60!black, font=\footnotesize] at ({(\xZero+\xOne)/2}, \yStart+0.1) {fest};
-    \node[red!60!black, font=\footnotesize] at ({(\xTwo+\xThree)/2}, \yMelt+0.9) {flüssig};
-    \node[red!60!black, font=\footnotesize] at (\xFour+0.86, \yEnd-1.2) {gasförmig};
+        % 4. Punkte und Labels einzeichnen
+        
+        % Punkt 1 (Start)
+        \coordinate (P1) at (\Va, {isotherm(\Va)});
+        \fill[black] (P1) circle (2pt);
+        
+        % Label Box für Punkt 1
+        \node[draw, fill=white, align=center, anchor=south west] (L1) at (3.0, 3.5) {\large $p_1, V_1, T$};
+        \draw[thin] (L1.south west) -- (P1);
 
-    % Pfeil für Latente Wärme
-    \draw[<->, >=Latex, thin] (\xThree, \yBoil-0.3) -- (\xFour, \yBoil-0.3) node[midway, below] {$\Delta Q = m \cdot \lambda_v$};
+        % Punkt 2 (Ende)
+        \coordinate (P2) at (\Vb, {isotherm(\Vb)});
+        \fill[black] (P2) circle (2pt);
 
-    % dT/dt Pfeile während der Erwärmungsphasen
-    \draw[->, >=Latex, thin] ({(\xZero+\xOne)/2}, \yStart+0.65) -- (\xTwo+0.35, \yStart+0.1) node[right] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(fest)}}$};
-    \draw[->, >=Latex, thin] ({(\xTwo+\xThree)/2 + 0.1}, \yMelt+1.77) -- (\xThree+0.35, \yMelt+1) node[right] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(flüssig)}}$};
-    \draw[->, >=Latex, thin] (\xFour+0.3, \yBoil+1) -- (\xFour-0.35, \yBoil+1.5) node[left] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(gas)}}$};
+        % Label Box für Punkt 2
+        \node[draw, fill=white, align=center, anchor=south west] (L2) at (5.5, 2.0) {\large $p_2 < p_1, V_2 > V_1, T$};
+        \draw[thin] (L2.south west) -- (P2);
+
+        % 1. Definition der Funktion (Hyperbelast)
+        % p(V) = const / V. Hier wählen wir k = 2.5 für die Optik
+        \draw[->, line width=1.2pt] (0,0) -- (8,0) node[below,right] {\Large $V$};
+        \draw[->, line width=1.2pt] (0,0) -- (0,5) node[above left] {\Large $p$};
 
 \end{tikzpicture}
+
+
+
+
+
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+
+
+
+% p-V-Diagramm des Carnot-Kreisprozesses mit Beschriftungen
+% \begin{tikzpicture}[
+%         scale=1.2,
+%         >={Stealth}, % Pfeilspitzen-Stil
+%         font=\small\sffamily
+%     ]
+
+%     % --- Koordinaten-Definition ---
+%     % Diese Punkte definieren die Ecken des Zyklus (V, p)
+%     % 1: Hochdruck/Kleines Volumen
+%     \coordinate (P1) at (1.2, 5.0); 
+%     % 2: Isotherme Expansion von 1
+%     \coordinate (P2) at (4.0, 3.2); 
+%     % 3: Adiabatische Expansion von 2
+%     \coordinate (P3) at (5.5, 1.4); 
+%     % 4: Isotherme Kompression von 3
+%     \coordinate (P4) at (2.2, 2.2); 
+
+%     % Achsen-Endpunkte
+%     \coordinate (Origin) at (0,0);
+%     \coordinate (XEnd) at (6.5,0);
+%     \coordinate (YEnd) at (0,6.0);
+
+%     % --- Fläche füllen ---
+%     % Wir füllen zuerst, damit Gitterlinien/Achsen darüber liegen können, 
+%     % falls gewünscht. Hier füllen wir den Zyklus rot/orange.
+%     \fill[fill=red!25] 
+%         (P1) to[out=-25, in=160] (P2) % Isotherme T1
+%              to[out=-70, in=115] (P3) % Adiabate
+%              to[out=165, in=-15] (P4) % Isotherme T2
+%              to[out=110, in=-75] (P1) % Adiabate
+%              -- cycle;
+
+%     % --- Hilfslinien zu den Achsen (V1...V4) ---
+%     \draw[dashed, thin] (P1) -- (P1 |- Origin) node[below] {\large $V_1$};
+%     \draw[dashed, thin] (P2) -- (P2 |- Origin) node[below] {\large $V_2$};
+%     \draw[dashed, thin] (P3) -- (P3 |- Origin) node[below] {\large $V_3$};
+%     \draw[dashed, thin] (P4) -- (P4 |- Origin) node[below] {\large $V_4$};
+
+%     % --- Achsen zeichnen ---
+%     \draw[->, thick] (-0.5,0) -- (XEnd) node[below] {\large $V$};
+%     \draw[->, thick] (0,-0.5) -- (YEnd) node[left] {\large $p$};
+
+%     % --- Den Zyklus zeichnen (Umrandung) ---
+%     \draw[thick] (P1) to[out=-25, in=160] node[midway, above right=2pt] {\large $T_1$} (P2);
+%     \draw[thick] (P2) to[out=-70, in=115] (P3);
+%     \draw[thick] (P3) to[out=165, in=-15] node[midway, below left=2pt] {\large $T_2$} (P4);
+%     \draw[thick] (P4) to[out=110, in=-75] (P1);
+
+%     % --- Eckpunkte beschriften (1, 2, 3, 4) ---
+%     \node[above left] at (P1) {\large 1};
+%     \node[above right] at (P2) {\large 2};
+%     \node[right] at (P3) {\large 3};
+%     \node[below left] at (P4) {\large 4};
+
+%     % --- Wärmemengen-Pfeile (Q1, Q2) ---
+%     % Q1 (Wärmezufuhr, rot) - von oben in die Fläche
+%     \draw[->, ultra thick, red!80!black] (2.8, 4.5) -- (2.8, 3.3) node[midway, right] {\large $\Delta Q_1$};
+    
+%     % Q2 (Wärmeabfuhr, schwarz) - von der Fläche nach unten
+%     \draw[->, ultra thick, black] (3.8, 2.3) -- (3.8, 1.1) node[midway, right] {\large $\Delta Q_2$};
+
+%     % --- Beschriftungen für Kurventypen (Isotherme, Adiabate) ---
+%     % Isotherme (zeigt auf obere Kurve)
+%     \node (iso_label) at (5.0, 4.8) {\large Isotherme};
+%     \draw[thin] (iso_label.south west) -- (3.2, 4.0);
+
+%     % Adiabate (zeigt auf rechte Kurve)
+%     \node (adia_label) at (6.0, 3.0) {\large Adiabate};
+%     \draw[thin] (adia_label.west) -- (4.8, 2.2);
+
+% \end{tikzpicture}
+
+
+%     \caption{Das $p$-$V$-Diagramm des Carnot-Kreisprozesses. Der Prozess wird von zwei Isothermen (Temperatur $T_1$ und $T_2$) und zwei Adiabaten begrenzt. Die eingeschlossene Fläche entspricht der verrichteten Arbeit.}
+%     \label{fig: carnot_prozess_pv}
+% \end{figure}
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+
+
+
+
+% % Zeit-Temperatur Diagramm für Wasser von -20°C Eis bis hin zu Dampf bei 120°C
+% % Der Zeitverlauf ist in rot dargestellt, mit Beschriftungen für die Phasenübergänge und 
+% % Aggregatzustände und Pfeilen für die latente Wärme und die Erwärmungsraten
+% \begin{tikzpicture}[
+%     scale=1.0, font=\small,
+%     axis/.style={-{Stealth}, line width=1.0pt},
+%     box/.style={draw, fill=blue!10, rounded corners=2pt, minimum height=0.6cm, align=center, font=\footnotesize},
+%     curve/.style={line width=1.5pt, red!80!black},
+%     guide/.style={dashed, thin, gray}
+% ]
+
+%     % --- Definition der Koordinaten (Zeit t und Temperatur T) ---
+%     % Y-Achse
+%     \def\yStart{0.5}   % Start bei z.B. -20 Grad
+%     \def\yMelt{2.0}    % 0 Grad
+%     \def\yBoil{5.5}    % 100 Grad
+%     \def\yEnd{7.0}     % > 100 Grad
+
+%     % X-Achse (Zeitpunkte)
+%     \def\xZero{0}
+%     \def\xOne{1.0}     % Ende Eis-Erwärmung
+%     \def\xTwo{2.0}     % Ende Schmelzen
+%     \def\xThree{5.0}   % Ende Wasser-Erwärmung
+%     \def\xFour{10.0}   % Ende Verdampfen (Langes Plateau!)
+%     \def\xEnd{10.6}    % Ende Dampf-Erwärmung
+
+%     % Y-Position der Beschriftungsboxen oben
+%     \def\yBox{6.3}
+
+%     % --- 1. Achsen zeichnen ---
+%     \draw[axis] (0, \yMelt) -- (\xEnd+0.5, \yMelt) node[right] {$t \,[\si{\second}]$}; 
+%     \draw[axis] (0, 0) -- (0, \yBox+1) node[left] {\large $T\, [\si{\celsius}]$};
+    
+%     % --- 2. Ticks und Labels Y-Achse ---
+%     \draw[thick] (-0.15, \yStart) -- (0.15, \yStart) node[left=0.3cm] {$T_a$}; % Anfang
+%     \draw[thick] (-0.15, \yMelt) -- (0.15, \yMelt) node[left=0.3cm] {$T_s = \SI{0}{\celsius}$};
+%     \draw[thick] (-0.15, \yBoil) -- (0.15, \yBoil) node[left=0.3cm] {$T_v = \SI{100}{\celsius}$};
+%     \draw[thick, dashed, gray] (0, \yBoil) -- (\xEnd+0.5, \yBoil); % Hilfslinie bei Siedetemp.
+%     % --- 3. Kurve zeichnen ---
+%     \draw[curve] 
+%         (\xZero, \yStart) coordinate (Start)
+%         -- (\xOne, \yMelt) coordinate (MeltStart)
+%         -- (\xTwo, \yMelt) coordinate (MeltEnd)
+%         -- (\xThree, \yBoil) coordinate (BoilStart)
+%         -- (\xFour, \yBoil) coordinate (BoilEnd)
+%         -- (\xEnd, \yEnd) coordinate (End);
+
+%     % --- 4. Hilfslinien & Ticks X-Achse ---
+%     % t1
+%     \draw[guide] (MeltStart) -- (\xOne, 0) node[below, black] {$t_1$};
+%     % t2
+%     \draw[guide] (MeltEnd) -- (\xTwo, 0) node[below, black] {$t_2$};
+%     % t3
+%     \draw[guide] (BoilStart) -- (\xThree, 0) node[below, black] {$t_3$};
+%     % t4
+%     \draw[guide] (BoilEnd) -- (\xFour, 0) node[below, black] {$t_4$};
+
+%     % --- 5. Beschriftungsboxen (Phasen) ---
+%     % Schmelzen
+%     \node[align=center, text width=1.8cm] at ({(\xOne+\xTwo)/2}, \yMelt+0.5) {Schmelzen};
+%     % Verdampfen
+%     \node[align=center, text width=3.8cm] at ({(\xThree+\xFour)/2}, \yBoil+0.5) {Verdampfen};
+    
+%     % --- 6. Zusätzliche Infos im Plot ---
+%     % Aggregatzustände unter die Kurve schreiben
+%     \node[red!60!black, font=\footnotesize] at ({(\xZero+\xOne)/2}, \yStart+0.1) {fest};
+%     \node[red!60!black, font=\footnotesize] at ({(\xTwo+\xThree)/2}, \yMelt+0.9) {flüssig};
+%     \node[red!60!black, font=\footnotesize] at (\xFour+0.86, \yEnd-1.2) {gasförmig};
+
+%     % Pfeil für Latente Wärme
+%     \draw[<->, >=Latex, thin] (\xThree, \yBoil-0.3) -- (\xFour, \yBoil-0.3) node[midway, below] {$\Delta Q = m \cdot \lambda_v$};
+
+%     % dT/dt Pfeile während der Erwärmungsphasen
+%     \draw[->, >=Latex, thin] ({(\xZero+\xOne)/2}, \yStart+0.65) -- (\xTwo+0.35, \yStart+0.1) node[right] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(fest)}}$};
+%     \draw[->, >=Latex, thin] ({(\xTwo+\xThree)/2 + 0.1}, \yMelt+1.77) -- (\xThree+0.35, \yMelt+1) node[right] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(flüssig)}}$};
+%     \draw[->, >=Latex, thin] (\xFour+0.3, \yBoil+1) -- (\xFour-0.35, \yBoil+1.5) node[left] {$\frac{\dd T}{\dd t} \propto \frac{1}{C_V\text{(gas)}}$};
+
+% \end{tikzpicture}
    
+
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
