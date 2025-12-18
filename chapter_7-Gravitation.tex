@@ -4,7 +4,7 @@ Die Erforschung des Himmels und der Bewegung der Gestirne zählt zu den älteste
 
 Auf diesem Fundament baute Johannes Kepler auf. Anhand der außerordentlich genauen und umfangreichen astronomischen Daten, die ein Kollege, Tycho Brahe, über Jahrzehnte gesammelt hatte, gelang es Kepler, die tatsächliche Form der Planetenbahnen zu entschlüsseln. Er erkannte, dass die Planeten sich nicht auf Kreisen, sondern auf Ellipsen bewegen und dass ihre Geschwindigkeit entlang dieser Bahn variiert. Diese revolutionären Erkenntnisse fasste er zwischen 1609 und 1619 in drei fundamentalen Gesetzen zusammen, die nicht nur die Planetenbewegung exakt beschrieben, sondern auch den Weg für Isaac Newtons universelles Gravitationsgesetz ebneten.
 
-\section{Die Keplerschen Gesetze} \label{sec: keplerschen_gesetze}
+\section{Die Keplerschen Gesetze}\label{sec: keplerschen_gesetze}
 
 \subsection{Erstes Keplersches Gesetz}\label{subsec: kepler1}
 Das erste Gesetz bricht mit der antiken Vorstellung perfekter Kreisbahnen.
@@ -56,18 +56,15 @@ Eine Ellipse ist geometrisch definiert als die Menge aller Punkte, für die die 
         \draw[|{Latex}-{Latex}|] (0,0.24) -- ({\a*\e},0.24);
     \end{tikzpicture}
     }
-    \caption{Eine elliptische Planetenbahn um die Sonne, die in einem der beiden Brennpunkte steht. Dargestellt sind die große Halbachse $a$, die kleine Halbachse $b$ sowie Perihel, Aphel und der Ortsvektor $\protect\ivec{r}$ (Fahrstrahl) eines Planeten.}
-    \label{fig: kepler1_ellipse}
+    \caption{Eine elliptische Planetenbahn um die Sonne, die in einem der beiden Brennpunkte steht. Dargestellt sind die große Halbachse $a$, die kleine Halbachse $b$ sowie Perihel, Aphel und der Ortsvektor $\protect\ivec{r}$ (Fahrstrahl) eines Planeten.}\label{fig: kepler1_ellipse}
 \end{figure}
 
-\subsection{Zweites Keplersches Gesetz}
-\label{ssec:kepler2}
+\subsection{Zweites Keplersches Gesetz}\label{subsec: kepler2}
 Das zweite Gesetz beschreibt die Geschwindigkeit eines Planeten auf seiner Umlaufbahn.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweites_keplersches_gesetz.png} 
-    \caption{Veranschaulichung des zweiten Keplerschen Gesetzes. In gleichen Zeitintervallen $\Delta t$ überstreicht der Fahrstrahl $\protect\ivec{r}(t)$ gleiche Flächen ($A_1 = A_2$).}
-    \label{fig: kepler2_flaechensatz}
+    \caption{Veranschaulichung des zweiten Keplerschen Gesetzes. In gleichen Zeitintervallen $\Delta t$ überstreicht der Fahrstrahl $\protect\ivec{r}(t)$ gleiche Flächen ($A_1 = A_2$).}\label{fig: kepler2_flaechensatz}
 \end{figure}
 \begin{rememberbox}[]{2. Keplersches Gesetz (Flächensatz)}
 Der Fahrstrahl (der Verbindungsvektor von der Sonne zum Planeten) überstreicht in gleichen Zeiten gleiche Flächen. 
@@ -122,8 +119,7 @@ Das zweite Keplersche Gesetz ist eine direkte Konsequenz der \textbf{Drehimpulse
         \node[font=\Large\bfseries] at (barycentric cs:C=1,A=1.2,B=1.2) {$\dd A$};
     \end{tikzpicture}
     }
-    \caption{Das infinitesimale Flächenelement $\dd A$, das vom Fahrstrahl $\protect\ivec{r}(t)$ in der Zeit $\dd t$ überstrichen wird.}
-    \label{fig: kepler2_herleitung}
+    \caption{Das infinitesimale Flächenelement $\dd A$, das vom Fahrstrahl $\protect\ivec{r}(t)$ in der Zeit $\dd t$ überstrichen wird.}\label{fig: kepler2_herleitung}
 \end{figure}
 
 Die Fläche dieses Dreiecks ist die Hälfte des Betrags des Kreuzprodukts\footnote{Der Betrag des Kreuzprodukts ergibt die Fläche des aufgespannten Parallelogramms.} der beiden aufspannenden Vektoren:
@@ -139,17 +135,15 @@ Die \textbf{Flächengeschwindigkeit} ist somit die zeitliche Änderung der Fläc
     \frac{\dd A}{\dd t} = \frac{1}{2} |\ivec{r}(t) \times \ivec{v}(t)| \mDot
 \end{equation}
 Wenn wir den Impuls $\ivec{p} = m\ivec{v}$ einsetzen, indem wir $\ivec{v}$ durch $\ivec{p}$ ersetzen und dafür die rechte Seite durch $m$ dividieren, erkennen wir den Zusammenhang mit dem Drehimpuls $\ivec{L} = \ivec{r} \times \ivec{p}$:
-\begin{equation}
+\begin{equation}\label{eq: flaechengeschwindigkeit_drehimpuls}
     \frac{\dd A}{\dd t} = \frac{1}{2m} |\ivec{r}(t) \times \ivec{p}(t)| = \frac{|\ivec{L}(t)|}{2m}
-    \label{eq:flaechengeschwindigkeit_drehimpuls}
 \end{equation}
 Da das zweite Keplersche Gesetz besagt, dass die Flächengeschwindigkeit konstant ist ($\dd A/\dd t = \const$), folgt daraus direkt, dass auch der Betrag des Drehimpulses $|\ivec{L}|$ konstant sein muss. Dies ist immer der Fall, wenn die wirkende Kraft (hier die Gravitationskraft) eine Zentralkraft ist, d.h. immer auf das Zentrum (die Sonne) gerichtet ist.
 
 
 
 
-\subsection{Drittes Keplersches Gesetz}
-\label{ssec:kepler3}
+\subsection{Drittes Keplersches Gesetz}\label{subsec: kepler3}
 Das dritte Gesetz stellt einen Zusammenhang zwischen den Umlaufzeiten und den Bahngrößen der Planeten her.
 
 \begin{rememberbox}{3. Keplersches Gesetz (Periodengesetz)}
@@ -202,21 +196,22 @@ Die genaue funktionale Abstandsabhängigkeit $f(r)$ dieser Kraft leitete Newton 
         % Striche im Zentrum und am Brennpunkt zur Markierung der Distanz
     \end{tikzpicture}   
     }
-    \caption{Ein Planet, der eine Kreisbahn um die Sonne ausführt.}
-    \label{fig: planet_kreisbahn}
+    \caption{Ein Planet, der eine Kreisbahn um die Sonne ausführt.}\label{fig: planet_kreisbahn}
 \end{figure}
 Für eine gleichförmige Kreisbewegung mit Radius $r$ und Winkelgeschwindigkeit $\omega$ muss die Gravitationskraft $F_{\text{G}}$ die benötigte Zentripetalkraft $F_{\text{Zp}}$ aufbringen, um einen Planeten der Masse $m$ auf seiner Bahn zu halten: 
-\begin{equation}\label{eq: grav_vs_zentri}\begin{gathered}
+\begin{equation}\label{eq: grav_vs_zentri}
+    \begin{gathered}
     F_\text{G} = F_\text{Zp} \\
     \implies G \cdot M \cdot m \cdot f(r) = m \omega^2 r
-\end{gathered}\end{equation}
+    \end{gathered}
+\end{equation}
 wobei $m$ die Planetenmasse, $M$ die Sonnenmasse und $G$ die Gravitationskonstante ist.
 
 Das dritte Keplerschen Gesetz, $T^2/a^3 = \const$, wird für eine Kreisbahn ($a=r$) zu $T^2/r^3 = c = \const$. Mit der allgemeinen Beziehung für Umlaufzeiten $T = 2\pi/\omega$ folgt:
 \begin{equation}\label{eq: omega_from_kepler3}
     \frac{T^2}{r^3} = \frac{(2\pi/\omega)^2}{r^3} = c \quad \implies \quad \omega^2 = \frac{4\pi^2}{c} \frac{1}{r^3} \mDot
 \end{equation}
-Setzt man diesen Ausdruck für $\omega^2$ in Gleichung \ref{eq: grav_vs_zentri} ein, erhält man:
+Setzt man diesen Ausdruck für $\omega^2$ in Gleichung \cref{eq: grav_vs_zentri} ein, erhält man:
 \begin{equation}
     G \cdot M \cdot m \cdot f(r) = m \left( \frac{4\pi^2}{c} \frac{1}{r^3} \right) r = \left( \frac{4\pi^2}{c} \right) \cdot m \cdot \frac{1}{r^2}
 \end{equation}
@@ -224,9 +219,8 @@ Durch Vergleich der Terme erkennt man, dass $4\pi^2 /c = G\cdot M$ und dass die 
 
 \begin{rememberbox}[]{Newtonsches Gravitationsgesetz}
 Zwei beliebige Massenpunkte $m_1$ und $m_2$ im Abstand $r$ ziehen sich mit einer Kraft $\ivecS{F}{\text{G}}$ an, deren Betrag proportional zum Produkt der Massen und umgekehrt proportional zum Quadrat ihres Abstandes ist. 
-\begin{equation}
+\begin{equation}\label{eq: newton_gravitation}
     \ivecS{F}{\text{G}, 2 \to 1} = -G \frac{m_1 m_2}{r^2} \ivecS{e}{2\rightarrow 1}
-    \label{eq:newton_gravitation}
 \end{equation}
 Die \textbf{Gravitationskonstante} hat den Wert $G \approx \SI{6.67e-11}{\newton\metre\squared\per\kilogram\squared}$. 
 \end{rememberbox}
@@ -240,8 +234,7 @@ Mit dem Gravitationsgesetz können wir berechnen, welche Geschwindigkeit ein Obj
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.3\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweite_kosmische_geschwindigkeit.png} 
-    \caption{Ein Objekt wird von der Oberfläche eines Himmelskörpers (Masse $M$, Radius $R$) mit der Anfangsgeschwindigkeit $\protect\ivec{v}_0$ senkrecht nach oben abgefeuert.}
-    \label{fig: zweite_kosmische_geschwindigkeit}
+    \caption{Ein Objekt wird von der Oberfläche eines Himmelskörpers (Masse $M$, Radius $R$) mit der Anfangsgeschwindigkeit $\protect\ivec{v}_0$ senkrecht nach oben abgefeuert.}\label{fig: zweite_kosmische_geschwindigkeit}
 \end{figure}
 Im Gegensatz zur konstanten Erdbeschleunigung $g$ in Bodennähe ist die Gravitationsbeschleunigung allgemein ortsabhängig: $a(r) = -GM/r^2$. Wir betrachten ein Objekt der Masse $m$, das von der Erdoberfläche (Radius $R$) senkrecht nach oben geschossen wird. Da die Beschleunigung vom Ort $r$ und nicht von der Zeit $t$ abhängt, formen wir den Beschleunigungsterm um, wobei wir nur an den Beträgen der Größen interessiert sind und daher nicht vektoriell rechnen:
 \begin{equation}\label{eq: a_v_dv_dr}
@@ -272,10 +265,9 @@ Mit der Erdbeschleunigung an der Oberfläche, $g = GM/R^2$, lässt sich dies umf
 Aus dieser Gleichung wird ersichtlich, dass die maximale Höhe $h_{max}$ unendlich wird, wenn der Nenner gegen Null geht. Dies geschieht, wenn die Anfangsgeschwindigkeit $v_0$ einen kritischen Wert erreicht.
 
 \begin{importantbox}{Zweite kosmische Geschwindigkeit $v_{II}$}
-Die Fluchtgeschwindigkeit ist die minimale Anfangsgeschwindigkeit, die ein Objekt benötigt, um das Gravitationsfeld eines Himmelskörpers ohne weiteren Antrieb zu verlassen ($h_{max} \to \infty$). Man erhält sie, indem man den Nenner in Gleichung \ref{eq: hmax} gleich null setzt:
-\begin{equation}
+Die Fluchtgeschwindigkeit ist die minimale Anfangsgeschwindigkeit, die ein Objekt benötigt, um das Gravitationsfeld eines Himmelskörpers ohne weiteren Antrieb zu verlassen ($h_{\maxText} \to \infty$). Man erhält sie, indem man den Nenner in Gleichung \cref{eq: hmax} gleich null setzt:
+\begin{equation}\label{eq: v_escape}
     v_0^2 = 2gR \quad \implies \quad v_0 = v_{II} = \sqrt{2gR}
-    \label{eq:v_escape}
 \end{equation}
 Für die Erde beträgt die Fluchtgeschwindigkeit etwa $\SI{11.2}{\kilo\metre\per\second}$. 
 \end{importantbox}

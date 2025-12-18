@@ -65,7 +65,7 @@ Isaac Newton erkannte, dass die Ursache für den Bewegungszustand eines Körpers
             \node[anchor=north west, fill=white, fill opacity=0.8, text opacity=1, inner sep=2pt, rounded corners=2pt] at (image.north west) {\textbf{(1)}};
         \end{tikzpicture}
         \caption*{} % Optional: for spacing and labeling
-        \label{fig:grundkraft_gravitation}
+        \label{fig: grundkraft_gravitation}
     \end{subfigure}
     \hfill % This still works to space them out
     % (2) Elektromagnetismus
@@ -75,7 +75,7 @@ Isaac Newton erkannte, dass die Ursache für den Bewegungszustand eines Körpers
             \node[anchor=north west, fill=white, fill opacity=0.8, text opacity=1, inner sep=2pt, rounded corners=2pt] at (image.north west) {\textbf{(2)}};
         \end{tikzpicture}
         \caption*{}
-        \label{fig:grundkraft_elektro}
+        \label{fig: grundkraft_elektro}
     \end{subfigure}
     \hfill
     % (3) Starke Wechselwirkung
@@ -84,8 +84,7 @@ Isaac Newton erkannte, dass die Ursache für den Bewegungszustand eines Körpers
             \node[anchor=south west, inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/tabelle_WW_3_starkeWechselwirkung.jpg}};
             \node[anchor=north west, fill=white, fill opacity=0.8, text opacity=1, inner sep=2pt, rounded corners=2pt] at (image.north west) {\textbf{(3)}};
         \end{tikzpicture}
-        \caption*{}
-        \label{fig:grundkraft_stark}
+        \caption*{}\label{fig: grundkraft_stark}
     \end{subfigure}
     \hfill
     % (4) Schwache Wechselwirkung
@@ -94,12 +93,10 @@ Isaac Newton erkannte, dass die Ursache für den Bewegungszustand eines Körpers
             \node[anchor=south west, inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/tabelle_WW_4_schwacheWechselwirkung.jpg}};
             \node[anchor=north west, fill=white, fill opacity=0.8, text opacity=1, inner sep=2pt, rounded corners=2pt] at (image.north west) {\textbf{(4)}};
         \end{tikzpicture}
-        \caption*{}
-        \label{fig:grundkraft_schwach}
+        \caption*{}\label{fig: grundkraft_schwach}
     \end{subfigure}
 
-    \caption{Die vier fundamentalen Wechselwirkungen der Physik: (1) Gravitation, (2) Elektromagnetismus, (3) Starke Wechselwirkung und (4) Schwache Wechselwirkung.}
-    \label{fig: grundkraefte_bilder}
+    \caption{Die vier fundamentalen Wechselwirkungen der Physik: (1) Gravitation, (2) Elektromagnetismus, (3) Starke Wechselwirkung und (4) Schwache Wechselwirkung.}\label{fig: grundkraefte_bilder}
 \end{figure}
 
 \section{Die Newtonschen Axiome}\label{sec: newtonsche_axiome}
@@ -140,14 +137,14 @@ Das Axiom gilt nur in sogenannten \textbf{Inertialsystemen}, also in nicht besch
 
 \begin{rememberbox}{Definition: Impuls}
     Der \textbf{Impuls} ist ein Maß für den Bewegungszustand eines Körpers. Er ist definiert als das Produkt aus Masse und Geschwindigkeit:
-    \begin{equation}\label{eq:impuls}
+    \begin{equation}\label{eq: impuls}
         \ivec{p} \defeq m \cdot \ivec{v} 
     \end{equation}
     Der Impuls ist ein Vektor, der parallel zur Geschwindigkeit zeigt, und hat die Maßeinheit $[p] = \SI{1}{\kilogram\meter\per\second}$. Eine Impulsänderung ist immer auf eine Wechselwirkung (Kraft) zurückzuführen.
 \end{rememberbox}
 
 
-\subsection{Zweites Newtonsches Axiom (Aktionsprinzip)} \label{subsec:zweites_axiom}
+\subsection{Zweites Newtonsches Axiom (Aktionsprinzip)}\label{subsec: zweites_axiom}
 \begin{importantbox}[]{2. Newtonsches Axiom}
     Die Ursache einer Impulsänderung eines Körpers liegt in der auf den Körper wirkenden Kraft. Die Kraft ist die zeitliche Ableitung des Impulses:
     \begin{equation}\label{eq: zweites_newtonsches_axiom_kraft}
@@ -197,8 +194,7 @@ Vereint man den Gamma-Faktor mit der Ruhemasse, kann man eine \textbf{relativist
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.45\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/aktions-reaktions-paar.png}
-    \caption{Die Gravitationskraft zwischen zwei Massen $m_1$ und $m_2$ ist ein Beispiel für ein Aktions-Reaktions-Paar ($\protect\ivecS{F}{1}=-\protect\ivecS{F}{2}$).}
-    \label{fig: actio_reactio_reaktionspaar}
+    \caption{Die Gravitationskraft zwischen zwei Massen $m_1$ und $m_2$ ist ein Beispiel für ein Aktions-Reaktions-Paar ($\protect\ivecS{F}{1}=-\protect\ivecS{F}{2}$).}\label{fig: actio_reactio_reaktionspaar}
 \end{figure}
 \begin{importantbox}[]{3. Newtonsches Axiom (Actio = Reactio)}
     Wenn zwei Körper wechselwirken, so ist die Kraft, die Körper 1 auf Körper 2 ausübt ($\ivecS{F}{1\rightarrow 2}$), entgegengesetzt gleich der Kraft, die Körper 2 auf Körper 1 ausübt ($\ivecS{F}{2\rightarrow 1}$):
@@ -248,13 +244,11 @@ Wenn ein Körper in Ruhe ist (statisches Gleichgewicht), müssen sich die angrei
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.38\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/vektoraddition_kräfte.png}
-    \caption{Vektoraddition von Kräften, die alle im selben Punkt angreifen. Die resultierende Kraft $\protect\ivecS{F}{4}$ ist die Vektorsumme von $\protect\ivecS{F}{1}$, $\protect\ivecS{F}{2}$ und $\protect\ivecS{F}{3}$.}
-    \label{fig: vektoraddition_von_kräften_dynamik}
+    \caption{Vektoraddition von Kräften, die alle im selben Punkt angreifen. Die resultierende Kraft $\protect\ivecS{F}{4}$ ist die Vektorsumme von $\protect\ivecS{F}{1}$, $\protect\ivecS{F}{2}$ und $\protect\ivecS{F}{3}$.}\label{fig: vektoraddition_von_kräften_dynamik}
 \end{figure}
 
 
-\subsection{Kraftfelder und Zentralkräfte}
-\label{subsec:kraftfelder}
+\subsection{Kraftfelder und Zentralkräfte}\label{subsec: kraftfelder}
 
 In vielen Fällen hängt die auf einen Körper wirkende Kraft vom Ort ab. Kann man jedem Raumpunkt eine Kraft zuordnen, so spricht man von einem \textbf{Kraftfeld} 
 \begin{equation}
@@ -324,8 +318,7 @@ Wie in der Abbildung \cref{fig: gravitation_zwischen_m1_m2} dargestellt, besagt 
               (mB_center)++(-1,-1) -- ++(-1,0) node[above, pos=0.4, yshift=0.7mm] {$\vec{e}_{2\rightarrow 1}$};
     \end{tikzpicture}
     }
-    \caption{Zwei Massen $m_1$ und $m_2$ im Abstand $r$ ziehen sich gegenseitig mit den Kräften $\protect\ivec{F}{1\rightarrow 2}$ und $\protect\ivec{F}{2\rightarrow 1}$ an.}
-    \label{fig: gravitation_zwischen_m1_m2}
+    \caption{Zwei Massen $m_1$ und $m_2$ im Abstand $r$ ziehen sich gegenseitig mit den Kräften $\protect\ivec{F}{1\rightarrow 2}$ und $\protect\ivec{F}{2\rightarrow 1}$ an.}\label{fig: gravitation_zwischen_m1_m2}
 \end{figure}
 
 Die Stärke dieser Anziehungskraft hängt von den beiden Massen und ihrem Abstand $r$ ab. Je größer die Massen, desto stärker die Kraft; je größer der Abstand, desto schwächer wird sie.
@@ -346,8 +339,7 @@ Man betrachte die Statue in \cref{fig: statue_normalkraft_reaktionskraft}. Auf d
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.35\linewidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/statue_gewichtskraft_normalkraft.png}
-    \caption{Da sich die Statue nicht bewegt, muss die Gesamtkraft null sein. Die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ wird durch eine Normalkraft $\protect\ivecS{F}{\text{N}}$ kompensiert. Die Normalkraft hat eine Reaktionskraft $\protect\ivecS{F'}{\text{N}}$.}
-    \label{fig: statue_normalkraft_reaktionskraft}
+    \caption{Da sich die Statue nicht bewegt, muss die Gesamtkraft null sein. Die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ wird durch eine Normalkraft $\protect\ivecS{F}{\text{N}}$ kompensiert. Die Normalkraft hat eine Reaktionskraft $\protect\ivecS{F'}{\text{N}}$.}\label{fig: statue_normalkraft_reaktionskraft}
 \end{figure}
 
 
@@ -359,8 +351,7 @@ Wird eine Masse mit einer Feder verbunden, so existiert eine Position, in der di
     \labelphantom{fig: feder_rückstellkraft_b}
     \labelphantom{fig: feder_rückstellkraft_c}
     \includegraphics[width=0.6\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/rückstellkraft_feder_abc.png}
-    \caption{Eine Masse, die an einer Feder befestigt ist. a) In der Ruhelage $x=x_0=0$. b) Auslenkung in die positive $x$-Richtung, $\Delta x > 0$. c) Kompression in die negative $x$-Richtung, $\Delta x < 0$.}
-    \label{fig: feder_rückstellkraft}
+    \caption{Eine Masse, die an einer Feder befestigt ist. a) In der Ruhelage $x=x_0=0$. b) Auslenkung in die positive $x$-Richtung, $\Delta x > 0$. c) Kompression in die negative $x$-Richtung, $\Delta x < 0$.}\label{fig: feder_rückstellkraft}
 \end{figure}
 
 Lenkt man die Masse aus der Ruhelage aus, so erzeugt die Feder eine \textbf{Rückstellkraft} $\ivecS{F}{x}$, die stets bestrebt ist, die Masse in die Ruhelage zurückzuführen.
@@ -395,8 +386,7 @@ Reibungskräfte treten an den Kontaktflächen zwischen zwei Körpern auf. Sie en
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.4\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/kontaktkraft_unebenheit.png}
-    \caption{Ein Körper bewegt sich mit der Geschwindigkeit $\protect\ivec{v}$ parallel zur Oberfläche der Unterlage. Die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ presst den Körper normal auf die Unterlage. Die Unterlage kompensiert kompensiert hier die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ durch die Normalkraft $\protect\ivecS{F}{\text{N}}$, die senkrecht auf die Kontaktfläche steht. Die vergrößerte Ansicht zeigt die mikroskopischen Unebenheiten der Oberflächen, die zur Reibung führen.}
-    \label{fig: reibung_mikro_ursache}
+    \caption{Ein Körper bewegt sich mit der Geschwindigkeit $\protect\ivec{v}$ parallel zur Oberfläche der Unterlage. Die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ presst den Körper normal auf die Unterlage. Die Unterlage kompensiert kompensiert hier die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ durch die Normalkraft $\protect\ivecS{F}{\text{N}}$, die senkrecht auf die Kontaktfläche steht. Die vergrößerte Ansicht zeigt die mikroskopischen Unebenheiten der Oberflächen, die zur Reibung führen.}\label{fig: reibung_mikro_ursache}
 \end{figure}
 
 Die Oberflächen zweier Körper berühren sich nur an den Spitzen dieser Unebenheiten. Erhöht man die \textbf{Normalkraft} $\ivecS{F}{\text{N}}$ – die Kraft, die senkrecht auf die Kontaktfläche drückt – vergrößert sich die effektive Kontaktfläche. Die Reibungskraft $\ivecS{F}{\text{R}}$ ist proportional zu dieser mikroskopischen Kontaktfläche und somit auch proportional zur Normalkraft: $|\ivecS{F}{\text{R}}| \propto \ivecS{F}{\text{N}}$.
@@ -526,8 +516,7 @@ Da die Hangabtriebskraft vom Neigungswinkel der schiefen Ebene abhängt, stellt 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/schiefe_ebene_haftreibung.png}
-    \caption{Ein Körper der Masse $m$ wird auf der schiefen Ebene von der Haftreibungskraft gehalten, sofern die maximale Haftreibungskraft nicht überschritten wird: $|\protect\ivecS{F}{\text{A}}| \leq |\protect\ivecS{F}{\text{R,h,max}}|$.}
-    \label{fig: schiefe_ebene_haftreibung}
+    \caption{Ein Körper der Masse $m$ wird auf der schiefen Ebene von der Haftreibungskraft gehalten, sofern die maximale Haftreibungskraft nicht überschritten wird: $|\protect\ivecS{F}{\text{A}}| \leq |\protect\ivecS{F}{\text{R,h,max}}|$.}\label{fig: schiefe_ebene_haftreibung}
 \end{figure}
 \begin{rememberbox}[]{Maximaler Haftreibungswinkel}
 Der maximale Winkel $\alpha_{\text{R,h,max}}$, bei dem ein Körper gerade noch nicht zu rutschen beginnt, wird als Haftreibungswinkel bezeichnet. Er ergibt sich aus der Gleichheit der Kräfte:
@@ -542,8 +531,7 @@ Wird der maximale Haftreibungswinkel und damit die maximale Haftreibungskraft ü
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/schiefe_ebene_gleitreibung.png}
-    \caption{Ein Körper der Masse $m$ gleitet unter dem Einfluss der Gleitreibungskraft eine schiefe Ebene hinab. Die Gleitreibungskraft $\protect\ivecS{F}{\text{R,g}}$ wirkt dabei der Hangabtriebskraft }
-    \label{fig: schiefe_ebene_gleitreibung}
+    \caption{Ein Körper der Masse $m$ gleitet unter dem Einfluss der Gleitreibungskraft eine schiefe Ebene hinab. Die Gleitreibungskraft $\protect\ivecS{F}{\text{R,g}}$ wirkt dabei der Hangabtriebskraft entgegen}\label{fig: schiefe_ebene_gleitreibung}
 \end{figure}
 Das Kräftegleichgewicht lautet
 \begin{equation}\label{eq: kraeftegleichgew_gleitreibung}
@@ -585,8 +573,7 @@ Bei einem Winkel von $\alpha = \SI{30}{\degree}$ gleitet der Körper, da $\SI{30
 Eine Kiste mit Masse $m_1 = \SI{10.0}{\kilo\gram}$ ruht auf einer schiefen Ebene mit einem Neigungswinkel von $\theta = \SI{37}{\degree}$. Sie ist über ein masseloses Seil und eine reibungsfreie Rolle mit einer zweiten, hängenden Masse $m_2$ verbunden. Der Haftreibungskoeffizient zwischen Kiste und Ebene beträgt $\mu_\text{R,h} = 0.4$.\\
 \begin{center}
     \includegraphics[width=0.45\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/schiefe_ebene_gleichgewicht_seilrolle.png}
-    \captionof{figure}{Die Kiste mit der Masse $m_1$ wird durch die Haftreibung und durch die Zugkraft, die von der Kiste $m_2$ über die Umlenkung vermittelt wird, in Ruhe gehalten.}
-    \label{fig: gleichgewicht_schiefe_ebene_seilrolle}
+    \captionof{figure}{Die Kiste mit der Masse $m_1$ wird durch die Haftreibung und durch die Zugkraft, die von der Kiste $m_2$ über die Umlenkung vermittelt wird, in Ruhe gehalten.}\label{fig: gleichgewicht_schiefe_ebene_seilrolle}
 \end{center}
 \textbf{Frage:} In welchem Wertebereich für die Masse $m_2$ bleibt das System in Ruhe?
 \tcblower
@@ -645,7 +632,7 @@ $m_2 \in [\num{2.82}; \num{9.21}]\,\si{\kilo\gram}$ befindet.
 
 
 
-\section{Drehimpuls und Drehmoment} \label{sec: Drehimpuls_Drehmoment}
+\section{Drehimpuls und Drehmoment}\label{sec: Drehimpuls_Drehmoment}
 Betrachten wir einen Massepunkt mit Masse $m$ und Impuls $\ivec{p} = m \cdot \ivec{v}$, der sich entlang einer Bahnkurve $\ivec{r}(t)$ bewegt.
 \begin{importantbox}{Definition: Drehimpuls}
 Der \textbf{Drehimpuls} $\ivec{L}$ des Teilchens bezüglich des Koordinatenursprungs O ist definiert als das Vektorprodukt aus dem Ortsvektor $\ivec{r}$ und dem Impuls $\ivec{p}$:
@@ -658,8 +645,7 @@ Der Drehimpulsvektor $\ivec{L}$ steht senkrecht auf die Ebene, die von den Vekto
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/drehimpuls_ebene.png} 
-    \caption{Der Drehimpuls $\protect\ivec{L}(t)$ eines Massenpunktes $m$ bei einer ebenen Bewegung. Die Geschwindigkeit $\protect\ivec{v}$ wird in eine radiale Komponente ($\protect\ivecS{v}{r}$) und eine tangentiale Komponente ($\protect\ivecS{v}{\varphi}$) zerlegt. Nur die tangentiale Komponente erzeugt einen Drehimpuls.}
-    \label{fig: drehimpuls_ebene_bewegung}
+    \caption{Der Drehimpuls $\protect\ivec{L}(t)$ eines Massenpunktes $m$ bei einer ebenen Bewegung. Die Geschwindigkeit $\protect\ivec{v}$ wird in eine radiale Komponente ($\protect\ivecS{v}{r}$) und eine tangentiale Komponente ($\protect\ivecS{v}{\varphi}$) zerlegt. Nur die tangentiale Komponente erzeugt einen Drehimpuls.}\label{fig: drehimpuls_ebene_bewegung}
 \end{figure}
 Um den Drehimpuls besser zu verstehen, zerlegen wir den Geschwindigkeitsvektor $\ivec{v}$ in eine radiale Komponente $\ivecS{v}{r}$, die parallel zum Ortsvektor $\ivec{r}$ ist, und eine tangentiale (oder azimutale) Komponente $\ivecS{v}{\varphi}$, die senkrecht zu $\ivec{r}$ steht. Es gilt also $\ivec{v} = \ivecS{v}{r} + \ivecS{v}{\varphi}$.
 
@@ -670,7 +656,7 @@ Setzen wir dies in die Definition des Drehimpulses ein:
 \end{equation}
 Da $\ivecS{v}{r} \parallel \ivec{r}$ ist, verschwindet ihr Vektorprodukt: $\ivec{r} \times \ivecS{v}{r} = \ivec{0}$. Damit vereinfacht sich der Ausdruck für den Drehimpuls zu
 \begin{equation}
-\label{eq:drehimpuls_tangential}
+\label{eq: drehimpuls_tangential}
 \ivec{L} = m \cdot (\ivec{r} \times \ivecS{v}{\varphi}) \mDot
 \end{equation}
 Daraus folgt, dass nur die zum Ortsvektor senkrechte Geschwindigkeitskomponente zum Drehimpuls beiträgt. Wenn sich ein Körper nur radial vom Ursprung weg oder auf ihn zu bewegt ($\ivec{v} = \ivecS{v}{r}$), ist sein Drehimpuls Null. Eine gekrümmte Bahnkurve ist daher stets mit einem von Null verschiedenen Drehimpuls verbunden.
@@ -696,8 +682,7 @@ Es besteht eine fundamentale Analogie zwischen der Translations- und der Rotatio
 $$ \vec{F} = \frac{\dd\vec{p}}{\dd t} \quad \longleftrightarrow \quad \vec{D} = \frac{\dd\vec{L}}{\dd t} $$
 Die Kraft $\ivec{F}$ ist die Ursache für die Änderung des Impulses $\ivec{p}$, genauso wie das Drehmoment $\ivec{D}$ die Ursache für die Änderung des Drehimpulses $\ivec{L}$ ist.
 
-\section{Analogie zwischen Translation und Rotation}
-\label{sec:analogie_translation_rotation}
+\section{Analogie zwischen Translation und Rotation}\label{sec: analogie_translation_rotation}
 
 Die physikalischen Größen der Translation haben direkte Entsprechungen in der Rotation. Diese Analogie hilft, die Konzepte der Rotationsdynamik zu verstehen.
 
@@ -713,8 +698,7 @@ Die folgende Tabelle stellt die wichtigsten analogen Größen gegenüber.
 
 \begin{table}[h!]
 \centering
-\caption{Gegenüberstellung von physikalischen Größen der Translation und Rotation.}
-\label{tab:analogie_trans_rot}
+\caption{Gegenüberstellung von physikalischen Größen der Translation und Rotation.}\label{tab: analogie_trans_rot}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{ll|ll}
 \toprule
@@ -732,8 +716,7 @@ Kinetische Energie & $E_{\text{kin}} = \frac{1}{2} m v^2$ & Rotationsenergie & $
 \end{tabular}
 \end{table}
 
-\section{Beschleunigte Bezugssysteme und Scheinkräfte}
-\label{sec:scheinkraefte}
+\section{Beschleunigte Bezugssysteme und Scheinkräfte}\label{sec: scheinkraefte}
 
 In \textbf{Inertialsystemen} (unbeschleunigten Bezugssystemen) gelten die Newtonschen Gesetze in ihrer gewohnten Form. In \textbf{beschleunigten Bezugssystemen} müssen jedoch zusätzliche Kräfte, sogenannte \textbf{Scheinkräfte} oder \textbf{Trägheitskräfte}, eingeführt werden, um die Bewegung korrekt zu beschreiben.
 
@@ -742,8 +725,7 @@ Stellen wir uns eine Masse $m$ vor, die in einem Fahrstuhl an einer Federwaage h
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.25\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/scheinkraft_fahrstuhl.png}
-    \caption{Kräftediagramm für eine Masse $m$, die in einem mit $\protect\ivec{a}$ nach unten beschleunigten Fahrstuhl an einer Federwaage hängt.}
-    \label{fig:fahrstuhl}
+    \caption{Kräftediagramm für eine Masse $m$, die in einem mit $\protect\ivec{a}$ nach unten beschleunigten Fahrstuhl an einer Federwaage hängt.}\label{fig: fahrstuhl}
 \end{figure}
 Betrachten wir den Fall, dass der Fahrstuhl mit einer Beschleunigung $\ivec{a} = -a\ivecS{e}{z}$ nach unten beschleunigt wird.
 
@@ -780,8 +762,7 @@ Betrachten wir nun ein Bezugssystem $S'(x',y',z')$, das mit einer konstanten Win
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.45\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/scheinkraft_rotierendes_bezugssystem.png}
-    \caption{Ein Inertialsystem $S$ ($x,y$-Ebene) und ein rotierendes Bezugssystem $S'$ ($x',y'$-Ebene), das mit konstanter Winkelgeschwindigkeit $\protect\ivec{\omega}$ um eine Achse rotiert. Der Ortsvektor $\protect\ivec{r} = \protect\ivec{r}'$ zeigt auf einen Punkt $A$.}
-    \label{fig: rotierendes_system_zwei_KS}
+    \caption{Ein Inertialsystem $S$ ($x,y$-Ebene) und ein rotierendes Bezugssystem $S'$ ($x',y'$-Ebene), das mit konstanter Winkelgeschwindigkeit $\protect\ivec{\omega}$ um eine Achse rotiert. Der Ortsvektor $\protect\ivec{r} = \protect\ivec{r}'$ zeigt auf einen Punkt $A$.}\label{fig: rotierendes_system_zwei_KS}
 \end{figure}
 
 Ein Beobachter $B$ im ruhenden System $S$ beschreibt die Geschwindigkeit eines Punktes $A$ als $\ivec{v} = \frac{\dd\ivec{r}}{\dd t}$. Wir nehmen an, dass ein Beobachter $B'$ im rotierenden System $S'$ nicht weißt, dass sein Koordinatensystem rotiert und so misst er die Geschwindigkeit von $A$ relativ zu seinem System als $\ivec{v}'$. 
@@ -879,16 +860,14 @@ Damit können wir nun endlich das Transformationsgesetz für die Beschleunigung 
 Während der Beobachter $B$ in seinem ruhenden System $S$ die Beschleunigung $\ivec{a} = \dd \ivec{v}/\dd t$ misst, muss der Beobachter $B'$ in seinem System $S'$ zusätzliche Beschleunigungen (Kräfte) einführen, um dieselbe Bewegung des Massenpunktes zu erhalten. \\
 
 Multipliziert man diese Gleichung mit der Masse $m$ und stellt sie nach der Kraft im rotierenden System $m\vec{a}' = \vec{F}'$ um, ergibt sich das \textbf{Grundgesetz der Dynamik im rotierenden Bezugssystem}:
-\begin{equation}
-\label{eq:dyn_rot_system}
+\begin{equation}\label{eq: dyn_rot_system}
 \ivec{F}' = \ivec{F} +\underbrace{2m(\ivec{v}' \times \ivec{\omega})}_{\text{Corioliskraft}} + \underbrace{m\ivec{\omega} \times (\ivec{r} \times \ivec{\omega})}_{\text{Zentrifugalkraft}}
 \end{equation}
 wobei $\ivec{F} = m\ivec{a}$ die \gDQ{wahre} Kraft ist, die im Inertialsystem wirkt. Um die Bewegung in $S'$ zu beschreiben, muss ein Beobachter zusätzlich zur wahren Kraft $\ivec{F}$ zwei Scheinkräfte berücksichtigen.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.55\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/scheinkraft_coriolis-und-zentrifugalkraft.png}
-    \caption{Die Zentrifugalbeschleunigung $\protect\ivec{a}_{\text{Zf}}$ und die Coriolisbeschleunigung $\protect\ivec{a}_{\text{C}}$ für einen Punkt $A$, der sich mit der Geschwindigkeit $\protect\ivec{v}'$ in einem rotierenden Bezugssystem bewegt.}
-    \label{fig: coriolis_zentrifugalbeschl}
+    \caption{Die Zentrifugalbeschleunigung $\protect\ivec{a}_{\text{Zf}}$ und die Coriolisbeschleunigung $\protect\ivec{a}_{\text{C}}$ für einen Punkt $A$, der sich mit der Geschwindigkeit $\protect\ivec{v}'$ in einem rotierenden Bezugssystem bewegt.}\label{fig: coriolis_zentrifugalbeschl}
 \end{figure}
 \begin{importantbox}[]{Zentrifugalkraft und Corioliskraft}
 Die beiden Scheinkräfte im rotierenden Bezugssystem sind (siehe \cref{fig: coriolis_zentrifugalbeschl}):

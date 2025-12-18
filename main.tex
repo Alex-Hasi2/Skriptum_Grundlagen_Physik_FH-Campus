@@ -975,7 +975,7 @@ Setzen wir dies in den Ausdruck für den Druck ein, erhalten wir die Grundgleich
 \end{importantbox}
 
 \subsubsection{Interpretation als Energiedichte}
-Die Gleichung lässt sich physikalisch sehr anschaulich interpretieren, wenn man sie leicht umformt und die mittlere kinetische Energie eines Teilchens $\overline{\Ekin} = \frac{1}{2}m\overline{v^2}$ einführt:
+Die Gleichung lässt sich physikalisch sehr anschaulich interpretieren, wenn man sie leicht umformt und die \textbf{mittlere kinetische Energie eines Teilchens} $\overline{\Ekin} = \frac{1}{2}m\overline{v^2}$ einführt:
 \begin{equation}
     p = \frac{1}{3} n m \overline{v^2} = \frac{2}{3} n \cdot \left( \frac{1}{2} m \overline{v^2} \right) = \frac{2}{3} \cdot \frac{N}{V} \cdot \overline{\Ekin} \mDot
 \end{equation}
@@ -987,12 +987,12 @@ Vergleicht man dieses Ergebnis mit der idealen Gasgleichung aus der Thermodynami
 
 \begin{rememberbox}{Mikroskopische Deutung der Temperatur}
     Durch Gleichsetzen von \cref{eq: druck_energie_beziehung} und der idealen Gasgleichung folgt:
-    \begin{equation}
+    \begin{equation}\label{eq: Verbindung_EKin_mit_abs_T}
         \frac{2}{3} N \overline{\Ekin} = N \kB T \quad \implies \quad \overline{\Ekin} = \frac{3}{2} \kB T \mDot
     \end{equation}
     Die absolute Temperatur $T$ ist also ein Maß für die mittlere kinetische Energie der Gasteilchen.
 \end{rememberbox}
-
+\Cref{eq: Verbindung_EKin_mit_abs_T} ergibt sich für ein ideales Gas mit drei Freiheitsgraden (Bewegungsmöglichkeiten in $x$-, $y$- und $z$-Richtung). Jedes Freiheitsgrad trägt dabei den Anteil $\frac{1}{2} \kB T$ zur mittleren kinetischen Energie bei. 
 
 \section{Maxwell-Boltzmann-Verteilung}\label{sec: maxwell_boltzmann_verteilung}
 Im vorangegangenen Abschnitt haben wir den Gasdruck mithilfe des mittleren Geschwindigkeitsquadrats $\overline{v^2}$ hergeleitet. Dies könnte den Eindruck erwecken, dass alle Gasteilchen mit derselben Geschwindigkeit unterwegs sind.
@@ -1186,14 +1186,15 @@ Da die Verteilung nicht symmetrisch ist, fallen der häufigste Wert und der Mitt
 Bisher haben wir gesehen, dass die Temperatur ein Maß für die mikroskopische Bewegungsenergie der Teilchen ist ($T \propto \overline{E_{\text{kin}}}$). 
 Daraus ergibt sich eine direkte Konsequenz: Möchten wir die Temperatur eines Körpers erhöhen, müssen wir die Geschwindigkeit seiner Teilchen erhöhen. Wir müssen dem System also Energie zuführen.
 Diese Energie, die aufgrund einer Temperaturdifferenz zwischen einem System und seiner Umgebung übertragen wird, nennen wir \textbf{Wärme} $Q$ (oder Wärmemenge).
-
-Führt man einem Körper Wärme $\Delta Q$ zu, so steigt in der Regel seine Temperatur um einen Betrag $\Delta T$. Für diesen Prozess gilt:
-\begin{equation}\label{eq:waermemenge_def}
-    \Delta Q = C \cdot \Delta T = c \cdot m \cdot \Delta T \mDot
-\end{equation}
-Die Proportionalitätskonstante $C$ ist die \textbf{Wärmekapazität} des gesamten Körpers. 
-Beziehen wir diese auf die Masse $m$, erhalten wir die Materialkonstante $c$, die \textbf{spezifische Wärmekapazität}.
-Sie gibt an, wie viel Energie notwendig ist, um \SI{1}{\kilo\gram} eines Stoffes um \SI{1}{\kelvin} zu erwärmen. Ihre Einheit ist $[\si{\joule\per\kilogram\per\kelvin}]$.
+\begin{importantbox}{Wärmekapazität}
+    Führt man einem Körper Wärme $\Delta Q$ zu, so steigt in der Regel seine Temperatur um einen Betrag $\Delta T$. Für diesen Prozess gilt:
+    \begin{equation}\label{eq: waermemenge_def}
+        \Delta Q = C \cdot \Delta T = c \cdot m \cdot \Delta T \mDot
+    \end{equation}
+    Die Proportionalitätskonstante $C$ ist die \textbf{Wärmekapazität} des gesamten Körpers. 
+    Beziehen wir diese auf die Masse $m$, erhalten wir die Materialkonstante $c$, die \textbf{spezifische Wärmekapazität}.
+    Sie gibt an, wie viel Energie notwendig ist, um \SI{1}{\kilo\gram} eines Stoffes um \SI{1}{\kelvin} zu erwärmen. Ihre Einheit ist $[\si{\joule\per\kilogram\per\kelvin}]$.
+\end{importantbox}
 
 \begin{rememberbox}{Die Einheit Kalorie}
     Historisch wurde für die Wärmemenge oft die Einheit \textbf{Kalorie} (\si{\calorie}) verwendet.
@@ -1210,8 +1211,16 @@ Im alltäglichen Sprachgebrauch wird hingegen oft von \textbf{Kalorien} (mit gro
 
 \subsection{Molare Größen und die innere Energie}\label{subsec: molare_groessen_innere_energie}
 In der Physik der Gase und in der Chemie ist es oft sinnvoller, statt der Masse $m$ die Stoffmenge $\nu$ in \textbf{Mol} zu betrachten, da die physikalischen Eigenschaften (wie der Druck) direkt von der Anzahl der Teilchen abhängen.
+\begin{itemize}
+    \item \textbf{Ein Mol} ist die Stoffmenge, die genauso viele Teilchen enthält, wie Atome in \SI{12}{\gram} des Kohlenstoff-Isotops ${}^{12}C$ enthalten sind.
+    \item Diese Anzahl an Teilchen pro Mol ist eine universelle Konstante, die \textbf{Avogadro-Konstante} $N_A$:
+    \begin{equation}
+        N_A \approx \SI{6.022e23}{\mol^{-1}}
+    \end{equation}
+    \item Das \textbf{Molvolumen} $V_M$ ist das Volumen, das ein Mol eines Stoffes einnimmt. Für ideale Gase unter Normbedingungen ($p=\SI{1}{bar}$, $T=\SI{0}{\celsius}$) beträgt es $V_M = \SI{22.7}{\deci\meter\cubed}$.
+\end{itemize}
 
-Ein Mol enthält exakt $N_A \approx \SI{6.022e23}{}$ Teilchen (Avogadro-Konstante). Die ideale Gasgleichung lässt sich damit in ihrer molaren Form schreiben:
+\noindent Die ideale Gasgleichung lässt sich damit in ihrer molaren Form schreiben:
 \begin{equation}\label{eq:ideale_gasgleichung_molar}
     p \cdot V = \nu \cdot R \cdot T \mComma
 \end{equation}
@@ -1219,14 +1228,14 @@ wobei $R = N_A \cdot k_B \approx \SI{8.314}{\joule\per\mol\per\kelvin}$ die \tex
 
 \subsubsection{Die Innere Energie idealer Gase}
 Betrachten wir nun die gesamte Energie, die in einem idealen Gas gespeichert ist. Da wir potenzielle Energien zwischen den Teilchen vernachlässigen, ist die \textbf{Innere Energie} $U$ einfach die Summe der kinetischen Energien aller $N$ Teilchen.
-Aus der kinetischen Gastheorie wissen wir, dass pro Freiheitsgrad $f$ eine mittlere Energie von $\frac{1}{2}k_B T$ gespeichert wird (Gleichverteilungssatz).
+Aus der kinetischen Gastheorie wissen wir, dass pro (Translations-)Freiheitsgrad $f$ eine mittlere Energie von $\frac{1}{2}k_B T$ gespeichert wird (Gleichverteilungssatz).
 Für ein Gas mit $f$ Freiheitsgraden gilt daher:
 \begin{equation}
-    U = N \cdot \overline{E_\mathrm{kin}} = N \cdot \frac{f}{2} k_B T = v \cdot N_A \cdot \frac{f}{2} k_B T \mDot
+    U = N \cdot \overline{E_\mathrm{kin}} = N \cdot \frac{f}{2} \kB T = \nu \cdot N_A \cdot \frac{f}{2} \kB T \mDot
 \end{equation}
-Da $N_A \cdot k_B = R$, folgt der fundamentale Zusammenhang:
-\begin{equation}\label{eq:innere_energie_f}
-    U(T) = \frac{f}{2} \cdot v \cdot R \cdot T \mDot
+Da $N_A \cdot \kB = R$, folgt der fundamentale Zusammenhang:
+\begin{equation}\label{eq: innere_energie_f}
+    U(T) = \frac{f}{2} \cdot \nu \cdot R \cdot T \mDot
 \end{equation}
 Die Innere Energie eines idealen Gases hängt also \textit{nur} von der Temperatur und der Anzahl der Freiheitsgrade ab.
 
@@ -1234,31 +1243,43 @@ Die Innere Energie eines idealen Gases hängt also \textit{nur} von der Temperat
 Da die Innere Energie direkt von $T$ abhängt, können wir nun leicht berechnen, wie viel Wärme wir zuführen müssen, um $T$ zu erhöhen. Dabei müssen wir jedoch unterscheiden, \textit{wie} wir das Gas erwärmen: bei konstantem Volumen oder bei konstantem Druck.
 
 \subsubsection{Bei konstantem Volumen ($C_V$)}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Waermelehre/cv_over_T_gases.png}
+    \caption{Die molare Wärmekapazität $C_V$ (normiert auf $R$) für verschiedene Gase. 
+    Einatomige Gase (wie He) haben nur Translationsfreiheitsgrade ($f=3 \implies C_V \approx 3R/2$). Zweiatomige Gase (wie $N_2$) haben zusätzliche Rotationsfreiheitsgrade ($f=5 \implies C_V \approx 5R/2$). Bei sehr hohen Temperaturen kommen noch Vibrationen hinzu.}\label{fig: cv_gase}
+\end{figure}
 Halten wir das Volumen fest (isochor), kann das Gas keine mechanische Arbeit verrichten (keine Expansion). Die gesamte zugeführte Wärme $\Delta Q$ fließt direkt in die Erhöhung der Inneren Energie ($\Delta Q = \Delta U$).
-Für ein Mol Gas ($v=1$) folgt aus \cref{eq:innere_energie_f}:
-\begin{equation}
+Für ein Mol Gas ($\nu = 1$) folgt aus \cref{eq: innere_energie_f,eq: waermemenge_def}:
+\begin{equation}\label{eq: cv_definition}
     C_V = \frac{\Delta Q}{\Delta T} = \frac{\Delta U}{\Delta T} = \frac{d}{dT} \left(\frac{f}{2} R T\right) = \frac{f}{2} R \mDot
 \end{equation}
-Dies ist die \textbf{molare Wärmekapazität bei konstantem Volumen}.
+\begin{importantbox}{Molare Wärmekapazität bei konstantem Volumen}
+    Die molare Wärmekapazität eines idealen Gases bei konstantem Volumen beträgt:
+    \begin{equation}\label{eq: cv_definition_ideal_gas}
+        C_V = \frac{f}{2} R \mComma
+    \end{equation}
+    wobei $f$ die Anzahl der Freiheitsgrade des Gasmoleküls ist.
+\end{importantbox}
+
 
 \subsubsection{Bei konstantem Druck ($C_p$)}
 Halten wir den Druck konstant (isobar), dehnt sich das Gas beim Erwärmen aus. Dabei leistet es Arbeit gegen die Umgebung. Wir müssen also \textit{mehr} Wärme zuführen: einen Teil für die Erhöhung der Inneren Energie (Temperaturanstieg) und einen Teil für die Verrichtung der Arbeit.
-Es gilt die Beziehung (Mayer-Relation):
-\begin{equation}
-    C_p = C_V + R = \frac{f}{2}R + R = \frac{f+2}{2} R \mDot
+\begin{importantbox}{Molare Wärmekapazität bei konstantem Druck}
+    Die molare Wärmekapazität eines idealen Gases bei konstantem Druck ergibt sich aus der \textit{Mayer-Relation}\footnote{Die Herleitung dieser Relation ist mithilfe des Ersten Hauptsatzes der Thermodynamik besonders einfach, der erst in \cref{chap: Hauptsaetze_Thermodynamik} behandelt wird. Daher finden Sie die Herleitung in \cref{subsec: herleitung_cp_mayer-relation}.}:
+    \begin{equation}\label{eq: cp_definition_ideal_gas}
+        C_p = C_V + R = \frac{f+2}{2} R \mComma
+    \end{equation}
+    die also um $R$ größer ist als $C_V$.
+\end{importantbox}
+Die universelle Gaskonstante $R$ entspricht demnach genau der Arbeit, die ein Mol Gas bei isobarer Erwärmung um \SI{1}{\kelvin} gegen den Umgebungsdruck verrichtet. \\
+\\
+Gase haben also zwei Wärmekapazitäten, wobei stets $C_p > C_V$ ist. Das Verhältnis $\kappa = C_p/C_V$ nennt man Adiabatenexponent. 
+In \cref{fig: cv_gase} erkennt man, dass die molare Wärmekapazität von Gases von der Temperatur abhängt und keine Materialkonstante ist. Aus \cref{eq: cv_definition} ist ersichtlich, dass $C_V$ nur durch die die Anzahl der Freiheitsgrade $f$ des Gasmoleküls beeinflusst wird. Bisher haben wir nur Translationsfreiheitsgrade betrachtet (3 Freiheitsgrade in $x$-, $y$- und $z$-Richtung). Zwei- oder mehratomige Moleküle besitzen jedoch zusätzlich Rotations- und Vibrationsfreiheitsgrade, die bei höheren Temperaturen angeregt werden können.
+Daher ist $f$ im Allgemeinen die Gesamtanzahl der Freiheitsgrade des Moleküls 
+\begin{equation}\label{eq: f_gesamt_freiheitsgrade}
+    f = f_\text{trans} + f_\text{rot} + f_\text{vib}
 \end{equation}
-Gase haben also zwei Wärmekapazitäten, wobei stets $C_p > C_V$ ist. Das Verhältnis $\kappa = C_p/C_V$ nennt man Adiabatenexponent.
-
-\begin{figure}[htb]
-    \centering
-    % \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Waermelehre/Cv_gase.png}
-    \includegraphics[width=0.6\linewidth]{Bilder/Allgemein/placeholder.png}
-    \caption{Die molare Wärmekapazität $C_V$ (normiert auf $R$) für verschiedene Gase. 
-    Einatomige Gase (wie He) haben nur Translationsfreiheitsgrade ($f=3 \implies C_V \approx 1.5 R$). 
-    Zweiatomige Gase (wie $H_2$) haben zusätzlich Rotation ($f=5 \implies C_V \approx 2.5 R$). 
-    Bei sehr hohen Temperaturen kommen noch Vibrationen hinzu.}
-    \label{fig:cv_gase}
-\end{figure}
 
 \subsection{Wärmekapazität von Festkörpern}\label{subsec: waermekapazitaet_festkoerper}
 In Festkörpern sind die Atome an feste Gitterplätze gebunden. Sie können nicht frei umherfliegen (keine Translation) und nicht rotieren. Sie können jedoch in drei Raumrichtungen um ihre Ruhelage schwingen.
@@ -1266,7 +1287,7 @@ Jede Schwingung besitzt im Mittel kinetische Energie \textit{und} potenzielle En
 Bei 3 Raumrichtungen ergeben sich somit $f = 3 \times 2 = 6$ Freiheitsgrade pro Atom.
 
 Setzen wir dies in unsere Formel für die Wärmekapazität ein, erhalten wir das \textbf{Gesetz von Dulong-Petit}:
-\begin{equation}\label{eq:dulong_petit}
+\begin{equation}\label{eq: dulong_petit}
     C_V = \frac{6}{2} R = 3R \approx \SI{24.9}{\joule\per\mol\per\kelvin} \mDot
 \end{equation}
 Erstaunlicherweise haben fast alle einfachen Festkörper (wie Metalle) bei Raumtemperatur näherungsweise dieselbe molare Wärmekapazität.
@@ -1274,112 +1295,35 @@ Erstaunlicherweise haben fast alle einfachen Festkörper (wie Metalle) bei Raumt
 
 \begin{figure}[htb]
     \centering
-    % \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/Cv_festkoerper.png}
-    \includegraphics[width=0.5\linewidth]{Bilder/Allgemein/placeholder.png}
-    \caption{Molare Wärmekapazität fester Stoffe. Bei genügend hoher Temperatur nähern sich viele Stoffe dem klassischen Grenzwert von $3R$ an.}
-    \label{fig:cv_festkoerper}
+    % Unterbild (a)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/transversale_und_longitudinale_Schwingungen_festkoerper.png}
+        \caption{Transversale (links) und longitudinale Schwingungen (rechts).}
+        \label{fig: schwingungen_festkoerper}
+    \end{subfigure}
+    \hfill % Erzeugt horizontalen Abstand zwischen den Bildern
+    % Unterbild (b)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/cv_festkoerper.png}
+        \caption{Normierte molare Wärmekapazität verschiedener Festkörper.}
+        \label{fig: cv_festkoerper}
+    \end{subfigure}
+    \caption{Wärmekapazität von Festkörpern: (a) Veranschaulichung verschiedener transversaler und longitudinaler Schwingungsmodi im Gitter. (b) Bei hoher Temperatur nähern sich viele Stoffe dem klassischen Grenzwert von $3R$ an.}
+    \label{fig: festkoerper_kombiniert}
 \end{figure}
 
-
-
-
-\section{OLD: Wärmemenge und Wärmekapazität}\label{sec: waermemenge_waermekapazitaet}
-Führt man einem Körper Energie zu, beispielsweise durch mechanische Arbeit $\Delta W$, so steigt in der Regel seine Temperatur um einen Betrag $\Delta T$. Die Energie, die zu einer Temperaturänderung führt, wird als \textbf{Wärmemenge} $\Delta Q$ bezeichnet. Für diesen Prozess gilt der Energieerhaltungssatz:
-\begin{equation}\label{eq:waermemenge_def}
-    \Delta Q = c \cdot m \cdot \Delta T \mComma
-\end{equation}
-wobei $m$ die Masse des Körpers ist. Der Proportionalitätsfaktor $c$ ist eine Materialkonstante und wird \textbf{spezifische Wärmekapazität} genannt. Sie gibt an, wie viel Energie notwendig ist, um die Temperatur von \SI{1}{\kilo\gram} eines Stoffes um \SI{1}{\kelvin} (oder \SI{1}{\celsius}) zu erhöhen. Ihre Einheit ist $[\si{\joule\per\kilogram\per\kelvin}]$.
-
-Das Produkt aus Masse und spezifischer Wärmekapazität wird als \textbf{Wärmekapazität} $C$ des gesamten Körpers bezeichnet:
-\begin{equation}
-    C = m \cdot c \mDot
-\end{equation}
-
-\begin{rememberbox}{Die Einheit Kalorie}
-    Historisch wurde für die Wärmemenge oft die Einheit \textbf{Kalorie} (\si{\calorie}) verwendet. Eine Kalorie ist definiert als die Wärmemenge, die benötigt wird, um \SI{1}{\gram} Wasser von \SI{15}{\celsius} auf \SI{16}{\celsius} zu erwärmen. Heute ist die SI-Einheit für Energie, das Joule, gebräuchlich. Der Umrechnungsfaktor beträgt experimentell:
-    \begin{equation}
-        \SI{1}{\calorie} = \SI{4.1868}{\joule} \mDot
-    \end{equation}
-\end{rememberbox}
-
-\subsection{Molare Größen und die Gasgleichung}\label{subsec: molare_groessen}
-In der Thermodynamik, insbesondere bei Gasen, ist es oft praktischer, Stoffmengen in \textbf{Mol} anzugeben.
-\begin{itemize}
-    \item \textbf{Ein Mol} ist die Stoffmenge, die genauso viele Teilchen enthält, wie Atome in \SI{12}{\gram} des Kohlenstoff-Isotops ${}^{12}C$ enthalten sind.
-    \item Diese Anzahl an Teilchen pro Mol ist eine universelle Konstante, die \textbf{Avogadro-Konstante} $N_A$:
-    \begin{equation}
-        N_A = \SI{6.022e23}{\per\mol}
-    \end{equation}
-    \item Das \textbf{Molvolumen} $V_M$ ist das Volumen, das ein Mol eines Stoffes einnimmt. Für ideale Gase unter Normbedingungen ($p=\SI{1}{bar}$, $T=\SI{0}{\celsius}$) beträgt es $V_M = \SI{22.7}{\deci\meter\cubed}$.
-\end{itemize}
-
-Die ideale Gasgleichung (\cref{eq: ideale_gasgleichung}) lässt sich auch in molarer Form schreiben. Für $v$ Mole eines Gases mit Gesamtvolumen $V = v \cdot V_M$ gilt:
-\begin{equation}\label{eq:ideale_gasgleichung_molar}
-    p \cdot V = v \cdot R \cdot T \mComma
-\end{equation}
-wobei $R$ die \textbf{allgemeine Gaskonstante} ist. Sie ist das Produkt aus der Boltzmann-Konstante und der Avogadro-Konstante:
-\begin{equation}
-    R = N_A \cdot k_B \approx \SI{8.314}{\joule\per\mol\per\kelvin} \mDot
-\end{equation}
-
-\subsection{Wärmekapazität von Gasen}\label{subsec: waermekapazitaet_gase}
-Auch für Gase kann die zugeführte Wärmemenge über die Anzahl der Mole $v$ und die \textbf{molare Wärmekapazität} $C_m$ ausgedrückt werden:
-\begin{equation}
-    \Delta Q = v \cdot C_m \cdot \Delta T \mDot
-\end{equation}
-Die molare Wärmekapazität hängt davon ab, welche Zustandsgröße während der Wärmezufuhr konstant gehalten wird. Für ideale Gase unterscheidet man:
-\begin{itemize}
-    \item \textbf{Molare Wärmekapazität bei konstantem Volumen ($C_V$):} Die gesamte zugeführte Wärme erhöht nur die innere Energie.
-    \begin{equation}
-        C_V = \frac{f}{2}R
-    \end{equation}
-    \item \textbf{Molare Wärmekapazität bei konstantem Druck ($C_p$):} Ein Teil der Wärme wird für die Expansionsarbeit gegen den äußeren Druck aufgewendet.
-    \begin{equation}
-        C_p = C_V + R = \frac{f+2}{2}R
-    \end{equation}
-\end{itemize}
-Hier ist $f$ die Anzahl der \textbf{Freiheitsgrade} des Gasmoleküls, welche sich aus Translation, Rotation und Vibration zusammensetzen kann ($f=f_\text{trans} + f_\text{rot} + f_\text{vib}$).
-
-\begin{figure}[htb]
-    \centering
-    % \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Waermelehre/Cv_gase.png}
-    \includegraphics[width=0.6\linewidth]{Bilder/Allgemein/placeholder.png}
-    \caption{Die molare Wärmekapazität $C_V$ (normiert auf $R$) für verschiedene Gase als Funktion der Temperatur. Man erkennt, dass mit steigender Temperatur mehr Freiheitsgrade (Rotation, Vibration) angeregt werden, was zu einer Erhöhung von $C_V$ führt. Helium (He), als einatomiges Gas, hat konstant $f=3$ Freiheitsgrade.}
-    \label{fig:cv_gase}
-\end{figure}
-
-\subsection{Innere Energie}\label{subsec: innere_energie}
-Die \textbf{innere Energie} $U$ eines Systems ist die Summe aller Energien seiner Teilchen – also die Summe aus kinetischer Energie (Translation, Rotation, Vibration) und potenzieller Energie durch intermolekulare Kräfte. Für ein ideales Gas mit $N$ Teilchen und $f$ Freiheitsgraden, bei dem die potenzielle Energie vernachlässigt wird, ist die innere Energie nur von der Temperatur abhängig:
-\begin{equation}
-    U = N \cdot \overline{E_\mathrm{kin}} = N \cdot \frac{f}{2} k_B T = v \cdot \frac{f}{2} R T \mDot
-\end{equation}
-Im thermischen Gleichgewicht verteilt sich die Energie gleichmäßig auf alle Freiheitsgrade (Gleichverteilungssatz).
-
-\subsection{Wärmekapazität von Festkörpern}\label{subsec: waermekapazitaet_festkoerper}
-In Festkörpern sind die Atome in einem Gitter gebunden. Sie können nicht translatieren oder rotieren, sondern nur um ihre Gleichgewichtslage schwingen. Jedes Atom hat 3 Schwingungsfreiheitsgrade, und jede Schwingung trägt sowohl kinetische als auch potenzielle Energie bei, was zu insgesamt $f=6$ Freiheitsgraden pro Atom führt. Nach dem Gleichverteilungssatz wäre die molare Wärmekapazität somit konstant:
-\begin{equation}\label{eq:dulong_petit}
-    C_V = \frac{6}{2} R = 3R \approx \SI{25}{\joule\per\mol\per\kelvin} \mDot
-\end{equation}
-Dieses Ergebnis ist als das \textbf{Gesetz von Dulong-Petit} bekannt und gilt für viele Festkörper bei Raumtemperatur recht gut. Bei tiefen Temperaturen werden die Schwingungsmoden jedoch "eingefroren", und die Wärmekapazität sinkt gegen null, was nur quantenmechanisch erklärt werden kann.
-
-\begin{figure}[htb]
-    \centering
-    % \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/Cv_festkoerper.png}
-    \includegraphics[width=0.5\linewidth]{Bilder/Allgemein/placeholder.png}
-    \caption{Temperaturabhängigkeit der molaren Wärmekapazität $C_V$ für die Festkörper Blei (Pb), Kupfer (Cu) und Kohlenstoff (C). Bei hohen Temperaturen nähern sich die Werte dem Grenzwert des Dulong-Petit-Gesetzes von $C_V/R = 3$ an.}
-    \label{fig:cv_festkoerper}
-\end{figure}
 
 \section{Phasenübergänge}\label{sec: phasenuebergaenge}
 Die Zustände fest, flüssig und gasförmig werden als \textbf{Aggregatzustände} oder \textbf{Phasen} eines Stoffes bezeichnet. Die Übergänge zwischen diesen Phasen haben spezifische Namen, wie Schmelzen, Gefrieren, Verdampfen, Kondensieren, Sublimieren und Resublimieren.
-
 \begin{figure}[htb]
     \centering
-    % \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/phasenuebergaenge.png}
-    \includegraphics[width=0.5\linewidth]{Bilder/Allgemein/placeholder.png}
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/Aggregatszustände.png}
     \caption{Die drei Aggregatzustände und die Übergänge zwischen ihnen.}
-    \label{fig:phasenuebergaenge}
+    \label{fig: phasenuebergaenge}
 \end{figure}
+Wir wollen in diesem Abschnitt untersuchen, unter welchen Bedingungen diese Phasenübergänge stattfinden, welche Energien dafür benötigt werden und unter welchen Bedingungen verschiedene Phasen koexistieren können.
 
 \subsection{Schmelz- und Verdampfungswärme}\label{subsec: schmelz_verdampfungswaerme}
 Führt man einem Stoff bei einem Phasenübergang kontinuierlich Wärme zu, bleibt seine Temperatur konstant, bis die gesamte Substanz ihre Phase geändert hat. Die zugeführte Energie wird nicht zur Erhöhung der kinetischen Energie der Teilchen (Temperaturerhöhung), sondern zur Änderung ihrer potenziellen Energie (Aufbrechen von Bindungen) verwendet. Diese Energie wird als \textbf{latente Wärme} bezeichnet.
@@ -1391,8 +1335,7 @@ Führt man einem Stoff bei einem Phasenübergang kontinuierlich Wärme zu, bleib
 
 \begin{figure}[htb]
     \centering
-    % \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Waermelehre/erwaermungskurve_wasser.png}
-    \includegraphics[width=0.7\linewidth]{Bilder/Allgemein/placeholder.png}
+    \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Waermelehre/temperaturverlauf_erwärmen_von_eis.png}
     \caption{Temperaturverlauf beim Erwärmen von Eis mit konstanter Wärmezufuhr. Während der Phasenübergänge (Schmelzen bei \SI{0}{\celsius}, Verdampfen bei \SI{100}{\celsius}) bleibt die Temperatur konstant, da die zugeführte Energie als latente Wärme zum Aufbrechen der Bindungen im Gitter bzw. in der Flüssigkeit benötigt wird.}
     \label{fig:erwaermungskurve_wasser}
 \end{figure}
@@ -1634,6 +1577,33 @@ Damit haben wir gezeigt, dass
 \section{Kapitel Wärmelehre}
 \subsection{Herleitung der Maxwell-Boltzmann-Verteilung}\label{subsec: herleitung_maxwell_boltzmann}
 Die Maxwell-Boltzmann-Verteilung beschreibt die Verteilung der Geschwindigkeiten von Teilchen in einem idealen Gas im thermischen Gleichgewicht. Wir leiten diese Verteilung her, indem wir die Annahmen der kinetischen Gastheorie und die Prinzipien der statistischen Mechanik verwenden.
+
+
+\subsection{Herleitung der Mayer-Relation}\label{subsec: herleitung_cp_mayer-relation}
+Die Herleitung basiert auf dem Ersten Hauptsatz der Thermodynamik aus \cref{chap: Hauptsaetze_Thermodynamik}. Betrachten wir $\nu = 1$ Mol eines idealen Gases. Die zugeführte Wärme $dQ$ bei konstantem Druck $p$ verteilt sich wie folgt:
+\begin{equation}\label{eq: herleitung_1_hauptsatz}
+    dQ = dU + p \cdot dV \mDot
+\end{equation}
+
+Da die innere Energie eines idealen Gases ausschließlich von der Temperatur abhängt ($dU = C_V \cdot dT$), und wir die Definition der molaren Wärmekapazität $dQ = C_p \cdot dT$ nutzen möchten, folgt:
+\begin{equation}\label{eq: herleitung_substitution}
+    C_p \cdot dT = C_V \cdot dT + p \cdot dV \mDot
+\end{equation}
+
+Um das Differential $dV$ zu ersetzen, verwenden wir die ideale Gasgleichung für ein Mol: $p \cdot V = R \cdot T$. Da der Druck $p$ konstant bleibt, ergibt die Differentiation nach der Temperatur:
+\begin{equation}
+    p \cdot \frac{dV}{dT} = R \implies p \cdot dV = R \cdot dT \mDot
+\end{equation}
+
+Setzt man diesen Ausdruck in \cref{eq: herleitung_substitution} ein, erhält man:
+\begin{align}
+    C_p \cdot dT &= C_V \cdot dT + R \cdot dT \\
+    C_p &= C_V + R \mDot
+\end{align}
+
+\begin{rememberbox}{Physikalische Bedeutung}
+    Die universelle Gaskonstante $R$ entspricht also genau der Arbeit, die ein Mol eines idealen Gases verrichtet, wenn es bei konstantem Druck um $\SI{1}{\kelvin}$ erwärmt wird.
+\end{rememberbox}
 
 
 \newpage
