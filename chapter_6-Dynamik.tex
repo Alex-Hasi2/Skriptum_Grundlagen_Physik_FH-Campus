@@ -110,7 +110,7 @@ Das \textbf{dritte Newtonsche Axiom} (Wechselwirkungsprinzip) charakterisiert Kr
 \begin{importantbox}{1. Newtonsches Axiom}
     Ein Körper verharrt im Zustand der Ruhe oder der gleichförmigen geradlinigen Bewegung, solange keine äußeren Kräfte auf ihn wirken.
     \begin{equation}\label{eq: erstes_newtonsches_axiom_trägheit}
-        \sum_{i}\ivec{F}_{i} = 0
+        \sum_{i}\ivecS{F}{i} = 0
     \end{equation}
 \end{importantbox}
 
@@ -148,7 +148,7 @@ Das Axiom gilt nur in sogenannten \textbf{Inertialsystemen}, also in nicht besch
     \begin{equation}\label{eq: zweites_newtonsches_axiom_kraft}
         \ivec{F} = \frac{\dd\ivec{p}}{\dd t}
     \end{equation}
-    Eine resultierende Kraft ungleich Null ($\sum \ivec{F}_i \neq 0$) führt zu einer Impulsänderung.
+    Eine resultierende Kraft ungleich Null ($\sum \ivecS{F}{i} \neq 0$) führt zu einer Impulsänderung.
 \end{importantbox}
 
 Da $\ivec{p} = m\cdot\ivec{v}$, erhalten wir im allgemeinen Fall, in dem sich auch die Masse ändern kann (\zB bei einer Rakete, die Treibstoff ausstößt):
@@ -163,7 +163,7 @@ Da $\ivec{p} = m\cdot\ivec{v}$, erhalten wir im allgemeinen Fall, in dem sich au
     \end{equation}
     Historisch wird das 2. Newtonsche Axiom oft für diesen Fall formuliert: Die Beschleunigung eines Körpers ist direkt proportional zur auf ihn wirkenden Gesamtkraft und umgekehrt proportional zu seiner Masse
     \begin{equation}
-        \ivec{a} = \frac{\sum_{i}\ivec{F}_{i}}{m} \mDot
+        \ivec{a} = \frac{\sum_{i}\ivecS{F}{i}}{m} \mDot
     \end{equation}
 \end{rememberbox}
 
@@ -305,14 +305,14 @@ Wie in der Abbildung \cref{fig: gravitation_zwischen_m1_m2} dargestellt, besagt 
         \draw[|<->|, >={Latex[length=3mm, width=1.2mm]}] (mA_center |- 0,1.5) -- (mB_center |- 0,1.5) node[midway, above] {$r$};
         % --- Kraftvektoren ---
         \draw[-{Stealth[length=3mm, width=3mm]}, red!70!black, ultra thick] 
-              (mA_center) -- ++(2.5,0) node[above, pos=0.6, yshift=1mm] {$\vec{F}_{2\rightarrow 1}$};
+              (mA_center) -- ++(2.5,0) node[above, pos=0.6, yshift=1mm] {$\ivecS{F}{2\rightarrow 1}$};
         \draw[-{Stealth[length=3mm, width=3mm]}, green!60!black, ultra thick] 
-              (mB_center) -- ++(-2.5,0) node[above, pos=0.6, yshift=1mm] {$\vec{F}_{1\rightarrow 2}$};
+              (mB_center) -- ++(-2.5,0) node[above, pos=0.6, yshift=1mm] {$\ivecS{F}{1\rightarrow 2}$};
         % --- Einheitsvektoren --- 
         \draw[-{Stealth[length=2mm, width=1.3mm]}, black, thick] 
-              (mA_center)++(1,-1) -- ++(1,0) node[above, pos=0.4, yshift=0.7mm] {$\vec{e}_{1\rightarrow 2}$};
+              (mA_center)++(1,-1) -- ++(1,0) node[above, pos=0.4, yshift=0.7mm] {$\ivecS{e}{1\rightarrow 2}$};
         \draw[-{Stealth[length=2mm, width=1.3mm]}, black, thick] 
-              (mB_center)++(-1,-1) -- ++(-1,0) node[above, pos=0.4, yshift=0.7mm] {$\vec{e}_{2\rightarrow 1}$};
+              (mB_center)++(-1,-1) -- ++(-1,0) node[above, pos=0.4, yshift=0.7mm] {$\ivecS{e}{2\rightarrow 1}$};
     \end{tikzpicture}
     }
     \caption{Zwei Massen $m_1$ und $m_2$ im Abstand $r$ ziehen sich gegenseitig mit den Kräften $\protect\ivec{F}{1\rightarrow 2}$ und $\protect\ivec{F}{2\rightarrow 1}$ an.}\label{fig: gravitation_zwischen_m1_m2}
@@ -404,7 +404,7 @@ Zieht man nun mit einer horizontalen Kraft $\ivecS{F}{\text{A}}$ am Körper, bau
 % \begin{figure}[h!]
 %     \centering
 %     \includegraphics[width=0.4\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/kiste_reibung_beschleunigung_grav_normalkraft.png}
-%     \caption{Links: Kräftediagramm für einen Körper, an dem mit der Kraft $\protect\ivec{F}_A$ gezogen wird. Die Haftreibungskraft $\protect\ivec{F}_{R}$ wirkt entgegen. Rechts: Diagramm der Reibungskraft $F_R$ in Abhängigkeit von der Zugkraft $F_A$.}
+%     \caption{Links: Kräftediagramm für einen Körper, an dem mit der Kraft $\protect\ivecS{F}{\text{A}}$ gezogen wird. Die Haftreibungskraft $\protect\ivecS{F}{\text{R}}$ wirkt entgegen. Rechts: Diagramm der Reibungskraft $|\protect\ivecS{F}{\text{R}}|$ in Abhängigkeit von der Zugkraft $|\protect\ivecS{F}{\text{A}}|$.}
 %     \label{fig: haftreibung}
 % \end{figure}
 \begin{figure}[h!]
@@ -671,7 +671,7 @@ Sowohl der Drehimpuls als auch das Drehmoment sind immer in Bezug auf einen fest
 Aus \cref{eq: drehmoment_def} folgt direkt der \textbf{Drehimpulserhaltungssatz}: Wenn das gesamte äußere Drehmoment auf ein System verschwindet ($\ivec{D} = \ivec{0}$), dann bleibt der Drehimpuls $\ivec{L}$ zeitlich konstant.
 
 Es besteht eine fundamentale Analogie zwischen der Translations- und der Rotationsbewegung:
-$$ \vec{F} = \frac{\dd\vec{p}}{\dd t} \quad \longleftrightarrow \quad \vec{D} = \frac{\dd\vec{L}}{\dd t} $$
+$$ \ivec{F} = \frac{\dd\ivec{p}}{\dd t} \quad \longleftrightarrow \quad \ivec{D} = \frac{\dd\ivec{L}}{\dd t} $$
 Die Kraft $\ivec{F}$ ist die Ursache für die Änderung des Impulses $\ivec{p}$, genauso wie das Drehmoment $\ivec{D}$ die Ursache für die Änderung des Drehimpulses $\ivec{L}$ ist.
 
 \section{Analogie zwischen Translation und Rotation}\label{sec: analogie_translation_rotation}
@@ -679,9 +679,9 @@ Die Kraft $\ivec{F}$ ist die Ursache für die Änderung des Impulses $\ivec{p}$,
 Die physikalischen Größen der Translation haben direkte Entsprechungen in der Rotation. Diese Analogie hilft, die Konzepte der Rotationsdynamik zu verstehen.
 
 \begin{rememberbox}{Vektorielle Winkelgeschwindigkeit}
-Die Winkelgeschwindigkeit $\vec{\omega}$ lässt sich vektoriell über die Formel
+Die Winkelgeschwindigkeit $\ivec{\omega}$ lässt sich vektoriell über die Formel
 \begin{equation}\label{eq: omega_r_x_v_allgemein}
-    \vec{\omega} = \frac{\vec{r} \times \vec{v}}{|\vec{r}|^2}
+    \ivec{\omega} = \frac{\ivec{r} \times \ivec{v}}{|\ivec{r}|^2}
 \end{equation}
 berechnen. Wenn man nur am Betrag interessiert ist und die Rotationsachse ihre Richtung nicht ändert (wie bei einer ebenen Kreisbewegung), kann die skalare Beziehung $\omega = \frac{\dd\varphi}{\dd t}$ verwendet werden.
 \end{rememberbox}
@@ -697,12 +697,12 @@ Die folgende Tabelle stellt die wichtigsten analogen Größen gegenüber.
 \multicolumn{2}{c|}{\textbf{Translation}} & \multicolumn{2}{c}{\textbf{Rotation}} \\
 \midrule
 Zeit & $t$ & Zeit & $t$ \\
-Ort, Weg & $\vec{r}$, $s$ & Winkel & $\varphi$ \\
-Geschwindigkeit & $\vec{v} = \frac{\dd\vec{r}}{\dd t}$ & Winkelgeschwindigkeit & $\vec{\omega} = \frac{1}{|\vec{r}|^2}(\vec{r}\times\vec{v})$ \\
-Beschleunigung & $\vec{a} = \frac{\dd\vec{v}}{\dd t}$ & Winkelbeschleunigung & $\vec{\alpha} = \frac{\dd\vec{\omega}}{\dd t}$ \\
+Ort, Weg & $\ivec{r}$, $s$ & Winkel & $\varphi$ \\
+Geschwindigkeit & $\ivec{v} = \frac{\dd\ivec{r}}{\dd t}$ & Winkelgeschwindigkeit & $\ivec{\omega} = \frac{1}{|\ivec{r}|^2}(\ivec{r}\times\ivec{v})$ \\
+Beschleunigung & $\ivec{a} = \frac{\dd\ivec{v}}{\dd t}$ & Winkelbeschleunigung & $\ivec{\alpha} = \frac{\dd\ivec{\omega}}{\dd t}$ \\
 Masse (Trägheit) & $m$ & Trägheitsmoment & $I$ \\
-Impuls & $\vec{p} = m \cdot \vec{v}$ & Drehimpuls & $\vec{L} = \vec{r} \times \vec{p}$ \\
-Kraft & $\vec{F} = \frac{\dd\vec{p}}{\dd t}$ & Drehmoment & $\vec{D} = \vec{r} \times \vec{F} = \frac{\dd\vec{L}}{\dd t}$ \\
+Impuls & $\ivec{p} = m \cdot \ivec{v}$ & Drehimpuls & $\ivec{L} = \ivec{r} \times \ivec{p}$ \\
+Kraft & $\ivec{F} = \frac{\dd\ivec{p}}{\dd t}$ & Drehmoment & $\ivec{D} = \ivec{r} \times \ivec{F} = \frac{\dd\ivec{L}}{\dd t}$ \\
 Kinetische Energie & $E_{\text{kin}} = \frac{1}{2} m v^2$ & Rotationsenergie & $E_{\text{rot}} = \frac{1}{2} I \omega^2$ \\
 \bottomrule
 \end{tabular}
@@ -851,7 +851,7 @@ Damit können wir nun endlich das Transformationsgesetz für die Beschleunigung 
 \end{rememberbox}
 Während der Beobachter $B$ in seinem ruhenden System $S$ die Beschleunigung $\ivec{a} = \dd \ivec{v}/\dd t$ misst, muss der Beobachter $B'$ in seinem System $S'$ zusätzliche Beschleunigungen (Kräfte) einführen, um dieselbe Bewegung des Massenpunktes zu erhalten. \\
 
-Multipliziert man diese Gleichung mit der Masse $m$ und stellt sie nach der Kraft im rotierenden System $m\vec{a}' = \vec{F}'$ um, ergibt sich das \textbf{Grundgesetz der Dynamik im rotierenden Bezugssystem}:
+Multipliziert man diese Gleichung mit der Masse $m$ und stellt sie nach der Kraft im rotierenden System $m\ivec{a}' = \ivec{F}'$ um, ergibt sich das \textbf{Grundgesetz der Dynamik im rotierenden Bezugssystem}:
 \begin{equation}\label{eq: dyn_rot_system}
 \ivec{F}' = \ivec{F} +\underbrace{2m(\ivec{v}' \times \ivec{\omega})}_{\text{Corioliskraft}} + \underbrace{m\ivec{\omega} \times (\ivec{r} \times \ivec{\omega})}_{\text{Zentrifugalkraft}}
 \end{equation}
@@ -859,14 +859,14 @@ wobei $\ivec{F} = m\ivec{a}$ die \gDQ{wahre} Kraft ist, die im Inertialsystem wi
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.55\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/scheinkraft_coriolis-und-zentrifugalkraft.png}
-    \caption{Die Zentrifugalbeschleunigung $\protect\ivec{a}_{\text{Zf}}$ und die Coriolisbeschleunigung $\protect\ivec{a}_{\text{C}}$ für einen Punkt $A$, der sich mit der Geschwindigkeit $\protect\ivec{v}'$ in einem rotierenden Bezugssystem bewegt.}\label{fig: coriolis_zentrifugalbeschl}
+    \caption{Die Zentrifugalbeschleunigung $\protect\ivecS{a}{\text{Zf}}$ und die Coriolisbeschleunigung $\protect\ivecS{a}{\text{C}}$ für einen Punkt $A$, der sich mit der Geschwindigkeit $\protect\ivec{v}'$ in einem rotierenden Bezugssystem bewegt.}\label{fig: coriolis_zentrifugalbeschl}
 \end{figure}
 \begin{importantbox}[]{Zentrifugalkraft und Corioliskraft}
 Die beiden Scheinkräfte im rotierenden Bezugssystem sind (siehe \cref{fig: coriolis_zentrifugalbeschl}):
 \begin{itemize}
-    \item Die \textbf{Zentrifugalkraft}: $\ivec{F}_{\text{Zf}} = m\ivec{\omega} \times (\ivec{r} \times \ivec{\omega})$. \newline 
+    \item Die \textbf{Zentrifugalkraft}: $\ivecS{F}{\text{Zf}} = m\ivec{\omega} \times (\ivec{r} \times \ivec{\omega})$. \newline 
     Sie ist stets von der Rotationsachse nach außen gerichtet und wirkt auf jeden Körper im rotierenden System, egal ob er sich bewegt oder ruht.
-    \item Die \textbf{Corioliskraft}: $\ivec{F}_{\text{C}} = 2m(\ivec{v}' \times \ivec{\omega})$.\newline
+    \item Die \textbf{Corioliskraft}: $\ivecS{F}{\text{C}} = 2m(\ivec{v}' \times \ivec{\omega})$.\newline
     Sie wirkt nur auf Körper, die sich relativ zum rotierenden System bewegen (für $\ivec{v}' \neq \ivec{0}$), und steht stets senkrecht zur Bewegungsrichtung $\ivec{v}'$ und zur Winkelgeschwindigkeit $\ivec{\omega}$.
 \end{itemize}
 Beide Kräfte sind Scheinkräfte, da sie nicht auf einer Wechselwirkung beruhen, sondern aus der Beschleunigung des Bezugssystems resultieren.

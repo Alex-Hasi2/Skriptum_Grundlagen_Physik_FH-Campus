@@ -42,7 +42,7 @@ Eine Ellipse ist geometrisch definiert als die Menge aller Punkte, für die die 
         \node[dot,inner sep=2.0pt,label=above right:Planet] at (planet_pos) {};
         % --- Vektor r(t) ---Stealth, length=2mm
         \draw[-{Stealth[length=3mm, width=2mm]}, line width=0.5mm] (sun) -- (planet_pos) 
-              node[pos=0.65, left=2pt] {\large $\vec{r}(t)$};
+              node[pos=0.65, left=2pt] {\large $\ivec{r}(t)$};
         % --- Beschriftungen ---
         \node[anchor=south east, inner sep=3pt] at (-\a,0) {Aphel};
         \node[anchor=south west, inner sep=3pt] at (\a,0) {Perihel};
@@ -190,7 +190,7 @@ Die genaue funktionale Abstandsabhängigkeit $f(r)$ dieser Kraft leitete Newton 
         \node[dot,inner sep=2.0pt,label=above right:Planet] at (planet_pos) {};
         % --- Vektor r(t) ---Stealth, length=2mm
         \draw[-{Stealth[length=3mm, width=2mm]}, line width=0.5mm] (sun) -- (planet_pos) 
-              node[pos=0.65, left=5pt] {\large $\vec{r}(t)$};
+              node[pos=0.65, left=5pt] {\large $\ivec{r}(t)$};
         % --- Beschriftungen ---
         \node[anchor=north, inner sep=3pt] at (-\a/2, 0) {\large $a = r$};
         % Striche im Zentrum und am Brennpunkt zur Markierung der Distanz
@@ -260,7 +260,7 @@ Mit dem Gravitationsgesetz können wir berechnen, welche Geschwindigkeit ein Obj
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.3\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweite_kosmische_geschwindigkeit.png} 
-    \caption{Ein Objekt wird von der Oberfläche eines Himmelskörpers (Masse $M$, Radius $R$) mit der Anfangsgeschwindigkeit $\protect\ivec{v}_0$ senkrecht nach oben abgefeuert.}\label{fig: zweite_kosmische_geschwindigkeit}
+    \caption{Ein Objekt wird von der Oberfläche eines Himmelskörpers (Masse $M$, Radius $R$) mit der Anfangsgeschwindigkeit $\protect\ivecS{v}{0}$ senkrecht nach oben abgefeuert.}\label{fig: zweite_kosmische_geschwindigkeit}
 \end{figure}
 Im Gegensatz zur konstanten Erdbeschleunigung $g$ in Bodennähe ist die Gravitationsbeschleunigung allgemein ortsabhängig: $a(r) = -GM/r^2$. Wir betrachten ein Objekt der Masse $m$, das von der Erdoberfläche (Radius $R$) senkrecht nach oben geschossen wird. Da die Beschleunigung vom Ort $r$ und nicht von der Zeit $t$ abhängt, formen wir den Beschleunigungsterm um, wobei wir nur an den Beträgen der Größen interessiert sind und daher nicht vektoriell rechnen:
 \begin{equation}\label{eq: a_v_dv_dr}

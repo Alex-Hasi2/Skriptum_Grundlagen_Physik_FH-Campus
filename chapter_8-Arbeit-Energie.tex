@@ -184,8 +184,8 @@ und somit jeder geschlossene Weg zurück zum Ausgangspunkt ein verschwindendes I
         \node[label_box, font=\Large] at (-1.8, 3.0) {$\ivecS{r}{U}(x,y)$};
         
         % --- Beschriftungen und Punkte ---
-        \node[point, label={[label_box,label distance=0.1cm]below:$\ivec{P}_1$}] at (P1) {};
-        \node[point, label={[label_box,label distance=0.1cm]left:$\ivec{P}_2$}] at (P2) {};
+        \node[point, label={[label_box,label distance=0.1cm]below:$\ivecS{P}{1}$}] at (P1) {};
+        \node[point, label={[label_box,label distance=0.1cm]left:$\ivecS{P}{2}$}] at (P2) {};
     \end{tikzpicture}
     }
     \caption{Ein konservatives Zentralkraftfeld mit $\protect\ivec{F} = \protect\ivec{F}(r)$. Die Arbeit von $P_1$ nach $P_2$ ist für alle Wege gleich. Entlang der gestrichelten Kreisbahnen wird keine Arbeit verrichtet, da die Kraft senkrecht zum Weg steht. Die Arbeit entlang der durchgezogenen Linien hebt sich jeweils gegenseitig auf.}\label{fig: konservatives_kraftfeld}
@@ -374,8 +374,8 @@ Während die Arbeit an einem freien Teilchen nur dessen kinetische Energie ände
         \node[particle, circle] (lower_particle) at (2, 4.9) [label={[label distance=0.05cm]0:\large $h_\text{A}$}] {};
         \node[particle, circle,dashed,  draw=gray, fill opacity=0.86] (upper_particle) at (2, 7.8) [label={[label distance=0.05cm]0:\large $h_\text{E}$}] {};
         \draw[-{Stealth[length=3.3mm]}, red, line width=2pt] (lower_particle.south) ++(0, -0.1) -- ++(0, -1.2)
-              node[midway, left=2pt] {\Large $\vec{F}_{\text{G}}(h_\text{A})$};
-        \draw[-{Stealth[length=3.3mm]}, red!40!white, line width=2pt] (upper_particle.south) ++(0, -0.1) -- ++(0, -1.2) node[midway, left=2pt] {\Large $\vec{F}_{\text{G}}(h_\text{E})$};
+              node[midway, left=2pt] {\Large $\ivecS{F}{\text{G}}(h_\text{A})$};
+        \draw[-{Stealth[length=3.3mm]}, red!40!white, line width=2pt] (upper_particle.south) ++(0, -0.1) -- ++(0, -1.2) node[midway, left=2pt] {\Large $\ivecS{F}{\text{G}}(h_\text{E})$};
         \node[circle, fill=purple!70!cyan, minimum size=6cm] at (2,0) {\Large Erde};
     
         % 6. Die Formel für die externe Kraft
@@ -396,7 +396,7 @@ Da die Bewegung langsam erfolgt, ist die Geschwindigkeitsänderung und somit $\D
 Wenn wir die Situation aus der Sicht des konservativen Kraftfeldes (hier: Gravitationsfeld) betrachten, so wird gegen das Gravitationsfeld Arbeit verrichtet $W_{\text{G}} = -W^{\text{ext}} = -mg \Delta h$. Die externe Arbeit leistet gegen das Gravitationskraftfeld eine Arbeit und erhöht dabei die potenzielle Energie des Systems. Dies motiviert die folgende allgemeine Definition für konservative Kräfte:
 {\text{ext}}
 \begin{importantbox}[]{Definition: Potenzielle Energie}
-    Die Änderung der potenziellen Energie $\Delta E_{\text{pot}}$ in einem konservativen Kraftfeld ist definiert als die negative Arbeit, die vom konservativen Kraftfeld $\ivec{F} = \ivec{F}_{\text{kons}}$ verrichtet wird: 
+    Die Änderung der potenziellen Energie $\Delta E_{\text{pot}}$ in einem konservativen Kraftfeld ist definiert als die negative Arbeit, die vom konservativen Kraftfeld $\ivec{F} = \ivecS{F}{\text{kons}}$ verrichtet wird: 
     \begin{equation}\label{eq: potenzielle_energie_def}
         W^{\text{int}} = \int_{P_1}^{P_2} \ivec{F} \cdot \dd\ivec{r} \defeq -\Delta E_{\text{pot}}\mComma
     \end{equation}
@@ -549,7 +549,7 @@ Der Energieerhaltungssatz ist jedoch ein universelles Prinzip, wenn man \textit{
 Zwei Beispiele für nichtkonservative Systeme: 
 \begin{itemize}
     \item Bei chemischen Reaktionen kann die Summe aus mechanischer Energie und Wärmeenergie unter Umständen nicht erhalten bleiben, wenn ein Anteil der Energie in gewissen Molekülstrukturen und deren Umwandlung gespeichert wird. 
-    \item Bei der Kernspaltung, zerfällt ein Atom in kleinere Atome. Das größere Ausgangsatom hat eine größere Bindungsenergie als die Zerfallsprodukte und ein Teil der dabei freiwerdenden Energie, wird in Form von elektromagnetische Strahlung ($\gamma$-Strahlung) oder Teilchenstrahlung ($\alpha$- und $\beta$-Strahlung) abgegeben. 
+    \item Bei der Kernspaltung zerfällt ein Atom in kleinere Atome. Das größere Ausgangsatom hat eine größere Bindungsenergie als die Zerfallsprodukte und ein Teil der dabei freiwerdenden Energie wird in Form von elektromagnetische Strahlung ($\gamma$-Strahlung) oder Teilchenstrahlung ($\alpha$- und $\beta$-Strahlung) abgegeben. 
 \end{itemize}
 
 % Chapter end - always start new page after chapter

@@ -43,8 +43,8 @@ Ein Tupel ist eine geordnete Liste von Elementen. Im Kontext von mehrdimensional
 Ein Tupel von Koordinaten kann keine Richtung vermitteln. Das Tupel beschreibt lediglich einen Ort im $n$-dimensionalen Raum. Zusammenfassend lässt sich sagen, dass ein Tupel eine mathematische Struktur ist, die es ermöglicht, die Koordinaten eines Punktes in einem mehrdimensionalen Raum zu erfassen.
 
 \newpage
-\section{Vektorrechnung}\label{sec: Vektorrechnung}
-\subsection{Unterschied zwischen Vektoren und Skalaren}\label{subsec: Vektor_vs_Skalar}
+\chapter{Vektorrechnung}\label{chapter: Vektorrechnung}
+\section{Unterschied zwischen Vektoren und Skalaren}\label{sec: Vektor_vs_Skalar}
 In mehrdimensionalen Räumen sind \textbf{Punkte} $P = (x,y,\ldots)$ die Verallgemeinerung von \textbf{Skalaren}. \textbf{Punkte} vermitteln \textbf{keine Richtung} -- sie sind ein $n$-Tupel von Skalaren. Punkte sind „ortsfest“, aber ihre Koordinaten hängen vom gewählten Koordinatensystem ab.
 
 % tikz picture
@@ -157,14 +157,14 @@ Unterschiedliche Start- und Endpunkte können demnach dieselben Vektoren erzeuge
     \draw[-Stealth, color=blue,line width=2.2pt] (1,2) -- (4,4);
     \draw[-Stealth, color=red,line width=2.2pt] (4,1) -- (7,3);
     % 4. Add the label above the point
-    \node[anchor=south west, color=black] at (3,2.1) {\LARGE \color{blue}$\vec{r}_1 \color{black}= \color{red}\vec{r}_2$};
+    \node[anchor=south west, color=black] at (3,2.1) {\LARGE \color{blue}$\ivecS{r}{1} \color{black}= \color{red}\ivecS{r}{2}$};
     \end{tikzpicture}
     }
     \caption{Die beiden Vektoren $\protect\ivecS{r}{1}$ (blau) und $\protect\ivecS{r}{2}$ (rot) sind ident. Sie haben dieselbe Richtung und dieselbe Länge.}\label{fig: zweiVektorenIdent}
 \end{figure}
 
-\subsection{Länge eines Vektors (Betrag)}\label{subsec: Laenge_Betrag_Vektor}
-\subsubsection{Norm}
+\section{Länge eines Vektors (Betrag)}\label{sec: Laenge_Betrag_Vektor}
+\subsection{Norm}
 Eine Norm ist eine Abbildung, 
 \begin{equation}
     ||\cdot||:\, V \to \Real_0^{+}, \quad \ivec{x} \mapsto ||\ivec{x}||, 
@@ -176,7 +176,7 @@ für die drei definierende Axiome erfüllt sind:
     \item \textbf{Dreiecksungleichung:} $||\ivec{x}+\ivec{y}|| \le ||\ivec{x}||+||\ivec{y}||$
 \end{itemize}
 
-\subsubsection{Betrag eines Vektors}
+\subsection{Betrag eines Vektors}
 \begin{rememberbox}[]{Betrag eines Vektors}
     Die \textbf{Länge} (auch Betrag) eines Vektors ergibt sich aus dem Satz des Pythagoras. Die verwendete Norm nennt man euklidische Norm oder $2$-Norm ($p = 2$). Die Länge des Vektors $\ivec{r} = (x, y, ...)$ ist dann
     \begin{equation}
@@ -230,7 +230,7 @@ Der Verweis auf die Tatsache, dass der Betrag eines Vektors mathematisch gesehen
     \draw[-, color=black,line width=1.5pt] (2,1.5) -- (6,1.5);
     \draw[-, color=black,line width=1.5pt] (6,1.5) -- (6,4);
     % 4. Add the label above the point
-    \node[anchor=south west, color=orange] at (3.3,3) {\LARGE $\vec{r}$};
+    \node[anchor=south west, color=orange] at (3.3,3) {\LARGE $\ivec{r}$};
     \node[anchor=south west, color=black] at (3.8,0.75) {\Large $x$};
     \node[anchor=south west, color=black] at (6.2,2.4) {\Large $y$};
     \end{tikzpicture}
@@ -239,7 +239,7 @@ Der Verweis auf die Tatsache, dass der Betrag eines Vektors mathematisch gesehen
 \end{figure}
 
 
-\subsection{Richtung eines Vektors}\label{subsec: Richtung_Vektor}
+\section{Richtung eines Vektors}\label{sec: Richtung_Vektor}
 \begin{rememberbox}[]{Richtung eines Vektors}
     Die Richtung eines Vektors $\ivec{r}$ in $\Real^2$ kann über den Winkel $\varphi$ angegeben werden, den der Vektor mit der $x$-Achse einschließt. Dieser Winkel ergibt sich geometrisch zu
     \begin{equation}
@@ -285,7 +285,7 @@ Der Verweis auf die Tatsache, dass der Betrag eines Vektors mathematisch gesehen
             \draw[-, color=black,line width=1.5pt] (2,1.5) -- (6,1.5);
             \draw[-, color=black,line width=1.5pt] (6,1.5) -- (6,4);
             % 4. Add the label above the point
-            \node[anchor=south west, color=darkyellow] at (3.3,3) {\LARGE $\vec{r}$};
+            \node[anchor=south west, color=darkyellow] at (3.3,3) {\LARGE $\ivec{r}$};
             \node[anchor=south west, color=black] at (3.8,0.75) {\Large $x$};
             \node[anchor=south west, color=black] at (6.2,2.4) {\Large $y$};
             \node[anchor=south west, color=black] at (3.2,1.6) {\Large $\varphi$};
@@ -315,7 +315,7 @@ Im $\Real^3$ benötigt man zwei Winkel ($\varphi, \theta$) zur Beschreibung der 
 Die manuelle Korrektur des Arkustangens ist notwendig, da das Argument aus dem Bruch $(\frac{y}{x})$ besteht. Für einen Winkel im 1. Quadranten ist $x > 0$ und $y > 0$ und demnach ist der Bruch $(\frac{y}{x}) > 0$. Zwar gilt für einen Punkt im 3. Quadranten $x < 0$ und $y < 0$, aber da sich beide negativen Vorzeichen im Argument aufheben, ist der Bruch $(\frac{y}{x}) > 0$. Das bedeutet, dass man ohne Korrektur für Punkte im 3. Quadranten einen Winkel $\varphi \in [0, \pi/2]$ (1. Quadrant) bekommen würde. Für Punkte im 4. Quadranten würde man aus demselben Grund (beide Male gilt $(\frac{y}{x}) < 0$) Winkel im 2. Quadranten ($\varphi \in [\pi/2, \pi]$) erhalten. Indem man $\pi$ zu einem Winkel im 1. Quadranten (2. Quadranten) addiert, landet man beim äquivalenten Winkel im 3. Quadranten (4. Quadranten). Dieses Verhalten sieht man auch im Graph des Arkustangens in \cref{fig: abb_tangens_arkustanges}.  
 
 
-\subsection{Einheitsvektor und Normierung}\label{subsec: Einheitsvektor_Normierung}
+\section{Einheitsvektor und Normierung}\label{sec: Einheitsvektor_Normierung}
 Neben der Darstellung eines Vektors $\ivec{r}$ mittels Koordinaten, $\ivec{r} = (x,y,\,\dots)$,  kann ein Vektor auch als Produkt aus Betrag und Einheitsvektors geschrieben werden. 
 \begin{rememberbox}[]{}
     Ein Vektor $\ivec{r}$ kann immer mit Hilfe des \textbf{Betrags} $r = |\ivec{r}|$ und des \textbf{Einheitsvektors} $\ivec{e_r}$ als 
@@ -373,20 +373,20 @@ Aus \cref{eq: normierungVektor} sieht man, dass zur Normierung eines Vektors zun
         \draw[-Stealth, color=blue,line width=2.2pt] (2,1) -- (5,3.5);
         \draw[-Stealth, color=orange,line width=2.2pt] (2,2) -- (2.77,2.64);
         % 4. Add the label above the point
-        \node[anchor=south west, color=blue] at (4,1.5) {\LARGE $\vec{r}$};
-        \node[anchor=south west, color=orange] at (1.8,2.5) {\LARGE $\vec{e}_r$};
+        \node[anchor=south west, color=blue] at (4,1.5) {\LARGE $\ivec{r}$};
+        \node[anchor=south west, color=orange] at (1.8,2.5) {\LARGE $\ivecS{e}{r}$};
         \end{tikzpicture}
         }
     \caption{Der Einheitsvektor $\protect\ivecS{e}{r}$ hat dieselbe Richtung wie $\protect\ivec{r}$, aber die Länge $1$.}\label{fig: vektorEinheitsvektor}
 \end{figure}
 
-\subsection{Addition und Subtraktion}\label{subsec: Vektoraddition-subtraktion}
+\section{Addition und Subtraktion}\label{sec: Vektoraddition-subtraktion}
 Vektoren und Skalare sind unterschiedliche mathematische Objekte. Operationen, die für
 Skalare definiert sind, sind zunächst für Vektoren nicht definiert. Zu diesen Operationen gehören zum Beispiel Addition, Subtraktion, Multiplikation und Division.
 Um auszudrücken, ob es sich bei einer Operation, um die skalare Variante oder die vektorielle Variante handelt, kann man andere Symbole für die beiden Varianten verwenden $(\oplus, \ominus, \otimes, *)$\footnote{Diese eingekreisten Symbole werden häufig für Tensoroperationen verwendet. Hier werden sie ausschließlich für Vektoroperationen verwendet.}.
 In der Literatur wird meist nur bei Zweideutigkeit ein anderes Symbol verwendet. \\
 
-\subsubsection{Vektoraddition}
+\subsection{Vektoraddition}
 Die Vektoraddition $(\oplus)$ ist eine Verallgemeinerung der Addition von Skalaren, die die 4 definierenden Eigenschaften der skalaren Addition erhält:
 \begin{itemize}[itemsep=1.5pt]
     \item Kommutativität,
@@ -403,7 +403,7 @@ mit $\ivec{r_1}=(x_1, y_1, ...)$ und $\ivec{r_2}=(x_2, y_2, ...)$. Das Resultat 
 \end{rememberbox}
 Grafisch entspricht die Vektoraddition einer Aneinanderreihung der Vektoren, wie in \cref{fig: vektoraddition} verbildlicht. Eine Vektoraddition ist demnach eine Hintereinanderausführung von zwei Verschiebungen. Dementsprechend ist es wenig überraschend, dass die Vektoraddition kommutativ ist, \gDh $\ivecS{r}{1} \oplus \ivecS{r}{2} = \ivecS{r}{2} \oplus \ivecS{r}{1}$. 
 
-\subsubsection{Vektorsubtraktion}
+\subsection{Vektorsubtraktion}
 Die \textbf{Vektorsubtraktion} $\ivec{r} = \ivecS{r}{1} \ominus \ivecS{r}{2}$ ergibt eine Gesamtverschiebung (Vektor), der ebenso aus zwei einzelnen Verschiebungen zusammengesetzt werden kann. Die Gesamtverschiebung $\ivec{r}$ besteht aus der Verschiebung $\ivecS{r}{1}$ und der anschließenden Verschiebung um $-\ivecS{r}{2}$, dem sogenannten inversen Element zu $\ivecS{r}{2}$.
 \begin{rememberbox}[]{Inverses Element}
     Das inverse Element $-\ivec{r}$ eines Vektors $\ivec{r}$ hat dieselbe Länge, aber die umgekehrte Richtung. Das inverse Element eines Vektors $\ivec{r} = (x,y,\,\dots)$ erhält man, indem man alle Koordinaten des Vektors spiegelt, 
@@ -477,9 +477,9 @@ mit $\ivecS{r}{1} = (x_1, y_1,\,\dots)$ und $\ivecS{r}{2} = (x_2, y_2, \,\dots)$
             \draw[-Stealth, color=purpleCol,line width=2.2pt] (Q) -- (R);
             \draw[-Stealth, color=blue,line width=2.2pt] (P) -- (R);
             % 4. Add the label above the point
-            \node[anchor=south west, color=blue] at (3.4,1.0) {\LARGE $\vec{r}$};
-            \node[anchor=south west, color=orange] at (1.4,2.1) {\LARGE $\vec{r}_1$};
-            \node[anchor=south west, color=purpleCol] at (4,2.8) {\LARGE $\vec{r}_2$};
+            \node[anchor=south west, color=blue] at (3.4,1.0) {\LARGE $\ivec{r}$};
+            \node[anchor=south west, color=orange] at (1.4,2.1) {\LARGE $\ivecS{r}{1}$};
+            \node[anchor=south west, color=purpleCol] at (4,2.8) {\LARGE $\ivecS{r}{2}$};
         \end{tikzpicture}
     }
     \caption{Grafische Darstellung der Vektoraddition $\protect\ivec{r} = \protect\ivecS{r}{1} \oplus \protect\ivecS{r}{2}$.}\label{fig: vektoraddition}
@@ -537,10 +537,10 @@ mit $\ivecS{r}{1} = (x_1, y_1,\,\dots)$ und $\ivecS{r}{2} = (x_2, y_2, \,\dots)$
             \draw[-Stealth, color=purpleColFade,line width=2.2pt] (Q) -- (S);
             \draw[-Stealth, color=blue,line width=2.2pt] (P) -- (R);
             % 4. Add the label above the point
-            \node[anchor=south west, color=blue] at (0.8,2.0) {\LARGE $\vec{r}$};
-            \node[anchor=south west, color=orange] at (2.6,1.2) {\LARGE $\vec{r}_1$};
-            \node[anchor=south west, color=purpleCol] at (2.3,3.2) {\LARGE $-\vec{r}_2$};
-            \node[anchor=south west, color=purpleColFade] at (4.5,3.0) {\LARGE $\vec{r}_2$};
+            \node[anchor=south west, color=blue] at (0.8,2.0) {\LARGE $\ivec{r}$};
+            \node[anchor=south west, color=orange] at (2.6,1.2) {\LARGE $\ivecS{r}{1}$};
+            \node[anchor=south west, color=purpleCol] at (2.3,3.2) {\LARGE $-\ivecS{r}{2}$};
+            \node[anchor=south west, color=purpleColFade] at (4.5,3.0) {\LARGE $\ivecS{r}{2}$};
         \end{tikzpicture}
     }
     \caption{Grafische Darstellung der Vektorsubtraktion $\protect\ivec{r} = \protect\ivecS{r}{1} \ominus \protect\ivecS{r}{2}$.}\label{fig: vektorsubtraktion}
@@ -548,7 +548,7 @@ mit $\ivecS{r}{1} = (x_1, y_1,\,\dots)$ und $\ivecS{r}{2} = (x_2, y_2, \,\dots)$
 \end{figure}
 
 
-\subsection{Skalarmultiplikation}\label{subsec: Skalarmultiplikation}
+\section{Skalarmultiplikation}\label{sec: Skalarmultiplikation}
 Die Multiplikation von Skalaren entspricht einer wiederholten Addition: \[5 \cdot 3 = 5 + 5 + 5 = 15\mDot\]
 Für Vektoren definieren wir die sogenannte Skalarmultiplikation auf dieselbe Weise.
 \begin{rememberbox}[]{Skalarmultiplikation}
@@ -629,18 +629,18 @@ Für Vektoren definieren wir die sogenannte Skalarmultiplikation auf dieselbe We
         \draw[-Stealth, color=orange,line width=2.2pt] (C) -- (D);
         \draw[-Stealth, color=orange,line width=2.2pt] (D) -- (E);
         % 4. Add the label above the point
-        \node[anchor=south west, color=orange] at (0.8,1.7) {\LARGE $\vec{r}$};
-        \node[anchor=south west, color=orange] at (1.8,2.2) {\LARGE $\vec{r}$};
-        \node[anchor=south west, color=orange] at (2.8,2.7) {\LARGE $\vec{r}$};
-        \node[anchor=south west, color=orange] at (3.8,3.2) {\LARGE $\vec{r}$};
-        \node[anchor=south west, color=blue] at (3.0,0.8) {\LARGE $\vec{u}$};
+        \node[anchor=south west, color=orange] at (0.8,1.7) {\LARGE $\ivec{r}$};
+        \node[anchor=south west, color=orange] at (1.8,2.2) {\LARGE $\ivec{r}$};
+        \node[anchor=south west, color=orange] at (2.8,2.7) {\LARGE $\ivec{r}$};
+        \node[anchor=south west, color=orange] at (3.8,3.2) {\LARGE $\ivec{r}$};
+        \node[anchor=south west, color=blue] at (3.0,0.8) {\LARGE $\ivec{u}$};
     \end{tikzpicture}
     }
     \caption{Die Skalarmultiplikation, $\protect\ivec{u} = s \cdot \protect\ivec{r}$, entspricht einer wiederholten Vektoraddition. Der Vektor $\protect\ivec{r}$ wird 4-mal addiert zu $\protect\ivec{u}$ aufsummiert, \gDh $s = 4$.}\label{fig: skalarmultiplikation}
 \end{figure}
 
 
-\subsection{Skalarprodukt (Inneres Produkt)}\label{subsec: Skalarprodukt_InneresProdukt}
+\section{Skalarprodukt (Inneres Produkt)}\label{sec: Skalarprodukt_InneresProdukt}
 Das Skalarprodukt -- nicht zu verwechseln mit der Skalarmultiplikation -- ist das Produkt der Multiplikation zweier Vektoren, dessen Resultat ein Skalar ist. 
 \begin{rememberbox}[sidebyside, sidebyside align=center, lower separated=false,righthand width=3.5cm]{Skalarmultiplikation}
     Das Skalarprodukt $(\,\cdot\,)$\footnotemark{} ist eine positiv definite symmetrische
@@ -674,8 +674,8 @@ Das Skalarprodukt -- nicht zu verwechseln mit der Skalarmultiplikation -- ist da
         % 1. Draw the horizontal axis
         \draw[-Stealth, line width=1.2pt] (P) -- (Q);
         \draw[-Stealth, line width=1.2pt] (P) -- (S);
-        \node[anchor=south west, color=black] at (3.0,0.8) {\Large $\vec{a}$};
-        \node[anchor=south west, color=black] at (0.7,1.5) {\Large $\vec{b}$};
+        \node[anchor=south west, color=black] at (3.0,0.8) {\Large $\ivec{a}$};
+        \node[anchor=south west, color=black] at (0.7,1.5) {\Large $\ivec{b}$};
         \node[anchor=south west, color=black] at (1.4,1.0) {\Large $\varphi$};
     \end{tikzpicture}
     }
@@ -711,7 +711,7 @@ Der Vollständigkeit halber sei hier erwähnt, was die oben erwähnten Eigenscha
     \ivec{u} \cdot \ivec{u} = 0 &\Leftrightarrow \ivec{u} = \ivec{0}
 \end{align*}
 
-\subsection{Kreuzprodukt (Äußeres Produkt)}\label{subsec: Kreuzprodukt_ÄußeresProdukt}
+\section{Kreuzprodukt (Äußeres Produkt)}\label{sec: Kreuzprodukt_AeusseresProdukt}
 Das Kreuzprodukt ist ein Produkt zweier Vektoren, dessen Ergebnis ein Vektor ist, der auf beide Faktoren (Vektoren) orthogonal steht. 
 \begin{rememberbox}[]{Kreuzprodukt}
     Das Kreuzprodukt $(\,\times\,)$ ist eine Bilinearform $(\ivec{u}, \ivec{v}, \ivec{w} \in V,\; \lambda,\mu \in \Real)$
@@ -749,8 +749,8 @@ Der Betrag des Kreuzproduktes entspricht der Fläche des von den Vektoren aufges
         \coordinate (C) at (8, 3.464);
         \coordinate (H) at (B |- O); % Projektion von B auf die x-Achse
         \fill[purple!10] (O) -- (A) -- (C) -- (B) -- cycle;
-        \draw[vector, blue] (O) -- (A) node[midway, below=2pt] {\Large $\vec{a}$};
-        \draw[vector, red] (O) -- (B) node[midway, left=7pt] {\Large $\vec{b}$};
+        \draw[vector, blue] (O) -- (A) node[midway, below=2pt] {\Large $\ivec{a}$};
+        \draw[vector, red] (O) -- (B) node[midway, left=7pt] {\Large $\ivec{b}$};
         % Die anderen beiden Seiten des Parallelogramms und Höhe
         \draw (A) -- (C);
         \draw (B) -- (C);
@@ -786,7 +786,7 @@ Wir wollen auch hier die mathematischen Eigenschaften des Kreuzproduktes erläut
     \ivec{u} \times (\ivec{v} \times \ivec{w}) + \ivec{v} \times (\ivec{w} \times \ivec{u}) + \ivec{w} \times (\ivec{u} \times \ivec{v}) = 0
 \end{align*}
 
-\subsection{Spalten- und Zeilenvektor}\label{subsec: Spalten_vs_Zeilenvektor}
+\section{Spalten- und Zeilenvektor}\label{sec: Spalten_vs_Zeilenvektor}
 Ein \textbf{Vektor} ist ein mathematisches Objekt, das eine geordnete Liste von Zahlen, den sogenannten \textbf{Komponenten} oder \textbf{Koordinaten}, darstellt. Die Anzahl der Komponenten bestimmt die \textbf{Dimension} des Vektors. Vektoren können auf zwei grundlegende Weisen geschrieben werden: als Spaltenvektor oder als Zeilenvektor.
 
 \subsection*{Der Spaltenvektor}
@@ -1065,7 +1065,7 @@ Als Approximation für die Fläche unter der Kurve $f(t)$ schreiben wir dann:
 \end{equation}
 Der Fehler, den wir bei der Mittelauswertung von $f(t)$ im Intervall $\Delta t_i$ machen, ist in \cref{fig: zoom_integral_fehler} dargestellt. Er besteht darin, dass die grüne Fläche Teil der Summe ist, obwohl sie gar nicht unter der Kurve liegt. Umgekehrt ist die rote Fläche nicht Teil der berechneten Fläche, obwohl sie unter der Kurve liegt. Die Hypothese ist zunächst, dass der Fehler für immer kleiner werdende Intervallgrößen, $\Delta t_i \rightarrow 0$, gegen $0$ geht.
 
-\section{Einschub: Obersumme und Untersumme}\label{sec: Obersumme_vs_Untersumme}
+\section{Obersumme und Untersumme}\label{sec: Obersumme_vs_Untersumme}
 Anstatt die Funktion in der Mitte des Intervalls auszuwerten, kann man auch immer den kleinsten Wert im jeweiligen Intervall $\Delta t_{i}$ (Untersumme) oder den größten Wert im Intervall $\Delta t_{i}$ (Obersumme) wählen.
 \begin{figure}[h!]
     \centering

@@ -242,10 +242,10 @@ Unter Verwendung der Schreibweise der Ortsvektoren aus \cref{eq: vektor_aufteilu
 geschrieben werden, wobei $\Delta x = x_{2} - x_{1}$, $\Delta y = y_{2} - y_{1}$ und $\Delta z = z_{2} - z_{1}$ sind. In dieser Schreibweise sind $\Delta x$, $\Delta y$, $\Delta z$ Skalare. Die Verschiebung wird in mehreren Dimensionen konsequent als Vektor notiert ($\Delta\ivec{r} = \ivecS{r}{2} - \ivecS{r}{1}$).
 
 \begin{rememberbox}{Verschiebungsvektor (Allgemein)}
-    Der Verschiebungsvektor $\Delta\vec{r}$ ergibt sich durch die Differenz der Ortsvektoren \begin{equation}
-        \Delta\vec{r}=\vec{r}_{2}-\vec{r}_{1}\mComma
+    Der Verschiebungsvektor $\Delta\ivec{r}$ ergibt sich durch die Differenz der Ortsvektoren \begin{equation}
+        \Delta\ivec{r}=\ivecS{r}{2}-\ivecS{r}{1}\mComma
     \end{equation}
-    siehe \cref{fig: verschiebungsvektor_als_differenz}. Die kartesischen Koordinaten des Verschiebungsvektors sind die Verschiebungen entlang der Koordinatenachsen: $\Delta\ivec{r} = \inlrowThree{\Delta x}{\Delta y}{\Delta z}^T$. Eine Verschiebung soll genau jenen Vektor darstellen, der von $\ivecS{r}{1}$ nach $\ivecS{r}{2}$ zeigt und daher gilt $\vec{r}_{1} + \Delta\vec{r} = \vec{r}_{2}$.
+    siehe \cref{fig: verschiebungsvektor_als_differenz}. Die kartesischen Koordinaten des Verschiebungsvektors sind die Verschiebungen entlang der Koordinatenachsen: $\Delta\ivec{r} = \inlrowThree{\Delta x}{\Delta y}{\Delta z}^T$. Eine Verschiebung soll genau jenen Vektor darstellen, der von $\ivecS{r}{1}$ nach $\ivecS{r}{2}$ zeigt und daher gilt $\ivecS{r}{1} + \Delta\ivec{r} = \ivecS{r}{2}$.
 \end{rememberbox}
 
 
@@ -402,12 +402,12 @@ Die \textbf{Momentanbeschleunigung} erhält man wiederum aus der Durchschnittsbe
 \end{importantbox}
 
 \begin{rememberbox}{Eigenschaften der Beschleunigung}
-    Die Beschleunigung $\ivec{a}(t)={(a_{x}(t),a_{y}(t),a_{z}(t))}^\T$ ist ein Vektor. Sie zeigt entlang der Tangente an die Geschwindigkeitskurve $\vec{v}(t)$ und ist gleich der Krümmung (zweite Ableitung) der Weg-Zeit-Funktion $\vec{r}(t)$. Die Maßeinheit der Beschleunigung ist $[a] = \SI{1}{\meter\per\second\squared}$.
+    Die Beschleunigung $\ivec{a}(t)={(a_{x}(t),a_{y}(t),a_{z}(t))}^\T$ ist ein Vektor. Sie zeigt entlang der Tangente an die Geschwindigkeitskurve $\ivec{v}(t)$ und ist gleich der Krümmung (zweite Ableitung) der Weg-Zeit-Funktion $\ivec{r}(t)$. Die Maßeinheit der Beschleunigung ist $[a] = \SI{1}{\meter\per\second\squared}$.
 \end{rememberbox}
 Ganz allgemein hat eine physikalische Größe und deren Differenzen und Differentiale immer dieselbe Einheit, \zB $[\ivec{r}] = [\Delta \ivec{r}] = [\dd \ivec{r}] = \SI{1}{\meter}$.
 
 \section{Gleichförmig beschleunigte Bewegung}\label{sec: gleichf_beschl_bewegung}
-Eine Bewegung, bei der der Beschleunigungsvektor $\vec{a}$ konstant bleibt -- hierbei bleibt sowohl der Betrag als auch die Richtung konstant -- heißt \textbf{gleichförmig beschleunigte Bewegung}.
+Eine Bewegung, bei der der Beschleunigungsvektor $\ivec{a}$ konstant bleibt -- hierbei bleibt sowohl der Betrag als auch die Richtung konstant -- heißt \textbf{gleichförmig beschleunigte Bewegung}.
 \begin{equation}\label{eq: def_glg_gleichf_beschl_Bewegung}
     \ivec{a} = \const \mDot
 \end{equation}
@@ -597,7 +597,7 @@ Die Integrationskonstante ist hier der Startwinkel $\varphi_0 = \varphi(t=0)$. �
 
 \subsubsection{Geschwindigkeit}
 %  GEMINI CODE 
-Der Betrag des Geschwindigkeitsvektors ist laut \cref{eq: betrag_geschwindigkeit_kreisbewegung} $|\vec{v}(t)| = v(t) = R \cdot \omega$. Die Richtung des Geschwindigkeitsvektors $\vec{e}_v$ kann in Polarkoordinaten deutlich einfacher ermittelt werden. Ohne Beschränkung der Allgemeinheit betrachten wir einen Massenpunkt auf einer Kreisbahn (gegen den Uhrzeigersinn) mit Radius $R$ um den Ursprung. Für die zeitabhängigen Koordinaten gilt nun geometrisch:
+Der Betrag des Geschwindigkeitsvektors ist laut \cref{eq: betrag_geschwindigkeit_kreisbewegung} $|\ivec{v}(t)| = v(t) = R \cdot \omega$. Die Richtung des Geschwindigkeitsvektors $\ivec{e}_v$ kann in Polarkoordinaten deutlich einfacher ermittelt werden. Ohne Beschränkung der Allgemeinheit betrachten wir einen Massenpunkt auf einer Kreisbahn (gegen den Uhrzeigersinn) mit Radius $R$ um den Ursprung. Für die zeitabhängigen Koordinaten gilt nun geometrisch:
 \begin{equation}\label{eq: koordinaten_xy_kreisbewegung}\begin{aligned}
 x(t) &= R \cdot \cos(\varphi(t)) \mComma \\
 y(t) &= R \cdot \sin(\varphi(t)) \mDot
@@ -629,7 +629,7 @@ y(t) &= R \cdot \sin(\varphi(t)) \mDot
 \draw[red, line width=1.8pt, ->, >=Latex] (\radius,0) arc (0:\angleEnd/2:\radius);
 \draw[red, line width=2.0pt] (\radius,0) arc (0:\angleEnd:\radius);
 % red vectors
-\draw[->, >={Latex[length=6mm]}, darkerRed, line width=2.0pt] (0,0) -- (p) node[left=2pt, pos=0.7] {\LARGE $\vec{r}(t)$};
+\draw[->, >={Latex[length=6mm]}, darkerRed, line width=2.0pt] (0,0) -- (p) node[left=2pt, pos=0.7] {\LARGE $\ivec{r}(t)$};
 \draw[line width=1.6pt, dashed, darkerRed] (px) -- (p) node[midway, right=3pt] {\Large $y(t)$};
 \draw[line width=1.6pt, dashed, darkerRed] (0,0.01) -- (1.434,0.01) node[midway, below=3pt] {\Large $x(t)$};
 \node[circle, fill=black, inner sep=1.9pt] at (p) {};
@@ -691,7 +691,7 @@ Nun berechnen wir den zeitabhängigen Geschwindigkeitsvektor über die Ableitung
         }
     \caption{Ein Geschwindigkeitsvektor $\protect\ivec{v}(t)$ (blauer Pfeil) steht immer senkrecht auf den Ortsvektor $\protect\ivec{r}(t)$ (roter Pfeil).}\label{fig: geschw_senkrecht_ortsvektor_kreisbew}
 \end{figure}
-\begin{importantbox}{Geschwindigkeitsvektor $\vec{v}(t)$ der gleichförmigen Kreisbewegung}
+\begin{importantbox}{Geschwindigkeitsvektor $\ivec{v}(t)$ der gleichförmigen Kreisbewegung}
     Der Geschwindigkeitsvektor der gleichförmigen ebenen Kreisbewegung lautet ganz allgemein
     \begin{equation}\label{eq: geschwindigkeit_gleichf_kreisbew}
         \ivec{v}(t) = v \cdot \ivecS{e}{v} = (R \cdot \omega) \icolTwo{-\sin(\omega t + \varphi_0)}{\cos(\omega t + \varphi_0)}
@@ -702,7 +702,7 @@ Nun berechnen wir den zeitabhängigen Geschwindigkeitsvektor über die Ableitung
     \end{equation}
     ist unabhängig von der Zeit. Die Einheit der Geschwindigkeit ist weiterhin $[v] = [R \cdot \omega] = \si{\meter\per\second}$. 
 \end{importantbox}
-Wir können mithilfe des Skalarproduktes zeigen, dass der Einheitsvektor der Geschwindigkeit $\vec{e}_v$ senkrecht auf den Einheitsvektor des Ortes $\vec{e}_r$ steht:
+Wir können mithilfe des Skalarproduktes zeigen, dass der Einheitsvektor der Geschwindigkeit $\ivecS{e}{v}$ senkrecht auf den Einheitsvektor des Ortes $\ivecS{e}{r}$ steht:
 \begin{gather*}
     \ivecS{e}{v} \cdot \ivecS{e}{r} = \icolTwo{-\sin(\omega t)}{\cos(\omega t)} \cdot \icolTwo{\cos(\omega t)}{\sin(\omega t)} = -\sin(\omega t)\cos(\omega t) + \cos(\omega t)\sin(\omega t) = 0 \\
     \implies  \ivecS{e}{v} \perp \ivecS{e}{r} \mDot
@@ -825,16 +825,16 @@ wobei wir wieder \oBdA $\varphi_0 = 0$ gewählt haben. Damit erhält man für de
 \begin{equation}
     \ivec{a}(t) = v \cdot \frac{\dd \ivecS{e}{v}}{\dd t} = v \cdot (-\omega \cdot \ivecS{e}{r}) = -(v \cdot \omega) \cdot \ivecS{e}{r} = - \frac{v^2}{R} \ivecS{e}{r}\mDot
 \end{equation}
-\begin{importantbox}{Zentripetalbeschleunigung $\vec{a}(t)$}
+\begin{importantbox}{Zentripetalbeschleunigung $\ivec{a}(t)$}
     Der Beschleunigungsvektor der ebenen Kreisbewegung lautet
-    $$ \vec{a}(t) = a \cdot \vec{e}_a = -\frac{v^2}{r} \cdot \vec{e}_r = -\omega^2 \cdot r \cdot \vec{e}_r $$
+    $$ \ivec{a}(t) = a \cdot \ivecS{e}{a} = -\frac{v^2}{r} \cdot \ivecS{e}{r} = -\omega^2 \cdot r \cdot \ivecS{e}{r} $$
     und zeigt zum Kreismittelpunkt. Deshalb nennt man sie Zentripetalbeschleunigung (\gDQ{mittelpunktsuchende Beschleunigung}). Ihre Einheit beträgt $[\frac{v^2}{r}] = \si{\meter\per\second\squared}$.
 \end{importantbox}
 
 \section{Die allgemeine krummlinige Bewegung}
-Bei der gleichförmigen Kreisbewegung nimmt die Beschleunigung eine sehr einfache Form an, da der Betrag der Geschwindigkeit konstant ist, $|\vec{v}| = \text{const}$. Im allgemeinen Fall wird sich $\vec{v}$ aber nach Betrag und Richtung ändern und zwar weil sich die Beschleunigung sowohl nach Betrag als auch nach Richtung ändert. \\
+Bei der gleichförmigen Kreisbewegung nimmt die Beschleunigung eine sehr einfache Form an, da der Betrag der Geschwindigkeit konstant ist, $|\ivec{v}| = \const$. Im allgemeinen Fall wird sich $\ivec{v}$ aber nach Betrag und Richtung ändern und zwar weil sich die Beschleunigung sowohl nach Betrag als auch nach Richtung ändert. \\
 
-Die Geschwindigkeit $\vec{v}$ steht jedoch -- unabhängig von der Bewegungsform -- immer tangential zur Bahnkurve. Es ergibt sich nämlich aus der Definition $\ivec{v} = \frac{\dd \ivec{r}}{\dd t}$, dass die Geschwindigkeit parallel zur differentiellen Verschiebung ist. Die Beschleunigung $\ivec{a}$ kann eine beliebige Richtung aufweisen und lässt sich in zwei Komponenten zerlegen: 
+Die Geschwindigkeit $\ivec{v}$ steht jedoch -- unabhängig von der Bewegungsform -- immer tangential zur Bahnkurve. Es ergibt sich nämlich aus der Definition $\ivec{v} = \frac{\dd \ivec{r}}{\dd t}$, dass die Geschwindigkeit parallel zur differentiellen Verschiebung ist. Die Beschleunigung $\ivec{a}$ kann eine beliebige Richtung aufweisen und lässt sich in zwei Komponenten zerlegen: 
 
 \begin{importantbox}{Beschleunigung bei der krummlinigen Bewegung}
 Die Beschleunigung $\ivec{a}(t)$ kann im Allgemeinen eine beliebige Richtung aufweisen
@@ -846,7 +846,7 @@ und in die Tangential- und Normalbeschleunigung zerlegt werden.
 \begin{figure}
     \centering
     \includegraphics[width=0.65\linewidth]{Bilder/Kapitel_Mechanik/Kapitel_Kinematik/krummlinigeBewBahnkurve.png}
-    \caption{Die Geschwindigkeit $\protect\ivec{v}(t)$ steht immer tangential auf die Bahnkurve. Die Beschleunigung hat jedoch zwei Anteile, die normal aufeinander stehen: die Tangentialbeschleunigung $\protect\ivec{a}_t$ und die Normalbeschleunigung $\protect\ivec{a}_n$.}\label{fig: allg_krummlinige_bewegung}
+    \caption{Die Geschwindigkeit $\protect\ivec{v}(t)$ steht immer tangential auf die Bahnkurve. Die Beschleunigung hat jedoch zwei Anteile, die normal aufeinander stehen: die Tangentialbeschleunigung $\protect\ivecS{a}{t}$ und die Normalbeschleunigung $\protect\ivecS{a}{n}$.}\label{fig: allg_krummlinige_bewegung}
 \end{figure}
 \begin{rememberbox}{Tangential- und Normalbeschleunigung}
     \begin{itemize}
