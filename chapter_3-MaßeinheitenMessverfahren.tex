@@ -20,7 +20,7 @@ Jede physikalische Größe kann prinzipiell nicht genauer gemessen werden, als d
 Es stellt sich nun die Frage, wie viele Grundgrößen und damit Normale braucht man in der Physik? 
 
 \section{SI-Basiseinheiten}\label{sec: SI-Basiseinheiten}
-Die gesamte moderne Physik und Technik basiert auf einem System von nur sieben fundamentalen Grundgrößen, den sogenannten SI-Basiseinheiten (Le Système International d’Unités). Alle anderen physikalischen Einheiten (wie Geschwindigkeit, Kraft oder Energie) können von diesen sieben abgeleitet werden.
+Die gesamte moderne Physik und Technik basiert auf einem System von nur sieben fundamentalen Grundgrößen, den sogenannten SI-Basiseinheiten (Le Système International d'Unités). Alle anderen physikalischen Einheiten (wie Geschwindigkeit, Kraft oder Energie) können von diesen sieben abgeleitet werden.
 \begin{rememberbox}[]{}
 Es gibt 7 Basiseinheiten und daraus leitet man alle anderen Einheiten durch Multiplikation oder Division ab.
 \end{rememberbox}
@@ -65,7 +65,7 @@ Indem die Lichtgeschwindigkeit im Vakuum auf $c = \SI{299 792 458}{\meter\per\se
 \footnotetext{Das ist höchst praktikabel, da aus der Speziellen Relativitätstheorie nur hervorgeht, dass es eine konstante Lichtgeschwindigkeit im Vakuum geben muss. Ihr Zahlenwert ist aber frei wählbar.}
 
 \subsection{Masse}\label{subsec: SI-Masse}
-Es ist wichtig, die Masse als eine intrinsische Eigenschaft von Materie vom Gewicht zu unterscheiden, welches die Kraft darstellt, die durch die Gravitation auf eine Masse wirkt $F_G = m\cdot g$. Die Neudefinition von 2018 war notwendig, da das physische Urkilogramm über die Zeit an Masse verlor und somit keine stabile Referenz mehr darstellte.
+Es ist wichtig, die Masse als eine intrinsische Eigenschaft von Materie vom Gewicht zu unterscheiden, welches die Kraft darstellt, die durch die Gravitation auf eine Masse wirkt $F_G = m\cdot g$. Die Neudefinition von 2018 war notwendig, da sich die Masse des physischen Urkilogramms über die Zeit im Vergleich zu den Kopien veränderte und somit keine stabile Referenz mehr darstellte.
 \begin{importantbox}[]{Kilogramm}
 Die Maßeinheit der \textbf{Masse} ist das \textbf{Kilogramm}. Das Formelzeichen der Masse ist $m$ und das Einheitszeichen des Kilogramms ist $\si{\kilo\gram}$. 
 \tcblower
@@ -151,7 +151,7 @@ Steradiant ist ebenfalls \textbf{einheitenlos} hat aber dennoch ein Einheitszeic
 
 \section{Darstellung von Zahlenwerten und Einheiten}\label{sec: Zahlenwerte_Einheiten} 
 \begin{itemize}
-    \item \textbf{Variablen und Formelsymbole} werden in der Regel \textit{kursiv} geschrieben. \newline
+    \item \textbf{Variablen und Formelsymbole} werden in der Regel \textit{kursiv} geschrieben.\newline
     \textbf{Zahlenwerte und Einheitensymbole} werden \textbf{nicht} kursiv geschrieben.
 
     \item Zwischen dem Zahlenwert und der Einheit wird ein Leerzeichen eingefügt. 
@@ -185,7 +185,7 @@ Steradiant ist ebenfalls \textbf{einheitenlos} hat aber dennoch ein Einheitszeic
     \hline
     $\mathit{\Omega} = \SI{3}{\steradian}$ & $\Omega = \SI{3}{\steradian}$ & Formelzeichen nicht kursiv \\
     \hline
-    $s = \SI{3}{\centi\meter}$ & $s = \SI{3}{\centi\meter}.$ & mit Punkt \\
+    $s = \SI{3}{\centi\meter}$ & $s = \SI{3}{\centi\meter}$. & mit Punkt \\
     \hline
     $s = \SI{3}{\centi\meter}$ & $s = \SI{3}{cms}$ & Einheiten haben keinen Plural \\
     \hline
@@ -273,17 +273,17 @@ Energie & $E$ & $[E] = ML^2/T^2$ & $\Unit{kg \cdot m^2/s^2}$ \\ \hline
 \textbf{Die Dimension des Drucks} \\
 Der Druck $p$ in einer bewegten Flüssigkeit hängt von ihrer Dichte $\rho$ und von ihrer Geschwindigkeit $v$ ab. Gesucht ist eine einfache Kombination von Dichte und Geschwindigkeit, die die richtige Dimension des Drucks ergibt.
 
-\textbf{Problembeschreibung:} Der Druck hat die Dimension $[p] = \frac{M}{L \cdot T^2}$, die Dichte die Dimension $[\rho] = \frac{M}{L^3}$ und die Geschwindigkeit die Dimension $[v] = \frac{L}{T}$. \newline
+\textbf{Problembeschreibung:} Der Druck hat die Dimension $[p] = \frac{M}{L \cdot T^2}$, die Dichte die Dimension $[\rho] = \frac{M}{L^3}$ und die Geschwindigkeit die Dimension $[v] = \frac{L}{T}$.\newline
 
 \textbf{Lösung:}
 Die Masse kommt im gesuchten Druck im Zähler mit dem Exponenten $1$ vor und ebenso in der Dichte. Demnach muss die Dichte ebenso im Nenner stehen und zwar mit dem Exponenten 1. Für die Geschwindigkeit setzen wir zunächst eine variable Hochzahl an 
 \begin{equation*}\begin{aligned}
-    [p] &= [\rho]\cdot [v]^x \mComma  \\
-    \frac{M}{L T^2} &= \frac{M}{L^3} \left(\frac{L}{T}\right)^x \mDot \\
+    [p] &= [\rho]\cdot {[v]}^x \mComma  \\
+    \frac{M}{L T^2} &= \frac{M}{L^3} {\left(\frac{L}{T}\right)}^x \mDot \\
 \end{aligned}\end{equation*} 
 Im Nenner benötigen wir ein $T^2$, das wir nur von der Geschwindigkeit bekommen können und daher versuchen wir es mit $x = 2$: 
 \begin{equation*}\begin{aligned}
-    [p] = \frac{M}{L T^2} &= \frac{M}{L^{\cancel{3}}} \frac{\cancel{L^2}}{T^2} = [\rho]\cdot [v]^2\\
+    [p] = \frac{M}{L T^2} &= \frac{M}{L^{\cancel{3}}} \frac{\cancel{L^2}}{T^2} = [\rho]\cdot {[v]}^2\\
     \frac{M}{L T^2} &=  \frac{M}{L T^2}  
 \end{aligned} \end{equation*}  \QEDA
 \end{examplebox}
@@ -293,10 +293,11 @@ Im Nenner benötigen wir ein $T^2$, das wir nur von der Geschwindigkeit bekommen
 Die kinetische Energie (Bewegungsenergie) eines Körpers $E_\kin$ ($[E_\kin] = \si{\joule}$) hängt von der Masse $m$ ($[m] = \si{\kilo\gram}$) des Körpers und dessen Geschwindigkeit $v$ ($[v] = \si{\meter/\second}$) ab. Ermitteln Sie den Zusammenhang zwischen Energie und den beiden anderen Größen!
 
 \textbf{Lösung:}
-Wie oben erwähnt, kann es nur eine Multiplikation oder Division der Größen mit unterschiedlichen Potenzen sein. Negative Hochzahlen drücken dabei Brüche aus. Joule ersetzen wir laut Tabelle durch die Basiseinheiten $\si{\kilo\gram\meter^2/\second^2}$. Wir setzen daher variable Hochzahlen an. \textit{Merke:} Es werden nur die Einheiten gleichgesetzt nicht die physikalischen Größen!
+Wie oben erwähnt, kann es nur eine Multiplikation oder Division der Größen mit unterschiedlichen Potenzen sein. Negative Hochzahlen drücken dabei Brüche aus. Joule ersetzen wir laut Tabelle durch die Basiseinheiten $\si{\kilo\gram\meter^2/\second^2}$. Wir setzen daher variable Hochzahlen an. 
+\textit{Merke:} Es werden nur die Einheiten gleichgesetzt nicht die physikalischen Größen!
 
 \begin{equation*}\begin{gathered}
-    \underbrace{\si{\joule}}_{\si{\kilogram}\cdot \frac{\si{\meter^2}}{\si{\second^2}} } = [E_\kin] = [m]^x \cdot [v]^y = \si{\kilo\gram}^x \cdot \left( \frac{\si{\meter}}{\si{\second}}\right)^y \\
+    \underbrace{\si{\joule}}_{\si{\kilogram}\cdot \frac{\si{\meter^2}}{\si{\second^2}} } = [E_\kin] = {[m]}^x \cdot {[v]}^y = \si{\kilo\gram}^x \cdot {\left( \frac{\si{\meter}}{\si{\second}}\right)}^y \\
     \si{\kilogram}\cdot \frac{\si{\meter^2}}{\si{\second^2}} = \si{\kilogram}^x\cdot \frac{\si{\meter^y}}{\si{\second^y}} \\
     \Rightarrow x = 1,\; y = 2
 \end{gathered}\end{equation*} 

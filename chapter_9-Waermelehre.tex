@@ -621,7 +621,7 @@ Das Modell des idealen Gases basiert auf folgenden Annahmen:
     \item Das Gas besteht aus einer großen Anzahl von Teilchen (Atomen/Molekülen), die als punktförmige Massen betrachtet werden können. Ihr Eigenvolumen ist vernachlässigbar gegenüber dem Gesamtvolumen.
     \item Die Teilchen bewegen sich zufällig (statistisch verteilt) in alle Richtungen.
     \item Zwischen den Teilchen gibt es keine anziehenden oder abstoßenden Kräfte, außer bei direkten Kollisionen.
-    \item Alle Stöße der Teilchen untereinander und mit den Wänden des Behälters sind vollkommen elastisch, d.h., die kinetische Gesamtenergie bleibt erhalten.
+    \item Alle Stöße der Teilchen untereinander und mit den Wänden des Behälters sind vollkommen elastisch, \gDh, die kinetische Gesamtenergie bleibt erhalten.
 \end{itemize}
 \textit{Erklärendes Beispiel:} Um zu beurteilen, ob ein reales Gas als ideales Gas betrachtet werden kann, vergleichen wir den mittleren Abstand $\lrangle{r}$ der Gasteilchen mit ihrem effektiven Durchmesser $r_0$. Ist der mittlere Abstand deutlich größer als der Durchmesser ($r_0/\lrangle{r} \ll 1$), sind die Wechselwirkungen zwischen den Teilchen vernachlässigbar, und das Gas verhält sich ideal.
 Bei einem Druck von \SI{1}{\barPr} und Raumtemperatur enthält \SI{1}{\centi\meter\cubed} eines Gases etwa $3\cdot 10^{19}$ Moleküle. Ihr mittlerer Abstand ist dann $\lrangle{r} \approx \SI{3}{\nano\meter}$. Für Heliumatome ist $r_0 \approx \SI{0.05}{\nano\meter}$, weshalb $r_0/\lrangle{r} \approx \qty{0.017} \ll 1$. Helium ist daher bei einem Druck von \SI{1}{\barPr} als ideales Gas zu betrachten.
@@ -1306,14 +1306,14 @@ Die Phasendiagramme verschiedener Stoffe sehen qualitativ ähnlich aus, weisen a
     \begin{subfigure}[b]{0.42\textwidth}
         \centering
         \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/Phasendiagramm_H2O.png}
-        \caption{Phasendiagramm von Wasser: Die Schmelzkurve (fest/flüssig) verläuft nach links oben.}\label{fig: phasendiagramm_wasser}
+        \caption{Phasendiagramm von Wasser: Die Schmelzkurve (fest/flüssig) verläuft nach links oben.}\label{fig: phasendiagramm_wasser_links}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.42\textwidth}
         \centering
         \includegraphics[width=\linewidth]{Bilder/Kapitel_Waermelehre/Phasendiagramm_CO2.png}
         \caption{Phasendiagramm von $\text{CO}_2$: Die Schmelzkurve verläuft klassisch nach rechts oben.}
-        \label{fig: phasendiagramm_co2}
+        \label{fig: phasendiagramm_co2_rechts}
     \end{subfigure}
     \caption{Gegenüberstellung der Phasendiagramme von Wasser und Kohlendioxid. Die unterschiedlichen Steigungen der Schmelzkurven resultieren aus den Dichteunterschieden zwischen fester und flüssiger Phase.}
     \label{fig: phasendiagramme_vergleich}
@@ -1328,7 +1328,7 @@ Wie in \cref{fig: phasendiagramme_vergleich} (links) zu sehen ist, besitzt die S
 \subsubsection{Kohlendioxid ($\text{CO}_2$) -- Normales Verhalten}
 Bei den meisten Stoffen, so auch bei $\text{CO}_2$ (siehe \cref{fig: phasendiagramme_vergleich} rechts), ist die Schmelzkurve nach rechts geneigt (\textbf{positive Steigung}). Der Feststoff hat eine höhere Dichte als die Flüssigkeit. Durch Druckerhöhung wird der Festkörper stabilisiert, die Schmelztemperatur steigt.
 
-Eine Besonderheit von $\text{CO}_2$ ist die Lage des Tripelpunkts bei $p_{\text{Tr}} \approx \SI{5.1}{\bar}$. Da unser Atmosphärendruck ($\approx \SI{1}{\bar}$) unterhalb dieses Drucks liegt, gibt es bei Normalbedingungen kein flüssiges $\text{CO}_2$. Festes $\text{CO}_2$ (Trockeneis) geht beim Erwärmen direkt in den gasförmigen Zustand über (Sublimation).
+Eine Besonderheit von $\text{CO}_2$ ist die Lage des Tripelpunkts bei $p_{\text{Tr}} \approx \SI{5.1}{\barPr}$. Da unser Atmosphärendruck ($\approx \SI{1}{\barPr}$) unterhalb dieses Drucks liegt, gibt es bei Normalbedingungen kein flüssiges $\text{CO}_2$. Festes $\text{CO}_2$ (Trockeneis) geht beim Erwärmen direkt in den gasförmigen Zustand über (Sublimation).
 
 
 
@@ -1369,7 +1369,7 @@ Die spezifische Verdampfungswärme $\lambda_v$ ist die Energie, die aufgebracht 
 Der zweite Anteil ist in der Regel wesentlich größer als der erste, wie das folgende Beispiel zeigt.
 
 \begin{examplebox}{Beispiel: Verdampfung von Wasser}
-    Wir betrachten $m = \SI{1}{\kilogram}$ Wasser, das bei $T = \SI{100}{\celsius}$ und einem äußeren Druck von $p = \SI{1.013}{\bar}$ ($\approx \SI{1e5}{\pascal}$) verdampft wird.
+    Wir betrachten $m = \SI{1}{\kilogram}$ Wasser, das bei $T = \SI{100}{\celsius}$ und einem äußeren Druck von $p = \SI{1.013}{\barPr}$ ($\approx \SI{1e5}{\pascal}$) verdampft wird.
     \begin{itemize}
         \item Volumen der Flüssigkeit: $V_{Fl} \approx \SI{1}{\deci\meter\cubed} = \SI{0.001}{\cubic\meter}$.
         \item Volumen des Dampfes: $V_D \approx \SI{1700}{\deci\meter\cubed} = \SI{1.7}{\cubic\meter}$.

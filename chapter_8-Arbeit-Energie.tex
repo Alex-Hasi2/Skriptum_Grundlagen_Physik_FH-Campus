@@ -80,7 +80,7 @@ Wir berechnen die Anziehungskraft auf eine Probemasse von $m = \SI{1}{\kilo\gram
 \begin{itemize}[itemsep=1.5pt]
     \item \textbf{Auf Seehöhe} ($r = R_\text{E} = \SI{6371e3}{\meter}$):
     \begin{equation}
-        |\ivecS{F}{\text{G}}(r)| = G \frac{M_\text{E} \cdot m}{r^2} \approx \num{6.674e-11} \cdot \frac{\num{5.972e24} \cdot \num{1}}{(\num{6.371e6})^2} \approx \SI{9.82}{\newton} \mDot
+        |\ivecS{F}{\text{G}}(r)| = G \frac{M_\text{E} \cdot m}{r^2} \approx \num{6.674e-11} \cdot \frac{\num{5.972e24} \cdot \num{1}}{{(\num{6.371e6})}^2} \approx \SI{9.82}{\newton} \mDot
     \end{equation}
     Dies entspricht ungefähr der bekannten Erdbeschleunigung von $g \approx \SI{9.82}{\meter\per\second\squared}$.
 
@@ -508,7 +508,7 @@ Da keine nicht-konservativen Kräfte (wie Reibung) wirken, bleibt diese Gesamten
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{Bilder/Kapitel_ArbeitEnergie/energieerhaltung_federpendel.png}
-    \caption{Die, auf die Gesamtenergie normierte, potenzielle (blau), kinetische (orangen) und konstante Gesamtenergie (grün) eines idealen Federpendels als Funktion der normierten Auslenkung $x/x_\text{max}$.}\label{fig: federpendel_energie_diagramm}
+    \caption{Die, auf die Gesamtenergie normierte, potenzielle (blau), kinetische (orangen) und konstante Gesamtenergie (grün) eines idealen Federpendels als Funktion der normierten Auslenkung $x/x_\maxText$.}\label{fig: federpendel_energie_diagramm}
 \end{figure}
 
 \begin{examplebox}[breakable]{Schwingung eines Federpendels}
@@ -522,13 +522,13 @@ Da keine nicht-konservativen Kräfte (wie Reibung) wirken, bleibt diese Gesamten
     \end{equation}
 
     \textbf{2. Zustand in der Ruhelage ($x=0$):}
-    Wenn der Block die Ruhelage durchläuft, ist die potenzielle Energie der Feder null (per Definition). Die gesamte Energie liegt als kinetische Energie vor. Die Geschwindigkeit ist hier maximal ($v=v_{\text{max}}$).
+    Wenn der Block die Ruhelage durchläuft, ist die potenzielle Energie der Feder null (per Definition). Die gesamte Energie liegt als kinetische Energie vor. Die Geschwindigkeit ist hier maximal ($v=v_{\maxText}$).
     \begin{equation}\label{eq: e_total_feder_ruhelage}
-        E_{\text{total}} = E_{\text{kin}} + E_{\text{pot}} = \frac{1}{2}mv_{\text{max}}^2 + 0 \mDot
+        E_{\text{total}} = E_{\text{kin}} + E_{\text{pot}} = \frac{1}{2}mv_{\maxText}^2 + 0 \mDot
     \end{equation}
     Durch Gleichsetzen von \cref{eq: e_total_feder_max_auslenkung,eq: e_total_feder_ruhelage} findet man die maximale Geschwindigkeit
     \begin{equation}
-        \frac{1}{2}kx_\text{S}^2 = \frac{1}{2}mv_{\text{max}}^2 \implies v_{\text{max}} = \sqrt{\frac{k}{m}} \cdot |x_\text{S}| \mDot
+        \frac{1}{2}kx_\text{S}^2 = \frac{1}{2}mv_{\maxText}^2 \implies v_{\maxText} = \sqrt{\frac{k}{m}} \cdot |x_\text{S}| \mDot
     \end{equation}
 \end{examplebox}
 
@@ -542,14 +542,14 @@ Der Energieerhaltungssatz ist jedoch ein universelles Prinzip, wenn man \textit{
 \begin{importantbox}{Allgemeiner Energieerhaltungssatz}
     Die Gesamtenergie eines \textbf{abgeschlossenen} (isolierten) Systems ist immer konstant. Energie kann ihre Form ändern (z.B. mechanisch, thermisch, chemisch, nuklear, elektromagnetisch), aber die Gesamtsumme bleibt erhalten. 
     \begin{equation}
-        E_{\text{total}} = E_{\text{mech}} + E_{\text{Wärme}} + E_{\text{chem}} + E_{\text{Kern}} + \dots = \const
+        E_{\text{total}} = E_{\text{mech}} + E_{\text{Wärme}} + E_{\text{chem}} + E_{\text{Kern}} + \cdots = \const
     \end{equation}
     Für ein \textbf{offenes} System kann sich die Gesamtenergie ändern, aber nur um den Betrag, der mit der Umgebung ausgetauscht wird. 
 \end{importantbox}
 Zwei Beispiele für nichtkonservative Systeme: 
 \begin{itemize}
     \item Bei chemischen Reaktionen kann die Summe aus mechanischer Energie und Wärmeenergie unter Umständen nicht erhalten bleiben, wenn ein Anteil der Energie in gewissen Molekülstrukturen und deren Umwandlung gespeichert wird. 
-    \item Bei der Kernspaltung, zerfällt ein Atom in kleinere Atome. Das größere Ausgangsatom hat eine größere Bindungsenergie als die Zerfallsprodukte und ein Teil der dabei freiwerdenden Energie, wird in Form von elektromagnetische Strahlung abgegeben [$\beta$- und $\gamma$-Strahlung]. 
+    \item Bei der Kernspaltung, zerfällt ein Atom in kleinere Atome. Das größere Ausgangsatom hat eine größere Bindungsenergie als die Zerfallsprodukte und ein Teil der dabei freiwerdenden Energie, wird in Form von elektromagnetische Strahlung ($\gamma$-Strahlung) oder Teilchenstrahlung ($\alpha$- und $\beta$-Strahlung) abgegeben. 
 \end{itemize}
 
 % Chapter end - always start new page after chapter

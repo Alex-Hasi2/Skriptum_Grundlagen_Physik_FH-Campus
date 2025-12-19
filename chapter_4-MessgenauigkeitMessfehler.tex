@@ -59,8 +59,7 @@ Man sieht in \cref{fig: elektronenmasse_ungenauigkeit}, dass die Fehlerbalken al
  \begin{figure}
      \centering
      \includegraphics[width=0.7\linewidth]{Bilder/Kapitel_Grundlagen/Elektronenmasse_Messungenauigkeit.png}
-     \caption{Historische Messwerte für die Elektronenmasse in Einheiten von $\SI{e-31}{\kilo\gram}$. Dargestellt sind die relativen Abweichungen $\Delta m/m$ vom heutigen Bestwert.}
-     \label{fig: elektronenmasse_ungenauigkeit}
+     \caption{Historische Messwerte für die Elektronenmasse in Einheiten von $\SI{e-31}{\kilo\gram}$. Dargestellt sind die relativen Abweichungen $\Delta m/m$ vom heutigen Bestwert.}\label{fig: elektronenmasse_ungenauigkeit}
  \end{figure}
 
  \begin{examplebox}[sidebyside, sidebyside align=center, lower separated=false, righthand width=5.5cm]{Beispiel}
@@ -83,8 +82,8 @@ Man sieht in \cref{fig: elektronenmasse_ungenauigkeit}, dass die Fehlerbalken al
 Wiederholte Messungen ergeben im Allgemeinen (abseits von systematischen Fehlern) trotzdem nicht den gleichen Wert. Das kann an einer ungenauen Ablesung liegen, an Vibrationen des Messinstruments oder auch an intrinsischen Schwankungen der Messgröße selbst. 
 
 \begin{rememberbox}[]{}
-    Ein rein \textbf{statistischer Fehler} ergibt bei wiederholten Messungen eine Verteilung der Messwerte $(x_i),$ um einen Mittelwert $(\bar{x}$).
-    Bei Abwesenheit von systematischen Fehlern nähert sich der Mittelwert dem wahren Wert $(x_\mathrm{W})$ für unendlich viele Messungen an. 
+    Ein rein \textbf{statistischer Fehler} ergibt bei wiederholten Messungen eine Verteilung der Messwerte $(x_i)$ um einen Mittelwert $(\bar{x}$).
+    Bei Abwesenheit von systematischen Fehlern nähert sich der Mittelwert dem wahren Wert $(x_{\mathrm{W}})$ für unendlich viele Messungen an. 
 
 \end{rememberbox}
 Da man nicht unendlich viele Messungen durchführen kann, bleibt der wahre Wert im Allgemeinen unbekannt. Die Breite der Messwerte-Verteilung ist ein Maß für die Güte der Messung. Das arithmetische Mittel aller Messungen, 
@@ -98,8 +97,7 @@ nähert sich dem wahren Wert bei unendlich vielen Messungen
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Grundlagen/stat_Verteilung_messwerte.png}
-    \caption{Typische Verteilung von Messwerten $x_i$ um den Mittelwert $\bar{x}$ bei statistischer Fehlerverteilung.}
-    \label{fig: stat_Verteilung_Messwerte}
+    \caption{Typische Verteilung von Messwerten $x_i$ um den Mittelwert $\bar{x}$ bei statistischer Fehlerverteilung.}\label{fig: stat_Verteilung_Messwerte}
 \end{figure}
 Liegen nur statistische Fehler vor, erhält man für die Verteilung der Messwerte eine Normalverteilung bei einer hohen Anzahl an Messwerten.\footnote{Vorausgesetzt die Messgröße ist kontinuierlich und die Schwankung auch.}
 
@@ -110,11 +108,11 @@ Liegen nur statistische Fehler vor, erhält man für die Verteilung der Messwert
     \end{equation}
     Die \textbf{Standardabweichung der Einzelmessungen}
     \begin{equation}
-        \sigma = \sqrt{\frac{\sum \left( \bar{x} - x_i \right)^2}{n-1}} \mDot
+        \sigma = \sqrt{\frac{\sum {\left( \bar{x} - x_i \right)}^2}{n-1}} \mDot
     \end{equation}
     Mittlere Fehler des arithmetischen Mittels
     \begin{equation}
-        \sigma_m = \frac{\sigma}{\sqrt{n}} = \sqrt{\frac{\sum \left(\bar{x} - x_i \right)^2}{n(n-1}} \mDot
+        \sigma_m = \frac{\sigma}{\sqrt{n}} = \sqrt{\frac{\sum {\left(\bar{x} - x_i \right)}^2}{n(n-1)}} \mDot
     \end{equation}
 \end{importantbox}
 Bei sehr vielen Messungen nähert sich der Mittelwert dem wahren Wert

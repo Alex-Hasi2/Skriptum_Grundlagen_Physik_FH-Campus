@@ -157,8 +157,8 @@ Man verwendet sie, um lange Ziffernfolgen zu vermeiden und Zahlen lesbarer und v
 % \end{center}
 
 \begin{center}
-% Die Farbe wird wie gewohnt definiert
 \definecolor{lightgray}{gray}{0.9}
+\def\arraystretch{1.07} % Zeilenabstand in der Tabelle erhöhen 
 
 % Verwende die NiceTabular-Umgebung
 \begin{NiceTabular}{l c c @{\qquad\vrule\qquad} l c c}
@@ -186,7 +186,7 @@ Jede dieser Vorsilben kann mit beliebigen Einheiten kombiniert werden. Das Präf
 
 \subsubsection*{Beispiele:}
 \begin{multicols}{3}
-\begin{itemize}
+\begin{itemize}[itemsep=1.0pt]
     \item \si{\kilo\gram}
     \item \si{\hecto\liter}
     \item \si{\mega\hertz}

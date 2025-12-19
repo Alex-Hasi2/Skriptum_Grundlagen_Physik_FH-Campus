@@ -1,6 +1,7 @@
+
 \chapter{Dynamik}\label{chap: Dynamik}
 Nachdem wir die Grundlagen der unterschiedlichen Bewegungsformen in der Kinematik behandelt haben, wenden wir uns nun der Dynamik zu, also der Frage, warum ein Körper gerade die beobachtete Bewegung ausführt. 
-\begin{figure}[h!]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}[
     main_node/.style={
@@ -51,9 +52,8 @@ Isaac Newton erkannte, dass die Ursache für den Bewegungszustand eines Körpers
         Starke Wechselwirkung & \num{100} & $\approx \SI{e-15}{\meter}$ \\
         Schwache Wechselwirkung & $\approx \SI{e-11}{} $ & $\approx \SI{e-18}{\meter}$ \\
         \bottomrule
-    \end{tabular}
+    \end{tabular}\label{tab: vier_grundkraefte_der_physik}
     %\caption{Die vier fundamentalen Wechselwirkungen der Physik.}
-    \label{tab: vier_grundkraefte_der_physik}
 \end{table}
 
 \begin{figure}[htbp]
@@ -64,8 +64,7 @@ Isaac Newton erkannte, dass die Ursache für den Bewegungszustand eines Körpers
             \node[anchor=south west, inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/tabelle_WW_1_Gravitation.jpg}};
             \node[anchor=north west, fill=white, fill opacity=0.8, text opacity=1, inner sep=2pt, rounded corners=2pt] at (image.north west) {\textbf{(1)}};
         \end{tikzpicture}
-        \caption*{} % Optional: for spacing and labeling
-        \label{fig: grundkraft_gravitation}
+        \caption*{}\label{fig: grundkraft_gravitation}% Optional: for spacing and labeling
     \end{subfigure}
     \hfill % This still works to space them out
     % (2) Elektromagnetismus
@@ -74,8 +73,7 @@ Isaac Newton erkannte, dass die Ursache für den Bewegungszustand eines Körpers
             \node[anchor=south west, inner sep=0] (image) at (0,0) {\includegraphics[width=\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/tabelle_WW_2_Elektromagnetismus.jpg}};
             \node[anchor=north west, fill=white, fill opacity=0.8, text opacity=1, inner sep=2pt, rounded corners=2pt] at (image.north west) {\textbf{(2)}};
         \end{tikzpicture}
-        \caption*{}
-        \label{fig: grundkraft_elektro}
+        \caption*{}\label{fig: grundkraft_elektro}
     \end{subfigure}
     \hfill
     % (3) Starke Wechselwirkung
@@ -170,7 +168,7 @@ Da $\ivec{p} = m\cdot\ivec{v}$, erhalten wir im allgemeinen Fall, in dem sich au
 \end{rememberbox}
 
 
-\subsection{Exkurs: Relativistische Masse} \label{subsec: relativistische_masse}
+\subsection{Exkurs: Relativistische Masse}\label{subsec: relativistische_masse}
 In der klassischen Mechanik ist die Masse eines Körpers ($m_0$) eine konstante Eigenschaft, unabhängig von seinem Bewegungszustand.
 In der speziellen Relativitätstheorie hingegen ist der Impuls eines Teilchens um den Lorentz-Faktor $\gamma(v)$ größer:
 \begin{equation}\label{eq: relativistischer_impuls_p_von_v}
@@ -184,8 +182,7 @@ mit der Lichtgeschwindigkeit $c \approx \SI{299792458}{\meter\per\second}$.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/relativistischerGamma-Faktor.png}
-    \caption{Der relativistische Gamma-Faktor $\gamma(v)$. Für klassische Geschwindigkeiten $v \ll c$ ist $\gamma\approx 1$. Für Geschwindigkeiten nahe der Lichtgeschwindigkeit $c$ divergiert der Faktor.}
-    \label{fig: gamma_faktor_gamma_von_v}
+    \caption{Der relativistische Gamma-Faktor $\gamma(v)$. Für klassische Geschwindigkeiten $v \ll c$ ist $\gamma\approx 1$. Für Geschwindigkeiten nahe der Lichtgeschwindigkeit $c$ divergiert der Faktor.}\label{fig: gamma_faktor_gamma_von_v}
 \end{figure}
 Vereint man den Gamma-Faktor mit der Ruhemasse, kann man eine \textbf{relativistische Masse} $m^{*}$ über $m^{*}:=\gamma \cdot m_{0}$ definieren, die dann über $\gamma(v)$ von der Geschwindigkeit abhängt. Für klassische Geschwindigkeiten kann die relativistische Massenzunahme meist ignoriert werden. Zum Beispiel gilt für $v = \SI{1000}{\meter\per\second}$, dass $\gamma(v) \approx 1 + \num{6e-12}$.
 
@@ -343,21 +340,21 @@ Man betrachte die Statue in \cref{fig: statue_normalkraft_reaktionskraft}. Auf d
 \end{figure}
 
 
-\subsection{Rückstellkräfte (Federkraft)}\label{subsec: Rückstellkräfte}
-Wird eine Masse mit einer Feder verbunden, so existiert eine Position, in der die Feder entspannt ist und die Masse in Ruhe verharrt, siehe \cref{fig: feder_rückstellkraft_a}. Diese Position wird als \textbf{Ruhelage} $x_0$ bezeichnet. Es ist zweckmäßig, den Ursprung des Koordinatensystems in diesen Punkt zu legen, sodass $x_0 = 0$.
+\subsection{Rückstellkräfte (Federkraft)}\label{subsec: Rueckstellkraefte}
+Wird eine Masse mit einer Feder verbunden, so existiert eine Position, in der die Feder entspannt ist und die Masse in Ruhe verharrt, siehe \cref{fig: feder_rueckstellkraft_a}. Diese Position wird als \textbf{Ruhelage} $x_0$ bezeichnet. Es ist zweckmäßig, den Ursprung des Koordinatensystems in diesen Punkt zu legen, sodass $x_0 = 0$.
 \begin{figure}[htbp]
     \centering
-    \labelphantom{fig: feder_rückstellkraft_a}
-    \labelphantom{fig: feder_rückstellkraft_b}
-    \labelphantom{fig: feder_rückstellkraft_c}
+    \labelphantom{fig: feder_rueckstellkraft_a}
+    \labelphantom{fig: feder_rueckstellkraft_b}
+    \labelphantom{fig: feder_rueckstellkraft_c}
     \includegraphics[width=0.6\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/rückstellkraft_feder_abc.png}
-    \caption{Eine Masse, die an einer Feder befestigt ist. a) In der Ruhelage $x=x_0=0$. b) Auslenkung in die positive $x$-Richtung, $\Delta x > 0$. c) Kompression in die negative $x$-Richtung, $\Delta x < 0$.}\label{fig: feder_rückstellkraft}
+    \caption{Eine Masse, die an einer Feder befestigt ist. a) In der Ruhelage $x=x_0=0$. b) Auslenkung in die positive $x$-Richtung, $\Delta x > 0$. c) Kompression in die negative $x$-Richtung, $\Delta x < 0$.}\label{fig: feder_rueckstellkraft}
 \end{figure}
 
 Lenkt man die Masse aus der Ruhelage aus, so erzeugt die Feder eine \textbf{Rückstellkraft} $\ivecS{F}{x}$, die stets bestrebt ist, die Masse in die Ruhelage zurückzuführen.
 \begin{itemize}
-    \item Bei einer \textbf{Auslenkung} in die positive $x$-Richtung (Streckung der Feder), dargestellt in \cref{fig: feder_rückstellkraft_b}, wirkt die Rückstellkraft in die negative $x$-Richtung.
-    \item Bei einer \textbf{Kompression} in die negative $x$-Richtung, dargestellt in \cref{fig: feder_rückstellkraft_c}, wirkt die Rückstellkraft in die positive $x$-Richtung.
+    \item Bei einer \textbf{Auslenkung} in die positive $x$-Richtung (Streckung der Feder), dargestellt in \cref{fig: feder_rueckstellkraft_b}, wirkt die Rückstellkraft in die negative $x$-Richtung.
+    \item Bei einer \textbf{Kompression} in die negative $x$-Richtung, dargestellt in \cref{fig: feder_rueckstellkraft_c}, wirkt die Rückstellkraft in die positive $x$-Richtung.
 \end{itemize}
 
 Für kleine Auslenkungen aus der Ruhelage ($\Delta x = x - x_0 \ll 1$) verhält sich die Feder linear. Das bedeutet, die Rückstellkraft ist direkt proportional zur Auslenkung. Aus dem obigen Verhalten ergibt sich das sogenannte Hooke'sche Gesetz, das im linearen Bereich einer Feder (kleine Auslenkungen) gültig ist. 
@@ -415,18 +412,15 @@ Zieht man nun mit einer horizontalen Kraft $\ivecS{F}{\text{A}}$ am Körper, bau
     \begin{subfigure}{0.44\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/kiste_reibung_beschleunigung_grav_normalkraft.png}
-        \caption{}
-        \label{fig: haftreibung_kraftdiagramm_kiste}
+        \caption*{}\label{fig: haftreibung_kraftdiagramm_kiste}
     \end{subfigure}
     \hfill    
     \begin{subfigure}{0.44\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/reibungskraft_vs_beschleunigendeKraft.png}
-        \caption{}
-        \label{fig: haftreibungskraft_zugkraft_diagramm}
+        \caption*{}\label{fig: haftreibungskraft_zugkraft_diagramm}
     \end{subfigure}
-    \caption{Links: Kräftediagramm für einen Körper, an dem mit der Kraft $\protect\ivecS{F}{\text{A}}$ gezogen wird. Die Haftreibungskraft $\protect\ivecS{F}{\text{R}}$ wirkt der Bewegung entgegen. Die Gewichtskraft $m\cdot \protect\ivec{g}$ wird durch die Normalkraft $\protect\ivecS{F}{\text{N}}$ kompensiert. Rechts: Diagramm der Reibungskraft $|\protect\ivecS{F}{\text{R}}|$ in Abhängigkeit von der Zugkraft $|\protect\ivec{F}| = |\protect\ivecS{F}{\text{A}}|$.}
-    \label{fig: haftreibung_figure}
+    \caption{Links: Kräftediagramm für einen Körper, an dem mit der Kraft $\protect\ivecS{F}{\text{A}}$ gezogen wird. Die Haftreibungskraft $\protect\ivecS{F}{\text{R}}$ wirkt der Bewegung entgegen. Die Gewichtskraft $m\cdot \protect\ivec{g}$ wird durch die Normalkraft $\protect\ivecS{F}{\text{N}}$ kompensiert. Rechts: Diagramm der Reibungskraft $|\protect\ivecS{F}{\text{R}}|$ in Abhängigkeit von der Zugkraft $|\protect\ivec{F}| = |\protect\ivecS{F}{\text{A}}|$.}\label{fig: haftreibung_figure}
 \end{figure}
 
 \begin{rememberbox}[]{Maximale Haftreibungskraft}
@@ -470,7 +464,7 @@ Der Gleitreibungskoeffizient ist für die meisten Materialien über einen weiten
  
 \section{Anwendungen auf der schiefen Ebene}\label{sec: schiefe_ebene_beispiele}
 \subsection{Reibungsfreies Gleiten auf der schiefen Ebene}\label{subsec: reibungsfreies_gleiten}
-Betrachten wir einen Körper der Masse $m$, der eine reibungsfreie, um den Winkel $\alpha$ geneigte Ebene hinabgleitet. Die auf den Körper wirkende Gewichtskraft $\ivecS{F}{\text{G}}$ kann in zwei Komponenten zerlegt werden (siehe \cref{fig: schiefe_ebene_reibungsfreies_gleiten}:
+Betrachten wir einen Körper der Masse $m$, der eine reibungsfreie, um den Winkel $\alpha$ geneigte Ebene hinabgleitet. Die auf den Körper wirkende Gewichtskraft $\ivecS{F}{\text{G}}$ kann in zwei Komponenten zerlegt werden (siehe \cref{fig: schiefe_ebene_reibungsfreies_gleiten}):
 \begin{itemize}[itemsep=1.5pt]
     \item Eine \textbf{Normalkomponente} $\ivecS{F}{\text{N}}$, die senkrecht zur Ebene steht: \newline
     $|\ivecS{F}{\text{N}}| = |\ivecS{F}{\text{G}}| \cos(\alpha) = mg\cos(\alpha)$.
@@ -481,8 +475,7 @@ Betrachten wir einen Körper der Masse $m$, der eine reibungsfreie, um den Winke
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/schiefe_ebene_reibungsfreies_gleiten.png}
-    \caption{Kräftezerlegung der Gewichtskraft $|\protect\ivecS{F}{\text{G}}|$ für einen Körper auf einer reibungsfreien schiefen Ebene.}
-    \label{fig: schiefe_ebene_reibungsfreies_gleiten}
+    \caption{Kräftezerlegung der Gewichtskraft $|\protect\ivecS{F}{\text{G}}|$ für einen Körper auf einer reibungsfreien schiefen Ebene.}\label{fig: schiefe_ebene_reibungsfreies_gleiten}
 \end{figure}
 Nur die Hangabtriebskraft trägt zur Beschleunigung des Körpers bei. Die Normalkraft $\ivecS{F}{\text{N}}$ wird durch eine gleichgroße entgegengesetze Kraft $\ivecS{F'}{\text{N}}$ kompensiert. Nach dem zweiten Newtonschen Gesetz ($F = m\cdot a$) gilt:
 \begin{equation}
@@ -509,9 +502,9 @@ Der Körper beginnt zu gleiten, wenn die Hangabtriebskraft die maximale Haftreib
 Da die Hangabtriebskraft vom Neigungswinkel der schiefen Ebene abhängt, stellt sich die Frage, unter welchem Winkel die Kiste zu gleiten beginnt. Das passiert gerade dann, wenn die Hangabtriebskraft die maximale Haftreibungskraft erreicht
 \begin{equation}\begin{aligned}
      |\ivecS{F}{\text{A}}| &= |\ivecS{F}{\text{R,h,max}}| \\
-    mg\cdot \sin(\alpha_{\text{max}}) &= \mu_{\text{R,h}} mg \cdot\cos(\alpha_{\text{max}}) \\
-    \tan(\alpha_{\text{max}}) &= \mu_{\text{R,h}} \\
-    \implies \alpha_{\text{max}} &= \arctan(\mu_{\text{R,h}})\mDot
+    mg\cdot \sin(\alpha_{\maxText}) &= \mu_{\text{R,h}} mg \cdot\cos(\alpha_{\maxText}) \\
+    \tan(\alpha_{\maxText}) &= \mu_{\text{R,h}} \\
+    \implies \alpha_{\maxText} &= \arctan(\mu_{\text{R,h}})\mDot
 \end{aligned}\end{equation}
 \begin{figure}[htb]
     \centering
@@ -521,10 +514,10 @@ Da die Hangabtriebskraft vom Neigungswinkel der schiefen Ebene abhängt, stellt 
 \begin{rememberbox}[]{Maximaler Haftreibungswinkel}
 Der maximale Winkel $\alpha_{\text{R,h,max}}$, bei dem ein Körper gerade noch nicht zu rutschen beginnt, wird als Haftreibungswinkel bezeichnet. Er ergibt sich aus der Gleichheit der Kräfte:
 \begin{equation}
-    \tan(\alpha_{\text{max}}) = \mu_{\text{R,h}} \quad \Leftrightarrow \quad \alpha_{\text{max}} = \arctan(\mu_{\text{R,h}})
+    \tan(\alpha_{\maxText}) = \mu_{\text{R,h}} \quad \Leftrightarrow \quad \alpha_{\maxText} = \arctan(\mu_{\text{R,h}})
 \end{equation}
 \end{rememberbox}
-Der Haftreibungskoeffizient $\mu_{\text{R,h}}$ ist also lediglich durch den den maximalen Haftreibungswinkel $\alpha_{\text{max}}$ gegeben. 
+Der Haftreibungskoeffizient $\mu_{\text{R,h}}$ ist also lediglich durch den den maximalen Haftreibungswinkel $\alpha_{\maxText}$ gegeben. 
 
 \subsection{Gleitreibung auf der schiefen Ebene}\label{subsec: gleiten_auf_der_schiefen_ebene}
 Wird der maximale Haftreibungswinkel und damit die maximale Haftreibungskraft überschritten, beginnt der Körper zu gleiten. Auf ihn wirkt nun die Gleitreibungskraft $\ivecS{F}{\text{R,g}}$, die der Bewegung entgegenwirkt. Die resultierende Kraft, die den Körper beschleunigt, ist die Differenz aus Hangabtriebskraft und Gleitreibungskraft.
@@ -554,9 +547,9 @@ Beim Gleiten mit Reibung ist die reibungsfreie Beschleunigung \cref{eq: beschleu
 \begin{examplebox}{Beispiel Gleitreibung}
 Ein Körper mit $m = \SI{3}{\kilo\gram}$ liegt auf einer schiefen Ebene mit Haftreibungskoeffizienten $\mu_{\text{R,h}} = 0.4$ und Gleitreibungskoeffizienten $\mu_{\text{R,g}} = 0.08$. Die Erdbeschleunigung beträgt $g=\SI{9.81}{\metre\per\second\squared}$. \\
 
-Der maximale Haftreibungswinkel $\alpha_{\text{max}}$ errechnet sich aus 
+Der maximale Haftreibungswinkel $\alpha_{\maxText}$ errechnet sich aus 
 \begin{equation}
-   \alpha_{\text{max}} = \arctan(0.4) \approx \SI{0.3805}{\radian} = \SI{21.8}{\degree}\mDot
+   \alpha_{\maxText} = \arctan(0.4) \approx \SI{0.3805}{\radian} = \SI{21.8}{\degree}\mDot
 \end{equation}
 
 Bei einem Winkel von $\alpha = \SI{30}{\degree}$ gleitet der Körper, da $\SI{30}{\degree} > \SI{21.8}{\degree}$. Die auftretende Beschleunigung beträgt 
@@ -580,8 +573,7 @@ Eine Kiste mit Masse $m_1 = \SI{10.0}{\kilo\gram}$ ruht auf einer schiefen Ebene
 \textbf{Lösung:}
 \begin{center}
     \includegraphics[width=0.65\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/schiefe_ebene_gleichgewicht_seilrolle_kraefteglgew.png}
-    \captionof{figure}{Für kleine Zugkräfte $\protect\ivecS{F}{Z}$ [Fall(i)] zeigt die Reibungskraft in die $-x$-Richtung und für sehr große Zugkräfte zeigt sie in die $+x$-Richtung [Fall (ii)].}
-    \label{fig: gleichgewicht_schiefe_ebene_seilrolle_fallunterscheidung}
+    \captionof{figure}{Für kleine Zugkräfte $\protect\ivecS{F}{Z}$ [Fall(i)] zeigt die Reibungskraft in die $-x$-Richtung und für sehr große Zugkräfte zeigt sie in die $+x$-Richtung [Fall (ii)].}\label{fig: gleichgewicht_schiefe_ebene_seilrolle_fallunterscheidung}
 \end{center}
 Die Kiste $m_1$ bleibt in Ruhe, solange die resultierende Kraft in $x$-Richtung (parallel zur Ebene) durch die Haftreibungskraft kompensiert werden kann. Die Richtung der Haftreibungskraft hängt davon ab, ob die Kiste tendenziell nach oben oder nach unten rutschen würde. Bei kleinen Massen $m_2$ und damit einer kleinen Zugkraft $\ivecS{F}{Z}$ zeigt die Haftreibungskraft auf $m_1$ die schiefe Ebene hinauf, da $m_1$ dazu tendiert hinab zu rutschen [Fall (i) in \cref{fig: gleichgewicht_schiefe_ebene_seilrolle_fallunterscheidung}]. Ist die Masse $m_2$ hingegen groß, wird die Zugkraft $\ivecS{F}{Z}$ groß die Haftreibungskraft zeigt die schiefe Ebene hinab, um zu verhindern, dass die Masse $m_1$ die schiefe Ebene hochgezogen wird.\newline
 In der $y$-Richtung heben sich der Anteil der Gewichtskraft und die Normalkraft gerade auf. Da sich die Bewegung wiederum nur entlang der $x$-Achse abspielt, verzichten wir auf eine Vektorschreibweise.
@@ -620,9 +612,9 @@ Die Masse $m_2$ ist so groß, dass die Zugkraft $F_{\text{Z}}$ überwiegt. Die H
 \end{aligned}\end{equation}
 Auflösen nach $m_2$ liefert die maximale Masse
 \begin{equation}
-    m_{2,\text{max}} = m_1 (\sin(\theta) + \mu_\text{R,h} \cos(\theta)) \mDot
+    m_{2,\maxText} = m_1 (\sin(\theta) + \mu_\text{R,h} \cos(\theta)) \mDot
 \end{equation}
-Für die gegebenen Werte finden wir, dass die maximale Masse $m_{2,\text{max}} = \SI{10.0}{kg} \cdot (\sin(\SI{37}{\degree}) + 0.4 \cdot \cos(\SI{37}{\degree})) \approx \SI{10.0}{kg} \cdot (0.6018 + 0.4 \cdot 0.7986) \approx \SI{9.21}{kg}$ beträgt.
+Für die gegebenen Werte finden wir, dass die maximale Masse $m_{2,\maxText} = \SI{10.0}{kg} \cdot (\sin(\SI{37}{\degree}) + 0.4 \cdot \cos(\SI{37}{\degree})) \approx \SI{10.0}{kg} \cdot (0.6018 + 0.4 \cdot 0.7986) \approx \SI{9.21}{kg}$ beträgt.
 
 \textbf{Zusammenfassung:}\newline
 Das System bleibt in Ruhe, solange sich die Masse $m_2$ im Intervall
@@ -765,7 +757,7 @@ Betrachten wir nun ein Bezugssystem $S'(x',y',z')$, das mit einer konstanten Win
     \caption{Ein Inertialsystem $S$ ($x,y$-Ebene) und ein rotierendes Bezugssystem $S'$ ($x',y'$-Ebene), das mit konstanter Winkelgeschwindigkeit $\protect\ivec{\omega}$ um eine Achse rotiert. Der Ortsvektor $\protect\ivec{r} = \protect\ivec{r}'$ zeigt auf einen Punkt $A$.}\label{fig: rotierendes_system_zwei_KS}
 \end{figure}
 
-Ein Beobachter $B$ im ruhenden System $S$ beschreibt die Geschwindigkeit eines Punktes $A$ als $\ivec{v} = \frac{\dd\ivec{r}}{\dd t}$. Wir nehmen an, dass ein Beobachter $B'$ im rotierenden System $S'$ nicht weißt, dass sein Koordinatensystem rotiert und so misst er die Geschwindigkeit von $A$ relativ zu seinem System als $\ivec{v}'$. 
+Ein Beobachter $B$ im ruhenden System $S$ beschreibt die Geschwindigkeit eines Punktes $A$ als $\ivec{v} = \frac{\dd\ivec{r}}{\dd t}$. Wir nehmen an, dass ein Beobachter $B'$ im rotierenden System $S'$ nicht weiß, dass sein Koordinatensystem rotiert und so misst er die Geschwindigkeit von $A$ relativ zu seinem System als $\ivec{v}'$. 
 
 \paragraph{Wie hängen diese Geschwindigkeiten zusammen?}
 Zur Zeit $t$ habe der Punkt $A$ im System $S$ den Ortsvektor 

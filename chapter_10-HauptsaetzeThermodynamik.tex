@@ -5,8 +5,7 @@ Die Hauptsätze der Thermodynamik sind fundamentale Prinzipien, die den Umgang m
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Thermodynamik/ErsterHauptsatzSkizze.png}
-    \caption{Darstellung des Ersten Hauptsatzes der Thermodynamik: Die innere Energie $dU$ eines thermodynamischen Systems ändert sich durch zugeführte Wärme $dQ$ und verrichtete Arbeit $dW$.}
-    \label{fig: skizze_erster_hauptsatz_thermodynamik}
+    \caption{Darstellung des Ersten Hauptsatzes der Thermodynamik: Die innere Energie $dU$ eines thermodynamischen Systems ändert sich durch zugeführte Wärme $dQ$ und verrichtete Arbeit $dW$.}\label{fig: skizze_erster_hauptsatz_thermodynamik}
 \end{figure}
 \noindent Ein thermodynamisches System wird durch seine makroskopischen \textbf{Zustandsgrößen} beschrieben. Dazu zählen unter anderem der Druck $p$, das Volumen $V$, die Temperatur $T$ und die innere Energie $U$. Wichtig ist hierbei das Verständnis, dass Zustandsgrößen wegunabhängig sind -- sie hängen nur vom momentanen Zustand des Systems ab, nicht davon, wie dieser Zustand erreicht wurde (siehe auch \cref{subsubsec: deutung_zustandsfunktion} zur Erklärung einer Zustandsfunktion).
 
@@ -69,7 +68,7 @@ Betrachten wir spezielle Prozesse für ideale Gase, vereinfacht sich der erste H
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.98\linewidth]{Bilder/Kapitel_Thermodynamik/isoP_isoV_isoT_isoQ_pT_and_pV.pdf}
-    \caption{Darstellung der vier speziellen Zustandsänderungen in einem $(p,T)$-Diagramm (links) und einem $(p,V)$-Diagramm (rechts). Die Zustände in den Punkten $O_{1,2}$ lauten: $O_1 = (p=\SI{1}{\bar}, V=\SI{24.9}{\deci\meter^3}, T=\SI{300}{\kelvin})$ und $O_2 = (p=\SI{0.5}{\bar}, V=\SI{116.4}{\deci\meter^3}, T=\SI{700}{\kelvin})$. Beachten Sie, dass Adiabaten im $(p,V)$-Diagramm steiler verlaufen als Isothermen.}\label{fig: pv_diagramm_prozesse}
+    \caption{Darstellung der vier speziellen Zustandsänderungen in einem $(p,T)$-Diagramm (links) und einem $(p,V)$-Diagramm (rechts). Die Zustände in den Punkten $O_{1,2}$ lauten: $O_1 = (p=\SI{1}{\barPr}, V=\SI{24.9}{\deci\meter^3}, T=\SI{300}{\kelvin})$ und $O_2 = (p=\SI{0.5}{\barPr}, V=\SI{116.4}{\deci\meter^3}, T=\SI{700}{\kelvin})$. Beachten Sie, dass Adiabaten im $(p,V)$-Diagramm steiler verlaufen als Isothermen.}\label{fig: pv_diagramm_prozesse}
 \end{figure}
 
 \subsubsection{Isothermen und Adiabaten}
@@ -94,9 +93,7 @@ Es gibt mehrere, historisch gewachsene Formulierungen, die physikalisch äquival
 \begin{importantbox}{Formulierungen des Zweiten Hauptsatzes}
     \textbf{Clausius'sche Formulierung:}
     Es gibt keinen thermodynamischen Prozess, dessen \textit{einziges} Ergebnis die Übertragung von Wärme von einem kälteren auf einen wärmeren Körper ist.
-    
     \tcblower
-    
     \textbf{Kelvin-Planck'sche Formulierung:}
     Es ist unmöglich, eine periodisch arbeitende Maschine zu konstruieren, die nichts anderes bewirkt, als Wärme aus einem Reservoir aufzunehmen und diese vollständig in Arbeit umzuwandeln (\textit{Unmöglichkeit des Perpetuum mobile zweiter Art}).
 \end{importantbox}
@@ -199,7 +196,7 @@ Der umgekehrte Prozess kommt in der Natur nie vor: Bringt man zwei Körper, die 
     \caption{Bringt man zwei Körper mit Temperaturen $T_1$ und $T_2 > T_1$ in thermischen Kontakt, so fließt Wärme vom wärmeren zum kälteren Körper, bis beide die gleiche Temperatur $T_{\text{eq}}$ erreicht haben. Dieser Prozess ist irreversibel, da die Umkehrung (Wärmefluss vom kälteren zum wärmeren Körper) niemals spontan ablaufen wird.}\label{fig: beispiel_irreversibler_prozess}
 \end{figure}
 
-\subsection{Einschub: Arbeit im $(p,V)$-Diagramm}
+\subsection{Einschub: Arbeit im $(p,V)$-Diagramm}\label{subsec: arbeit_pV_diagramm_erklaerung}
 In der Thermodynamik trägt man thermodynamische Prozesse gern in einem $(p,V)$-Diagramm auf. Zunächst halten wir erneut fest, dass die physikalische Größe $p \cdot V$ eine Arbeit ist. Eine Dimensionsanalyse liefert: 
 \begin{equation}
     [p] \cdot [V] = \frac{[F]}{[A]} \cdot [V] = \left( \frac{\frac{\si{\kilo\gram \meter}}{\si{\second}^2}}{\si{\meter}^2} \right) \cdot \si{\meter}^3 = \frac{\si{\kilo\gram} \cdot \si{\meter}^2}{\si{\second}^2} = \si{\joule} = [W] \mDot 
@@ -286,8 +283,7 @@ Der Carnot-Prozess ist ein idealisierter, reversibler Kreisprozess, der aus vier
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.55\linewidth]{Bilder/Kapitel_Thermodynamik/CarnotProzessSkizze.png}
-    \caption{Der Carnot-Prozess im $(p,V)$-Diagramm. Die von der Kurve umschlossene Fläche entspricht der pro Zyklus verrichteten Nettoarbeit $\Delta W$.}
-    \label{fig: carnot_prozess}
+    \caption{Der Carnot-Prozess im $(p,V)$-Diagramm. Die von der Kurve umschlossene Fläche entspricht der pro Zyklus verrichteten Nettoarbeit $\Delta W$.}\label{fig: carnot_prozess}
 \end{figure}
 
 Die vier Prozessschritte sind
@@ -297,7 +293,7 @@ Die vier Prozessschritte sind
     \item \textbf{3→4: isotherme Kompression} | $\Delta Q_2<0$
     \item \textbf{4→1: adiabatische Kompression} | $dQ=0$
 \end{itemize}
-Die während des Carnot-Prozesses aufgenommene bzw. abgegebene Wärmemenge und verrichtete Arbeit berechnet sich wie folgt: \\
+Die während des Carnot-Prozesses aufgenommene bzw. abgegebene Wärmemenge und verrichtete Arbeit berechnet sich wie folgt:\\
 
 \textbf{$1\rightarrow 2$: Isotherme Expansion bei $T_1$}\newline
 Nach dem 1. Hauptsatz gilt $\dd Q = \dd U - \dd W$. Da die innere Energie eines idealen Gases nur von der Temperatur abhängt und diese entlang einer Isotherme konstant bleibt ($\dd T = 0 \Rightarrow \dd U=0$), gilt für die aufgenommene Wärme $\dd Q = -\dd W = p \cdot \dd V$. Die abgegebene Arbeit $\Delta W_{1\to 2}$ berechnet sich zu
@@ -367,7 +363,7 @@ Der Wirkungsgrad einer Wärmekraftmaschine kann durch Erhöhung der Temperaturdi
 
 Der umwandelbare Anteil der Wärmeenergie, die in Arbeit umgesetzt werden kann, wird Exergie $E$ genannt. Der Rest der aufgenommenen Wärmeenergie, der nicht in Arbeit umgewandelt werden kann, wird als Anergie $A$ bezeichnet. Es gilt:
 \begin{equation}
-    \text{Wärme(Energie)} = \text{Exergie} + \text{Anergie} 
+    \text{Wärme (Energie)} = \text{Exergie} + \text{Anergie} 
 \end{equation}
 
 Es stellt sich nun die Frage, ob nur der Carnot-Prozess diese Limitierung des Wirkungsgrades hat. Ohne Beweis folgt aus dem 2. Hauptsatz allerdings einer der Grundsätze der Thermodynamik:
@@ -442,8 +438,7 @@ In \cref{fig: stirling_otto_diesel_motor_prozess} sind die Kreisprozesse verschi
     \includegraphics[width=\linewidth]{Bilder/Kapitel_Thermodynamik/DieselMotorProzess.png}
     \caption*{(c) Diesel-Motor}
     \end{subfigure}
-    \caption{Kreisprozesse verschiedener Wärmekraftmaschinen im $(p,V)$-Diagramm: (a) Stirling-Motor, (b) Otto-Motor, (c) Diesel-Motor. Jeder Prozess hat seine eigenen charakteristischen Merkmale und Wirkungsgrade, die jedoch alle durch den zweiten Hauptsatz der Thermodynamik (Carnot-Wirkungsgrad) begrenzt sind.}
-    \label{fig: stirling_otto_diesel_motor_prozess}
+    \caption{Kreisprozesse verschiedener Wärmekraftmaschinen im $(p,V)$-Diagramm: (a) Stirling-Motor, (b) Otto-Motor, (c) Diesel-Motor. Jeder Prozess hat seine eigenen charakteristischen Merkmale und Wirkungsgrade, die jedoch alle durch den zweiten Hauptsatz der Thermodynamik (Carnot-Wirkungsgrad) begrenzt sind.}\label{fig: stirling_otto_diesel_motor_prozess}
 \end{figure}
 
 

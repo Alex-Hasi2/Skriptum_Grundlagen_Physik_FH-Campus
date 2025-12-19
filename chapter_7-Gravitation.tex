@@ -138,7 +138,7 @@ Wenn wir den Impuls $\ivec{p} = m\ivec{v}$ einsetzen, indem wir $\ivec{v}$ durch
 \begin{equation}\label{eq: flaechengeschwindigkeit_drehimpuls}
     \frac{\dd A}{\dd t} = \frac{1}{2m} |\ivec{r}(t) \times \ivec{p}(t)| = \frac{|\ivec{L}(t)|}{2m}
 \end{equation}
-Da das zweite Keplersche Gesetz besagt, dass die Flächengeschwindigkeit konstant ist ($\dd A/\dd t = \const$), folgt daraus direkt, dass auch der Betrag des Drehimpulses $|\ivec{L}|$ konstant sein muss. Dies ist immer der Fall, wenn die wirkende Kraft (hier die Gravitationskraft) eine Zentralkraft ist, d.h. immer auf das Zentrum (die Sonne) gerichtet ist.
+Da das zweite Keplersche Gesetz besagt, dass die Flächengeschwindigkeit konstant ist ($\dd A/\dd t = \const$), folgt daraus direkt, dass auch der Betrag des Drehimpulses $|\ivec{L}|$ konstant sein muss. Dies ist immer der Fall, wenn die wirkende Kraft (hier die Gravitationskraft) eine Zentralkraft ist, \gDh immer auf das Zentrum (die Sonne) gerichtet ist.
 
 
 
@@ -209,7 +209,7 @@ wobei $m$ die Planetenmasse, $M$ die Sonnenmasse und $G$ die Gravitationskonstan
 
 Das dritte Keplerschen Gesetz, $T^2/a^3 = \const$, wird für eine Kreisbahn ($a=r$) zu $T^2/r^3 = c = \const$. Mit der allgemeinen Beziehung für Umlaufzeiten $T = 2\pi/\omega$ folgt:
 \begin{equation}\label{eq: omega_from_kepler3}
-    \frac{T^2}{r^3} = \frac{(2\pi/\omega)^2}{r^3} = c \quad \implies \quad \omega^2 = \frac{4\pi^2}{c} \frac{1}{r^3} \mDot
+    \frac{T^2}{r^3} = \frac{{(2\pi/\omega)}^2}{r^3} = c \quad \implies \quad \omega^2 = \frac{4\pi^2}{c} \frac{1}{r^3} \mDot
 \end{equation}
 Setzt man diesen Ausdruck für $\omega^2$ in Gleichung \cref{eq: grav_vs_zentri} ein, erhält man:
 \begin{equation}
@@ -226,7 +226,33 @@ Die \textbf{Gravitationskonstante} hat den Wert $G \approx \SI{6.67e-11}{\newton
 \end{rememberbox}
 
 \section{Erste kosmische Geschwindigkeit (Umlaufgeschwindigkeit)}\label{sec: erste_kosmische_geschwindigkeit}
-Coming soon ...
+Die erste kosmische Geschwindigkeit $v_I$ ist die Mindestgeschwindigkeit, die ein Körper tangential zur Erdoberfläche haben muss, um eine stabile, niedrige Kreisbahn um die Erde einzunehmen. 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Bilder/Kapitel_Mechanik/erste_kosmische_geschwindigkeit.png}
+    \caption{Ein Objekt wird von der Oberfläche eines Himmelskörpers (Masse $M$, Radius $R$) mit der Anfangsgeschwindigkeit $\protect\ivecS{v}{0}$ tangential zur Oberfläche abgefeuert.}\label{fig: erste_kosmische_geschwindigkeit}
+\end{figure}
+Für eine stabile Kreisbahn muss die anziehende Gravitationskraft $\ivecS{F}{G}$ genau die erforderliche Zentripetalkraft $\ivecS{F}{\text{Zp}}$ aufbringen. Wir setzen die Beträge der beiden Kräfte gleich:
+\begin{equation}
+    F_{\text{Zp}} = F_G
+\end{equation}
+Die Zentripetalkraft ist $F_{\text{Zp}} = mv_I^2 /R$, und die Gravitationskraft auf der Erdoberfläche ist $F_G = G (M\cdot m)/R^2$. Einsetzen ergibt:
+\begin{equation}
+    \frac{m v_I^2}{R} = G \frac{Mm}{R^2} \mDot
+\end{equation}
+Wir können die Masse des Körpers $m$ und einen Faktor $R$ kürzen und erhalten:
+\begin{equation}
+    v_I^2 = \frac{GM}{R}
+\end{equation}
+Daraus folgt für die erste kosmische Geschwindigkeit:
+\begin{equation}\label{eq: v_kosmisch_1}
+    v_I = \sqrt{\frac{GM}{R}} \mDot
+\end{equation}
+Einsetzen der gegebenen Werte für die Erde ergibt
+\begin{equation}
+    v_I = \sqrt{\frac{(\SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}) \cdot (\SI{5.972e24}{\kilo\gram})}{\SI{6.371e6}{\meter}}} \approx \SI{7909}{\meter\per\second} \approx \SI{7.91}{\kilo\meter\per\second} \mDot
+\end{equation}
+Wenn ein Körper mit $v_I \approx \SI{7.91}{\kilo\meter\per\second}$ horizontal von der Erdoberfläche gestartet wird, umkreist der Körper die Erde in einer stabilen Umlaufbahn, ohne jemals auf die Oberfläche zu treffen.
 
 \section{Zweite kosmische Geschwindigkeit (Fluchtgeschwindigkeit)}\label{sec: zweite_kosmische_geschwindigkeit}
 Mit dem Gravitationsgesetz können wir berechnen, welche Geschwindigkeit ein Objekt benötigt, um das Schwerefeld eines Himmelskörpers, wie zum Beispiel der Erde, dauerhaft zu verlassen. Diese Geschwindigkeit wird als zweite kosmische Geschwindigkeit oder \textbf{Fluchtgeschwindigkeit} bezeichnet.
@@ -254,15 +280,15 @@ Auflösen nach der Endgeschwindigkeit $v_{\text{f}}^2$ ergibt:
 \begin{equation}\label{eq: vf_general}
     v_{\text{f}}^2 = v_0^2 + 2GM \left( \frac{1}{r_{\text{f}}} - \frac{1}{R} \right)\mDot
 \end{equation}
-Um die maximale Höhe $h_{\text{max}}$ zu finden, die bei einer Anfangsgeschwindigkeit $v_0$ erreicht wird, ersetzen wir $r_{\text{f}}$ durch $r_{\text{f}} = R + h_{max}$. Für den Umkehrpunkt gilt außerdem $v_{\text{f}} = 0$: 
+Um die maximale Höhe $h_{\maxText}$ zu finden, die bei einer Anfangsgeschwindigkeit $v_0$ erreicht wird, ersetzen wir $r_{\text{f}}$ durch $r_{\text{f}} = R + h_{\maxText}$. Für den Umkehrpunkt gilt außerdem $v_{\text{f}} = 0$: 
 \begin{equation}
-    0 = v_0^2 - 2GM \left( \frac{1}{R} - \frac{1}{R+h_{max}} \right) = v_0^2 - 2GM \frac{h_{max}}{R(R+h_{max})} \mDot
+    0 = v_0^2 - 2GM \left( \frac{1}{R} - \frac{1}{R+h_{\maxText}} \right) = v_0^2 - 2GM \frac{h_{\maxText}}{R(R+h_{\maxText})} \mDot
 \end{equation}
 Mit der Erdbeschleunigung an der Oberfläche, $g = GM/R^2$, lässt sich dies umformen zu
 \begin{equation}\label{eq: hmax}
-    v_0^2 = \frac{2gR h_{max}}{R+h_{max}} \quad \implies \quad h_{max} = \frac{v_0^2 R}{2gR - v_0^2} \mDot
+    v_0^2 = \frac{2gR h_{\maxText}}{R+h_{\maxText}} \quad \implies \quad h_{\maxText} = \frac{v_0^2 R}{2gR - v_0^2} \mDot
 \end{equation}
-Aus dieser Gleichung wird ersichtlich, dass die maximale Höhe $h_{max}$ unendlich wird, wenn der Nenner gegen Null geht. Dies geschieht, wenn die Anfangsgeschwindigkeit $v_0$ einen kritischen Wert erreicht.
+Aus dieser Gleichung wird ersichtlich, dass die maximale Höhe $h_{\maxText}$ unendlich wird, wenn der Nenner gegen Null geht. Dies geschieht, wenn die Anfangsgeschwindigkeit $v_0$ einen kritischen Wert erreicht.
 
 \begin{importantbox}{Zweite kosmische Geschwindigkeit $v_{II}$}
 Die Fluchtgeschwindigkeit ist die minimale Anfangsgeschwindigkeit, die ein Objekt benötigt, um das Gravitationsfeld eines Himmelskörpers ohne weiteren Antrieb zu verlassen ($h_{\maxText} \to \infty$). Man erhält sie, indem man den Nenner in Gleichung \cref{eq: hmax} gleich null setzt:
