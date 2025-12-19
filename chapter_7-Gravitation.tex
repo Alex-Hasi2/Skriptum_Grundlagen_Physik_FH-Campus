@@ -73,7 +73,7 @@ Der Fahrstrahl (der Verbindungsvektor von der Sonne zum Planeten) überstreicht 
 Das bedeutet, dass ein Planet sich schneller bewegt, wenn er sich näher an der Sonne befindet (im Perihel), und langsamer, wenn er weiter entfernt ist (im Aphel). Wenn die in der \cref{fig: kepler2_flaechensatz} dargestellten Flächen $A_1$ (nahe dem Aphel) und $A_2$ (nahe dem Perihel) in derselben Zeitspanne $\Delta t$ überstrichen werden, so sind diese Flächen gleich groß: $A_1 = A_2$. 
 
 \paragraph{Herleitung aus der Drehimpulserhaltung}
-Das zweite Keplersche Gesetz ist eine direkte Konsequenz der \textbf{Drehimpulserhaltung} für eine Zentralkraft. Betrachten wir ein infinitesimales Zeitintervall $\dd t$, in dem der Planet eine Strecke $\dd\ivec{s} = |\ivec{v}| \dd t$ zurücklegt, dargestellt in \cref{fig: kepler2_herleitung}. Die dabei überstrichene Fläche $\dd A$ kann durch die Fläche eines Dreiecks mit den Eckpunkten ($S, P_1, P_2$) angenähert werden. Die Seitenlängen betragen $\ivec{r}(t)$, $\ivec{r}(t+\dd t)$ und $\dd\ivec{r}$, wobei $\dd \ivec{r} = \ivec{r}(t+\dd t) - \ivec{r}(t)$. Wir wissen ja bereits aus \cref{subsubsec: herleitung_bogenlänge_sehnenlänge}, dass $\lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| = \Delta s$ (\cref{eq: sehnenlänge_gleich_bogenlänge}), weshalb diese Näherung für $\dd t \to 0$ gegen die Fläche $\dd A$ konvergiert.
+Das zweite Keplersche Gesetz ist eine direkte Konsequenz der \textbf{Drehimpulserhaltung} für eine Zentralkraft. Betrachten wir ein infinitesimales Zeitintervall $\dd t$, in dem der Planet eine Strecke $\dd\ivec{s} = |\ivec{v}| \dd t$ zurücklegt, dargestellt in \cref{fig: kepler2_herleitung}. Die dabei überstrichene Fläche $\dd A$ kann durch die Fläche eines Dreiecks mit den Eckpunkten ($S, P_1, P_2$) angenähert werden. Die Seitenlängen betragen $\ivec{r}(t)$, $\ivec{r}(t+\dd t)$ und $\dd\ivec{r}$, wobei $\dd \ivec{r} = \ivec{r}(t+\dd t) - \ivec{r}(t)$. Wir wissen ja bereits aus \cref{subsec: herleitung_bogenlaenge_sehnenlaenge}, dass $\lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| = \Delta s$ (\cref{eq: sehnenlänge_gleich_bogenlänge}), weshalb diese Näherung für $\dd t \to 0$ gegen die Fläche $\dd A$ konvergiert.
 \begin{figure}[htb]
     \centering
      %\includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweites_keplersches_gesetz_Zeitintervall.png} 
@@ -272,3 +272,5 @@ Die Fluchtgeschwindigkeit ist die minimale Anfangsgeschwindigkeit, die ein Objek
 Für die Erde beträgt die Fluchtgeschwindigkeit etwa $\SI{11.2}{\kilo\metre\per\second}$. 
 \end{importantbox}
 
+% Chapter end - always start new page after chapter
+\newpage

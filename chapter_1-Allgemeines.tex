@@ -5,6 +5,7 @@
 \addcontentsline{toc}{section}{Das griechische Alphabet} 
 Das griechische Alphabet wird in den Naturwissenschaften und der Technik häufig für Variablennamen verwendet. Beachten Sie, dass manche griechische Buchstaben zwei Arten der Notation haben. \\
 \begin{center}
+\def\arraystretch{1.04} % Zeilenabstand in der Tabelle erhöhen 
 \definecolor{lightgray}{gray}{0.9}
 \rowcolors{1}{white}{lightgray}
 \begin{tabular}{l c c @{\quad\quad\vrule\quad\quad} l c c} 
@@ -30,53 +31,57 @@ Das griechische Alphabet wird in den Naturwissenschaften und der Technik häufig
 Um die Sprache der Mathematik zu verstehen, ist es wichtig, die Bedeutung der einzelnen Symbole zu kennen. In der Mathematik haben sich unzählige Symbole und Abkürzungen eingebürgert, die allerdings wie \gDQ{Wörter} zu lesen sind. Die meisten Formeln lesen sich daher wie ein Satz. Die gängigsten Symbole und Formeln, die zum Verständnis dieses Skriptums notwendig sind, sind hier aufgelistet.
 
 \begin{center}
+\def\arraystretch{1.08} % Zeilenabstand in der Tabelle erhöhen 
 \definecolor{lightgray}{gray}{0.9}
 \rowcolors{1}{lightgray}{white} 
 \begin{tabular}{c l @{\qquad\vrule\qquad} c l}
 $=$ & ist gleich & $\Delta x$ & Differenz \\
-$\neq$ & ist ungleich & $dx$ & Differenzial \\
-$\equiv$ & äquivalent & $x'$ & 1. Ableitung \\
-$\approx$ & ungefähr gleich & $\dot{x}$ & 1. Ableitung nach der Zeit \\
-$\propto$ & proportional zu & $\int$ & Integral \\
-$\gg$ & viel größer als & $\Sigma$ & Summe \\
-$\ll$ & viel kleiner als & $:=$ & Definition \\
-$\hat{=}$ & entspricht & $\stackrel{?}{=}$ & Hypothese/Frage \\
-$\wedge$ & mathematisches „Und“ & $\stackrel{!}{=}$ & bekannte Gleichheit \\
-$\vee$ & mathematisches „Oder“ & $\infty$ & unendlich \\
-\oBdA & ohne Beschränkung der Allgemeinheit & & \\
+$\neq$ & ist ungleich & $dx$ & (vollständiges) Differenzial \\
+$\equiv$ & äquivalent & $\delta x$ & (unvollständiges) Differenzial \\
+$\approx$ & ungefähr gleich & $\frac{\partial}{\partial x}$ & partielle Ableitung \\
+$\sim$ & (asymptotisch) ähnlich & $x'$ & 1. Ableitung \\
+$\propto$ & proportional zu & $\dot{x}$ & 1. Ableitung nach der Zeit \\
+$\gg$ & viel größer als & $\int$ & Integral \\
+$\ll$ & viel kleiner als & $\Sigma$ & Summe \\
+$\hat{=}$ & entspricht & $:=$ & Definition \\
+$\wedge$ & mathematisches \gDQ{Und} & $\stackrel{?}{=}$ & Hypothese/Frage \\
+$\vee$ & mathematisches \gDQ{Oder} & $\stackrel{!}{=}$ & bekannte Gleichheit \\
+\oBdA & ohne Beschränkung der Allgemeinheit & $\infty$ & unendlich\\
 \end{tabular}
 \end{center}
-Der mathematische Begriff \textbf{ohne Beschränkung der Allgemeinheit}, oft mit \oBdA abgekürzt, ist eine gängige Formulierung in Beweisen. Sie signalisiert, dass der Beweis für einen speziellen Fall geführt wird, dieser aber so gewählt ist, dass er alle anderen möglichen Fälle repräsentiert. Die Gültigkeit des Beweises für diesen einen Fall überträgt sich somit auf alle anderen Fälle, ohne dass die Allgemeingültigkeit der Aussage eingeschränkt wird.
+Der mathematische Begriff \textit{ohne Beschränkung der Allgemeinheit}, oft mit \oBdA abgekürzt, ist eine gängige Formulierung in Beweisen. Sie signalisiert, dass der Beweis für einen speziellen Fall geführt wird, dieser aber so gewählt ist, dass er alle anderen möglichen Fälle repräsentiert. Die Gültigkeit des Beweises für diesen einen Fall überträgt sich somit auf alle anderen Fälle, ohne dass die Allgemeingültigkeit der Aussage eingeschränkt wird.
 
-\section*{Häufig vorkommende Begriffe in der Physik}\label{sec: häufige_Begriffe_Physik}
+\section*{Häufig vorkommende Begriffe in der Physik}\label{sec: haeufige_Begriffe_Physik}
 \addcontentsline{toc}{section}{Physikalische Begriffe} 
 Manchmal kommt es vor, dass man spezielle (physikalische) Begriffe zwar schon häufig gehört hat, deren Bedeutung aber nicht gänzlich verstanden wird. Diese Liste dient als Nachschlagewerk, um Begriffe, die nicht im allgemeinen Sprachgebrauch vorkommen, zu definieren. 
 \vspace{0.3cm}
 \begin{center}
 \definecolor{lightgray}{gray}{0.9}
 \rowcolors{2}{white}{lightgray} % Ab der zweiten Zeile abwechselnde Farben
-\begin{tabularx}{0.9\textwidth}{l X} 
-\toprule
-\textbf{Begriff} & \textbf{Erklärung} \\
-\midrule
-quantitativ & zahlenmäßig \\
-qualitativ & beschreibend, interpretierend \\
-monochromatisch & aus einer einzelnen Wellenlänge oder Frequenz bestehend \\
-homogen & einheitlich; gleichartig aufgebaut/zusammengesetzt \\
-heterogen & uneinheitlich; nicht gleichartig aufgebaut/zusammengesetzt \\
-Abszisse & „x-Achse“ \\
-Ordinate & „y-Achse“ \\
-normal, orthogonal & rechtwinklig \\
-orthonormal & orthogonal und normiert \\
-normiert & Länge ist 1 (bei Vektoren) \\
-isotrop & unabhängig von der Richtung \\
-isotherm & gleiche Temperatur \\
-isobar & gleicher Druck \\
-isochor & gleiches Volumen \\
-isentrop & gleiche Entropie \\
-Isotop & gleiche Protonenzahl \\
-\bottomrule
-\end{tabularx}
+  \begin{tabularx}{0.9\textwidth}{l X} 
+    \toprule
+    \textbf{Begriff} & \textbf{Erklärung} \\
+    \midrule
+    quantitativ & zahlenmäßig \\
+    qualitativ & beschreibend, interpretierend \\
+    monochromatisch & aus einer einzelnen Wellenlänge oder Frequenz bestehend \\
+    homogen & einheitlich; gleichartig aufgebaut/zusammengesetzt \\
+    heterogen & uneinheitlich; nicht gleichartig aufgebaut/zusammengesetzt \\
+    Abszisse & „x-Achse“ \\
+    Ordinate & „y-Achse“ \\
+    normal, orthogonal & rechtwinklig \\
+    orthonormal & orthogonal und normiert \\
+    normiert & Länge ist 1 (bei Vektoren) \\
+    isotrop & unabhängig von der Richtung \\
+    isotherm & gleiche Temperatur \\
+    isobar & gleicher Druck \\
+    isochor & gleiches Volumen \\
+    isentrop & gleiche Entropie \\
+    Isotop & gleiche Protonenzahl \\
+    Isoton & gleiche Neutronenzahl \\
+    Isobar & gleiche Nukleonenzahl \\
+    \bottomrule
+  \end{tabularx}
 \end{center}
 
 \newpage
@@ -109,6 +114,7 @@ Drehmoment & & \si{\newton\,\meter} & \si{\kilogram\meter^2\per\second^2} & $\ve
 Wirkung & & \si{\joule\second} & \si{\kilogram\meter^2\per\second} & $S$ \\
 Energie, Arbeit & Joule & \si{\joule} & \si{\kilogram\meter^2\per\second^2} & $E, W$ \\
 Leistung & Watt & \si{\watt} & \si{\kilogram\meter^2\per\second^3} & $P$ \\
+Entropie & & \si{\joule\per\kelvin} & \si{\kilogram\meter^2\per(\second^2\kelvin)} & $S$ \\
 Frequenz & Hertz & \si{\hertz} & \si{\per\second} & $f, \nu$ \\
 Wellenlänge & & & \si{\meter} & $\lambda$ \\
 Lichtgeschwindigkeit & & & \si{\meter\per\second} & $c$ \\
@@ -193,3 +199,6 @@ Jede dieser Vorsilben kann mit beliebigen Einheiten kombiniert werden. Das Präf
     \item \si{\peta\joule}
 \end{itemize}
 \end{multicols}
+
+% Chapter end - always start new page after chapter
+\newpage

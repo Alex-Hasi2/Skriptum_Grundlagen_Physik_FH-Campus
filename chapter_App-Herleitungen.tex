@@ -1,0 +1,395 @@
+
+\chapter{Herleitungen}\label{chap: herleitungen}
+
+\section{Kapitel Kinematik}\label{sec: herleitungen_kinematik}
+\subsection{Bogenlänge und Sehnenlänge}\label{subsec: herleitung_bogenlaenge_sehnenlaenge}
+Wir möchten zeigen, dass im Grenzübergang $\Delta \varphi \to 0$, die Sehnenlänge gegen die Bogenlänge konvergiert
+\begin{equation*}\label{eq: question_sehnenlänge_gleich_bogenlänge}
+    \lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| \eqquestion \Delta s \mDot
+\end{equation*}
+In \cref{fig: bogenlänge_sehnenlänge} ist exemplarisch die Bogenlänge $\Delta s$ für einen Kreissektor mit dem Winkel $\Delta \varphi$ zusammen mit der Länge $|\Delta \ivec{r}|$ der Sehne $\overline{AB}$ gezeichnet. 
+
+\begin{figure}[htb]
+    \centering
+    \resizebox{0.45\linewidth}{!}{
+    \begin{tikzpicture}[
+        vec/.style={-{Stealth}, ultra thick, red!50!black},
+        point/.style={fill, circle, inner sep=1.pt}
+        ]
+        \def\myradius{4.5cm} % Radius des Kreises
+        \def\angleA{110}     % Winkel für Punkt A (in Grad)
+        \def\angleB{140}     % Winkel für Punkt B (in Grad)
+        \def\vecLen{3cm}      % Länge der Geschwindigkeitsvektoren
+        \def\fontSize{\large}
+        % --- 2. Koordinaten definieren ---
+        \coordinate (C) at (0,0);
+        \coordinate (A) at (\angleA:\myradius);
+        \coordinate (B) at (\angleB:\myradius);
+        \coordinate (M_chord) at ($(A)!0.35!(B)$);
+        \coordinate (M_arc) at ({(5*\angleA+5*\angleB)/(10)}:\myradius);
+        % --- 3. Kreisbahn zeichnen ---
+        % Zeichnet das Bogenstück, das etwas über A und B hinausgeht.
+        \draw[thick] (\angleA-20:\myradius) arc (\angleA-20:\angleB+25:\myradius);
+        \draw[line width=2.0pt, red] (\angleA:\myradius) arc (\angleA:\angleB:\myradius);
+
+        % --- 4. Radien und Punkte zeichnen ---
+        \draw (C) -- (A);
+        \draw (C) -- (B) node[pos=0.5, below left=1pt] {\fontSize $R$};
+        % --- 5. Winkel und Bogenlänge beschriften ---
+        \draw[-{Stealth}] (\angleA:1.8cm) arc (\angleA:\angleB:1.8cm);
+        \node at ({(\angleA+\angleB)/2}:1.3cm) {\fontSize $\Delta \varphi$}; 
+        \draw[dashed, blue, line width=1.1pt] (A) -- (B);
+        % Für Δr: Linie vom Mittelpunkt der Sehne (A)--(B)
+        \draw[-, thick, blue] (M_chord) -- (-1.7,2.6) node[below] {\fontSize $|\Delta \ivec{r}|$};
+        % Für Δs: Linie vom Mittelpunkt des Bogens zwischen A und B
+        \draw[-, thick, red] (M_arc) -- (-2.3,3.1) node[below=0.0pt] {\fontSize $\Delta s$};
+        \draw[vec] (C) -- (A) node[pos=0.3, right=1.5pt] {\fontSize $\ivecS{r}{A}$};
+        \draw[vec] (C) -- (B) node[pos=0.2, left=3.0pt] {\fontSize $\ivecS{r}{B}$};
+        \node[point, label={[label distance=3pt]below:C}] at (C) {};
+        \node[point, label={[label distance=0pt]above:A}] at (A) {};
+        \node[point, label={[label distance=2pt]below:B}] at (B) {};
+    \end{tikzpicture}
+    }
+    \caption{Die Bogenlänge $\Delta s$ (rote Linie) ist über den simplen Zusammenhang $\Delta s = R \cdot \Delta \varphi$ gegeben. Die Länge der Sehne $\overline{AB}$ (blau strichlierte Linie) berechnet sich jedoch aus $|\Delta \protect\ivec{r}| = |\protect\ivecS{r}{B}-\protect\ivecS{r}{A}|$.}     
+    \label{fig: bogenlänge_sehnenlänge}
+\end{figure}
+
+Die Bogenlänge ergibt sich aus der bekannten Formel $\Delta s = R \Delta \varphi$. Die Sehnenlänge erhalten wir über den Betrag der Differenz der beiden Ortsvektoren 
+\begin{equation*}
+    \ivecS{r}{A} = \icolTwo{\cos(\varphi)}{\sin(\varphi)} \mComma \quad \ivecS{r}{B} = \icolTwo{\cos(\varphi +\Delta \varphi)}{\sin(\varphi +\Delta \varphi)}\mDot
+\end{equation*} 
+Da die Sehnenlänge vom Winkel $\varphi$ unabhängig ist, setzen wir \oBdA $\varphi = 0$, wodurch 
+\begin{equation}\label{eq: rA_rB_sehnenlänge}
+    \ivecS{r}{A} = \icolTwo{1}{0} \mComma \quad \ivecS{r}{B} = \icolTwo{\cos(\Delta \varphi)}{\sin(\Delta \varphi)}\mComma
+\end{equation} 
+wird. Mithilfe der beiden Vektoren in \cref{eq: rA_rB_sehnenlänge} berechnet sich die Sehnenlänge zu 
+\begin{multline}
+    |\Delta \ivec{r}| = |\ivecS{r}{B}-\ivecS{r}{A}| = R\left|\icolTwo{\cos(\Delta \varphi)}{\sin(\Delta \varphi)} - \icolTwo{1}{0}\right| = \\
+    R\sqrt{(\cos(\Delta \varphi)-1)^2 + (\sin(\Delta \varphi))^2} = \\
+    R\sqrt{\cos^2(\Delta \varphi) - 2\cos(\Delta \varphi) + 1^2 + \sin^2(\Delta \varphi)} = \\
+    R\sqrt{2-2 \cos(\Delta \varphi)} = R\sqrt{2}\sqrt{1-\cos(\Delta \varphi)} \mComma
+\end{multline}
+wobei wir $\cos^2(\Delta \varphi) + \sin^2(\Delta \varphi) = 1$ verwendet haben. Unter Zuhilfenahme der Halbwinkelidentität $1-\cos(\Delta \varphi) = 2\sin^2(\Delta \varphi/2)$ erhalten wir einen exakten Ausdruck für die Sehnenlänge
+\begin{equation}\label{eq: sehnenlänge_exakt_sinus}
+    |\Delta \ivec{r}| = R\sqrt{2}\sqrt{1-\cos(\Delta \varphi)} = R \sqrt{2}\sqrt{2\sin^2\left( \frac{\Delta\varphi}{2} \right)} = 2R\cdot \sin\left( \frac{\Delta \varphi}{2} \right)  \mDot
+\end{equation}
+Nun verwenden wir die Approximation des Sinus für kleine Winkel $\Delta \varphi$, die besagt, dass 
+\begin{equation}
+    \sin(\Delta \varphi) \approx \Delta \varphi + \bigO[\Delta \varphi^3] \mComma \quad \Delta \varphi \ll 1\mDot
+\end{equation}
+Damit nähern wir den exakten Wert in \cref{eq: sehnenlänge_exakt_sinus} an und erhalten 
+\begin{equation} \label{eq: näherund_sehnenlänge_kleinwinkel}
+    |\Delta \ivec{r}| = 2R\cdot \sin\left( \frac{\Delta \varphi}{2} \right) \approx 2R \cdot \frac{\Delta \varphi}{2} = R \cdot \Delta\varphi \mDot
+\end{equation}
+Die Näherung für die Sehnenlänge $|\Delta \ivec{r}|$ in \cref{eq: näherund_sehnenlänge_kleinwinkel} entspricht aber genau der Bogenlänge $\Delta s = R\cdot \Delta\varphi$. \\
+
+Damit haben wir gezeigt, dass 
+\begin{equation}\label{eq: sehnenlänge_gleich_bogenlänge}
+    \lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| = \Delta s \mComma
+\end{equation}
+
+
+\section{Kapitel Wärmelehre}\label{sec: herleitungen_waermelehre}
+\subsection{Herleitung der Maxwell-Boltzmann-Verteilung}\label{subsec: herleitung_maxwell_boltzmann}
+In einem idealen Gas bewegen sich die Teilchen ungeordnet in alle Richtungen. Obwohl wir die Bewegung eines einzelnen Teilchens aufgrund der ständigen Stöße nicht vorhersagen können, lässt sich für eine große Anzahl von Teilchen ($N \to \infty$) eine statistische Aussage über die Geschwindigkeitsverteilung treffen.
+
+\subsubsection{Grundannahmen}\label{subsubsec: mb_annahmen}
+Die Herleitung basiert auf zwei wesentlichen physikalischen Annahmen:
+\begin{enumerate}
+    \item \textbf{Isotropie:} Es gibt keine bevorzugte Raumrichtung. Die Wahrscheinlichkeitsdichten der Geschwindigkeitskomponenten $v_x, v_y$ und $v_z$ sind identisch und unabhängig voneinander.
+    \item \textbf{Statistische Unabhängigkeit:} 
+    Die Wahrscheinlichkeit, eine bestimmte Geschwindigkeitskomponente $v_x$ zu finden, hängt nicht von den Werten von $v_y$ oder $v_z$ ab.
+\end{enumerate}
+
+\subsubsection{Verteilung der Geschwindigkeitskomponenten}\label{subsubsec: mb_komponenten}
+Da die Richtungen unabhängig sind, lässt sich die Gesamtwahrscheinlichkeitsdichte $f(\ivec{v})$ \footnote{Leider wird hier für verschiedene Verteilungsfunktionen oftmals derselbe Buchstabe $f$ verwendet. Dem Leser soll hier aber bewusst sein, dass $f(\ivec{v}) = f_{\ivec{v}}$ die Wahrscheinlichkeitsdichte im dreidimensionalen Geschwindigkeitsraum bezeichnet, während $f(v_i) = f_{v_i}$ die Wahrscheinlichkeitsdichten der einzelnen Komponenten sind und $f(v) = f_v$ die Wahrscheinlichkeitsdichte des Betrags ist. Wenn kein zusätzlicher Index die spezielle Verteilungsfunktion benennt, verrät nur das Argument um welche Verteilungsfunktion es sich handelt.} als Produkt der Einzelwahrscheinlichkeiten schreiben:
+\begin{equation}\label{eq: mb_produktansatz}
+    f(\ivec{v}) = f(v_x) \cdot f(v_y) \cdot f(v_z) \mDot
+\end{equation}
+Die statistische Mechanik (über den Boltzmann-Faktor) zeigt, dass die Wahrscheinlichkeit, einen Zustand mit der Energie $E$ zu besetzen, proportional zu $e^{-E / (\kB T)}$ ist. Da die kinetische Energie eines Teilchens $E_{\kin} = \frac{1}{2}m v^2$ beträgt, folgt für eine Komponente (\zB $x$):
+\begin{equation}\label{eq: mb_komponente_gauss}
+    f(v_x) = \sqrt{\frac{m}{2\pi \kB T}} \cdot \exp\left( - \frac{m v_x^2}{2 \kB T} \right) \mComma
+\end{equation}
+wobei der Vorfaktor aus der Normierung der Wahrscheinlichkeitsdichte resultiert -- jede Komponente für sich muss normierbar sein. Dies entspricht einer Gauß-Verteilung (Normalverteilung) um den Mittelwert $\lrangle{v_x} = 0$.
+
+\subsubsection{Verteilung des Geschwindigkeitsbetrages}\label{subsubsec: mb_betrag}
+Häufig interessiert uns nicht die Richtung, sondern nur der Betrag der Geschwindigkeit $v = |\ivec{v}|$. Um von den vektoriellen Komponenten zum Betrag zu gelangen, betrachten wir den Geschwindigkeitsraum.
+\begin{rememberbox}{Vom Vektor zum Betrag}
+    Die Wahrscheinlichkeit, ein Teilchen im Geschwindigkeitsintervall $\dd v_x \dd v_y \dd v_z$ zu finden, ist proportional zum Volumen im Geschwindigkeitsraum. Beim Übergang zu Polarkoordinaten entspricht das Volumen einer Kugelschale mit dem Radius $v$ und der Dicke $\dd v$:
+    \begin{equation}\dd V_v = 4\pi v^2 \dd v \mDot
+    \end{equation}
+\end{rememberbox}
+Durch Einsetzen des Produktansatzes (\cref{eq: mb_produktansatz}) und Integration über alle Richtungen erhalten wir die Wahrscheinlichkeitsdichte für den Geschwindigkeitsbetrag $f(v)$.\begin{importantbox}{Maxwell-Boltzmann-Verteilung}
+    Die Wahrscheinlichkeitsdichte $f(v)$, ein Teilchen mit dem Geschwindigkeitsbetrag $v$ zu finden, lautet:
+    \begin{equation}\label{eq: maxwell_boltzmann_final}
+        f(v) = 4\pi \left( \frac{m}{2\pi \kB T} \right)^{3/2} \cdot v^2 \cdot \exp\left( - \frac{m v^2}{2 \kB T} \right)
+    \end{equation}
+    Dabei ist $m$ die Masse eines Teilchens, $\kB$ die Boltzmann-Konstante und $T$ die absolute Temperatur.
+\end{importantbox}
+
+
+\subsubsection{Herleitung der charakteristischen Geschwindigkeiten}\label{subsubsec: herleitungen_char_geschwindigkeiten_maxwell_boltzmann}
+
+Aus der Maxwell-Boltzmann-Verteilungsfunktion $f(v)$ lassen sich drei statistisch relevante Geschwindigkeiten ableiten, die das Verhalten des Gases charakterisieren. Zur Vereinfachung definieren wir die Konstante $\alpha = \frac{m}{2 \kB T}$. Die Verteilungsfunktion lautet damit:
+\begin{equation}\label{eq: mb_verteilung_kurz}
+    f(v) = 4\pi \left( \frac{\alpha}{\pi} \right)^{3/2} v^2 e^{-\alpha v^2} \mDot
+\end{equation}
+
+\textbf{Die wahrscheinlichste Geschwindigkeit $v_W$}\\
+Die wahrscheinlichste Geschwindigkeit entspricht dem Maximum der Kurve. Wir bestimmen sie durch Nullsetzen der ersten Ableitung nach $v$:
+\begin{equation}
+    \frac{\dd f(v)}{\dd v} = 4\pi \left( \frac{\alpha}{\pi} \right)^{3/2} \left[ 2v \cdot e^{-\alpha v^2} + v^2 \cdot (-2\alpha v) e^{-\alpha v^2} \right] \eqexcl 0 \mDot
+\end{equation}
+Da der Term vor der Klammer und die Exponentialfunktion für endliche $v$ ungleich Null sind, muss der Ausdruck in der Klammer verschwinden:
+\begin{equation}
+    2v - 2\alpha v^3 = 0 \implies 2v(1 - \alpha v^2) = 0 \mDot
+\end{equation}
+Die physikalisch sinnvolle Lösung für $v > 0$ ergibt sich zu:
+\begin{equation}\label{eq: mb_vW_result}
+    v_W = \sqrt{\frac{1}{\alpha}} = \sqrt{\frac{2 \kB T}{m}} \mDot
+\end{equation}
+
+\textbf{Die mittlere Geschwindigkeit $\bar{v} = \lrangle{v}$}\\
+Die mittlere Geschwindigkeit ist der Erwartungswert des Geschwindigkeitsbetrages. Sie berechnet sich durch das Integral:
+\begin{equation}\label{eq: integral_ansatz_v_quer}
+    \bar{v} = \int_0^\infty v \cdot f(v) \,\dd v = 4\pi \left( \frac{\alpha}{\pi} \right)^{3/2} \int_0^\infty v^3 e^{-\alpha v^2} \,\dd v \mDot
+\end{equation}
+Mithilfe des Standardintegrals $\int_0^\infty x^3 e^{-ax^2} \dd x = \frac{1}{2a^2}$ erhalten wir:
+\begin{equation}
+    \bar{v} = 4\pi \left( \frac{\alpha}{\pi} \right)^{3/2} \cdot \frac{1}{2\alpha^2} = \frac{2}{\sqrt{\pi \alpha}} \mDot
+\end{equation}
+Einsetzen von $\alpha$ liefert das Endergebnis:
+\begin{equation}\label{eq: mb_v_quer_result}
+    \bar{v} = \sqrt{\frac{8 \kB T}{\pi m}} \mDot
+\end{equation}
+
+\textbf{Die quadratisch gemittelte Geschwindigkeit $\sqrt{\lrangle{v^2}}$}\\
+Die Wurzel aus dem mittleren Geschwindigkeitsquadrat ($root$ $mean$ $square$) ist direkt mit der mittleren kinetischen Energie verknüpft. Der Erwartungswert für $v^2$ lautet:
+\begin{equation}
+    \overline{v^2} = \int_0^\infty v^2 \cdot f(v) \,\dd v = 4\pi \left( \frac{\alpha}{\pi} \right)^{3/2} \int_0^\infty v^4 e^{-\alpha v^2} \,\dd v \mDot
+\end{equation}
+Unter Verwendung des Integrals $\int_0^\infty x^4 e^{-ax^2} \dd x = \frac{3}{8a^2} \sqrt{\frac{\pi}{a}}$ ergibt sich:
+\begin{equation}
+    \overline{v^2} = 4\pi \frac{\alpha^{3/2}}{\pi^{3/2}} \cdot \frac{3}{8\alpha^2} \frac{\sqrt{\pi}}{\sqrt{\alpha}} = \frac{3}{2\alpha} = \frac{3 \kB T}{m} \mDot
+\end{equation}
+Die Wurzel daraus ergibt $\sqrt{\lrangle{v^2}}$:
+\begin{equation}\label{eq: mb_v_rms_result}
+    \sqrt{\lrangle{v^2}} = \sqrt{\overline{v^2}} = \sqrt{\frac{3 \kB T}{m}} \mDot
+\end{equation}
+
+\begin{importantbox}{Zusammenfassender Vergleich}
+    Der Vergleich der drei Geschwindigkeiten zeigt ein festes Verhältnis, das unabhängig von der Masse und der Temperatur ist:
+    \begin{equation}\label{eq: mb_verhaeltnis}
+        v_W \,:\, \bar{v} \,:\, \sqrt{\lrangle{v^2}} \,=\, \qty{1} \,:\, \qty{1.128} \,:\, \qty{1.225} \mDot
+    \end{equation}
+    In einem $f(v)$-Diagramm liegt $v_W$ am Peak, $\bar{v}$ etwas rechts davon und $\sqrt{\lrangle{v^2}}$ noch weiter rechts.
+\end{importantbox}
+
+
+
+\begin{rememberbox}{Physikalische Bedeutung}
+    Während $v_W$ die Geschwindigkeit ist, die man bei einer Messung am häufigsten antrifft, ist $\sqrt{\lrangle{v^2}}$ die entscheidende Größe für die Thermodynamik, da sie direkt mit der inneren Energie $U = \frac{3}{2} N \kB T$ des idealen Gases verknüpft ist.
+\end{rememberbox}
+
+
+
+\subsection{Herleitung der Mayer-Relation}\label{subsec: herleitung_cp_mayer-relation}
+Die Herleitung basiert auf dem Ersten Hauptsatz der Thermodynamik aus \cref{chap: Hauptsaetze_Thermodynamik}. Betrachten wir $\nu = 1$ Mol eines idealen Gases. Die zugeführte Wärme $dQ$ bei konstantem Druck $p$ verteilt sich wie folgt:
+\begin{equation}\label{eq: herleitung_1_hauptsatz}
+    dQ = dU + p \cdot dV \mDot
+\end{equation}
+
+Da die innere Energie eines idealen Gases ausschließlich von der Temperatur abhängt ($dU = C_V \cdot dT$), und wir die Definition der molaren Wärmekapazität $dQ = C_p \cdot dT$ nutzen möchten, folgt:
+\begin{equation}\label{eq: herleitung_substitution}
+    C_p \cdot dT = C_V \cdot dT + p \cdot dV \mDot
+\end{equation}
+
+Um das Differential $dV$ zu ersetzen, verwenden wir die ideale Gasgleichung für ein Mol: $p \cdot V = R \cdot T$. Da der Druck $p$ konstant bleibt, ergibt die Differentiation nach der Temperatur:
+\begin{equation}
+    p \cdot \frac{dV}{dT} = R \implies p \cdot dV = R \cdot dT \mDot
+\end{equation}
+
+Setzt man diesen Ausdruck in \cref{eq: herleitung_substitution} ein, erhält man:
+\begin{align}
+    C_p \cdot dT &= C_V \cdot dT + R \cdot dT \\
+    C_p &= C_V + R \mDot
+\end{align}
+
+\begin{rememberbox}{Physikalische Bedeutung}
+    Die universelle Gaskonstante $R$ entspricht also genau der Arbeit, die ein Mol eines idealen Gases verrichtet, wenn es bei konstantem Druck um $\SI{1}{\kelvin}$ erwärmt wird.
+\end{rememberbox}
+
+
+\subsection{Vollständige und unvollständige Differentiale}\label{subsec: Differentiale_vollst_unvollst}
+
+In der Physik begegnen uns häufig infinitesimale Änderungen von Größen. Mathematisch unterscheiden wir dabei, ob diese Änderung nur vom aktuellen Zustand abhängt oder vom Weg, auf dem dieser Zustand erreicht wurde.
+
+Ein Differential $\dd f = A(x,y) \dd x + B(x,y) \dd y$ heißt \textbf{vollständiges (oder exaktes) Differential}, wenn es eine Stammfunktion $f(x,y)$ gibt, deren totale Ableitung genau diesen Ausdruck ergibt. Die notwendige und (in einfach zusammenhängenden Gebieten) hinreichende Bedingung dafür ist die sogenannte Integrabilitätsbedingung (Satz von Schwarz):
+
+\begin{equation}\label{eq: Integrabilitätsbedingung}
+    \frac{\partial A}{\partial y} = \frac{\partial B}{\partial x} \mDot
+\end{equation}
+
+Ist diese Bedingung \textbf{nicht} erfüllt, nennen wir es ein \textbf{unvollständiges (oder inexaktes) Differential}. Um dies im Text zu kennzeichnen, verwendet man oft das Symbol $\delta$ anstelle des $\dd$, um zu verdeutlichen, dass es sich nicht um eine Änderung einer Zustandsfunktion handelt.
+
+\begin{examplebox}{Beispiel für ein unvollständiges Differential}
+Betrachten wir das Differential:
+\begin{equation}\label{eq: bsp_unvollst_diff}
+    \delta f = y \, \dd x \mDot
+\end{equation}
+Hier sind $A(x,y) = y$ und $B(x,y) = 0$. Wir überprüfen die Integrabilitätsbedingung:
+\begin{equation}
+    \frac{\partial A}{\partial y} = 1 \quad \text{und} \quad \frac{\partial B}{\partial x} = 0 \mDot
+\end{equation}
+Da $1 \neq 0$, ist das Differential unvollständig. Das Integral über $\delta f$ hängt somit vom gewählten Weg im $(x,y)$-Raum ab.\\
+
+Im Gegensatz dazu wäre $\dd f = y \, \dd x + x \, \dd y$ vollständig, da hier die Bedingung $1 = 1$ erfüllt ist (die Stammfunktion lautet $f(x,y) = xy$).
+\end{examplebox}
+
+
+\subsubsection{Anschauliche Deutung von Zustandsfunktionen}\label{subsubsec: deutung_zustandsfunktion}
+Um den Unterschied zwischen einer Zustandsfunktion und einer wegabhängigen Größe zu verstehen, hilft ein Vergleich aus dem Alltag: das Bergwandern.
+
+\begin{examplebox}{Alltagsbeispiel: Höhe vs. Anstrengung}
+    Stellen wir uns vor, wir wandern von einer Hütte im Tal auf einen Berggipfel.
+    \begin{itemize}
+        \item \textbf{Zustandsfunktion (Die Höhe $h$):} Egal, ob wir den steilen Direttissima-Pfad nehmen oder in weiten Serpentinen gemütlich aufsteigen – wenn wir am Gipfelkreuz stehen, befinden wir uns auf einer exakt definierten Höhe (z.\,B. \SI{2500}{\meter}). Die Höhe hängt nur von der aktuellen Position $\ipTwo{x}{y}$ auf der Landkarte ab: Die Funktion $h(x,y)$ ist somit eine Zustandsfunktion.
+        \item \textbf{Wegfunktion (Die Erschöpfung $K$ / Der Weg $s$):} Die Anzahl der Schritte, die wir gemacht haben, oder die Energie, die wir verbraucht haben, unterscheidet sich drastisch, je nachdem, welchen Pfad wir gewählt haben. Diese Größen sind keine Zustandsfunktionen. Es gibt daher keine eindeutige Funktion $K(x,y)$ oder $s(x,y)$, die uns anzeigt, wie erschöpft wir sind oder welche Strecke man zurückgelegt hat, nur basierend auf der aktuellen Position.
+    \end{itemize}
+\end{examplebox}
+
+Mathematisch bedeutet das: Eine Zustandsfunktion $f(x,y)$ hat an jedem Punkt $\ipTwo{x}{y}$ einen eindeutigen Wert. Das totale Differential $\dd f$ ist immer vollständig.
+
+\begin{importantbox}{Eigenschaft von Zustandsfunktionen}
+    Für eine Zustandsfunktion $f$ ist das Wegintegral des Differentials zwischen zwei Punkten $A$ und $E$ unabhängig vom gewählten Pfad $\gamma$. Das bedeutet, für zwei beliebige Pfade $\gamma_1$ und $\gamma_2$, die beide in $A$ starten und in $E$ enden, gilt:
+    \begin{equation}\label{eq: weg_unabhaengigkeit}
+        \int_{\gamma_{1}} \dd f = \int_{\gamma_{2}} \dd f = f(E) - f(A) \mDot
+    \end{equation}
+    Das Integral hängt also nur vom Anfangs- und Endzustand ab. Gilt diese Wegunabhängigkeit nicht, handelt es sich um ein unvollständiges Differential $\delta f$.
+\end{importantbox}
+Für vollständige Differentiale ist das Integral also wegunabhängig und somit ist ein Ringintegral über ein geschlossenes Wegstück immer null:
+\begin{equation}\label{eq: ringintegral_null}
+    \oint \dd f = 0 \mDot
+\end{equation}
+Hingegen ist für unvollständige Differentiale das Ringintegral im Allgemeinen ungleich null:
+\begin{equation}\label{eq: ringintegral_nicht_null}
+    \oint \delta f \neq 0 \mDot
+\end{equation}
+
+\subsubsection{Mathematisches Beispiel zur Wegabhängigkeit}\label{subsubsec: bsp_wegabhaengigkeit}
+Wir demonstrieren nun die Wegabhängigkeit eines unvollständigen Differentials am Beispiel aus \cref{subsec: Differentiale_vollst_unvollst}:
+\begin{equation*}
+    \delta f = y \, \dd x \mDot
+\end{equation*}
+Wir berechnen das Integral vom Ursprung $A = \ipTwo{0}{0}$ zum Punkt $E = \ipTwo{1}{1}$ auf zwei unterschiedlichen Wegen.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+            scale=3,
+            axis/.style={->, >=Stealth, line width=1pt},
+            path1/.style={line width=1.7pt, color=blue, dashed},
+            path2/.style={line width=1.7pt, color=red, dashed},
+            point/.style={fill=black, circle, inner sep=1.8pt}
+        ]
+        % Gitterlinien (optional für bessere Orientierung)
+        \draw[help lines, step=0.5, gray!30] (-0.1,-0.1) grid (1.2,1.2);
+
+        % Achsen zeichnen
+        \draw[axis] (-0.2,0) -- (1.5,0) node[right] {$x$};
+        \draw[axis] (0,-0.2) -- (0,1.5) node[above] {$y$};
+
+        % Punkte A und E definieren
+        \node[point, label={below left:$A(0,0)$}] (A) at (0,0) {};
+        \node[point, label={above right:$E(1,1)$}] (E) at (1,1) {};
+        
+        % Hilfspunkte für die Knicke
+        \coordinate (P1) at (1,0);
+        \coordinate (P2) at (0,1);
+
+        % Weg 1 (gamma_1): Blau, gestrichelt
+        % (0,0) -> (1,0) -> (1,1)
+        \draw[path1, ->, shorten >= 2pt] (A) -- (P1);
+        \draw[path1, ->, shorten >= 2pt] (P1) -- (E);
+        \node[blue, below] at (0.5, -0.1) {$\gamma_{1,T1}$};
+        \node[blue, right] at (1.1, 0.5) {$\gamma_{1,T2}$};
+
+        % Weg 2 (gamma_2): Rot, durchgezogen
+        % (0,0) -> (0,1) -> (1,1)
+        \draw[path2, ->, shorten >= 2pt] (A) -- (P2);
+        \draw[path2, ->, shorten >= 2pt] (P2) -- (E);
+        \node[red, left] at (-0.1, 0.5) {$\gamma_{2,T1}$};
+        \node[red, above] at (0.5, 1.1) {$\gamma_{2,T2}$};
+
+        % Markierung der Koordinaten am Zielpunkt
+        \node[below] at (1,-0.1) {$1$};
+        \node[left] at (-0.1,1) {$1$};
+    \end{tikzpicture}
+    \caption{Visualisierung der zwei unterschiedlichen Integrationspfade $\gamma_1$ (blau) und $\gamma_2$ (rot) vom Ursprung $A$ zum Zielpunkt $E$.}
+    \label{fig: wegabhaengigkeit_tikz}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{Weg 1 ($\gamma_1$):} Zuerst entlang der $x$-Achse nach $\ipTwo{1}{0}$, dann parallel zur $y$-Achse nach $\ipTwo{1}{1}$.
+    \begin{equation}
+        \int_{\gamma_1} \delta f = \int_{\gamma_1} y \, \dd x = \int_{\gamma_{1,T1}} y \, \dd x + \int_{\gamma_{1,T2}} y \, \dd x \mDot
+    \end{equation}
+    \begin{itemize}
+        \item Teil 1 ($\gamma_{1,T1}$): Von $\ipTwo{0}{0}$ nach $\ipTwo{1}{0}$. Hier ist $y = 0$, also $\delta f = 0 \cdot \dd x = 0$.
+        \item Teil 2 ($\gamma_{1,T2}$): Von $\ipTwo{1}{0}$ nach $\ipTwo{1}{1}$. Hier ist $x = 1$ konstant, folglich $\dd x = 0$ und somit $\delta f = y \cdot 0 = 0$.
+    \end{itemize}
+    Das Gesamtergebnis für Weg 1 ist:
+    \begin{equation}\label{eq: integral_weg1}
+        \int_{\gamma_1} \delta f = 0 + 0 = 0 \mDot
+    \end{equation}
+
+    \item \textbf{Weg 2 ($\gamma_2$):} Zuerst entlang der $y$-Achse nach $\ipTwo{0}{1}$, dann parallel zur $x$-Achse nach $\ipTwo{1}{1}$.
+    \begin{equation}
+    \int_{\gamma_2} \delta f = \int_{\gamma_2} y \, \dd x = \int_{\gamma_{2,T1}} y \, \dd x + \int_{\gamma_{2,T2}} y \, \dd x \mDot
+\end{equation}
+    \begin{itemize}
+        \item Teil 1 ($\gamma_{2,T1}$): Von $\ipTwo{0}{0}$ nach $\ipTwo{0}{1}$. Hier ist $x = 0$ konstant, also $\dd x = 0$. Damit ist $\delta f = 0$.
+        \item Teil 2 ($\gamma_{2,T2}$): Von $\ipTwo{0}{1}$ nach $\ipTwo{1}{1}$. Hier ist $y = 1$ konstant. Das Differential lautet $\delta f = 1 \cdot \dd x$.
+    \end{itemize}
+    Das Gesamtergebnis für Weg 2 ist:
+    \begin{equation}\label{eq: integral_weg2}
+        \int_{\gamma_2} \delta f = 0 + \int_0^1 1 \, \dd x = x\,\big|_0^1 = 1 \mDot
+    \end{equation}
+\end{enumerate}
+
+\begin{rememberbox}{Fazit}
+    Da das Integral über $\gamma_1$ den Wert $0$ und über $\gamma_2$ den Wert $1$ ergibt, hängt das Resultat vom Weg ab. Es gibt also keine Funktion $f(x,y)$ zum Differential $\delta f = y \, \dd x$, die an der Stelle $\ipTwo{1}{1}$ einen eindeutigen Wert besitzt, wenn sie über dieses Differential definiert würde. Das Differential $\delta f = y \, \dd x$ ist somit unvollständig.
+\end{rememberbox}
+
+
+\subsection{Der integrierende Faktor}\label{subsec: integrierender_Faktor}
+Ein unvollständiges Differential besitzt keine Stammfunktion, was physikalisch bedeutet, dass die Größe keine Zustandsfunktion ist. Es existiert jedoch oft eine Funktion $\lambda(x,y)$, der sogenannte \textbf{integrierende Faktor}, der ein unvollständiges Differential durch Multiplikation in ein vollständiges überführt.
+
+\begin{rememberbox}{Allgemeines Prinzip}
+Ist $\delta f$ ein unvollständiges Differential, so kann das Produkt 
+\begin{equation}\label{eq: definition_integrierender_faktor}
+    \dd \Phi = \lambda(x,y) \cdot \delta f
+\end{equation}
+ein vollständiges Differential sein, sofern $\lambda$ so gewählt wird, dass die Integrabilitätsbedingung für den neuen Ausdruck $\dd \Phi$ erfüllt ist.
+\end{rememberbox}
+
+\subsubsection{Anwendung in der Thermodynamik: Die Entropie}\label{subsubsec: thermodynamik_entropie}
+Ein fundamentales Beispiel aus der Physik ist die zugeführte Wärme $\delta Q$. In der Thermodynamik stellt man fest, dass die Wärme vom Prozessweg abhängt und somit kein vollständiges Differential ist. Es gibt keine Zustandsfunktion \gDQ{Wärmeinhalt}.
+
+Betrachten wir ein ideales Gas, so lässt sich zeigen, dass der Kehrwert der absoluten Temperatur $1/T$ als integrierender Faktor fungiert.
+
+\begin{importantbox}{Vervollständigung des Wärmedifferentials}
+Die infinitesimale Wärmeänderung $\delta Q$ ist ein unvollständiges Differential. Durch Multiplikation mit dem integrierenden Faktor $1/T$ erhält man das vollständige Differential der \textbf{Entropie} $S$:
+\begin{equation}\label{eq: definition_entropie_differential}
+    \dd S = \frac{\delta Q}{T} \mDot
+\end{equation}
+Während die Wärme $Q$ prozessabhängig ist (Wegintegral), ist die Entropie $S$ eine \textbf{Zustandsgröße}. Ihr Wert hängt nur vom momentanen Zustand (z.\,B. Druck und Temperatur) ab, nicht davon, wie das System diesen Zustand erreicht hat.
+\end{importantbox}
+
+Das bedeutet für einen geschlossenen Kreisprozess (reversibel):
+\begin{equation}
+    \oint \delta Q \neq 0 \quad \text{aber} \quad \oint \frac{\delta Q}{T} = \oint \dd S = 0 \mDot
+\end{equation}
+
+% Chapter end - always start new page after chapter
+\newpage
