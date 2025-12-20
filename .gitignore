@@ -46,3 +46,5 @@
 .bak 
 .mtc
 build/
+!Bilder/
+!Bilder/**/*.pdf
