@@ -1,0 +1,105 @@
+\chapter{Rotation starrer Körper}\label{chap: rotation_starrer_koerper}
+
+Nachdem wir uns bisher mit der Bewegung von Massenpunkten beschäftigt haben (Translation), erweitern wir unser Modell nun auf ausgedehnte Körper, die sich nicht verformen: die sogenannten \textbf{starren Körper}. Neben der Translation können diese Körper auch eine Rotation um eine Achse ausführen.
+
+\section{Rotationskinematik}\label{sec: rotationskinematik}
+Analog zur Translation, die durch Ort, Geschwindigkeit und Beschleunigung beschrieben wird, nutzen wir für die Rotation den Winkel, die Winkelgeschwindigkeit und die Winkelbeschleunigung.
+
+\begin{figure}[ht]
+    \centering
+    % Platzhalter für ein Bild: Rotierende Scheibe mit Winkelkoordinaten
+    \includegraphics[width=0.6\linewidth]{example-image-a} 
+    \caption{Darstellung eines rotierenden Körpers. Der Winkel $\varphi$ gibt die Orientierung bezüglich einer festen Referenzachse an.}
+    \label{fig: rotation_definition}
+\end{figure}
+
+Die \textbf{Winkelgeschwindigkeit} $\ivec{\omega}$ ist ein Vektor, dessen Richtung die Drehachse angibt (Rechte-Hand-Regel) und dessen Betrag die Schnelligkeit der Drehung beschreibt.
+
+\begin{rememberbox}{Winkelgeschwindigkeit}
+    Die momentane Winkelgeschwindigkeit $\omega$ ist die zeitliche Ableitung des überstrichenen Winkels $\varphi$:
+    \begin{equation}\label{eq: winkelgeschwindigkeit}
+        \omega = \frac{\mathrm{d}\varphi}{\mathrm{d}t} \mDot
+    \end{equation}
+    Die Einheit ist \si{\radian\per\second} (bzw. \si{\per\second}).
+\end{rememberbox}
+
+Ändert sich die Winkelgeschwindigkeit zeitlich, sprechen wir von einer \textbf{Winkelbeschleunigung} $\alpha$:
+\begin{equation}\label{eq: winkelbeschleunigung}
+    \alpha = \frac{\mathrm{d}\omega}{\mathrm{d}t} = \frac{\mathrm{d}^2\varphi}{\mathrm{d}t^2} \mDot
+\end{equation}
+
+\section{Drehmoment und Trägheitsmoment}\label{sec: drehmoment_traegheit}
+
+So wie eine Kraft notwendig ist, um den Bewegungszustand (Translation) eines Körpers zu ändern, ist ein \textbf{Drehmoment} notwendig, um die Rotation zu beschleunigen oder zu bremsen.
+
+\begin{importantbox}{Drehmoment}
+    Das Drehmoment $\ivec{M}$ resultiert aus einer Kraft $\ivec{F}$, die an einem Punkt mit dem Ortsvektor $\ivec{r}$ (vom Drehzentrum aus) angreift. Es ist definiert als das Kreuzprodukt:
+    \begin{equation}\label{eq: drehmoment_def}
+        \ivec{M} = \ivec{r} \times \ivec{F} \mDot
+    \end{equation}
+    Der Betrag ist maximal, wenn die Kraft senkrecht zum Hebelarm steht.
+\end{importantbox}
+
+\subsection{Das Trägheitsmoment}
+Ein Körper setzt einer Änderung seiner Rotation einen Widerstand entgegen. Bei der Translation ist dies die Masse $m$. Bei der Rotation hängt dieser Widerstand nicht nur von der Masse ab, sondern auch davon, wie die Masse bezüglich der Drehachse verteilt ist. Diese Größe nennen wir **Trägheitsmoment** $J$.
+
+Für ein System aus diskreten Massenpunkten gilt:
+\begin{equation}\label{eq: traegheitsmoment_diskret}
+    J = \sum_{i} m_i r_i^2 \mComma
+\end{equation}
+wobei $r_i$ der senkrechte Abstand der Masse $m_i$ zur Drehachse ist. Für kontinuierliche Körper geht die Summe in ein Integral über:
+\begin{equation}\label{eq: traegheitsmoment_integral}
+    J = \int r^2 \,\mathrm{d}m = \int r^2 \rho(\ivec{r}) \,\mathrm{d}V \mDot
+\end{equation}
+
+\section{Grundgleichung der Rotationsdynamik}\label{sec: rotationsdynamik}
+Das zweite Newton'sche Gesetz ($\ivec{F} = m \cdot \ivec{a}$) hat ein direktes Äquivalent in der Rotation.
+
+\begin{importantbox}{Grundgleichung der Rotation}
+    Das wirkende Gesamtdrehoment ist proportional zur Winkelbeschleunigung. Der Proportionalitätsfaktor ist das Trägheitsmoment:
+    \begin{equation}\label{eq: grundgleichung_rotation}
+        \ivec{M} = J \cdot \ivec{\alpha} \mDot
+    \end{equation}
+\end{importantbox}
+
+\section{Analogie: Translation und Rotation}\label{sec: analogie_trans_rot}
+Die mathematische Struktur der Formeln für Translation und Rotation ist identisch. Dies erleichtert das Lernen erheblich, da man oft nur die Variablen austauschen muss.
+
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{0.9\textwidth}{Xc|cX}
+        \toprule
+        \textbf{Translation} & \textbf{Symbol} & \textbf{Symbol} & \textbf{Rotation} \\
+        \midrule
+        Ort & $\ivec{r}$ & $\varphi$ & Winkel \\
+        Geschwindigkeit & $\ivec{v}$ & $\ivec{\omega}$ & Winkelgeschwindigkeit \\
+        Beschleunigung & $\ivec{a}$ & $\ivec{\alpha}$ & Winkelbeschleunigung \\
+        Masse & $m$ & $J$ & Trägheitsmoment \\
+        Kraft & $\ivec{F}$ & $\ivec{M}$ & Drehmoment \\
+        Impuls & $\ivec{p} = m\ivec{v}$ & $\ivec{L} = J\ivec{\omega}$ & Drehimpuls \\
+        Kinetische Energie & $E_{\text{kin}} = \frac{1}{2}mv^2$ & $E_{\text{rot}} = \frac{1}{2}J\omega^2$ & Rotationsenergie \\
+        Grundgleichung & $\ivec{F} = m\ivec{a}$ & $\ivec{M} = J\ivec{\alpha}$ & Grundgleichung \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Gegenüberstellung der physikalischen Größen von Translation und Rotation.}
+    \label{tab: analogie_translation_rotation}
+\end{table}
+
+\section{Drehimpuls und Erhaltungssatz}\label{sec: drehimpuls}
+Ähnlich wie der Impuls $\ivec{p}$ ein Maß für den translatorischen Schwung ist, beschreibt der \textbf{Drehimpuls} $\ivec{L}$ den "Drall" eines Körpers.
+
+\begin{equation}\label{eq: drehimpuls}
+    \ivec{L} = \ivec{r} \times \ivec{p} = J \cdot \ivec{\omega} \mDot
+\end{equation}
+
+Eines der wichtigsten Prinzipien der Physik ist die \textbf{Drehimpulserhaltung}.
+
+\begin{importantbox}{Drehimpulserhaltung}
+    Wirkt auf ein System kein äußeres Drehmoment ($\ivec{M}_{\text{ext}} = 0$), so bleibt der Gesamtdrehimpuls konstant:
+    \begin{equation}\label{eq: drehimpulserhaltung}
+        \frac{\mathrm{d}\ivec{L}}{\mathrm{d}t} = 0 \quad \implies \quad \ivec{L} = \text{konstant} \mDot
+    \end{equation}
+    
+    Da $\ivec{L} = J \cdot \ivec{\omega}$ ist, führt eine Änderung des Trägheitsmoments $J$ (z.\,B. wenn ein Eiskunstläufer die Arme anzieht) zu einer Änderung der Winkelgeschwindigkeit $\omega$, damit das Produkt konstant bleibt.
+\end{importantbox}
