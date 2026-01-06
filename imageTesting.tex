@@ -5,9 +5,12 @@
 \usetikzlibrary{positioning,arrows.meta, calc, quotes, angles, decorations.pathmorphing, patterns}
 
 \usepackage{tikz-3dplot}
-\usepackage{amsmath}      % Für mathematische Befehle wie \vec
 \usepackage{sansmath}     % Für serifenlose Schrift in Formeln
-\usepackage{bm}           % Für fette mathematische Symbole
+
+\usepackage{eurosym}  % euro symbol € 
+\usepackage{amsmath,amssymb,latexsym,amsfonts,bbm, bm, bbold}
+\usepackage{mathtools}
+\usepackage[b]{esvect} % For \vv (option [d] is a nice default)
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
@@ -28,10 +31,234 @@
 
 \newcommand{\ehat}[1]{\hat{\bm{e}}_{#1}}
 \newcommand{\dd}{\mathrm{d}}
+\newcommand{\ivec}[1]{\vv{#1}} % using esvect package
+\newcommand{\ivecS}[2]{\vv*{#1}{\!#2}} % using esvect package
 
 \begin{document}
 
 
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+
+% Eine schiefe Ebene mit einem Winkel alpha (eingezeichnet) gegen die Horizontale in leichtem rot 
+% Ein Kreis (Rad) mit Radius r rollt ohne zu rutschen die Ebene hinunter. Der Schwerpunkt des Rades ist markiert.
+% Die Kräfte Gewicht F_G und F_N (Normalkraft) sind eingezeichnet.
+
+\begin{tikzpicture}[
+    scale=1.0,
+    >=Stealth,
+    font=\small\sffamily
+]
+
+    % --- Definitionen ---
+    \def\R{1.3} % Radius des Rades
+    \def\alphaV{25} % Winkel der schiefen Ebene
+    \def\lenEbene{8} % Länge der schiefen Ebene
+
+    % --- Schiefe Ebene zeichnen ---
+    \fill[red!20] (0,0) -- (\lenEbene,0) -- (\lenEbene, {\lenEbene*tan(\alphaV)}) -- (0,0) -- cycle;
+    \draw[thick] (0,0) -- (\lenEbene,0) -- (\lenEbene, {\lenEbene*tan(\alphaV)}) -- cycle;
+    % --- Rad zeichnen ---
+    \coordinate (Center) at (6, {6*tan(\alphaV) + \R + 0.15}); % Mittelpunkt des Rades
+    \draw[line width=1.5pt] (Center) circle (\R); % Rad
+    \fill[red!10] (Center) circle (\R); % rote Füllung
+    \fill[black] (Center) circle (2pt); % Schwerpunkt
+
+    % --- Kräfte zeichnen ---
+    % Gewichtskraft F_G
+    \draw[-{latex}, black, line width=1.5pt] (Center) -- ++(0,-2.5) node[midway, pos=0.7, right] {\large $F_G = M \ivec{g}$};
+
+    % Normalkraft F_N
+    \draw[->, green!70!black, thick] (Center) -- ++({\alphaV+90}:2.5) node[midway, above left] {\large $F_N$};
+
+    % --- Winkel alpha beschriften ---
+    \draw[->] (1.5,0) arc(0:\alphaV:0.7) node[midway, right] {\large $\alpha$};
+\end{tikzpicture}
+
+
+
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+
+% % Ein dreidimensionales Koordinatensystem mit den Achsen x, y und z
+% % Ein Punkt P im Raum mit den Koordinaten (x, y, z) und ein Pfeil der vom Ursprung zu diesem Punkt zeigt
+% % Ein Vektor F der am Punkt P endet und in eine bestimmte Richtung zeigt
+% % F wird in seine Komponenten F_n, F_t und F_b zerlegt, die jeweils normal, tangential und binormal zum Vektor r sind
+% % Ein grüner Quader ist der Körper, der den Punkt P enthält
+% \begin{tikzpicture}[
+%     scale=1.0,
+%     >=Stealth,
+%     font=\small\sffamily
+% ]
+
+%     % --- Koordinaten-Definition ---
+%     \coordinate (Origin) at (0,0,0);
+%     \coordinate (XEnd) at (5,0,0);
+%     \coordinate (YEnd) at (0,5,0);
+%     \coordinate (ZEnd) at (0,0,5);
+
+%     % Punkt P im Raum
+%     \coordinate (P) at (3,2,4);
+
+%     % Vektor F am Punkt P
+%     \coordinate (FEnd) at (4,4,5);
+
+%     % --- Achsen zeichnen ---
+%     \draw[->, thick] (Origin) -- (XEnd) node[below right] {\large $x$};
+%     \draw[->, thick] (Origin) -- (YEnd) node[above left] {\large $y$};
+%     \draw[->, thick] (Origin) -- (ZEnd) node[above right] {\large $z$};
+
+%     % --- Punkt P und Pfeil zum Ursprung ---
+%     \fill[black] (P) circle (2pt);
+%     \draw[->, blue, thick] (Origin) -- (P) node[midway, below right] {\large $\vec{r}$};
+%     \node[above right] at (P) {\large $P(x,y,z)$};
+
+%     % --- Grüner Quader um Punkt P ---
+%     \draw[fill=green!20, opacity=0.5] (2.5,1.5,3.5) -- (3.5,1.5,3.5) -- (3.5,2.5,3.5) -- (2.5,2.5,3.5) -- cycle; % Boden
+%     \draw[fill=green!20, opacity=0.5] (2.5,1.5,4.5) -- (3.5,1.5,4.5) -- (3.5,2.5,4.5) -- (2.5,2.5,4.5) -- cycle; % Decke
+%     \draw[fill=green!20, opacity=0.5] (2.5,1.5,3.5) -- (2.5,2.5,3.5) -- (2.5,2.5,4.5) -- (2.5,1.5,4.5) -- cycle; % Seite 1
+%     \draw[fill=green!20, opacity=0.5] (3.5,1.5,3.5) -- (3.5,2.5,3.5) -- (3.5,2.5,4.5) -- (3.5,1.5,4.5) -- cycle; % Seite 2
+%     \draw[fill=green!20, opacity=0.5] (2.5,1.5,3.5) -- (3.5,1.5,3.5) -- (3.5,1.5,4.5) -- (2.5,1.5,4.5) -- cycle; % Seite 3
+%     \draw[fill=green!20, opacity=0.5] (2.5,2.5,3.5) -- (3.5,2.5,3.5) -- (3.5,2.5,4.5) -- (2.5,2.5,4.5) -- cycle; % Seite 4
+
+%     % --- Vektor F am Punkt P ---
+%     \draw[->, red, thick] (P) -- (FEnd) node[midway, above right] {\large $\vec{F}$};
+
+%     % --- Komponenten von F ---
+%     % Normal-Komponente F_n
+%     % \draw[dashed, green!70!black] (P) -- ($(P)!1!(FEnd)$ |- $(P)$);
+%     % \draw[->, green!70!black, thick] ($(P)$) -- ($(P)!1!(FEnd)$ |- $(P)$) node[midway, left] {\large $\vec{F}_n$};
+
+%     % % Tangential-Komponente F_t
+%     % \draw[dashed, orange!70!black] ($(P)!1!(FEnd)$ |- $(P)$) -- ($(FEnd)$);
+%     % \draw[->, orange!70!black, thick] ($(P)!1!(FEnd)$ |- $(P)$) -- ($(FEnd)$) node[midway, above] {\large $\vec{F}_t$};
+
+%     % Binormal-Komponente F_b
+%     \draw[dashed, purple!70!black] (P) -- ($(FEnd)$);
+%     \draw[->, purple!70!black, thick] (P) -- ($(FEnd)$) node[midway, right] {\large $\vec{F}_b$};
+% \end{tikzpicture}
+
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+
+% Ein Flächenelement in Polarkoordinaten mit Beschriftungen für r, dphi, dr und dA = r dphi dr
+% Ein strichlierter Kreis im Hintergrund um den Kreis zu andeuten
+% Das Flächenelement soll orange gefärbt sein
+% \begin{tikzpicture}[>=Stealth, scale=1.2]
+%         % Definitionen
+%         \def\R{3.5}
+%         \def\angA{30}
+%         \def\angB{60}
+%         \def\rIn{2.0}
+%         \def\rOut{2.9}
+%         \definecolor{boxcolOrange}{RGB}{255, 191, 77} % or use your preferred RGB values
+%         \definecolor{boxcolDarkOrange}{RGB}{255, 140, 0}
+
+%         % Koordinatensystem
+%         \draw[->, line width=1pt] (-0.5,0) -- (4,0) node[right] {$x$};
+%         \draw[->, line width=1pt] (0,-0.5) -- (0,4) node[above] {$y$};
+        
+%         % Kreisbogen andeuten (gestrichelt)
+%         \draw[dashed, gray] (0,0) circle (\rOut);
+        
+%         % Segment zeichnen (Flächenelement)
+%         \fill[fill=boxcolOrange] (\angA:\rIn) arc(\angA:\angB:\rIn) -- (\angB:\rOut) arc(\angB:\angA:\rOut) -- cycle;
+%         \draw[thick, fill=boxcolOrange] (\angA:\rIn) arc(\angA:\angB:\rIn) -- (\angB:\rOut) arc(\angB:\angA:\rOut) -- cycle;
+        
+%         % Linien vom Ursprung
+%         \draw[thin] (0,0) -- (\angA:\rOut);
+%         \draw[thin] (0,0) -- (\angB:\rOut);
+        
+%         % Beschriftungen
+%         % dr
+%         \draw[|<->|] (\angA-5:\rIn) -- (\angA-5:\rOut) node[midway,pos=0.6, below] {$\dd r$};
+        
+%         % r dphi (Bogenlänge)
+%         \draw[<->] (\angA:\rIn+0.4) arc(\angA:\angB:\rIn+0.4) node[midway, above, rotate=-42] {$r \cdot \dd \varphi$};
+        
+%         % r Vektor
+%         \draw[->, blue, line width=1.2pt] (0,0) -- (\angA:{\rIn+0.4}) node[midway, below right] {$r$};
+        
+%         % Winkel dphi
+%         \draw[<->] (\angA:1.) arc(\angA:\angB:1.) node[midway, above right] {$\dd \varphi$};
+        
+%         % dA Label
+%         \node[boxcolDarkOrange] at (45:4.2) {$\dd A = r \, \dd \varphi \, \dd r$};
+%         \draw[-, black, line width=0.5pt] (55:\rOut) -- (55:3.5);
+% \end{tikzpicture}
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein (x,y) Koordinatensystem mit Pfeilen die die x- und y-Achse darstellen
+% Ein Dreieck mit den Eckpunkten (0,0), (a,0) und (0,b)
+% Die Fläche des Dreiecks soll schraffiert dargestellt werden
+% Die Ticks sollen bei x=0, x=a und y=0, y=b sein
+
+% \begin{tikzpicture}[
+%         scale=1.2,
+%         >=latex, 
+%         font=\small\sffamily
+%     ]
+
+%     % --- Koordinaten-Definition ---
+%     \def\a{6} % Länge der Basis des Dreiecks
+%     \def\b{4} % Höhe des Dreiecks
+%     \def\k{0.6} % Steigung der Hypotenuse ((b-1)/(a-1))
+
+%     % Achsen-Endpunkte
+%     \coordinate (Origin) at (0,0);
+%     \coordinate (A) at (1,1);
+%     \coordinate (XEnd) at (\a+1,0);
+%     \coordinate (YEnd) at (0,\b+1);
+
+%     % --- Fläche füllen ---
+%     \fill[red!20] 
+%         (A) -- (\a,1) -- (1,\b) -- cycle;
+
+%     % --- Achsen zeichnen ---
+%     \draw[->, thick] (-0.5,0) -- (XEnd) node[below] {\Large $x$};
+%     \draw[->, thick] (0,-0.5) -- (YEnd) node[left] {\Large $y$};
+
+%     % --- Ticks und Labels X-Achse ---
+%     \draw[thick] (\a, -0.15) -- (\a, 0.15) node[below=0.3cm] {\large $a$};
+%     \draw[thick] (1, -0.15) -- (1, 0.15) node[below=0.3cm] {\large $0$};
+%     \draw[thick] (2, -0.1) -- (2, 0.1) node[below=0.3cm] {\large $x_1$};
+%     \draw[thick] (4, -0.1) -- (4, 0.1) node[below=0.3cm] {\large $x_2$};
+%     \draw[thick] (-0.1, \b-\k*1) -- (0.1, \b-\k*1) node[left=0.3cm] {\large $y_1$};
+%     \draw[thick] (-0.1, \b-\k*3) -- (0.1, \b-\k*3) node[left=0.3cm] {\large $y_2$};
+
+%     % --- Ticks und Labels Y-Achse ---
+%     \draw[thick] (-0.15, \b) -- (0.15, \b) node[left=0.3cm] {\large $b$};
+%     \draw[thick] (-0.15, 1) -- (0.15, 1) node[left=0.3cm] {\large $0$};
+
+%     % --- Das Dreieck als Linie zeichnen ---
+%     \draw[thick] (1,1) -- (\a,1) -- (1,\b) -- cycle;
+
+%     % --- blaue Linie von (2,1) nach (2, \b-\k*1) ---
+%     \draw[line width=2pt, blue] (2,1) -- (2,\b-\k*1) node[midway,pos=0.4, right] {\large $g(x_1)$};
+%     \draw[line width=2pt, blue] (4,1) -- (4,\b-\k*3) node[midway,pos=0.4, right] {\large $g(x_2)$};
+
+%     % --- strichlierte Linie von (0,g(x1)) nach (2,g(x1)) ---
+%     \draw[dashed, thin] (0,\b-\k*1) -- (2,\b-\k*1);
+%     \draw[dashed, thin] (0,\b-\k*3) -- (4,\b-\k*3);
+
+% \end{tikzpicture}
 
 
 
@@ -41,61 +268,61 @@
 
 % p-V-Diagramm einer isothermen Expansion mit Beschriftungen um die Arbeit zu verdeutlichen
 % die Arbeit W ist das Integral unter der Kurve im p-V-Diagramm
-\begin{tikzpicture}[
-        scale=1.1,
-        >=latex, 
-        font=\small
-        ]
-        % Rasterhilfslinien (optional, leicht angedeutet)
-        \draw[step=1cm, gray!20, very thin] (0,0) grid (7.8, 4.8);
+% \begin{tikzpicture}[
+%         scale=1.1,
+%         >=latex, 
+%         font=\small
+%         ]
+%         % Rasterhilfslinien (optional, leicht angedeutet)
+%         \draw[step=1cm, gray!20, very thin] (0,0) grid (7.8, 4.8);
 
-        % --- DECLARE FUNCTION ---
-        % Wir definieren die Isotherme p(x) = k / x
-        % Skalierung: Um visuell dem Bild zu entsprechen. 
-        \tikzset{declare function={
-            isotherm(\v) = 10 / \v;
-        }}
+%         % --- DECLARE FUNCTION ---
+%         % Wir definieren die Isotherme p(x) = k / x
+%         % Skalierung: Um visuell dem Bild zu entsprechen. 
+%         \tikzset{declare function={
+%             isotherm(\v) = 10 / \v;
+%         }}
 
-        % Definition der Punkte V1 und V2
-        \def\Va{3.0} % Startvolumen
-        \def\Vb{5.5} % Endvolumen
+%         % Definition der Punkte V1 und V2
+%         \def\Va{3.0} % Startvolumen
+%         \def\Vb{5.5} % Endvolumen
 
-        % 2. Fläche schraffieren/füllen (Das Integral)
-        % Wir füllen den Bereich unter der Kurve zwischen Va und Vb
-        \fill[violet!20] (\Va,0) -- (\Va, {isotherm(\Va)}) 
-            plot[domain=\Va:\Vb, samples=50] (\x, {isotherm(\x)}) 
-            -- (\Vb, 0) -- (\Va,0) -- cycle;
+%         % 2. Fläche schraffieren/füllen (Das Integral)
+%         % Wir füllen den Bereich unter der Kurve zwischen Va und Vb
+%         \fill[violet!20] (\Va,0) -- (\Va, {isotherm(\Va)}) 
+%             plot[domain=\Va:\Vb, samples=50] (\x, {isotherm(\x)}) 
+%             -- (\Vb, 0) -- (\Va,0) -- cycle;
 
-        % Label für die Arbeit -W
-        \node[violet!60!black] at (4.1, 1.0) {\Large $-W$};
+%         % Label für die Arbeit -W
+%         \node[violet!60!black] at (4.1, 1.0) {\Large $-W$};
 
-        % 3. Die Kurve zeichnen (Isotherme)
-        \draw[red, thick, domain=2.1:7.5, samples=100] plot (\x, {isotherm(\x)});
+%         % 3. Die Kurve zeichnen (Isotherme)
+%         \draw[red, thick, domain=2.1:7.5, samples=100] plot (\x, {isotherm(\x)});
 
-        % 4. Punkte und Labels einzeichnen
+%         % 4. Punkte und Labels einzeichnen
         
-        % Punkt 1 (Start)
-        \coordinate (P1) at (\Va, {isotherm(\Va)});
-        \fill[black] (P1) circle (2pt);
+%         % Punkt 1 (Start)
+%         \coordinate (P1) at (\Va, {isotherm(\Va)});
+%         \fill[black] (P1) circle (2pt);
         
-        % Label Box für Punkt 1
-        \node[draw, fill=white, align=center, anchor=south west] (L1) at (3.0, 3.5) {\large $p_1, V_1, T$};
-        \draw[thin] (L1.south west) -- (P1);
+%         % Label Box für Punkt 1
+%         \node[draw, fill=white, align=center, anchor=south west] (L1) at (3.0, 3.5) {\large $p_1, V_1, T$};
+%         \draw[thin] (L1.south west) -- (P1);
 
-        % Punkt 2 (Ende)
-        \coordinate (P2) at (\Vb, {isotherm(\Vb)});
-        \fill[black] (P2) circle (2pt);
+%         % Punkt 2 (Ende)
+%         \coordinate (P2) at (\Vb, {isotherm(\Vb)});
+%         \fill[black] (P2) circle (2pt);
 
-        % Label Box für Punkt 2
-        \node[draw, fill=white, align=center, anchor=south west] (L2) at (5.5, 2.0) {\large $p_2 < p_1, V_2 > V_1, T$};
-        \draw[thin] (L2.south west) -- (P2);
+%         % Label Box für Punkt 2
+%         \node[draw, fill=white, align=center, anchor=south west] (L2) at (5.5, 2.0) {\large $p_2 < p_1, V_2 > V_1, T$};
+%         \draw[thin] (L2.south west) -- (P2);
 
-        % 1. Definition der Funktion (Hyperbelast)
-        % p(V) = const / V. Hier wählen wir k = 2.5 für die Optik
-        \draw[->, line width=1.2pt] (0,0) -- (8,0) node[below,right] {\Large $V$};
-        \draw[->, line width=1.2pt] (0,0) -- (0,5) node[above left] {\Large $p$};
+%         % 1. Definition der Funktion (Hyperbelast)
+%         % p(V) = const / V. Hier wählen wir k = 2.5 für die Optik
+%         \draw[->, line width=1.2pt] (0,0) -- (8,0) node[below,right] {\Large $V$};
+%         \draw[->, line width=1.2pt] (0,0) -- (0,5) node[above left] {\Large $p$};
 
-\end{tikzpicture}
+% \end{tikzpicture}
 
 
 

@@ -960,7 +960,7 @@ Sei $f(x) = h(g(x))$ eine verschachtelte (verkettete) Funktion, bei der die äu�
 \section{Partielle Ableitung}\label{sec: Partielle_Ableitung}
 Die sogenannte partielle Ableitung ist die Ableitung einer Funktion mit mehreren Argumenten nach einem dieser Argumente. Die Werte der übrigen Argumente werden konstant gehalten.
 
-Sei $f: (x,y) \to \Real$ eine reelle Funktion in zwei Variablen $x$ und $y$. Die partielle Ableitung von $f$ nach $x$ an der Stelle $(x,y) = (x_1,y_1)$ ist
+Sei $f\!: (x,y) \to \Real$ eine reelle Funktion in zwei Variablen $x$ und $y$. Die partielle Ableitung von $f$ nach $x$ an der Stelle $(x,y) = (x_1,y_1)$ ist
 \begin{equation}
     \frac{\partial f}{\partial x}(x_1, y_1) \defeq \lim_{h \rightarrow 0} \frac{f(x_1+ h,y_1)-f(x_1,y_1)}{h} \mDot
 \end{equation}
@@ -971,8 +971,9 @@ Die Funktion
 $$ f(x,y) = \cos(x) + \sin(x)$$
 ist in \cref{fig: partielleAbleitung_sattel} dargestellt. Die partiellen Ableitungen nach $x$ und $y$ ergeben
 $$ \frac{\partial f}{\partial x} = -\sin(x) + \underbrace{\frac{\partial (\sin(y))}{\partial x}}_{=0}$$ 
-so ändert sich die Funktion entlang der $x$-Achse.
-$$ \frac{\partial f}{\partial y} = \underbrace{\frac{\partial (\cos(x))}{\partial y}}_{=0} + \cos(y)$$ so ändert sich die Funktion entlang der $y$-Achse.
+und
+$$ \frac{\partial f}{\partial y} = \underbrace{\frac{\partial (\cos(x))}{\partial y}}_{=0} + \cos(y) \mDot$$ 
+Die Funktion $f(x,y)$ hat also entlang der $x$-Achse die Steigung $-\sin(x)$ und entlang der $y$-Achse die Steigung $\cos(y)$. In \cref{fig: partielleAbleitung_sattel} sind die beiden partiellen Ableitungen an der Stelle $(x,y) = (0,0)$ als rote und grüne Pfeile dargestellt. 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_MathEinschübe/partielleAbleitungSattel.png}
@@ -1261,8 +1262,280 @@ Die Substitutionsregel ist die Umkehrung der Kettenregel und vereinfacht ein Int
     $$ \int {(3x+5)}^4 \,\dd x = \int t^4 \cdot \frac{1}{3} \,dt = \frac{1}{3} \int t^4 \,dt = \frac{1}{3} \cdot \frac{t^5}{5} + C = \frac{{(3x+5)}^5}{15} + C \mDot$$
 \end{itemize}
 
+\section{Mehrdimensionale Integration}\label{sec: Mehrdimensionale_Integration}
+Die mehrdimensionale Integration erweitert das Konzept des Integrals auf Funktionen mit mehreren Variablen. Anstelle von Flächen unter Kurven werden Volumina unter Flächen oder Hyperflächen in höheren Dimensionen betrachtet.
 
-\section{Differentialgleichungen}\label{sec: differentialgleichungen}
+\subsection{Zweidimensionales Integral (Flächenintegral)}\label{sec: Zweidimensionales_Integral}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Kapitel_MathematischeEinschuebe/surface_with_cuboid_crop.png}
+    \caption{Visualisierung eines Doppelintegrals der Funktion $f(x,y)$ über dem rechteckigen Bereich $D = [x_1,x_2] \times [y_1,y_2]$. Das Volumen unter der Fläche wird durch Säulen mit der Basisfläche $\dd A = \dd x \cdot \dd y$ und der Höhe $f(x,y)$ approximiert.}\label{fig: doppelintegral}
+\end{figure}
+Das zweidimensionale Integral, auch Doppelintegral genannt, wird beispielsweise verwendet, um Flächeninhalte in der Ebene zu berechnen. Für eine Funktion $f(x,y)$ über einem rechteckigen Bereich $[a,b] \times [c,d]$ ist das Doppelintegral definiert als
+\begin{equation}\label{eq: doppelintegral}
+    \iint_{D} f(x,y) \,\dd A = \int_{a}^{b} \int_{y_{1}(x)}^{y_{2}(x)} f(x,y) \,\dd y \,\dd x \mDot
+\end{equation}
+Wir werden sehen, dass \cref{eq: doppelintegral} die allgemeinste Form eines Flächenintegrals ist und sich die Koordinaten $x$ und $y$ nur für Spezialfälle separieren lassen. In \cref{fig: doppelintegral} ist die Visualisierung eines Doppelintegrals der Funktion $f(x,y)$ über dem rechteckigen Bereich $D = [x_1,x_2] \times [y_1,y_2]$ dargestellt. Das Doppelintegral berechnet das Volumen des Körpers, der von der Fläche $z = f(x,y)$ und der Ebene $z = 0$ im Bereich $D$ (strichliertes Rechteck) eingeschlossen wird.
+
+Man kann sich das Doppelintegral als Grenzwert einer Summe von kleinen Volumina mit Basisfläche $\dd A = \dd x \cdot \dd y$ und Höhe $f(x,y)$ vorstellen. Diese kleinen Volumina werden in \cref{fig: doppelintegral} als Säulen dargestellt.
+
+\subsubsection{Erklärung des Doppelintegrals anhand eines Beispiels}\label{subsubsec: erklaerung_doppelintegral}
+Wir betrachten noch einmal die in \cref{fig: doppelintegral} dargestellte Funktion $f(x,y) = a\cdot x^2 + b\cdot y + c$ über dem rechteckigen Bereich $D = [0,3] \times [0,2]$. Berechnet man dieses Doppelintegral erhält man das Volumen 
+\begin{align*}
+    \iint_{D} f(x,y) \,\dd A &= \int_{0}^{3} \int_{0}^{2} (a\cdot x^2 + b\cdot y + c) \,\dd y \,\dd x \\
+    &= \int_{0}^{3} \left[ a\cdot x^2 \cdot y + \frac{b\cdot y^2}{2} + c\cdot y \right]_{0}^{2} \dd x \\
+    &= \int_{0}^{3} (2a\cdot x^2 + 2b + 2c) \,\dd x \\
+    &= \left[ \frac{2a\cdot x^3}{3} + (2b + 2c)\cdot x \right]_{0}^{3} = 18a + 6b + 6c \mDot
+\end{align*}
+Anhand dieses Beispiels erkennt man bereits, wie ein Doppelintegral berechnet wird: Zunächst wird das innere Integral $\int_{0}^{2} f(x,y) \dd y$ für eine variable $x$-Koordinate ausgewertet. Das Ergebnis ist die Funktion $g(x)$, 
+\begin{equation}
+    \int_{0}^{2} f(x,y) \dd y = g(x) = 2a \cdot x^2 + 2b + 2c \mComma
+\end{equation} 
+die an einer bestimmten $x$-Koordinate den Flächeninhalt entlang der $y$-Richtung im Intervall $[0,2]$ angibt. Dieser Schritt ist dargestellt in \cref{fig: doppelintegral_curtain_a}. Die blauen Flächen entlang der $y$-Achse entsprechen dem Ergebnis des inneren Integrals für die jeweilige $x$-Koordinate. Die so entstehende Funktion $g(x)$ ist in \cref{fig: doppelintegral_gx_b} dargestellt. Diese Funktion gibt also für jeden Wert $x$ den Flächeninhalt entlang der $y$-Achse im Intervall $[0,2]$ an. Wenn diese Funktion $g(x)$ nun über das Intervall $[0,3]$ integriert wird, ergibt sich das gesamte Volumen unter der Fläche $f(x,y)$ im Bereich $D$: 
+\begin{equation}
+    \iint_{D} f(x,y) \,\dd A = \int_{0}^{3} g(x) \,\dd x \mDot
+\end{equation}
+
+\begin{figure}[htb]
+    \centering
+        \begin{subfigure}[b]{0.55\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Bilder/Kapitel_MathematischeEinschuebe/surface_with_curtain_crop.png}
+        \caption{Das innere Integral $\int_{0}^{2} f(x,y) \,\dd y$ für eine feste $x$-Koordinate ergibt die Funktion $g(x)$, die für einen gegebenen Wert $x$ die blaue Fläche entlang der $y$-Achse angibt.}\label{fig: doppelintegral_curtain_a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Bilder/Kapitel_MathematischeEinschuebe/g_x_function_crop.png}
+        \caption{Die Funktion $g(x)$ gibt für jeden Wert $x$ den Flächeninhalt entlang der $y$-Achse im Intervall $[0,2]$ an. Die drei vertikalen Linien zeigen die korrespondierende Fläche in (a) an.}\label{fig: doppelintegral_gx_b}
+    \end{subfigure}
+    \caption{Visualisierung der Berechnung eines Doppelintegrals anhand der Funktion $f(x,y) = a\cdot x^2 + b\cdot y + c$ über dem rechteckigen Bereich $D = [0,3] \times [0,2]$.}\label{fig: doppelintegral_erklaerung}
+\end{figure}
+
+
+\subsubsection{Flächeninhalt über Doppelintegral}\label{subsubsec: flaecheninhalt_doppelintegral}
+Um Flächeninhalte $A$ zu berechnen, wird die Funktion $f(x,y) = 1$ gewählt, da das Volumen unter der Fläche dann genau dem Flächenintegral des Bereichs $D$ entspricht. Hierfür wird allgemein die Abkürzung
+\begin{equation}\label{eq: flaeche_ueber_flaechenintegral}
+    A = \iint_{D} 1 \,\dd A = \iint_D \,\dd A
+\end{equation}
+verwendet -- manchmal auch $A = \int_A \,\dd A$ -- obwohl nicht explizit klar ist, wie über $\dd A$ integriert wird und zur Berechnung erst auf ein geeignetes Koordinatensystem zurückgegriffen werden muss.
+
+\subsection{Beispiel: Flächeninhalt eines Rechtecks}\label{subsec: flaecheninhalt_rechteck_doppelintegral}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_MathematischeEinschuebe/area_int_with_curtain_crop.png}
+    \caption{Der Flächeninhalt eines Rechtecks kann über ein Doppelintegral berechnet werden, wobei die Funktion $f(x,y) = 1$ gewählt wird. Somit entspricht das Volumen unter der Fläche genau dem Flächeninhalt des Rechtecks. Das innere Integral ergibt $g(x) = \int_{0}^{2} \dd y$. Die Funktion $g(x)$ gibt für einen gegebenen Wert $x$ die blaue Fläche entlang der $y$-Achse an (hier ist $g(x)$ unabhängig von $x$).}\label{fig: flaecheninhalt_rechteck}
+\end{figure}
+In \cref{fig: flaecheninhalt_rechteck} möchten wir die Fläche des strichlierten Rechtecks berechnen. Dazu verwenden wir das Doppelintegral, setzen $f(x,y) = 1$ und integrieren über den Rand des Rechtecks ($[0,3] \times [0,2]$). Das Doppelintegral ist angeschrieben 
+\begin{equation}
+    A= \iint_{D} 1 \,\dd A = \int_{0}^{3} \int_{0}^{2} 1 \,\dd y \,\dd x \mDot
+\end{equation}
+Da $f(x,y) = 1$ konstant ist, sind die beiden Integrale unabhängig voneinander und können sogar separiert werden:
+\begin{align*}
+    A = \iint_{D} 1 \,\dd A &= \left( \int_{0}^{3} \dd x \right) \left( \int_{0}^{2} 1 \,\dd y \right) \\
+    &= \left( x \big |_{0}^{3} \right) \left( y \big |_{0}^{2} \right) \\
+    &= 3 \cdot 2 = 6 \mDot
+\end{align*}
+Die Fläche des Rechtecks ist also wie erwartet $A = 6$.
+
+\subsection{Beispiel: Fläche eines Dreiecks}\label{sec: flaeche_dreieck_doppelintegral}
+Betrachten wir das Dreieck in \cref{fig: flaeche_dreieck_doppelintegral}, dessen Eckpunkte die Koordinaten $(0,0)$, $(a,0)$ und $(0,b)$ haben. Wir möchten den Flächeninhalt dieses Dreiecks über ein Doppelintegral berechnen. Dazu verwenden wir wieder die Funktion $f(x,y) = 1$ und integrieren über den Bereich $D$, der durch das Dreieck begrenzt wird. Der Flächeninhalt $A$ wird also bestimmt über $A = \iint_{D} \,\dd A$. In \cref{fig: flaeche_dreieck_doppelintegral} ist allerdings ersichtlich, dass die obere Integrationsgrenze von $x$ abhängt. Diese Kurve (Gerade) bezeichnen wir mit $y_{\text{max}}(x)$. Wir schreiben also zunächst für den Flächeninhalt
+\begin{equation}
+    A = \int_{0}^{a} \int_{0}^{y_{\text{max}}(x)} \,\dd y \,\dd x \mDot
+\end{equation}
+Die Kurve $y_{\text{max}}(x)$ lässt sich über die Geradengleichung bestimmen. Die Gerade verläuft durch die Punkte $(a,0)$ und $(0,b)$. Die Steigung der Geraden ist somit $k = \frac{\Delta y}{\Delta x} = \frac{0-b}{a-0} = -\frac{b}{a}$ und die Geradengleichung lautet $y_{\text{max}}(x) = -\frac{b}{a}x + b$. Wir setzen dies in das Integral ein und bestimmen die Fläche:
+\begin{align*}
+    A &= \int_{0}^{a} \int_{0}^{-\frac{b}{a}x + b} \,\dd y \,\dd x = \int_{0}^{a} \left( y\, \big |_{0}^{-\frac{b}{a}x + b} \right) \,\dd x \\
+    &= \int_{0}^{a} \left( -\frac{b}{a}x + b \right) \,\dd x = -\frac{b}{a} \cdot \frac{x^2}{2} + b \cdot x \big |_{0}^{a} \\
+    &= -\frac{b}{a} \cdot \frac{a^2}{2} + b \cdot a = -\frac{b\cdot a}{2} + b\cdot a = \frac{1}{2}ab \mDot
+\end{align*}
+Der Flächeninhalt des rechtwinkligen Dreiecks ist also $A = \frac{1}{2}ab$, was dem bekannten Ergebnis entspricht. Wenig überraschend ergibt das innere Integral in diesem Fall die Funktion $g(x) = y_{\text{max}}(x)$, also die obere Begrenzung des Dreiecks für eine gegebene $x$-Koordinate. Dies ist in \cref{fig: flaeche_dreieck_doppelintegral} durch die blauen Linien dargestellt, die jeweils den Flächeninhalt entlang der $y$-Achse für die ausgewählten $x$-Koordinaten $x_1$ und $x_2$ angeben.
+\begin{figure}[htb]
+    \centering
+    {
+    \begin{tikzpicture}[
+        scale=1.0,
+        >=latex, 
+        font=\small\sffamily
+    ]
+    % --- Koordinaten-Definition ---
+    \def\a{6} % Länge der Basis des Dreiecks
+    \def\b{4} % Höhe des Dreiecks
+    \def\k{0.6} % Steigung der Hypotenuse ((b-1)/(a-1))
+
+    % Achsen-Endpunkte
+    \coordinate (Origin) at (0,0);
+    \coordinate (A) at (1,1);
+    \coordinate (XEnd) at (\a+1,0);
+    \coordinate (YEnd) at (0,\b+1);
+
+    % --- Fläche füllen ---
+    \fill[red!20] 
+        (A) -- (\a,1) -- (1,\b) -- cycle;
+
+    % --- Achsen zeichnen ---
+    \draw[->, thick] (-0.5,0) -- (XEnd) node[below] {\Large $x$};
+    \draw[->, thick] (0,-0.5) -- (YEnd) node[left] {\Large $y$};
+
+    % --- Ticks und Labels X-Achse ---
+    \draw[thick] (\a, -0.15) -- (\a, 0.15) node[below=0.3cm] {\large $a$};
+    \draw[thick] (1, -0.15) -- (1, 0.15) node[below=0.3cm] {\large $0$};
+    \draw[thick] (2, -0.1) -- (2, 0.1) node[below=0.3cm] {\large $x_1$};
+    \draw[thick] (4, -0.1) -- (4, 0.1) node[below=0.3cm] {\large $x_2$};
+    \draw[thick] (-0.1, \b-\k*1) -- (0.1, \b-\k*1) node[left=0.3cm] {\large $y_{\text{max},1}$};
+    \draw[thick] (-0.1, \b-\k*3) -- (0.1, \b-\k*3) node[left=0.3cm] {\large $y_{\text{max},2}$};
+
+    % --- Ticks und Labels Y-Achse ---
+    \draw[thick] (-0.15, \b) -- (0.15, \b) node[left=0.3cm] {\large $b$};
+    \draw[thick] (-0.15, 1) -- (0.15, 1) node[left=0.3cm] {\large $0$};
+
+    % --- Das Dreieck als Linie zeichnen ---
+    \draw[thick] (1,1) -- (\a,1) -- (1,\b) -- cycle;
+
+    % --- blaue Linie von (2,1) nach (2, \b-\k*1) ---
+    \draw[line width=2pt, blue] (2,1) -- (2,\b-\k*1) node[midway,pos=0.35, right] {\large $g(x_1)$};
+    \draw[line width=2pt, blue] (4,1) -- (4,\b-\k*3) node[midway,pos=0.37, right] {\large $g(x_2)$};
+
+    % --- strichlierte Linie von (0,g(x1)) nach (2,g(x1)) ---
+    \draw[dashed, thin] (0,\b-\k*1) -- (2,\b-\k*1);
+    \draw[dashed, thin] (0,\b-\k*3) -- (4,\b-\k*3);
+
+    % --- Dicke Linie für y_max(x) ---
+    \draw[line width=2pt] (\a,1) -- (1,\b) node[midway, above right] {\large $y_{\text{max}}(x)$};
+
+    \end{tikzpicture}
+    }
+    \caption{Flächeninhalt eines Dreiecks mit den Eckpunkten $(0,0)$, $(a,0)$ und $(0,b)$. Der Flächeninhalt wird über ein Doppelintegral berechnet, wobei die Funktion $f(x,y) = 1$ gewählt wird. Man sieht, dass die obere Integrationsgrenze $y_{\text{max}}$ von $x$ abhängt.}\label{fig: flaeche_dreieck_doppelintegral}
+\end{figure}
+
+
+\subsection{Beispiel: Fläche eines Kreises}\label{subsec: flaeche_kreis}
+Die Berechnung der Fläche eines Kreises mit Radius $R$ ist ein klassisches Beispiel, bei dem die Wahl des richtigen Koordinatensystems die Rechnung erheblich vereinfacht.
+In kartesischen Koordinaten $(x,y)$ ist der Rand des Kreises durch die Gleichung $x^2 + y^2 = R^2$ gegeben. Dies führt in kartesischen Koordinaten auf Integrale über Wurzelterme ($\int \sqrt{R^2-x^2} \, \dd x$), die oft mühsam zu lösen sind.
+
+Der Übergang zu \textbf{Polarkoordinaten} $(r, \varphi)$ bietet sich hier aufgrund der Symmetrie an.
+Der Radius $r$ läuft von $0$ bis $R$ und der Winkel $\varphi$ deckt den Vollkreis von $0$ bis $2\pi$ ab.
+
+\noindent \textbf{Aber Achtung:} Man darf beim Integrieren nicht einfach $\dd A = \dd r \cdot \dd \varphi$ setzen.
+
+\subsubsection*{Das Flächenelement in Polarkoordinaten}
+Um das korrekte Flächenelement $\dd A$ zu bestimmen, betrachten wir ein infinitesimal kleines Teilstück des Kreises im Abstand $r$ vom Ursprung (siehe \cref{fig: flaechenelemnt_polar}).
+Dieses Teilstück wird durch eine kleine Änderung des Radius $\dd r$ und eine kleine Änderung des Winkels $\dd \varphi$ aufgespannt.
+\begin{itemize}
+    \item Die Seitenlänge in radialer Richtung ist einfach $\dd r$.
+    \item Die Seitenlänge in tangentialer Richtung entspricht jedoch einer Bogenlänge. Da der Umfang eines Kreises mit dem Radius wächst, ist diese Bogenlänge abhängig von $r$. Sie beträgt $\dd s = r \cdot \dd \varphi$.
+\end{itemize}
+Das resultierende Flächenstück ist näherungsweise ein Rechteck mit den Seitenlängen $\dd r$ und $r \cdot \dd \varphi$.
+\begin{equation}\label{eq: flaechenelement_polar}
+    dA = \underbrace{\dd r}_{\text{Länge}} \cdot \underbrace{(r \cdot \dd \varphi)}_{\text{Breite}} = r \, \dd r \, \dd \varphi \mDot
+\end{equation}
+Der Faktor $r$ fungiert hier als Gewichtungsfaktor: Ein Winkelstück $\dd \varphi$ überstreicht weiter außen (großes $r$) im Kreis eine größere Fläche als nahe am Ursprung.
+
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[>=Stealth, scale=1.0]
+            % Definitionen
+            \def\R{3.5}
+            \def\angA{30}
+            \def\angB{60}
+            \def\rIn{2.0}
+            \def\rOut{2.9}
+            \definecolor{boxcolOrange}{RGB}{255, 191, 77} % or use your preferred RGB values
+            \definecolor{boxcolDarkOrange}{RGB}{255, 140, 0}
+
+            % Koordinatensystem
+            \draw[->, line width=1pt] (-0.5,0) -- (4,0) node[right] {$x$};
+            \draw[->, line width=1pt] (0,-0.5) -- (0,4) node[above] {$y$};
+            
+            % Kreisbogen andeuten (gestrichelt)
+            \draw[dashed, gray] (0,0) circle (\rOut);
+            
+            % Segment zeichnen (Flächenelement)
+            \fill[fill=boxcolOrange] (\angA:\rIn) arc(\angA:\angB:\rIn) -- (\angB:\rOut) arc(\angB:\angA:\rOut) -- cycle;
+            \draw[thick, fill=boxcolOrange] (\angA:\rIn) arc(\angA:\angB:\rIn) -- (\angB:\rOut) arc(\angB:\angA:\rOut) -- cycle;
+            
+            % Linien vom Ursprung
+            \draw[thin] (0,0) -- (\angA:\rOut);
+            \draw[thin] (0,0) -- (\angB:\rOut);
+            
+            % Beschriftungen
+            % dr
+            \draw[|<->|] (\angA-5:\rIn) -- (\angA-5:\rOut) node[midway,pos=0.6, below] {$\dd r$};
+            
+            % r dphi (Bogenlänge)
+            \draw[<->] (\angA:\rIn+0.4) arc(\angA:\angB:\rIn+0.4) node[midway, above, rotate=-42] {$r \cdot \dd \varphi$};
+            
+            % r Vektor
+            \draw[->, blue, line width=1.2pt] (0,0) -- (\angA:{\rIn+0.4}) node[midway, below right] {$r$};
+            
+            % Winkel dphi
+            \draw[<->] (\angA:1.) arc(\angA:\angB:1.) node[midway, above right] {$\dd \varphi$};
+            
+            % dA Label
+            \node[boxcolDarkOrange] at (45:4.2) {$\dd A = r \, \dd \varphi \, \dd r$};
+            \draw[-, black, line width=0.5pt] (55:\rOut) -- (55:3.5);
+    \end{tikzpicture}
+    \caption{Geometrische Herleitung des Flächenelements in Polarkoordinaten. Die Fläche $dA$ spannt sich aus der radialen Änderung $\dd r$ und der Bogenlänge $r \cdot \dd \varphi$ auf.}\label{fig: flaechenelemnt_polar}
+\end{figure}
+
+\begin{rememberbox}{Flächenelement in Polarkoordinaten}
+    Bei der Integration mit Polarkoordinaten darf der Radius $r$ im Integranden nicht vergessen werden. Das Flächenelement lautet:
+    \begin{equation}
+        dA = r \, \dd r \, \dd \varphi \mDot
+    \end{equation}
+    Anschaulich bedeutet dies: Je weiter man vom Mittelpunkt entfernt ist (größeres $r$), desto mehr Fläche entfällt auf denselben Winkelbereich $\dd \varphi$.
+\end{rememberbox}
+\textit{Anmerkung:} Formell wird das Flächenelement bei einer Koordinatentransformation über die Determinante der Jacobi-Matrix hergeleitet. Dies wird in fortgeschrittenen Mathematik- oder Physikkursen behandelt. 
+\subsubsection*{Berechnung der Fläche}
+Die Gesamtfläche $A$ des Kreises ergibt sich nun durch Integration über den gesamten Radius $R$ und den vollen Winkel $2\pi$:
+\begin{equation}
+    A = \int_{0}^{2\pi} \int_{0}^{R} \underbrace{r \, \dd r \, \dd \varphi}_{dA} \mDot
+\end{equation}
+Da die Grenzen für $r$ und $\varphi$ unabhängig voneinander sind, können die Integrale getrennt berechnet werden:
+\begin{align}
+    A &= \left( \int_{0}^{2\pi} \dd \varphi \right) \cdot \left( \int_{0}^{R} r \, \dd r \right) \\
+      &= \bigg[ \varphi \bigg]_{0}^{2\pi} \cdot \bigg[ \frac{1}{2}r^2 \bigg]_{0}^{R} \\
+      &= (2\pi - 0) \cdot \left( \frac{1}{2}R^2 - 0 \right) \\
+      &= 2\pi \cdot \frac{1}{2}R^2 = \pi R^2 \mDot
+\end{align}
+Somit erhalten wir die bekannte Formel für die Kreisfläche:
+\begin{equation}
+    A = \pi R^2 \mDot
+\end{equation}
+
+
+\subsection{Dreidimensionales Integral (Volumenintegral)}\label{sec: Dreidimensionales_Integral}
+Das dreidimensionale Integral, auch Volumenintegral genannt, wird beispielsweise verwendet, um Volumina in dreidimensionalen Räumen zu berechnen, indem auch hier die Funktion $f(x,y,z) = 1$ gewählt wird und über den Definitionsbereich $D$ integriert wird. 
+
+Im Allgemeinen (für ein beliebiges $f(x,y,z)$) ist das Volumenintegral über dem Bereich $D: [a,b] \times [c,d] \times [e,f]$ definiert als
+\begin{equation}
+    \iiint_{V} f(x,y,z) \,\dd V = \int_{a}^{b} \int_{c}^{d} \int_{e}^{f} f(x,y,z) \,\dd z \,\dd y \,\dd x \mDot
+\end{equation}
+
+Möchte man das Volumen eines dreidimensionalen Körpers berechnen, so wird die Funktion $f(x,y,z) = 1$ gewählt, und das Volumen $V$ wird bestimmt über
+\begin{equation}
+    V = \iiint_{V} 1 \,\dd V = \iiint_{V} \,\dd V \mDot
+\end{equation}
+
+\subsubsection{Volumenelement in Kugelkoordinaten}
+In vielen Fällen, insbesondere bei kugelsymmetrischen Problemen, ist es sinnvoll, von kartesischen Koordinaten $(x,y,z)$ in \textbf{Kugelkoordinaten} $(r, \theta, \varphi)$ zu wechseln. Hierbei bezeichnet $r$ den Abstand vom Ursprung, $\theta$ den Polarwinkel (Winkel zur $z$-Achse) und $\varphi$ den Azimutalwinkel (Winkel in der $xy$-Ebene von der $x$-Achse aus gemessen). 
+
+Der Vollständigkeit halber wollen wir auch hier das Volumenelement in Kugelkoordinaten angeben.
+\begin{rememberbox}{Volumenelement in Kugelkoordinaten}
+    Bei der Integration mit Kugelkoordinaten lautet das Volumenelement:
+    \begin{equation}
+        \dd V = r^2 \sin(\theta) \, \dd r \, \dd \theta \, \dd \varphi \mDot
+    \end{equation}
+    Ein Faktor $r$ kommt aus dem Flächenelement von Polarkoordinaten und ein zusätzlicher Faktor $r \sin(\theta)$ berücksichtigt die Zunahme der Kreisumfangslänge in Abhängigkeit von $r$ und $\theta$. Damit wird die Geometrie der Kugelkoordinaten gewahrt und sichergestellt, dass das Volumenelement korrekt skaliert wird.
+\end{rememberbox}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.4\linewidth]{Bilder/Kapitel_MathematischeEinschuebe/Kugelkoordinaten_erklaerung.png}
+    \caption{Kugelkoordinaten $(r, \theta, \varphi)$ im dreidimensionalen Raum. Der Winkel $\varphi$ bezeichnet den Azimutalwinkel in der $xy$-Ebene von der $x$-Achse aus gemessen und der Winkel $\theta$ den Polarwinkel zur $z$-Achse.}\label{fig: kugelkoordinaten}
+\end{figure}
+\newpage
+
+\chapter{Differentialgleichungen}\label{chap: differentialgleichungen}
 Eine \textbf{Differentialgleichung} (DGL) ist eine mathematische Gleichung, die eine oder mehrere Funktionen und ihre Ableitungen enthält. Im Wesentlichen beschreibt eine DGL die Beziehung zwischen einer sich ändernden Größe und ihrer Änderungsrate.
 
 Stellen wir uns eine Funktion $f(x)$ vor. Eine DGL verknüpft $x$, $f(x)$, die erste Ableitung $f'(x) = \frac{\dd f}{\dd x}$, die zweite Ableitung $f''(x) = \frac{\dd^2 f}{\dd x^2}$ und so weiter.
@@ -1293,7 +1566,7 @@ Man klassifiziert DGLs nach drei Hauptkriterien:
     \item \textbf{Linearität:} Eine DGL ist linear, wenn die gesuchte Funktion und ihre Ableitungen nur in der ersten Potenz und nicht miteinander multipliziert vorkommen.
 \end{enumerate}
 
-\subsection{Beispiel aus der Physik: Bewegung}
+\section{Beispiel aus der Physik: Bewegung}
 Ein klassisches Beispiel zur Veranschaulichung ist die geradlinige Bewegung eines Objekts entlang einer Dimension -- somit kann man das Problem mit Skalaren beschreiben, ohne Vektoren. Die physikalischen Größen Ort, Geschwindigkeit und Beschleunigung sind durch Ableitungen miteinander verknüpft.
 
 Sei $s(t)$ der Ort eines Objekts zur Zeit $t$.
@@ -1304,7 +1577,7 @@ Sei $s(t)$ der Ort eines Objekts zur Zeit $t$.
     $$ a(t) = v'(t) = s''(t) = \frac{\dd v}{\dd t} = \frac{\dd^2 s}{\dd t^2} $$
 \end{itemize}
 
-\subsubsection{Fall 1: Konstante Beschleunigung}
+\subsection{Fall 1: Konstante Beschleunigung}
 Betrachten wir den freien Fall (ohne Luftwiderstand). Die Beschleunigung $a(t) = \const$ ist konstant und entspricht der Erdbeschleunigung $a = g \approx \SI{9.81}{\meter\per\second\squared}$. Nehmen wir an, die positive Richtung sei nach unten.
 Die DGL für die Geschwindigkeit lautet:
 $$ v'(t) = g $$

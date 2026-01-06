@@ -595,8 +595,7 @@ Die Winkelgeschwindigkeit ist demnach unabhängig vom Radius und somit eine prak
 Die Integrationskonstante ist hier der Startwinkel $\varphi_0 = \varphi(t=0)$. Äquivalent zum Zusammenhang zwischen Ort, Zeit und Geschwindigkeit, $s = s_0 +  v\cdot t$, hängen bei der Kreisbewegung die Größen Winkel, Zeit und Winkelgeschwindigkeit zusammen, $\varphi = \varphi_0 + \omega \cdot t$. 
 
 
-\subsubsection{Geschwindigkeit}
-%  GEMINI CODE 
+\subsubsection{Geschwindigkeit}\label{subsubsec: geschwindigkeit_ebeneKreisbewegung}
 Der Betrag des Geschwindigkeitsvektors ist laut \cref{eq: betrag_geschwindigkeit_kreisbewegung} $|\ivec{v}(t)| = v(t) = R \cdot \omega$. Die Richtung des Geschwindigkeitsvektors $\ivec{e}_v$ kann in Polarkoordinaten deutlich einfacher ermittelt werden. Ohne Beschränkung der Allgemeinheit betrachten wir einen Massenpunkt auf einer Kreisbahn (gegen den Uhrzeigersinn) mit Radius $R$ um den Ursprung. Für die zeitabhängigen Koordinaten gilt nun geometrisch:
 \begin{equation}\label{eq: koordinaten_xy_kreisbewegung}\begin{aligned}
 x(t) &= R \cdot \cos(\varphi(t)) \mComma \\
@@ -605,36 +604,36 @@ y(t) &= R \cdot \sin(\varphi(t)) \mDot
 \begin{figure}[tbh]
     \centering
     \resizebox{0.5\linewidth}{!}{
-\begin{tikzpicture}[
-    scale=2,
-    axis/.style={->, >=Latex, line width=1.5pt}
-]
-\definecolor{darkerRed}{RGB}{222, 40, 73}
-\def\axislength{3.0cm}    % The radius of the circle
-\def\radius{2.5cm}    % The radius of the circle
-\def\angleEnd{55}    % The angle phi in degrees
-% Draw the x-axis
-\draw[axis] (-\axislength,0) -- (\axislength,0) node[anchor=north west] {\LARGE $x$};
-\draw[axis] (0,-\axislength) -- (0,\axislength) node[anchor=south east] {\LARGE $y$};
-% --- Draw the circular path and sector ---
-\draw[line width=0.8pt] (0,0) circle (\radius);
-\fill[red!15, draw=black] (0,0) -- (\radius,0) arc (0:\angleEnd:\radius) -- cycle;
-% --- Add labels and annotations ---
-\draw[-, >=Latex] (0.8,0) arc (0:\angleEnd:0.8cm);
-\node at (\angleEnd/2:0.54cm) {\Large $\varphi (t)$};
-\node at (-\radius/2, 0.25) {\LARGE $R$};
+    \begin{tikzpicture}[
+        scale=2,
+        axis/.style={->, >=Latex, line width=1.5pt}
+    ]
+    \definecolor{darkerRed}{RGB}{222, 40, 73}
+    \def\axislength{3.0cm}    % The radius of the circle
+    \def\radius{2.5cm}    % The radius of the circle
+    \def\angleEnd{55}    % The angle phi in degrees
+    % Draw the x-axis
+    \draw[axis] (-\axislength,0) -- (\axislength,0) node[anchor=north west] {\LARGE $x$};
+    \draw[axis] (0,-\axislength) -- (0,\axislength) node[anchor=south east] {\LARGE $y$};
+    % --- Draw the circular path and sector ---
+    \draw[line width=0.8pt] (0,0) circle (\radius);
+    \fill[red!15, draw=black] (0,0) -- (\radius,0) arc (0:\angleEnd:\radius) -- cycle;
+    % --- Add labels and annotations ---
+    \draw[-, >=Latex] (0.8,0) arc (0:\angleEnd:0.8cm);
+    \node at (\angleEnd/2:0.54cm) {\Large $\varphi (t)$};
+    \node at (-\radius/2, 0.25) {\LARGE $R$};
 
-\coordinate (p) at (\angleEnd:\radius); % Define the point on the circle
-\coordinate (px) at (1.434,0); % px = r * cos(phi) = 2.5*cos(55°) = 1.434
-\draw[red, line width=1.8pt, ->, >=Latex] (\radius,0) arc (0:\angleEnd/2:\radius);
-\draw[red, line width=2.0pt] (\radius,0) arc (0:\angleEnd:\radius);
-% red vectors
-\draw[->, >={Latex[length=6mm]}, darkerRed, line width=2.0pt] (0,0) -- (p) node[left=2pt, pos=0.7] {\LARGE $\ivec{r}(t)$};
-\draw[line width=1.6pt, dashed, darkerRed] (px) -- (p) node[midway, right=3pt] {\Large $y(t)$};
-\draw[line width=1.6pt, dashed, darkerRed] (0,0.01) -- (1.434,0.01) node[midway, below=3pt] {\Large $x(t)$};
-\node[circle, fill=black, inner sep=1.9pt] at (p) {};
-\end{tikzpicture}
-}
+    \coordinate (p) at (\angleEnd:\radius); % Define the point on the circle
+    \coordinate (px) at (1.434,0); % px = r * cos(phi) = 2.5*cos(55°) = 1.434
+    \draw[red, line width=1.8pt, ->, >=Latex] (\radius,0) arc (0:\angleEnd/2:\radius);
+    \draw[red, line width=2.0pt] (\radius,0) arc (0:\angleEnd:\radius);
+    % red vectors
+    \draw[->, >={Latex[length=6mm]}, darkerRed, line width=2.0pt] (0,0) -- (p) node[left=2pt, pos=0.7] {\LARGE $\ivec{r}(t)$};
+    \draw[line width=1.6pt, dashed, darkerRed] (px) -- (p) node[midway, right=3pt] {\Large $y(t)$};
+    \draw[line width=1.6pt, dashed, darkerRed] (0,0.01) -- (1.434,0.01) node[midway, below=3pt] {\Large $x(t)$};
+    \node[circle, fill=black, inner sep=1.9pt] at (p) {};
+    \end{tikzpicture}
+    }
     \caption{Bei der ebenen Kreisbewegung zeigt der Ortsvektor $\protect\ivec{r}(t)$ vom Ursprung zur Position am Kreis. Die $x$- und $y$-Koordinaten können durch den Kosinus und Sinus des Winkels $\varphi(t)$ angegeben werden.}\label{fig: kreisbewegung_v_tangential}
 \end{figure}
 Setzen wir $\varphi(t) = \omega \cdot t + \varphi_0$ in \cref{eq: koordinaten_xy_kreisbewegung} ein, erhalten wir die Bewegungsgleichungen der ebenen Kreisbewegung. 

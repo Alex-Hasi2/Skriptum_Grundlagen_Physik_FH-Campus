@@ -1,17 +1,78 @@
 \chapter{Rotation starrer Körper}\label{chap: rotation_starrer_koerper}
+Nachdem wir uns bisher mit der Bewegung von Massenpunkten beschäftigt haben (Translation), erweitern wir unser Modell nun auf ausgedehnte Körper, die sich nicht verformen: die sogenannten \textbf{starren Körper}. Neben der Translation können diese Körper auch eine Rotation um eine oder mehrere Achsen ausführen.
 
-Nachdem wir uns bisher mit der Bewegung von Massenpunkten beschäftigt haben (Translation), erweitern wir unser Modell nun auf ausgedehnte Körper, die sich nicht verformen: die sogenannten \textbf{starren Körper}. Neben der Translation können diese Körper auch eine Rotation um eine Achse ausführen.
+\section{Modell eines starren Körpers}\label{sec: model_starrer_koerper}
+Ein starrer Körper ist ein physikalisches Modell, bei dem die Abstände zwischen allen Punkten des Körpers konstant bleiben, unabhängig von den auf ihn wirkenden Kräften. Das bedeutet, dass der Körper sich nicht verformt und seine Form unter Belastung beibehält. Dieses Modell ist eine Vereinfachung der realen Welt, da alle materiellen Objekte in gewissem Maße verformbar sind. Dennoch ist das Modell des starren Körpers in vielen Bereichen der Physik und Technik äußerst nützlich, da es die Analyse von Bewegungen und Kräften erheblich vereinfacht -- insbesondere Rotationen werden dadurch deutlich einfacher zu beschreiben.
+
+\subsection{Volumenintegral}
+Um die Bewegung eines starren Körpers zu analysieren, betrachten wir ihn als eine Ansammlung von vielen kleinen Massenpunkten $i = 1,2,\ldots,N$, die alle starr miteinander verbunden sind. Diese Massenpunkte haben die Volumina $\Delta V_i$ und die Massen $\Delta m_i$. Das Volumen des Körpers $V$ und seine Gesamtmasse $M$ ergibt sich aus der Summe über alle Elemente 
+\begin{equation}\label{eq: volumen_masse_endlicheTeile_starrer_koerper}
+    V = \sum_{i=1}^{N} \Delta V_i \mComma \quad M = \sum_{i=1}^{N} \Delta m_i \mDot
+\end{equation}
+Das Verhältnis der Masse eines Volumenelements zu seinem Volumen ist die Dichte $\rho$,
+\begin{equation}\label{eq: dichte_starrer_koerper}
+    \rho_i = \frac{\Delta m_i}{\Delta V_i} \mComma
+\end{equation}
+die die Einheit $[\rho] = \si{\kilogram\per\meter^{3}}$ hat. Die Dichte kann eine Funktion des Ortes im Körper sein, also $\rho = \rho(\ivec{r})$. Oftmals nimmt man aber an, dass die Dichte homogen ist, also überall im Körper den gleichen Wert hat ($\rho = \const$). 
+
+Mit Hilfe von \cref{eq: dichte_starrer_koerper} können wir die Gesamtmasse des starren Körpers auch als 
+\begin{equation}
+    M = \sum_{i=1}^{N} \rho_i \cdot \Delta V_i 
+\end{equation}
+schreiben. Im Grenzfall $N \to \infty$ -- die Volumenelemente werden also infinitesimal klein -- geht die Summe in ein Integral über, und wir erhalten die Gesamtmasse des starren Körpers als Integral über alle Volumenelemente
+\begin{align}
+    V &= \lim_{N \to \infty} \sum_{i=1}^{N} \Delta V_i = \int_V \dd V \mComma \label{eq: gesamtvolumen_starre_koerper_allg} \\
+    M &= \lim_{N \to \infty} \sum_{i=1}^{N} \Delta m_i = \int_V \rho(\ivec{r}) \,\dd V \mDot \label{eq: gesamtmasse_starrer_koerp_allg}
+\end{align}
+Das Integral in \cref{eq: gesamtvolumen_starre_koerper_allg} ist ein sogenanntes \textit{Volumenintegral} und ist eine Abkürzung für ein dreifaches Integral über die räumlichen Koordinaten $x$, $y$ und $z$ 
+\begin{equation}\label{eq: volumenintegral_3fach}
+    V = \int_V \dd V = \int_{z_{\min}}^{z_{\max}} \left[ \int_{y_{\min}}^{y_{\max}} \left( \int_{x_{\min}}^{x_{\max}} \dd x \, \right) \dd y \, \right] \dd z \mDot
+\end{equation}
+Die Berechnung solcher Integrale wird in \cref{sec: Mehrdimensionale_Integration} ausführlich erklärt.
+
+Bei homogenen Körpern mit konstanter Dichte $\rho$ vereinfacht sich \cref{eq: gesamtmasse_starrer_koerp_allg} zu
+\begin{equation}\label{eq: gesamtmasse_starrer_koerp_homogen}
+    M = \int_V \rho \, \dd V = \rho \int_V \dd V = \rho \cdot V \mComma
+\end{equation}
+was der gewohnten Formel für die Masse eines homogenen Körpers entspricht.
+
 
 \section{Rotationskinematik}\label{sec: rotationskinematik}
 Analog zur Translation, die durch Ort, Geschwindigkeit und Beschleunigung beschrieben wird, nutzen wir für die Rotation den Winkel, die Winkelgeschwindigkeit und die Winkelbeschleunigung.
 
+% \begin{figure}[ht]
+%     \centering
+%     % Platzhalter für ein Bild: Rotierende Scheibe mit Winkelkoordinaten
+%     \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Rotation/RotatingCylinder.pdf} 
+%     \caption{Darstellung eines rotierenden Körpers. Der Winkel $\varphi$ gibt die Orientierung bezüglich einer festen Referenzachse an.}\label{fig: rotation_definition}
+% \end{figure}
 \begin{figure}[ht]
     \centering
-    % Platzhalter für ein Bild: Rotierende Scheibe mit Winkelkoordinaten
-    \includegraphics[width=0.6\linewidth]{example-image-a} 
-    \caption{Darstellung eines rotierenden Körpers. Der Winkel $\varphi$ gibt die Orientierung bezüglich einer festen Referenzachse an.}
-    \label{fig: rotation_definition}
+    \begin{tikzpicture}
+        
+        % 1. Include the image as a node named 'myImage'
+        \node[anchor=south west, inner sep=0] (myImage) at (0,0) {
+            \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Rotation/RotatingCylinder.pdf}
+        };
+        
+        % 2. Create a scope relative to the image size
+        % (0,0) is bottom-left, (1,1) is top-right
+        \begin{scope}[x={(myImage.south east)}, y={(myImage.north west)}]
+            % --- LABELS ---
+            % Adjust the numbers (x, y) to move the text
+            \node at (0.83, 0.24) {\Large $x$};       % Bottom right area
+            \node at (0.77, 0.69) {\Large $y$};       % Far right area
+            \node at (0.50, 1.05) {\Large $z$};       % Top center
+            
+            \node[text=red] at (0.58, 0.7) {\large $\protect\ivec{\omega}$};  % Near top right
+            \node at (0.76, 0.51) {\large $\varphi$}; % Near top left
+            \draw (0.587, 0.565) -- (0.72, 0.51); 
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Darstellung eines rotierenden Körpers. Der Vektor der Winkelgeschwindigkeit $\protect\ivec{\omega}$ gibt die Drehachse (Richtung) und den Betrag der Winkelgeschwindigkeit $|\protect\ivec{\omega}|$ an.}\label{fig: rotation_definition}
 \end{figure}
+
+
 
 Die \textbf{Winkelgeschwindigkeit} $\ivec{\omega}$ ist ein Vektor, dessen Richtung die Drehachse angibt (Rechte-Hand-Regel) und dessen Betrag die Schnelligkeit der Drehung beschreibt.
 
@@ -30,7 +91,7 @@ Die \textbf{Winkelgeschwindigkeit} $\ivec{\omega}$ ist ein Vektor, dessen Richtu
 
 \section{Drehmoment und Trägheitsmoment}\label{sec: drehmoment_traegheit}
 
-So wie eine Kraft notwendig ist, um den Bewegungszustand (Translation) eines Körpers zu ändern, ist ein \textbf{Drehmoment} notwendig, um die Rotation zu beschleunigen oder zu bremsen.
+So wie eine Kraft notwendig ist, um den Bewegungszustand (Translation) eines Körpers zu ändern, ist ein \textbf{Drehmoment} notwendig, um den Rotationszustand eines Körpers zu verändern -- die Rotation wird dann beschleunigt oder gebremst.
 
 \begin{importantbox}{Drehmoment}
     Das Drehmoment $\ivec{M}$ resultiert aus einer Kraft $\ivec{F}$, die an einem Punkt mit dem Ortsvektor $\ivec{r}$ (vom Drehzentrum aus) angreift. Es ist definiert als das Kreuzprodukt:
@@ -39,18 +100,87 @@ So wie eine Kraft notwendig ist, um den Bewegungszustand (Translation) eines Kö
     \end{equation}
     Der Betrag ist maximal, wenn die Kraft senkrecht zum Hebelarm steht.
 \end{importantbox}
+In \cref{fig: drehmoment_definition} ist schematisch eine Situation dargestellt, in der eine Kraft $\ivec{F}$ im Punkt $P$ mit dem Ortsvektor $\ivec{r}$ an einem Körper angreift, der um eine \textbf{starre Achse} $\ivec{A}$ gelagert ist. Die Kraft $\ivec{F}$ kann in drei Anteile zerlegt werden: den normalen Anteil $\ivecS{F}{n} \parallel \ivec{r}$, den tangentialen Anteil $\ivecS{F}{t} \perp \ivec{A} \, \wedge \, \ivecS{F}{t} \perp \ivec{r}$ und den axialen Anteil $\ivec{F}_z \parallel \ivec{A}$. Nur die Anteile $\ivecS{F}{z}$ und $\ivecS{F}{t}$ tragen zum Drehmoment bei, da $\ivecS{F}{n} \parallel \ivec{r}$ ist und somit $\ivec{r} \times \ivecS{F}{n} = 0$. 
+Der axiale Anteil $\ivecS{F}{z}$ bewirkt eine Richtungsänderung der Drehachse, die bei einer fest gelagerten Drehachse von den Achsenlagern aufgefangen wird. Übrig bleibt lediglich der tangentiale Anteil $\ivecS{F}{t}$, der das Drehmoment erzeugt:
+\begin{equation}\label{eq: drehmoment_betrag}
+    M = r \cdot F_t = r \cdot F \cdot \sin(\alpha) \mComma
+\end{equation}
+wobei $\alpha$ der Winkel zwischen $\ivec{r}$ und $\ivec{F}$ ist. Bei raumfester Rotationsachse ist das Drehmoment also immer parallel zur Drehachse, \gDh $\ivec{M} \parallel \ivec{A}$.
+
+\begin{figure}[htb]
+    \centering
+    % Platzhalter für ein Bild: Hebelarm mit Kraft und Drehmoment
+    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Rotation/Drehmoment_Fn_Ft_Fz.png} 
+    \caption{Die Kraft $\protect\ivec{F}$, die das Drehmoment $\protect\ivec{M}$ erzeugt, kann in drei Anteile $\protect\ivecS{F}{n}$, $\protect\ivecS{F}{t}$ und $\protect\ivecS{F}{z}$ zerlegt werden. Nur die Anteile $\protect\ivecS{F}{t}$ und $\protect\ivecS{F}{z}$ tragen zum Drehmoment bei, wobei $\protect\ivecS{F}{z}$ bei starrer Drehachse von den Lagern aufgenommen wird.}\label{fig: drehmoment_definition}
+\end{figure}
 
 \subsection{Das Trägheitsmoment}
-Ein Körper setzt einer Änderung seiner Rotation einen Widerstand entgegen. Bei der Translation ist dies die Masse $m$. Bei der Rotation hängt dieser Widerstand nicht nur von der Masse ab, sondern auch davon, wie die Masse bezüglich der Drehachse verteilt ist. Diese Größe nennen wir **Trägheitsmoment** $J$.
+Ein Körper setzt einer Änderung seines Bewegungszustandes einen Widerstand entgegen. Bei der Translation ist der Proportionalitätsfaktor die Masse $m$, \gDh für eine Beschleunigung $\ivec{a}$ benötigt man eine Kraft $\ivec{F} = m \ivec{a}$. \\
+Bei der Rotation hängt dieser Widerstand nicht nur von der Masse ab, sondern auch davon, wie die Masse bezüglich der Drehachse verteilt ist. Diese Größe nennen wir \textbf{Trägheitsmoment} $J$. Für eine Winkelbeschleunigung $\ivec{\alpha}$ ist das erforderliche Drehmoment $\ivec{M} = J \cdot \ivec{\alpha}$ (siehe \cref{eq: grundgleichung_rotation}), was analog zur Translation ist, wenn man die Analogien aus \cref{tab: analogie_translation_rotation} betrachtet.
 
 Für ein System aus diskreten Massenpunkten gilt:
 \begin{equation}\label{eq: traegheitsmoment_diskret}
-    J = \sum_{i} m_i r_i^2 \mComma
+    J = \sum_{i} m_i r_{\perp, i}^2 \mComma
 \end{equation}
-wobei $r_i$ der senkrechte Abstand der Masse $m_i$ zur Drehachse ist. Für kontinuierliche Körper geht die Summe in ein Integral über:
-\begin{equation}\label{eq: traegheitsmoment_integral}
-    J = \int r^2 \,\mathrm{d}m = \int r^2 \rho(\ivec{r}) \,\mathrm{d}V \mDot
+wobei $r_{\perp, i}$ der senkrechte Abstand der Masse $m_i$ zur Drehachse ist. Für kontinuierliche Körper geht die Summe in ein Integral über und wir erhalten die allgemeine Form des Trägheitsmoments. 
+
+\begin{importantbox}{Trägheitsmoment}
+    Das Trägheitsmoment $J$ eines starren Körpers bezüglich einer Drehachse ist definiert als
+    \begin{equation}\label{eq: traegheitsmoment_integral}
+    J = \int r_{\perp}^2 \,\dd m = \int r_{\perp}^2 \,\rho(\ivec{r}) \,\dd V \mComma
+    \end{equation}
+    wobei $r_{\perp, i}$ der senkrechte Abstand des Volumenelements $\dd V$ zur Drehachse ist. Das Trägheitsmoment hat die Einheit $[J] = \si{\kilogram\, \meter^{2}}$.
+    
+    Der Integrand $r_{\perp}^2 \rho(\ivec{r})$ geht für homogene Körper in $r_{\perp}^2 \rho$ über und somit wird das Integral zu 
+    \begin{equation}\label{eq: traegheitsmoment_integral_homogeneDichte}
+    J = \rho \int r_{\perp}^2 \,\dd V \mComma
+    \end{equation}
+    wobei $\rho$ die Dichte des Körpers (Materials) ist. 
+\end{importantbox}
+
+Da in \cref{eq: traegheitsmoment_integral,eq: traegheitsmoment_integral_homogeneDichte} der Normalabstand $r_{\perp}$ quadratisch eingeht, hängt das Trägheitsmoment stark davon ab, wie die Massenelemente relativ zur Drehachse verteilt sind.
+
+Das Trägheitsmoment ist immer bezüglich einer bestimmten Drehachse definiert. Für verschiedene Achsen durch denselben Körper kann das Trägheitsmoment sehr unterschiedlich sein und muss im Allgemeinen für jede Achse neu berechnet werden.
+
+\subsubsection{Trägheitsmomente einiger Standardkörper}
+In \cref{fig: traegheitsmomente_standardkoerper} sind die Trägheitsmomente einiger Standardkörper für verschiedene Drehachsen zusammengefasst. Die Herleitungen dieser Formeln erfolgen durch die Berechnung des Integrals in \cref{eq: traegheitsmoment_integral} für die jeweiligen Geometrien. Die Herleitungen sind für einige Körper in \cref{sec: App_Herleitungen_Traegheitsmomente} zu finden.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Kapitel_Rotation/Traegheitsmomente_verschKoerper.png}
+    \caption{Standardkörper mit ihren Trägheitsmomenten bezüglich verschiedener Drehachsen.}\label{fig: traegheitsmomente_standardkoerper}
+\end{figure}
+
+\subsection{Die Rotationsenergie}\label{subsec: rotationsenergie_herleitung}
+Wir betrachten noch einmal den starren Körper in \cref{fig: drehmoment_definition}, der sich um eine feste Achse $\ivec{A}$ mit der Winkelgeschwindigkeit $\ivec{\omega}$ dreht und möchten dafür die Rotationsenergie berechnen. 
+
+Ein Volumenelement $\Delta V_i$ im senkrechten Abstand $r_{\perp,i}$ zur Drehachse hat die Masse $\Delta m_i = \rho_i \cdot \Delta V_i$. Dieses Volumenelement bewegt sich mit der Winkelgeschwindigkeit $\omega$ um die Achse, wodurch es eine Bahngeschwindigkeit $v_i = r_{\perp,i} \cdot \omega$ hat (siehe \cref{subsubsec: geschwindigkeit_ebeneKreisbewegung}). Die kinetische Energie dieses Volumenelements ist
+\begin{equation}\label{eq: kin_energie_volumenelement}
+    \Delta E_{\kin,i} = \frac{1}{2} \Delta m_i \cdot v_i^2 = \frac{1}{2} \left(\rho_i \cdot \Delta V_i \right) \cdot {\left(r_{\perp,i} \cdot \omega\right)}^2 = \frac{1}{2} \omega^2\, \rho_i \, r_{\perp,i}^2 \, \Delta V_i \mDot
 \end{equation}
+Die gesamte kinetische Energie des rotierenden Körpers ergibt sich durch Summation über alle Volumenelemente:
+\begin{equation}\label{eq: kin_energie_starrer_koerp_sum}
+    E_{\rot} = \sum_{i} \Delta E_{\kin,i} = \sum_{i} \frac{1}{2} \omega^2 \, \rho_i \, r_{\perp,i}^2 \, \Delta V_i = \frac{1}{2} \omega^2 \sum_{i} \rho_i \, r_{\perp,i}^2 \, \Delta V_i \mDot
+\end{equation}
+Im Grenzfall $N \to \infty$ (infinitesimale Volumenelemente) geht die Summe in ein Integral über:
+\begin{equation}\label{eq: kin_energie_starrer_koerp_integral}
+    E_{\rot} = \frac{1}{2} \omega^2 \int_V \rho \, r_{\perp}^2 \,\mathrm{d}V \mDot
+\end{equation}
+Das Integral in \cref{eq: kin_energie_starrer_koerp_integral} identifizieren wir als das Trägheitsmoment $J$ bezüglich der Drehachse $\ivec{A}$:
+\begin{equation}\label{eq: traegheitsmoment_herleitung}
+    J = \int_V \rho\, r_{\perp}^2 \,\mathrm{d}V \mDot
+\end{equation}
+Damit lässt sich die Rotationsenergie als
+\begin{equation}\label{eq: rot_energie_traegheitsmoment}
+    E_{\rot} = \frac{1}{2} \, J \, \omega^2
+\end{equation}
+schreiben. Diese Formel ist analog zur kinetischen Energie eines Massenpunkts ($E_{\kin} = \frac{1}{2} m v^2$), wenn man die Analogien aus \cref{tab: analogie_translation_rotation} betrachtet. 
+
+\begin{rememberbox}{Rotationsenergie}
+    Die Rotationsenergie eines starren Körpers ist die Summe der kinetischen Energien aller Volumenelemente, die sich mit der Winkelgeschwindigkeit $\omega$ um eine Achse drehen.
+\end{rememberbox}
+
+
 
 \section{Grundgleichung der Rotationsdynamik}\label{sec: rotationsdynamik}
 Das zweite Newton'sche Gesetz ($\ivec{F} = m \cdot \ivec{a}$) hat ein direktes Äquivalent in der Rotation.
@@ -60,10 +190,18 @@ Das zweite Newton'sche Gesetz ($\ivec{F} = m \cdot \ivec{a}$) hat ein direktes �
     \begin{equation}\label{eq: grundgleichung_rotation}
         \ivec{M} = J \cdot \ivec{\alpha} \mDot
     \end{equation}
+    Für den Betrag des Drehmoments gilt dann 
+    \begin{equation}\label{eq: grundgleichung_rotation_betrag}
+        M = J \cdot \alpha = J \cdot \frac{\dd \omega}{\dd t} = J \cdot \frac{\dd^2 \varphi}{\dd t^2}\mDot
+    \end{equation}
 \end{importantbox}
+In der Dynamik haben wir bisher Kräfte $\ivec{F}$ betrachtet, die auf Massenpunkte wirken und so deren Translation ($\ivec{a}, \ivec{v}, \ivec{r}$) beeinflussen. Wenn nun bei starren Körpern Drehmomente $\ivec{M}$ wirken, beeinflussen diese die Rotation ($\ivec{\alpha}, \ivec{\omega}, \varphi$) des Körpers entsprechend den \cref{eq: grundgleichung_rotation,eq: grundgleichung_rotation_betrag}.
+
+\subsection{Rollen auf schiefer Ebene}
+Ein klassisches Beispiel zur Veranschaulichung der Rotationsdynamik ist das Rollen eines starren Körpers (z.\,B. einer Kugel oder eines Zylinders) auf einer schiefen Ebene.
 
 \section{Analogie: Translation und Rotation}\label{sec: analogie_trans_rot}
-Die mathematische Struktur der Formeln für Translation und Rotation ist identisch. Dies erleichtert das Lernen erheblich, da man oft nur die Variablen austauschen muss.
+Die mathematische Struktur der Formeln für Translation und Rotation ist identisch. Dies erleichtert das Lernen erheblich, da man oft nur die Variablen austauschen muss. Die wichtigsten korrespondieren physikalischen Größen sind in \cref{tab: analogie_translation_rotation} zusammengefasst.
 
 \begin{table}[ht]
     \centering
@@ -87,19 +225,22 @@ Die mathematische Struktur der Formeln für Translation und Rotation ist identis
 \end{table}
 
 \section{Drehimpuls und Erhaltungssatz}\label{sec: drehimpuls}
-Ähnlich wie der Impuls $\ivec{p}$ ein Maß für den translatorischen Schwung ist, beschreibt der \textbf{Drehimpuls} $\ivec{L}$ den "Drall" eines Körpers.
-
+Ähnlich wie der Impuls $\ivec{p}$ ein Maß für den translatorischen Schwung ist, beschreibt der \textbf{Drehimpuls} $\ivec{L}$ den \gDQ{Drall} eines Körpers. Der Drehimpuls eines Massenelements $\Delta m_i$ bezüglich einer Rotationsachse $\ivec{A}$ ist definiert als das Kreuzprodukt aus dem Normalabstandsvektor $\ivecS{r}{\perp, i}$ und dem Impuls $\ivecS{p}{i}$:
 \begin{equation}\label{eq: drehimpuls}
-    \ivec{L} = \ivec{r} \times \ivec{p} = J \cdot \ivec{\omega} \mDot
+    \ivecS{L}{i} = \ivecS{r}{\perp, i} \times \ivecS{p}{i} = \ivecS{r}{\perp, i} \times (\Delta m_i \ivecS{v}{i}) = r_{\perp,i}^2 \Delta m_i \ivec{\omega}\mDot
+\end{equation}
+Auf gleiche Weise wie in der Herleitung der Rotationsenergie (siehe \cref{subsec: rotationsenergie_herleitung}) können wir den gesamten Drehimpuls eines starren Körpers durch Integration über alle Volumenelemente berechnen. Für einen starren Körper, der sich mit der Winkelgeschwindigkeit $\ivec{\omega}$ dreht, ergibt sich der Gesamtdrehimpuls zu
+\begin{equation}\label{eq: gesamtdrehimpuls_starrer_koerp}
+    \ivec{L} = \left(\int_M r_{\perp}^2 \dd m \right) \cdot \ivec{\omega}  = \left(\int_V r_{\perp}^2 \, \rho(\ivec{r}) \, \dd V \right) \cdot \ivec{\omega} = J \cdot \ivec{\omega} \mDot
 \end{equation}
 
 Eines der wichtigsten Prinzipien der Physik ist die \textbf{Drehimpulserhaltung}.
-
 \begin{importantbox}{Drehimpulserhaltung}
     Wirkt auf ein System kein äußeres Drehmoment ($\ivec{M}_{\text{ext}} = 0$), so bleibt der Gesamtdrehimpuls konstant:
     \begin{equation}\label{eq: drehimpulserhaltung}
-        \frac{\mathrm{d}\ivec{L}}{\mathrm{d}t} = 0 \quad \implies \quad \ivec{L} = \text{konstant} \mDot
+        \frac{\mathrm{d}\ivec{L}}{\mathrm{d}t} = 0 \quad \implies \quad \ivec{L} = \const \mDot
     \end{equation}
     
     Da $\ivec{L} = J \cdot \ivec{\omega}$ ist, führt eine Änderung des Trägheitsmoments $J$ (z.\,B. wenn ein Eiskunstläufer die Arme anzieht) zu einer Änderung der Winkelgeschwindigkeit $\omega$, damit das Produkt konstant bleibt.
 \end{importantbox}
+Es ist anzumerken, dass \cref{eq: drehimpulserhaltung} eine Vektor-Gleichung ist. Sowohl Betrag als auch Richtung des Drehimpulses bleiben konstant, wenn kein äußeres Drehmoment wirkt.
