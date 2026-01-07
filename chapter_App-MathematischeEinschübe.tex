@@ -1580,48 +1580,47 @@ Sei $s(t)$ der Ort eines Objekts zur Zeit $t$.
 \subsection{Fall 1: Konstante Beschleunigung}
 Betrachten wir den freien Fall (ohne Luftwiderstand). Die Beschleunigung $a(t) = \const$ ist konstant und entspricht der Erdbeschleunigung $a = g \approx \SI{9.81}{\meter\per\second\squared}$. Nehmen wir an, die positive Richtung sei nach unten.
 Die DGL für die Geschwindigkeit lautet:
-$$ v'(t) = g $$
+\[ v'(t) = g \mDot \]
 Dies ist eine sehr einfache DGL. Wir lösen sie durch direkte Integration:
-$$ \int v'(t) \, \dd t = \int g \, \dd t \implies v(t) = g \cdot t + C_1 $$
+\[ \int v'(t) \, \dd t = \int g \, \dd t \implies v(t) = g \cdot t + C_1 \]
 Die Integrationskonstante $C_1$ ist die Anfangsgeschwindigkeit $v(0)$. Also:
-$$ v(t) = g \cdot t + v_0 $$
+\[ v(t) = g \cdot t + v_0 \]
 Um nun den Ort $s(t)$ zu finden, lösen wir die DGL $s'(t) = v(t)$:
-$$ s'(t) = g \cdot t + v_0 $$
+\[ s'(t) = g \cdot t + v_0 \mDot\]
 Nochmalige Integration liefert:
-$$ \int s'(t) \, \dd t = \int (g \cdot t + v_0) \, \dd t \implies s(t) = \frac{1}{2}g \cdot t^2 + v_0 \cdot t + C_2 $$
+\[ \int s'(t) \, \dd t = \int (g \cdot t + v_0) \, \dd t \implies s(t) = \frac{1}{2}g \cdot t^2 + v_0 \cdot t + C_2 \]
 Die Integrationskonstante $C_2$ ist der Anfangsort $s(0)$, also $s_0$. Das Ergebnis ist die bekannte Formel für die gleichmäßig beschleunigte Bewegung:
-$$ s(t) = \frac{1}{2}gt^2 + v_0 t + s_0 $$
+\[ s(t) = \frac{1}{2}gt^2 + v_0 t + s_0 \mDot\]
 
 \section{Lösungsmethoden für DGLs 1. Ordnung}
 Die Lösung einer DGL ist eine Funktion, die die Gleichung erfüllt. Oft gibt es eine ganze Schar von Lösungen (abhängig von Integrationskonstanten). Eine eindeutige Lösung erhält man durch Angabe von \textbf{Anfangs- oder Randbedingungen} (\zB $f(x_0) = f_0 = 4.2$).
 
 \subsection{Trennung der Variablen}
 Eine der grundlegendsten Methoden ist die Trennung der Variablen. Sie ist anwendbar, wenn sich die DGL in die Form
-$$ y' = f(x) \cdot g(y) $$
+\[ y' = f(x) \cdot g(y) \]
 bringen lässt. Man schreibt $y' = \frac{\dd y}{\dd x}$ und "trennt" dann die Variablen $x$ und $y$ auf unterschiedliche Seiten der Gleichung:
-$$ \frac{\dd y}{g(y)} = f(x) \, \dd x $$
+\[ \frac{\dd y}{g(y)} = f(x) \, \dd x \]
 Anschließend integriert man beide Seiten:
-$$ \int \frac{\dd y}{g(y)} = \int f(x) \, \dd x + C $$
+\[ \int \frac{\dd y}{g(y)} = \int f(x) \, \dd x + C \]
 
 \subsubsection{Beispiel: Radioaktiver Zerfall}
 Die Zerfallsrate eines radioaktiven Materials ist proportional zur vorhandenen Menge $N(t)$.
-$$ N'(t) = -\lambda \cdot N(t) \quad (\lambda > 0 \text{ ist die Zerfallskonstante}) $$
+\[ N'(t) = -\lambda \cdot N(t) \quad (\lambda > 0 \text{ ist die Zerfallskonstante}) \]
 Wir trennen die Variablen:
-$$ \frac{\dd N}{N} = -\lambda \, \dd t $$
+\[ \frac{\dd N}{N} = -\lambda \, \dd t \]
 Integration beider Seiten:
-$$ \int \frac{1}{N} \, \dd N = \int -\lambda \, \dd t $$
-$$ \ln|N| = -\lambda t + C $$
+\[ \int \frac{1}{N} \, \dd N = \int -\lambda \, \dd t \]
+\[ \ln|N| = -\lambda t + C \]
 Um $N$ zu isolieren, wenden wir die Exponentialfunktion an:
-$$ |N| = e^{-\lambda t + C} = e^C \cdot e^{-\lambda t} $$
+\[ |N| = e^{-\lambda t + C} = e^C \cdot e^{-\lambda t} \]
 Da $N$ eine Menge ist ($N>0$) und $e^C$ eine positive Konstante ist, können wir dies als $N_0 = e^C$ (die Anfangsmenge bei $t = 0$) schreiben.
-$$ N(t) = N_0 \cdot e^{-\lambda t} $$
+\[ N(t) = N_0 \cdot e^{-\lambda t} \]
 
 \section{Ausblick: DGLs höherer Ordnung}
 Lineare Differentialgleichungen zweiter Ordnung mit konstanten Koeffizienten haben die Form:
-$$ a\cdot y'' + b\cdot y' + c\cdot y = 0 $$
+\[ a\cdot y'' + b\cdot y' + c\cdot y = 0 \]
 Der Lösungsansatz hierfür ist $y(x) = e^{rx}$. Setzt man diesen Ansatz in die DGL ein, erhält man die \textbf{charakteristische Gleichung}:
-$$ ar^2 + br + c = 0 $$
+\[ ar^2 + br + c = 0 \]
 Die Lösungen dieser quadratischen Gleichung für $r$ bestimmen die Form der allgemeinen Lösung für $y(x)$. Dies ist ein grundlegendes Konzept in der Analyse von Schwingungssystemen (mechanisch oder elektrisch).
 
-% Chapter end - always start new page after chapter
 \newpage

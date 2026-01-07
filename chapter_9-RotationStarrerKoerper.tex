@@ -85,7 +85,7 @@ geschrieben werden. Eingesetzt in \cref{eq: geschwindigkeit_ri_schwerpunkt} ergi
         
         % 1. Include the image as a node named 'myImage'
         \node[anchor=south west, inner sep=0] (myImage) at (0,0) {
-            \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Rotation/schwerpunkt_rs_ris_ri_Kugel.png}
+            \includegraphics[width=0.44\linewidth]{Bilder/Kapitel_Rotation/schwerpunkt_rs_ris_ri_Kugel.png}
         };
         
         % 2. Create a scope relative to the image size
@@ -98,8 +98,8 @@ geschrieben werden. Eingesetzt in \cref{eq: geschwindigkeit_ri_schwerpunkt} ergi
             \node at (0.24, 0.92) {\Large $z$};       % Top center
             \node at (0.22, 0.25) {\Large $0$};       % Origin
             
-            \node at (0.7, 0.94) {\large $\protect\ivec{\omega}$};  % Near top right
-            \node at (0.60, 1.0) {\large $\protect\ivec{A}$};  % Near top right
+            \node at (0.7, 0.94) {\large $\ivec{\omega}$};  % Near top right
+            \node at (0.60, 1.0) {\large $\ivec{A}$};  % Near top right
             \node at (0.4, 0.5) {\large $\ivecS{r}{S}$}; % Schwerpunkt
             \node at (0.53, 0.41) {\large $\ivecS{r}{i}$}; % Massenpunkt i
             \node at (0.67, 0.64) {\large $\ivecS{r}{i,S}$}; % Vektor riS 
@@ -109,19 +109,12 @@ geschrieben werden. Eingesetzt in \cref{eq: geschwindigkeit_ri_schwerpunkt} ergi
         \end{scope}
        
     \end{tikzpicture}
-    \caption{.}\label{fig: aufteilung_bewegung_schwerpunkt}
+    \caption{Der Ortsvektor $\protect\ivecS{r}{i}$ eines Massenpunkts $i$ innerhalb eines starren Körpers lässt sich in den Ortsvektor des Schwerpunkts $\protect\ivecS{r}{S}$ und den Ortsvektor relativ zum Schwerpunkt $\protect\ivecS{r}{i,S}$ zerlegen.}\label{fig: aufteilung_bewegung_schwerpunkt}
 \end{figure}
 
 
 \section{Rotationskinematik}\label{sec: rotationskinematik}
 Analog zur Translation, die durch Ort, Geschwindigkeit und Beschleunigung beschrieben wird, nutzen wir für die Rotation den Winkel, die Winkelgeschwindigkeit und die Winkelbeschleunigung.
-
-% \begin{figure}[ht]
-%     \centering
-%     % Platzhalter für ein Bild: Rotierende Scheibe mit Winkelkoordinaten
-%     \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Rotation/RotatingCylinder.pdf} 
-%     \caption{Darstellung eines rotierenden Körpers. Der Winkel $\varphi$ gibt die Orientierung bezüglich einer festen Referenzachse an.}\label{fig: rotation_definition}
-% \end{figure}
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}
@@ -419,6 +412,7 @@ Auf gleiche Weise wie in der Herleitung der Rotationsenergie (siehe \cref{subsec
 \begin{equation}\label{eq: gesamtdrehimpuls_starrer_koerp}
     \ivec{L} = \left(\int_M r_{\perp}^2 \dd m \right) \cdot \ivec{\omega}  = \left(\int_V r_{\perp}^2 \, \rho(\ivec{r}) \, \dd V \right) \cdot \ivec{\omega} = J \cdot \ivec{\omega} \mDot
 \end{equation}
+Hier sei der Vollständigkeit halber erwähnt, dass \cref{eq: gesamtdrehimpuls_starrer_koerp} nur für Rotationen um sogenannte \textbf{Hauptträgheitsachsen} gilt -- für Körper mit gewisser Symmetrie fallen die Symmetrieachsen und Hauptträgheitsachsen meist zusammen. Für Rotationen um beliebige Achsen muss das Trägheitsmoment über den Trägheitstensor beschrieben werden, sodass $\ivec{L} \nparallel \ivec{\omega}$ gilt -- das übersteigt jedoch den Rahmen dieses Skriptums.\\
 
 Eines der wichtigsten Prinzipien der Physik ist die \textbf{Drehimpulserhaltung}.
 \begin{importantbox}{Drehimpulserhaltung}
