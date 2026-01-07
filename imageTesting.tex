@@ -1,5 +1,6 @@
 \documentclass[tikz, border=5mm]{standalone}
 \usepackage{tikz}
+\usepackage{tikz-3dplot} % Für bessere 3D-Kontrolle
 % \usetikzlibrary {arrows.meta}
 % \usetikzlibrary{positioning,arrows.meta, calc, quotes, angles}
 \usetikzlibrary{positioning,arrows.meta, calc, quotes, angles, decorations.pathmorphing, patterns}
@@ -37,6 +38,77 @@
 \begin{document}
 
 
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+
+
+% Ein x,y,z Koordinatensystem mit Pfeilen, wobei die z-Achse nach oben zeigt
+% (Die Abbildung soll 3D sein und die z-Achse nach oben zeigen)
+% Eine Kugel im Koordinatensystem
+% Eine Rotationsachse geht durch den Schwerpunkt von K und ist parallel zur z-Achse
+% Der Schwerpunktsvektor r_S geht vom Ursprung zu K's Schwerpunkt
+% Ein Volumenelement dV innerhalb von K ist markiert 
+% Ein Vektor r geht vom Ursprung zu dV
+% Ein Vektor r' geht vom Schwerpunkt von K zu dV
+% Definition der Perspektive (Winkel um x- und z-Achse)
+
+\tdplotsetmaincoords{70}{115}%
+
+\begin{tikzpicture}[
+    tdplot_main_coords,
+    scale=1.2,
+    >=Stealth,
+    font=\small\sffamily
+]
+    % --- 1. Koordinatensystem ---
+    % \draw[->] (0,0,0) -- (5,0,0) node[anchor=north east]{\large $x$};
+    % \draw[->] (0,0,0) -- (0,5,0) node[anchor=north west]{\large $y$};
+    % \draw[->] (0,0,0) -- (0,0,5) node[anchor=south]{\large $z$};
+
+    % --- 2. Definition des Schwerpunkts S und des Volumenelements dV ---
+    \coordinate (S) at (3,2,2);          % Schwerpunkt der Kugel
+    \coordinate (dV) at (3.8,2.8,3.2);    % Position des Volumenelements dV innerhalb der Kugel
+
+    % --- 3. Die Kugel K ---
+    % Wir zeichnen die Kugel als schattierten Kreis (wirkt 3D)
+    \shade[ball color = gray!40, opacity = 0.4] (1,1,2) circle (2cm);
+    % \draw (1,1,2) circle (2cm);
+    % \draw (1,1,2) arc (0:180:2 and 2);
+    % \draw[dashed] (1,1,2) arc (180:360:2 and 2);
+    % % \fill[fill=black] (0,0) circle (1pt);
+    % % --- 4. Rotationsachse ---
+    % % Eine Linie parallel zur z-Achse durch S
+    % \draw[dashed, thick, color=red!70!black] ($(S)-(0,0,2.5)$) -- ($(S)+(0,0,3.5)$);
+    % \node[above right, color=red!70!black] at ($(S)+(0,0,3.5)$) {Rotationsachse};
+
+    % % --- 5. Vektoren einzeichnen ---
+    
+    % % Schwerpunktsvektor r_S (Ursprung -> S)
+    % \draw[->, thick, color=black] (0,0,0) -- (S) 
+    %     node[midway, left, xshift=-2pt] {$\vec{r}_S$};
+    
+    % % Vektor r (Ursprung -> dV)
+    % \draw[->, thick, color=orange!80!black] (0,0,0) -- (dV) 
+    %     node[midway, right] {$\vec{r}$};
+    
+    % % Vektor r' (S -> dV)
+    % \draw[->, thick, color=green!60!black] (S) -- (dV) 
+    %     node[midway, above left] {$\vec{r}'$};
+
+    % % --- 6. Markierung Volumenelement dV ---
+    % \filldraw[color=orange] (dV) circle (2pt) node[anchor=west, color=black] {$dV$};
+
+    % % Punkt S markieren
+    % \filldraw (S) circle (1pt) node[anchor=north east] {$S$};
+
+\end{tikzpicture}
+
+
+
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
@@ -46,36 +118,51 @@
 % Ein Kreis (Rad) mit Radius r rollt ohne zu rutschen die Ebene hinunter. Der Schwerpunkt des Rades ist markiert.
 % Die Kräfte Gewicht F_G und F_N (Normalkraft) sind eingezeichnet.
 
-\begin{tikzpicture}[
-    scale=1.0,
-    >=Stealth,
-    font=\small\sffamily
-]
+% \begin{tikzpicture}[
+%     scale=1.0,
+%     >=Latex,
+%     font=\small\sffamily
+% ]
 
-    % --- Definitionen ---
-    \def\R{1.3} % Radius des Rades
-    \def\alphaV{25} % Winkel der schiefen Ebene
-    \def\lenEbene{8} % Länge der schiefen Ebene
+%     % --- Definitionen ---
+%     \def\R{1.2} % Radius des Rades
+%     \def\alphaV{25} % Winkel der schiefen Ebene
+%     \def\lenEbene{8.2} % Länge der schiefen Ebene
+%     \def\fgLen{3.7} % Länge der Gewichtskraft
+%     \definecolor{darkGreen}{rgb}{0.0, 0.5, 0.0}
 
-    % --- Schiefe Ebene zeichnen ---
-    \fill[red!20] (0,0) -- (\lenEbene,0) -- (\lenEbene, {\lenEbene*tan(\alphaV)}) -- (0,0) -- cycle;
-    \draw[thick] (0,0) -- (\lenEbene,0) -- (\lenEbene, {\lenEbene*tan(\alphaV)}) -- cycle;
-    % --- Rad zeichnen ---
-    \coordinate (Center) at (6, {6*tan(\alphaV) + \R + 0.15}); % Mittelpunkt des Rades
-    \draw[line width=1.5pt] (Center) circle (\R); % Rad
-    \fill[red!10] (Center) circle (\R); % rote Füllung
-    \fill[black] (Center) circle (2pt); % Schwerpunkt
+%     % --- Schiefe Ebene zeichnen ---
+%     \fill[red!20] (0,0) -- (\lenEbene,0) -- (\lenEbene, {\lenEbene*tan(\alphaV)}) -- (0,0) -- cycle;
+%     \draw[thick] (0,0) -- (\lenEbene,0) -- (\lenEbene, {\lenEbene*tan(\alphaV)}) -- cycle;
+%     % --- Rad zeichnen ---
+%     \coordinate (Center) at (6, {6*tan(\alphaV) + \R*(1/cos(\alphaV))}); % Mittelpunkt des Rades
+%     \draw[line width=1.5pt] (Center) circle (\R); % Rad
+%     \fill[red!10] (Center) circle (\R); % rote Füllung
+%     \fill[black] (Center) circle (2pt); % Schwerpunkt
 
-    % --- Kräfte zeichnen ---
-    % Gewichtskraft F_G
-    \draw[-{latex}, black, line width=1.5pt] (Center) -- ++(0,-2.5) node[midway, pos=0.7, right] {\large $F_G = M \ivec{g}$};
+%     % --- Kräfte zeichnen ---
+%     % Gewichtskraft F_G
+%     \draw[-{latex}, black, line width=1.5pt] (Center) -- ++(0,-\fgLen) node[midway, pos=0.7, right=0pt] {\large $\ivecS{F}{G} = M \ivec{g}$};
 
-    % Normalkraft F_N
-    \draw[->, green!70!black, thick] (Center) -- ++({\alphaV+90}:2.5) node[midway, above left] {\large $F_N$};
+%     % Normalkraft F_N setzt am Ende von F_N an und zeigt senkrecht zur schiefen Ebene nach unten
+%     \draw[->, darkGreen, thick] (Center)++({\alphaV+180}:{sin(\alphaV)*\fgLen}) -- ++({\alphaV+90}:-{cos(\alphaV)*\fgLen}) node[midway, pos=0.6, left] {\large $\ivecS{F}{N}$};
 
-    % --- Winkel alpha beschriften ---
-    \draw[->] (1.5,0) arc(0:\alphaV:0.7) node[midway, right] {\large $\alpha$};
-\end{tikzpicture}
+
+%     % Kraft im Schwerpunkt parallel zur schiefen Ebene nach unten
+%     \draw[->, orange!70!black, thick] (Center) -- ++({\alphaV+180}:{sin(\alphaV)*\fgLen}) node[midway, above] {\large $\ivecS{F}{\parallel}$};
+
+%     % Radius r zum Kontaktpunkt
+%     \draw[<-, blue!70!black, line width=1.2pt] (Center) -- ++({\alphaV-90}:\R) node[midway, right] {\large $r$};
+
+%     % Kontaktpunkt markieren
+%     \fill[black] (Center)++({\alphaV-90}:\R) circle (1.3pt) node[below right=-1pt] {\large $A$};
+
+%     % --- Winkel alpha in der schiefen Ebene beschriften ---
+%     \draw[-, line width=1.2pt] (2.0,0) arc(0:\alphaV:2.0) node[midway, left=3pt, pos=0.45] {\large $\alpha$};
+
+%     % --- Omega Pfeil für Drehung des Rades ---
+%     \draw[-{Stealth}, purple!70!black, line width=1.pt] (Center)++({\alphaV-30}:\R*0.5) arc({\alphaV-30}:{\alphaV+90}:\R*0.5) node[midway, above right=-3pt] {\large $\ivec{\omega}$};
+% \end{tikzpicture}
 
 
 
