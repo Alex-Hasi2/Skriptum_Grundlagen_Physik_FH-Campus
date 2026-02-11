@@ -1,0 +1,142 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+\usepackage{esvect}
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction
+}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\include{../defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+% Command to add the logo to the top left of the first page
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \hspace{2.0cm}% Move logo to the right from the page edge
+    \raisebox{-5.cm}{% Move logo down from the page edge
+      \includegraphics[width=4cm]{../Bilder/Allgemein/LogoFHCampus.png}% The logo file
+    }%
+  }%
+}
+
+\begin{center}
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large Einstiegsüberprüfung} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\vspace{1cm}
+
+\noindent
+\vspace{1cm}
+\noindent
+\begin{tabular}{ll}
+    \textbf{Kürzel:} & \underline{\hspace{8cm}} \\[0.3cm]
+\end{tabular}
+
+\begin{itemize}[label={$\circ$}]
+    \item Sie haben 20 min Zeit.
+    \item Es sind keine Unterlagen erlaubt.
+    \item Sie dürfen keinen Taschenrechner verwenden.
+    \item Geben Sie klare und verständliche Antworten!
+    \item Schreiben Sie leserlich!
+    \item Streichen Sie alle bis auf eine Lösung durch!
+\end{itemize}
+
+Dieser kurze Test dient dazu, Ihr Vorwissen in Mathematik und den Grundlagen der Physik zu überprüfen. Versuchen Sie, die Aufgaben ohne Taschenrechner zu lösen. Es geht nicht darum, alle Aufgaben perfekt zu lösen, sondern einen Eindruck von Ihren Kenntnissen zu bekommen. Viel Erfolg!
+
+\vspace{2cm}
+
+
+\begin{flushright}
+    \renewcommand{\arraystretch}{1.23}
+    \begin{tabular}{l p{2.3cm}}
+        \hline
+        \noalign{\vskip 0.15cm}
+        \textbf{\Large{Punkte:}} & \textbf{\Large{/10}} \\
+        \noalign{\vskip 0.1cm}
+        \hline
+    \end{tabular}
+\end{flushright}
+
+\newpage
+
+\section*{Einstiegstest: Mathematische und physikalische Grundlagen}\label{sec: einstiegstest}
+Beantworten Sie die folgenden Fragen, um fit für die kommenden Kapitel zu sein.
+    
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    % --- Frage 1: Einheiten ---
+    \item \textbf{Einheitenumrechnung:} \\
+    Ein Auto fährt mit einer Geschwindigkeit von \SI{72}{\kilo\meter\per\hour}. Wie hoch ist die Geschwindigkeit in \unit{\meter\per\second}?
+    
+    % --- Frage 2: Zehnerpotenzen ---
+    \item \textbf{Zehnerpotenzen:} \\
+    Vereinfachen Sie den folgenden Ausdruck so weit wie möglich:
+    \begin{equation*} \label{eq:test_potenz}
+        \frac{10^{5} \cdot 10^{-2}}{10^{4}} = \ldots
+    \end{equation*}
+    
+    % --- Frage 3: Trigonometrie / Pythagoras ---
+    \item \textbf{Geometrie:} \\
+    Ein rechtwinkliges Dreieck hat die Kathetenlängen $a = 3$ und $b = 4$. Berechnen Sie die Länge der Hypotenuse $c$.
+    
+    % --- Frage 4: Vektoren ---
+    \item \textbf{Vektorrechnung:} \\
+    Gegeben sind die Vektoren $\ivecS{r}{1} = \icolTwo{1}{2}$ und $\ivecS{r}{2} = \icolTwo{3}{-1}$. 
+    \begin{enumerate}[label=\alph*)]
+        \item Berechnen Sie den Summenvektor $\ivec{s} = \ivecS{r}{1} + \ivecS{r}{2}$.
+        \item Bestimmen Sie den Betrag $|\ivecS{r}{1}|$.
+        \item Bestimmen Sie das Skalarprodukt $\ivecS{r}{1} \cdot \ivecS{r}{2}$.
+    \end{enumerate}
+
+    % --- Frage 5: Ableitung ---
+    \item \textbf{Differentialrechnung:} \\
+    Bilden Sie die erste Ableitung der Funktion $f(t) = 5 t^2 + 2 t$ nach der Zeit $t$. Was beschreibt diese Ableitung physikalisch, wenn $f(t)$ den Ort in Abhängigkeit der Zeit darstellt?
+
+    % --- Frage 6: Diagramme ---
+    \item \textbf{Diagramm-Verständnis:} \\
+    Sie betrachten ein $v$-$t$-Diagramm (Geschwindigkeit über Zeit). Was repräsentiert die Steigung der Kurve in einem bestimmten Punkt?
+    
+    % --- Frage 7: Masse und Volumen ---
+    \item \textbf{Masse und Volumen:} \\
+    Ein Körper mit einem Volumen von $V = \SI{2}{\meter\cubed}$ hat eine Dichte von $\rho = \SI{500}{\kilogram\per\meter\cubed}$. Berechnen Sie die Masse $m$ des Körpers.
+    
+    % --- Frage 8: Funktionen ---
+    \item \textbf{Winkelfunktionen:} \\
+    Welchen Wert hat $\sin(\SI{90}{\degree})$? \\
+    Wieviel Grad entspricht $\pi\,\unit{\radian}$?
+    
+    % --- Frage 9: Größenordnungen ---
+    \item \textbf{Präfixe:} \\
+    Wie viel ist ein Mikrometer ($\unit{\micro\meter}$) in Metern ausgedrückt (als Zehnerpotenz)?
+    \[ 1 \unit{\micro\meter} = \ldots \; \unit{\meter} \]
+
+    % --- Frage 10: Gleichung umformulieren ---
+    \item \textbf{Gleichungsumformung:} \\
+    Stellen Sie die folgende Gleichung nach $h$ um:
+    \begin{equation*} \label{eq:test_umformung}
+        t = \sqrt{\frac{2h}{g}}
+    \end{equation*}
+\end{enumerate}
+
+\end{document}
