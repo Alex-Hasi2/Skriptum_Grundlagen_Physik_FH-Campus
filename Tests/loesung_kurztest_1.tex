@@ -1,0 +1,125 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{esvect} % Notwendig für Vektorpfeile
+\usepackage{siunitx}
+\usepackage{xcolor} % Für Hervorhebung der Lösungen
+
+% SI-Unit Einstellungen analog zum Original
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction
+}
+
+% Seitengeometrie analog zum Original
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+% --- Notwendige Definitionen aus defs.tex ---
+\newcommand{\ivec}[1]{\vv{#1}} 
+\newcommand{\ivecS}[2]{\vv*{#1}{\!#2}} 
+\newcommand{\icolTwo}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+% --------------------------------------------
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{Lösung: Physikalische Grundlagen}} \\[1em]
+    {\large Einstiegsüberprüfung -- Clinical Engineering}
+\end{center}
+
+\vspace{0.5cm}
+
+\section*{Lösungen zum Einstiegstest}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    % --- Frage 1: Einheiten ---
+    \item \textbf{Einheitenumrechnung:} \\
+    Umrechnung von \unit{\kilo\meter\per\hour} in \unit{\meter\per\second} erfolgt durch Division durch $3,6$.
+    \[
+        v = \SI{72}{\kilo\meter\per\hour} = \frac{72}{3,6}\,\unit{\meter\per\second} = \SI{20}{\meter\per\second}
+    \]
+
+    % --- Frage 2: Zehnerpotenzen ---
+    \item \textbf{Zehnerpotenzen:} \\
+    Anwendung der Potenzgesetze ($10^a \cdot 10^b = 10^{a+b}$ und $\frac{10^a}{10^b} = 10^{a-b}$):
+    \[
+        \frac{10^{5} \cdot 10^{-2}}{10^{4}} = \frac{10^{5-2}}{10^4} = \frac{10^3}{10^4} = 10^{3-4} = 10^{-1} \quad (= 0,1)
+    \]
+    
+    % --- Frage 3: Trigonometrie / Pythagoras ---
+    \item \textbf{Geometrie:} \\
+    Satz des Pythagoras ($a^2 + b^2 = c^2$):
+    \[
+        c = \sqrt{a^2 + b^2} = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5
+    \]
+    
+    % --- Frage 4: Vektoren ---
+    \item \textbf{Vektorrechnung:} \\
+    Gegeben: $\ivecS{r}{1} = \icolTwo{1}{2}$, $\ivecS{r}{2} = \icolTwo{3}{-1}$.
+    \begin{enumerate}[label=\alph*)]
+        \item Summenvektor:
+        \[
+            \ivec{s} = \ivecS{r}{1} + \ivecS{r}{2} = \icolTwo{1}{2} + \icolTwo{3}{-1} = \icolTwo{1+3}{2+(-1)} = \mathbf{\icolTwo{4}{1}}
+        \]
+        \item Betrag von $|\ivecS{r}{1}|$:
+        \[
+            |\ivecS{r}{1}| = \sqrt{1^2 + 2^2} = \sqrt{1 + 4} = \mathbf{\sqrt{5}} \approx 2,24
+        \]
+        \item Skalarprodukt:
+        \[
+            \ivecS{r}{1} \cdot \ivecS{r}{2} = 1 \cdot 3 + 2 \cdot (-1) = 3 - 2 = 1
+        \]
+    \end{enumerate}
+
+    % --- Frage 5: Ableitung ---
+    \item \textbf{Differentialrechnung:} \\
+    Ableitung von $f(t) = 5 t^2 + 2 t$:
+    \[
+        f'(t) = \frac{\mathrm{d}}{\mathrm{d}t}(5t^2 + 2t) = 10t + 2
+    \]
+    Physikalische Bedeutung: Wenn $f(t)$ den Ort beschreibt, ist die erste Ableitung die \textbf{Geschwindigkeit} $v(t)$.
+
+    % --- Frage 6: Diagramme ---
+    \item \textbf{Diagramm-Verständnis:} \\
+    Die Steigung in einem $v$-$t$-Diagramm repräsentiert die Änderung der Geschwindigkeit pro Zeit, also die \textbf{Beschleunigung} ($a(t)$).
+
+    % --- Frage 7: Masse und Volumen ---
+    \item \textbf{Masse und Volumen:} \\
+    Formel: $m = \rho \cdot V$.
+    \[
+        m = \SI{500}{\kilogram\per\meter\cubed} \cdot \SI{2}{\meter\cubed} = \mathbf{\SI{1000}{\kilogram}}
+    \]
+    
+    % --- Frage 8: Funktionen ---
+    \item \textbf{Winkelfunktionen:} 
+    \begin{itemize}
+        \item $\sin(\SI{90}{\degree}) = \mathbf{1}$
+        \item $\pi\,\unit{\radian} = \mathbf{\SI{180}{\degree}}$
+    \end{itemize}
+    
+    % --- Frage 9: Größenordnungen ---
+    \item \textbf{Präfixe:} \\
+    Ein Mikrometer entspricht $10^{-6}$ Metern.
+    \[ 
+        1 \unit{\micro\meter} = 10^{-6} \; \unit{\meter} \quad (= \SI{0,000001}{\meter})
+    \]
+
+    % --- Frage 10: Gleichung umformulieren ---
+    \item \textbf{Gleichungsumformung:} \\
+    Gesucht ist $h$ aus $t = \sqrt{\frac{2h}{g}}$.
+    \begin{align*}
+        t &= \sqrt{\frac{2h}{g}} \quad |\, (\dots)^2 \\
+        t^2 &= \frac{2h}{g} \quad |\, \cdot g \\
+        g \cdot t^2 &= 2h \quad |\, : 2 \\
+        h &= \frac{1}{2} g t^2
+    \end{align*}
+\end{enumerate}
+
+\end{document}
