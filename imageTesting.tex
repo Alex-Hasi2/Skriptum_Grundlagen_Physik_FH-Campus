@@ -41,6 +41,86 @@
 
 
 %%%   -----------------------------------------------------------
+%%%   PENDEL EXPERIMENT - Fadenpendel mit Auslenkung
+%%%   -----------------------------------------------------------
+%%%   Zeigt ein Pendel mit Fadenlänge L, Auslenkwinkel phi, 
+%%%   Masse (gelber Kreis), Geschwindigkeitsvektor und Ruheposition
+%%%   -----------------------------------------------------------
+
+\begin{tikzpicture}[
+    scale=1.5,
+    >=Stealth,
+    font=\sffamily
+]
+    % Definiere Winkel und Längen
+    \def\pendulumlength{5}
+    \def\angle{25}
+    \def\angleoffset{10}
+    \def\radius{0.3}
+    \def\lenG{1.7} % Länge des Gravitationsvektors
+    
+    % Koordinaten
+    \coordinate (pivot) at (0,0);
+    \coordinate (rest) at (0,-\pendulumlength);
+    \coordinate (mass) at ({-\pendulumlength*sin(\angle)},{-\pendulumlength*cos(\angle)});
+    \coordinate (masstop) at ({-(\pendulumlength-\radius)*sin(\angle)},{-(\pendulumlength-\radius)*cos(\angle)});
+    
+    % Aufhängung (horizontale Linien oben)
+    \draw[line width=1.5pt] (-0.4,0) -- (0.4,0);
+    \draw[line width=1pt] (-0.35,0.05) -- (-0.25,0.15);
+    \draw[line width=1pt] (-0.15,0.05) -- (-0.05,0.15);
+    \draw[line width=1pt] (0.05,0.05) -- (0.15,0.15);
+    \draw[line width=1pt] (0.25,0.05) -- (0.35,0.15);
+    
+    % Ruheposition (gestrichelte vertikale Linie)
+    \draw[gray, densely dotted, line width=0.8pt] (pivot) -- (rest);
+    \node[right, gray] at ($(rest)+(0.1,-0.2)$) {Ruheposition};
+    
+    % Bogenbahn (gestrichelt)
+    \draw[magenta!60, densely dashed, line width=0.7pt] 
+        ({-\pendulumlength*sin(\angle+\angleoffset)},{-\pendulumlength*cos(\angle+\angleoffset)}) 
+        arc[
+            start angle={-90-\angle-\angleoffset}, 
+            end angle={-90+\angle+\angleoffset}, 
+            radius=\pendulumlength
+        ];
+    
+    % Faden (Lila/Magenta)
+    \draw[black, line width=1.5pt] (pivot) -- (masstop) node[midway, left=0.1cm, font=\Large] {$L$};
+    
+    % Winkel phi (oben am Aufhängepunkt)
+    \draw[olive, line width=1.2pt, ->] (0,-1.1) arc[start angle=-90, end angle={-90-\angle}, radius=1.1] ;
+    \node[olive, font=\Large] at ({-0.7*sin(\angle/2)},{-0.8*cos(\angle/2)}) {$\varphi$};
+
+    % Graues Parallelogramm für die drei Pfeile (Gravitationskraft, Spannkraft, Rücktreibende Kraft)
+    % Korrigiert: Linie parallel zur Spannkraft und Gravitationskraft
+    \draw[gray!30, line width=1.2pt, dashed] (mass)++({-(\lenG*cos(\angle))*sin(\angle)}, {-(\lenG*cos(\angle))*cos(\angle)}) -- ++({+(\lenG*sin(\angle))*cos(\angle)}, {-(\lenG*sin(\angle))*sin(\angle)});
+    \draw[gray!30, line width=1.2pt, dashed] (mass)++(0,-\lenG) -- ++({+(\lenG*cos(\angle))*sin(\angle)}, {+(\lenG*cos(\angle))*cos(\angle)});
+
+    % Gravitationskraft (blauer Pfeil nach unten)
+    \draw[->, blue!70!black, line width=2pt] (mass) -- ++(0,-\lenG) 
+        node[below, right, font=\large] {$\ivec{g}$};
+    
+    % Spannkraft entlang des Fadens (grüner Pfeil)
+    % Diese zeigt vom Massenpunkt in Richtung Aufhängepunkt
+    \draw[->, green!60!black, line width=2pt] (mass) -- ++({-(\lenG*cos(\angle))*sin(\angle)}, {-(\lenG*cos(\angle))*cos(\angle)});
+    
+    % Rücktreibende Kraft (roter Pfeil tangential zur Kreisbahn)
+    % Diese ist senkrecht zum Faden
+    \draw[->, red, line width=2pt] (mass) -- ++({+(\lenG*sin(\angle))*cos(\angle)}, {-(\lenG*sin(\angle))*sin(\angle)});
+
+    % Masse (gelber Kreis mit schwarzem Rand)
+    \shade[ball color=yellow!80!orange, opacity=0.95] (mass) circle (\radius);
+    \draw[black, line width=1.5pt] (mass) circle (\radius);
+
+    % Winkel phi (unter der Masse)
+    \draw[olive, line width=1.2pt, ->] (mass)++(0,-0.9) arc[start angle=-90, end angle={-90-\angle}, radius=0.9];
+    \node[olive, font=\Large] at ($(mass)+({-0.6*sin(\angle/2)},{-0.67*cos(\angle/2)})$) {$\varphi$};
+    
+\end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
 
@@ -56,48 +136,48 @@
 % Ein Vektor r' geht vom Schwerpunkt von K zu dV
 % Definition der Perspektive (Winkel um x- und z-Achse)
 
-\tdplotsetmaincoords{70}{115}%
+% \tdplotsetmaincoords{70}{115}%
 
-\begin{tikzpicture}[
-    tdplot_main_coords,
-    scale=1.2,
-    >=Stealth,
-    font=\small\sffamily
-]
-    % --- 1. Koordinatensystem ---
-    % \draw[->] (0,0,0) -- (5,0,0) node[anchor=north east]{\large $x$};
-    % \draw[->] (0,0,0) -- (0,5,0) node[anchor=north west]{\large $y$};
-    % \draw[->] (0,0,0) -- (0,0,5) node[anchor=south]{\large $z$};
+% \begin{tikzpicture}[
+%     tdplot_main_coords,
+%     scale=1.2,
+%     >=Stealth,
+%     font=\small\sffamily
+% ]
+%     % --- 1. Koordinatensystem ---
+%     % \draw[->] (0,0,0) -- (5,0,0) node[anchor=north east]{\large $x$};
+%     % \draw[->] (0,0,0) -- (0,5,0) node[anchor=north west]{\large $y$};
+%     % \draw[->] (0,0,0) -- (0,0,5) node[anchor=south]{\large $z$};
 
-    % --- 2. Definition des Schwerpunkts S und des Volumenelements dV ---
-    \coordinate (S) at (3,2,2);          % Schwerpunkt der Kugel
-    \coordinate (dV) at (3.8,2.8,3.2);    % Position des Volumenelements dV innerhalb der Kugel
+%     % --- 2. Definition des Schwerpunkts S und des Volumenelements dV ---
+%     \coordinate (S) at (3,2,2);          % Schwerpunkt der Kugel
+%     \coordinate (dV) at (3.8,2.8,3.2);    % Position des Volumenelements dV innerhalb der Kugel
 
-    % --- 3. Die Kugel K ---
-    % Wir zeichnen die Kugel als schattierten Kreis (wirkt 3D)
-    \shade[ball color = gray!40, opacity = 0.4] (1,1,2) circle (2cm);
-    % \draw (1,1,2) circle (2cm);
-    % \draw (1,1,2) arc (0:180:2 and 2);
-    % \draw[dashed] (1,1,2) arc (180:360:2 and 2);
-    % % \fill[fill=black] (0,0) circle (1pt);
-    % % --- 4. Rotationsachse ---
-    % % Eine Linie parallel zur z-Achse durch S
-    % \draw[dashed, thick, color=red!70!black] ($(S)-(0,0,2.5)$) -- ($(S)+(0,0,3.5)$);
-    % \node[above right, color=red!70!black] at ($(S)+(0,0,3.5)$) {Rotationsachse};
+%     % --- 3. Die Kugel K ---
+%     % Wir zeichnen die Kugel als schattierten Kreis (wirkt 3D)
+%     \shade[ball color = gray!40, opacity = 0.4] (1,1,2) circle (2cm);
+%     % \draw (1,1,2) circle (2cm);
+%     % \draw (1,1,2) arc (0:180:2 and 2);
+%     % \draw[dashed] (1,1,2) arc (180:360:2 and 2);
+%     % % \fill[fill=black] (0,0) circle (1pt);
+%     % % --- 4. Rotationsachse ---
+%     % % Eine Linie parallel zur z-Achse durch S
+%     % \draw[dashed, thick, color=red!70!black] ($(S)-(0,0,2.5)$) -- ($(S)+(0,0,3.5)$);
+%     % \node[above right, color=red!70!black] at ($(S)+(0,0,3.5)$) {Rotationsachse};
 
-    % % --- 5. Vektoren einzeichnen ---
+%     % % --- 5. Vektoren einzeichnen ---
     
-    % % Schwerpunktsvektor r_S (Ursprung -> S)
-    % \draw[->, thick, color=black] (0,0,0) -- (S) 
-    %     node[midway, left, xshift=-2pt] {$\vec{r}_S$};
+%     % % Schwerpunktsvektor r_S (Ursprung -> S)
+%     % \draw[->, thick, color=black] (0,0,0) -- (S) 
+%     %     node[midway, left, xshift=-2pt] {$\vec{r}_S$};
     
-    % % Vektor r (Ursprung -> dV)
-    % \draw[->, thick, color=orange!80!black] (0,0,0) -- (dV) 
-    %     node[midway, right] {$\vec{r}$};
+%     % % Vektor r (Ursprung -> dV)
+%     % \draw[->, thick, color=orange!80!black] (0,0,0) -- (dV) 
+%     %     node[midway, right] {$\vec{r}$};
     
-    % % Vektor r' (S -> dV)
-    % \draw[->, thick, color=green!60!black] (S) -- (dV) 
-    %     node[midway, above left] {$\vec{r}'$};
+%     % % Vektor r' (S -> dV)
+%     % \draw[->, thick, color=green!60!black] (S) -- (dV) 
+%     %     node[midway, above left] {$\vec{r}'$};
 
     % % --- 6. Markierung Volumenelement dV ---
     % \filldraw[color=orange] (dV) circle (2pt) node[anchor=west, color=black] {$dV$};
@@ -105,8 +185,7 @@
     % % Punkt S markieren
     % \filldraw (S) circle (1pt) node[anchor=north east] {$S$};
 
-\end{tikzpicture}
-
+% \end{tikzpicture}
 
 
 %%%   -----------------------------------------------------------

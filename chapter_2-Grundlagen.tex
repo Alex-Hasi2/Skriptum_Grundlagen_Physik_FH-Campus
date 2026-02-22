@@ -8,11 +8,10 @@ Komplexe Naturvorgänge sollen auf einfache Gesetzmäßigkeiten zurückgeführt,
         \item Quantifizierung dieses Prozesses über Zerfallsreihen 
         \item Voraussagbar über Halbwertszeit
     \end{itemize}
-     \tcblower
-     \begin{center}
-     \includegraphics[width=0.65\linewidth]{Bilder//Kapitel_Grundlagen/Zerfallsreihe_Uran235.png}
-     \end{center}
-     Die Zerfallsreihe von $^{235}\text{U}$. $Z$ ist die Anzahl der Protonen, $N$ die Anzahl der Neutronen und $A$ die Gesamtzahl der Kernteilchen.
+    \tcblower
+    \centering
+    \includegraphics[width=0.90\linewidth]{Bilder/Kapitel_Grundlagen/Zerfallsreihe_Uran238.png}
+    \captionof{figure}[Zerfallsreihe von $^{238}$U (Quelle: \cite{Giancoli2010}, S.~1427)]{Zerfallsreihe von $^{238}\text{U}$. $Z$ ist die Anzahl der Protonen, $N$ die Anzahl der Neutronen und $A$ die Gesamtzahl der Kernteilchen. (Quelle:~\cite[S.~1427]{Giancoli2010}.)}\label{fig: zerfallsreihe_uran238}
 \end{examplebox}
 
 \section{Das Experiment}\label{sec: das_Experiment}
@@ -23,7 +22,7 @@ Das Ziel des Experimentes ist es einen Naturvorgang in einem kontrollierbaren un
 Dabei wird besonderen Wert auf die Eliminierung aller störenden Einflüsse gelegt, die den untersuchten Effekt überlagern könnten. Im Sinne der Physik sollen damit Gesetzmäßigkeiten gefunden werden und eine Fülle von Beobachtungen in physikalische Gesetze überführt werden. 
 
 
-\begin{examplebox}[sidebyside, sidebyside align=top seam, lower separated=false, righthand width=4.5cm]{Beispiel}
+\begin{examplebox}[sidebyside, sidebyside align=top seam, lower separated=false, righthand width=6.5cm]{Beispiel}
     Pendel-Experiment zur Bestimmung der Gravitationsbeschleunigung $\ivec{g}$.
     
 \textbf{Hypothese:} Die Schwingungsdauer eines Pendels hängt von der Länge des Pendels und der Erdbeschleunigung ab, aber nicht von der Masse des Pendels.
@@ -31,10 +30,81 @@ Dabei wird besonderen Wert auf die Eliminierung aller störenden Einflüsse gele
 \textbf{Störende Einflüsse:} Das Experiment wird in einem Raum ohne Luftzug durchgeführt. Die Startauslenkung kann mit bekannter Genauigkeit eingestellt werden.
 
 \textbf{Reproduzierbarkeit:} Was muss dokumentiert werden, damit andere Forschende zu denselben Ergebnissen kommen? 
-     \tcblower
-     \begin{center}
-     \includegraphics[width=0.95\linewidth]{Bilder//Kapitel_Grundlagen/Pendel_Experiment.png}
-     \end{center}
+    \tcblower
+    \centering
+    \begin{tikzpicture}[
+        scale=1.0,
+        >={Stealth[length=3mm, width=3mm]}, % Pfeilspitzen größer machen
+        font=\sffamily
+        ]
+        % Definiere Winkel und Längen
+        \def\pendulumlength{5}
+        \def\angle{20}
+        \def\angleoffset{10}
+        \def\radius{0.3}
+        \def\lenG{2.0} % Länge des Gravitationsvektors
+        
+        % Koordinaten
+        \coordinate (pivot) at (0,0);
+        \coordinate (rest) at (0,-\pendulumlength);
+        \coordinate (mass) at ({-\pendulumlength*sin(\angle)},{-\pendulumlength*cos(\angle)});
+        \coordinate (masstop) at ({-(\pendulumlength-\radius)*sin(\angle)},{-(\pendulumlength-\radius)*cos(\angle)});
+        
+        % Aufhängung (horizontale Linien oben)
+        \draw[line width=1.5pt] (-0.4,0) -- (0.4,0);
+        \draw[line width=1pt] (-0.35,0.05) -- (-0.25,0.15);
+        \draw[line width=1pt] (-0.15,0.05) -- (-0.05,0.15);
+        \draw[line width=1pt] (0.05,0.05) -- (0.15,0.15);
+        \draw[line width=1pt] (0.25,0.05) -- (0.35,0.15);
+        
+        % Ruheposition (gestrichelte vertikale Linie)
+        \draw[gray, densely dotted, line width=0.8pt] (pivot) -- (rest);
+        \node[right, gray] at ($(rest)+(0.1,-0.2)$) {Ruheposition};
+        
+        % Bogenbahn (gestrichelt)
+        \draw[magenta!60, densely dashed, line width=0.7pt] 
+            ({-\pendulumlength*sin(\angle+\angleoffset)},{-\pendulumlength*cos(\angle+\angleoffset)}) 
+            arc[
+                start angle={-90-\angle-\angleoffset}, 
+                end angle={-90+\angle+\angleoffset}, 
+                radius=\pendulumlength
+            ];
+        
+        % Faden (Lila/Magenta)
+        \draw[black, line width=1.5pt] (pivot) -- (masstop) node[midway, left=0.1cm, font=\Large] {$L$};
+        
+        % Winkel phi (oben am Aufhängepunkt)
+        \draw[olive, line width=1.2pt, ->] (0,-1.6) arc[start angle=-90, end angle={-90-\angle}, radius=1.6] ;
+        \node[olive, font=\Large] at ({-1.04*sin(\angle/2)},{-1.2*cos(\angle/2)}) {$\varphi$};
+
+        % Graues Parallelogramm für die drei Pfeile (Gravitationskraft, Spannkraft, Rücktreibende Kraft)
+        % Korrigiert: Linie parallel zur Spannkraft und Gravitationskraft
+        \draw[gray!30, line width=1.2pt, dashed] (mass)++({-(\lenG*cos(\angle))*sin(\angle)}, {-(\lenG*cos(\angle))*cos(\angle)}) -- ++({+(\lenG*sin(\angle))*cos(\angle)}, {-(\lenG*sin(\angle))*sin(\angle)});
+        \draw[gray!30, line width=1.2pt, dashed] (mass)++(0,-\lenG) -- ++({+(\lenG*cos(\angle))*sin(\angle)}, {+(\lenG*cos(\angle))*cos(\angle)});
+
+        % Gravitationskraft (blauer Pfeil nach unten)
+        \draw[->, blue!70!black, line width=2pt] (mass) -- ++(0,-\lenG) 
+            node[below, right, font=\large] {$\ivec{g}$};
+        
+        % Spannkraft entlang des Fadens (grüner Pfeil)
+        % Diese zeigt vom Massenpunkt in Richtung Aufhängepunkt
+        \draw[->, green!60!black, line width=2pt] (mass) -- ++({-(\lenG*cos(\angle))*sin(\angle)}, {-(\lenG*cos(\angle))*cos(\angle)});
+        
+        % Rücktreibende Kraft (roter Pfeil tangential zur Kreisbahn)
+        % Diese ist senkrecht zum Faden
+        \draw[->, red, line width=2pt] (mass) -- ++({+(\lenG*sin(\angle))*cos(\angle)}, {-(\lenG*sin(\angle))*sin(\angle)});
+
+        % Masse (gelber Kreis mit schwarzem Rand)
+        \shade[ball color=yellow!80!orange, opacity=0.95] (mass) circle (\radius);
+        \draw[black, line width=1.5pt] (mass) circle (\radius);
+
+        % Winkel phi (unter der Masse)
+        \draw[olive, line width=1.2pt, ->] (mass)++(0,-1.25) arc[start angle=-90, end angle={-90-\angle}, radius=1.25];
+        \node[olive, font=\normalsize] at ($(mass)+({-0.8*sin(\angle/2)},{-0.9*cos(\angle/2)})$) {$\varphi$};
+    
+    \end{tikzpicture}
+    % \includegraphics[width=0.95\linewidth]{Bilder/Kapitel_Grundlagen/Pendel_Experiment.png}
+    \captionof{figure}[Pendel-Experiment zur Bestimmung der Gravitationsbeschleunigung]{Versuchsaufbau: Pendel-Experiment zur Bestimmung der Gravitationsbeschleunigung $\ivec{g}$.}\label{fig: pendel_experiment}
 \end{examplebox}
 
 
