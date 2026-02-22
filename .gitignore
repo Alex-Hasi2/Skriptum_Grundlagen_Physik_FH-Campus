@@ -45,6 +45,7 @@
 *blx.bib
 .bak 
 .mtc
+Literatur/*.pdf
 build/
 !Bilder/
 !Bilder/**/*.pdf
