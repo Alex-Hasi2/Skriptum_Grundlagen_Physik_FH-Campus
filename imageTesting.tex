@@ -38,44 +38,109 @@
 \begin{document}
 
 
-
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
 
-\begin{tikzpicture}[scale=1.0, >=Latex, font=\large]
+% Zur ersten kosmischen Geschwindigkeit: Ein schwarzer Kreis, der einen Planeten mit dem Radius $R$ darstellt. Ein Vektor $v_0$ zeigt von der Oberfläche des Planeten nach oben. Ein weiterer Vektor $\hat{r}$ zeigt vom Zentrum des Planeten nach oben. Die Entfernung von der Oberfläche bis zum Ende von $v_0$ ist mit $h = r - R$ beschriftet, wobei $r$ die Entfernung vom Zentrum des Planeten bis zum Ende von $v_0$ ist. Beide Vektoren haben Pfeilspitzen und sind entsprechend beschriftet.
 
-    \coordinate (O) at (0,0);
-    % Spitze von F1 (Startpunkt von F2)
-    \coordinate (P1) at (2.5, 3.5);
-    % Spitze von F2 (Startpunkt von F3) - F2 verläuft horizontal
-    \coordinate (P2) at (8, 3.5);
-    % Spitze von F3 (Endpunkt) - F3 verläuft vertikal nach unten
-    \coordinate (P3) at (8, -2);
+\begin{tikzpicture}[
+    >=Latex, font=\large,
+    dimline/.style={|-|, thick}
+    ]
 
-    % --- 2. Die schwarzen Einzelvektoren ---
+    % --- Definitionen ---
+    \def\R{2.5}      % Radius des Planeten
+    \def\rDist{6.0}  % Gesamtabstand r (vom Zentrum bis oben)
+    \def\Angle{-20}  % Winkel für den Radius R
+
+    % --- 1. Kugel (Planet) ---
+    \draw[thick] (0,0) circle (\R);
+    \node[below=5pt] at (0,0) {M};
+
+    % Radius R einzeichnen
+    \draw[thick] (0,0) -- (\Angle:\R) node[midway, below] {R};
+
+    % --- 2. Vertikale Achse ---
+    % Dünne Hilfslinie vom Zentrum nach oben
+    \draw[thin] (0,0) -- (0, \rDist);
+
+    % --- 3. Vektoren (Rot) ---
     
-    % Vektor F1
-    \draw[->, thick] (O) -- (P1) node[midway, above left] {$\vec{F}_1$};
-    
-    % Vektor F2
-    \draw[->, thick] (P1) -- (P2) node[midway, above] {$\vec{F}_2$};
-    
-    % Vektor F3
-    \draw[->, thick] (P2) -- (P3) node[midway, left=1pt] {$\vec{F}_3$};
+    % Einheitsvektor r_hat (vom Zentrum aus)
+    \draw[->, red, line width=1.5pt] (0,0) -- (0, 1.2) 
+        node[midway, right, text=black] {$\hat{r}$};
 
-    % --- 3. Die roten Summenvektoren ---
-    % Summe F1 + F2
-    \draw[->, red, thick] (O) -- (P2) node[midway, below right, text=black] {$\vec{F}_1 + \vec{F}_2$};
-    % Gesamtsumme F4 (Resultierende)
-    \draw[->, red, thick] (O) -- (P3) 
-        node[midway, sloped, below, text=black, yshift=-2pt] {$\vec{F}_4 = \sum\limits_{i=1}^{3}\vec{F}_i = \vec{F}_1 + \vec{F}_2 + \vec{F}_3$};
+    % Geschwindigkeitsvektor v0 (ab der Oberfläche)
+    \draw[->, red, line width=1.5pt] (0, \R) -- (0, \R + 1.8) 
+        node[midway, left, text=black] {$v_0$};
 
-    % --- 4. Ursprungspunkt und Beschriftung "0" ---
-    \fill (O) circle (2pt);
-    \node[left=3pt] at (O) {0};
+    % --- 4. Bemaßung (Die "Klammern" als Pfeile) ---
+    
+    % Maßlinie für r (links)
+    % Vom Zentrum (0,0) bis zur Spitze (\rDist)
+    % Wir schieben sie etwas nach links (x = -0.8)
+    \draw[dimline] (-0.8, 0) -- (-0.8, \rDist) 
+        node[midway, fill=white] {$r$};
+
+    % Hilfslinie gestrichelt von der Spitze zur Maßlinie r
+    \draw[dashed, gray] (0, \rDist) -- (-0.8, \rDist);
+    % Hilfslinie gestrichelt vom Zentrum zur Maßlinie r
+    \draw[dashed, gray] (0, 0) -- (-0.8, 0);
+
+
+    % Maßlinie für h = r - R (rechts)
+    % Von der Oberfläche (\R) bis zur Spitze (\rDist)
+    % Wir schieben sie etwas nach rechts (x = 0.8), damit sie v0 nicht stört
+    \draw[dimline] (0.8, \R) -- (0.8, \rDist) 
+        node[midway, right, xshift=5pt] {$h = r - R$};
+
+    % Hilfslinie gestrichelt von der Oberfläche zur Maßlinie h
+    \draw[dashed, gray] (0, \R) -- (0.8, \R);
+    % Hilfslinie gestrichelt von der Spitze zur Maßlinie h
+    \draw[dashed, gray] (0, \rDist) -- (0.8, \rDist);
 
 \end{tikzpicture}
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Drei Kräfte $\protect\ivecS{F}{1}$, $\protect\ivecS{F}{2}$ und $\protect\ivecS{F}{3}$ wirken auf einen Körper. Die Vektoren sind so angeordnet, dass $\protect\ivecS{F}{1}$ von links unten nach rechts oben zeigt, $\protect\ivecS{F}{2}$ horizontal von links nach rechts verläuft und $\protect\ivecS{F}{3}$ vertikal von oben nach unten zeigt. Die Summe der drei Kräfte ergibt die resultierende Kraft $\protect\ivecS{F}{4}$. Alle Vektoren sind mit Pfeilspitzen versehen und entsprechend beschriftet. Der Ursprungspunkt ist mit "0" markiert.
+
+% \begin{tikzpicture}[scale=1.0, >=Latex, font=\large]
+
+%     \coordinate (O) at (0,0);
+%     % Spitze von F1 (Startpunkt von F2)
+%     \coordinate (P1) at (2.5, 3.5);
+%     % Spitze von F2 (Startpunkt von F3) - F2 verläuft horizontal
+%     \coordinate (P2) at (8, 3.5);
+%     % Spitze von F3 (Endpunkt) - F3 verläuft vertikal nach unten
+%     \coordinate (P3) at (8, -2);
+
+%     % --- 2. Die schwarzen Einzelvektoren ---
+    
+%     % Vektor F1
+%     \draw[->, thick] (O) -- (P1) node[midway, above left] {$\vec{F}_1$};
+    
+%     % Vektor F2
+%     \draw[->, thick] (P1) -- (P2) node[midway, above] {$\vec{F}_2$};
+    
+%     % Vektor F3
+%     \draw[->, thick] (P2) -- (P3) node[midway, left=1pt] {$\vec{F}_3$};
+
+%     % --- 3. Die roten Summenvektoren ---
+%     % Summe F1 + F2
+%     \draw[->, red, thick] (O) -- (P2) node[midway, below right, text=black] {$\vec{F}_1 + \vec{F}_2$};
+%     % Gesamtsumme F4 (Resultierende)
+%     \draw[->, red, thick] (O) -- (P3) 
+%         node[midway, sloped, below, text=black, yshift=-2pt] {$\vec{F}_4 = \sum\limits_{i=1}^{3}\vec{F}_i = \vec{F}_1 + \vec{F}_2 + \vec{F}_3$};
+
+%     % --- 4. Ursprungspunkt und Beschriftung "0" ---
+%     \fill (O) circle (2pt);
+%     \node[left=3pt] at (O) {0};
+
+% \end{tikzpicture}
 
 
 %%%   -----------------------------------------------------------

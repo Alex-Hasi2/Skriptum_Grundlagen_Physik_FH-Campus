@@ -64,7 +64,7 @@ Das zweite Gesetz beschreibt die Geschwindigkeit eines Planeten auf seiner Umlau
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweites_keplersches_gesetz.png} 
-    \caption{Veranschaulichung des zweiten Keplerschen Gesetzes. In gleichen Zeitintervallen $\Delta t$ überstreicht der Fahrstrahl $\protect\ivec{r}(t)$ gleiche Flächen ($A_1 = A_2$).}\label{fig: kepler2_flaechensatz}
+    \caption{Veranschaulichung des zweiten Keplerschen Gesetzes. In gleichen Zeitintervallen $\Delta t$ überstreicht der Fahrstrahl $\protect\ivec{r}(t)$ gleiche Flächen ($A_1 = A_2$). (Quelle:~\cite[S.~63]{Demtroeder2018})}\label{fig: kepler2_flaechensatz}
 \end{figure}
 \begin{rememberbox}[]{2. Keplersches Gesetz (Flächensatz)}
 Der Fahrstrahl (der Verbindungsvektor von der Sonne zum Planeten) überstreicht in gleichen Zeiten gleiche Flächen. 
@@ -259,7 +259,64 @@ Mit dem Gravitationsgesetz können wir berechnen, welche Geschwindigkeit ein Obj
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.3\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweite_kosmische_geschwindigkeit.png} 
+    % \includegraphics[width=0.3\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweite_kosmische_geschwindigkeit.png} 
+    \begin{tikzpicture}[scale=0.8,
+        >=Latex, font=\large,
+        dimline/.style={|-|, thick}
+        ]
+
+        % --- Definitionen ---
+        \def\R{2.5}      % Radius des Planeten
+        \def\rDist{6.0}  % Gesamtabstand r (vom Zentrum bis oben)
+        \def\Angle{-20}  % Winkel für den Radius R
+
+        % --- 1. Kugel (Planet) ---
+        \draw[thick] (0,0) circle (\R);
+        \node[below=5pt] at (0,0) {M};
+
+        % Radius R einzeichnen
+        \draw[thick] (0,0) -- (\Angle:\R) node[midway, below] {R};
+
+        % --- 2. Vertikale Achse ---
+        % Dünne Hilfslinie vom Zentrum nach oben
+        \draw[thin] (0,0) -- (0, \rDist);
+
+        % --- 3. Vektoren (Rot) ---
+        
+        % Einheitsvektor r_hat (vom Zentrum aus)
+        \draw[->, red, line width=1.5pt] (0,0) -- (0, 1.2) 
+            node[midway, right, text=black] {$\hat{r}$};
+
+        % Geschwindigkeitsvektor v0 (ab der Oberfläche)
+        \draw[->, red, line width=1.5pt] (0, \R) -- (0, \R + 1.8) 
+            node[midway, left, text=black] {$v_0$};
+
+        % --- 4. Bemaßung (Die "Klammern" als Pfeile) ---
+        
+        % Maßlinie für r (links)
+        % Vom Zentrum (0,0) bis zur Spitze (\rDist)
+        % Wir schieben sie etwas nach links (x = -0.8)
+        \draw[dimline] (-0.8, 0) -- (-0.8, \rDist) 
+            node[midway, fill=white] {$r$};
+
+        % Hilfslinie gestrichelt von der Spitze zur Maßlinie r
+        \draw[dashed, gray] (0, \rDist) -- (-0.8, \rDist);
+        % Hilfslinie gestrichelt vom Zentrum zur Maßlinie r
+        \draw[dashed, gray] (0, 0) -- (-0.8, 0);
+
+
+        % Maßlinie für h = r - R (rechts)
+        % Von der Oberfläche (\R) bis zur Spitze (\rDist)
+        % Wir schieben sie etwas nach rechts (x = 0.8), damit sie v0 nicht stört
+        \draw[dimline] (0.8, \R) -- (0.8, \rDist) 
+            node[midway, right, xshift=5pt] {$h = r - R$};
+
+        % Hilfslinie gestrichelt von der Oberfläche zur Maßlinie h
+        \draw[dashed, gray] (0, \R) -- (0.8, \R);
+        % Hilfslinie gestrichelt von der Spitze zur Maßlinie h
+        \draw[dashed, gray] (0, \rDist) -- (0.8, \rDist);
+
+    \end{tikzpicture}
     \caption{Ein Objekt wird von der Oberfläche eines Himmelskörpers (Masse $M$, Radius $R$) mit der Anfangsgeschwindigkeit $\protect\ivecS{v}{0}$ senkrecht nach oben abgefeuert.}\label{fig: zweite_kosmische_geschwindigkeit}
 \end{figure}
 Im Gegensatz zur konstanten Erdbeschleunigung $g$ in Bodennähe ist die Gravitationsbeschleunigung allgemein ortsabhängig: $a(r) = -GM/r^2$. Wir betrachten ein Objekt der Masse $m$, das von der Erdoberfläche (Radius $R$) senkrecht nach oben geschossen wird. Da die Beschleunigung vom Ort $r$ und nicht von der Zeit $t$ abhängt, formen wir den Beschleunigungsterm um, wobei wir nur an den Beträgen der Größen interessiert sind und daher nicht vektoriell rechnen:
