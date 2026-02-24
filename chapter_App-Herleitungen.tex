@@ -50,8 +50,7 @@ In \cref{fig: bogenlaenge_sehnenlaenge} ist exemplarisch die Bogenlänge $\Delta
         \node[point, label={[label distance=2pt]below:B}] at (B) {};
     \end{tikzpicture}
     }
-    \caption{Die Bogenlänge $\Delta s$ (rote Linie) ist über den simplen Zusammenhang $\Delta s = R \cdot \Delta \varphi$ gegeben. Die Länge der Sehne $\overline{AB}$ (blau strichlierte Linie) berechnet sich jedoch aus $|\Delta \protect\ivec{r}| = |\protect\ivecS{r}{B}-\protect\ivecS{r}{A}|$.}     
-    \label{fig: bogenlaenge_sehnenlaenge}
+    \caption{Die Bogenlänge $\Delta s$ (rote Linie) ist über den simplen Zusammenhang $\Delta s = R \cdot \Delta \varphi$ gegeben. Die Länge der Sehne $\overline{AB}$ (blau strichlierte Linie) berechnet sich jedoch aus $|\Delta \protect\ivec{r}| = |\protect\ivecS{r}{B}-\protect\ivecS{r}{A}|$.}\label{fig: bogenlaenge_sehnenlaenge}
 \end{figure}
 
 Die Bogenlänge ergibt sich aus der bekannten Formel $\Delta s = R \Delta \varphi$. Die Sehnenlänge erhalten wir über den Betrag der Differenz der beiden Ortsvektoren 
@@ -97,7 +96,7 @@ Wir betrachten eine homogene dünne Scheibe mit dem Radius $R$ und der Masse $M$
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.3\linewidth]{Bilder/Kapitel_Herleitungen/DuenneScheibe_Traegheitsmoment.png}
-    \caption{Dünne Scheibe mit dem Radius $R$, Höhe $h \ll R$ und der Masse $M$, die sich um die $z$-Achse dreht, die senkrecht zur Scheibenebene durch deren Mittelpunkt (Schwerpunkt $S$) verläuft.}\label{fig: traegheitsmoment_duenne_scheibe}
+    \caption{Dünne Scheibe mit dem Radius $R$, Höhe $h \ll R$ und der Masse $M$, die sich um die $z$-Achse dreht, die senkrecht zur Scheibenebene durch deren Mittelpunkt (Schwerpunkt $S$) verläuft. (Quelle:~\cite[S.~137]{Demtroeder2018})}\label{fig: traegheitsmoment_duenne_scheibe}
 \end{figure}
 Das Trägheitsmoment $J_z$ der Scheibe bezüglich der $z$-Achse berechnet sich durch Integration, 
 \begin{align*}\label{eq: traegheitsmoment_Jz_duenneScheibe}
@@ -114,7 +113,7 @@ Zusammen mit der Masse der Scheibe $M = \rho \cdot V = \rho \cdot h \pi R^2$ fol
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.3\linewidth]{Bilder/Kapitel_Herleitungen/DuennwandHohlzylinder_Traegheitsmoment.png}
-    \caption{Dünnwandiger Hohlzylinder mit dem Radius $R$, Höhe $h$ und der Masse $M$, der sich um die $z$-Achse dreht, die senkrecht zur Zylinderachse durch deren Mittelpunkt (Schwerpunkt $S$) verläuft.}\label{fig: traegheitsmoment_duenn_hohlzylinder}
+    \caption{Dünnwandiger Hohlzylinder mit dem Radius $R$, Höhe $h$ und der Masse $M$, der sich um die $z$-Achse dreht, die senkrecht zur Zylinderachse durch deren Mittelpunkt (Schwerpunkt $S$) verläuft. (Quelle:~\cite[S.~135]{Demtroeder2018})}\label{fig: traegheitsmoment_duenn_hohlzylinder}
 \end{figure}
 Wir betrachten einen dünnwandigen Hohlzylinder mit dem Außenradius $R$, der Winddicke $d \ll R$, der Höhe $h$ und der Masse $M$, der sich um die $z$-Achse dreht, die senkrecht zur Zylinderachse durch dessen Mittelpunkt (Schwerpunkt) verläuft (siehe \cref{fig: traegheitsmoment_duenn_hohlzylinder}). Das Trägheitsmoment $J_z$ des Hohlzylinders bezüglich der $z$-Achse berechnet sich durch Integration,
 \begin{align}\label{eq: traegheitsmoment_Jz_duennHohlzylinder}
@@ -148,7 +147,7 @@ mit der Masse $M = \rho \cdot V = \rho \cdot h \pi R^2$.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.3\linewidth]{Bilder/Kapitel_Herleitungen/Vollkugel_Traegheitsmoment.png}
-    \caption{Vollkugel mit dem Radius $R$ und der Masse $M$, die sich um eine Achse durch ihren Mittelpunkt (Schwerpunkt $S$) dreht.}\label{fig: traegheitsmoment_vollkugel}
+    \caption{Vollkugel mit dem Radius $R$ und der Masse $M$, die sich um eine Achse durch ihren Mittelpunkt (Schwerpunkt $S$) dreht. (Quelle:~\cite[S.~137]{Demtroeder2018})}\label{fig: traegheitsmoment_vollkugel}
 \end{figure}
 Wir betrachten eine homogene Vollkugel mit dem Radius $R$ und der Masse $M$, die sich um eine Achse durch ihren Mittelpunkt (Schwerpunkt) dreht. Die Rotationsachse falle mit der $z$-Achse zusammen. Das Trägheitsmoment $J_z$ der Kugel bezüglich der $z$-Achse berechnet sich durch die Integration 
 \begin{equation}
@@ -402,8 +401,7 @@ Wir berechnen das Integral vom Ursprung $A = \ipTwo{0}{0}$ zum Punkt $E = \ipTwo
         \node[below] at (1,-0.1) {$1$};
         \node[left] at (-0.1,1) {$1$};
     \end{tikzpicture}
-    \caption{Visualisierung der zwei unterschiedlichen Integrationspfade $\gamma_1$ (blau) und $\gamma_2$ (rot) vom Ursprung $A$ zum Zielpunkt $E$.}
-    \label{fig: wegabhaengigkeit_tikz}
+    \caption{Visualisierung der zwei unterschiedlichen Integrationspfade $\gamma_1$ (blau) und $\gamma_2$ (rot) vom Ursprung $A$ zum Zielpunkt $E$.}\label{fig: wegabhaengigkeit_tikz}
 \end{figure}
 
 \begin{enumerate}

@@ -277,7 +277,7 @@ Ein System von Massenpunkten (oder Teilchen), das von der Umgebung isoliert ist 
 
 Der Gesamtimpuls $\ivec{P}$ eines Systems aus $N$ Teilchen ist durch die Vektorsumme der Einzelimpulse gegeben
 \begin{equation}
-    \ivec{P} = \ivecS{p}{1} + \ivecS{p}{2} + \dots + \ivecS{p}{N} = \sum_i \ivecS{p}{i} \mDot
+    \ivec{P} = \ivecS{p}{1} + \ivecS{p}{2} + \cdots + \ivecS{p}{N} = \sum_i \ivecS{p}{i} \mDot
 \end{equation}
 Eine äußere Kraft $\ivecS{F}{\mathrm{ext}}$ würde den Gesamtimpuls via $\dd \ivec{P}/\dd t = \ivecS{F}{\mathrm{ext}}$ ändern. Für ein abgeschlossenes System bedeutet das aber
 \begin{equation}
@@ -371,7 +371,7 @@ wobei $\ivecS{e}{r}$ der Einheitsvektor in radialer Richtung ist. Für Kräfte, 
 
 \section{Klassische Kräfte}\label{sec: klassische_Kräfte}
 
-\subsection{Die Gewichtskraft} \label{subsec: gewichtskraft}
+\subsection{Die Gewichtskraft}\label{subsec: gewichtskraft}
 Die sogenannte \gDQ{schwere Masse} ist eine Eigenschaft eines Körpers, die dem Körper erlaubt, über die gravitative Wechselwirkung eine Anziehungskraft auf andere Körper auszuüben und selbst von anderen Körpern angezogen zu werden. Im Wesentlichen ist sie die Quelle der Gravitationskraft. Die schwere Masse ist nicht dasselbe wie die träge Masse, die beschreibt, wie stark sich ein Körper einer Beschleunigung widersetzt. Allerdings sind in der klassischen Physik und in der allgemeinen Relativitätstheorie die schwere und träge Masse äquivalent. 
 \begin{rememberbox}[]{Gewichtskraft}
     Infolge der Gravitation der Erde wirkt auf jeden Körper mit Masse $m$ die Gewichtskraft $\ivecS{F}{\text{G}}$:
@@ -450,7 +450,7 @@ Wird eine Masse mit einer Feder verbunden, so existiert eine Position, in der di
     \labelphantom{fig: feder_rueckstellkraft_b}
     \labelphantom{fig: feder_rueckstellkraft_c}
     \includegraphics[width=0.6\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/rückstellkraft_feder_abc.png}
-    \caption{Eine Masse, die an einer Feder befestigt ist. a) In der Ruhelage $x=x_0=0$. b) Auslenkung in die positive $x$-Richtung, $\Delta x > 0$. c) Kompression in die negative $x$-Richtung, $\Delta x < 0$. (Quelle:~\cite[S.~81]{Tipler2015})}\label{fig: feder_rueckstellkraft}
+    \caption{Eine Masse, die an einer Feder befestigt ist.\ (a) In der Ruhelage $x=x_0=0$.\ (b) Auslenkung in die positive $x$-Richtung, $\Delta x > 0$.\ (c) Kompression in die negative $x$-Richtung, $\Delta x < 0$. (Quelle:~\cite[S.~81]{Tipler2015})}\label{fig: feder_rueckstellkraft}
 \end{figure}
 
 Lenkt man die Masse aus der Ruhelage aus, so erzeugt die Feder eine \textbf{Rückstellkraft} $\ivecS{F}{x}$, die stets bestrebt ist, die Masse in die Ruhelage zurückzuführen.
@@ -611,7 +611,7 @@ Da die Hangabtriebskraft vom Neigungswinkel der schiefen Ebene abhängt, stellt 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/schiefe_ebene_haftreibung.png}
-    \caption{Ein Körper der Masse $m$ wird auf der schiefen Ebene von der Haftreibungskraft gehalten, sofern die maximale Haftreibungskraft nicht überschritten wird: $|\protect\ivecS{F}{\text{A}}| \leq |\protect\ivecS{F}{\text{R,h,max}}|$. (Abgeändert von:~\cite[S.~135]{Giancoli2010}}\label{fig: schiefe_ebene_haftreibung}
+    \caption{Ein Körper der Masse $m$ wird auf der schiefen Ebene von der Haftreibungskraft gehalten, sofern die maximale Haftreibungskraft nicht überschritten wird: $|\protect\ivecS{F}{\text{A}}| \leq |\protect\ivecS{F}{\text{R,h,max}}|$. (Abgeändert von:~\cite[S.~135]{Giancoli2010})}\label{fig: schiefe_ebene_haftreibung}
 \end{figure}
 \begin{rememberbox}[]{Maximaler Haftreibungswinkel}
 Der maximale Winkel $\alpha_{\text{R,h,max}}$, bei dem ein Körper gerade noch nicht zu rutschen beginnt, wird als Haftreibungswinkel bezeichnet. Er ergibt sich aus der Gleichheit der Kräfte:
@@ -764,13 +764,13 @@ Dabei haben wir das zweite Newtonsche Gesetz in der Form $\ivec{F} = \frac{\dd\i
 
 \begin{importantbox}{Definition: Drehmoment}
 Die zeitliche Änderung des Drehimpulses wird als \textbf{Drehmoment} $\ivec{D}$ bezeichnet. Es ist das Vektorprodukt aus dem Ortsvektor $\ivec{r}$ und der am Teilchen angreifenden Kraft $\ivec{F}$
-\begin{equation}\label{eq: drehmoment_def}
+\begin{equation}\label{eq: drehmoment_def_D_dL_dt}
 \ivec{D} := \frac{\dd\ivec{L}}{\dd t} = \ivec{r} \times \ivec{F} \mDot
 \end{equation}
 Sowohl der Drehimpuls als auch das Drehmoment sind immer in Bezug auf einen festen Punkt (hier den Ursprung) definiert.
 \end{importantbox}
 
-Aus \cref{eq: drehmoment_def} folgt direkt der \textbf{Drehimpulserhaltungssatz}: Wenn das gesamte äußere Drehmoment auf ein System verschwindet ($\ivec{D} = \ivec{0}$), dann bleibt der Drehimpuls $\ivec{L}$ zeitlich konstant.
+Aus \cref{eq: drehmoment_def_D_dL_dt} folgt direkt der \textbf{Drehimpulserhaltungssatz}: Wenn das gesamte äußere Drehmoment auf ein System verschwindet ($\ivec{D} = \ivec{0}$), dann bleibt der Drehimpuls $\ivec{L}$ zeitlich konstant.
 
 Es besteht eine fundamentale Analogie zwischen der Translations- und der Rotationsbewegung:
 $$ \ivec{F} = \frac{\dd\ivec{p}}{\dd t} \quad \longleftrightarrow \quad \ivec{D} = \frac{\dd\ivec{L}}{\dd t} $$

@@ -150,7 +150,7 @@ Die \textbf{Winkelgeschwindigkeit} $\ivec{\omega}$ ist ein Vektor, dessen Richtu
     \begin{equation}\label{eq: winkelgeschwindigkeit}
         \omega = \frac{\mathrm{d}\varphi}{\mathrm{d}t} \mDot
     \end{equation}
-    Die Einheit ist \si{\radian\per\second} (bzw. \si{\per\second}).
+    Die Einheit ist \si{\radian\per\second} (\bzw \si{\per\second}).
 \end{rememberbox}
 
 Ändert sich die Winkelgeschwindigkeit zeitlich, sprechen wir von einer \textbf{Winkelbeschleunigung} $\alpha$:
@@ -164,7 +164,7 @@ So wie eine Kraft notwendig ist, um den Bewegungszustand (Translation) eines Kö
 
 \begin{importantbox}{Drehmoment}
     Das Drehmoment $\ivec{M}$ resultiert aus einer Kraft $\ivec{F}$, die an einem Punkt mit dem Ortsvektor $\ivec{r}$ (vom Drehzentrum aus) angreift. Es ist definiert als das Kreuzprodukt:
-    \begin{equation}\label{eq: drehmoment_def}
+    \begin{equation}\label{eq: drehmoment_def_M_r_cross_F}
         \ivec{M} = \ivec{r} \times \ivec{F} \mDot
     \end{equation}
     Der Betrag ist maximal, wenn die Kraft senkrecht zum Hebelarm steht.
@@ -342,10 +342,10 @@ Diese Energie wird aufgeteilt in die beiden kinetischen Energieanteile
     E_{\kin} = E_{\trans} + E_{\rot} = \frac{1}{2} M v^2 + \frac{1}{2} J_S \,\omega^2 \mComma
 \end{equation}
 wobei $J_S$ das Trägheitsmoment bezüglich der Drehachse durch den Schwerpunkt ist -- hier hilft uns der \textit{Steiner'sche Satz}. Da der Körper ohne Gleiten rollt, besteht die Beziehung $v = r \cdot \omega$ zwischen der Bahngeschwindigkeit $v$ des Schwerpunkts und der Winkelgeschwindigkeit $\omega$. Damit lässt sich \cref{eq: kinetische_Energie_aufteilung_rollen} umschreiben zu
-\begin{equation}\label{eq: kinetische_Energie_aufteilung_rollen}
+\begin{equation}\label{eq: kinetische_Energie_aufteilung_rollbew}
     E_{\kin} = \frac{1}{2} M v^2 + \frac{1}{2} J_S \left(\frac{v}{r}\right)^2 = \frac{1}{2} M v^2 \left( 1 + \frac{J_S}{M r^2} \right) \mDot
 \end{equation}
-Der dimensionslose Term $b = \frac{J_S}{M r^2}$ ($b \in [0,1]$) gibt an, welcher Anteil der kinetischen Energie in die Rotationsenergie fließt.\footnote{Für eine Punktmasse wäre $J_S = 0$ und somit $b=0$. Eine Punktmasse hat nur translatorische kinetische Energie.} Setzen wir nun die freigesetzte potentielle Energie aus \cref{eq: potentielle_Energie_schiefeEbene_rollen} gleich der kinetischen Energie aus \cref{eq: kinetische_Energie_aufteilung_rollen}, so erhalten wir
+Der dimensionslose Term $b = \frac{J_S}{M r^2}$ ($b \in [0,1]$) gibt an, welcher Anteil der kinetischen Energie in die Rotationsenergie fließt.\footnote{Für eine Punktmasse wäre $J_S = 0$ und somit $b=0$. Eine Punktmasse hat nur translatorische kinetische Energie.} Setzen wir nun die freigesetzte potentielle Energie aus \cref{eq: potentielle_Energie_schiefeEbene_rollen} gleich der kinetischen Energie aus \cref{eq: kinetische_Energie_aufteilung_rollbew}, so erhalten wir
 \begin{equation}\begin{aligned}\label{eq: energieerhaltung_rollen_schiefe_ebene}
     M g s \sin(\alpha) &= \frac{1}{2} M v^2 \left( 1 + b \right) \\
     v^2 &= \frac{2 g s \sin(\alpha)}{1 + b} \\
@@ -359,7 +359,7 @@ Die zugehörige Beschleunigung $a$ bekommt man am einfachsten über das Ableiten
 Die Beschleunigung $a$ ist also um den Faktor $\beta = \frac{1}{1+b} < 1$ kleiner als die Beschleunigung eines gleitenden Körpers auf der schiefen Ebene ($a = g \sin(\alpha)$, siehe \cref{eq: beschleunigung_reibungsfreies_gleiten}). Je größer also der Anteil $b$ der Rotationsenergie ist, desto geringer ist die Beschleunigung des rollenden Körpers. Die Geschwindigkeit ist um einen Faktor $\sqrt{\beta} = \sqrt{\frac{1}{1+b}}$ kleiner als die Geschwindigkeit eines gleitenden Körpers nach der Strecke $s$.
 
 \subsubsection{Trägheitszahl $b$ einiger Standardkörper}\label{subsubsec: traegheit_b_standardkoerper}
-Die vorhergehenden Ergebnisse für $E_{\kin}$ [\cref{eq: kinetische_Energie_aufteilung_rollen}], die Beschleunigung $a$ [\cref{eq: beschleunigung_rollen_schiefe_ebene_1}] und die Geschwindigkeit $v$ [\cref{eq: energieerhaltung_rollen_schiefe_ebene}] gelten ganz allgemein für starre Körper mit Radius $r$ und Masse $M$, die ohne Gleiten auf einer schiefen Ebene rollen -- beispielsweise für Vollzylinder, Hohlzylinder, Vollkugeln und Hohlkugeln. Der einzige Unterschied zwischen den verschiedenen Körpern liegt in der Trägheitszahl $b = \frac{J_S}{M r^2}$, die vom Trägheitsmoment $J_S$ bezüglich der Drehachse durch den Schwerpunkt abhängt. Je größer das Trägheitsmoment eines Körpers ist, desto langsamer rollt er die schiefe Ebene hinunter, weil anteilig mehr Energie in die Rotation fließt. In \cref{tab: traegheitsfaktor_standardkoerper} sind die Trägheitsmomente und die zugehörigen Trägheitszahlen und Trägheitsfaktoren einiger Standardkörper zusammengefasst.
+Die vorhergehenden Ergebnisse für $E_{\kin}$ [\cref{eq: kinetische_Energie_aufteilung_rollbew}], die Beschleunigung $a$ [\cref{eq: beschleunigung_rollen_schiefe_ebene_1}] und die Geschwindigkeit $v$ [\cref{eq: energieerhaltung_rollen_schiefe_ebene}] gelten ganz allgemein für starre Körper mit Radius $r$ und Masse $M$, die ohne Gleiten auf einer schiefen Ebene rollen -- beispielsweise für Vollzylinder, Hohlzylinder, Vollkugeln und Hohlkugeln. Der einzige Unterschied zwischen den verschiedenen Körpern liegt in der Trägheitszahl $b = \frac{J_S}{M r^2}$, die vom Trägheitsmoment $J_S$ bezüglich der Drehachse durch den Schwerpunkt abhängt. Je größer das Trägheitsmoment eines Körpers ist, desto langsamer rollt er die schiefe Ebene hinunter, weil anteilig mehr Energie in die Rotation fließt. In \cref{tab: traegheitsfaktor_standardkoerper} sind die Trägheitsmomente und die zugehörigen Trägheitszahlen und Trägheitsfaktoren einiger Standardkörper zusammengefasst.
 
 Der Hohlzylinder hat das größte Trägheitsmoment, weil die gesamte Masse in einem dünnen Ring am weitesten von der Drehachse entfernt ist. Damit hat er auch die maximale Trägheitszahl $b=1$ und rollt am langsamsten die schiefe Ebene hinunter. Die Hohlkugel hat das nächstkleinere Trägheitsmoment und die Trägheitszahl $b=\frac{2}{3} \approx 0.66 $. Danach kommt der Vollzylinder mit  $b=\frac{1}{2}= 0.5$ und schließlich die Vollkugel mit dem kleinsten Trägheitsmoment und einer Trägheitszahl von $b=\frac{2}{5}= 0.4$, die somit am schnellsten die schiefe Ebene hinunterrollt.
 \begin{table}[htb]
@@ -399,8 +399,7 @@ Die mathematische Struktur der Formeln für Translation und Rotation ist identis
         Grundgleichung & $\ivec{F} = m\ivec{a}$ & $\ivec{M} = J\ivec{\alpha}$ & Grundgleichung \\
         \bottomrule
     \end{tabularx}
-    \caption{Gegenüberstellung der physikalischen Größen von Translation und Rotation.}
-    \label{tab: analogie_translation_rotation}
+    \caption{Gegenüberstellung der physikalischen Größen von Translation und Rotation.}\label{tab: analogie_translation_rotation}
 \end{table}
 
 \section{Drehimpuls und Erhaltungssatz}\label{sec: drehimpuls}
