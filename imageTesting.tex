@@ -39,6 +39,668 @@
 
 
 
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+\begin{tikzpicture}[scale=1.0, >=Latex, font=\large]
+
+    \coordinate (O) at (0,0);
+    % Spitze von F1 (Startpunkt von F2)
+    \coordinate (P1) at (2.5, 3.5);
+    % Spitze von F2 (Startpunkt von F3) - F2 verläuft horizontal
+    \coordinate (P2) at (8, 3.5);
+    % Spitze von F3 (Endpunkt) - F3 verläuft vertikal nach unten
+    \coordinate (P3) at (8, -2);
+
+    % --- 2. Die schwarzen Einzelvektoren ---
+    
+    % Vektor F1
+    \draw[->, thick] (O) -- (P1) node[midway, above left] {$\vec{F}_1$};
+    
+    % Vektor F2
+    \draw[->, thick] (P1) -- (P2) node[midway, above] {$\vec{F}_2$};
+    
+    % Vektor F3
+    \draw[->, thick] (P2) -- (P3) node[midway, left=1pt] {$\vec{F}_3$};
+
+    % --- 3. Die roten Summenvektoren ---
+    % Summe F1 + F2
+    \draw[->, red, thick] (O) -- (P2) node[midway, below right, text=black] {$\vec{F}_1 + \vec{F}_2$};
+    % Gesamtsumme F4 (Resultierende)
+    \draw[->, red, thick] (O) -- (P3) 
+        node[midway, sloped, below, text=black, yshift=-2pt] {$\vec{F}_4 = \sum\limits_{i=1}^{3}\vec{F}_i = \vec{F}_1 + \vec{F}_2 + \vec{F}_3$};
+
+    % --- 4. Ursprungspunkt und Beschriftung "0" ---
+    \fill (O) circle (2pt);
+    \node[left=3pt] at (O) {0};
+
+\end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Zwei Kugeln mit Massen m_1 und m_2, die sich im Abstand r zueinander befinden. Auf die Kugeln wirken jeweils die Gravitationskräfte F_1 und F_2, die gleich groß und entgegengesetzt gerichtet sind. Unter den Kugeln steht die Formel für die Gravitationskraft: |\vec{F}| = G\, \frac{m_1 m_2}{r^2}.
+
+
+% \begin{tikzpicture}
+%     % Definition der Farben
+%     \definecolor{softpink}{RGB}{255, 210, 240}
+%     \definecolor{goldblue}{RGB}{255, 215, 60}
+%     \definecolor{darkblue}{RGB}{20, 50, 120}
+%     \def\sizeMI{1.4} % Größe der kleineren Kugel
+%     \def\sizeMII{1.8} % Größe der größeren Kugel
+%     \def\offset{0.5} % vertikaler Versatz für die r-Beschriftung
+%     \def\lenVec{3.3}; % Länge der Kraftvektoren
+%     % Koordinaten der Mittelpunkte
+%     \coordinate (M1) at (0,0);
+%     \coordinate (M2) at (8,0);
+
+%     % --- Kugel 1 (links, kleiner) ---
+%     \shade[ball color=goldblue] (M1) circle (\sizeMI cm);
+%     \draw[line width=1.6pt] (M1) circle (\sizeMI cm);
+%     \node at (0, -2.3) {\Large $m_1$};
+
+%     % --- Kugel 2 (rechts, größer) ---
+%     \shade[ball color=goldblue] (M2) circle (\sizeMII cm);
+%     \draw[line width=1.6pt] (M2) circle (\sizeMII cm);
+%     \node at (8, -2.3) {\Large $m_2$};
+
+%     % --- Kraftvektoren (Dark Blue) ---
+%     % F1 (nach rechts)
+%     \draw[-{Latex[length=5mm, width=3mm]}, darkblue, line width=3.4pt] 
+%         (M1) -- ++(\lenVec, 0) 
+%         node[pos=0.6, below=2pt, black] {\LARGE $\vec{F}_1$};
+%     \draw[-{Latex[length=5mm, width=3mm]}, darkblue, line width=3.4pt] 
+%         (M2) -- ++(-\lenVec, 0) 
+%         node[pos=0.65, below=2pt, black] {\LARGE $\vec{F}_2$};
+
+%     % --- Abstandsmaß r ---
+%     \draw[gray, line width=0.5pt] (0, 2.75-\offset) -- (0, 3.25-\offset);
+%     \draw[gray, line width=0.5pt] (8, 2.75-\offset) -- (8, 3.25-\offset);
+%     % Der Doppelpfeil für r
+%     \draw[{Latex}-{Latex}, line width=1pt] (0, 3-\offset) -- (8, 3-\offset) 
+%         node[midway, fill=white] {\Huge $r$};
+
+%     % Gravitationskraft F_G Gleichung unten 
+%     \node at (4, -2.5) {\LARGE $|\vec{F}| = G\, \frac{m_1 m_2}{r^2}$};
+
+% \end{tikzpicture}
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Die Lorentz-Gamma Faktor \gamma = \frac{1}{\sqrt{1-\frac{v^2}{c^2}}} als Funktion der Geschwindigkeit v in Einheiten von c (also v/c) von 0 bis 0.99.
+
+% \begin{tikzpicture}[
+%     scale=1.2,
+%     >=Stealth
+% ]
+%     \def\c{1}; % Lichtgeschwindigkeit c = 1 
+%     \def\scaleV{8}; % Skalierungsfaktor für die v-Achse (v/c)
+%     \def\gammaMax{5}; % Maximalwert für \gamma auf der y-Achse
+
+%     % Koordinatensystem
+%     \draw[->, thick] (0, 0) -- (\scaleV*1.1, 0) node[midway, pos=0.45, below=22pt] {\LARGE $v$};
+%     \draw[->, thick] (0, 0) -- (0, \gammaMax) node[midway, left=16pt] {\LARGE $\gamma$};
+
+%     \draw [orange, line width=1.2pt, domain=0:0.975, samples=100] plot (\scaleV*\x, {1/sqrt(1-\x^2)});
+%     % Strichlierte horizontale Linie bei \gamma = 1
+%     \draw[dashed, gray] (0,1) -- (\scaleV,1);
+%     % Durchgezogene schwarze vertikale Linie bei v = c
+%     \draw[thick, gray] (\scaleV,0) -- (\scaleV,0.93*\gammaMax);
+
+%     % Major-Ticks bei v = 0, 0.25, 0.5, 0.75, 1
+%     \node[below=3pt] at (0,0) {\large $0$};
+%     \draw (\scaleV*0.25, 0.1) -- (\scaleV*0.25, -0.1) node[below] {\large $\frac{c}{4}$};
+%     \draw (\scaleV*0.5, 0.1) -- (\scaleV*0.5, -0.1) node[below] {\large $\frac{c}{2}$};
+%     \draw (\scaleV*0.75, 0.1) -- (\scaleV*0.75, -0.1) node[below] {\large $\frac{3c}{4}$};
+%     \draw (\scaleV*1, 0.1) -- (\scaleV*1, -0.1) node[below=3pt] {\large $c$};
+%     % Major-Ticks bei \gamma = 1, 2, 3, 4
+%     \draw (0.1, 1) -- (-0.1, 1) node[left] {\large $1$};
+%     \draw (0.1, 2) -- (-0.1, 2) node[left] {\large $2$};
+%     \draw (0.1, 3) -- (-0.1, 3) node[left] {\large $3$};
+%     \draw (0.1, 4) -- (-0.1, 4) node[left] {\large $4$};
+
+% \end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein (t,z)-Koordinatensystem mit Pfeilen. Der Ursprung ist mit 0 markiert. Die Gleichung der Wurfparabel z(x) = -(g/2)*x^2/v0x^2 + (v0z/v0x)*x + h wird als rote Parabel eingezeichnet und mit z(x) beschriftet. Es sind Major-Ticks bei der Wurfweite x_W, dem Scheitelpunkt x_S und bei z_0 auf den Achsen eingezeichnet. 
+% Am Startpunkt (0,z_0) ist die Geschwindigkeit v_0 =(v0x, v0z) eingezeichnet und mit strichlierten Linien in die Einzelkomponenten zerlegt (v0x und v0z)
+
+% \begin{tikzpicture}[
+%     scale=1.2,>=Stealth
+%     ]
+%     \def\g{8}; % Erdbeschleunigung
+%     \def\zZero{4}; % Anfangshöhe z_0
+%     \def\vZeroX{5}; % Anfangsgeschwindigkeit v0x
+%     \def\vZeroZ{4}; % Anfangsgeschwindigkeit v0z
+%     \def\tiklen{0.07}; % Länge der Ticks auf den Achsen
+%     \def\tiklenMin{0.034}; % Länge der Minor-Ticks auf den Achsen
+%     \def\xS{{(\vZeroX*\vZeroZ)/\g}}; % Scheitelpunkt x_S = (v0x*v0z)/g
+%     \def\xW{8.08}; % Wurfweite x_W = (x_S + sqrt(x_S^2 + 2*g*z0*v0x^2/g))/2
+
+%     % Koordinatensystem
+%     \draw[->, thick] (-0.5, 0) -- (\xW+0.5, 0) node[right] {\Large $x$};
+%     \draw[->, thick] (0, -0.5) -- (0, \zZero+1.1) node[above] {\Large $z$};
+%     % Ursprung markieren
+%     \node[below left] at (0,0) {$0$};
+
+%     % Parabel für freien Fall zeichnen
+%     \draw[red, line width=1.0pt, domain=0:\xW, samples=100] 
+%         plot (\x, {-(\g/(2*\vZeroX^2))*\x^2 + (\vZeroZ/\vZeroX)*\x + \zZero});
+%     \node[red] at (6,4) {\Large $z(x)$};
+
+%     % Major-Ticks bei x_W, x_S und z_0
+%     \draw (\xW,\tiklen) -- (\xW,-\tiklen) node[below] {\large $x_\mathrm{W}$};
+%     \draw (\xS,\tiklen) -- (\xS,-\tiklen) node[below] {\large $x_\mathrm{S}$};
+%     \draw[line width=1.6pt] (\tiklen,\zZero) -- (-\tiklen,\zZero) node[left] {\large $z_0 = h$};
+    
+%     % Strichlierte Linie bei \xS 
+%     \draw[dashed] (\xS, 0) -- (\xS, 5);
+
+%     % Geschwindigkeitsvektor v_0 am Startpunkt (0,z_0) einzeichnen
+%     \def\vScale{0.2}; % Skalierungsfaktor für die Geschwindigkeitspfeile
+%     \draw[->, line width=1.4pt, black] (0,\zZero) -- ++(\vZeroX*\vScale, \vZeroZ*\vScale) node[pos=0.33, above=3pt] {\large $\ivecS{v}{0}$};
+%     % Strichlierte Linien für die Komponenten v0x und v0z
+%     \draw[dashed, gray] (0,\zZero) -- ++(\vZeroX*\vScale, 0) node[pos=0.5, below] {\large $v_{0,x}$};
+%     \draw[dashed, gray] (\vZeroX*\vScale,\zZero) -- ++(0, \vZeroZ*\vScale) node[pos=0.5, right] {\large $v_{0,z}$};
+
+%     % Winkel alpha zwischen v_0 Vektor und der x-Achse einzeichnen
+%     \def\angle{38.6598}; % Winkel alpha berechnen
+%     \draw[->, line width=0.4pt, black] (0.7,\zZero) arc (0:\angle:0.7) node[midway, pos=0.4, left] {$\varphi$};
+% \end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein (t,z)-Koordinatensystem mit Pfeilen. Der Ursprung ist mit 0 markiert. Die Gleichung des Freien Falls z(t) = -(g/2)*t^2 + z_0 wird als rote Parabel eingezeichnet und mit z(t) beschriftet. Es sind Major-Ticks bei t_E und bei z_0 auf den Achsen eingezeichnet. Minor-Ticks dazwischen. 
+
+% \begin{tikzpicture}[
+%     scale=1.2,>=Stealth
+%     ]
+%     \def\g{0.2}; % Erdbeschleunigung
+%     \def\zZero{4}; % Anfangshöhe z_0
+%     \def\tEnd{6.32}; % Endzeit t_E = sqrt(2*z_0/g)
+%     \def\tiklen{0.07}; % Länge der Ticks auf den Achsen
+%     \def\tiklenMin{0.034}; % Länge der Minor-Ticks auf den Achsen
+
+%     % Koordinatensystem
+%     \draw[->, thick] (-0.5, 0) -- (\tEnd+0.5, 0) node[right] {\Large $t$};
+%     \draw[->, thick] (0, -0.5) -- (0, \zZero+0.5) node[above] {\Large $z$};
+%     % Ursprung markieren
+%     \node[below left] at (0,0) {$0$};
+
+%     % Parabel für freien Fall zeichnen
+%     \draw[red, line width=1.6pt, domain=0:\tEnd, samples=100] 
+%         plot (\x, {-(\g/2)*\x^2 + \zZero});
+%     \node[red] at (0.72*\tEnd, 0.7*\zZero) {\Large $z(t)$};
+
+%     % Major-Ticks bei t_E und z_0
+%     \draw (\tEnd,\tiklen) -- (\tEnd,-\tiklen) node[below] {\large $t_\mathrm{E}$};
+%     \draw (\tiklen,\zZero) -- (-\tiklen,\zZero) node[left] {\large $z_0 = h$};
+
+%     % Minor-Ticks dazwischen
+%     \foreach \x in {1,2,3,4,5,6} {
+%         \draw (\x,\tiklenMin) -- (\x,-\tiklenMin);
+%     }
+%     \foreach \z in {1,2,3} {
+%         \draw (\tiklenMin,\z) -- (-\tiklenMin,\z);
+%     }
+% \end{tikzpicture}
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Eine x-Achse mit einem Auto bei x = 2 und einem 50% transparenten Auto bei x = 8. Über den Autos steht die Beschriftung $x_\mathrm{A} = x(t_{\mathrm{A}})$ und $x_\mathrm{E} = x(t_{\mathrm{E}})$. Unter den Autos ist ein Vektor $\Delta x$ eingezeichnet, der von x=2 zu x=8 zeigt.
+
+% \begin{tikzpicture}[
+%     node distance = 0cm,
+%     auto,
+%     >=Stealth,
+%     axis/.style={->, thick},
+%     vector/.style={->, line width=2.4pt, blue},
+%     accel/.style={->, thick, red}
+%     ]
+%     % --- Koordinatensystem / Boden ---
+%     \draw[->, thick] (-0.4,0) -- (10.4,0);
+%     \foreach \x in {0,1,...,10}
+%         \draw (\x, 0) -- (\x, -0.15) node[below] {\small \x};
+%     \node at (10.7, 0) {\large $x$};
+
+%     % --- Positionen des Autos ---
+%     \node (car1) at (2, 0.4) {\includegraphics[width=1.5cm]{Bilder/Icons/car.png}};
+%     \node[opacity=0.4] (car2) at (8, 0.4) {\includegraphics[width=1.5cm]{Bilder/Icons/car.png}};
+
+%     % --- Beschriftung x_A und x_E --- 
+%     \node[above=-0.2cm of car1] {\large $x_\mathrm{A} = x(t_{\mathrm{A}})$};
+%     \node[above=-0.2cm of car2] {\large $x_\mathrm{E} = x(t_{\mathrm{E}})$};
+
+%     % --- Verschiebungsvektor \Delta x --- 
+%     \draw[vector] (2,-0.8) -- (8,-0.8) node[midway, below] {\large $\Delta x$};
+
+% \end{tikzpicture}
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein t,x Koordinatensystem mit Pfeilen. Eine Gerade geht vom Punkt P = (0,1) durch den Punkt Q = (4,1+4.5*k). Parameterform der Geraden: (t,x) = (0,1)+p*(4,3). k = 0.75. Ein Ortsvektor r_0 = r(0) zeigt vom Ursprung zu S = (1,2.75). S ist mit einem Punkt markiert. 
+
+% \begin{tikzpicture}[
+%     scale=1.2,
+%     >=Stealth,
+%     ortsvek/.style={-{Stealth[length=3.9mm,width=2.3mm]}, line width=2.pt, blue!80!black},
+%     geschwvek/.style={-{Stealth[length=3.9mm,width=2.3mm]}, line width=2.1pt, magenta!80!black}
+%     ]
+    
+%     \def\kSteig{0.75}; % Steigung der Geraden (3/4)
+%     \def\tmax{5}; % t-Achse Maximalwert
+%     \def\xmax{5}; % x-Achse Maximalwert
+%     \def\lenV{2.3}; % Länge des Geschwindigkeitsvektors
+%     \coordinate (O) at (0,0);
+%     \coordinate (P) at (-0.3, {1 - 0.3*\kSteig}); 
+%     \coordinate (Q) at (4.5, {1 + 4.5*\kSteig});
+%     \coordinate (S) at (1, 1 + 1*\kSteig);
+
+%     % Achsen
+%     \draw[->, thick] (-0.5, 0) -- (\xmax, 0) node[right] {\Large $t$};
+%     \draw[->, thick] (0, -0.5) -- (0, \tmax) node[above] {\Large $x$};
+%     % Ursprung
+%     \node[below left] at (O) {$0$};
+    
+%     % Gerade durch P und Q
+%     \draw[black, -, line width=1.6pt] (P) -- (Q);
+
+%     % Punkt S markieren
+%     \filldraw[black] (S) circle (2pt);
+
+%     % Dreieck (S), (S.x + 1, S.y), (S.x + 1, S.y + 1*\kSteig) zur Veranschaulichung der Steigung
+%     \draw[black, dashed, fill=red!20] (S) -- ++(\lenV, 0) -- ++(0, \lenV*\kSteig) -- cycle; 
+%     \node[black] at ($(S) + (1.15, -0.2)$) {\large $\Delta t$};
+%     \node[black] at ($(S) + (2.6, 1.15*\kSteig)$) {\large $\Delta x$};
+
+%     % Ortsvektor r_0 von O nach S
+%     \draw[ortsvek] (O) -- (S) node[midway,pos=0.4, right=1pt] {\large $\ivecS{r}{0} =\ivec{r}(t=0)$};
+%     % Geschwindigkeitsvektor v_0 an S in Richtung der Geraden
+%     \draw[geschwvek] (S) -- ++(\lenV, \lenV*\kSteig) node[midway, above=2pt, sloped] {\large $\ivecS{v}{0} = \ivec{v}(t=0)$};
+
+%     % Beschriftung \Delta x/\Delta t = v_0
+%     \node[black] at (1.2,4.2) {\Large $\frac{\Delta x}{\Delta t} = v_0$};
+% \end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein x,y Koordinatensystem mit Pfeilen und eine orange Bahnkurve mit 3 Punkten P1, P2 und P3 sowie strichlierten Linien von t1 zu P1, t2 zu P2, t3 zu P3 und x1 zu P1, x2 zu P2, x3 zu P3. Die Tangenten an die Punkte P1, P2 und P3 sind eingezeichnet mit blau strichlierten Linien. 
+
+% \begin{tikzpicture}[
+%         scale = 1.0,
+%         >=Stealth, 
+%         dot/.style={circle, fill=blue, inner sep=1.5pt},
+%         important line/.style={line width=1.6pt, orange},
+%         dashed line/.style={dashed, gray!90, thin},
+%         tangent line/.style={line width=1.5pt, blue!90!black, dotted},
+%         vecV/.style={-{Stealth[length=3.9mm,width=2.3mm]}, line width=1.6pt, blue!80!black}
+%     ]
+%     \tikzset{declare function={
+%         fx(\x) = 1.1 + 1.95*\x - 0.15*\x*\x; 
+%         fdx(\x) = 1.95 - 0.3*\x;
+%     }}
+%     \def\xmax{9.0}; % x-Achse Maximalwert
+%     \def\ymax{8.0}; % y-Achse Maximalwert
+%     \def\xIval{1.2}; % x-Koordinate von P1
+%     \def\xIIval{3.15}; % x-Koordinate von P2
+%     \def\xIIIval{7.2}; % x-Koordinate von P3
+%     \def\dxTan{0.7}; % Länge der Tangentenlinien
+
+%     \coordinate (P1) at (\xIval, {fx(\xIval)});
+%     \coordinate (P2) at (\xIIval, {fx(\xIIval)});
+%     \coordinate (P3) at (\xIIIval, {fx(\xIIIval)});
+
+%     % Projektionen (grau strichlierte Linien)
+%     \draw[dashed line] (P1) -- (\xIval, 0) node[below] {$t_1$};
+%     \draw[dashed line] (P1) -- (0, {fx(\xIval)}) node[left] {$x_1$};
+%     \draw[dashed line] (P2) -- (\xIIval, 0) node[below] {$t_2$};
+%     \draw[dashed line] (P2) -- (0, {fx(\xIIval)}) node[left] {$x_2$};
+%     \draw[dashed line] (P3) -- (\xIIIval, 0) node[below] {$t_3$};
+%     \draw[dashed line] (P3) -- (0, {fx(\xIIIval)}) node[left] {$x_3$};
+    
+%     % Koordinatensystem
+%     \draw[->, thick] (-0.5, 0) -- (\xmax, 0) node[right] {$t$};
+%     \draw[->, thick] (0, -0.5) -- (0, \ymax) node[above] {$x(t)$};
+
+%     % Bahnkurve (orange)
+%     \draw[orange, line width=1.6pt, domain=0.0:\xmax, samples=50] 
+%         plot (\x, {fx(\x)});
+
+%     % Punkte P1,P2,P3 auf der Kurve definieren
+%     \node[dot] at (P1) {};
+%     \node[below right, fill=white, rounded corners] at (P1) {$P_1 = (t_1, x_1)$};
+%     \node[dot] at (P2) {};
+%     \node[above left] at (P2) {$P_2 = (t_2, x_2)$};
+%     \node[dot] at (P3) {};
+%     \node[above right] at (P3) {$P_3 = (t_3, x_3)$};
+
+%     % Tangente an P1, P2 und P3 (blau gestrichelt)
+%     % f = -0.4*(x+1)*(x-6)-1 = -0.4*x^2 + 2x + 1.4 // 
+%     %P1 = (1, 2.3), P2 = (2.3, 3.17), P3 = (6.4, 3.7)
+%     % f' = -0.8*x + 2 // 
+%     % f'(0.5) = 1.6, f'(1.15) = 1.08, f'(3.2) = -0.56
+%     \draw[tangent line] (P1)++(-\dxTan, {-\dxTan*fdx(\xIval)}) -- ++(+2*\dxTan, {+2*\dxTan*fdx(\xIval)}); 
+%     \draw[tangent line] (P2)++(-\dxTan, {-\dxTan*fdx(\xIIval)}) -- ++(+2*\dxTan, {+2*\dxTan*fdx(\xIIval)}); 
+%     \draw[tangent line] (P3)++(-\dxTan, {-\dxTan*fdx(\xIIIval)}) -- ++(+2*\dxTan, {+2*\dxTan*fdx(\xIIIval)}); 
+
+%     % Vektorpfeil für Geschwindigkeit an P1, P2 und P3
+%     \draw[vecV] (P1) -- ++(0.8, {0.8*fdx(\xIval)}) node[below, pos=0.4, right=3pt] {\large $\protect\ivec{v}_1$};
+%     \draw[vecV] (P2) -- ++(0.8, {0.8*fdx(\xIIval)}) node[below, pos=0.2, right=5pt] {\large $\protect\ivec{v}_2$};
+%     \draw[vecV] (P3) -- ++(0.8, {0.8*fdx(\xIIIval)}) node[below=2pt, pos=0.45] {\large $\protect\ivec{v}_3$};
+
+%     \end{tikzpicture}
+
+
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein x,y Koordinatensystem mit Pfeilen und eine orange Bahnkurve mit 3 Punkten P1, P2 und P3 sowie strichlierten Linien von t1 zu P1, t2 zu P2, t3 zu P3 und x1 zu P1, x2 zu P2, x3 zu P3. Es sind \Delta x = x_3 - x_1 und \Delta t = t_3 - t_1 eingezeichnet. Ein Dreieck zwischen P1, P3 und der Projektion von P3 auf die Höhe von P1 ist blau gefüllt.
+
+% \begin{tikzpicture}[
+%         scale = 1.0,
+%         >=Stealth, 
+%         dot/.style={circle, fill=blue, inner sep=1.8pt},
+%         important line/.style={line width=1.6pt, orange},
+%         dashed line/.style={dashed, gray!90, thin},
+%         secant line/.style={line width=1.5pt, blue!90!black},
+%         tangent line/.style={line width=1.5pt, blue!90!black, dotted},
+%         vecV/.style={-{Stealth[length=3.9mm,width=2.3mm]}, line width=1.6pt, blue!80!black}
+%     ]
+%     \tikzset{declare function={
+%         fx(\x) = 1.1 + 1.95*\x - 0.15*\x*\x; 
+%         fdx(\x) = 1.95 - 0.3*\x;
+%     }}
+%     \def\xmax{9.0}; % x-Achse Maximalwert
+%     \def\ymax{8.0}; % y-Achse Maximalwert
+%     \def\xIval{1.2}; % x-Koordinate von P1
+%     \def\xIIval{3.15}; % x-Koordinate von P2
+%     \def\xIIIval{7.2}; % x-Koordinate von P3
+%     \def\dxTan{0.7}; % Länge der Tangentenlinien
+
+%     \coordinate (P1) at (\xIval, {fx(\xIval)});
+%     \coordinate (P2) at (\xIIval, {fx(\xIIval)});
+%     \coordinate (P3) at (\xIIIval, {fx(\xIIIval)});
+
+%     % Projektionen (grau strichlierte Linien)
+%     \draw[dashed line] (P1) -- (\xIval, 0) node[below] {$t_1$};
+%     \draw[dashed line] (P1) -- (0, {fx(\xIval)}) node[left] {$x_1$};
+%     \draw[dashed line] (P2) -- (\xIIval, 0) node[below] {$t_2$};
+%     \draw[dashed line] (P2) -- (0, {fx(\xIIval)}) node[left] {$x_2$};
+%     \draw[dashed line] (P3) -- (\xIIIval, 0) node[below] {$t_3$};
+%     \draw[dashed line] (P3) -- (0, {fx(\xIIIval)}) node[left] {$x_3$};
+    
+%     % Koordinatensystem
+%     \draw[->, thick] (-0.5, 0) -- (\xmax, 0) node[right] {$t$};
+%     \draw[->, thick] (0, -0.5) -- (0, \ymax) node[above] {$x(t)$};
+
+%     % Bahnkurve (orange)
+%     \draw[orange, line width=1.6pt, domain=0.0:\xmax, samples=50] 
+%         plot (\x, {fx(\x)});
+
+%     % Punkte P1,P2,P3 auf der Kurve definieren
+%     \node[dot] at (P1) {};
+%     \node[below right=3pt, fill=white, rounded corners] at (P1) {$P_1 = (t_1, x_1)$};
+%     \node[dot] at (P2) {};
+%     \node[above left] at (P2) {$P_2 = (t_2, x_2)$};
+%     \node[dot] at (P3) {};
+%     \node[above right] at (P3) {$P_3 = (t_3, x_3)$};
+
+%     % Sekante von P1 nach P2, P2 nach P3 und P1 nach P3
+%     \draw[secant line] (P1) -- (P2);
+%     \draw[secant line] (P2) -- (P3);
+%     \draw[secant line] (P1) -- (P3);
+
+%     % Gefülltes Dreieck P1, P3, (P3.t, P1.x)
+%     \filldraw[blue, opacity=0.2] (P1) -- (P3) -- (P3 |- P1) -- cycle;
+
+%     % Einzeichnen von Delta t
+%     \draw[<->, line width=1.1pt, black] (\xIval, {fx(\xIval)}) -- (\xIIIval, {fx(\xIval)}) node[right, pos=0.6, above] {$\Delta t = t_3 - t_1$};
+    
+%     % Einzeichnen von Delta x
+%     \draw[<->, line width=1.1pt, black] (\xIIIval, {fx(\xIval)}) -- (\xIIIval, {fx(\xIIIval)}) node[midway, right=2pt] {$\Delta x = x_3 - x_1$};
+
+%     \end{tikzpicture}
+
+
+
+
+
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein x,y Koordinatensystem mit Pfeilen und eine rote Gerade (Bahnkurve) mit einem Punkt P(t=5) sowie einem Punkt P(t=0). Die Gerade hat die Parameterform (x,y) = (0,8) + t*(4,2) Ein Ortsvektor r(t=5) zeigt vom Ursprung zu P(t=5). Es sind Major-Ticks bei ... auf beiden Achsen eingezeichnet.
+
+% \begin{tikzpicture}[scale=1.2,
+%     axis/.style={-{Stealth[length=4mm,width=2.4mm]}, thick},
+%     vecRed/.style={-{Stealth[length=3.9mm,width=2.1mm]}, line width=1.4pt, blue}
+%     ];
+    
+%     % Parameter für Radius und Winkel definieren
+%     \def\tiklen{0.07}; % Länge der Ticks auf den Achsen
+%         % Definition der Koordinaten
+%     \def\axlen{3.8}; % Länge der Achsen
+%     \coordinate (O) at (0,0);
+%     \coordinate (Q) at (0, 0.8);
+%     \coordinate (P) at (2, 1.8);
+
+%     % Bewegung entlang der Kreisbahn (rot)
+%     \draw[red, line width=1.6pt, domain=-3:8, samples=100] 
+%         plot ({0 + \x*0.4}, {0.8 + \x*0.2});
+%     % Koordinatenachsen durch den Ursprung
+%     \draw[axis] (-\axlen/3, 0) -- (\axlen, 0) node[right] {\Large $x$};
+%     \draw[axis] (0, -\axlen/3) -- (0, \axlen) node[above] {\Large $y$};
+    
+    
+%     % Ortsvektor r(t) vom Ursprung zu P(t)
+%     \draw[vecRed] (O) -- (P) node[midway,pos=0.4,below right=-1pt] {\large $\ivec{r}(t=5)$};
+    
+%     % Punkt P(t) am Ende und bei P und bei Q markieren
+%     \filldraw[red] (P) circle (1.8pt) node[below right] {\large $P(t=5)$};
+%     \filldraw[red] (Q) circle (1.8pt) node[above, left=10pt] {\large $P(t=0)$};
+    
+%     % Major-Tiks bei -3, -2, -1, 1, 2, 3 auf beiden Achsen
+%     \foreach \x in {10,20,30} {
+%         \draw (\x/10,\tiklen) -- (\x/10,-\tiklen) node[below] {\x};
+%         \draw (\tiklen,\x/10) -- (-\tiklen,\x/10) node[left] {\x};
+%     } 
+
+% \end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein x,y Koordinatensystem mit Pfeilen und eine rote Bahnkurve mit einem Punkt P(t=2) sowie einem Punkt P(t=0). Ein Ortsvektor r(t=2) zeigt vom Ursprung zu P(t=2). Es sind Major-Ticks bei -3, -2, -1, 1, 2, 3 auf beiden Achsen eingezeichnet.
+
+% \begin{tikzpicture}[scale=1.5,
+%     axis/.style={-{Stealth[length=4mm,width=2.4mm]}, thick},
+%     vecRed/.style={-{Stealth[length=3.9mm,width=2.1mm]}, line width=1.4pt, blue}
+%     ];
+    
+%     % Parameter für Radius und Winkel definieren
+%     \def\R{3};    % Radius der Kreisbahn
+%     \def\angleRad{2*2};
+%     \def\angle{\angleRad*180/3.14159};  % Winkel des Punktes P in Grad
+%     \def\tiklen{0.07}; % Länge der Ticks auf den Achsen
+%         % Definition der Koordinaten
+%     \coordinate (O) at (0,0);
+%     \coordinate (Q) at (\R, 0);
+%     \coordinate (P) at (\angle:\R);
+
+%     % Kreisbahn (gestrichelt) zeichnen
+%     \draw[line width=1.0pt, dashed, gray!70] (0,0) circle (\R);
+%     % Bewegung entlang der Kreisbahn (rot)
+%     \draw[red, line width=1.6pt, domain=0:\angle, samples=100] 
+%         plot ({\R*cos(\x)}, {\R*sin(\x)});
+%     % Koordinatenachsen durch den Ursprung
+%     \draw[axis] (-\R-0.5, 0) -- (\R+0.5, 0) node[right] {\Large $x$};
+%     \draw[axis] (0, -\R-0.5) -- (0, \R+0.5) node[above] {\Large $y$};
+    
+    
+%     % Ortsvektor r(t) vom Ursprung zu P(t)
+%     \draw[vecRed] (O) -- (P) node[midway,pos=0.6,above left=-1pt] {\large $\ivec{r}(t=2)$};
+    
+%     % Punkt P(t) am Ende und bei P und bei Q markieren
+%     \filldraw[red] (P) circle (1.8pt) node[below left] {\large $P(t=2)$};
+%     \filldraw[red] (Q) circle (1.8pt) node[above right] {\large $P(t=0)$};
+    
+%     % Major-Tiks bei -3, -2, -1, 1, 2, 3 auf beiden Achsen
+%     \foreach \x in {-3,-2,-1,1,2,3} {
+%         \draw (\x,\tiklen) -- (\x,-\tiklen) node[below] {\x};
+%         \draw (\tiklen,\x) -- (-\tiklen,\x) node[left] {\x};
+%     } 
+
+% \end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Ein x,y Koordinatensystem mit Pfeilen und eine orange Bahnkurve mit 3 Punkten P1, P2 und P3 sowie strichlierten Linien von t1 zu P1, t2 zu P2, t3 zu P3 und x1 zu P1, x2 zu P2, x3 zu P3. Es sind \Delta x = x_2 - x_1 und \Delta t = t_2 - t_1 eingezeichnet.  
+
+% \begin{tikzpicture}[
+%     scale = 1.0,
+%     >={Stealth[length=3.5mm,width=2.0mm]}, 
+%     dot/.style={circle, fill=blue, inner sep=1.8pt},
+%     important line/.style={line width=1.6pt, orange},
+%     dashed line/.style={dashed, gray!90, thin},
+%     secant line/.style={line width=1.5pt, blue!90!black},
+%     leftrightarrow/.style={<->, line width=1.1pt, blue!70!black},
+%     tangent line/.style={line width=1.5pt, blue!90!black, dotted},
+%     vecV/.style={-{Stealth[length=3.9mm,width=2.3mm]}, line width=1.6pt, blue!80!black}
+%     ]
+%     \tikzset{declare function={
+%         fx(\x) = 1.1 + 1.95*\x - 0.15*\x*\x; 
+%         fdx(\x) = 1.95 - 0.3*\x;
+%     }}
+%     \def\xmax{9.0}; % x-Achse Maximalwert
+%     \def\ymax{8.0}; % y-Achse Maximalwert
+%     \def\xIval{1.2}; % x-Koordinate von P1
+%     \def\xIIval{3.15}; % x-Koordinate von P2
+%     \def\xIIIval{7.2}; % x-Koordinate von P3
+%     \def\dxTan{0.7}; % Länge der Tangentenlinien
+
+%     \coordinate (P1) at (\xIval, {fx(\xIval)});
+%     \coordinate (P2) at (\xIIval, {fx(\xIIval)});
+%     \coordinate (P3) at (\xIIIval, {fx(\xIIIval)});
+
+
+%     % Koordinatensystem
+%     \draw[->, thick] (-0.5, 0) -- (\xmax, 0) node[right] {$t$};
+%     \draw[->, thick] (0, -0.5) -- (0, \ymax) node[above] {$x(t)$};
+
+%     % Bahnkurve (orange)
+%     \draw[orange, line width=1.6pt, domain=0.0:\xmax, samples=50] 
+%         plot (\x, {fx(\x)}) node[right, text=black] {Bahnkurve};
+
+%     % Punkte auf der Kurve definieren
+%     \node[dot] at (P1) {};
+%     \node[below right] at (P1) {$P_1$};
+%     \node[dot] at (P2) {};
+%     \node[above left] at (P2) {$P_2$};
+%     \node[dot] at (P3) {};
+%     \node[above right] at (P3) {$P_3$};
+
+%     % Projektionen P1
+%     \draw[dashed line] (P1) -- (\xIval, 0) node[below] {$t_1$};
+%     \draw[dashed line] (P1) -- (0, {fx(\xIval)}) node[left] {$x_1$};
+%     \draw[dashed line] (P2) -- (\xIIval, 0) node[below] {$t_2$};
+%     \draw[dashed line] (P2) -- (0, {fx(\xIIval)}) node[left] {$x_2$};
+%     \draw[dashed line] (P3) -- (\xIIIval, 0) node[below] {$t_3$};
+%     \draw[dashed line] (P3) -- (0, {fx(\xIIIval)}) node[left] {$x_3$};
+
+%     % Einzeichnen von Delta t
+%     \draw[leftrightarrow] (\xIval, 0.7) -- (\xIIval, 0.7) 
+%         node[right, pos=0.5, above] {$\Delta t = t_2 - t_1$};
+    
+%     % Einzeichnen von Delta x
+%     \draw[leftrightarrow] (0.2, {fx(\xIval)}) -- (0.2, {fx(\xIIval)}) 
+%         node[midway, right=4pt] {$\Delta x = x_2 - x_1$};
+
+%     \end{tikzpicture}
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
+% Bahnkurve eines Teilchens in orange. 
+% Außerdem zwei Punkte P1, P2 auf der Bahnkurve, die durch die Ortsvektoren r1 und r2 mit dem Ursprung verbunden sind. Ein weiterer Vektor zeigt von P1 nach P2.
+
+% \begin{tikzpicture}[>=Stealth]
+%     % Achsen
+%     \draw[->, thick] (-0.5, 0) -- (6, 0) node[right] {$x$};
+%     \draw[->, thick] (0, -0.5) -- (0, 4.5) node[above] {$y$};
+    
+%     % Ursprung
+%     \coordinate (O) at (0,0);
+%     \node[below left] at (O) {$0$};
+    
+%     % Bahnkurve (orange) als quadratische Funktion für einen glatten Verlauf
+%     \draw[orange, line width=1.6pt, domain=0.0:5.5, samples=50] 
+%         plot (\x, {-0.14*\x*\x + 0.4*\x + 3.5}) node[right, text=black] {Bahnkurve};
+    
+%     % Punkte P1 und P2 exakt auf der Funktion berechnet 
+%     % (Für x=2: -0.14*2^2 + 0.4*2 + 3.5 = 3.74)
+%     % (Für x=4.5: -0.14*4.5^2 + 0.4*4.5 + 3.5 = 2.465)
+%     \coordinate (P1) at (2, 3.74);
+%     \coordinate (P2) at (4.5, 2.465);
+    
+%     % Punkte einzeichnen
+%     \fill (P1) circle (2pt) node[above right] {$P_1$};
+%     \fill (P2) circle (2pt) node[above right] {$P_2$};
+    
+%     % Ortsvektoren (blau)
+%     \draw[->, thick, blue!60!black] (O) -- (P1) node[midway, left=0pt] {$\ivec{r}(t_1)$};
+%     \draw[->, thick, blue!60!black] (O) -- (P2) node[midway, below right=-2pt] {$\ivec{r}(t_2)$};
+    
+%     % Verschiebungsvektor (schwarz)
+%     \draw[->, line width=1.6pt, black] (P1) -- (P2) node[midway, below left=0pt] {$\Delta\ivec{r}$};
+    
+% \end{tikzpicture}
+
+
+
+
+
+
+
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+%%%   -----------------------------------------------------------
+
 
 %%%   -----------------------------------------------------------
 %%%   PENDEL EXPERIMENT - Fadenpendel mit Auslenkung
@@ -47,77 +709,77 @@
 %%%   Masse (gelber Kreis), Geschwindigkeitsvektor und Ruheposition
 %%%   -----------------------------------------------------------
 
-\begin{tikzpicture}[
-    scale=1.5,
-    >=Stealth,
-    font=\sffamily
-]
-    % Definiere Winkel und Längen
-    \def\pendulumlength{5}
-    \def\angle{25}
-    \def\angleoffset{10}
-    \def\radius{0.3}
-    \def\lenG{1.7} % Länge des Gravitationsvektors
+% \begin{tikzpicture}[
+%     scale=1.5,
+%     >=Stealth,
+%     font=\sffamily
+% ]
+%     % Definiere Winkel und Längen
+%     \def\pendulumlength{5}
+%     \def\angle{25}
+%     \def\angleoffset{10}
+%     \def\radius{0.3}
+%     \def\lenG{1.7} % Länge des Gravitationsvektors
     
-    % Koordinaten
-    \coordinate (pivot) at (0,0);
-    \coordinate (rest) at (0,-\pendulumlength);
-    \coordinate (mass) at ({-\pendulumlength*sin(\angle)},{-\pendulumlength*cos(\angle)});
-    \coordinate (masstop) at ({-(\pendulumlength-\radius)*sin(\angle)},{-(\pendulumlength-\radius)*cos(\angle)});
+%     % Koordinaten
+%     \coordinate (pivot) at (0,0);
+%     \coordinate (rest) at (0,-\pendulumlength);
+%     \coordinate (mass) at ({-\pendulumlength*sin(\angle)},{-\pendulumlength*cos(\angle)});
+%     \coordinate (masstop) at ({-(\pendulumlength-\radius)*sin(\angle)},{-(\pendulumlength-\radius)*cos(\angle)});
     
-    % Aufhängung (horizontale Linien oben)
-    \draw[line width=1.5pt] (-0.4,0) -- (0.4,0);
-    \draw[line width=1pt] (-0.35,0.05) -- (-0.25,0.15);
-    \draw[line width=1pt] (-0.15,0.05) -- (-0.05,0.15);
-    \draw[line width=1pt] (0.05,0.05) -- (0.15,0.15);
-    \draw[line width=1pt] (0.25,0.05) -- (0.35,0.15);
+%     % Aufhängung (horizontale Linien oben)
+%     \draw[line width=1.5pt] (-0.4,0) -- (0.4,0);
+%     \draw[line width=1pt] (-0.35,0.05) -- (-0.25,0.15);
+%     \draw[line width=1pt] (-0.15,0.05) -- (-0.05,0.15);
+%     \draw[line width=1pt] (0.05,0.05) -- (0.15,0.15);
+%     \draw[line width=1pt] (0.25,0.05) -- (0.35,0.15);
     
-    % Ruheposition (gestrichelte vertikale Linie)
-    \draw[gray, densely dotted, line width=0.8pt] (pivot) -- (rest);
-    \node[right, gray] at ($(rest)+(0.1,-0.2)$) {Ruheposition};
+%     % Ruheposition (gestrichelte vertikale Linie)
+%     \draw[gray, densely dotted, line width=0.8pt] (pivot) -- (rest);
+%     \node[right, gray] at ($(rest)+(0.1,-0.2)$) {Ruheposition};
     
-    % Bogenbahn (gestrichelt)
-    \draw[magenta!60, densely dashed, line width=0.7pt] 
-        ({-\pendulumlength*sin(\angle+\angleoffset)},{-\pendulumlength*cos(\angle+\angleoffset)}) 
-        arc[
-            start angle={-90-\angle-\angleoffset}, 
-            end angle={-90+\angle+\angleoffset}, 
-            radius=\pendulumlength
-        ];
+%     % Bogenbahn (gestrichelt)
+%     \draw[magenta!60, densely dashed, line width=0.7pt] 
+%         ({-\pendulumlength*sin(\angle+\angleoffset)},{-\pendulumlength*cos(\angle+\angleoffset)}) 
+%         arc[
+%             start angle={-90-\angle-\angleoffset}, 
+%             end angle={-90+\angle+\angleoffset}, 
+%             radius=\pendulumlength
+%         ];
     
-    % Faden (Lila/Magenta)
-    \draw[black, line width=1.5pt] (pivot) -- (masstop) node[midway, left=0.1cm, font=\Large] {$L$};
+%     % Faden (Lila/Magenta)
+%     \draw[black, line width=1.5pt] (pivot) -- (masstop) node[midway, left=0.1cm, font=\Large] {$L$};
     
-    % Winkel phi (oben am Aufhängepunkt)
-    \draw[olive, line width=1.2pt, ->] (0,-1.1) arc[start angle=-90, end angle={-90-\angle}, radius=1.1] ;
-    \node[olive, font=\Large] at ({-0.7*sin(\angle/2)},{-0.8*cos(\angle/2)}) {$\varphi$};
+%     % Winkel phi (oben am Aufhängepunkt)
+%     \draw[olive, line width=1.2pt, ->] (0,-1.1) arc[start angle=-90, end angle={-90-\angle}, radius=1.1] ;
+%     \node[olive, font=\Large] at ({-0.7*sin(\angle/2)},{-0.8*cos(\angle/2)}) {$\varphi$};
 
-    % Graues Parallelogramm für die drei Pfeile (Gravitationskraft, Spannkraft, Rücktreibende Kraft)
-    % Korrigiert: Linie parallel zur Spannkraft und Gravitationskraft
-    \draw[gray!30, line width=1.2pt, dashed] (mass)++({-(\lenG*cos(\angle))*sin(\angle)}, {-(\lenG*cos(\angle))*cos(\angle)}) -- ++({+(\lenG*sin(\angle))*cos(\angle)}, {-(\lenG*sin(\angle))*sin(\angle)});
-    \draw[gray!30, line width=1.2pt, dashed] (mass)++(0,-\lenG) -- ++({+(\lenG*cos(\angle))*sin(\angle)}, {+(\lenG*cos(\angle))*cos(\angle)});
+%     % Graues Parallelogramm für die drei Pfeile (Gravitationskraft, Spannkraft, Rücktreibende Kraft)
+%     % Korrigiert: Linie parallel zur Spannkraft und Gravitationskraft
+%     \draw[gray!30, line width=1.2pt, dashed] (mass)++({-(\lenG*cos(\angle))*sin(\angle)}, {-(\lenG*cos(\angle))*cos(\angle)}) -- ++({+(\lenG*sin(\angle))*cos(\angle)}, {-(\lenG*sin(\angle))*sin(\angle)});
+%     \draw[gray!30, line width=1.2pt, dashed] (mass)++(0,-\lenG) -- ++({+(\lenG*cos(\angle))*sin(\angle)}, {+(\lenG*cos(\angle))*cos(\angle)});
 
-    % Gravitationskraft (blauer Pfeil nach unten)
-    \draw[->, blue!70!black, line width=2pt] (mass) -- ++(0,-\lenG) 
-        node[below, right, font=\large] {$\ivec{g}$};
+%     % Gravitationskraft (blauer Pfeil nach unten)
+%     \draw[->, blue!70!black, line width=2pt] (mass) -- ++(0,-\lenG) 
+%         node[below, right, font=\large] {$\ivec{g}$};
     
-    % Spannkraft entlang des Fadens (grüner Pfeil)
-    % Diese zeigt vom Massenpunkt in Richtung Aufhängepunkt
-    \draw[->, green!60!black, line width=2pt] (mass) -- ++({-(\lenG*cos(\angle))*sin(\angle)}, {-(\lenG*cos(\angle))*cos(\angle)});
+%     % Spannkraft entlang des Fadens (grüner Pfeil)
+%     % Diese zeigt vom Massenpunkt in Richtung Aufhängepunkt
+%     \draw[->, green!60!black, line width=2pt] (mass) -- ++({-(\lenG*cos(\angle))*sin(\angle)}, {-(\lenG*cos(\angle))*cos(\angle)});
     
-    % Rücktreibende Kraft (roter Pfeil tangential zur Kreisbahn)
-    % Diese ist senkrecht zum Faden
-    \draw[->, red, line width=2pt] (mass) -- ++({+(\lenG*sin(\angle))*cos(\angle)}, {-(\lenG*sin(\angle))*sin(\angle)});
+%     % Rücktreibende Kraft (roter Pfeil tangential zur Kreisbahn)
+%     % Diese ist senkrecht zum Faden
+%     \draw[->, red, line width=2pt] (mass) -- ++({+(\lenG*sin(\angle))*cos(\angle)}, {-(\lenG*sin(\angle))*sin(\angle)});
 
-    % Masse (gelber Kreis mit schwarzem Rand)
-    \shade[ball color=yellow!80!orange, opacity=0.95] (mass) circle (\radius);
-    \draw[black, line width=1.5pt] (mass) circle (\radius);
+%     % Masse (gelber Kreis mit schwarzem Rand)
+%     \shade[ball color=yellow!80!orange, opacity=0.95] (mass) circle (\radius);
+%     \draw[black, line width=1.5pt] (mass) circle (\radius);
 
-    % Winkel phi (unter der Masse)
-    \draw[olive, line width=1.2pt, ->] (mass)++(0,-0.9) arc[start angle=-90, end angle={-90-\angle}, radius=0.9];
-    \node[olive, font=\Large] at ($(mass)+({-0.6*sin(\angle/2)},{-0.67*cos(\angle/2)})$) {$\varphi$};
+%     % Winkel phi (unter der Masse)
+%     \draw[olive, line width=1.2pt, ->] (mass)++(0,-0.9) arc[start angle=-90, end angle={-90-\angle}, radius=0.9];
+%     \node[olive, font=\Large] at ($(mass)+({-0.6*sin(\angle/2)},{-0.67*cos(\angle/2)})$) {$\varphi$};
     
-\end{tikzpicture}
+% \end{tikzpicture}
 
 
 %%%   -----------------------------------------------------------

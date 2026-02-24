@@ -19,9 +19,13 @@
 
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta, angles, calc, quotes, decorations.pathmorphing, decorations.pathreplacing, decorations.markings, patterns}
+\usepackage{tikz-3dplot} % Für bessere 3D-Kontrolle
 
 \usepackage{subcaption} % needed for labelphantom
 % \usepackage{subfigure} % outdated and replaced by subcaption
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 \usepackage[table]{xcolor}
 \usepackage{array}
@@ -196,12 +200,12 @@
 \include{chapter_0_titlepage}
 \tableofcontents
 
-\include{chapter_1-Allgemeines}
-\include{chapter_2-Grundlagen}
-\include{chapter_3-MaßeinheitenMessverfahren}
-\include{chapter_4-MessgenauigkeitMessfehler}
-% \include{chapter_5-Kinematik} 
-% \include{chapter_6-Dynamik}
+% \include{chapter_1-Allgemeines}
+% \include{chapter_2-Grundlagen}
+% \include{chapter_3-MaßeinheitenMessverfahren}
+% \include{chapter_4-MessgenauigkeitMessfehler}
+\include{chapter_5-Kinematik} 
+\include{chapter_6-Dynamik}
 % \include{chapter_7-Gravitation}
 % \include{chapter_8-Arbeit-Energie}
 % \include{chapter_9-RotationStarrerKoerper}
@@ -224,7 +228,7 @@
 \addcontentsline{toc}{chapter}{Literaturverzeichnis} % adds the Bibliography to the table of contents
 
 % \bibliographystyle{abbrv}
-\bibliographystyle{alex_phd.bst}
+\bibliographystyle{alex_phd_de}
 \bibliography{skriptum_bib.bib}
 
 

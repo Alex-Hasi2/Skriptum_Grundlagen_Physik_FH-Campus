@@ -74,7 +74,7 @@ Dabei wird besonderen Wert auf die Eliminierung aller störenden Einflüsse gele
         \draw[black, line width=1.5pt] (pivot) -- (masstop) node[midway, left=0.1cm, font=\Large] {$L$};
         
         % Winkel phi (oben am Aufhängepunkt)
-        \draw[olive, line width=1.2pt, ->] (0,-1.6) arc[start angle=-90, end angle={-90-\angle}, radius=1.6] ;
+        \draw[olive, line width=1.2pt, -{Stealth[length=3.1mm,width=2.1mm]}] (0,-1.6) arc[start angle=-90, end angle={-90-\angle}, radius=1.6] ;
         \node[olive, font=\Large] at ({-1.04*sin(\angle/2)},{-1.2*cos(\angle/2)}) {$\varphi$};
 
         % Graues Parallelogramm für die drei Pfeile (Gravitationskraft, Spannkraft, Rücktreibende Kraft)
@@ -99,8 +99,8 @@ Dabei wird besonderen Wert auf die Eliminierung aller störenden Einflüsse gele
         \draw[black, line width=1.5pt] (mass) circle (\radius);
 
         % Winkel phi (unter der Masse)
-        \draw[olive, line width=1.2pt, ->] (mass)++(0,-1.25) arc[start angle=-90, end angle={-90-\angle}, radius=1.25];
-        \node[olive, font=\normalsize] at ($(mass)+({-0.8*sin(\angle/2)},{-0.9*cos(\angle/2)})$) {$\varphi$};
+        \draw[olive, line width=1.0pt, -{Stealth[length=2.1mm,width=1.4mm]}] (mass)++(0,-1.25) arc[start angle=-90, end angle={-90-\angle}, radius=1.25];
+        \node[olive, font=\normalsize] at ($(mass)+({-0.86*sin(\angle/2)},{-0.98*cos(\angle/2)})$) {$\varphi$};
     
     \end{tikzpicture}
     % \includegraphics[width=0.95\linewidth]{Bilder/Kapitel_Grundlagen/Pendel_Experiment.png}

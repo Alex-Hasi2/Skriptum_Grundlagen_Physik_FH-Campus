@@ -47,5 +47,8 @@
 .mtc
 Literatur/*.pdf
 build/
+!alex_phd.bst
+!alex_phd_en.bst
+!alex_phd_de.bst
 !Bilder/
 !Bilder/**/*.pdf

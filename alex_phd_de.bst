@@ -226,76 +226,76 @@ FUNCTION {space.word}
 { " " swap$ * " " * }
  % Here are the language-specific definitions for explicit words.
  % Each function has a name bbl.xxx where xxx is the English word.
- % The language selected here is ENGLISH
+ % The language selected here is GERMAN
 FUNCTION {bbl.and}
-{ "and"}
+{ "und"}
 
 FUNCTION {bbl.etal}
-{ "et~al." }
+{ "u.~a." }
 
 FUNCTION {bbl.editors}
-{ "editors" }
+{ "Hrsg." }
 
 FUNCTION {bbl.editor}
-{ "editor" }
+{ "Hrsg." }
 
 FUNCTION {bbl.edby}
-{ "edited by" }
+{ "hrsg. von" }
 
 FUNCTION {bbl.edition}
-{ "edn." }
+{ "Aufl." }
 
 FUNCTION {bbl.volume}
-{ "vol." }
+{ "Bd." }
 
 FUNCTION {bbl.of}
-{ "of" }
+{ "von" }
 
 FUNCTION {bbl.number}
-{ "no." }
+{ "Nr." }
 
 FUNCTION {bbl.nr}
-{ "no." }
+{ "Nr." }
 
 FUNCTION {bbl.in}
 { "in" }
 
 FUNCTION {bbl.available}
-{ "Available at:" }
+{ "\Verfuegbar\ unter:" }
 
 FUNCTION {bbl.accessed}
-{ "Accessed:" }
+{ "Zugriff am:" }
 
 FUNCTION {bbl.pages}
-{ "pp." }
+{ "S." }
 
 FUNCTION {bbl.page}
-{ "p." }
+{ "S." }
 
 FUNCTION {bbl.chapter}
-{ "chap." }
+{ "Kap." }
 
 FUNCTION {bbl.techrep}
-{ "Tech. Rep." }
+{ "Techn. Ber." }
 
 FUNCTION {bbl.bthesis}
-{ "Bachelor's thesis" }
+{ "Bachelorarbeit" }
 
 FUNCTION {bbl.mthesis}
-{ "Master's thesis" }
+{ "Masterarbeit" }
 
 FUNCTION {bbl.phdthesis}
-{ "Ph.D. thesis" }
+{ "Dissertation" }
 
 MACRO {jan} {"Jan."}
 
 MACRO {feb} {"Feb."}
 
-MACRO {mar} {"Mar."}
+MACRO {mar} {"Mrz."}
 
 MACRO {apr} {"Apr."}
 
-MACRO {may} {"May"}
+MACRO {may} {"Mai"}
 
 MACRO {jun} {"Jun."}
 
@@ -305,11 +305,11 @@ MACRO {aug} {"Aug."}
 
 MACRO {sep} {"Sep."}
 
-MACRO {oct} {"Oct."}
+MACRO {oct} {"Okt."}
 
 MACRO {nov} {"Nov."}
 
-MACRO {dec} {"Dec."}
+MACRO {dec} {"Dez."}
 
 MACRO {acmcs} {"ACM Computing Surveys"}
 
