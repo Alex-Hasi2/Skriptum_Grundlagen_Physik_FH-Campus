@@ -178,7 +178,7 @@ für die drei definierende Axiome erfüllt sind:
 
 \subsection{Betrag eines Vektors}
 \begin{rememberbox}[]{Betrag eines Vektors}
-    Die \textbf{Länge} (auch Betrag) eines Vektors ergibt sich aus dem Satz des Pythagoras. Die verwendete Norm nennt man euklidische Norm oder $2$-Norm ($p = 2$). Die Länge des Vektors $\ivec{r} = (x, y, ...)$ ist dann
+    Die \textbf{Länge} (auch Betrag) eines Vektors ergibt sich aus dem Satz des Pythagoras. Die verwendete Norm nennt man euklidische Norm oder $2$-Norm ($p = 2$). Die Länge des Vektors $\ivec{r} = (x, y, \ldots)$ ist dann
     \begin{equation}
         |\ivec{r}| = \sqrt{x^2 + y^2 + z^2}\mDot
     \end{equation}
@@ -295,7 +295,7 @@ Der Verweis auf die Tatsache, dass der Betrag eines Vektors mathematisch gesehen
 \end{figure}
 Im $\Real^3$ benötigt man zwei Winkel ($\varphi, \theta$) zur Beschreibung der Richtung und in höherdimensionalen Räumen benötigt man $n-1$ Winkel (praktisch meist irrelevant).\\
 
-\textbf{Achtung:} Da der Tangens Unstetigkeiten aufweist (siehe \cref{fig: abb_tangens_arkustanges}), muss die Berechnung korrigiert werden. Wenn der Punkt $(x, y)$ im 2. oder 3. Quadranten liegt, erhält man nur dann den korrekten Winkel, wenn man $\pi\, (=\ang{180})$ dazuaddiert:
+\textbf{Achtung:} Da der Tangens Unstetigkeiten aufweist (siehe \cref{fig: abb_tangens_arkustanges}), muss die Berechnung korrigiert werden. Wenn der Punkt $(x, y)$ im 2.\ oder 3. Quadranten liegt, erhält man nur dann den korrekten Winkel, wenn man $\pi\, (=\ang{180})$ dazuaddiert:
 \begin{rememberbox}[sidebyside, sidebyside align=center, lower separated=false]{}
     Im Quadranten $Q_1$ und $Q_4$:
     \begin{equation}
@@ -324,7 +324,7 @@ Neben der Darstellung eines Vektors $\ivec{r}$ mittels Koordinaten, $\ivec{r} = 
     \end{equation}
     geschrieben werden. Der Einheitsvektor $\ivecS{e}{r}$ zeigt dabei in dieselbe Richtung wie $\ivec{r}$, hat aber die normierte Länge $1$.
 \end{rememberbox}
- Die Länge von $\ivec{r}$ bleibt somit erhalten, da der Einheitsvektor nichts zur Länge beiträgt: $|\ivec{r}| = |r \cdot \ivecS{e}{r}| = \underbrace{|r|}_r \cdot \underbrace{|\ivecS{e}{r}|}_1 = r$. Umgekehrt skaliert der Betrag $r$ nur den Einheitsvektor $\ivecS{e}{r}$ und die Richtung von $\ivec{r}$ wird nur durch $\ivecS{e}{r}$ bestimmt. \newline
+ Die Länge von $\ivec{r}$ bleibt somit erhalten, da der Einheitsvektor nichts zur Länge beiträgt: $|\ivec{r}| = |r \cdot \ivecS{e}{r}| = \underbrace{|r|}_r \cdot \underbrace{|\ivecS{e}{r}|}_1 = r$. Umgekehrt skaliert der Betrag $r$ nur den Einheitsvektor $\ivecS{e}{r}$ und die Richtung von $\ivec{r}$ wird nur durch $\ivecS{e}{r}$ bestimmt.\newline
  \subsubsection{Normierung}
  Als \textbf{Normierung} bezeichnet man die Berechnung des Einheitsvektors
  \begin{equation}\label{eq: normierungVektor}
@@ -397,9 +397,9 @@ Die Vektoraddition $(\oplus)$ ist eine Verallgemeinerung der Addition von Skalar
 \begin{rememberbox}[]{Vektoraddition}
     Die \textbf{Vektoraddition} entspricht einer Addition der Koordinaten der beiden zu summierenden Vektoren
     \begin{equation}
-        \ivec{r} = \ivec{r_1} \oplus \ivec{r_2} \defeq (x_1+x_2, y_1+y_2, ...), 
+        \ivec{r} = \ivec{r_1} \oplus \ivec{r_2} \defeq (x_1+x_2, y_1+y_2, \ldots), 
     \end{equation}
-mit $\ivec{r_1}=(x_1, y_1, ...)$ und $\ivec{r_2}=(x_2, y_2, ...)$. Das Resultat einer Vektoraddition ist wieder ein Vektor.
+mit $\ivec{r_1}=(x_1, y_1, \ldots)$ und $\ivec{r_2}=(x_2, y_2, \ldots)$. Das Resultat einer Vektoraddition ist wieder ein Vektor.
 \end{rememberbox}
 Grafisch entspricht die Vektoraddition einer Aneinanderreihung der Vektoren, wie in \cref{fig: vektoraddition} verbildlicht. Eine Vektoraddition ist demnach eine Hintereinanderausführung von zwei Verschiebungen. Dementsprechend ist es wenig überraschend, dass die Vektoraddition kommutativ ist, \gDh $\ivecS{r}{1} \oplus \ivecS{r}{2} = \ivecS{r}{2} \oplus \ivecS{r}{1}$. 
 
@@ -1598,7 +1598,7 @@ Die Lösung einer DGL ist eine Funktion, die die Gleichung erfüllt. Oft gibt es
 \subsection{Trennung der Variablen}
 Eine der grundlegendsten Methoden ist die Trennung der Variablen. Sie ist anwendbar, wenn sich die DGL in die Form
 \[ y' = f(x) \cdot g(y) \]
-bringen lässt. Man schreibt $y' = \frac{\dd y}{\dd x}$ und "trennt" dann die Variablen $x$ und $y$ auf unterschiedliche Seiten der Gleichung:
+bringen lässt. Man schreibt $y' = \frac{\dd y}{\dd x}$ und \gDQ{trennt} dann die Variablen $x$ und $y$ auf unterschiedliche Seiten der Gleichung:
 \[ \frac{\dd y}{g(y)} = f(x) \, \dd x \]
 Anschließend integriert man beide Seiten:
 \[ \int \frac{\dd y}{g(y)} = \int f(x) \, \dd x + C \]
