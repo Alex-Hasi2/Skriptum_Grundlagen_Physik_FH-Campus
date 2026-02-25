@@ -38,8 +38,9 @@ def combine_latex_files(main_folder, main_file, output_file):
 
 if __name__ == "__main__":
     main_file = 'main.tex'
-    main_folder = r'C:/Users/alexsc31/Documents_privat/FH Campus/Clinical_Engineering/GithubRepo/Skriptum_Grundlagen_Physik_FH-Campus/'
-    output_file = 'combined_main_2026-02.tex'
+    # main_folder = r'C:/Users/alexsc31/Documents_privat/FH Campus/Clinical_Engineering/GithubRepo/Skriptum_Grundlagen_Physik_FH-Campus/'
+    main_folder = r'C:/Users/Alexa/Documents-Alex/FH Campus/Skriptum_Grundlagen_Physik_FH-Campus/'
+    output_file = 'combined_main_2026-02-25.tex'
 
     
     combine_latex_files(main_folder, main_file, output_file)
