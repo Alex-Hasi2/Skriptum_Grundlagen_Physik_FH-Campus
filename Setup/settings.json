@@ -121,5 +121,27 @@
         }
       ]
     }
-  }
+  },
+  "workbench.colorCustomizations": {
+    "[Overleaf Theme]": {
+      "input.background": "#a4a4a4",
+      "input.foreground": "#000000",
+      "input.placeholderForeground": "#666666",
+      "input.border": "#cccccc",
+      "titleBar.activeForeground": "#a3cf9e",
+      "titleBar.inactiveForeground": "#333333",
+      "searchEditor.textInputBorder": "#cccccc",
+      "sideBar.foreground": "#e7e7e7",
+      "searchEditor.textInputBorder": "#cccccc",
+      "panel.foreground": "#000000",
+      "panelTitleBadge.background": "#de8989",
+      "sideBarTitle.background": "#738399",
+      "sideBarTitle.foreground":"#ffffff"
+      }
+  },
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.enabled": false,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "geminicodeassist.project": "primordial-synthesizer-gx3jm"
 }
