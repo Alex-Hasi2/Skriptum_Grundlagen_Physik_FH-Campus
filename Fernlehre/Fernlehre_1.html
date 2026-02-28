@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernlehre 1 - Wiederholung Kapitel 0-4 & Vektorrechnung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #004A8F;
+            border-bottom: 3px solid #004A8F;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #336699;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-left: 5px solid #FFD900;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .box {
+            background-color: #fff;
+            border-left: 5px solid #004A8F;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .important {
+            background-color: #FFE8E8;
+            border-left-color: #FF5252;
+        }
+        .remember {
+            background-color: #FFF4E6;
+            border-left-color: #FFD900;
+        }
+        .example {
+            background-color: #E8F4FF;
+            border-left-color: #2196F3;
+        }
+        strong {
+            color: #004A8F;
+        }
+        .chapter-header {
+            background-color: #E8F4FF;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 20px 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>📚 Fernlehre 1: Wiederholung Physikalische Grundlagen</h1>
+    <p><strong>Stoff bis einschließlich:</strong> Kapitel 4 (Messgenauigkeit und Messfehler) + Anhang Vektorrechnung</p>
+    <p><strong>Datum:</strong> bis 03.03.2026</p>
+
+    <!-- KAPITEL 1-3 BASICS -->
+    <h2>1️⃣ Allgemeines & Grundlagen</h2>
+    <div class="chapter-header"><strong>Inhalte: Kapitel 1-2</strong></div>
+
+    <h3>Bausteine der Wissenschaftlichen Erkenntnis</h3>
+    <div class="box">
+        <ol>
+            <li><strong>Hypothese:</strong> Vorläufige, testbare Annahme → kann widerlegt werden</li>
+            <li><strong>Axiom:</strong> Unbewiesene Fundamente einer Theorie → Basis für weitere Beweise</li>
+            <li><strong>Satz/Theorem:</strong> Logische Schlussfolgerung aus Axiomen & bewiesenen Sätzen</li>
+            <li><strong>Gesetz:</strong> Beschreibt regelmäßige Beziehungen in der Natur (mathematische Form)</li>
+            <li><strong>Theorie:</strong> Umfassendes System mehrerer Gesetze & Prinzipien → erklärt Naturvorgänge</li>
+        </ol>
+    </div>
+
+    <h3>Das Experiment</h3>
+    <div class="remember box">
+        <ul>
+            <li>Gezielte Frage an die Natur mit eindeutiger Antwort</li>
+            <li>Kontrollierbar und beliebig oft wiederholbar</li>
+            <li>Elimination störender Einflüsse</li>
+            <li>Reproduzierbarkeit: Dokumentation für andere Forschende</li>
+        </ul>
+    </div>
+
+    <!-- KAPITEL 3: MAßEINHEITEN -->
+    <h2>2️⃣ Maßeinheiten & Messverfahren</h2>
+    <div class="chapter-header"><strong>Inhalte: Kapitel 3</strong></div>
+
+    <h3>Was ist eine Messung?</h3>
+    <div class="important box">
+        <strong>Messung: </strong>Vergleich einer zu messenden Eigenschaft mit einer bekannten Größe derselben Art
+        <ul>
+            <li>Ergebnis: <strong>Zahlenwert</strong> + <strong>Einheit</strong></li>
+            <li>Wiederholbarkeit durch Normale/Standards</li>
+        </ul>
+    </div>
+
+    <h3>SI-Basiseinheiten (Internationale Einheitensystem)</h3>
+    <div class="box">
+        <ol>
+            <li><strong>Zeit:</strong> Sekunde (s)</li>
+            <li><strong>Länge:</strong> Meter (m)</li>
+            <li><strong>Masse:</strong> Kilogramm (kg)</li>
+            <li><strong>Temperatur:</strong> Kelvin (K)</li>
+            <li><strong>Stromstärke:</strong> Ampere (A)</li>
+            <li><strong>Lichtstärke:</strong> Candela (cd)</li>
+            <li><strong>Stoffmenge:</strong> Mol (mol)</li>
+        </ol>
+    </div>
+
+    <h3>Eichung, Kalibrierung & Justierung</h3>
+    <div class="box">
+        <ul>
+            <li><strong>Eichung:</strong> Vergleich mit dem Normal (Qualitätsprüfung, keine Manipulation)</li>
+            <li><strong>Kalibrierung:</strong> Ermittlung des Zusammenhangs zwischen Ausgabewert & Sollwert</li>
+            <li><strong>Justierung:</strong> Eingriff am Messgerät zur Einstellung auf Sollwert</li>
+        </ul>
+    </div>
+
+    <h3>Einheitenumrechnung & Dimensionsanalyse</h3>
+    <div class="box">
+        <ul>
+            <li>Umrechnung zwischen Einheiten (z. B. 36 km/h = 10 m/s)</li>
+            <li>Verwende <strong>Einheitenpräfixe</strong> 
+                <ul>    
+                    <li>m = milli (10⁻³), </li>
+                    <li>µ = micro (10⁻⁶), </li>
+                    <li>n = nano (10⁻⁹), </li>
+                    <li>p = pico (10⁻¹²), </li>
+                    <li>k = kilo (10³), </li>
+                    <li>M = mega (10⁶), </li>
+                    <li>G = giga (10⁹)</li>
+                </ul>
+            </li>
+            <li><strong>Dimensionsanalyse:</strong> Überprüfung physikalischer Formeln anhand von Dimensionen, z. B. [L], [T], [M]</li>
+            <li>Radiant vs. Grad: 
+                <ul>2π rad = 360° → 1° = π/180 rad ≈ 0,01745 rad</ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- KAPITEL 4: MESSFEHLER -->
+    <h2>3️⃣ Messgenauigkeit & Messfehler</h2>
+    <div class="chapter-header"><strong>Inhalte: Kapitel 4</strong></div>
+
+    <h3>Signifikante Stellen</h3>
+    <div class="remember box">
+        <ul>
+            <li>Geben Genauigkeit einer Zahl an</li>
+            <li>Zeigen, welche Ziffern zur Genauigkeit beitragen (nicht nur Platzhalter)</li>
+            <li>Führende Nullen: nicht signifikant</li>
+            <li>Endende Nullen: können signifikant sein (besser: wissenschaftliche Schreibweise)</li>
+            <li><strong>Achtung:</strong> Signifikante Stellen ≠ Nachkommastellen</li>
+            <li><strong>Achtung</strong>bei Umrechnung: 3,2 m = 320 cm aber die Anzahl an signifikanten Stellen hat sich geändert (besser: 3,2×10² cm)</li>
+        </ul>
+    </div>
+
+    <h3>Jede Messung ist fehlerbehaftet!</h3>
+    <div class="important box">
+        Messwert = Messwert ± Fehler
+        <ul>
+            <li>Fehlerangabe ist notwendig zur Bestimmung der Genauigkeit</li>
+        </ul>
+    </div>
+
+    <h3>Systematische Fehler</h3>
+    <div class="box">
+        <ul>
+            <li>Fehler ist immer gleich bei wiederholten Messungen unter gleichen Bedingungen</li>
+            <li>Ursachen: Falsches Messverfahren, Messapparatur, äußere Einflüsse</li>
+            <li>Beispiele: Schiefe Messung, Parallaxenfehler, Nullpunktsverschiebung, Temperaturabhängigkeit</li>
+            <li><strong>→ Systematische Fehler werden oft unterschätzt!</strong></li>
+        </ul>
+    </div>
+
+    <h3>Statistische (zufällige) Fehler</h3>
+    <div class="box">
+        <ul>
+            <li>Wiederholte Messungen ergeben unterschiedliche Werte</li>
+            <li>Ursachen: Ungenaue Ablesung, Vibrationen, intrinsische Schwankungen, Rauschen</li>
+            <li>Messwerte verteilen sich um Mittelwert x̄</li>
+            <li><strong>Arithmetisches Mittel:</strong> x̄ = (1/n) Σ xᵢ</li>
+            <li>Für n → ∞: x̄ → x<sub>W</sub> (wahrer Wert)</li>
+            
+            <li>Die Breite der Verteilung gibt die Messqualität an</li>
+        </ul>
+    </div>
+
+    <!-- VEKTORRECHNUNG -->
+    <h2>4️⃣ Vektorrechnung</h2>
+    <div class="chapter-header"><strong>Inhalte: Anhang Mathematische Einschübe</strong></div>
+
+    <h3>Unterschied: Skalare, Punkte & Vektoren</h3>
+    <div class="example box">
+        <ul>
+            <li><strong>Skalar:</strong> Nur Zahlenwert (z. B. Masse, Temperatur, Zeit)</li>
+            <li><strong>Punkt P(x, y):</strong> Geordnete Liste von Koordinaten (Tupel), ortsfest, keine Richtung</li>
+            <li><strong>Vektor v:</strong> Hat Länge UND Richtung, nicht ortsfest, keine festen Start-/Endpunkte</li>
+        </ul>
+    </div>
+
+    <h3>Eigenschaften von Vektoren</h3>
+    <div class="remember box">
+        <ol>
+            <li><strong>Länge (Betrag):</strong> |v&#x20D7;| = √(v₁² + v₂² + v₃²)</li>
+            <li><strong>Richtung:</strong> Vektoren mit gleicher Länge und Richtung sind identisch, unabhängig von Start-/Endpunkt</li>
+            <li><strong>Verschiebung:</strong> Vektor = Endpunkt - Anfangspunkt</li>
+        </ol>
+    </div>
+
+    <h3>Betrag eines Vektors</h3>
+    <div class="box">
+        <ul>
+            <li>In ℝ²: |v⃗| = √(v₁² + v₂²)</li>
+            <li>In ℝ³: |v⃗| = √(v₁² + v₂² + v₃²)</li>
+            <li>Beispiel: a⃗ = (2, -3, 6) → |a⃗| = √(4 + 9 + 36) = √49 = 7</li>
+        </ul>
+    </div>
+
+    <h3>Einheitsvektor (Normierung)</h3>
+    <div class="box">
+        <ul>
+            <li>Einheitsvektor e⃗ₐ hat Betrag = 1</li>
+            <li>Berechnung: e⃗ₐ = v⃗ / |v⃗|</li>
+            <li>Beispiel: v⃗ = (1, 0, 2) → |v⃗| = √5 → e⃗ᵥ = (1/√5, 0, 2/√5)</li>
+        </ul>
+    </div>
+
+    <h3>Skalarprodukt (inneres Produkt)</h3>
+    <div class="box">
+        <ul>
+            <li>Definition: u⃗ · v⃗ = u₁v₁ + u₂v₂ + u₃v₃</li>
+            <li>Geometrische Interpretation: u⃗ · v⃗ = |u⃗| |v⃗| cos(α)</li>
+            <li>Winkel zwischen Vektoren: cos(α) = (u⃗ · v⃗) / (|u⃗| |v⃗|)</li>
+            <li>Beispiel: u⃗ = (7, 1), v⃗ = (-3, -4) → u⃗ · v⃗ = -21 - 4 = -25</li>
+        </ul>
+    </div>
+
+    <h3>Orthogonalität (Senkrechtstehen)</h3>
+    <div class="box">
+        <ul>
+            <li>Zwei Vektoren sind orthogonal, wenn ihr Skalarprodukt = 0 ist</li>
+            <li>u⃗ ⊥ v⃗ ⟺ u⃗ · v⃗ = 0</li>
+            <li>Dies bedeutet: cos(90°) = 0 → Winkel = 90°</li>
+            <li>Beispiel: u⃗ = (3, 2, -1), v⃗ = (1, -2, -1) → u⃗ · v⃗ = 3 - 4 + 1 = 0 ✓ (orthogonal)</li>
+        </ul>
+    </div>
+
+
+</body>
+</html>

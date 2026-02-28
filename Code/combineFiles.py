@@ -17,13 +17,14 @@ def combine_latex_files(main_folder, main_file, output_file):
 
     combined_content = []
     for line in main_content:
-        combined_content.append(line)
         if line.strip().startswith(r'\include{'):
+            # Comment out the include statement
+            combined_content.append('% ' + line)
             section_name = line.strip()[9:-1]  # Extract the section name
             section_file = os.path.join(main_folder, f"{section_name}.tex")
             if os.path.exists(section_file):
                 print(f"Inserting content from {section_file}")
-                with open(section_file, 'r') as sf:
+                with open(section_file, 'r', encoding='utf-8') as sf:
                     section_content = sf.read()
                     # Insert comment % Start of <filename.tex> before the content and a comment % End of <filename.tex> after the content
                     combined_content.append(f"% ---- Start of {section_name}.tex\n") 
@@ -31,8 +32,10 @@ def combine_latex_files(main_folder, main_file, output_file):
                     combined_content.append(f"% ---- End of {section_name}.tex\n")
             else:
                 print(f"Warning: Section file {section_file} not found.")
+        else:
+            combined_content.append(line)
 
-    with open(output_file, 'w') as of:
+    with open(output_file, 'w', encoding='utf-8') as of:
         of.writelines(combined_content)
 
 
@@ -40,7 +43,7 @@ if __name__ == "__main__":
     main_file = 'main.tex'
     # main_folder = r'C:/Users/alexsc31/Documents_privat/FH Campus/Clinical_Engineering/GithubRepo/Skriptum_Grundlagen_Physik_FH-Campus/'
     main_folder = r'C:/Users/Alexa/Documents-Alex/FH Campus/Skriptum_Grundlagen_Physik_FH-Campus/'
-    output_file = 'combined_main_2026-02-25.tex'
+    output_file = 'combined_main_2026-02-28.tex'
 
     
     combine_latex_files(main_folder, main_file, output_file)
