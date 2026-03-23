@@ -1,0 +1,175 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic} % Required for placing the logo
+\usepackage{esvect}
+\usepackage[most]{tcolorbox} % Needed for solution box
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction
+}
+
+\makeatletter
+\def\input@path{{./}{../../}}
+\makeatother
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\input{defs}
+
+% --- Lösungsbox-Umgebung ---
+\definecolor{boxcol_back_lgreen}{RGB}{220, 255, 220}
+\definecolor{boxcol_back_white}{RGB}{255, 255, 255}
+\definecolor{boxcol_frame_green}{RGB}{30, 180, 30}
+\newtcolorbox{solutionbox}[1][]{
+    colback=boxcol_back_white,
+  colframe=boxcol_frame_green,
+  colbacktitle=boxcol_back_lgreen,
+  fonttitle=\bfseries,
+  coltitle=black,
+  boxsep=5pt,
+  arc=1mm,
+  enhanced,
+  attach boxed title to top left={yshift=-2mm, xshift=3mm},
+  title=Lösung,
+  #1
+}
+% ---
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+
+\section*{\LARGE Lösung: Kurztest 2}
+\noindent
+\begin{tabular}{ll}
+    \textbf{Gruppe: } & \LARGE\textbf{A}  \\[0.3cm]
+\end{tabular}
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=0.50cm]
+
+    \item \textbf{Begriffe und Einheiten:} \\
+    Nenne die SI-Einheiten von Weg, Zeit, Geschwindigkeit und Beschleunigung.
+    \begin{solutionbox}
+        \begin{itemize}[itemsep=0pt, topsep=0pt]
+            \item Weg: \si{\meter}
+            \item Zeit: \si{\second}
+            \item Geschwindigkeit: \si{\meter\per\second}
+            \item Beschleunigung: \si{\meter\per\second\squared}
+        \end{itemize}
+    \end{solutionbox}
+
+    \item \textbf{Einheitenumrechnung:} \\
+    Ein Fahrrad fährt mit einer Geschwindigkeit von \SI{54}{\kilo\meter\per\hour}. Rechne diese Geschwindigkeit in \unit{\meter\per\second} um und zeige deine Rechnung.
+    \begin{solutionbox}
+        \[
+        \SI{54}{\kilo\meter\per\hour}
+        = 54 \cdot \frac{1000}{3600} \si{\meter\per\second}
+        = \SI{15}{\meter\per\second}
+        \]
+        Oder direkt durch $3.6$ teilen: \[54 / 3.6 = \SI{15}{\meter\per\second}.\]
+    \end{solutionbox}
+
+    \item \textbf{Gleichförmige Bewegung:} \\
+    Ein Auto bewegt sich gleichförmig mit \SI{15}{\meter\per\second}. Welche Strecke legt es in \SI{8}{\second} zurück?
+    \begin{solutionbox}
+        \[
+        s = v \cdot t = \SI{15}{\meter\per\second} \cdot \SI{8}{\second} = \SI{120}{\meter}
+        \]
+    \end{solutionbox}
+
+    \item \textbf{Durchschnittsgeschwindigkeit:} \\
+    Ein Läufer legt \SI{200}{\meter} in \SI{25}{\second} zurück. Berechne seine Durchschnittsgeschwindigkeit.
+    \begin{solutionbox}
+        \[
+        \overline{v} = \frac{\Delta s}{\Delta t} = \frac{\SI{200}{\meter}}{\SI{25}{\second}} = \SI{8}{\meter\per\second}
+        \]
+    \end{solutionbox}
+
+    \item \textbf{Weg-Zeit-Diagramm:} \\
+    Was bedeutet die Steigung in einem Weg-Zeit-Diagramm?
+    \begin{solutionbox}
+        Die Steigung entspricht der Geschwindigkeit. Eine größere Steigung bedeutet eine größere Geschwindigkeit.
+    \end{solutionbox}
+
+    \item \textbf{Beschleunigung:} \\
+    Ein Roller startet aus dem Stand und erreicht in \SI{6}{\second} die Geschwindigkeit \SI{12}{\meter\per\second}. Berechne die mittlere Beschleunigung.
+    \begin{solutionbox}
+        \[
+        a = \frac{\Delta v}{\Delta t} = \frac{\SI{12}{\meter\per\second} - 0}{\SI{6}{\second}} = \SI{2}{\meter\per\second\squared}
+        \]
+    \end{solutionbox}
+
+    \item \textbf{Geradlinige Bewegung mit Startwert:} \\
+    Ein Körper befindet sich zur Zeit $t = 0$ an der Position $s_0 = \SI{3}{\meter}$ und bewegt sich mit konstanter Geschwindigkeit \SI{4}{\meter\per\second}. Wo befindet sich der Körper nach \SI{5}{\second}?
+    \begin{solutionbox}
+        \[
+        s(t) = s_0 + v \cdot t = \SI{3}{\meter} + \SI{4}{\meter\per\second} \cdot \SI{5}{\second} = \SI{23}{\meter}
+        \]
+    \end{solutionbox}
+
+    \item \textbf{Freier Fall:} \\
+    Die allgemeine Wegfunktion einer gleichmäßig beschleunigten Bewegung lautet
+    \[ s(t) = s_0 + v_0 t + \frac{1}{2} a t^2. \]
+    Ein Körper fällt aus \SI{20}{\meter} Höhe. Vernachlässige den Luftwiderstand und verwende $g \approx \SI{10}{\meter\per\second^2}$. Wie lange dauert der freie Fall ungefähr?
+    \begin{solutionbox}
+        Für den freien Fall gilt $s_0 = \SI{20}{\meter}$, $v_0 = 0$ und $a = -g$.
+        Mit der Wegfunktion folgt für den Boden $s(t)=0$:
+        \[
+        0 = \SI{20}{\meter} - \frac{1}{2} \cdot \SI{10}{\meter\per\second^2} \cdot t^2
+        \]
+        also
+        \[
+        t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{2 \cdot \SI{20}{\meter}}{\SI{10}{\meter\per\second^2}}} = \sqrt{4} = \SI{2}{\second}
+        \]
+    \end{solutionbox}
+
+    \item \textbf{Kreisbewegung:} \\
+    Ein Massepunkt bewegt sich auf einem Kreis mit dem Radius \SI{0.5}{\meter}. Für eine volle Umdrehung braucht er \SI{2}{\second}. Welche Winkelgeschwindigkeit hat er und wie groß ist seine Bahngeschwindigkeit?
+    \begin{solutionbox}
+        Der Umlaufzeitraum ist $T = \SI{2}{\second}$.
+        Damit gilt für die Winkelgeschwindigkeit
+        \[
+        \omega = \frac{2\pi}{T} = \frac{2\pi}{\SI{2}{\second}} = \pi\,\si{\radian\per\second}
+        \]
+        und für die Bahngeschwindigkeit
+        \[
+        v = R \cdot \omega = \SI{0.5}{\meter} \cdot \pi\,\si{\radian\per\second} = \frac{\pi}{2}\,\si{\meter\per\second} \approx \SI{1.57}{\meter\per\second}
+        \]
+    \end{solutionbox}
+
+    \item \textbf{Verständnisfrage:} \\
+    In welche Richtung wirkt die Zentripetalbeschleunigung immer? Welche Beschleunigung muss auf einen Massepunkt wirken, wenn er mit der Geschwindigkeit $v = \SI{2}{\meter\per\second}$ im Abstand $r = \SI{0.5}{\meter}$ vom Mittelpunkt kreist?
+    \begin{solutionbox}
+        Die Zentripetalbeschleunigung wirkt immer zum Mittelpunkt der Kreisbahn.
+
+        Für einen Massepunkt mit Geschwindigkeit $v$ im Abstand $r$ gilt
+        \[
+        a_{\mathrm{z}} = \frac{v^2}{r}
+        \]
+        also hier
+        \[
+        a_{\mathrm{z}} = \frac{4}{0.5}\,\si{\meter\per\second^2} = \SI{8}{\meter\per\second^2}
+        \]
+        Richtung: zum Mittelpunkt.
+    \end{solutionbox}
+
+\end{enumerate}
+
+\vspace{1cm}
+
+\end{document}
