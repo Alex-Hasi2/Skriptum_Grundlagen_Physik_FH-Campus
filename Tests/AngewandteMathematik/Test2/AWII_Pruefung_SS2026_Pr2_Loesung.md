@@ -44,7 +44,7 @@
 
 ## Beispiel 2
 
-Gegeben sind die Grenzwerte für $x \to 0$ beziehungsweise $x \to \infty$.
+Zu berechnen sind die folgenden Grenzwerte:
 
 ### a) $\displaystyle \lim_{x\to 0} \frac{\cos(x)}{x^2+1}$
 

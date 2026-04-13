@@ -52,3 +52,4 @@ build/
 !alex_phd_de.bst
 !Bilder/
 !Bilder/**/*.pdf
+!Tests/AngewandteMathematik/Test*/*.pdf
