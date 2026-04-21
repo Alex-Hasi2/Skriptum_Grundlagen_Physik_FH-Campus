@@ -4,7 +4,7 @@ This repo contains a German physics script (“Skriptum”) written in LaTeX, wi
 
 The repository also contains an integrated mathematics lecture in `AngewandteMathematik/`. For that folder, mathematical statements, derivations, and solutions do not have to be written in `.tex` files, and the formatting may be chosen more freely if that better fits the content. Even there, preserve mathematical correctness and keep notation precise.
 
-The repo also contains a second script (“Uebungsbeispiele”) with exercises and solutions. Additionally, there are exams (`test_*.tex`) for students in `Tests/` with their own LaTeX files and the corresponding solutions (`test_*_loesung.tex`).
+The repo also contains a second script (“Uebungsbeispiele”) with exercises and solutions. Additionally, there are exams (`test_*.tex`) for students in `Tests/` with their own LaTeX files and the corresponding solutions (`test_*_loesung.tex`). For the physics course there are also Kurztests in `Tests/Kurztests/` with matching solution files (`kurztest_*_loesung.tex`), which follow the same LaTeX conventions and should be treated as standalone assessment documents.
 
 Only work on the part that the user explicitly requests. If unclear, default to the Skriptum and ask a clarifying question.
 
@@ -85,11 +85,6 @@ If bibliography is involved, `latexmk` should handle it; otherwise use the repo�
 - Use existing styles and macros for consistency if available.
 - Test TikZ code in the standalone file `imageTesting.tex` to ensure it compiles before integrating into the main files.
 - Most TikZ figures used in the main file are also present as comments in `imageTesting.tex`, so you can inspect them individually.
-
-
-## What is still to be done
-
-- An "Abbildungsverzeichnis" (list of figures) is still missing and should be added to the main file if requested. Some figures have been taken from external sources and may require proper attribution or formatting adjustments to fit the style of the script. 
 
 
 ## When unsure
