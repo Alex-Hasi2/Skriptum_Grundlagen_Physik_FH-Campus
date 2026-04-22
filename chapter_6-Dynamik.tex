@@ -779,15 +779,46 @@ Die Kraft $\ivec{F}$ ist die Ursache für die Änderung des Impulses $\ivec{p}$,
 
 Die physikalischen Größen der Translation haben direkte Entsprechungen in der Rotation. Diese Analogie hilft, die Konzepte der Rotationsdynamik zu verstehen.
 
+Wir kennen für die Rotation bereits den Betrag der Winkelgeschwindigkeit aus der Kinematik, nämlich $\omega = \frac{\dd\varphi}{\dd t}$. Bei einem starren, rotierenden Körper ist dieser Wert für alle Teile des Körpers gleich, sodass es naheliegt zu fragen, ob man die gesamte Rotation nicht durch einen einzigen Vektor beschreiben kann.
+
+Wenn es einen solchen Vektor gibt, dann muss sein Betrag gerade die bekannte Winkelgeschwindigkeit $\omega$ sein. Außerdem muss er zusammen mit dem Ortsvektor $\ivec{r}$ die lokale Bahngeschwindigkeit liefern. Diese steht tangential zur Bahn und daher senkrecht auf $\ivec{r}$. Genau diese Eigenschaft besitzt ein Kreuzprodukt. Es liegt daher nahe, die Geschwindigkeit in der Form $\ivec{v} = \ivec{\omega} \times \ivec{r}$ zu schreiben. Die Richtung von $\ivec{\omega}$ ist dann gerade so festgelegt, dass dieses Kreuzprodukt in die tatsächliche Bewegungsrichtung zeigt; bei einer ebenen Rotation entspricht das der bekannten Rechte-Hand-Regel und damit der Richtung der Rotationsachse.
+
 \begin{rememberbox}{Vektorielle Winkelgeschwindigkeit}
-Die Winkelgeschwindigkeit $\ivec{\omega}$ lässt sich vektoriell über die Formel
+Für einen Punkt eines starren Körpers gilt
+\begin{equation}\label{eq: v_eq_omega_cross_r}
+    \ivec{v} = \ivec{\omega} \times \ivec{r}
+\end{equation}
+und damit
 \begin{equation}\label{eq: omega_r_x_v_allgemein}
     \ivec{\omega} = \frac{\ivec{r} \times \ivec{v}}{|\ivec{r}|^2}
 \end{equation}
-berechnen. Wenn man nur am Betrag interessiert ist und die Rotationsachse ihre Richtung nicht ändert (wie bei einer ebenen Kreisbewegung), kann die skalare Beziehung $\omega = \frac{\dd\varphi}{\dd t}$ verwendet werden.
+Wenn man nur am Betrag interessiert ist und die Rotationsachse ihre Richtung nicht ändert, kann auch die skalare Beziehung $\omega = \frac{\dd\varphi}{\dd t}$ verwendet werden.
 \end{rememberbox}
 
-Die folgende Tabelle stellt die wichtigsten analogen Größen gegenüber.
+Um aus \cref{eq: v_eq_omega_cross_r} die Gleichung für $\ivec{\omega}$ zu gewinnen, multiplizieren wir von links mit $\ivec{r} \times$:
+\begin{equation}
+    \ivec{r} \times \ivec{v} = \ivec{r} \times (\ivec{\omega} \times \ivec{r}) \mDot
+\end{equation}
+Dabei verwendet man die sogenannte cab-bac-Regel
+\begin{equation}
+    \ivec{a} \times (\ivec{b} \times \ivec{c}) = \ivec{b}(\ivec{a} \cdot \ivec{c}) - \ivec{c}(\ivec{a} \cdot \ivec{b}) \mDot
+\end{equation}
+Für $\ivec{a}=\ivec{r}$, $\ivec{b}=\ivec{\omega}$ und $\ivec{c}=\ivec{r}$ folgt damit
+\begin{equation}\begin{aligned}
+    \ivec{r} \times (\ivec{\omega} \times \ivec{r}) &= \ivec{\omega}(\ivec{r} \cdot \ivec{r}) - \ivec{r}(\ivec{r} \cdot \ivec{\omega}) \\
+    &= \ivec{\omega} |\ivec{r}|^2 - \ivec{r}(\ivec{r} \cdot \ivec{\omega}) \mDot
+\end{aligned}\end{equation}
+Für eine ebene Rotation steht der Ortsvektor $\ivec{r}$ senkrecht auf der Rotationsachse und damit auch auf $\ivec{\omega}$. Also ist $\ivec{r} \cdot \ivec{\omega} = 0$, und somit bleibt
+\begin{equation}
+    \ivec{r} \times \ivec{v} = |\ivec{r}|^2\ivec{\omega} \mDot
+\end{equation}
+Auflösen nach $\ivec{\omega}$ liefert dann
+\begin{equation}
+    \ivec{\omega} = \frac{\ivec{r} \times \ivec{v}}{|\ivec{r}|^2} \mDot
+\end{equation}
+
+\newline
+Die folgende Tabelle stellt die wichtigsten physikalischen Größen der Translation und Rotation gegenüber.
 
 \begin{table}[h!]
 \centering
@@ -840,7 +871,7 @@ Ein Beobachter im Fahrstuhl stellt fest, dass die Masse relativ zu ihm in Ruhe i
 \end{equation} 
 Um diesen Widerspruch aufzulösen und das Ruhegleichgewicht zu erklären, muss der Beobachter im Fahrstuhl eine zusätzliche Kraft, die \textbf{Scheinkraft} $\ivecS{F}{\text{S}}$, einführen:
 \begin{gather}
-    \ivecS{F}{G} + \ivecS{F}{\text{Feder}} + \ivecS{F}{\text{S}} = \ivec{0} \\
+    \ivecS{F}{\text{G}} + \ivecS{F}{\text{Feder}} + \ivecS{F}{\text{S}} = \ivec{0} \\
     -ma\ivecS{e}{z} + \ivecS{F}{\text{S}} = \ivec{0} \\
     \llap{$\implies$\;} \ivecS{F}{\text{S}} = +ma\ivecS{e}{z} = -m\ivec{a} 
 \end{gather}
