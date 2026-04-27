@@ -45,6 +45,8 @@
 *blx.bib
 .bak 
 .mtc
+__pycache__/
+*.py[cod]
 Literatur/*.pdf
 build/
 !alex_phd.bst

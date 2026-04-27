@@ -1,7 +1,8 @@
-# A script to insert the content of the latex .tex files into the main.tex file 
-# At the locations in the main.tex file where there are \include{filename} commands, the content of filename.tex file should be inserted. 
+# A script to insert the content of the latex .tex files into the main.tex file
+# At the locations in the main.tex file where there are \include{filename} commands, the content of filename.tex file should be inserted.
 
 
+import argparse
 import os
 
 
@@ -39,11 +40,38 @@ def combine_latex_files(main_folder, main_file, output_file):
         of.writelines(combined_content)
 
 
-if __name__ == "__main__":
-    main_file = 'main.tex'
-    # main_folder = r'C:/Users/alexsc31/Documents_privat/FH Campus/Clinical_Engineering/GithubRepo/Skriptum_Grundlagen_Physik_FH-Campus/'
-    main_folder = r'C:/Users/Alexa/Documents-Alex/FH Campus/Skriptum_Grundlagen_Physik_FH-Campus/'
-    output_file = 'combined_main_2026-02-28.tex'
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Combine a LaTeX main file with its \include{} files into one output file.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""Examples:
+  python Code/combineFiles.py
+  python Code/combineFiles.py --main-folder "C:/Users/Alexa/Documents-Alex/FH Campus/Skriptum_Grundlagen_Physik_FH-Campus" --main-file main.tex --output-file combined_main.tex
+  python Code/combineFiles.py --main-folder "C:/Project" --main-file main.tex --output-file combined_main.tex
+""",
+    )
+    parser.add_argument(
+        "--main-folder",
+        default=r"C:/Users/Alexa/Documents-Alex/FH Campus/Skriptum_Grundlagen_Physik_FH-Campus/",
+        help="Folder that contains the LaTeX files. Defaults to the current hardcoded path used by the script.",
+    )
+    parser.add_argument(
+        "--main-file",
+        default="main.tex",
+        help="Main LaTeX file that contains the \include{} statements.",
+    )
+    parser.add_argument(
+        "--output-file",
+        default="combined_main_2026-02-28.tex",
+        help="Output file to write the combined LaTeX document to.",
+    )
+    return parser.parse_args()
 
-    
-    combine_latex_files(main_folder, main_file, output_file)
+
+def main():
+    args = parse_args()
+    combine_latex_files(args.main_folder, args.main_file, args.output_file)
+
+
+if __name__ == "__main__":
+    main()
