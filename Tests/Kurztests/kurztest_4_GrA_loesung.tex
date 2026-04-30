@@ -1,0 +1,166 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic}
+\usepackage{esvect}
+\usepackage[most]{tcolorbox}
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction
+}
+
+\makeatletter
+\def\input@path{{./}{../../}}
+\makeatother
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\input{defs}
+
+\definecolor{boxcol_back_lgreen}{RGB}{220, 255, 220}
+\definecolor{boxcol_back_white}{RGB}{255, 255, 255}
+\definecolor{boxcol_frame_green}{RGB}{30, 180, 30}
+\newtcolorbox{solutionbox}[1][] {
+  colback=boxcol_back_white,
+  colframe=boxcol_frame_green,
+  colbacktitle=boxcol_back_lgreen,
+  fonttitle=\bfseries,
+  coltitle=black,
+  boxsep=5pt,
+  arc=1mm,
+  enhanced,
+  attach boxed title to top left={yshift=-2mm, xshift=3mm},
+  title=Lösung,
+  #1
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+
+\section*{\LARGE Lösung: Kurztest 4}
+\noindent
+\begin{tabular}{ll}
+    \textbf{Gruppe: } & \LARGE\textbf{A}  \\[0.3cm]
+\end{tabular}
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=0.50cm]
+
+    \item (1 P) - \textbf{Grundgrößen:}
+    \begin{solutionbox}
+        Mögliche Formeln sind:
+        \begin{itemize}[itemsep=0pt, topsep=2pt]
+            \item Arbeit: $W = F \cdot s$ mit $[W] = \si{\joule}$
+            \item kinetische Energie: $E_{\text{kin}} = \frac{1}{2}mv^2$ mit $[E_{\text{kin}}] = \si{\joule}$
+            \item potentielle Energie: $E_{\text{pot}} = mgh$ mit $[E_{\text{pot}}] = \si{\joule}$
+            \item Leistung: $P = \frac{W}{t}$ oder $P = Fv$ mit $[P] = \si{\watt}$
+        \end{itemize}
+    \end{solutionbox}
+
+    \item (1,5 P) - \textbf{Hubarbeit:}
+    \begin{solutionbox}
+        Es gilt
+        \[
+        W_{\text{Hub}} = mgh = \SI{15}{\kilogram} \cdot \SI{10}{\meter\per\second\squared} \cdot \SI{1.6}{\meter} = \SI{240}{\joule}
+        \]
+        \begin{itemize}[itemsep=0pt, topsep=2pt]
+            \item Die verrichtete Hubarbeit beträgt $\SI{240}{\joule}$.
+            \item Die potentielle Energie nimmt ebenfalls um $\Delta E_{\text{pot}} = \SI{240}{\joule}$ zu.
+        \end{itemize}
+    \end{solutionbox}
+
+    \item (1,5 P) - \textbf{Freier Fall und Energieerhaltung:}
+    \begin{solutionbox}
+        \begin{itemize}[itemsep=2pt, topsep=2pt]
+            \item Anfangsenergie pro Kilogramm:
+            \[
+            \frac{E_{\text{pot}}}{m} = gh = \SI{10}{\meter\per\second\squared} \cdot \SI{5}{\meter} = \SI{50}{\joule\per\kilogram}
+            \]
+            \item Mit Energieerhaltung gilt $mgh = \frac{1}{2}mv^2$. Daraus folgt
+            \[
+            v = \sqrt{2gh} = \sqrt{2 \cdot 10 \cdot 5} = \SI{10}{\meter\per\second}
+            \]
+        \end{itemize}
+    \end{solutionbox}
+
+    \item (1,5 P) - \textbf{Bremsweg aus der Arbeit:}
+    \begin{solutionbox}
+        Zuerst Umrechnung der Geschwindigkeit:
+        \[
+        \SI{72}{\kilo\meter\per\hour} = \frac{72}{3.6} \, \si{\meter\per\second} = \SI{20}{\meter\per\second}
+        \]
+        Die kinetische Energie zu Beginn ist
+        \[
+        E_{\text{kin}} = \frac{1}{2}mv_0^2 = \frac{1}{2} \cdot 1200 \cdot 20^2 = \SI{240000}{\joule}
+        \]
+        Die Bremsarbeit ist $W_B = F_B \cdot s$ und entspricht betragsmäßig der anfänglichen kinetischen Energie:
+        \[
+        F_B s = E_{\text{kin}}
+        \]
+        also
+        \[
+        s = \frac{E_{\text{kin}}}{F_B} = \frac{240000}{4800} = \SI{50}{\meter}
+        \]
+    \end{solutionbox}
+
+    \item (1,5 P) - \textbf{Mechanische Leistung eines PKW:}
+    \begin{solutionbox}
+        Die gesamte entgegenwirkende Kraft ist
+        \[
+        F_{\text{ges}} = F_{LW} + F_R = \SI{320}{\newton} + \SI{180}{\newton} = \SI{500}{\newton}
+        \]
+        Die Geschwindigkeit beträgt
+        \[
+        \SI{90}{\kilo\meter\per\hour} = \SI{25}{\meter\per\second}
+        \]
+        Damit ergibt sich für die Leistung
+        \[
+        P = F_{\text{ges}} v = \SI{500}{\newton} \cdot \SI{25}{\meter\per\second} = \SI{12500}{\watt} = \SI{12.5}{\kilo\watt}
+        \]
+    \end{solutionbox}
+
+    \item (1,5 P) - \textbf{Energieübertragung:}
+    \begin{solutionbox}
+        Aus $E_{\text{kin}} = \frac{1}{2}mv^2$ folgt
+        \[
+        v = \sqrt{\frac{2E_{\text{kin}}}{m}} = \sqrt{\frac{2 \cdot 3250}{65}} = \sqrt{100} = \SI{10}{\meter\per\second}
+        \]
+        Am höchsten Punkt ist die gesamte Anfangsenergie in potentielle Energie umgewandelt:
+        \[
+        E_{\text{kin}} = mgh_{\text{max}}
+        \]
+        also
+        \[
+        h_{\text{max}} = \frac{3250}{65 \cdot 10} = \SI{5}{\meter}
+        \]
+        Die Person erreicht also eine maximale Höhe von $\SI{5}{\meter}$ über dem Absprungpunkt.
+    \end{solutionbox}
+
+    \item (1,5 P) - \textbf{Vorzeichen der Arbeit:}
+    \begin{solutionbox}
+        Arbeit ist positiv, wenn Kraft und Bewegung in dieselbe Richtung zeigen, negativ bei entgegengesetzter Richtung und null bei senkrechter Richtung.
+        \begin{itemize}[itemsep=2pt, topsep=2pt]
+            \item Positive Arbeit: die Zugkraft
+            \item Negative Arbeit: die Reibungskraft
+            \item Keine Arbeit: Gewichtskraft und Normalkraft, da beide senkrecht zur horizontalen Bewegung stehen
+        \end{itemize}
+    \end{solutionbox}
+
+\end{enumerate}
+
+\vspace{1cm}
+
+\end{document}
