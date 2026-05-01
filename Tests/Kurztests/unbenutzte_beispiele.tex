@@ -1,0 +1,90 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{esvect}
+\usepackage{siunitx}
+\sisetup{
+    locale = DE,
+    inter-unit-product = \cdot,
+    per-mode = symbol-or-fraction
+}
+
+\makeatletter
+\def\input@path{{./}{../../}}
+\makeatother
+
+\input{defs}
+
+\begin{document}
+
+\section*{Nicht verwendete, aber grundsätzlich gute Beispiele}
+
+\subsection*{Differentialgleichung durch Integration II}
+
+Für die Anzahl $N(t)$ nicht zerfallener Kerne gelte die Differentialgleichung
+\[
+    \frac{\dd N}{\dd t} = -\lambda N
+\]
+mit $\lambda > 0$ und der Anfangsbedingung $N(0)=N_0$.
+\begin{enumerate}[label=(\alph*)]
+    \item Lösen Sie die Differentialgleichung durch Trennung der Variablen.
+    \item Bestimmen Sie die Zeit $t_{1/2}$, bei der $N(t_{1/2}) = N_0/2$ gilt.
+\end{enumerate}
+
+\subsection*{Freier Fall und Energieerhaltung}
+
+Eine Kugel wird aus der Höhe $h = \SI{5}{\meter}$ aus der Ruhe fallengelassen. Der Luftwiderstand wird vernachlässigt.
+\begin{enumerate}[label=(\alph*)]
+    \item Wie groß ist ihre potentielle Energie vor dem Loslassen?
+    \item Welche Geschwindigkeit hat die Kugel unmittelbar vor dem Aufprall?
+\end{enumerate}
+
+\subsection*{Vorzeichen der Arbeit}
+
+Ein Schlitten bewegt sich auf einer \textbf{waagrechten} Strecke nach rechts. Auf ihn wirken eine Zugkraft nach rechts, eine Reibungskraft nach links, die Gewichtskraft nach unten und die Normalkraft nach oben.
+\begin{enumerate}[label=(\alph*)]
+    \item Welche Kraft verrichtet positive Arbeit?
+    \item Welche Kraft verrichtet negative Arbeit?
+    \item Welche Kräfte verrichten keine Arbeit?
+\end{enumerate}
+Begründen Sie Ihre Antworten jeweils kurz.
+
+\subsection*{Beispiel 8 — Arbeit entlang einer Raumkurve I}
+
+Auf ein Teilchen wirke die ortsabhängige Kraft
+\[
+    \ivec{F}(x,y) = \inlrowTwo{2x}{3}\,\si{\newton}
+\]
+und das Teilchen bewege sich entlang der Bahn
+\[
+    \ivec{r}(t) = \inlrowTwo{t}{2t}\,\si{\meter}
+    \qquad \text{für } t \in [0,2].
+\]
+Berechnen Sie die verrichtete Arbeit mit dem Kurvenintegral
+\[
+    W = \int \ivec{F}\cdot \dd \ivec{r}.
+\]
+\textit{Hinweis:} Setzen Sie zuerst die Bahn in das Kraftfeld ein und bestimmen Sie anschließend $\dd \ivec{r}/\dd t$.
+
+\subsection*{Beispiel 9 — Arbeit entlang einer Raumkurve II}
+
+Eine Kraft sei gegeben durch
+\[
+    \ivec{F}(x,y) = \icolTwo{x+y}{2x-y}\,\si{\newton}.
+\]
+Ein Körper bewege sich auf der Kreisbahn
+\[
+    \ivec{r}(\varphi) = R\,\icolTwo{\cos\varphi}{\sin\varphi}
+    \qquad \text{mit } R = \SI{2}{\meter},\; \varphi \in \left[0,\frac{\pi}{2}\right].
+\]
+Berechnen Sie die Arbeit
+\[
+    W = \int \ivec{F}\cdot \dd \ivec{r}
+\]
+auf diesem Viertelkreis.
+
+\end{document}

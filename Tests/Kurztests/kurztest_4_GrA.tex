@@ -88,66 +88,47 @@ $\,$
 \begin{enumerate}[label=\textbf{\arabic*.},itemsep=0.55cm]
 
     \item (1 P) - \textbf{Grundgrößen:} \\
-    Schreiben Sie die Formeln \textbf{und} die jeweilige SI-Einheit für die folgenden Größen an:
+    Schreiben Sie die Definitionen (als Formel) \textbf{und} die jeweilige SI-Einheit für die folgenden Größen an:
     \begin{itemize}
+        \item Kraft $F$
         \item Arbeit $W$
         \item kinetische Energie $E_{\text{kin}}$
-        \item potentielle Energie $E_{\text{pot}}$
+        \item potentielle Energie $E_{\text{pot}}$ im Gravitationsfeld der Erde
         \item Leistung $P$
     \end{itemize}
-
+    \vspace{1cm}
     \item (1,5 P) - \textbf{Hubarbeit:} \\
     Ein medizinisches Gerät mit der Masse $m = \SI{15}{\kilogram}$ wird um $h = \SI{1.6}{\meter}$ angehoben.
     \begin{enumerate}[label=(\alph*)]
         \item Wie groß ist die verrichtete Hubarbeit?
-        \item Um wie viel nimmt die potentielle Energie des Geräts zu?
+        \item Wie verändert sich die potentielle Energie des angehobenen Geräts?
+        \item Welche Leistung benötigt die Seilwinde mindestens, wenn das Anheben in $t = \SI{10}{\second}$ erfolgt?
     \end{enumerate}
-
-    \item (1,5 P) - \textbf{Freier Fall und Energieerhaltung:} \\
-    Eine Kugel wird aus der Höhe $h = \SI{5}{\meter}$ aus der Ruhe fallengelassen. Der Luftwiderstand wird vernachlässigt.
-    \begin{enumerate}[label=(\alph*)]
-        \item Wie groß ist ihre potentielle Energie zu Beginn pro Kilogramm Masse?
-        \item Welche Geschwindigkeit hat die Kugel unmittelbar vor dem Aufprall?
-    \end{enumerate}
+    \vspace{2cm}
 
     \item (1,5 P) - \textbf{Bremsweg aus der Arbeit:} \\
     Ein Auto der Masse $m = \SI{1200}{\kilogram}$ fährt mit $v_0 = \SI{72}{\kilo\meter\per\hour}$. Beim Bremsen wirkt eine konstante Bremskraft von $F_B = \SI{4800}{\newton}$ entgegen der Fahrtrichtung.
     \begin{enumerate}[label=(\alph*)]
         \item Wie groß ist die kinetische Energie des Autos zu Beginn?
+        \item Welches Vorzeichen hat die Bremsarbeit?
         \item Wie lang ist der Bremsweg bis zum Stillstand?
     \end{enumerate}
-
+    \vspace{2cm}
     \item (1,5 P) - \textbf{Mechanische Leistung eines PKW:} \\
-    Ein PKW fährt mit konstanter Geschwindigkeit $v = \SI{90}{\kilo\meter\per\hour}$. Der Luftwiderstand beträgt $F_{LW} = \SI{320}{\newton}$, die Rollreibungskraft $F_{R} = \SI{180}{\newton}$.
+    Ein PKW fährt mit konstanter Geschwindigkeit $v = \SI{90}{\kilo\meter\per\hour}$. Bei dieser Geschwindigkeit betragen der Luftwiderstand $F_{LW} = \SI{320}{\newton}$ und die Rollreibungskraft $F_{R} = \SI{180}{\newton}$.
     \begin{enumerate}[label=(\alph*)]
         \item Wie groß ist die gesamte entgegenwirkende Kraft?
-        \item Welche mechanische Leistung muss der Motor mindestens aufbringen?
+        \item Welche mechanische Leistung muss der Motor mindestens aufbringen, um das Fahrzeug mit der konstanten Geschwindigkeit zu bewegen?
     \end{enumerate}
-
-    \item (1,5 P) - \textbf{Energieübertragung:} \\
-    Eine Person mit der Masse $m = \SI{65}{\kilogram}$ verlässt ein Sprungkissen mit einer kinetischen Energie von $E_{\text{kin}} = \SI{3250}{\joule}$ senkrecht nach oben.
-    \begin{enumerate}[label=(\alph*)]
-        \item Mit welcher Geschwindigkeit startet die Person?
-        \item Welche maximale Höhe über dem Absprungpunkt erreicht sie?
-    \end{enumerate}
-
-    \item (1,5 P) - \textbf{Vorzeichen der Arbeit:} \\
-    Ein Schlitten bewegt sich auf einer \textbf{waagrechten} Strecke nach rechts. Auf ihn wirken eine Zugkraft nach rechts, eine Reibungskraft nach links, die Gewichtskraft nach unten und die Normalkraft nach oben.
-    \begin{enumerate}[label=(\alph*)]
-        \item Welche Kraft verrichtet positive Arbeit?
-        \item Welche Kraft verrichtet negative Arbeit?
-        \item Welche Kräfte verrichten keine Arbeit?
-    \end{enumerate}
-    Begründen Sie Ihre Antworten jeweils kurz.
-
-    \item (2 P) - \textbf{Arbeit entlang einer Raumkurve I:} \\
+    \vspace{1cm}
+    \item (2,5 P) - \textbf{Arbeit entlang einer Raumkurve:} \\
     Auf ein Teilchen wirke die ortsabhängige Kraft
     \[
-        \ivec{F}(x,y,z) = \inlrowThree{2x}{3}{-z}\,\si{\newton}
+        \ivec{F}(x,y) = \icolTwo{2x}{3}\,\si{\newton}
     \]
     und das Teilchen bewege sich entlang der Bahn
     \[
-        \ivec{r}(t) = \inlrowThree{t}{2t}{1+t}\,\si{\meter}
+        \ivec{r}(t) = \icolTwo{t}{2t}\,\si{\meter}
         \qquad \text{für } t \in [0,2].
     \]
     Berechnen Sie die verrichtete Arbeit mit dem Kurvenintegral
@@ -155,43 +136,16 @@ $\,$
         W = \int \ivec{F}\cdot \dd \ivec{r}.
     \]
     \textit{Hinweis:} Setzen Sie zuerst die Bahn in das Kraftfeld ein und bestimmen Sie anschließend $\dd \ivec{r}/\dd t$.
-
-    \item (2 P) - \textbf{Arbeit entlang einer Raumkurve II:} \\
-    Eine Kraft sei gegeben durch
-    \[
-        \ivec{F}(x,y) = \icolTwo{x+y}{2x-y}\,\si{\newton}.
-    \]
-    Ein Körper bewege sich auf der Kreisbahn
-    \[
-        \ivec{r}(\varphi) = R\,\icolTwo{\cos\varphi}{\sin\varphi}
-        \qquad \text{mit } R = \SI{2}{\meter},\; \varphi \in \left[0,\frac{\pi}{2}\right].
-    \]
-    Berechnen Sie die Arbeit
-    \[
-        W = \int \ivec{F}\cdot \dd \ivec{r}
-    \]
-    auf diesem Viertelkreis.
-
+    \vspace{3cm}
     \item (2 P) - \textbf{Differentialgleichung durch Integration I:} \\
     Die Geschwindigkeit $v(t)$ eines Körpers erfülle die Differentialgleichung
     \[
-        \frac{\dd v}{\dd t} = 4t
+        a(t) = \frac{\dd v}{\dd t} = 4t
     \]
     mit der Anfangsbedingung $v(0)=\SI{3}{\meter\per\second}$.
     \begin{enumerate}[label=(\alph*)]
         \item Bestimmen Sie $v(t)$ durch Integration.
         \item Berechnen Sie anschließend den Ort $x(t)$, wenn zusätzlich $x(0)=\SI{1}{\meter}$ gilt.
-    \end{enumerate}
-
-    \item (2 P) - \textbf{Differentialgleichung durch Integration II:} \\
-    Für die Anzahl $N(t)$ nicht zerfallener Kerne gelte die Differentialgleichung
-    \[
-        \frac{\dd N}{\dd t} = -\lambda N
-    \]
-    mit $\lambda > 0$ und der Anfangsbedingung $N(0)=N_0$.
-    \begin{enumerate}[label=(\alph*)]
-        \item Lösen Sie die Differentialgleichung durch Trennung der Variablen.
-        \item Bestimmen Sie die Zeit $t_{1/2}$, bei der $N(t_{1/2}) = N_0/2$ gilt.
     \end{enumerate}
 
 \end{enumerate}

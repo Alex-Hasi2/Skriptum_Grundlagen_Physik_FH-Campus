@@ -63,39 +63,30 @@
     \begin{solutionbox}
         Mögliche Formeln sind:
         \begin{itemize}[itemsep=0pt, topsep=2pt]
+            \item Kraft: $F = m a$ mit $[F] = \si{\newton}$
             \item Arbeit: $W = F \cdot s$ mit $[W] = \si{\joule}$
             \item kinetische Energie: $E_{\text{kin}} = \frac{1}{2}mv^2$ mit $[E_{\text{kin}}] = \si{\joule}$
             \item potentielle Energie: $E_{\text{pot}} = mgh$ mit $[E_{\text{pot}}] = \si{\joule}$
             \item Leistung: $P = \frac{W}{t}$ oder $P = Fv$ mit $[P] = \si{\watt}$
         \end{itemize}
     \end{solutionbox}
-
+    \vspace{1cm}
     \item (1,5 P) - \textbf{Hubarbeit:}
     \begin{solutionbox}
         Es gilt
         \[
-        W_{\text{Hub}} = mgh = \SI{15}{\kilogram} \cdot \SI{10}{\meter\per\second\squared} \cdot \SI{1.6}{\meter} = \SI{240}{\joule}
+        W_{\text{Hub}} = \int \ivec{F} \cdot d\ivec{r} = \int_{0}^{h} mg \cdot dz = mgh = \SI{15}{\kilogram} \cdot \SI{10}{\meter\per\second\squared} \cdot \SI{1.6}{\meter} = \SI{240}{\joule}
         \]
         \begin{itemize}[itemsep=0pt, topsep=2pt]
             \item Die verrichtete Hubarbeit beträgt $\SI{240}{\joule}$.
-            \item Die potentielle Energie nimmt ebenfalls um $\Delta E_{\text{pot}} = \SI{240}{\joule}$ zu.
-        \end{itemize}
-    \end{solutionbox}
-
-    \item (1,5 P) - \textbf{Freier Fall und Energieerhaltung:}
-    \begin{solutionbox}
-        \begin{itemize}[itemsep=2pt, topsep=2pt]
-            \item Anfangsenergie pro Kilogramm:
+            \item Die potentielle Energie des angehobenen Geräts nimmt um $\Delta E_{\text{pot}} = \SI{240}{\joule}$ zu.
+            \item Die benötigte Leistung der Seilwinde beträgt mindestens
             \[
-            \frac{E_{\text{pot}}}{m} = gh = \SI{10}{\meter\per\second\squared} \cdot \SI{5}{\meter} = \SI{50}{\joule\per\kilogram}
-            \]
-            \item Mit Energieerhaltung gilt $mgh = \frac{1}{2}mv^2$. Daraus folgt
-            \[
-            v = \sqrt{2gh} = \sqrt{2 \cdot 10 \cdot 5} = \SI{10}{\meter\per\second}
+            P = \frac{W_{\text{Hub}}}{t} = \frac{\SI{240}{\joule}}{\SI{10}{\second}} = \SI{24}{\watt}
             \]
         \end{itemize}
     \end{solutionbox}
-
+    \newpage
     \item (1,5 P) - \textbf{Bremsweg aus der Arbeit:}
     \begin{solutionbox}
         Zuerst Umrechnung der Geschwindigkeit:
@@ -131,32 +122,48 @@
         P = F_{\text{ges}} v = \SI{500}{\newton} \cdot \SI{25}{\meter\per\second} = \SI{12500}{\watt} = \SI{12.5}{\kilo\watt}
         \]
     \end{solutionbox}
-
-    \item (1,5 P) - \textbf{Energieübertragung:}
+    \newpage
+    \item (2,5  P) - \textbf{Arbeit entlang einer Raumkurve:}
     \begin{solutionbox}
-        Aus $E_{\text{kin}} = \frac{1}{2}mv^2$ folgt
+        Es gilt
         \[
-        v = \sqrt{\frac{2E_{\text{kin}}}{m}} = \sqrt{\frac{2 \cdot 3250}{65}} = \sqrt{100} = \SI{10}{\meter\per\second}
+        W = \int \ivec{F}\cdot \dd \ivec{r} = \int_{0}^{2} \ivec{F}(\ivec{r}(t))\cdot \frac{\dd \ivec{r}}{\dd t}\,\dd t.
         \]
-        Am höchsten Punkt ist die gesamte Anfangsenergie in potentielle Energie umgewandelt:
+        Mit $\ivec{r}(t)=\inlrowTwo{t}{2t}$ folgt $\ivec{F}(\ivec{r}(t))=\inlrowTwo{2t}{3}$.
+        Weiters ist
         \[
-        E_{\text{kin}} = mgh_{\text{max}}
+        \frac{\dd \ivec{r}}{\dd t} = \inlrowTwo{1}{2}.
         \]
-        also
+        Damit ergibt sich
         \[
-        h_{\text{max}} = \frac{3250}{65 \cdot 10} = \SI{5}{\meter}
+        \ivec{F}(\ivec{r}(t))\cdot \frac{\dd \ivec{r}}{\dd t} = (2t)\cdot 1 + 3\cdot 2 = 2t + 6.
         \]
-        Die Person erreicht also eine maximale Höhe von $\SI{5}{\meter}$ über dem Absprungpunkt.
+        Also
+        \[
+        W = \int_{0}^{2} (2t+6)\,\dd t = \left[t^2 + 6t\right]_{0}^{2} = 4 + 12 = \SI{16}{\joule}.
+        \]
     \end{solutionbox}
 
-    \item (1,5 P) - \textbf{Vorzeichen der Arbeit:}
+    \item (2 P) - \textbf{Differentialgleichung durch Integration I:}
     \begin{solutionbox}
-        Arbeit ist positiv, wenn Kraft und Bewegung in dieselbe Richtung zeigen, negativ bei entgegengesetzter Richtung und null bei senkrechter Richtung.
-        \begin{itemize}[itemsep=2pt, topsep=2pt]
-            \item Positive Arbeit: die Zugkraft
-            \item Negative Arbeit: die Reibungskraft
-            \item Keine Arbeit: Gewichtskraft und Normalkraft, da beide senkrecht zur horizontalen Bewegung stehen
-        \end{itemize}
+        Aus der Differentialgleichung
+        \[
+        \frac{\dd v}{\dd t} = 4t
+        \]
+        folgt durch Integration
+        \[
+        v(t) = 2t^2 + C
+        \]
+        Mit der Anfangsbedingung $v(0)=\SI{3}{\meter\per\second}$ erhält man $C=\SI{3}{\meter\per\second}$ und somit
+        \[
+        v(t) = \left(2t^2 + 3\right)\,\si{\meter\per\second}
+        \]
+
+        Für den Ort gilt $\dd x/\dd t = v(t)$, also
+        \[
+        x(t) = \frac{2}{3}t^3 + 3t + C_x
+        \]
+        und aus $x(0)=\SI{1}{\meter}$ folgt $C_x=\SI{1}{\meter}$.
     \end{solutionbox}
 
 \end{enumerate}
