@@ -63,8 +63,8 @@
     \begin{solutionbox}
         Mögliche Formeln sind:
         \begin{itemize}[itemsep=0pt, topsep=2pt]
-            \item Kraft: $F = m a$ mit $[F] = \si{\newton}$
-            \item Arbeit: $W = F \cdot s$ mit $[W] = \si{\joule}$
+            \item Kraft: $\ivec{F} = m \ivec{a}$ oder $\ivec{F} = \frac{\dd \ivec{p}}{\dd t}$ mit $[F] = \si{\newton}$
+            \item Arbeit: $W = \int_{P_1}^{P_2} \ivec{F} \cdot d\ivec{r}$ mit $[W] = \si{\joule}$
             \item kinetische Energie: $E_{\text{kin}} = \frac{1}{2}mv^2$ mit $[E_{\text{kin}}] = \si{\joule}$
             \item potentielle Energie: $E_{\text{pot}} = mgh$ mit $[E_{\text{pot}}] = \si{\joule}$
             \item Leistung: $P = \frac{W}{t}$ oder $P = Fv$ mit $[P] = \si{\watt}$
@@ -99,7 +99,7 @@
         \]
         Die Bremsarbeit ist $W_B = F_B \cdot s$ und entspricht betragsmäßig der anfänglichen kinetischen Energie:
         \[
-        F_B s = E_{\text{kin}}
+        F_B \cdot s = E_{\text{kin}}
         \]
         also
         \[
@@ -161,9 +161,9 @@
 
         Für den Ort gilt $\dd x/\dd t = v(t)$, also
         \[
-        x(t) = \frac{2}{3}t^3 + 3t + C_x
+        x(t) = \frac{2}{3}t^3 + 3t + C_x = \frac{2}{3}t^3 + 3t + 1
         \]
-        und aus $x(0)=\SI{1}{\meter}$ folgt $C_x=\SI{1}{\meter}$.
+        wobei $C_x=\SI{1}{\meter}$ aus $x(0)=\SI{1}{\meter}$ folgt.
     \end{solutionbox}
 
 \end{enumerate}

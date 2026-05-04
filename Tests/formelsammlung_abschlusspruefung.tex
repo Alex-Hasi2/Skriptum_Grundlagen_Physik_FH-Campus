@@ -1,0 +1,114 @@
+\documentclass[10pt,a4paper,landscape]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage[b]{esvect}
+\usepackage{siunitx}
+
+\geometry{a4paper, landscape, top=1.0cm, bottom=1.0cm, left=1.0cm, right=1.0cm}
+
+\sisetup{
+  locale = DE,
+  separate-uncertainty,
+  inter-unit-product = {},
+  range-units = brackets,
+  list-units = single,
+  per-mode = symbol-or-fraction
+}
+\DeclareSIUnit{\litre}{l}
+
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{0.55cm}
+\setlength{\columnseprule}{0.2pt}
+
+\newcommand{\fssection}[1]{%
+  \vspace{0.2em}%
+  {\bfseries #1}\par
+  \vspace{0.2em}%
+}
+
+\newcommand{\fseq}[1]{%
+  \[
+    #1
+  \]
+  \vspace{-0.4em}%
+}
+\makeatletter
+\def\input@path{{./}{../}}
+\makeatother
+\input{defs}
+
+\begin{document}
+\footnotesize
+
+\begin{center}
+    {\Large \textbf{Formelsammlung}}\\[-0.1em]
+\end{center}
+
+\vspace{-0.5em}
+
+\begin{multicols}{3}
+
+\fssection{Kreisbewegung und Gravitation}
+\fseq{a_{\mathrm{zp}} = \frac{v^2}{r} = \omega^2 r}
+\fseq{\ivecS{F}{\mathrm{G}} = -G\frac{m_1 m_2}{r^2}\,\ivecS{e}{r}}
+
+\fssection{Federkraft}
+\fseq{\ivec{F} = -k (\ivec{x}-\ivec{x}_0)}
+
+\fssection{Reibung}
+\fseq{|\ivecS{F}{\mathrm{R}}| = \mu\,|\ivecS{F}{\mathrm{N}}|}
+
+\fssection{Statischer Auftrieb}
+\fseq{F_{\mathrm{Auf}} = \rho_{\mathrm{Fluid}} \cdot V_{\mathrm{verdr.}} \cdot g}
+
+\fssection{Rotation starrer Körper}
+\fseq{\ivec{M} = \ivec{r} \times \ivec{F}, \qquad M = rF\sin(\alpha) = rF_t}
+\fseq{\ivec{L} = \ivec{r} \times \ivec{p} = m\,(\ivec{r} \times \ivec{v})}
+\fseq{J = \int r_\perp^2\,\dd m}
+\fseq{J_A = J_S + m\cdot d^2 \quad \text{(Steiner)}}
+\fseq{E_{\mathrm{rot}} = \frac{1}{2}J\omega^2}
+\fseq{M = J\alpha}
+
+\columnbreak
+
+\fssection{Thermische Ausdehnung}
+\fseq{\Delta L = \alpha L_0\Delta T, \qquad \Delta V = \gamma V_0\Delta T}
+\fseq{\gamma \approx 3\alpha \quad \text{(isotrope Festkörper)}}
+\fssection{Wärme}
+\fseq{\Delta Q = C\Delta T = c m\Delta T}
+\fseq{Q_{\mathrm{Phase}} = m\lambda \qquad (\lambda_s,\,\lambda_v)}
+
+\fssection{Ideales Gas}
+\fseq{pV = Nk_B T = \nu RT}
+\fseq{U(T) = \frac{f}{2}\,\nu RT}
+\fseq{C_V = \frac{f}{2}R}
+\fseq{C_p = C_V + R = \frac{f+2}{2}R}
+\fseq{\kappa = \frac{C_p}{C_V}}
+
+\fssection{Erster Hauptsatz}
+\fseq{\Delta U = Q + W}
+\fseq{\dd W = -p\,\dd V}
+\fseq{H = U + pV}
+
+
+\columnbreak
+
+\fssection{Thermodynamik und Entropie}
+\fseq{\dd S = \frac{\dd Q_{\mathrm{rev}}}{T}}
+\fseq{\Delta S = \int \frac{\dd Q_{\mathrm{rev}}}{T}}
+\fseq{\Delta S_{\mathrm{ges}} \ge 0}
+
+
+\end{multicols}
+
+\end{document}
