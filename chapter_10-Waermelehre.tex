@@ -216,7 +216,7 @@ In \cref{tab: volumen_ausdehnungskoeffizienten} sind einige Volumenausdehnungsko
 
 
 \subsection{Ausdehnung von Gasen (Gesetze von Gay-Lussac)}\label{subsec: ausdehnung_gase}
-Auch Gase dehnen sich bei Erwärmung aus, jedoch deutlich stärker als Festkörper oder Flüssigkeiten. Die Ausdehnungskoeffizienten von Gasen sind ungefähr \qtyrange{2}{3}{} Größenordnungen größer als die von festen oder flüssigen Körpern. Die Gesetze von Gay-Lussac beschreiben dieses Verhalten für ideale Gase:
+Auch Gase dehnen sich bei Erwärmung aus, jedoch deutlich stärker als Festkörper oder Flüssigkeiten. Die Ausdehnungskoeffizienten von Gasen sind ungefähr \qtyrange{2}{3}{} Größenordnungen größer als die von festen oder flüssigen Körpern. Die \textbf{Gesetze von Gay-Lussac} beschreiben dieses Verhalten für ideale Gase:
 \begin{enumerate}
     \item \textbf{Bei konstantem Druck (isobar):} Hält man den Druck eines Gases konstant, so ist das Volumen direkt proportional zur \textbf{absoluten Temperatur} $T$ (in Kelvin). Wir starten mit der Volumenausdehnung als Funktion der Celsius-Temperatur $\vartheta$:
     \begin{equation}\label{eq: gay_lussac_isobar}
@@ -253,12 +253,76 @@ Somit folgt für die Druckänderung
 \end{equation}
 Die Volumenänderung bei konstantem Druck lässt sich analog herleiten. Zusammengefasst ergibt sich das sogenannte \textit{Gesetz von Gay-Lussac}.
 \begin{importantbox}[]{Gesetz von Gay-Lussac}
-    Das Gay-Lussac Gesetz beschreibt die Druckänderung bei konstantem Volumen (isochor) und die Volumenänderung bei konstantem Druck (isobar)
+    Die Gesetze von Gay-Lussac beschreiben die Volumenänderung bei konstantem Druck (isobar) und die Druckänderung bei konstantem Volumen (isochor) für ideale Gase. 
     \begin{equation}\begin{aligned}
-        (p - p_0) &\propto (T - T_0) \mComma \quad \text{für konstantes Volumen}\\
-        (V - V_0) &\propto (T - T_0) \mComma \quad \text{für konstanten Druck.}
+        (V - V_0) &\propto (T - T_0) \mComma \quad \text{für konstanten Druck.} \\
+        (p - p_0) &\propto (T - T_0) \mComma \quad \text{für konstantes Volumen} \mDot
     \end{aligned}\end{equation}
+Das 2. Gesetz von Gay-Lussac wird auch als \textbf{Gesetz von Amontons} bezeichnet.
 \end{importantbox}
+
+\subsubsection*{Makroskopische Einführung des Drucks}
+\begin{rememberbox}{Druck}
+    Der Druck $p$ gibt an, wie groß die senkrecht auf eine Fläche wirkende Kraft pro Fläche ist:
+    \begin{equation}
+        p = \frac{F_\perp}{A} \mDot
+    \end{equation}
+    Der Druck selbst ist eine \textbf{skalare} Größe. Wir werden lediglich den \textbf{absoluten Druck} betrachten, daher gilt $p \ge 0$. Die SI-Einheit des Drucks ist
+    \begin{equation}
+        [p] = \si{\pascal} = \SI{1}{\newton\per\square\meter} \mDot
+    \end{equation}
+\end{rememberbox}
+
+\begin{figure}[htb]
+    \centering
+    \resizebox{0.48\linewidth}{!}{
+    \begin{tikzpicture}[>=Latex, line cap=round, line join=round]
+        \def\cylW{3.2}
+        \def\cylH{6.0}
+        \def\pistY{2.5}
+        \def\pistH{0.22}
+        \def\fluidTop{5.4}
+
+        % Zylinder, Flüssigkeit, Kolben und Gas
+        \draw[thick] (0,\cylH) -- (0,0) -- (\cylW,0) -- (\cylW,\cylH);
+        \fill[blue!15] (0,\pistY+\pistH) rectangle (\cylW,\fluidTop);
+        \fill[pattern=dots, pattern color=red!70!black] (0,0) rectangle (\cylW,\pistY);
+        \filldraw[fill=gray!45, draw=black, thick] (0,\pistY) rectangle (\cylW,\pistY+\pistH);
+
+        \draw[<->, thick] (\cylW+0.45,\pistY+\pistH) -- (\cylW+0.45,\fluidTop) node[midway, right] {$h$};
+
+        \draw[->, ultra thick] (1.6,\cylH+0.8) -- (1.6,\fluidTop+0.05);
+        \node[right] at (1.6,\cylH+0.45) {$p_{\text{ext}}$};
+
+        \draw[->, ultra thick] (1.6,1.3) -- (1.6,\pistY-0.05);
+        \node[right] at (1.6,1.75) {$p_{\text{Gas}}$};
+
+        \node at (1.6,0.6) {Gas};
+        \node at (1.6,4.2) {Flüssigkeit,};
+        \node at (1.6,3.8) {Festkörper: $\rho_{\text{F}}$};
+        \node[left] at (-1,\pistY) {Kolben, $A$};
+    \end{tikzpicture}
+    }
+    \caption{Makroskopisches Druckgleichgewicht: Der Druck des Gases auf den masselosen Kolben muss genau den äußeren Druck $p_{\text{ext}}$ und den Gewichtsdruck (auch Schweredruck) der Flüssigkeitssäule $\rho_{\text{F}} \cdot g \cdot h$ tragen.}\label{fig: druck_fluessigkeitssaeule_kolben}
+\end{figure}
+
+Ein einfaches Beispiel ist in \cref{fig: druck_fluessigkeitssaeule_kolben} dargestellt: Ein Gas sei durch einen masselosen, beweglichen Kolben der Fläche $A$ abgeschlossen, auf dem eine ruhende Flüssigkeitssäule der Höhe $h$ und Dichte $\rho_{\text{F}}$ mit Masse $m_\text{F}$ lastet. Im statischen Gleichgewicht muss die nach oben gerichtete Kraft des Gases genau den nach unten gerichteten Kräften entsprechen, ansonsten müsste sich der Kolben bewegen. Damit gilt für den Kolben folgendes Gleichgewicht
+\begin{equation}\label{eq: druckgleichgewicht_kolben_fluessigkeit}
+    p_{\text{Gas}} \cdot A = p_{\text{ext}} \cdot A + m_\text{F} \cdot g \mComma
+\end{equation}
+Ersetzen wir die Masse der Flüssigkeitssäule durch $m_\text{F} = \rho_\text{F} \cdot V_\text{F} = \rho_\text{F} \cdot A \cdot h$, so erhalten wir
+\begin{equation}
+    p_{\text{Gas}} \cdot A = p_{\text{ext}} \cdot A + \rho_\text{F} \cdot A \cdot h \cdot g \quad \implies \quad p_{\text{Gas}} = p_{\text{ext}} + \rho_\text{F} \cdot g \cdot h \mDot
+\end{equation}    
+Ist die Flüssigkeitssäule oben offen, so ist $p_{\text{ext}} = p_{\atm}$. Der Term $\rho_\text{F} \cdot g \cdot h$ wird als \textbf{Schweredruck} oder \textbf{Gewichtsdruck} bezeichnet. Er gibt an, wie viel Druck die Flüssigkeitssäule aufgrund ihrer eigenen Masse auf den Kolben ausübt. Je höher die Flüssigkeitssäule und je dichter die Flüssigkeit, desto größer ist der Schweredruck. Das Gleichgewicht in \cref{eq: druckgleichgewicht_kolben_fluessigkeit} zeigt, dass der Druck des Gases auf den Kolben genau den äußeren Druck $p_{\text{ext}}$ und den Schweredruck der Flüssigkeitssäule tragen muss, damit der Kolben im Gleichgewicht bleibt.
+
+\begin{rememberbox}{Schweredruck in Flüssigkeiten}
+    Für eine ruhende \textbf{inkompressible} Flüssigkeit ist die Dichte näherungsweise konstant, also $\rho = \const$, und unabhängig von der Tiefe. Daher nimmt der Druck mit der Tiefe linear zu. Misst man die Tiefe $h$ von der Oberfläche nach unten, so ist der Druck in der Tiefe $h$ gegeben durch
+    \begin{equation}\label{eq: schweredruck_fluessigkeit}
+        p(h) = p_{\text{ext}} + \rho g h \mDot
+    \end{equation}
+    Der Zusatzterm $\rho g h$ ist der Schweredruck der Flüssigkeitssäule.
+\end{rememberbox}
 
 \subsection{Gasthermometer}\label{subsec: Gasthermometer}
 Bei einem \textbf{Gasthermometer} mit konstantem Volumen dient die Druckänderung als Maß für die Temperatur. Da sich Gase sehr gleichmäßig ausdehnen und Flüssigkeiten näherungsweise inkompressibel sind, sind Gasthermometer besonders präzise und werden zur Kalibrierung anderer Thermometer verwendet. 
@@ -266,7 +330,7 @@ Bei einem \textbf{Gasthermometer} mit konstantem Volumen dient die Druckänderun
 Die Funktionsweise eines Gasthermometers erklärt sich anhand der \cref{fig: gasthermometer}. Das System besteht aus einem mit Gas gefüllten Kolben ($B_1$), der über einen flexiblen Schlauch mit einem Quecksilber-Manometer verbunden ist. Das entscheidende Anwendungsmerkmal eines Gasthermometers ist das \textbf{konstante Volumen}:
 Um eine Messung durchzuführen, wird der bewegliche Behälter $B_3$ vertikal so verschoben, dass der Quecksilberspiegel im Schenkel $B_2$ exakt auf der Referenzmarke (bei $h=0$) steht. Damit nimmt das Gas in $B_1$ immer dasselbe Volumen ein.\\
 
-Der absolute Druck $p$ im Inneren des Gasgefäßes $B_1$ wird durch die Höhendifferenz $h$ zwischen den beiden Quecksilbersäulen bestimmt. Der Druck $p$ des Gases in $B_1$ muss genau den äußeren Luftdruck $p_{\atm}$ und den hydrostatischen Druck der Quecksilbersäule kompensieren:
+Das Gasthermometer ist ein Spezialfall des in \cref{fig: druck_fluessigkeitssaeule_kolben} gezeigten Gleichgewichts. Der absolute Druck $p$ im Inneren des Gasgefäßes $B_1$ wird durch die Höhendifferenz $h$ zwischen den beiden Quecksilbersäulen bestimmt. Für das Quecksilbermanometer gilt dabei $p_{\text{oben}} = p_{\atm}$ und $\rho = \rho_{\text{Hg}}$, also:
 \begin{equation}\label{eq: druck_gasthermometer}
     p = p_{\atm} + \rho_{\text{Hg}} \cdot g \cdot h \mDot
 \end{equation}
@@ -387,6 +451,57 @@ Robert Boyle und Edme Mariotte fanden unabhängig voneinander heraus, dass für 
     p \cdot V = \const \qquad (\text{für } T = \const) \mDot
 \end{equation}
 Halbiert man beispielsweise das Volumen eines Gases bei konstanter Temperatur, verdoppelt sich sein Druck.
+\subsubsection{Herleitung des Gesetzes von Boyle-Mariotte aus den Gesetzen von Amontons und Gay-Lussac}
+Den Zusammenhang zwischen Druck und Volumen bei konstanter Temperatur kann man auch direkt aus dem Gesetz von Amontons und dem Gesetz von Gay-Lussac herleiten. Das Gesetz von Boyle-Mariotte besagt, dass $p \cdot V = \const$ für isotherme Zustandsänderungen ($T = \const$). Wenn wir einen Prozess betrachten, der vom Zustandspunkt $(p_1, V_1, T)$ zu einem anderen Punkt $(p_2, V_2, T)$ führt, so muss also gelten, dass
+\begin{equation}
+    p_1 \cdot V_1 = p_2 \cdot V_2 = \const \mDot    
+\end{equation} 
+Mit dem Gesetz von Amontons und dem Gesetz von Gay-Lussac haben wir allerdings noch keinen isothermen Prozess zur Verfügung und können nicht direkt von $(p_1, V_1, T)$ zu $(p_2, V_2, T)$ übergehen. Wie in \cref{fig: boyle_mariotte_herleitung_umweg} skizziert, zerlegen wir den gewünschten isothermen Übergang deshalb in zwei bekannte Schritte. Zunächst führen wir einen isochoren Prozess (konstantes Volumen) durch, bei dem sich die Temperatur auf $T_Z$ (Zwischentemperatur) ändert und anschließend einen isobaren Prozess (konstanter Druck), bei dem wir die Temperatur von $T_Z$ auf $T$ zurückführen.
+
+\begin{figure}[tb]
+    \centering
+    \resizebox{0.85\linewidth}{!}{
+    \begin{tikzpicture}[>=Latex, line cap=round, line join=round]
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (4.3,0.1);
+        \coordinate (C) at (8.8,0);
+
+        \fill (A) circle (2.2pt);
+        \fill (B) circle (2.2pt);
+        \fill (C) circle (2.2pt);
+
+        \node[above left=2pt and -2pt] at (A) {$(p_1, V_1, T)$};
+        \node[above=2pt] at (B) {$(p_2, V_1, T_Z)$};
+        \node[above right=2pt and -2pt] at (C) {$(p_2, V_2, T)$};
+
+        \draw[-{Stealth[length=3.1mm,width=2.1mm]}, thick] (A) .. controls (2.0,2.0) and (6.8,2.0) .. node[above=0.2cm, pos=0.5] {isotherm} (C);
+        \draw[-{Stealth[length=3.1mm,width=2.1mm]}, thick, red!80!black] (A) .. controls (1.2,-1.6) and (3.0,-1.6) .. node[below=0.2cm, pos=0.52, text=red!80!black] {isochor} (B);
+        \draw[-{Stealth[length=3.1mm,width=2.1mm]}, thick, blue!80!black] (B) .. controls (5.6,-1.6) and (7.4,-1.6) .. node[below=0.2cm, pos=0.5, text=blue!80!black] {isobar} (C);
+    \end{tikzpicture}
+    }
+    \caption{Zur Herleitung des Boyle-Mariotte-Gesetzes wird der gewünschte isotherme Übergang von $(p_1, V_1, T)$ nach $(p_2, V_2, T)$ durch einen isochoren Schritt zum Zwischenzustand $(p_2, V_1, T_Z)$ und einen anschließenden isobaren Schritt ersetzt.}\label{fig: boyle_mariotte_herleitung_umweg}
+\end{figure}
+
+Der isochore Prozess führt von $(p_1, V_1, T)$ zu $(p_2, V_1, T_Z)$ 
+und das zugehörige Gesetz von Amontons besagt, dass 
+\begin{equation}\label{eq: T_Z_from_Amontos}
+    \frac{p_1}{T} = \frac{p_2}{T_Z} \Rightarrow T_Z = \frac{p_2}{p_1} \cdot T \mDot
+\end{equation} 
+gilt. 
+
+Der darauffolgende isobare Prozess führt von $(p_2, V_1, T_Z)$ zu $(p_2, V_2, T)$. Das Gesetz von Gay-Lussac besagt nun, dass
+\begin{equation}\label{eq: V_2_from_Gay-Lussac}
+    \frac{V_1}{T_Z} = \frac{V_2}{T} \Rightarrow V_2 = \frac{T}{T_Z} \cdot V_1 \mDot
+\end{equation}
+Setzen wir nun $T_Z$ aus \cref{eq: T_Z_from_Amontos} in \cref{eq: V_2_from_Gay-Lussac} ein, so erhalten wir
+\begin{equation}
+    V_2 = \frac{T}{T_Z} \cdot V_1 = \frac{T}{\frac{p_2}{p_1} \cdot T} \cdot V_1 = \frac{p_1}{p_2} \cdot V_1 \mDot
+\end{equation}
+Daraus folgt direkt, dass für isotherme Prozesse ($T = \const$) 
+\begin{equation}
+p_1 \cdot V_1 = p_2 \cdot V_2 = \const     
+\end{equation}
+gilt, was genau dem Gesetz von Boyle-Mariotte entspricht.
 
 \subsection{Die ideale Gasgleichung}\label{subsec: ideale_gasgleichung}
 Fassen wir nun die experimentellen Befunde zusammen:
@@ -395,11 +510,11 @@ Fassen wir nun die experimentellen Befunde zusammen:
     \item \textbf{Gesetz von Gay-Lussac (Isobar):} $V \propto T$ (bei $p=\const$)
     \item \textbf{Gesetz von Boyle-Mariotte (Isotherm):} $p \propto 1/V$ (bei $T=\const$)
 \end{enumerate}
-Alle drei Gesetze sind Spezialfälle einer einzigen, fundamentalen Beziehung. Kombiniert man die Proportionalitäten ($p \propto T$ und $p \propto 1/V$), erhält man:
-\begin{equation}
+Alle drei Gesetze sind Spezialfälle einer gemeinsamen Zustandsgleichung. Für eine feste Gasmenge muss der Druck daher proportional zur Temperatur und zugleich umgekehrt proportional zum Volumen sein:
+\begin{equation}\label{eq: Combine_Proportionalities _into_pvEqualsT}
     p \propto \frac{T}{V} \quad \Longleftrightarrow \quad p \cdot V \propto T \mDot
 \end{equation}
-Um aus der Proportionalität eine Gleichung zu machen, benötigen wir eine Proportionalitätskonstante. Diese hängt von der Menge des Gases ab.
+Die Proportionalitätskonstante hängt von der Menge des Gases ab.
 
 \begin{importantbox}{Ideale Gasgleichung}
     Betrachten wir die Anzahl der Teilchen $N$ im Gas, so erhalten wir die \textbf{thermische Zustandsgleichung idealer Gase}:
@@ -413,7 +528,7 @@ Diese Gleichung ist das Herzstück der Wärmelehre für Gase. Sie erlaubt es, ei
 
 \section{Die barometrische Höhenformel}\label{sec: barometrische_hoehenformel}
 
-\begin{figure}[tb]
+\begin{figure}[htb]
     \centering
     \resizebox{0.45\linewidth}{!}{
     \begin{tikzpicture}[>=Latex]
@@ -496,7 +611,7 @@ Integration dieser Differentialgleichung von Höhe $0$ (mit Druck $p_0$ und Dich
 \end{importantbox}
 Laut dieser isothermen Näherung erhält man für den Luftdruck auf der Spitze des Mount Everest (\SI{8849}{\meter}) nur noch $\approx \SI{34.5}{\percent}$ des Luftdrucks auf Meereshöhe, was nur ungefähr $\SI{2}{\percent}$ vom realen Wert abweicht. 
 
-Die \textbf{Druckabnahme} einer isothermen Lufthülle folgt also einem \textbf{Exponentialgesetz} im Gegensatz zur \textbf{linearen Druckabnahme in einer Flüssigkeit}. Dieser Unterschied ist in \cref{fig: gassaeule_fluessigkeit_gegenueberstellung} dargestellt. Die Kompressibilität der Luft führt zu einer exponentiellen (schneller als linear) Abnahme des Drucks. Die Lufthülle der Erde hat jedoch keine scharfe Grenze. In der realen Erdatmosphäre ändert sich die Temperatur allerdings mit der Höhe, weshalb die barometrische Höhenformel nur für die untere Atmosphäre eine gute Näherung darstellt. 
+Die \textbf{Druckabnahme} einer isothermen Lufthülle folgt also einem \textbf{Exponentialgesetz} im Gegensatz zur \textbf{linearen Druckänderung} in einer Flüssigkeit mit näherungsweise konstanter Dichte, wie sie bereits in \cref{eq: schweredruck_fluessigkeit} beschrieben wurde. Dieser Unterschied ist in \cref{fig: gassaeule_fluessigkeit_gegenueberstellung} dargestellt. Die Kompressibilität der Luft führt zu einer exponentiellen (schneller als linear) Abnahme des Drucks. Die Lufthülle der Erde hat jedoch keine scharfe Grenze. In der realen Erdatmosphäre ändert sich die Temperatur allerdings mit der Höhe, weshalb die barometrische Höhenformel nur für die untere Atmosphäre eine gute Näherung darstellt. 
 
 \begin{figure}[tb]
     \centering
