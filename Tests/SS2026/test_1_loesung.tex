@@ -1,0 +1,263 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic}
+\usepackage[b]{esvect}
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{angle-symbol-degree = ^\circ}
+\sisetup{locale = DE, separate-uncertainty, inter-unit-product = {},
+range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
+
+\makeatletter
+\def\input@path{{./}{../../}}
+\makeatother
+\graphicspath{{./}{../../}}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\input{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+\noindent
+\vspace{9cm}
+\begin{center}
+    {\Huge \textbf{Lösung}} \\[1.5em]
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 1. Schriftliche Prüfung: Sommersemester 2026} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\newpage
+
+\section*{Lösung Beispiel 1 -- Mischtemperatur}
+\begin{enumerate}
+    \item \textbf{Grundsatz des thermischen Gleichgewichts:} \[
+        Q_{\text{ab}} = Q_{\text{auf}}
+    \]
+    Die vom Kupfer abgegebene Wärme ist gleich der vom Wasser aufgenommenen Wärme.
+
+    \item \textbf{Masse des Wassers:} \[
+        m_{\text{W}} = \rho_{\text{W}} \cdot V
+    \]
+    Mit den gegebenen Werten folgt erst am Ende
+    \[
+        m_{\text{W}} = \SI{1.0}{\kilogram\per\deci\metre\cubed} \cdot \SI{1.5}{\litre} = \SI{1.5}{\kilogram}
+    \]
+
+    \item \textbf{Vom Kupfer abgegebene Wärme:} \[
+        Q_{\text{ab}} = m_{\text{Cu}} c_{\text{Cu}} (T_{\text{Cu}} - T_{\text{Misch}})
+    \]
+
+    \item \textbf{Vom Wasser aufgenommene Wärme:} \[
+        Q_{\text{auf}} = m_{\text{W}} c_{\text{W}} (T_{\text{Misch}} - T_{\text{W}})
+    \]
+
+    \item \textbf{Berechnung der Mischtemperatur:}
+    Aus $Q_{\text{ab}} = Q_{\text{auf}}$ folgt
+    \[
+        m_{\text{Cu}} c_{\text{Cu}} (T_{\text{Cu}} - T_{\text{Misch}}) = m_{\text{W}} c_{\text{W}} (T_{\text{Misch}} - T_{\text{W}})
+    \]
+    Ausmultiplizieren und nach $T_{\text{Misch}}$ auflösen ergibt
+    \[
+        m_{\text{Cu}} c_{\text{Cu}} T_{\text{Cu}} - m_{\text{Cu}} c_{\text{Cu}} T_{\text{Misch}} = m_{\text{W}} c_{\text{W}} T_{\text{Misch}} - m_{\text{W}} c_{\text{W}} T_{\text{W}}
+    \]
+    \[
+        m_{\text{Cu}} c_{\text{Cu}} T_{\text{Cu}} + m_{\text{W}} c_{\text{W}} T_{\text{W}} = (m_{\text{Cu}} c_{\text{Cu}} + m_{\text{W}} c_{\text{W}}) T_{\text{Misch}}
+    \]
+    \[
+        T_{\text{Misch}} = \frac{m_{\text{Cu}} c_{\text{Cu}} T_{\text{Cu}} + m_{\text{W}} c_{\text{W}} T_{\text{W}}}{m_{\text{Cu}} c_{\text{Cu}} + m_{\text{W}} c_{\text{W}}}
+    \]
+    Erst jetzt werden die Zahlenwerte eingesetzt:
+    \[
+        T_{\text{Misch}} = \frac{\SI{0.6}{\kilogram} \cdot \SI{0.385}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{180}{\degreeCelsius} + \SI{1.5}{\kilogram} \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{22}{\degreeCelsius}}{\SI{0.6}{\kilogram} \cdot \SI{0.385}{\kilo\joule\per(\kilogram\cdot\kelvin)} + \SI{1.5}{\kilogram} \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)}}
+    \]
+    \[
+        T_{\text{Misch}} \approx \SI{27.61}{\degreeCelsius}
+    \]
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 2 -- Rutsche mit Reibung}
+\begin{enumerate}
+    \item \textbf{Kräfte:} Es wirken die Gewichtskraft $\ivecS{F}{G}$, die Normalkraft $\ivecS{F}{N}$ und die Gleitreibungskraft $\ivecS{F}{R,\text{Gleit}}$.
+
+    \item \textbf{Neigungswinkel:} \[
+        \sin\theta = \frac{h}{L}
+    \]
+    also
+    \[
+        \theta = \arcsin\left(\frac{h}{L}\right)
+    \]
+    Erst am Ende folgt numerisch
+    \[
+        \theta = \arcsin\left(\frac{\SI{3}{\metre}}{\SI{5}{\metre}}\right) \approx \SI{36.87}{\degree}
+    \]
+
+    \item \textbf{Zerlegung der Gewichtskraft:}
+    Zunächst gilt symbolisch
+    \[
+        F_G = mg
+    \]
+    \[
+        F_{G,\parallel} = F_G \sin\theta = mg \sin\theta
+    \]
+    \[
+        F_{G,\perp} = F_G \cos\theta = mg \cos\theta
+    \]
+    Mit den Zahlenwerten folgt erst anschließend
+    \[
+        F_G = \SI{35}{\kilogram} \cdot \SI{9.81}{\metre\per\second\squared} = \SI{343.35}{\newton}
+    \]
+    \[
+        F_{G,\parallel} = \SI{343.35}{\newton} \cdot \sin(\SI{36.87}{\degree}) = \SI{206.01}{\newton}
+    \]
+    \[
+        F_{G,\perp} = \SI{343.35}{\newton} \cdot \cos(\SI{36.87}{\degree}) = \SI{274.68}{\newton}
+    \]
+
+    \item \textbf{Normalkraft und Gleitreibungskraft:} \[
+        F_N = F_{G,\perp} = mg\cos\theta
+    \]
+    \[
+        F_{R,\text{Gleit}} = \mu_{\text{Gleit}} F_N = \mu_{\text{Gleit}} mg\cos\theta
+    \]
+    Erst jetzt numerisch:
+    \[
+        F_N = \SI{274.68}{\newton}
+    \]
+    \[
+        F_{R,\text{Gleit}} = \num{0.20} \cdot \SI{274.68}{\newton} = \SI{54.94}{\newton}
+    \]
+
+    \item \textbf{Resultierende Kraft und Beschleunigung:} \[
+        F_{\text{res}} = F_{G,\parallel} - F_{R,\text{Gleit}}
+    \]
+    \[
+        F_{\text{res}} = mg\sin\theta - \mu_{\text{Gleit}} mg\cos\theta
+    \]
+    \[
+        F_{\text{res}} = mg\left(\sin\theta - \mu_{\text{Gleit}}\cos\theta\right)
+    \]
+    Damit ergibt sich
+    \[
+        a = \frac{F_{\text{res}}}{m} = g\left(\sin\theta - \mu_{\text{Gleit}}\cos\theta\right)
+    \]
+    Erst am Ende werden die Zahlen eingesetzt:
+    \[
+        a = \SI{9.81}{\metre\per\second\squared} \left(\sin(\SI{36.87}{\degree}) - \num{0.20}\cos(\SI{36.87}{\degree})\right) \approx \SI{4.32}{\metre\per\second\squared}
+    \]
+
+    \item \textbf{Herleitung von $v = \sqrt{2aL}$:}
+    Aus
+    \[
+        s = \frac{1}{2}at^2 \quad \text{und} \quad v = at
+    \]
+    folgt mit $t = v/a$:
+    \[
+        s = \frac{1}{2}a\left(\frac{v}{a}\right)^2 = \frac{v^2}{2a}
+    \]
+    also
+    \[
+        v = \sqrt{2as}
+    \]
+    und für $s=L$ somit
+    \[
+        v = \sqrt{2aL}
+    \]
+
+    \item \textbf{Endgeschwindigkeit:} \[
+        v = \sqrt{2aL}
+    \]
+    Mit der obigen Beschleunigung folgt erst im letzten Schritt
+    \[
+        v = \sqrt{2 \cdot \SI{4.32}{\metre\per\second\squared} \cdot \SI{5}{\metre}} \approx \SI{6.57}{\metre\per\second}
+    \]
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 3 -- Holzklotz im Wasser}
+\begin{enumerate}
+    \item \textbf{Bedingung für das Schwimmen:} \[
+        F_G = F_A
+    \]
+    Gewichtskraft und Auftriebskraft müssen betragsmäßig gleich groß sein.
+
+    \item \textbf{Gesamtvolumen und Gewichtskraft:} \[
+        V_{\text{ges}} = L^3
+    \]
+    \[
+        F_G = \rho_{\text{Holz}} V_{\text{ges}} g = \rho_{\text{Holz}} L^3 g
+    \]
+
+    \item \textbf{Auftriebskraft:} \[
+        F_A = \rho_{\text{Wasser}} V_{\text{ein}} g
+    \]
+
+    \item \textbf{Eingetauchtes Volumen:} \[
+        V_{\text{ein}} = A h = L^2 h
+    \]
+    damit \[
+        F_A = \rho_{\text{Wasser}} L^2 h g
+    \]
+
+    \item \textbf{Formel für die Eintauchtiefe:}
+    Aus $F_G = F_A$ folgt
+    \[
+        \rho_{\text{Holz}} L^3 g = \rho_{\text{Wasser}} L^2 h g
+    \]
+    Kürzen von $L^2$ und $g$ ergibt
+    \[
+        \rho_{\text{Holz}} L = \rho_{\text{Wasser}} h
+    \]
+    also
+    \[
+        h = L \cdot \frac{\rho_{\text{Holz}}}{\rho_{\text{Wasser}}}
+    \]
+
+    \item \textbf{Numerischer Wert:} Erst jetzt werden die Zahlenwerte eingesetzt:
+    \[
+        h = \SI{20}{\centi\metre} \cdot \frac{750}{1000} = \SI{15}{\centi\metre}
+    \]
+    Der Holzklotz taucht also \SI{15}{\centi\metre} tief ein.
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 4 -- Single-Choice}
+\begin{enumerate}
+    \item \textbf{Leistung}
+    \item \textbf{Das Volumen}
+    \item \textbf{Faktor 4}
+    \item \textbf{dem Gewicht des verdrängten Mediums}
+    \item \textbf{Kräfte treten paarweise als gleich große, entgegengesetzt gerichtete Wechselwirkungen auf.}
+    \item \textbf{\SI{3}{\metre\per\second}} \quad denn zunächst gilt $v = r\omega$ und erst dann numerisch $v = \SI{0.5}{\metre} \cdot \SI{6}{\radian\per\second}$.
+    \item \textbf{Die maximale Haftreibung ist im Allgemeinen größer als die Gleitreibung.}
+    \item \textbf{mittlere kinetische Energie der Teilchen}
+    \item \textbf{Energieerhaltungssatzes}
+    \item \textbf{\SI{2.0012}{\metre}} \quad denn zunächst gilt
+    \[
+        L = L_0(1 + \alpha \Delta T)
+    \]
+    und erst am Ende numerisch
+    \[
+        L = \SI{2}{\metre}\left(1 + \SI{12e-6}{\per\kelvin} \cdot \SI{50}{\kelvin}\right) = \SI{2.0012}{\metre}
+    \]
+\end{enumerate}
+
+\end{document}
