@@ -1,0 +1,450 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic}
+
+\usepackage{siunitx}
+\usepackage[b]{esvect}
+\DeclareSIUnit{\litre}{l}
+\DeclareSIUnit{\barPr}{bar}
+
+\sisetup{angle-symbol-degree = ^\circ}
+\sisetup{locale = DE, separate-uncertainty, inter-unit-product = {},
+range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
+
+\makeatletter
+\def\input@path{{./}{../../}}
+\makeatother
+\graphicspath{{./}{../../}}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\input{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+\noindent
+\vspace{9cm}
+\begin{center}
+    {\Huge \textbf{Lösung}} \\[1.5em]
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 4. Schriftliche Prüfung: Sommersemester 2026} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\newpage
+
+\section*{Lösung Beispiel 1 -- Wasserkocher vergessen}
+\begin{enumerate}
+    \item \textbf{Temperatur-Zeit-Diagramm:}
+    Die Temperatur steigt zunächst von \SI{20}{\degreeCelsius} auf \SI{100}{\degreeCelsius}. Danach bleibt sie bei \SI{100}{\degreeCelsius} konstant, während das Wasser verdampft.
+
+    \item \textbf{Energie zum Erhitzen auf \SI{100}{\degreeCelsius}:}
+    Zuerst berechnen wir die Masse des Wassers:
+    \[
+        m_W = \rho_W V = \SI{1}{\kilogram\per\deci\metre\cubed} \cdot \SI{1}{\litre} = \SI{1}{\kilogram}
+    \]
+    Für das Erwärmen gilt
+    \[
+        Q_1 = m_W c_W \Delta T
+    \]
+    mit
+    \[
+        \Delta T = \SI{100}{\degreeCelsius} - \SI{20}{\degreeCelsius} = \SI{80}{\kelvin}
+    \]
+    also
+    \[
+        Q_1 = \SI{1}{\kilogram} \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{80}{\kelvin} = \SI{334.4}{\kilo\joule}
+    \]
+
+    \item \textbf{Energie zum Verdampfen:}
+    Es gilt
+    \[
+        Q_2 = m_W \lambda_{\text{verd}} = \SI{1}{\kilogram} \cdot \SI{2256}{\kilo\joule\per\kilogram} = \SI{2256}{\kilo\joule}
+    \]
+
+    \item \textbf{Energie des Wasserkochers in \SI{25}{\minute}:}
+    Zuerst wird die Zeit in Sekunden umgerechnet:
+    \[
+        t = \SI{25}{\minute} = 25 \cdot 60\,\si{\second} = \SI{1500}{\second}
+    \]
+    Damit ergibt sich
+    \[
+        E_{\text{Kocher}} = P t = \SI{2000}{\watt} \cdot \SI{1500}{\second} = \SI{3000000}{\joule} = \SI{3000}{\kilo\joule}
+    \]
+
+    \item \textbf{Fazit:}
+    Insgesamt benötigt man
+    \[
+        Q_{\text{ges}} = Q_1 + Q_2 = \SI{334.4}{\kilo\joule} + \SI{2256}{\kilo\joule} = \SI{2590.4}{\kilo\joule}
+    \]
+    Da
+    \[
+        E_{\text{Kocher}} = \SI{3000}{\kilo\joule} > Q_{\text{ges}} = \SI{2590.4}{\kilo\joule}
+    \]
+    kommen Sie \textbf{nicht} rechtzeitig zurück. Das gesamte Wasser ist bereits verdampft.
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 2 -- Schlittenfahren am Iglu}
+\begin{enumerate}
+    \item \textbf{Kräfte und Komponenten:}
+    Es wirken die Gewichtskraft $\ivecS{F}{G}$ nach unten und die Normalkraft $\ivecS{F}{N}$ senkrecht zur Oberfläche nach außen.
+    Für die Komponenten gilt:
+    \[
+        F_{G,r} = -mg\cos(\alpha), \qquad F_{G,t} = mg\sin(\alpha)
+    \]
+    \[
+        F_{N,r} = F_N, \qquad F_{N,t} = 0
+    \]
+
+    \item \textbf{Bewegungsgleichungen:}
+    In radialer Richtung:
+    \[
+        F_N - mg\cos(\alpha) = m a_r
+    \]
+    In tangentialer Richtung:
+    \[
+        mg\sin(\alpha) = m a_t
+    \]
+
+    \item \textbf{Bedingung für das Abheben:}
+    Beim Abheben ist $F_N = 0$ und die radiale Beschleunigung ist die Zentripetalbeschleunigung
+    \[
+        a_r = -\frac{v^2}{R}
+    \]
+    Einsetzen in die radiale Gleichung ergibt
+    \[
+        0 - mg\cos(\alpha_{\text{max}}) = -m\frac{v^2}{R}
+    \]
+    also
+    \[
+        g\cos(\alpha_{\text{max}}) = \frac{v^2}{R}
+    \]
+
+    \item \textbf{Geschwindigkeit aus Energieerhaltung:}
+    Die Abnahme der potenziellen Energie wird vollständig in kinetische Energie umgewandelt:
+    \[
+        mgR - mgR\cos(\alpha) = \frac{1}{2}mv^2
+    \]
+    Daraus folgt
+    \[
+        v^2 = 2gR(1-\cos(\alpha))
+    \]
+
+    \item \textbf{Bestimmung von $\alpha_{\text{max}}$:}
+    Einsetzen von $v^2$ in die Abhebegleichung liefert
+    \[
+        g\cos(\alpha_{\text{max}}) = \frac{2gR(1-\cos(\alpha_{\text{max}}))}{R}
+    \]
+    also
+    \[
+        \cos(\alpha_{\text{max}}) = 2(1-\cos(\alpha_{\text{max}}))
+    \]
+    und damit
+    \[
+        3\cos(\alpha_{\text{max}}) = 2
+    \]
+    \[
+        \cos(\alpha_{\text{max}}) = \frac{2}{3}
+    \]
+    Somit ergibt sich
+    \[
+        \alpha_{\text{max}} = \arccos\!\left(\frac{2}{3}\right) \approx \ang{48.2}
+    \]
+    Das Ergebnis ist unabhängig von der Masse $m$ und vom Radius $R$.
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 3 -- Reibungsfreies Schieben}
+\begin{enumerate}
+    \item \textbf{Freikörperbild für $m$:}
+    Auf die kleine Masse wirken die Gewichtskraft $\ivecS{F}{G} = m\ivec{g}$ senkrecht nach unten und die Normalkraft $\ivecS{F}{N}$ senkrecht zur schiefen Ebene. Das ganze System bewegt sich mit der horizontalen Beschleunigung $a_x$.
+
+    \item \textbf{Kräftegleichgewichte in $x$- und $y$-Richtung:}
+    Wir zerlegen die Normalkraft in horizontale und vertikale Komponenten. Mit dem Neigungswinkel $\alpha$ gilt in vertikaler Richtung
+    \[
+        \sum F_y = F_N\cos(\alpha) - mg = 0
+    \]
+    also
+    \[
+        F_N\cos(\alpha) = mg
+    \]
+    In horizontaler Richtung gilt
+    \[
+        \sum F_x = F_N\sin(\alpha) = m a_x
+    \]
+
+    \item \textbf{Beschleunigung $a_x$:}
+    Aus der vertikalen Gleichung folgt
+    \[
+        F_N = \frac{mg}{\cos(\alpha)}
+    \]
+    Einsetzen in die horizontale Gleichung ergibt
+    \[
+        \frac{mg}{\cos(\alpha)}\sin(\alpha) = m a_x
+    \]
+    also
+    \[
+        g\tan(\alpha) = a_x
+    \]
+    und damit
+    \[
+        a_x = g\tan(\alpha)
+    \]
+
+    \item \textbf{Gesamtkraft $F$:}
+    Um das gesamte System der Masse $M+m$ mit dieser Beschleunigung zu bewegen, braucht man
+    \[
+        F = (M+m) a_x
+    \]
+    also
+    \[
+        F = (M+m) g\tan(\alpha)
+    \]
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 4 -- Single-Choice}
+\begin{enumerate}
+    \item \textbf{Leistung}
+    \item \textbf{Das Volumen}
+    \item \textbf{Faktor 4}
+    \item \textbf{dem Gewicht des verdrängten Mediums}
+    \item \textbf{Kräfte treten paarweise als gleich große, entgegengesetzt gerichtete Wechselwirkungen auf.}
+    \item \textbf{mittlere kinetische Energie der Teilchen}
+    \item \textbf{Arbeit, Einheit: \si{\joule}}
+    \item \textbf{Sein Wirkungsgrad hängt nur von den Temperaturen des heißen und kalten Reservoirs in Kelvin ab.}
+    \item \textbf{Der Druck verdoppelt sich.}
+    \item \textbf{Der zweite Hauptsatz}
+\end{enumerate}
+
+\end{document}
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic}
+
+\usepackage{siunitx}
+\usepackage[b]{esvect}
+\DeclareSIUnit{\litre}{l}
+\DeclareSIUnit{\barPr}{bar}
+
+\sisetup{angle-symbol-degree = ^\circ}
+\sisetup{locale = DE, separate-uncertainty, inter-unit-product = {},
+range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
+
+\makeatletter
+\def\input@path{{./}{../../}}
+\makeatother
+\graphicspath{{./}{../../}}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\input{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+\noindent
+\vspace{9cm}
+\begin{center}
+    {\Huge \textbf{Lösung}} \\[1.5em]
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 4. Schriftliche Prüfung: Sommersemester 2026} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\newpage
+
+\section*{Lösung Beispiel 1 -- Wasserkocher vergessen}
+\begin{enumerate}
+    \item \textbf{Temperatur-Zeit-Diagramm:}
+    Die Temperatur steigt zunächst von \SI{20}{\degreeCelsius} auf \SI{100}{\degreeCelsius}. Während des anschließenden Siedens bleibt die Temperatur bei \SI{100}{\degreeCelsius} konstant, obwohl weiterhin Energie zugeführt wird.
+
+    \item \textbf{Energie zum Erhitzen auf \SI{100}{\degreeCelsius}:}
+    Zunächst folgt aus Volumen und Dichte die Masse des Wassers:
+    \[
+        m_W = \rho_W V = \SI{1}{\kilogram\per\deci\metre\cubed} \cdot \SI{1}{\litre} = \SI{1}{\kilogram}
+    \]
+    Mit $\Delta T = \SI{100}{\degreeCelsius} - \SI{20}{\degreeCelsius} = \SI{80}{\kelvin}$ ergibt sich
+    \[
+        Q_1 = m_W c_W \Delta T = \SI{1}{\kilogram} \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{80}{\kelvin} = \SI{334.4}{\kilo\joule}
+    \]
+
+    \item \textbf{Energie zum Verdampfen:}
+    \[
+        Q_2 = m_W \lambda_{\text{verd}} = \SI{1}{\kilogram} \cdot \SI{2256}{\kilo\joule\per\kilogram} = \SI{2256}{\kilo\joule}
+    \]
+
+    \item \textbf{Vom Wasserkocher gelieferte Energie in \SI{25}{\minute}:}
+    Die Zeit in SI-Einheiten lautet
+    \[
+        t = \SI{25}{\minute} = 25 \cdot 60\,\si{\second} = \SI{1500}{\second}
+    \]
+    Damit ist
+    \[
+        E_{\text{Kocher}} = Pt = \SI{2000}{\watt} \cdot \SI{1500}{\second} = \SI{3.0e6}{\joule} = \SI{3000}{\kilo\joule}
+    \]
+
+    \item \textbf{Fazit:}
+    Insgesamt benötigt man
+    \[
+        Q_{\text{ges}} = Q_1 + Q_2 = \SI{334.4}{\kilo\joule} + \SI{2256}{\kilo\joule} = \SI{2590.4}{\kilo\joule}
+    \]
+    Da
+    \[
+        E_{\text{Kocher}} = \SI{3000}{\kilo\joule} > Q_{\text{ges}} = \SI{2590.4}{\kilo\joule}
+    \]
+    kommen Sie \textbf{nicht} rechtzeitig zurück. Das gesamte Wasser ist bereits verdampft.
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 2 -- Schlittenfahren am Iglu}
+\begin{enumerate}
+    \item \textbf{Kräfte und Komponenten:}
+    Es wirken die Gewichtskraft $\ivecS{F}{G}$ nach unten und die Normalkraft $\ivecS{F}{N}$ senkrecht zur Oberfläche nach außen. Die Komponenten lauten
+    \[
+        F_{G,r} = -mg\cos(\alpha), \qquad F_{G,t} = mg\sin(\alpha)
+    \]
+    \[
+        F_{N,r} = F_N, \qquad F_{N,t} = 0
+    \]
+
+    \item \textbf{Bewegungsgleichungen:}
+    Für die radiale und tangentiale Richtung gilt
+    \[
+        F_N - mg\cos(\alpha) = m a_r
+    \]
+    \[
+        mg\sin(\alpha) = m a_t
+    \]
+
+    \item \textbf{Bedingung für das Abheben:}
+    Im Moment des Abhebens ist $F_N = 0$ und $a_r = -v^2/R$. Damit folgt
+    \[
+        0 - mg\cos(\alpha_{\text{max}}) = -m\frac{v^2}{R}
+    \]
+    also
+    \[
+        g\cos(\alpha_{\text{max}}) = \frac{v^2}{R}
+    \]
+
+    \item \textbf{Geschwindigkeit aus Energieerhaltung:}
+    Die Abnahme der potenziellen Energie wird vollständig in kinetische Energie umgewandelt:
+    \[
+        mgR - mgR\cos(\alpha) = \frac{1}{2}mv^2
+    \]
+    Daraus erhält man
+    \[
+        v^2 = 2gR(1-\cos(\alpha))
+    \]
+
+    \item \textbf{Bestimmung von $\alpha_{\text{max}}$:}
+    Einsetzen von $v^2$ in die Gleichung aus 3 liefert
+    \[
+        g\cos(\alpha_{\text{max}}) = \frac{2gR(1-\cos(\alpha_{\text{max}}))}{R}
+    \]
+    also
+    \[
+        \cos(\alpha_{\text{max}}) = 2(1-\cos(\alpha_{\text{max}}))
+    \]
+    \[
+        3\cos(\alpha_{\text{max}}) = 2
+    \]
+    \[
+        \cos(\alpha_{\text{max}}) = \frac{2}{3}
+    \]
+    und damit
+    \[
+        \alpha_{\text{max}} = \arccos\left(\frac{2}{3}\right) \approx \ang{48.2}
+    \]
+    Das Ergebnis ist unabhängig von der Masse $m$ und vom Radius $R$.
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 3 -- Reibungsfreies Schieben}
+\begin{enumerate}
+    \item \textbf{Freikörperbild für $m$:}
+    Auf die kleine Masse wirken die Gewichtskraft $\ivecS{F}{G} = m\ivec{g}$ nach unten und die Normalkraft $\ivecS{F}{N}$ senkrecht zur schiefen Ebene. Das System wird horizontal mit der Beschleunigung $a_x$ bewegt.
+
+    \item \textbf{Kräftegleichgewichte in $x$- und $y$-Richtung:}
+    Wir zerlegen die Normalkraft. In vertikaler Richtung gilt wegen fehlender Vertikalbeschleunigung
+    \[
+        \sum F_y = F_N \cos(\alpha) - mg = 0
+    \]
+    also
+    \[
+        F_N \cos(\alpha) = mg
+    \]
+    In horizontaler Richtung gilt
+    \[
+        \sum F_x = F_N \sin(\alpha) = m a_x
+    \]
+
+    \item \textbf{Herleitung der Beschleunigung $a_x$:}
+    Aus der vertikalen Gleichung folgt
+    \[
+        F_N = \frac{mg}{\cos(\alpha)}
+    \]
+    Eingesetzt in die horizontale Gleichung ergibt das
+    \[
+        \frac{mg}{\cos(\alpha)}\sin(\alpha) = m a_x
+    \]
+    und damit
+    \[
+        a_x = g\tan(\alpha)
+    \]
+
+    \item \textbf{Gesamtkraft auf das System:}
+    Die Gesamtmasse $M+m$ muss mit dieser Beschleunigung bewegt werden. Daher
+    \[
+        F = (M+m)a_x = (M+m)g\tan(\alpha)
+    \]
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 4 -- Single-Choice}
+\begin{enumerate}
+    \item \textbf{Leistung}
+    \item \textbf{Das Volumen}
+    \item \textbf{Faktor 4}
+    \item \textbf{dem Gewicht des verdrängten Mediums}
+    \item \textbf{Kräfte treten paarweise als gleich große, entgegengesetzt gerichtete Wechselwirkungen auf.}
+    \item \textbf{mittlere kinetische Energie der Teilchen}
+    \item \textbf{Arbeit, Einheit: \si{\joule}}
+    \item \textbf{Sein Wirkungsgrad hängt nur von den Temperaturen des heißen und kalten Reservoirs in Kelvin ab.}
+    \item \textbf{Der Druck verdoppelt sich.}
+    \item \textbf{Der zweite Hauptsatz}
+\end{enumerate}
+
+\end{document}
