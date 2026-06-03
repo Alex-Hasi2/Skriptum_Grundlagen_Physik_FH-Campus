@@ -1,0 +1,270 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic}
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\sisetup{angle-symbol-degree = ^\circ}
+\sisetup{locale = DE, separate-uncertainty, inter-unit-product = {},
+range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
+
+\makeatletter
+\def\input@path{{./}{../../}}
+\makeatother
+\graphicspath{{./}{../../}}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\input{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+\noindent
+\vspace{9cm}
+\begin{center}
+    {\Huge \textbf{Lösung}} \\[1.5em]
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 2. Schriftliche Pr\"ufung: Sommersemester 2026} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\newpage
+
+\section*{Lösung Beispiel 1 -- Eis im Wasser}
+\begin{enumerate}
+    \item \textbf{Masse des warmen Wassers:}
+    \[
+        m_{\text{W}} = \rho_{\text{W}} V_{\text{W}}
+    \]
+    Erst mit Zahlenwerten:
+    \[
+        m_{\text{W}} = \SI{1.0}{\kilogram\per\deci\metre\cubed} \cdot \SI{3.0}{\litre} = \SI{3.0}{\kilogram}
+    \]
+
+    \item \textbf{Maximal abgebbare Wärme des warmen Wassers bis \SI{0}{\degreeCelsius}:}
+    \[
+        Q_{\text{ab,0}} = m_{\text{W}} c_{\text{W}} \Delta T
+    \]
+    \[
+        Q_{\text{ab,0}} = \SI{3.0}{\kilogram} \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{40}{\kelvin} = \SI{501.6}{\kilo\joule}
+    \]
+
+    \item \textbf{Wärme zum Erwärmen und Schmelzen des Eises:}
+    Zuerst wird das Eis von \SI{-10}{\degreeCelsius} auf \SI{0}{\degreeCelsius} erwärmt:
+    \[
+        Q_1 = m_{\text{Eis}} c_{\text{Eis}} \Delta T
+    \]
+    \[
+        Q_1 = \SI{0.6}{\kilogram} \cdot \SI{2.09}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{10}{\kelvin} = \SI{12.54}{\kilo\joule}
+    \]
+    Dann wird es geschmolzen:
+    \[
+        Q_2 = m_{\text{Eis}} \lambda_{\text{S}}
+    \]
+    \[
+        Q_2 = \SI{0.6}{\kilogram} \cdot \SI{333.5}{\kilo\joule\per\kilogram} = \SI{200.1}{\kilo\joule}
+    \]
+    Insgesamt also
+    \[
+        Q_{\text{zu,0}} = Q_1 + Q_2 = \SI{12.54}{\kilo\joule} + \SI{200.1}{\kilo\joule} = \SI{212.64}{\kilo\joule}
+    \]
+
+    \item \textbf{Entscheidung und Energiebilanz:}
+    Es gilt
+    \[
+        Q_{\text{ab,0}} = \SI{501.6}{\kilo\joule} > Q_{\text{zu,0}} = \SI{212.64}{\kilo\joule}
+    \]
+    Daher schmilzt das gesamte Eis. Danach wird das geschmolzene Eiswasser noch von \SI{0}{\degreeCelsius} auf die Endtemperatur $T_{\text{Misch}}$ erwärmt. Die Energiebilanz lautet somit
+    \[
+        m_{\text{W}} c_{\text{W}} (T_{\text{W}} - T_{\text{Misch}}) = m_{\text{Eis}} c_{\text{Eis}} (\SI{0}{\degreeCelsius} - T_{\text{Eis}}) + m_{\text{Eis}} \lambda_{\text{S}} + m_{\text{Eis}} c_{\text{W}} (T_{\text{Misch}} - \SI{0}{\degreeCelsius})
+    \]
+
+    \item \textbf{Endtemperatur:}
+    Aus der Energiebilanz aus Punkt 4 folgt zunächst symbolisch
+    \[
+        m_{\text{W}} c_{\text{W}} (T_{\text{W}} - T_{\text{Misch}})
+        = m_{\text{Eis}} c_{\text{Eis}} (- T_{\text{Eis}}) + m_{\text{Eis}} \lambda_{\text{S}} + m_{\text{Eis}} c_{\text{W}} T_{\text{Misch}}
+    \]
+    \[
+        m_{\text{W}} c_{\text{W}} T_{\text{W}} - m_{\text{W}} c_{\text{W}} T_{\text{Misch}}
+        = - m_{\text{Eis}} c_{\text{Eis}} T_{\text{Eis}} + m_{\text{Eis}} \lambda_{\text{S}} + m_{\text{Eis}} c_{\text{W}} T_{\text{Misch}}
+    \]
+    \[
+        m_{\text{W}} c_{\text{W}} T_{\text{W}} + m_{\text{Eis}} c_{\text{Eis}} T_{\text{Eis}} - m_{\text{Eis}} \lambda_{\text{S}}
+        = (m_{\text{W}} c_{\text{W}} + m_{\text{Eis}} c_{\text{W}}) T_{\text{Misch}}
+    \]
+    \[
+        T_{\text{Misch}} = \frac{m_{\text{W}} c_{\text{W}} T_{\text{W}} + m_{\text{Eis}} c_{\text{Eis}} T_{\text{Eis}} + m_{\text{Eis}} \lambda_{\text{S}}}{(m_{\text{W}} + m_{\text{Eis}}) c_{\text{W}}}
+    \]
+    Erst jetzt werden die Zahlenwerte eingesetzt:
+    \begin{align*}
+        T_{\text{Misch}} &= \frac{\SI{3.0}{\kilogram} \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{40}{\degreeCelsius} + \SI{0.6}{\kilogram} \cdot \SI{2.09}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{10}{\kelvin} + \SI{0.6}{\kilogram} \cdot \SI{333.5}{\kilo\joule\per\kilogram}}{(\SI{3.0}{\kilogram} + \SI{0.6}{\kilogram}) \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)}} \\
+        & \approx \SI{19.20}{\degreeCelsius}
+    \end{align*}
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 2 -- Auto in der Kurve}
+\begin{enumerate}
+    \item \textbf{Wirkende Kräfte:}
+    In vertikaler Richtung wirken Gewichtskraft $F_G$ nach unten und Normalkraft $F_N$ nach oben. In horizontaler Richtung wirkt die Haftreibungskraft zum Kurvenzentrum; sie liefert die Zentripetalkraft.
+
+    \item \textbf{Zentripetalkraft bei \SI{54}{\kilo\metre\per\hour}:}
+    Zuerst wird die Geschwindigkeit umgerechnet:
+    \[
+        v = \SI{54}{\kilo\metre\per\hour} = \frac{54}{3.6} \si{\metre\per\second} = \SI{15}{\metre\per\second}
+    \]
+    Dann gilt
+    \[
+        F_{\text{Zp}} = m \frac{v^2}{r}
+    \]
+    \[
+        F_{\text{Zp}} = \SI{1200}{\kilogram} \cdot \frac{(\SI{15}{\metre\per\second})^2}{\SI{50}{\metre}} = \SI{5400}{\newton}
+    \]
+
+    \item \textbf{Kraft, die die Zentripetalkraft liefert:}
+    Auf einer ebenen Stra\ss{}e liefert die Haftreibungskraft zwischen Reifen und Stra\ss{}e die notwendige Zentripetalkraft.
+
+    \item \textbf{Maximale Haftreibungskraft:}
+    Es gilt
+    \[
+        F_{\text{R,h,max}} = \mu_{\text{H}} F_N
+    \]
+    Da auf horizontaler Stra\ss{}e $F_N = mg$ ist, folgt
+    \[
+        F_{\text{R,h,max}} = \mu_{\text{H}} mg
+    \]
+    \[
+        F_{\text{R,h,max}} = \num{0.55} \cdot \SI{1200}{\kilogram} \cdot \SI{9.81}{\metre\per\second\squared} = \SI{6474.6}{\newton}
+    \]
+
+    \item \textbf{Bedingung und Pr\"ufung:}
+    Damit das Auto nicht rutscht, muss gelten
+    \[
+        F_{\text{Zp}} \leq F_{\text{R,h,max}}
+    \]
+    Hier ist
+    \[
+        \SI{5400}{\newton} \leq \SI{6474.6}{\newton}
+    \]
+    Die Bedingung ist also erf\"ullt. Das Auto kann die Kurve mit \SI{54}{\kilo\metre\per\hour} ohne Rutschen durchfahren.
+
+    \item \textbf{Maximale Geschwindigkeit:}
+    Im Grenzfall gilt
+    \[
+        F_{\text{Zp}} = F_{\text{R,h,max}}
+    \]
+    also
+    \[
+        m \frac{v_{\text{max}}^2}{r} = \mu_{\text{H}} mg
+    \]
+    Nach $v_{\text{max}}$ aufgel\"ost ergibt das
+    \[
+        v_{\text{max}} = \sqrt{\mu_{\text{H}} g r}
+    \]
+    Mit Zahlenwerten folgt
+    \[
+        v_{\text{max}} = \sqrt{\num{0.55} \cdot \SI{9.81}{\metre\per\second\squared} \cdot \SI{50}{\metre}} \approx \SI{16.42}{\metre\per\second}
+    \]
+    In \si{\kilo\metre\per\hour} ist das
+    \[
+        v_{\text{max}} \approx \SI{59.13}{\kilo\metre\per\hour}
+    \]
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 3 -- Zylinder unter Wasser}
+\begin{enumerate}
+    \item \textbf{Kräfte und Kräftegleichgewicht:}
+    Auf den Zylinder wirken die Gewichtskraft $F_G$ nach unten, die Auftriebskraft $F_A$ nach oben und die Federkraft $F_{\text{F}}$ ebenfalls nach oben. Im Gleichgewicht gilt daher
+    \[
+        F_{\text{F}} + F_A - F_G = 0
+    \]
+
+    \item \textbf{Volumen, Masse und Gewichtskraft:}
+    Zuerst wird der Radius bestimmt:
+    \[
+        r = \frac{d}{2} = \SI{4.0}{\centi\metre} = \SI{0.04}{\metre}
+    \]
+    Das Volumen des Zylinders ist
+    \[
+        V = \pi r^2 h = \pi \cdot (\SI{0.04}{\metre})^2 \cdot \SI{0.12}{\metre} \approx \SI{6.03e-4}{\metre\cubed}
+    \]
+    Die Masse ergibt sich zu
+    \[
+        m = \rho_{\text{Al}} V = \SI{2700}{\kilogram\per\metre\cubed} \cdot \SI{6.03e-4}{\metre\cubed} \approx \SI{1.63}{\kilogram}
+    \]
+    Damit folgt f\"ur die Gewichtskraft
+    \[
+        F_G = mg \approx \SI{1.63}{\kilogram} \cdot \SI{9.81}{\metre\per\second\squared} \approx \SI{15.98}{\newton}
+    \]
+
+    \item \textbf{Auftriebskraft:}
+    Nach Archimedes gilt
+    \[
+        F_A = \rho_{\text{W}}\cdot V \cdot g
+    \]
+    \[
+        F_A = \SI{1000}{\kilogram\per\metre\cubed} \cdot \SI{6.03e-4}{\metre\cubed} \cdot \SI{9.81}{\metre\per\second\squared} \approx \SI{5.92}{\newton}
+    \]
+
+    \item \textbf{Formel für die Federkraft:}
+    Aus der Gleichgewichtsbedingung
+    \[
+        F_{\text{F}} + F_A - F_G = 0
+    \]
+    folgt
+    \[
+        F_{\text{F}} = F_G - F_A
+    \]
+
+    \item \textbf{Anzeige des Federkraftmessers:}
+    \[
+        F_{\text{F}} = \SI{15.98}{\newton} - \SI{5.92}{\newton} \approx \SI{10.06}{\newton}
+    \]
+    Der Federkraftmesser zeigt also ungef\"ahr
+    \[
+        F_{\text{F}} \approx \SI{10.1}{\newton}
+    \]
+    an und wird dabei um diesen Betrag komprimiert.
+\end{enumerate}
+
+\newpage
+
+\section*{Lösung Beispiel 4}
+\begin{enumerate}
+    \item \textbf{Druck}
+    \item \textbf{\si{\kilogram\per\metre\cubed}}
+    \item \textbf{Der Betrag der Geschwindigkeit ist konstant.}
+    \item \textbf{Beim Schmelzen wird latente W\"arme ben\"otigt.}
+    \item \textbf{$F = m \frac{v^2}{r}$}
+    \item \textbf{Ohne resultierende Kraft bleibt ein K\"orper in Ruhe oder in gleichf\"ormig geradliniger Bewegung.}
+    \item \textbf{der Druck zu.}
+    \item \textbf{\SI{20}{\newton}} \quad denn
+    \[
+        F_A = \rho V g = \SI{1000}{\kilogram\per\metre\cubed} \cdot \SI{0.002}{\metre\cubed} \cdot \SI{9.81}{\metre\per\second\squared} \approx \SI{19.62}{\newton}
+    \]
+    \item \textbf{\si{\watt}}
+    \item Der Wirkungsgrad
+    \[
+        \eta = 1 - \frac{T_{\text{kalt}}}{T_{\text{hei\ss}}}
+    \]
+    wird maximal, wenn $T_{\text{hei\ss}}$ möglichst groß und $T_{\text{kalt}}$ möglichst klein gewählt wird. Technische Hürden sind vor allem die begrenzte Temperaturbeständigkeit von Materialien sowie die praktische Schwierigkeit, ein sehr kaltes Reservoir dauerhaft bereitzustellen und während eines Zyklus die Te 
+\end{enumerate}
+
+\end{document}

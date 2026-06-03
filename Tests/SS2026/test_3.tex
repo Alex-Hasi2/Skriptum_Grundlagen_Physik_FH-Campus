@@ -1,0 +1,297 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{eso-pic}
+
+\usepackage{siunitx}
+\DeclareSIUnit{\litre}{l}
+\DeclareSIUnit{\barPr}{bar}
+
+\sisetup{angle-symbol-degree = ^\circ}
+
+\sisetup{locale = DE, separate-uncertainty, inter-unit-product = {},
+range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
+
+\makeatletter
+\def\input@path{{./}{../../}}
+\makeatother
+\graphicspath{{./}{../../}}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\input{defs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\begin{document}
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \hspace{2.0cm}%
+    \raisebox{-5.cm}{%
+      \includegraphics[width=4cm]{Bilder/Allgemein/LogoFHCampus.png}%
+    }%
+  }%
+}
+
+\begin{center}
+    {\Large \textbf{Physikalische Grundlagen}} \\[1em]
+    {\large 3. Schriftliche Prüfung: Sommersemester 2026} \\[1em]
+    {\large Studiengang: Clinical Engineering}
+\end{center}
+
+\vspace{1cm}
+
+\noindent
+\begin{tabular}{ll}
+    \textbf{Vorname:} & \underline{\hspace{8cm}} \\[0.3cm]
+    \textbf{Nachname:} & \underline{\hspace{8cm}} \\
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{itemize}[label={$\Diamond$}]
+    \item Sie haben 90 min Zeit.
+    \item Es sind keine Unterlagen erlaubt.
+    \item Sie dürfen einen Taschenrechner verwenden.
+    \item Geben Sie klare und verständliche Antworten.
+    \item Schreiben Sie leserlich.
+    \item Streichen Sie alle bis auf eine Lösung durch.
+    \item Jeglicher Versuch unerlaubte Hilfsmittel zu verwenden oder von KommilitonInnen \\
+    abzuschreiben, wird mit einer negativen Bewertung des Tests geahndet.
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{center}
+    \textbf{Viel Erfolg!}
+\end{center}
+
+\vspace{2cm}
+
+\begin{flushright}
+    \renewcommand{\arraystretch}{1.23}
+    \begin{tabular}{l p{2.3cm}}
+        \hline
+        \noalign{\vskip 0.15cm}
+        \textbf{\Large{Punkte:}} & \textbf{\Large{/50}} \\
+        \noalign{\vskip 0.1cm}
+        \hline
+        Beispiel 1: & /13 \\
+        Beispiel 2: & /14 \\
+        Beispiel 3: & /13 \\
+        Beispiel 4: & /10
+    \end{tabular}
+\end{flushright}
+
+\newpage
+
+\section*{Beispiel 1 - Wärmepumpe und Kältemittel}
+
+In einer Wärmepumpe kommt ein flüssiges Kältemittel in den Verdampfer und wird dort bei einer Temperatur von $T_1 = \SI{-5}{\degreeCelsius}$ verdampft. Es seien $m = \SI{2.0}{\kilogram}$ Kältemittel vorhanden. Die spezifische Verdampfungswärme beträgt $\lambda_{\text{Verd}} = \SI{210}{\kilo\joule\per\kilogram}$.
+
+Nach dem vollständigen Verdampfen strömt das Kältemittel als ideales Gas in den Verdichter. Direkt vor dem Verdichter hat es den Druck $p_1 = \SI{260}{\kilo\pascal}$ und weiterhin die Temperatur $T_1 = \SI{-5}{\degreeCelsius}$. Vereinfachend soll die Verdichtung als \textbf{isochore} Zustandsänderung eines idealen Gases beschrieben werden. Im Warmwasserkreislauf wird eine Temperatur von $T_2 = \SI{70}{\degreeCelsius}$ benötigt. Für eine grobe Abschätzung der dafür notwendigen Energie sei die spezifische Wärmekapazität des gasförmigen Kältemittels bei konstantem Volumen mit $c_V = \SI{0.85}{\kilo\joule\per(\kilogram\cdot\kelvin)}$ gegeben.
+
+\subsection*{Aufgabe}
+Berechnen Sie die gesamte Wärmemenge, die der Umgebung entzogen wird und zum vollständigen Verdampfen des Kältemittels führt. Bestimmen Sie den Druck $p_2$, auf den das Gas im vereinfachten Modell gebracht werden muss, damit es eine Temperatur von \SI{70}{\degreeCelsius} erreicht.
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Welche Temperatur hat das Kältemittel am Ende des Verdampfungsprozesses? Begründen Sie Ihre Antwort kurz.
+    \item Berechnen Sie die gesamte Verdampfungswärme $Q_{\text{Verd}}$, die zum vollständigen Verdampfen des Kältemittels benötigt wird. Geben Sie den Wert in \si{\kilo\joule} und \si{\kilo\watt\hour} an.
+    \item Welche Beziehung gilt für ein ideales Gas bei einer isochoren Zustandsänderung? Leiten Sie daraus eine Formel für den gesuchten Druck $p_2$ her und berechnen Sie den numerischen Wert von $p_2$.
+    \item Sch\"atzen Sie die Energie ab, die der Verdichter in diesem vereinfachten isochoren Modell mindestens aufbringen muss, um das gasf\"ormige K\"altemittel von $T_1$ auf $T_2$ zu bringen. Verwenden Sie dazu die innere Energie\"anderung $\Delta U = m c_V \Delta T$ und berechnen Sie den numerischen Wert.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c|}
+\hline
+\multicolumn{4}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /13}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} \\
+\quad/2 & \quad/3 & \quad/5 & \quad/3 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+\section*{Beispiel 2 - Statischer Auftrieb mit Heliumballons}
+
+Sie möchten mithilfe von Helium-Ballonen eine Person zum Schweben bringen. Ein einzelner Ballon wiegt \SI{3}{\gram} und hat ein Volumen von \SI{4.5}{\litre}. Die Dichte der Umgebungsluft beträgt $\rho_{\text{Luft}}=\SI{1.23}{\kilogram\per\metre\cubed}$, die von Helium $\rho_{\text{He}}=\SI{0.18}{\kilogram\per\metre\cubed}$. Die Erdbeschleunigung ist $g \approx \SI{9.81}{\metre\per\second\squared}$.
+\begin{center}
+    \includegraphics[height=2.5cm]{Bilder/Uebungsaufgaben/balloons.png}
+\end{center}
+
+\subsection*{Aufgabe}
+Untersuchen Sie rechnerisch, wie groß die Nettoauftriebskraft eines einzelnen Ballons ist und wie viele Ballons benötigt werden, um eine Person mit \SI{80}{\kilogram} schweben zu lassen. Beantworten Sie außerdem die beiden konzeptionellen Folgefragen zum Auftrieb in der Atmosphäre und zum Verhalten eines mit Luft gefüllten Ballons unter Wasser.
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Wie groß ist die Nettoauftriebskraft eines einzelnen Heliumballons? Berechnen Sie dazu zuerst die Auftriebskraft nach dem Archimedischen Prinzip und ziehen Sie dann die Gewichtskräfte der Ballonhülle und der Heliumfüllung ab.
+    \item Wie viele solcher Ballons werden benötigt, um eine Person mit einer Masse von \SI{80}{\kilogram} schweben zu lassen?
+    \item Angenommen, Sie verwenden mehr Ballons als zum Schweben nötig sind. Erklären Sie, warum die Ballons trotzdem nur eine endliche maximale Steighöhe erreichen.
+    \item Vergleichen Sie den Auftrieb in der Atmosphäre mit dem Auftrieb unter Wasser. Welcher wesentliche Unterschied besteht bezüglich der Dichteänderung des umgebenden Mediums als Funktion der Höhe bzw. Tiefe? Begründen Sie Ihre Antwort.
+    \item Stellen Sie sich vor, Sie füllen bei einem Tauchgang in \SI{100}{\metre} Tiefe einen Ballon mit Luft aus Ihrer Druckluftflasche, verknoten ihn und lassen ihn los. Beschreiben Sie, was mit dem Ballon geschieht, während er aufsteigt.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c|}
+\hline
+\multicolumn{5}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /14}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} \\
+\quad/3 & \quad/3 & \quad/3 & \quad/2.5 & \quad/2.5 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+\section*{Beispiel 3 - Planet auf Kreisbahn}
+
+Ein Planet mit der Masse $m_{\text{P}} = \SI{6.0e24}{\kilogram}$ bewegt sich näherungsweise auf einer Kreisbahn um seinen Stern. Der Bahnradius beträgt $r = \SI{2.25e11}{\metre}$ und die Umlaufdauer $T = \SI{300}{\day}$.
+
+\subsection*{Aufgabe}
+Berechnen Sie die Bahngeschwindigkeit, die Zentripetalbeschleunigung und die dazu gehörige Zentripetalkraft auf den Planeten.
+
+\subsection*{Vorgehen}
+\begin{enumerate}
+    \item Rechnen Sie die Umlaufdauer $T$ in Sekunden um.
+    \item Stellen Sie mithilfe des Bahnumfangs und der Umlaufdauer eine Formel für die Bahngeschwindigkeit $v$ auf.
+    \item Berechnen Sie die Bahngeschwindigkeit $v$ des Planeten.
+    \item Leiten Sie eine Formel für die Zentripetalbeschleunigung $a_{\text{Zp}}$ her, einmal mit $a_{\text{Zp}} = v^2/r$ und einmal nur in Abhängigkeit von $r$ und $T$.
+    \item Berechnen Sie die Zentripetalbeschleunigung $a_{\text{Zp}}$.
+    \item Berechnen Sie die notwendige Zentripetalkraft $F_{\text{Zp}}$ auf den Planeten.
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|c | c | c | c | c | c|}
+\hline
+\multicolumn{6}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /13}}}\\
+\hline
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} & \textbf{6)} \\
+\quad/1.5 & \quad/2 & \quad/2.5 & \quad/2.5 & \quad/2 & \quad/2.5 \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\newpage
+
+\section*{Beispiel 4 - Single-Choice}
+\textit{Kreuzen Sie die korrekte Antwort an. Pro Frage ist nur eine Antwort richtig.}
+
+\begin{enumerate}[label=\arabic*.,itemsep=18pt]
+    \item Welche physikalische Größe hat die SI-Einheit \si{\watt}?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Arbeit
+        \item Energie
+        \item Leistung
+        \item Kraft
+    \end{itemize}
+
+    \item Bei einem isochoren Prozess eines idealen Gases bleibt welche Zustandsgröße konstant?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Der Druck
+        \item Das Volumen
+        \item Die Temperatur
+        \item Die innere Energie
+    \end{itemize}
+
+    \item Verdoppelt sich die Geschwindigkeit eines Körpers, dann ändert sich seine kinetische Energie um welchen Faktor?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Faktor 2
+        \item Faktor 4
+        \item Faktor 6
+        \item Faktor 8
+    \end{itemize}
+
+    \item Nach dem archimedischen Prinzip ist die Auftriebskraft gleich ...
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item dem Gewicht des Körpers.
+        \item dem Gewicht des verdrängten Mediums.
+        \item der Masse des Körpers geteilt durch sein Volumen.
+        \item der Gewichtskraft der eingeschlossenen Luft.
+    \end{itemize}
+
+    \item Welche Aussage beschreibt das 3. Newtonsche Axiom?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Ohne resultierende Kraft bleibt die Geschwindigkeit konstant.
+        \item Die Beschleunigung ist proportional zur Kraft.
+        \item Kräfte treten paarweise als gleich große, entgegengesetzt gerichtete Wechselwirkungen auf.
+        \item Energie kann nicht erzeugt oder vernichtet werden.
+    \end{itemize}
+
+    \newpage
+    \item Ein Punkt auf dem Rand einer Scheibe hat den Abstand $r = \SI{0.5}{\metre}$ vom Mittelpunkt. Die Scheibe rotiert mit $\omega = \SI{6}{\radian\per\second}$. Wie groß ist die Bahngeschwindigkeit?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item \SI{3}{\metre\per\second}
+        \item \SI{6}{\metre\per\second}
+        \item \SI{12}{\metre\per\second}
+        \item \SI{0.083}{\metre\per\second}
+    \end{itemize}
+
+    \item Welche Aussage über Haft- und Gleitreibung ist im Allgemeinen richtig?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Die Gleitreibung ist stets größer als die maximale Haftreibung.
+        \item Die maximale Haftreibung ist im Allgemeinen größer als die Gleitreibung.
+        \item Beide sind immer gleich groß.
+        \item Beide hängen von der Auflagefläche ab.
+        \item Beide hängen nicht von der Normalkraft ab.
+    \end{itemize}
+
+    \item Die absolute Temperatur eines idealen Gases ist ein Maß für die ...
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item mittlere potentielle Energie der Teilchen.
+        \item mittlere kinetische Energie der Teilchen.
+        \item Anzahl der Teilchen.
+        \item Dichte des Gases.
+    \end{itemize}
+
+    \item Der 1. Hauptsatz der Thermodynamik ist eine Formulierung des ...
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Impulserhaltungssatzes.
+        \item Energieerhaltungssatzes.
+        \item Massenerhaltungssatzes.
+        \item Gravitationsgesetzes.
+    \end{itemize}
+
+    \item Das Produkt $p \cdot V$ hat in der Physik dieselbe Einheit wie welche physikalische Größe?
+    \begin{itemize}[label={$\square$},itemsep=1pt,topsep=0pt]
+        \item Kraft, Einheit: \si{\newton}
+        \item Druck, Einheit: \si{\pascal}
+        \item Arbeit, Einheit: \si{\joule}
+        \item Impuls, Einheit: \si{\kilogram\cdot \metre\per\second}
+        \item Leistung, Einheit: \si{\watt}
+    \end{itemize}
+\end{enumerate}
+
+\vfill
+\begin{flushright}
+\renewcommand{\arraystretch}{1.23}
+\begin{tabular}{|l c|}
+\hline
+\multicolumn{2}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /10}}}\\
+\hline
+\textbf{1--10: je /1} & \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\end{document}

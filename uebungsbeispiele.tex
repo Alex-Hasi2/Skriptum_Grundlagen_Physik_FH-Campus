@@ -2656,6 +2656,32 @@ Zwei Männer mit jeweils \SI{80}{\kilogram} Körpermasse springen gemeinsam von 
 \end{enumerate}
 \end{aufgabebox}
 
+\begin{aufgabebox}{Kugel in Block mit Feder}{kugel_block_muendung}
+Eine Kugel der Masse $m$ fliegt mit der gesuchten Mündungsgeschwindigkeit $v$ horizontal auf einen anfangs ruhenden Block der Masse $M$ zu. Der Block ist auf einer reibungsfreien horizontalen Unterlage gelagert und mit einer Feder der Federkonstante $k$ verbunden. Die Kugel bleibt beim Stoß im Block stecken, sodass sich beide Körper danach gemeinsam weiterbewegen. Die Feder wird dabei maximal um
+\begin{equation*}
+    x_{\text{max}} = \SI{9.460}{\centi\meter}
+\end{equation*}
+komprimiert.
+
+\begin{center}
+    \includegraphics[width=0.78\textwidth]{Bilder/Uebungsaufgaben/KugelBlockMuendungsgeschwindigkeit.png}
+\end{center}
+
+Verwenden Sie für die numerische Auswertung am Ende die Werte
+\begin{align*}
+    m &= \SI{20}{\gram} \mComma \\
+    M &= \SI{2.00}{\kilo\gram} \mComma \\
+    k &= \SI{800}{\newton\per\meter} \mDot
+\end{align*}
+
+\begin{enumerate}
+    \item Stellen Sie die Impulserhaltung für den kurzen Stoßprozess auf und bestimmen Sie daraus die gemeinsame Geschwindigkeit $u$ von Kugel und Block direkt nach dem Stoß.
+    \item Verwenden Sie für die anschließende Kompression der Feder den Energieerhaltungssatz und stellen Sie einen Zusammenhang zwischen $u$, $k$, $M$, $m$ und $x_{\text{max}}$ her.
+    \item Bestimmen Sie daraus die Mündungsgeschwindigkeit $v$ der Kugel in Abhängigkeit von $m$, $M$, $k$ und $x_{\text{max}}$. Setzen Sie erst ganz am Ende $x_{\text{max}} = \SI{9.460}{\centi\meter}$ ein.
+    \item Warum darf man den Energieerhaltungssatz nicht unmittelbar auf den Stoß selbst anwenden?
+\end{enumerate}
+\end{aufgabebox}
+
 
 
 
@@ -2790,6 +2816,61 @@ Man erkennt, dass der Luftwiderstand bei höheren Geschwindigkeiten dominiert un
     \end{equation}
 \end{enumerate}
 \end{loesungbox}
+
+    \begin{loesungbox}{Lösung zu \Cref{aufg:kugel_block_muendung}}
+    \begin{enumerate}
+        \item \textbf{Impulserhaltung beim Stoß:} \\
+        Während des sehr kurzen Stoßes ist der äußere Impulsübertrag in horizontaler Richtung vernachlässigbar. Daher ist der Gesamtimpuls von Kugel und Block erhalten. Mit $u$ als gemeinsamer Geschwindigkeit direkt nach dem Stoß gilt
+        \begin{equation}\label{eq: kugel_block_impuls}
+            m v = (M+m)u \mDot
+        \end{equation}
+        Aufgelöst nach $u$ ergibt das
+        \begin{equation}\label{eq: kugel_block_u}
+            u = \frac{m}{M+m}v \mDot
+        \end{equation}
+
+        \item \textbf{Energieerhaltung bei der Federkompression:} \\
+        Nach dem Stoß bewegen sich Kugel und Block gemeinsam. Von diesem Zeitpunkt an wird die kinetische Energie des Systems vollständig in potenzielle Energie der Feder umgewandelt. Am Punkt maximaler Kompression ist die Geschwindigkeit null. Daher gilt
+        \begin{equation}\label{eq: kugel_block_energie}
+            \frac{1}{2}(M+m)u^2 = \frac{1}{2}k x_{\text{max}}^2 \mDot
+        \end{equation}
+        Daraus folgt für die Geschwindigkeit direkt nach dem Stoß
+        \begin{equation}\label{eq: kugel_block_u_energie}
+            u = x_{\text{max}}\sqrt{\frac{k}{M+m}} \mDot
+        \end{equation}
+
+        \item \textbf{Mündungsgeschwindigkeit der Kugel:} \\
+        Wir setzen \Cref{eq: kugel_block_u_energie} in \Cref{eq: kugel_block_impuls} ein:
+        \begin{align}
+            m v &= (M+m) x_{\text{max}}\sqrt{\frac{k}{M+m}} \\
+            &= x_{\text{max}}\sqrt{k(M+m)} \mDot
+        \end{align}
+        Damit erhält man für die gesuchte Mündungsgeschwindigkeit
+        \begin{equation}\label{eq: kugel_block_muendung_v}
+            v = \frac{x_{\text{max}}}{m}\sqrt{k(M+m)} \mDot
+        \end{equation}
+        Mit
+        \begin{equation}
+            x_{\text{max}} = \SI{9.460}{\centi\meter} = \SI{0.09460}{\meter}
+        \end{equation}
+        folgt auch die praktische Schreibweise
+        \begin{equation}
+            v = \frac{\SI{0.09460}{\meter}}{m}\sqrt{k(M+m)} \mDot
+        \end{equation}
+        Für die numerische Auswertung setzen wir nun erst ganz am Ende
+        \begin{equation*}
+            m = \SI{0.020}{\kilo\gram} \mComma \qquad M = \SI{2.00}{\kilo\gram} \mComma \qquad k = \SI{800}{\newton\per\meter}
+        \end{equation*}
+        ein und erhalten
+        \begin{align}
+            v &= \frac{\SI{0.09460}{\meter}}{\SI{0.020}{\kilo\gram}}\sqrt{\SI{800}{\newton\per\meter}\cdot\left(\SI{2.00}{\kilo\gram}+\SI{0.020}{\kilo\gram}\right)} \\
+            &\approx \SI{190.1}{\meter\per\second} \approx \SI{684}{\kilo\meter\per\hour} \mDot
+        \end{align}
+
+        \item \textbf{Warum nicht Energieerhaltung im Stoß?} \\
+        Beim Stoß handelt es sich um einen vollkommen unelastischen Stoß, da die Kugel im Block stecken bleibt. Dabei wird ein Teil der anfänglichen kinetischen Energie in innere Energie, Wärme und Deformationsarbeit umgewandelt. Deshalb ist die mechanische Energie während des Stoßes nicht erhalten. Erhalten bleibt in horizontaler Richtung jedoch der Impuls. Erst nach dem Stoß kann für das System aus Block, Kugel und Feder wieder die mechanische Energieerhaltung verwendet werden.
+    \end{enumerate}
+    \end{loesungbox}
 
 
 
@@ -3004,6 +3085,21 @@ Leiten Sie das Archimedische Prinzip her. Es besagt, dass die Auftriebskraft $F_
     \item Wie groß ist der Differenzdruck $\Delta p = p_2 - p_1$ in Abhängigkeit der Höhe des gedachten Körpers $\Delta h = h_2 - h_1$? 
     \item Nun wird ein realer Körper mit Volumen $V_\text{K}$ und Grundfläche $A_\text{K}$ in die Flüssigkeit eingebracht (rechtes Bild). Der Differenzdruck $\Delta p$ erzeugt eine nach oben gerichtete Kraftdifferenz $\Delta F$ auf die Ober- und Unterseite des Körpers. Geben Sie die Kraftdifferenz $\Delta F = \Delta p \cdot A_\text{K}$ zwischen Ober- und Unterseite an!
     \item Diese Kraftdifferenz ist die Auftriebskraft, $\Delta F = F_{\text{Auftrieb}}$. Formen Sie den Ausdruck aus 3) um, indem Sie das Volumen des Körpers $V_\text{K} = A_\text{K} \cdot \Delta h$ verwenden, um die finale Formel des Archimedischen Prinzips zu erhalten. 
+\end{enumerate}
+\end{aufgabebox}
+
+\begin{aufgabebox}{Zylinder unter Wasser}{zylinder_unter_wasser}
+Ein massiver Aluminiumzylinder mit Durchmesser $d = \SI{8.0}{\centi\metre}$ und Höhe $h = \SI{12.0}{\centi\metre}$ hängt an einem Federkraftmesser und ist vollständig in Wasser eingetaucht. Die Dichte von Aluminium beträgt $\rho_{\text{Al}} = \SI{2700}{\kilogram\per\metre\cubed}$, die Dichte von Wasser $\rho_{\text{W}} = \SI{1000}{\kilogram\per\metre\cubed}$ und die Erdbeschleunigung $g = \SI{9.81}{\metre\per\second\squared}$. Der Federkraftmesser sei für die Messung von Kräften unter Wasser kalibriert und kann sowohl positive als auch negative Werte anzeigen.
+\begin{center}
+    \includegraphics[width=0.36\textwidth]{Bilder/Uebungsaufgaben/ZylinderUnterwasser.png}
+\end{center}
+
+\begin{enumerate}
+    \item Welche Kräfte wirken auf den Zylinder? Formulieren Sie die Bedingung für das Kräftegleichgewicht.
+    \item Berechnen Sie das Volumen, die Masse und daraus die Gewichtskraft $F_G$ des Zylinders.
+    \item Berechnen Sie die Auftriebskraft $F_A$ des Wassers auf den Zylinder.
+    \item Stellen Sie die Gleichgewichtsbedingung auf und leiten Sie daraus eine Formel für die Federkraft $F_{\text{F}}$ her.
+    \item Berechnen Sie die Anzeige des Federkraftmessers numerisch. Achten Sie dabei auf das Vorzeichen der Kräfte.
 \end{enumerate}
 \end{aufgabebox}
 
@@ -3271,6 +3367,81 @@ Die Temperaturänderung beträgt $\Delta T = \SI{60}{\celsius} - (\SI{-50}{\cels
         F_{\text{Auftrieb}} = \rho_{\text{Fl}} g \cdot (\underbrace{A_\text{K}\cdot \Delta h}_{V_\text{K}}) = \rho_{\text{Fl}} g V_\text{K} \mDot
     \end{equation}
     Der Term $\rho_{\text{Fl}} V_\text{K}$ ist die Masse der Flüssigkeit, die durch das Volumen des Körpers verdrängt wurde. Die Auftriebskraft entspricht also genau der Gewichtskraft der verdrängten Flüssigkeit. 
+\end{enumerate}
+\end{loesungbox}
+
+\begin{loesungbox}{Lösung zu \Cref{aufg:zylinder_unter_wasser}}
+\begin{enumerate}
+    \item \textbf{Kräfte und Gleichgewicht:}
+    Auf den vollständig eingetauchten Zylinder wirken drei Kräfte:
+    \begin{itemize}
+        \item die Gewichtskraft $\ivecS{F}{G}$ nach unten,
+        \item die Auftriebskraft $\ivecS{F}{A}$ nach oben,
+        \item die Federkraft $\ivecS{F}{F}$ des Federkraftmessers nach oben.
+    \end{itemize}
+    Wählen wir die positive Richtung nach oben, so lautet die Gleichgewichtsbedingung:
+    \begin{equation}\label{eq: zylinder_unter_wasser_gleichgewicht}
+        \sum F_y = F_{\text{F}} + F_A - F_G = 0 \mDot
+    \end{equation}
+
+    \item \textbf{Volumen, Masse und Gewichtskraft:}
+    Der Zylinder hat den Radius
+    \begin{equation}
+        r = \frac{d}{2} = \frac{\SI{8.0}{\centi\metre}}{2} = \SI{4.0}{\centi\metre} = \SI{0.040}{\metre} \mDot
+    \end{equation}
+    Sein Volumen ist damit
+    \begin{equation}\label{eq: zylinder_unter_wasser_volumen}
+        V = \pi r^2 h \mDot
+    \end{equation}
+    Die Masse des Aluminiumzylinders folgt zu
+    \begin{equation}\label{eq: zylinder_unter_wasser_masse}
+        m = \rho_{\text{Al}} V = \rho_{\text{Al}} \pi r^2 h \mDot
+    \end{equation}
+    Damit ergibt sich für die Gewichtskraft
+    \begin{equation}\label{eq: zylinder_unter_wasser_gewichtskraft}
+        F_G = m g = \rho_{\text{Al}} \pi r^2 h g \mDot
+    \end{equation}
+
+    \item \textbf{Auftriebskraft:}
+    Nach dem Archimedischen Prinzip ist die Auftriebskraft gleich der Gewichtskraft des verdrängten Wassers. Da der Zylinder vollständig eingetaucht ist, ist das verdrängte Volumen gleich dem Zylindervolumen:
+    \begin{equation}\label{eq: zylinder_unter_wasser_auftrieb}
+        F_A = \rho_{\text{W}} V g = \rho_{\text{W}} \pi r^2 h g \mDot
+    \end{equation}
+
+    \item \textbf{Formel für die Federkraft:}
+    Aus \Cref{eq: zylinder_unter_wasser_gleichgewicht} folgt unmittelbar
+    \begin{equation}\label{eq: zylinder_unter_wasser_federkraft}
+        F_{\text{F}} = F_G - F_A \mDot
+    \end{equation}
+    Einsetzen von \Cref{eq: zylinder_unter_wasser_gewichtskraft,eq: zylinder_unter_wasser_auftrieb} liefert
+    \begin{equation}
+        F_{\text{F}} = (\rho_{\text{Al}} - \rho_{\text{W}}) \pi r^2 h g \mDot
+    \end{equation}
+
+    \item \textbf{Numerische Anzeige des Federkraftmessers:}
+    Zuerst berechnen wir das Volumen:
+    \begin{align}
+        V &= \pi (\SI{0.040}{\metre})^2 \cdot \SI{0.120}{\metre} \\
+        &\approx \SI{6.03e-4}{\metre\cubed} \mDot
+    \end{align}
+    Daraus folgen Masse und Gewichtskraft des Zylinders:
+    \begin{align}
+        m &= \SI{2700}{\kilogram\per\metre\cubed} \cdot \SI{6.03e-4}{\metre\cubed} \approx \SI{1.63}{\kilogram} \\
+        F_G &= m g \approx \SI{1.63}{\kilogram} \cdot \SI{9.81}{\metre\per\second\squared} \approx \SI{15.97}{\newton} \mDot
+    \end{align}
+    Die Auftriebskraft ist
+    \begin{align}
+        F_A &= \SI{1000}{\kilogram\per\metre\cubed} \cdot \SI{6.03e-4}{\metre\cubed} \cdot \SI{9.81}{\metre\per\second\squared} \\
+        &\approx \SI{5.92}{\newton} \mDot
+    \end{align}
+    Damit ergibt sich für die Federkraft beziehungsweise die Anzeige des Federkraftmessers
+    \begin{equation}
+        F_{\text{F}} = F_G - F_A \approx \SI{15.97}{\newton} - \SI{5.92}{\newton} \approx \SI{10.06}{\newton} \mDot
+    \end{equation}
+    Mit unserer Vorzeichenkonvention (nach oben positiv) ist die Anzeige also
+    \begin{equation}
+        F_{\text{F}} \approx +\SI{10.1}{\newton} \mDot
+    \end{equation}
 \end{enumerate}
 \end{loesungbox}
 
