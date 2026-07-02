@@ -45,16 +45,14 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
 
 \section*{Lösung Beispiel 1 -- Eis im Wasser}
 \begin{enumerate}
-    \item \textbf{Masse des warmen Wassers:}
+    \item \textbf{Maximal abgebbare Wärme des warmen Wassers bis \SI{0}{\degreeCelsius}:}
+    Zunächst wird die Masse des warmen Wassers bestimmt:
     \[
         m_{\text{W}} = \rho_{\text{W}} V_{\text{W}}
     \]
-    Erst mit Zahlenwerten:
     \[
         m_{\text{W}} = \SI{1.0}{\kilogram\per\deci\metre\cubed} \cdot \SI{3.0}{\litre} = \SI{3.0}{\kilogram}
     \]
-
-    \item \textbf{Maximal abgebbare Wärme des warmen Wassers bis \SI{0}{\degreeCelsius}:}
     \[
         Q_{\text{ab,0}} = m_{\text{W}} c_{\text{W}} \Delta T
     \]
@@ -107,11 +105,11 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
         = (m_{\text{W}} c_{\text{W}} + m_{\text{Eis}} c_{\text{W}}) T_{\text{Misch}}
     \]
     \[
-        T_{\text{Misch}} = \frac{m_{\text{W}} c_{\text{W}} T_{\text{W}} + m_{\text{Eis}} c_{\text{Eis}} T_{\text{Eis}} + m_{\text{Eis}} \lambda_{\text{S}}}{(m_{\text{W}} + m_{\text{Eis}}) c_{\text{W}}}
+        T_{\text{Misch}} = \frac{m_{\text{W}} c_{\text{W}} T_{\text{W}} + m_{\text{Eis}} c_{\text{Eis}} T_{\text{Eis}} - m_{\text{Eis}} \lambda_{\text{S}}}{(m_{\text{W}} + m_{\text{Eis}}) c_{\text{W}}}
     \]
     Erst jetzt werden die Zahlenwerte eingesetzt:
     \begin{align*}
-        T_{\text{Misch}} &= \frac{\SI{3.0}{\kilogram} \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{40}{\degreeCelsius} + \SI{0.6}{\kilogram} \cdot \SI{2.09}{\kilo\joule\per(\kilogram\cdot\kelvin)} \cdot \SI{10}{\kelvin} + \SI{0.6}{\kilogram} \cdot \SI{333.5}{\kilo\joule\per\kilogram}}{(\SI{3.0}{\kilogram} + \SI{0.6}{\kilogram}) \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)}} \\
+        T_{\text{Misch}} &= \frac{\SI{501.6}{\kilo\joule} - \SI{12.54}{\kilo\joule} - \SI{200.1}{\kilo\joule}}{(\SI{3.0}{\kilogram} + \SI{0.6}{\kilogram}) \cdot \SI{4.18}{\kilo\joule\per(\kilogram\cdot\kelvin)}} \\
         & \approx \SI{19.20}{\degreeCelsius}
     \end{align*}
 \end{enumerate}
@@ -135,8 +133,6 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
     \[
         F_{\text{Zp}} = \SI{1200}{\kilogram} \cdot \frac{(\SI{15}{\metre\per\second})^2}{\SI{50}{\metre}} = \SI{5400}{\newton}
     \]
-
-    \item \textbf{Kraft, die die Zentripetalkraft liefert:}
     Auf einer ebenen Stra\ss{}e liefert die Haftreibungskraft zwischen Reifen und Stra\ss{}e die notwendige Zentripetalkraft.
 
     \item \textbf{Maximale Haftreibungskraft:}
@@ -241,7 +237,7 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
     \[
         F_{\text{F}} \approx \SI{10.1}{\newton}
     \]
-    an und wird dabei um diesen Betrag komprimiert.
+    mit positivem Vorzeichen an, wenn nach oben positiv gewählt wurde.
 \end{enumerate}
 
 \newpage
@@ -264,7 +260,7 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
     \[
         \eta = 1 - \frac{T_{\text{kalt}}}{T_{\text{hei\ss}}}
     \]
-    wird maximal, wenn $T_{\text{hei\ss}}$ möglichst groß und $T_{\text{kalt}}$ möglichst klein gewählt wird. Technische Hürden sind vor allem die begrenzte Temperaturbeständigkeit von Materialien sowie die praktische Schwierigkeit, ein sehr kaltes Reservoir dauerhaft bereitzustellen und während eines Zyklus die Te 
+    wird maximal, wenn $T_{\text{hei\ss}}$ möglichst groß und $T_{\text{kalt}}$ möglichst klein gewählt wird. Technische Hürden sind vor allem die begrenzte Temperaturbeständigkeit von Materialien, Wärmeverluste, Reibung sowie die praktische Schwierigkeit, ein sehr kaltes Reservoir dauerhaft bereitzustellen und die Reservoirtemperaturen während des Kreisprozesses konstant zu halten.
 \end{enumerate}
 
 \end{document}
