@@ -48,7 +48,7 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
 \section*{Lösung Beispiel 1 -- Wärmepumpe und Kältemittel}
 \begin{enumerate}
     \item \textbf{Temperatur am Ende des Verdampfungsprozesses:}
-    Während des Verdampfens (Phasenübergang) bleibt die Temperatur konstant. Daher gilt am Ende des vollständigen Verdampfens noch immer
+    Während des Verdampfens wird die zugeführte Wärme für den Phasenübergang von flüssig zu gasförmig verwendet. Die Temperatur bleibt dabei konstant. Daher gilt am Ende des vollständigen Verdampfens noch immer
     \[
         T_1 = \SI{-5}{\degreeCelsius}
     \]
@@ -95,7 +95,7 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
     \]
     mit
     \[
-        \Delta T = T_2 - T_1 = \SI{70}{\degreeCelsius} - \SI{-5}{\degreeCelsius} = \SI{75}{\kelvin}
+        \Delta T = T_2 - T_1 = \SI{70}{\degreeCelsius} - (\SI{-5}{\degreeCelsius}) = \SI{75}{\kelvin}
     \]
     Erst jetzt werden die Zahlenwerte eingesetzt:
     \[
@@ -115,25 +115,25 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
     \item \textbf{Nettoauftriebskraft eines einzelnen Ballons:}
     Zuerst wird das Volumen in SI-Einheiten geschrieben:
     \[
-        V_{\text{Ballon}} = \SI{4.5}{\litre} = \SI{0.0045}{\metre\cubed}
+        V_{\text{Ballon}} = \SI{4}{\litre} = \SI{0.004}{\metre\cubed}
     \]
     Die Auftriebskraft nach Archimedes lautet
     \[
         F_A = \rho_{\text{Luft}} V_{\text{Ballon}} g
     \]
     \[
-        F_A = \SI{1.23}{\kilogram\per\metre\cubed} \cdot \SI{0.0045}{\metre\cubed} \cdot \SI{9.81}{\metre\per\second\squared} \approx \SI{0.0543}{\newton}
+        F_A = \SI{1.23}{\kilogram\per\metre\cubed} \cdot \SI{0.004}{\metre\cubed} \cdot \SI{9.81}{\metre\per\second\squared} \approx \SI{0.0483}{\newton}
     \]
     Die Gewichtskraft des gefüllten Ballons ist
     \[
         F_{G,\text{ges}} = (m_{\text{Hülle}} + \rho_{\text{He}} V_{\text{Ballon}}) g
     \]
     \[
-        F_{G,\text{ges}} = (\SI{0.003}{\kilogram} + \SI{0.18}{\kilogram\per\metre\cubed} \cdot \SI{0.0045}{\metre\cubed}) \cdot \SI{9.81}{\metre\per\second\squared} \approx \SI{0.0374}{\newton}
+        F_{G,\text{ges}} = (\SI{0.002}{\kilogram} + \SI{0.18}{\kilogram\per\metre\cubed} \cdot \SI{0.004}{\metre\cubed}) \cdot \SI{9.81}{\metre\per\second\squared} \approx \SI{0.0267}{\newton}
     \]
     Damit ergibt sich die Nettoauftriebskraft:
     \[
-        F_{\text{netto}} = F_A - F_{G,\text{ges}} \approx \SI{0.0543}{\newton} - \SI{0.0374}{\newton} = \SI{0.0169}{\newton}
+        F_{\text{netto}} = F_A - F_{G,\text{ges}} \approx \SI{0.0483}{\newton} - \SI{0.0267}{\newton} = \SI{0.0216}{\newton}
     \]
 
     \item \textbf{Benötigte Anzahl von Ballons:}
@@ -146,11 +146,11 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
         N = \frac{F_{G,\text{Person}}}{F_{\text{netto}}}
     \]
     \[
-        N = \frac{\SI{784.8}{\newton}}{\SI{0.0169}{\newton}} \approx 4.64 \cdot 10^4
+        N = \frac{\SI{784.8}{\newton}}{\SI{0.021582}{\newton}} \approx 3.64 \cdot 10^4
     \]
     Man benötigt also rund
     \[
-        N \approx 46363
+        N \approx 36364
     \]
     Ballons.
 
@@ -221,6 +221,19 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
     \]
     \[
         F_{\text{Zp}} = \SI{6.0e24}{\kilogram} \cdot \SI{1.32e-2}{\metre\per\second\squared} \approx \SI{7.93e22}{\newton}
+    \]
+
+    \item \textbf{Abschätzung der Masse des Sterns:}
+    Die Gravitationskraft des Sterns liefert die Zentripetalkraft des Planeten. Daher gilt
+    \[
+        F_{\text{Zp}} = F_{\text{G}} = G \frac{m_{\text{P}} M_{\text{S}}}{r^2}
+    \]
+    Mit $G = \SI{6.674e-11}{\metre\cubed\per(\kilogram\second\squared)}$ folgt für die Masse des Sterns
+    \[
+        M_{\text{S}} = \frac{F_{\text{Zp}} r^2}{G m_{\text{P}}}
+    \]
+    \[
+        M_{\text{S}} = \frac{\SI{7.93e22}{\newton} \cdot (\SI{2.25e11}{\metre})^2}{\SI{6.674e-11}{\metre\cubed\per(\kilogram\second\squared)} \cdot \SI{6.0e24}{\kilogram}} \approx \SI{1.00e31}{\kilogram}
     \]
 \end{enumerate}
 

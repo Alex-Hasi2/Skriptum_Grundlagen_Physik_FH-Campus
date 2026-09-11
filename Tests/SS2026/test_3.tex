@@ -98,7 +98,7 @@ range-units = brackets, list-units = single, per-mode=symbol-or-fraction}
 
 \section*{Beispiel 1 - Wärmepumpe und Kältemittel}
 
-In einer Wärmepumpe kommt ein flüssiges Kältemittel in den Verdampfer und wird dort bei einer Temperatur von $T_1 = \SI{-5}{\degreeCelsius}$ verdampft. Es seien $m = \SI{2.0}{\kilogram}$ Kältemittel vorhanden. Die spezifische Verdampfungswärme beträgt $\lambda_{\text{Verd}} = \SI{210}{\kilo\joule\per\kilogram}$.
+In einer Wärmepumpe kommt ein flüssiges Kältemittel in den Verdampfer und wird dort bei einer Temperatur von $T_1 = \SI{-5}{\degreeCelsius}$ verdampft (isothermer Phasenübergang). Es seien $m = \SI{2.0}{\kilogram}$ Kältemittel vorhanden. Die spezifische Verdampfungswärme beträgt $\lambda_{\text{Verd}} = \SI{210}{\kilo\joule\per\kilogram}$.
 
 Nach dem vollständigen Verdampfen strömt das Kältemittel als ideales Gas in den Verdichter. Direkt vor dem Verdichter hat es den Druck $p_1 = \SI{260}{\kilo\pascal}$ und weiterhin die Temperatur $T_1 = \SI{-5}{\degreeCelsius}$. Vereinfachend soll die Verdichtung als \textbf{isochore} Zustandsänderung eines idealen Gases beschrieben werden. Im Warmwasserkreislauf wird eine Temperatur von $T_2 = \SI{70}{\degreeCelsius}$ benötigt. Für eine grobe Abschätzung der dafür notwendigen Energie sei die spezifische Wärmekapazität des gasförmigen Kältemittels bei konstantem Volumen mit $c_V = \SI{0.85}{\kilo\joule\per(\kilogram\cdot\kelvin)}$ gegeben.
 
@@ -107,7 +107,7 @@ Berechnen Sie die gesamte Wärmemenge, die der Umgebung entzogen wird und zum vo
 
 \subsection*{Vorgehen}
 \begin{enumerate}
-    \item Welche Temperatur hat das Kältemittel am Ende des Verdampfungsprozesses? Begründen Sie Ihre Antwort kurz.
+    \item Welche Temperatur hat das Kältemittel am Ende des Verdampfungsprozesses? Begründen Sie, was bei der Verdampfung geschieht und wie sich die Temperatur dabei verhält.
     \item Berechnen Sie die gesamte Verdampfungswärme $Q_{\text{Verd}}$, die zum vollständigen Verdampfen des Kältemittels benötigt wird. Geben Sie den Wert in \si{\kilo\joule} und \si{\kilo\watt\hour} an.
     \item Welche Beziehung gilt für ein ideales Gas bei einer isochoren Zustandsänderung? Leiten Sie daraus eine Formel für den gesuchten Druck $p_2$ her und berechnen Sie den numerischen Wert von $p_2$.
     \item Sch\"atzen Sie die Energie ab, die der Verdichter in diesem vereinfachten isochoren Modell mindestens aufbringen muss, um das gasf\"ormige K\"altemittel von $T_1$ auf $T_2$ zu bringen. Verwenden Sie dazu die innere Energie\"anderung $\Delta U = m c_V \Delta T$ und berechnen Sie den numerischen Wert.
@@ -130,7 +130,7 @@ Berechnen Sie die gesamte Wärmemenge, die der Umgebung entzogen wird und zum vo
 
 \section*{Beispiel 2 - Statischer Auftrieb mit Heliumballons}
 
-Sie möchten mithilfe von Helium-Ballonen eine Person zum Schweben bringen. Ein einzelner Ballon wiegt \SI{3}{\gram} und hat ein Volumen von \SI{4.5}{\litre}. Die Dichte der Umgebungsluft beträgt $\rho_{\text{Luft}}=\SI{1.23}{\kilogram\per\metre\cubed}$, die von Helium $\rho_{\text{He}}=\SI{0.18}{\kilogram\per\metre\cubed}$. Die Erdbeschleunigung ist $g \approx \SI{9.81}{\metre\per\second\squared}$.
+Sie möchten mithilfe von Helium-Ballonen eine Person zum Schweben bringen. Ein einzelner Ballon wiegt \SI{2}{\gram} und hat ein Volumen von \SI{4}{\litre}. Die Dichte der Umgebungsluft beträgt $\rho_{\text{Luft}}=\SI{1.23}{\kilogram\per\metre\cubed}$, die von Helium $\rho_{\text{He}}=\SI{0.18}{\kilogram\per\metre\cubed}$. Die Erdbeschleunigung ist $g \approx \SI{9.81}{\metre\per\second\squared}$.
 \begin{center}
     \includegraphics[height=2.5cm]{Bilder/Uebungsaufgaben/balloons.png}
 \end{center}
@@ -164,10 +164,10 @@ Untersuchen Sie rechnerisch, wie groß die Nettoauftriebskraft eines einzelnen B
 
 \section*{Beispiel 3 - Planet auf Kreisbahn}
 
-Ein Planet mit der Masse $m_{\text{P}} = \SI{6.0e24}{\kilogram}$ bewegt sich näherungsweise auf einer Kreisbahn um seinen Stern. Der Bahnradius beträgt $r = \SI{2.25e11}{\metre}$ und die Umlaufdauer $T = \SI{300}{\day}$.
+Ein Planet mit der Masse $m_{\text{P}} = \SI{6.0e24}{\kilogram}$ bewegt sich näherungsweise auf einer Kreisbahn um seinen Stern. Der Bahnradius beträgt $r = \SI{2.25e11}{\metre}$ und die Umlaufdauer $T = \SI{300}{\day}$. Die Gravitationskonstante beträgt $G = \SI{6.674e-11}{\metre\cubed\per(\kilogram\cdot\second\squared)}$.
 
 \subsection*{Aufgabe}
-Berechnen Sie die Bahngeschwindigkeit, die Zentripetalbeschleunigung und die dazu gehörige Zentripetalkraft auf den Planeten.
+Berechnen Sie die Bahngeschwindigkeit, die Zentripetalbeschleunigung und die dazu gehörige Zentripetalkraft auf den Planeten. Schätzen Sie außerdem die Masse des Sterns ab.
 
 \subsection*{Vorgehen}
 \begin{enumerate}
@@ -176,18 +176,19 @@ Berechnen Sie die Bahngeschwindigkeit, die Zentripetalbeschleunigung und die daz
     \item Berechnen Sie die Bahngeschwindigkeit $v$ des Planeten.
     \item Leiten Sie eine Formel für die Zentripetalbeschleunigung $a_{\text{Zp}}$ her, einmal mit $a_{\text{Zp}} = v^2/r$ und einmal nur in Abhängigkeit von $r$ und $T$.
     \item Berechnen Sie die Zentripetalbeschleunigung $a_{\text{Zp}}$.
-    \item Berechnen Sie die notwendige Zentripetalkraft $F_{\text{Zp}}$ auf den Planeten.
+    \item Berechnen Sie die dazugehörige Zentripetalkraft $F_{\text{Zp}}$ auf den Planeten.
+    \item Schätzen Sie die Masse $M_{\text{S}}$ des Sterns ab, indem Sie annehmen, dass die Gravitationskraft des Sterns die Zentripetalkraft des Planeten erzeugt. Geben Sie die verwendete Formel an und berechnen Sie den numerischen Wert.
 \end{enumerate}
 
 \vfill
 \begin{flushright}
 \renewcommand{\arraystretch}{1.23}
-\begin{tabular}{|c | c | c | c | c | c|}
+\begin{tabular}{|c | c | c | c | c | c | c|}
 \hline
-\multicolumn{6}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /13}}}\\
+\multicolumn{7}{|l|}{\textbf{\large{Punkte: \quad\quad\quad /13}}}\\
 \hline
-\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} & \textbf{6)} \\
-\quad/1.5 & \quad/2 & \quad/2.5 & \quad/2.5 & \quad/2 & \quad/2.5 \\
+\textbf{1)} & \textbf{2)} & \textbf{3)} & \textbf{4)} & \textbf{5)} & \textbf{6)} & \textbf{7)} \\
+\quad/1 & \quad/1.5 & \quad/2 & \quad/2 & \quad/1.5 & \quad/2 & \quad/3 \\
 \hline
 \end{tabular}
 \end{flushright}
