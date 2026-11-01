@@ -3,9 +3,9 @@
 
 \section{Kapitel Kinematik}\label{sec: herleitungen_kinematik}
 \subsection{Bogenlänge und Sehnenlänge}\label{subsec: herleitung_bogenlaenge_sehnenlaenge}
-Wir möchten zeigen, dass im Grenzübergang $\Delta \varphi \to 0$, die Sehnenlänge gegen die Bogenlänge konvergiert
+Wir möchten zeigen, dass im Grenzübergang $\Delta \varphi \to 0$, das Verhältnis von Sehnenlänge und Bogenlänge gegen 1 geht
 \begin{equation*}\label{eq: question_sehnenlänge_gleich_bogenlänge}
-    \lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| \eqquestion \Delta s \mDot
+    \lim_{\Delta \varphi \to 0} \frac{|\Delta \ivec{r}|}{\Delta s} \eqquestion 1 \mDot
 \end{equation*}
 In \cref{fig: bogenlaenge_sehnenlaenge} ist exemplarisch die Bogenlänge $\Delta s$ für einen Kreissektor mit dem Winkel $\Delta \varphi$ zusammen mit der Länge $|\Delta \ivec{r}|$ der Sehne $\overline{AB}$ gezeichnet. 
 
@@ -74,7 +74,7 @@ wobei wir $\cos^2(\Delta \varphi) + \sin^2(\Delta \varphi) = 1$ verwendet haben.
 \end{equation}
 Nun verwenden wir die Approximation des Sinus für kleine Winkel $\Delta \varphi$, die besagt, dass 
 \begin{equation}
-    \sin(\Delta \varphi) \approx \Delta \varphi + \bigO[\Delta \varphi^3] \mComma \quad \Delta \varphi \ll 1\mDot
+    \sin(\Delta \varphi) = \Delta \varphi + \bigO[\Delta \varphi^3] \mComma \quad \Delta \varphi \ll 1\mDot
 \end{equation}
 Damit nähern wir den exakten Wert in \cref{eq: sehnenlänge_exakt_sinus} an und erhalten 
 \begin{equation} \label{eq: näherund_sehnenlänge_kleinwinkel}
@@ -84,7 +84,7 @@ Die Näherung für die Sehnenlänge $|\Delta \ivec{r}|$ in \cref{eq: näherund_s
 
 Damit haben wir gezeigt, dass 
 \begin{equation}\label{eq: sehnenlänge_gleich_bogenlänge}
-    \lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| = \Delta s \mComma
+    \lim_{\Delta \varphi \to 0} \frac{|\Delta \ivec{r}|}{\Delta s} = 1 \mComma
 \end{equation}
 
 \section{Kapitel Rotation starrer Körper}\label{sec: herleitungen_rotation_starrer_koerper}
@@ -113,9 +113,9 @@ Zusammen mit der Masse der Scheibe $M = \rho \cdot V = \rho \cdot h \pi R^2$ fol
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.3\linewidth]{Bilder/Kapitel_Herleitungen/DuennwandHohlzylinder_Traegheitsmoment.png}
-    \caption{Dünnwandiger Hohlzylinder mit dem Radius $R$, Höhe $h$ und der Masse $M$, der sich um die $z$-Achse dreht, die senkrecht zur Zylinderachse durch deren Mittelpunkt (Schwerpunkt $S$) verläuft. (Quelle:~\cite[S.~135]{Demtroeder2018})}\label{fig: traegheitsmoment_duenn_hohlzylinder}
+    \caption{Dünnwandiger Hohlzylinder mit dem Radius $R$, Höhe $h$ und der Masse $M$, der sich um die Zylinderachse ($z$-Achse) dreht. (Quelle:~\cite[S.~135]{Demtroeder2018})}\label{fig: traegheitsmoment_duenn_hohlzylinder}
 \end{figure}
-Wir betrachten einen dünnwandigen Hohlzylinder mit dem Außenradius $R$, der Winddicke $d \ll R$, der Höhe $h$ und der Masse $M$, der sich um die $z$-Achse dreht, die senkrecht zur Zylinderachse durch dessen Mittelpunkt (Schwerpunkt) verläuft (siehe \cref{fig: traegheitsmoment_duenn_hohlzylinder}). Das Trägheitsmoment $J_z$ des Hohlzylinders bezüglich der $z$-Achse berechnet sich durch Integration,
+Wir betrachten einen dünnwandigen Hohlzylinder mit dem Außenradius $R$, der Wanddicke $d \ll R$, der Höhe $h$ und der Masse $M$, der sich um die Zylinderachse ($z$-Achse) dreht (siehe \cref{fig: traegheitsmoment_duenn_hohlzylinder}). Das Trägheitsmoment $J_z$ des Hohlzylinders bezüglich der $z$-Achse berechnet sich durch Integration,
 \begin{align}\label{eq: traegheitsmoment_Jz_duennHohlzylinder}
     J_z &= \rho \int_V r_{\perp}^2 \dd V = \rho \, h \,\int_0^{2\pi} \int_{r}^{R} \tilde{r}^2 \cdot \tilde{r} \,\dd \tilde{r} \dd \varphi \\
     &= \rho\, h \,(2\pi) \left[ \frac{\tilde{r}^4}{4} \right]_{r}^R = 2\pi \rho h \left(\frac{R^4}{4} - \frac{r^4}{4} \right) \mDot \nonumber
@@ -157,11 +157,11 @@ In \cref{fig: traegheitsmoment_vollkugel} ist der Normalabstand zur Drehachse $r
 \begin{align}
     J_z &= \rho \int_V r_{\perp}^2 \dd V = \rho \int_0^{2\pi} \int_0^{\pi} \int_0^R (r \sin\vartheta)^2 \cdot r^2 \sin\vartheta \,\dd r \dd \vartheta \dd \varphi \nonumber \\
     &= \rho (2\pi) \int_0^{\pi} \sin^3\vartheta \,\dd \vartheta \int_0^R r^4 \,\dd r = \rho (2\pi) \left[ -\cos\vartheta + \frac{1}{3}\cos^3\vartheta \right]_0^{\pi} \left[ \frac{r^5}{5} \right]_0^R \nonumber \\
-    &= \rho (2\pi) \left( \frac{4}{3} \right) \left( \frac{R^5}{5} \right) = \frac{4\pi}{15} \rho R^5 \mDot
+    &= \rho (2\pi) \left( \frac{4}{3} \right) \left( \frac{R^5}{5} \right) = \frac{8\pi}{15} \rho R^5 \mDot
 \end{align}
 Zusammen mit der Masse der Vollkugel $M = \rho \cdot V = \rho \cdot \frac{4}{3} \pi R^3$ folgt für das Trägheitsmoment
 \begin{equation}
-    J_z = \frac{4\pi}{15} \rho R^5 = \frac{2}{5} M R^2 \mDot
+    J_z = \frac{8\pi}{15} \rho R^5 = \frac{2}{5} M R^2 \mDot
 \end{equation}
 
 
@@ -191,7 +191,7 @@ wobei der Vorfaktor aus der Normierung der Wahrscheinlichkeitsdichte resultiert 
 \subsubsection{Verteilung des Geschwindigkeitsbetrages}\label{subsubsec: mb_betrag}
 Häufig interessiert uns nicht die Richtung, sondern nur der Betrag der Geschwindigkeit $v = |\ivec{v}|$. Um von den vektoriellen Komponenten zum Betrag zu gelangen, betrachten wir den Geschwindigkeitsraum.
 \begin{rememberbox}{Vom Vektor zum Betrag}
-    Die Wahrscheinlichkeit, ein Teilchen im Geschwindigkeitsintervall $\dd v_x \dd v_y \dd v_z$ zu finden, ist proportional zum Volumen im Geschwindigkeitsraum. Beim Übergang zu Polarkoordinaten entspricht das Volumen einer Kugelschale mit dem Radius $v$ und der Dicke $\dd v$:
+    Die Wahrscheinlichkeit, ein Teilchen im Geschwindigkeitsintervall $\dd v_x \dd v_y \dd v_z$ zu finden, ist proportional zum Volumen im Geschwindigkeitsraum. Beim Übergang zu Kugelkoordinaten entspricht das Volumen einer Kugelschale mit dem Radius $v$ und der Dicke $\dd v$:
     \begin{equation}\dd V_v = 4\pi v^2 \dd v \mDot
     \end{equation}
 \end{rememberbox}
@@ -454,16 +454,16 @@ Ein fundamentales Beispiel aus der Physik ist die zugeführte Wärme $\delta Q$.
 Betrachten wir ein ideales Gas, so lässt sich zeigen, dass der Kehrwert der absoluten Temperatur $1/T$ als integrierender Faktor fungiert.
 
 \begin{importantbox}{Vervollständigung des Wärmedifferentials}
-Die infinitesimale Wärmeänderung $\delta Q$ ist ein unvollständiges Differential. Durch Multiplikation mit dem integrierenden Faktor $1/T$ erhält man das vollständige Differential der \textbf{Entropie} $S$:
+Die infinitesimale Wärmeänderung $\delta Q$ ist ein unvollständiges Differential. Durch Multiplikation mit dem integrierenden Faktor $1/T$ erhält man (für reversible Prozesse) man das vollständige Differential der \textbf{Entropie} $S$:
 \begin{equation}\label{eq: definition_entropie_differential}
-    \dd S = \frac{\delta Q}{T} \mDot
+    \dd S = \frac{\delta Q_{\text{rev}}}{T} \mDot
 \end{equation}
 Während die Wärme $Q$ prozessabhängig ist (Wegintegral), ist die Entropie $S$ eine \textbf{Zustandsgröße}. Ihr Wert hängt nur vom momentanen Zustand (z.\,B. Druck und Temperatur) ab, nicht davon, wie das System diesen Zustand erreicht hat.
 \end{importantbox}
 
 Das bedeutet für einen geschlossenen Kreisprozess (reversibel):
 \begin{equation}
-    \oint \delta Q \neq 0 \quad \text{aber} \quad \oint \frac{\delta Q}{T} = \oint \dd S = 0 \mDot
+    \oint \delta Q \neq 0 \quad \text{aber} \quad \oint \frac{\delta Q_{\text{rev}}}{T} = \oint \dd S = 0 \mDot
 \end{equation}
 
 % Chapter end - always start new page after chapter

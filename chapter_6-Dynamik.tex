@@ -39,7 +39,7 @@ Nachdem wir die Grundlagen der unterschiedlichen Bewegungsformen in der Kinemati
 
 
 \section{Einleitung und die vier Grundkräfte}\label{sec: dynamik_einleitung}
-Isaac Newton erkannte, dass die Ursache für den Bewegungszustand eines Körpers und dessen Änderungen ein Resultat von Wechselwirkungen dieses Körpers mit seiner Umgebung sein muss. Diese Erkenntnisse gipfelten in den drei Newtonschen Axiomen, die die Basis für die klassische Mechanik darstellen. Die Newtonschen Axiome stellen den Zusammenhang zwischen der Bewegungsänderung eines Körpers und den auf ihn einwirkenden Kräften her. In der modernen Physik kennen wir vier Grundkräfte (fundamentale Wechselwirkungen):
+Isaac Newton erkannte, dass jede Änderung des Bewegungszustands eines Körpers ein Resultat von Wechselwirkungen dieses Körpers mit seiner Umgebung sein muss. Ein Körper, auf den nichts einwirkt, bewegt sich dagegen ohne Ursache gleichförmig weiter. Diese Erkenntnisse gipfelten in den drei Newtonschen Axiomen, die die Basis für die klassische Mechanik darstellen. Die Newtonschen Axiome stellen den Zusammenhang zwischen der Bewegungsänderung eines Körpers und den auf ihn einwirkenden Kräften her. In der modernen Physik kennen wir vier Grundkräfte (fundamentale Wechselwirkungen):
 \begin{table}[htbp]
     \centering
     \begin{tabular}{l l l}
@@ -107,7 +107,7 @@ Das \textbf{dritte Newtonsche Axiom} (Wechselwirkungsprinzip) charakterisiert Kr
 
 \subsection{Erstes Newtonsches Axiom (Trägheitsgesetz)}\label{subsec: erstes_newtonsches_axiom}
 \begin{importantbox}{1. Newtonsches Axiom}
-    Ein Körper verharrt im Zustand der Ruhe oder der gleichförmigen geradlinigen Bewegung, solange keine äußeren Kräfte auf ihn wirken.
+    Ein Körper verharrt im Zustand der Ruhe oder der gleichförmigen geradlinigen Bewegung, solange keine resultierende äußere Kraft auf ihn wirkt.
     \begin{equation}\label{eq: erstes_newtonsches_axiom_trägheit}
         \sum_{i}\ivecS{F}{i} = 0
     \end{equation}
@@ -118,13 +118,13 @@ Einen Körper, auf den überhaupt keine Kraft wirkt oder für den die Vektorsumm
 Das Axiom gilt nur in sogenannten \textbf{Inertialsystemen}, also in nicht beschleunigten (und nicht rotierenden) Bezugssystemen. In einem beschleunigten Bezugssystem kann ein Körper auch ohne äußere Kraft seinen Bewegungszustand ändern. 
 
 \begin{rememberbox}[]{Inertialsysteme}
-    Ein Inertialsystem wird sogar meist über das 1. Newtonsche Axiom definiert: Jedes Bezugssystem, in dem sich ein kräftefreier Körper in Ruhe verharrt oder geradlinig gleichförmig bewegt, ist ein Inertialsystem. Alle Systeme, die sich mit konstanter Geschwindigkeit relativ zu einem Inertialsystem bewegen, sind ebenfalls Inertialsysteme.
+    Ein Inertialsystem wird sogar meist über das 1. Newtonsche Axiom definiert: Jedes Bezugssystem, in dem ein kräftefreier Körper in Ruhe verharrt oder geradlinig gleichförmig bewegt, ist ein Inertialsystem. Alle Systeme, die sich mit konstanter Geschwindigkeit relativ zu einem Inertialsystem bewegen, sind ebenfalls Inertialsysteme.
 \end{rememberbox}
 
 \subsection{Grundbegriffe: Kraft, Masse und Impuls}\label{subsec: grundbegriffe_dynamik}
 
 \begin{rememberbox}[]{Definition: Kraft}
-    Eine \textbf{Kraft} ist eine äußere Einwirkung auf einen Körper, infolgedessen sich die Geschwindigkeit (und damit der Impuls) des Körpers ändert. Dies führt zu einer Beschleunigung des Körpers relativ zum Inertialsystem. Eine Kraft ist eine vektorielle Größe; sie kann sowohl Betrag als auch Richtung der Geschwindigkeit ändern. Die Einheit der Kraft ist das Newton: $[F] = \SI{1}{\newton} = \SI{1}{\kilogram\meter\per\second\squared}$.
+    Eine \textbf{Kraft} ist eine äußere Einwirkung auf einen Körper, die seine Geschwindigkeit (und damit seinen Impuls) ändern oder ihn verformen kann. Ist die resultierende Kraft ungleich null, führt dies zu einer Beschleunigung des Körpers relativ zum Inertialsystem. Eine Kraft ist eine vektorielle Größe; sie kann sowohl Betrag als auch Richtung der Geschwindigkeit ändern. Die Einheit der Kraft ist das Newton: $[F] = \SI{1}{\newton} = \SI{1}{\kilogram\meter\per\second\squared}$.
 \end{rememberbox}
 
 \begin{rememberbox}[]{Definition: Masse}
@@ -150,10 +150,12 @@ Das Axiom gilt nur in sogenannten \textbf{Inertialsystemen}, also in nicht besch
     Eine resultierende Kraft ungleich Null ($\sum \ivecS{F}{i} \neq 0$) führt zu einer Impulsänderung.
 \end{importantbox}
 
-Da $\ivec{p} = m\cdot\ivec{v}$, erhalten wir im allgemeinen Fall, in dem sich auch die Masse ändern kann (\zB bei einer Rakete, die Treibstoff ausstößt):
+Da $\ivec{p} = m\cdot\ivec{v}$, erhalten wir formal mit der Produktregel:
 \begin{equation}\label{eq: newton2_rakete}
     \ivec{F} = \frac{\dd(m\ivec{v})}{\dd t} = m \cdot \frac{\dd \ivec{v}}{\dd t} + \frac{\dd m}{\dd t} \cdot \ivec{v} = m\ivec{a} + \frac{\dd m}{\dd t}\ivec{v} \mDot
 \end{equation}
+
+\textbf{Achtung:} Für Körper mit veränderlicher Masse (\zB eine Rakete, die Treibstoff ausstößt) ist diese Formel irreführend, weil sie nicht berücksichtigt, mit welcher Geschwindigkeit die Masse abgegeben wird. Für die Rakete gilt stattdessen $m\,\frac{\dd\ivec{v}}{\dd t} = \ivec{F} + \ivecS{u}{rel}\,\frac{\dd m}{\dd t}$, wobei $\ivecS{u}{rel}$ die Ausstoßgeschwindigkeit des Treibstoffs relativ zur Rakete ist.
 
 \begin{rememberbox}{Sonderfall: Konstante Masse}
     Im häufigen Fall, dass die Masse konstant ist ($m = \const$), vereinfacht sich die Formel zur bekannten Form:
@@ -213,7 +215,7 @@ mit der Lichtgeschwindigkeit $c \approx \SI{299792458}{\meter\per\second}$.
     % \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/relativistischerGamma-Faktor.png}
     \caption{Der relativistische Gamma-Faktor $\gamma(v)$. Für klassische Geschwindigkeiten $v \ll c$ ist $\gamma\approx 1$. Für Geschwindigkeiten nahe der Lichtgeschwindigkeit $c$ divergiert der Faktor.}\label{fig: gamma_faktor_gamma_von_v}
 \end{figure}
-Vereint man den Gamma-Faktor mit der Ruhemasse, kann man eine \textbf{relativistische Masse} $m^{*}$ über $m^{*}:=\gamma \cdot m_{0}$ definieren, die dann über $\gamma(v)$ von der Geschwindigkeit abhängt. Für klassische Geschwindigkeiten kann die relativistische Massenzunahme meist ignoriert werden. Zum Beispiel gilt für $v = \SI{1000}{\meter\per\second}$, dass $\gamma(v) \approx 1 + \num{6e-12}$.
+Vereint man den Gamma-Faktor mit der Ruhemasse, kann man eine \textbf{relativistische Masse} $m^{*}$ über $m^{*}:=\gamma \cdot m_{0}$ definieren, die dann über $\gamma(v)$ von der Geschwindigkeit abhängt. Für klassische Geschwindigkeiten kann die relativistische Massenzunahme meist ignoriert werden. Zum Beispiel gilt für $v = \SI{1000}{\meter\per\second}$, dass $\gamma(v) \approx 1 + \num{6e-12}$. In der modernen Physik wird der Begriff der relativistischen Masse allerdings kaum noch verwendet: Unter \gDQ{Masse} versteht man meist die (geschwindigkeitsunabhängige) Ruhemasse $m_0$ und schreibt die Geschwindigkeitsabhängigkeit dem Impuls zu.
 
 
 \subsection{Drittes Newtonsches Axiom (Wechselwirkungsprinzip)}\label{subsec: drittes_newtonsche_axiom}
@@ -296,13 +298,13 @@ Leitet man diesen Ausdruck nach der Zeit ab, folgt
 \begin{equation*}
     \frac{\dd \ivecS{p}{1}}{\dd t} + \frac{\dd \ivecS{p}{2}}{\dd t} = 0 \implies \ivecS{F}{1} = -\ivecS{F}{2} \mDot
 \end{equation*}
-Das 3. Newtonsche Axiom ist also eine direkte Folge der Impulserhaltung.
+Impulserhaltung und 3. Newtonsches Axiom sind also gleichwertig: Aus dem einen folgt das andere. (Streng genommen setzt schon die Aussage $\dd\ivec{P}/\dd t = \ivecS{F}{\mathrm{ext}}$ voraus, dass sich die inneren Kräfte paarweise aufheben.)
 
 \section{Anwendung der Axiome}\label{sec: anwendung_axiome}
 \subsection{Superpositionsprinzip und Vektoraddition von Kräften}\label{subsec: superposition_von_kräften}
 Da Beschleunigungen Vektoren sind, müssen auch Kräfte laut \cref{eq: zweites_newtonsche_axiom_F_equals_ma} Vektoren sein. Greifen an einem Punkt mehrere Kräfte an, so ist die resultierende Gesamtkraft die \textbf{Vektorsumme der Einzelkräfte}. Dies folgt aus dem sogenannten Superpositionsprinzip. 
 \begin{rememberbox}{Superpositionsprinzip}
-     Das \textbf{Superpositionsprinzip} besagt, dass bei allen linearen Systemen die verursachte Nettoreaktion, die durch zwei oder mehr Stimuli hervorgerufen wird, die Summe der Reaktionen ist, die durch jeden einzelnen Stimulus verursacht worden wäre.
+     Das \textbf{Superpositionsprinzip} besagt: Wirken mehrere Ursachen gleichzeitig (hier: mehrere Kräfte), so ist die Gesamtwirkung die Summe der Einzelwirkungen. Jede Kraft wirkt so, als wären die anderen nicht vorhanden.
 \end{rememberbox}
 Mit anderen Worten lässt sich aus einer Fülle an Einzelkräften durch vektorielle Addition der Einzelkräfte immer eine resultierende Gesamtkraft ermitteln. Dieses Superpositionsprinzip  gilt für jede Raumrichtung separat:
 \begin{equation}
@@ -416,7 +418,7 @@ Wie in der Abbildung \cref{fig: gravitation_zwischen_m1_m2} dargestellt, besagt 
               (mB_center)++(-1,-1) -- ++(-1,0) node[above, pos=0.4, yshift=0.7mm] {$\ivecS{e}{2\rightarrow 1}$};
     \end{tikzpicture}
     }
-    \caption{Zwei Massen $m_1$ und $m_2$ im Abstand $r$ ziehen sich gegenseitig mit den Kräften $\protect\ivec{F}{1\rightarrow 2}$ und $\protect\ivec{F}{2\rightarrow 1}$ an.}\label{fig: gravitation_zwischen_m1_m2}
+    \caption{Zwei Massen $m_1$ und $m_2$ im Abstand $r$ ziehen sich gegenseitig mit den Kräften $\protect\ivecS{F}{1\rightarrow 2}$ und $\protect\ivecS{F}{2\rightarrow 1}$ an.}\label{fig: gravitation_zwischen_m1_m2}
 \end{figure}
 
 Die Stärke dieser Anziehungskraft hängt von den beiden Massen und ihrem Abstand $r$ ab. Je größer die Massen, desto stärker die Kraft; je größer der Abstand, desto schwächer wird sie.
@@ -432,7 +434,7 @@ Die Gravitationskonstante $G$ ist eine fundamentale Naturkonstante und gilt übe
 \subsection{Normalkräfte}
 Man betrachte die Statue in \cref{fig: statue_normalkraft_reaktionskraft}. Auf die Statue im linken Bild wirkt die Gewichtskraft $\ivecS{F}{\text{G}}$. Würde diese alleine wirken, müsste sich die Statue bewegen. Die Vektorsumme der angreifenden Kräfte ist demnach null, da die Statue in Ruhe ist. Die der Gewichtskraft entgegenstehende Kraft ist die Normalkraft auf die Kontaktfläche, $\ivecS{F}{\text{N}}$. 
 
-\textbf{Achtung:} Die Normalkraft und die Gewichtskraft ist kein Aktions-Reaktions-Kräftepaar. Die Reaktionskraft auf die Gewichtskraft wirkt auf die Erde. Das Aktions-Reaktionspaar der Normalkraft ist im rechten Bild dargestellt: Das Pendant zur Normalkraft auf die Statue $\ivecS{F}{\text{N}}$ ist die Normalkraft der Statue auf den Tisch $\ivecS{F'}{\text{N}}$.\footnote{Der Apostroph markiert hier nicht die Ableitung nach dem Ort. Der Apostroph wird oftmals dazu verwendet, gewisse gleichartige Größen zu nummerieren, zu unterscheiden oder zu gruppieren.} 
+\textbf{Achtung:} Die Normalkraft und die Gewichtskraft sind kein Aktions-Reaktions-Kräftepaar. Die Reaktionskraft auf die Gewichtskraft wirkt auf die Erde. Das Aktions-Reaktionspaar der Normalkraft ist im rechten Bild dargestellt: Das Pendant zur Normalkraft auf die Statue $\ivecS{F}{\text{N}}$ ist die Normalkraft der Statue auf den Tisch $\ivecS{F'}{\text{N}}$.\footnote{Der Apostroph markiert hier nicht die Ableitung nach dem Ort. Der Apostroph wird oftmals dazu verwendet, gewisse gleichartige Größen zu nummerieren, zu unterscheiden oder zu gruppieren.} 
 
 \begin{figure}[htbp]
     \centering
@@ -458,14 +460,14 @@ Lenkt man die Masse aus der Ruhelage aus, so erzeugt die Feder eine \textbf{Rüc
     \item Bei einer \textbf{Kompression} in die negative $x$-Richtung, dargestellt in \cref{fig: feder_rueckstellkraft_c}, wirkt die Rückstellkraft in die positive $x$-Richtung.
 \end{itemize}
 
-Für kleine Auslenkungen aus der Ruhelage ($\Delta x = x - x_0 \ll 1$) verhält sich die Feder linear. Das bedeutet, die Rückstellkraft ist direkt proportional zur Auslenkung. Aus dem obigen Verhalten ergibt sich das sogenannte Hooke'sche Gesetz, das im linearen Bereich einer Feder (kleine Auslenkungen) gültig ist. 
+Für kleine Auslenkungen aus der Ruhelage ($|\Delta x| = |x - x_0|$ klein gegenüber der Länge der Feder) verhält sich die Feder linear. Das bedeutet, die Rückstellkraft ist direkt proportional zur Auslenkung. Aus dem obigen Verhalten ergibt sich das sogenannte Hooke'sche Gesetz, das im linearen Bereich einer Feder (kleine Auslenkungen) gültig ist. 
 
 \begin{rememberbox}[]{Hooke'sches Gesetz}
 Die Rückstellkraft einer idealen Feder ist gegeben durch:
 \begin{equation}\label{eq: kraft_hooksches_gesetz}
     F_x = -k_F \cdot \left( x - x_0 \right) = -k_F \cdot \Delta x \mDot
 \end{equation}
-Hierbei ist $k_F$ die \textbf{Federkonstante}, eine Materialeigenschaft der Feder, die ihre Steifigkeit beschreibt. Das negative Vorzeichen verdeutlicht, dass die Rückstellkraft stets der Auslenkung entgegengesetzt ist.
+Hierbei ist $k_F$ die \textbf{Federkonstante}, die die Steifigkeit der Feder beschreibt. Sie hängt vom Material, aber auch von der Form der Feder (Drahtdicke, Windungszahl, Durchmesser) ab. Das negative Vorzeichen verdeutlicht, dass die Rückstellkraft stets der Auslenkung entgegengesetzt ist.
 \end{rememberbox}
 In mehreren Dimensionen wird das Hooke'sche Gesetz zu 
 \begin{equation}\label{eq: kraft_hooksches_gesetz_3D}
@@ -484,10 +486,10 @@ Reibungskräfte treten an den Kontaktflächen zwischen zwei Körpern auf. Sie en
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.4\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/kontaktkraft_unebenheit.png}
-    \caption{Ein Körper bewegt sich mit der Geschwindigkeit $\protect\ivec{v}$ parallel zur Oberfläche der Unterlage. Die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ presst den Körper normal auf die Unterlage. Die Unterlage kompensiert kompensiert hier die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ durch die Normalkraft $\protect\ivecS{F}{\text{N}}$, die senkrecht auf die Kontaktfläche steht. Die vergrößerte Ansicht zeigt die mikroskopischen Unebenheiten der Oberflächen, die zur Reibung führen. (Abgeändert von:~\cite[S.~143]{Giancoli2010})}\label{fig: reibung_mikro_ursache}
+    \caption{Ein Körper bewegt sich mit der Geschwindigkeit $\protect\ivec{v}$ parallel zur Oberfläche der Unterlage. Die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ presst den Körper normal auf die Unterlage. Die Unterlage kompensiert hier die Gewichtskraft $\protect\ivecS{F}{\text{G}}$ durch die Normalkraft $\protect\ivecS{F}{\text{N}}$, die senkrecht auf die Kontaktfläche steht. Die vergrößerte Ansicht zeigt die mikroskopischen Unebenheiten der Oberflächen, die zur Reibung führen. (Abgeändert von:~\cite[S.~143]{Giancoli2010})}\label{fig: reibung_mikro_ursache}
 \end{figure}
 
-Die Oberflächen zweier Körper berühren sich nur an den Spitzen dieser Unebenheiten. Erhöht man die \textbf{Normalkraft} $\ivecS{F}{\text{N}}$ – die Kraft, die senkrecht auf die Kontaktfläche drückt – vergrößert sich die effektive Kontaktfläche. Die Reibungskraft $\ivecS{F}{\text{R}}$ ist proportional zu dieser mikroskopischen Kontaktfläche und somit auch proportional zur Normalkraft: $|\ivecS{F}{\text{R}}| \propto \ivecS{F}{\text{N}}$.
+Die Oberflächen zweier Körper berühren sich nur an den Spitzen dieser Unebenheiten. Erhöht man die \textbf{Normalkraft} $\ivecS{F}{\text{N}}$ – die Kraft, die senkrecht auf die Kontaktfläche drückt – vergrößert sich die effektive Kontaktfläche. Die Reibungskraft $\ivecS{F}{\text{R}}$ ist proportional zu dieser mikroskopischen Kontaktfläche und somit auch proportional zur Normalkraft: $|\ivecS{F}{\text{R}}| \propto |\ivecS{F}{\text{N}}|$.
 
 \begin{importantbox}[]{Allgemeine Reibungsformel}
 Die Beziehung zwischen dem Betrag der Reibungskraft $|\ivecS{F}{\text{R}}|$ und dem Betrag der Normalkraft $|\ivecS{F}{\text{N}}|$ lässt sich durch die Einführung eines \textbf{Reibungskoeffizienten} $\mu$ beschreiben:
@@ -546,7 +548,7 @@ Im Gegensatz zur Haftreibung ist die Gleitreibungskraft (in guter Näherung) una
 \end{equation}
 Dies erklärt, warum es mehr Kraft erfordert, einen Gegenstand in Bewegung zu setzen, als ihn in Bewegung zu halten.
 \end{importantbox}
-Da die Gleitreibungskraft nur proportional zur Normalkraft und nicht zur Zugkraft $\ivecS{F}{\text{A}}$ ist, bleibt die Gleitreibungskraft konstant für zunehmende Zugkraft. Daher ist $|\ivecS{F}{\text{R}}|$ in \cref{fig: haftreibungskraft_zugkraft_diagramm} konstant im Bereich der Gleitreibung ($|\ivecS{F}{\text{R}}| > |\ivecS{F}{\text{R,h,max}}|$).
+Da die Gleitreibungskraft nur proportional zur Normalkraft und nicht zur Zugkraft $\ivecS{F}{\text{A}}$ ist, bleibt die Gleitreibungskraft konstant für zunehmende Zugkraft. Daher ist $|\ivecS{F}{\text{R}}|$ in \cref{fig: haftreibungskraft_zugkraft_diagramm} konstant im Bereich der Gleitreibung ($|\ivecS{F}{\text{A}}| > |\ivecS{F}{\text{R,h,max}}|$).
 
 \subsection{Rollreibung}
 Ein ideal starres Rad, das mit konstanter Geschwindigkeit auf einer ideal starren horizontalen Straße rollt, würde keine Rollreibungskraft erfahren. Die Rollreibung entsteht durch die Verformung des Rades und der Fahrbahn. In der Realität führen diese Deformationen zu einer Kraft, die der Rollbewegung entgegenwirkt.
@@ -567,8 +569,8 @@ Der Gleitreibungskoeffizient ist für die meisten Materialien über einen weiten
 \subsection{Reibungsfreies Gleiten auf der schiefen Ebene}\label{subsec: reibungsfreies_gleiten}
 Betrachten wir einen Körper der Masse $m$, der eine reibungsfreie, um den Winkel $\alpha$ geneigte Ebene hinabgleitet. Die auf den Körper wirkende Gewichtskraft $\ivecS{F}{\text{G}}$ kann in zwei Komponenten zerlegt werden (siehe \cref{fig: schiefe_ebene_reibungsfreies_gleiten}):
 \begin{itemize}[itemsep=1.5pt]
-    \item Eine \textbf{Normalkomponente} $\ivecS{F}{\text{N}}$, die senkrecht zur Ebene steht: \newline
-    $|\ivecS{F}{\text{N}}| = |\ivecS{F}{\text{G}}| \cos(\alpha) = mg\cos(\alpha)$.
+    \item Eine \textbf{Normalkomponente} $\ivecS{F}{\text{G},\perp}$, die senkrecht zur Ebene steht: \newline
+    $|\ivecS{F}{\text{G},\perp}| = |\ivecS{F}{\text{G}}| \cos(\alpha) = mg\cos(\alpha)$.
     \item Eine \textbf{Hangabtriebskraft} $\ivecS{F}{\text{A}}$, die parallel zur Ebene wirkt: \newline
     $|\ivecS{F}{\text{A}}| = |\ivecS{F}{\text{G}}| \sin(\alpha) = mg\sin(\alpha)$.
 \end{itemize}
@@ -578,7 +580,7 @@ Betrachten wir einen Körper der Masse $m$, der eine reibungsfreie, um den Winke
     \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/schiefe_ebene_reibungsfreies_gleiten.png}
     \caption{Kräftezerlegung der Gewichtskraft $|\protect\ivecS{F}{\text{G}}|$ für einen Körper auf einer reibungsfreien schiefen Ebene. (Abgeändert von:~\cite[S.~135]{Giancoli2010})}\label{fig: schiefe_ebene_reibungsfreies_gleiten}
 \end{figure}
-Nur die Hangabtriebskraft trägt zur Beschleunigung des Körpers bei. Die Normalkraft $\ivecS{F}{\text{N}}$ wird durch eine gleichgroße entgegengesetze Kraft $\ivecS{F'}{\text{N}}$ kompensiert. Nach dem zweiten Newtonschen Gesetz ($F = m\cdot a$) gilt:
+Nur die Hangabtriebskraft trägt zur Beschleunigung des Körpers bei. Die Normalkomponente $\ivecS{F}{\text{G},\perp}$ wird durch die gleich große, entgegengesetzte Normalkraft $\ivecS{F}{\text{N}}$ der Unterlage kompensiert. Nach dem zweiten Newtonschen Gesetz ($F = m\cdot a$) gilt:
 \begin{equation}
     |\ivecS{F}{\text{A}}| = m a \implies mg\sin(\alpha) = m a \mDot
 \end{equation}
@@ -618,7 +620,7 @@ Der maximale Winkel $\alpha_{\text{R,h,max}}$, bei dem ein Körper gerade noch n
     \tan(\alpha_{\maxText}) = \mu_{\text{R,h}} \quad \Leftrightarrow \quad \alpha_{\maxText} = \arctan(\mu_{\text{R,h}})
 \end{equation}
 \end{rememberbox}
-Der Haftreibungskoeffizient $\mu_{\text{R,h}}$ ist also lediglich durch den den maximalen Haftreibungswinkel $\alpha_{\maxText}$ gegeben. 
+Der Haftreibungskoeffizient $\mu_{\text{R,h}}$ ist also lediglich durch den maximalen Haftreibungswinkel $\alpha_{\maxText}$ gegeben. 
 
 \subsection{Gleitreibung auf der schiefen Ebene}\label{subsec: gleiten_auf_der_schiefen_ebene}
 Wird der maximale Haftreibungswinkel und damit die maximale Haftreibungskraft überschritten, beginnt der Körper zu gleiten. Auf ihn wirkt nun die Gleitreibungskraft $\ivecS{F}{\text{R,g}}$, die der Bewegung entgegenwirkt. Die resultierende Kraft, die den Körper beschleunigt, ist die Differenz aus Hangabtriebskraft und Gleitreibungskraft.
@@ -627,9 +629,9 @@ Wird der maximale Haftreibungswinkel und damit die maximale Haftreibungskraft ü
     \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/schiefe_ebene_gleitreibung.png}
     \caption{Ein Körper der Masse $m$ gleitet unter dem Einfluss der Gleitreibungskraft eine schiefe Ebene hinab. Die Gleitreibungskraft $\protect\ivecS{F}{\text{R,g}}$ wirkt dabei der Hangabtriebskraft entgegen. (Abgeändert von:~\cite[S.~135]{Giancoli2010})}\label{fig: schiefe_ebene_gleitreibung}
 \end{figure}
-Das Kräftegleichgewicht lautet
+Die Bewegungsgleichung entlang der Ebene lautet
 \begin{equation}\label{eq: kraeftegleichgew_gleitreibung}
-    m \ivec{a} = |\ivecS{F}{\text{A}}| - |\ivecS{F}{\text{R,g}}| \mDot
+    m a = |\ivecS{F}{\text{A}}| - |\ivecS{F}{\text{R,g}}| \mDot
 \end{equation}
 Da alle Kräfte in \cref{eq: kraeftegleichgew_gleitreibung} parallel zur schiefen Ebene wirken, können wir auch nur mit den Beträgen weiterrechnen. Wir setzen die Hangabtriebskraft und die Gleitreibungskraft ein und erhalten 
 \begin{equation}\begin{aligned}
@@ -676,7 +678,7 @@ Eine Kiste mit Masse $m_1 = \SI{10.0}{\kilo\gram}$ ruht auf einer schiefen Ebene
     \includegraphics[width=0.65\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/schiefe_ebene_gleichgewicht_seilrolle_kraefteglgew.png}
     \captionof{figure}{Für kleine Zugkräfte $\protect\ivecS{F}{Z}$ [Fall(i)] zeigt die Reibungskraft in die $-x$-Richtung und für sehr große Zugkräfte zeigt sie in die $+x$-Richtung [Fall (ii)].}\label{fig: gleichgewicht_schiefe_ebene_seilrolle_fallunterscheidung}
 \end{center}
-Die Kiste $m_1$ bleibt in Ruhe, solange die resultierende Kraft in $x$-Richtung (parallel zur Ebene) durch die Haftreibungskraft kompensiert werden kann. Die Richtung der Haftreibungskraft hängt davon ab, ob die Kiste tendenziell nach oben oder nach unten rutschen würde. Bei kleinen Massen $m_2$ und damit einer kleinen Zugkraft $\ivecS{F}{Z}$ zeigt die Haftreibungskraft auf $m_1$ die schiefe Ebene hinauf, da $m_1$ dazu tendiert hinab zu rutschen [Fall (i) in \cref{fig: gleichgewicht_schiefe_ebene_seilrolle_fallunterscheidung}]. Ist die Masse $m_2$ hingegen groß, wird die Zugkraft $\ivecS{F}{Z}$ groß die Haftreibungskraft zeigt die schiefe Ebene hinab, um zu verhindern, dass die Masse $m_1$ die schiefe Ebene hochgezogen wird.\newline
+Die Kiste $m_1$ bleibt in Ruhe, solange die resultierende Kraft in $x$-Richtung (parallel zur Ebene) durch die Haftreibungskraft kompensiert werden kann. Die Richtung der Haftreibungskraft hängt davon ab, ob die Kiste tendenziell nach oben oder nach unten rutschen würde. Bei kleinen Massen $m_2$ und damit einer kleinen Zugkraft $\ivecS{F}{Z}$ zeigt die Haftreibungskraft auf $m_1$ die schiefe Ebene hinauf, da $m_1$ dazu tendiert hinab zu rutschen [Fall (i) in \cref{fig: gleichgewicht_schiefe_ebene_seilrolle_fallunterscheidung}]. Ist die Masse $m_2$ hingegen groß, wird die Zugkraft $\ivecS{F}{Z}$ groß, und die Haftreibungskraft zeigt die schiefe Ebene hinab, um zu verhindern, dass die Masse $m_1$ die schiefe Ebene hochgezogen wird.\newline
 In der $y$-Richtung heben sich der Anteil der Gewichtskraft und die Normalkraft gerade auf. Da sich die Bewegung wiederum nur entlang der $x$-Achse abspielt, verzichten wir auf eine Vektorschreibweise.
 
 Die Hangabtriebskraft auf $m_1$ ist 
@@ -752,7 +754,7 @@ Da $\ivecS{v}{r} \parallel \ivec{r}$ ist, verschwindet ihr Vektorprodukt: $\ivec
 \label{eq: drehimpuls_tangential}
 \ivec{L} = m \cdot (\ivec{r} \times \ivecS{v}{\varphi}) \mDot
 \end{equation}
-Daraus folgt, dass nur die zum Ortsvektor senkrechte Geschwindigkeitskomponente zum Drehimpuls beiträgt. Wenn sich ein Körper nur radial vom Ursprung weg oder auf ihn zu bewegt ($\ivec{v} = \ivecS{v}{r}$), ist sein Drehimpuls Null. Eine gekrümmte Bahnkurve ist daher stets mit einem von Null verschiedenen Drehimpuls verbunden.
+Daraus folgt, dass nur die zum Ortsvektor senkrechte Geschwindigkeitskomponente zum Drehimpuls beiträgt. Wenn sich ein Körper nur radial vom Ursprung weg oder auf ihn zu bewegt ($\ivec{v} = \ivecS{v}{r}$), ist sein Drehimpuls Null. Achtung: Der Drehimpuls hängt vom gewählten Bezugspunkt ab. Auch ein Körper, der sich geradlinig an einem Punkt vorbeibewegt, hat bezüglich dieses Punktes einen Drehimpuls $\ivec{L} \neq \ivec{0}$.
 
 Leiten wir nun den Drehimpuls nach der Zeit ab, um die Dynamik zu betrachten:
 \begin{align}
@@ -762,18 +764,18 @@ Leiten wir nun den Drehimpuls nach der Zeit ab, um die Dynamik zu betrachten:
 Dabei haben wir das zweite Newtonsche Gesetz in der Form $\ivec{F} = \frac{\dd\ivec{p}}{\dd t}$ verwendet und die Tatsache, dass das Vektorprodukt paralleler Vektoren ($\ivec{v}$ und $\ivec{p}$) null ist.
 
 \begin{importantbox}{Definition: Drehmoment}
-Die zeitliche Änderung des Drehimpulses wird als \textbf{Drehmoment} $\ivec{D}$ bezeichnet. Es ist das Vektorprodukt aus dem Ortsvektor $\ivec{r}$ und der am Teilchen angreifenden Kraft $\ivec{F}$
+Die zeitliche Änderung des Drehimpulses wird als \textbf{Drehmoment} $\ivec{M}$ bezeichnet. Es ist das Vektorprodukt aus dem Ortsvektor $\ivec{r}$ und der am Teilchen angreifenden Kraft $\ivec{F}$
 \begin{equation}\label{eq: drehmoment_def_D_dL_dt}
-\ivec{D} := \frac{\dd\ivec{L}}{\dd t} = \ivec{r} \times \ivec{F} \mDot
+\ivec{M} := \frac{\dd\ivec{L}}{\dd t} = \ivec{r} \times \ivec{F} \mDot
 \end{equation}
 Sowohl der Drehimpuls als auch das Drehmoment sind immer in Bezug auf einen festen Punkt (hier den Ursprung) definiert.
 \end{importantbox}
 
-Aus \cref{eq: drehmoment_def_D_dL_dt} folgt direkt der \textbf{Drehimpulserhaltungssatz}: Wenn das gesamte äußere Drehmoment auf ein System verschwindet ($\ivec{D} = \ivec{0}$), dann bleibt der Drehimpuls $\ivec{L}$ zeitlich konstant.
+Aus \cref{eq: drehmoment_def_D_dL_dt} folgt direkt der \textbf{Drehimpulserhaltungssatz}: Wenn das gesamte äußere Drehmoment auf ein System verschwindet ($\ivec{M} = \ivec{0}$), dann bleibt der Drehimpuls $\ivec{L}$ zeitlich konstant.
 
 Es besteht eine fundamentale Analogie zwischen der Translations- und der Rotationsbewegung:
-$$ \ivec{F} = \frac{\dd\ivec{p}}{\dd t} \quad \longleftrightarrow \quad \ivec{D} = \frac{\dd\ivec{L}}{\dd t} $$
-Die Kraft $\ivec{F}$ ist die Ursache für die Änderung des Impulses $\ivec{p}$, genauso wie das Drehmoment $\ivec{D}$ die Ursache für die Änderung des Drehimpulses $\ivec{L}$ ist.
+$$ \ivec{F} = \frac{\dd\ivec{p}}{\dd t} \quad \longleftrightarrow \quad \ivec{M} = \frac{\dd\ivec{L}}{\dd t} $$
+Die Kraft $\ivec{F}$ ist die Ursache für die Änderung des Impulses $\ivec{p}$, genauso wie das Drehmoment $\ivec{M}$ die Ursache für die Änderung des Drehimpulses $\ivec{L}$ ist.
 
 \section{Analogie zwischen Translation und Rotation}\label{sec: analogie_translation_rotation}
 
@@ -788,7 +790,7 @@ Für einen Punkt eines starren Körpers gilt
 \begin{equation}\label{eq: v_eq_omega_cross_r}
     \ivec{v} = \ivec{\omega} \times \ivec{r}
 \end{equation}
-und damit
+und damit -- sofern der Ortsvektor senkrecht auf der Drehachse steht ($\ivec{r} \perp \ivec{\omega}$, Ursprung auf der Drehachse) --
 \begin{equation}\label{eq: omega_r_x_v_allgemein}
     \ivec{\omega} = \frac{\ivec{r} \times \ivec{v}}{|\ivec{r}|^2}
 \end{equation}
@@ -830,12 +832,12 @@ Die folgende Tabelle stellt die wichtigsten physikalischen Größen der Translat
 \midrule
 Zeit & $t$ & Zeit & $t$ \\
 Ort, Weg & $\ivec{r}$, $s$ & Winkel & $\varphi$ \\
-Geschwindigkeit & $\ivec{v} = \frac{\dd\ivec{r}}{\dd t}$ & Winkelgeschwindigkeit & $\ivec{\omega} = \frac{1}{|\ivec{r}|^2}(\ivec{r}\times\ivec{v})$ \\
+Geschwindigkeit & $\ivec{v} = \frac{\dd\ivec{r}}{\dd t}$ & Winkelgeschwindigkeit & $\ivec{\omega} = \frac{1}{|\ivec{r}|^2}(\ivec{r}\times\ivec{v})$ ($\ivec{r}\perp\ivec{\omega}$) \\
 Beschleunigung & $\ivec{a} = \frac{\dd\ivec{v}}{\dd t}$ & Winkelbeschleunigung & $\ivec{\alpha} = \frac{\dd\ivec{\omega}}{\dd t}$ \\
-Masse (Trägheit) & $m$ & Trägheitsmoment & $I$ \\
+Masse (Trägheit) & $m$ & Trägheitsmoment & $J$ \\
 Impuls & $\ivec{p} = m \cdot \ivec{v}$ & Drehimpuls & $\ivec{L} = \ivec{r} \times \ivec{p}$ \\
-Kraft & $\ivec{F} = \frac{\dd\ivec{p}}{\dd t}$ & Drehmoment & $\ivec{D} = \ivec{r} \times \ivec{F} = \frac{\dd\ivec{L}}{\dd t}$ \\
-Kinetische Energie & $E_{\text{kin}} = \frac{1}{2} m v^2$ & Rotationsenergie & $E_{\text{rot}} = \frac{1}{2} I \omega^2$ \\
+Kraft & $\ivec{F} = \frac{\dd\ivec{p}}{\dd t}$ & Drehmoment & $\ivec{M} = \ivec{r} \times \ivec{F} = \frac{\dd\ivec{L}}{\dd t}$ \\
+Kinetische Energie & $E_{\text{kin}} = \frac{1}{2} m v^2$ & Rotationsenergie & $E_{\text{rot}} = \frac{1}{2} J \omega^2$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -903,7 +905,7 @@ und die Geschwindigkeit
 Die Einheitsvektoren im System $S$ hängen nicht von der Zeit ab und verändern sich daher nicht. \\
 Im System $S'$ drückt der Beobachter $B'$ denselben Punkt $A$ zur Zeit $t$ durch den Ortsvektor 
 \begin{equation}
-    \ivec{r}'(t) = x(t)\cdot \ivecS{e}{x}' + y(t)\cdot \ivecS{e}{y}' + z(t)\cdot \ivecS{e}{z}'
+    \ivec{r}'(t) = x'(t)\cdot \ivecS{e}{x}' + y'(t)\cdot \ivecS{e}{y}' + z'(t)\cdot \ivecS{e}{z}'
 \end{equation}
 aus, wobei $\ivec{r}(t) = \ivec{r}'(t)$ gilt, da die Ursprünge der beiden Koordinatensysteme zusammenfallen (siehe \cref{fig: rotierendes_system_zwei_KS}). Wenn der Beobachter, der mit $S'$ rotiert, nicht berücksichtigt, dass sein System rotiert, wird er die Geschwindigkeit des Massenpunktes $A$ als 
 \begin{equation}\label{eq: geschw_vD_herleitung_coriolis}
@@ -919,14 +921,14 @@ Wenn nun der Beobachter $B$ die Geschwindigkeit des Punktes $A$ in den Koordinat
 \end{multline}
 Der erste Anteil $\ivec{v}'$ ist die Geschwindigkeit, die $B'$ angibt, und der zweite Anteil $\ivec{u}$ kommt von der Änderung der Einheitsvektoren, \gDh von der Rotation des Koordinatensystems $S'$. \\
 
-Die Endpunkte der Einheitsvektoren $\ivecS{e}{x}', \ivecS{e}{y}', \ivecS{e}{z}'$ führen eine Kreisbewegung mit der Winkelgeschwindigkeit $|\omega|$ aus. Damit können wir laut \cref{eq: omega_r_x_v_allgemein} deren Änderung auch als
+Die Endpunkte der Einheitsvektoren $\ivecS{e}{x}', \ivecS{e}{y}', \ivecS{e}{z}'$ führen eine Kreisbewegung mit der Winkelgeschwindigkeit $|\omega|$ aus. Damit können wir laut \cref{eq: v_eq_omega_cross_r} deren Änderung auch als
 \begin{equation}\label{eq: ableitung_einheitsvektor_dash}
     \frac{\dd \ivecS{e}{x}'}{\dd t} = \ivec{\omega} \times \ivecS{e}{x}'\mComma \dots
 \end{equation}
-schreiben. Laut der „Rechte-Hand-Regel“ zeigt $\left(\dd \ivecS{e}{x}'/\dd t\right) \times \ivecS{e}{x}$ entlang der Rotationsrichtung von $\ivec{\omega}$. Damit können wir den zweiten Term in \cref{eq: transformation_v_vS_u} umschreiben zu 
+schreiben. Laut der „Rechte-Hand-Regel“ zeigt $\ivecS{e}{x}' \times \left(\dd \ivecS{e}{x}'/\dd t\right)$ in Richtung von $\ivec{\omega}$. Damit können wir den zweiten Term in \cref{eq: transformation_v_vS_u} umschreiben zu 
 \begin{equation}\begin{aligned}
     \ivec{u} &= x' \cdot \left( \ivec{\omega} \times \ivecS{e}{x}'\right) + y' \cdot \left( \ivec{\omega} \times \ivecS{e}{y}'\right) + z' \cdot \left( \ivec{\omega} \times \ivecS{e}{z}'\right) \\
-    &= \left( \ivec{\omega} \times x'\ivecS{e}{x}'\right) + \left( \ivec{\omega} \times y'\ivecS{e}{y}'\right) + \cdot \left( \ivec{\omega} \times z'\ivecS{e}{z}'\right) \\
+    &= \left( \ivec{\omega} \times x'\ivecS{e}{x}'\right) + \left( \ivec{\omega} \times y'\ivecS{e}{y}'\right) + \left( \ivec{\omega} \times z'\ivecS{e}{z}'\right) \\
     &= \ivec{\omega} \times \ivec{r}' = \ivec{\omega} \times \ivec{r} \mComma
 \end{aligned}\end{equation}
 weil ja $\ivec{r} = \ivec{r}'$. Damit erhalten wir die korrekte Transformation der Geschwindigkeit vom rotierenden ins ruhende System. 
@@ -939,7 +941,7 @@ weil ja $\ivec{r} = \ivec{r}'$. Damit erhalten wir die korrekte Transformation d
 \end{rememberbox}
 
 \paragraph{Transformation der Beschleunigungen}
-Um die Transformation für die Beschleunigung zu finden, leiten wir \cref{eq: geschw_trafo_zwischen_S_Sd} nach der Zeit ab:=0
+Um die Transformation für die Beschleunigung zu finden, leiten wir \cref{eq: geschw_trafo_zwischen_S_Sd} nach der Zeit ab:
 \begin{equation}\label{eq: beschleunigung_ableitung_von_v_coriolis}\begin{aligned}
     \ivec{a} &= \frac{\dd\ivec{v}}{\dd t} = \frac{\dd}{\dd t} \left(\ivec{v}' + \ivec{\omega} \times \ivec{r} \right) = \frac{\dd\ivec{v}'}{\dd t} + \underbrace{\frac{\dd\ivec{\omega}}{\dd t}}_{=0} \times \ivec{r} + \ivec{\omega} \times \frac{\dd\ivec{r}}{\dd t} \\
     &= \frac{\dd\ivec{v}'}{\dd t} + \ivec{\omega} \times \underbrace{\frac{\dd\ivec{r}}{\dd t}}_{\ivec{v}} = \frac{\dd\ivec{v}'}{\dd t} + \ivec{\omega} \times \ivec{v} \mComma
@@ -1005,7 +1007,7 @@ Beide Kräfte sind Scheinkräfte, da sie nicht auf einer Wechselwirkung beruhen,
 \end{importantbox}
 
 
-Die Zentrifugalkraft ist für die \gDQ{Fliehkraft} verantwortlich, die wir in einem Karussell spüren. Die Corioliskraft ist von entscheidender Bedeutung für großräumige Phänomene in der Meteorologie und Ozeanographie, wie z.B. die Drehrichtung von Hoch- und Tiefdruckgebieten auf der Erde.
+Die Zentrifugalkraft (auch \gDQ{Fliehkraft} genannt) spüren wir zum Beispiel in einem Karussell. Die Corioliskraft ist von entscheidender Bedeutung für großräumige Phänomene in der Meteorologie und Ozeanographie, wie z.B. die Drehrichtung von Hoch- und Tiefdruckgebieten auf der Erde.
 
 % Chapter end - always start new page after chapter
 \newpage

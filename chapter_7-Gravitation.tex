@@ -13,7 +13,7 @@ Das erste Gesetz bricht mit der antiken Vorstellung perfekter Kreisbahnen.
 Die Planeten bewegen sich auf Ellipsen, in deren einem Brennpunkt die Sonne steht. 
 \end{rememberbox}
 
-Eine Ellipse ist geometrisch definiert als die Menge aller Punkte, für die die Summe der Abstände zu zwei festen Punkten, den Brennpunkten, konstant ist. Im Kontext der Planetenbahnen ist diese Ellipse dargestellt in \cref{fig: kepler1_ellipse} befindet sich die Sonne in einem dieser Brennpunkte. Der sonnennächste Punkt der Bahn wird als \textbf{Perihel} und der sonnenfernste als \textbf{Aphel} bezeichnet. Die Länge der großen Halbachse wird mit $a$ und die der kleinen Halbachse mit $b$ beschrieben. Die numerische Exzentrizität $\varepsilon$ beziffert die Abweichung der Ellipse von einer Kreisform -- für $\varepsilon = 0$ wird die Ellipse zu einem Kreis.
+Eine Ellipse ist geometrisch definiert als die Menge aller Punkte, für die die Summe der Abstände zu zwei festen Punkten, den Brennpunkten, konstant ist. Bei den Planetenbahnen befindet sich die Sonne in einem dieser Brennpunkte (siehe \cref{fig: kepler1_ellipse}). Der sonnennächste Punkt der Bahn wird als \textbf{Perihel} und der sonnenfernste als \textbf{Aphel} bezeichnet. Die Länge der großen Halbachse wird mit $a$ und die der kleinen Halbachse mit $b$ beschrieben. Die numerische Exzentrizität $\varepsilon$ beziffert die Abweichung der Ellipse von einer Kreisform -- für $\varepsilon = 0$ wird die Ellipse zu einem Kreis.
 
 \begin{figure}[htb]
     \centering
@@ -73,7 +73,7 @@ Der Fahrstrahl (der Verbindungsvektor von der Sonne zum Planeten) überstreicht 
 Das bedeutet, dass ein Planet sich schneller bewegt, wenn er sich näher an der Sonne befindet (im Perihel), und langsamer, wenn er weiter entfernt ist (im Aphel). Wenn die in der \cref{fig: kepler2_flaechensatz} dargestellten Flächen $A_1$ (nahe dem Aphel) und $A_2$ (nahe dem Perihel) in derselben Zeitspanne $\Delta t$ überstrichen werden, so sind diese Flächen gleich groß: $A_1 = A_2$. 
 
 \paragraph{Herleitung aus der Drehimpulserhaltung}
-Das zweite Keplersche Gesetz ist eine direkte Konsequenz der \textbf{Drehimpulserhaltung} für eine Zentralkraft. Betrachten wir ein infinitesimales Zeitintervall $\dd t$, in dem der Planet eine Strecke $\dd\ivec{s} = |\ivec{v}| \dd t$ zurücklegt, dargestellt in \cref{fig: kepler2_herleitung}. Die dabei überstrichene Fläche $\dd A$ kann durch die Fläche eines Dreiecks mit den Eckpunkten ($S, P_1, P_2$) angenähert werden. Die Seitenlängen betragen $\ivec{r}(t)$, $\ivec{r}(t+\dd t)$ und $\dd\ivec{r}$, wobei $\dd \ivec{r} = \ivec{r}(t+\dd t) - \ivec{r}(t)$. Wir wissen ja bereits aus \cref{subsec: herleitung_bogenlaenge_sehnenlaenge}, dass $\lim_{\Delta \varphi \to 0} |\Delta \ivec{r}| = \Delta s$ (\cref{eq: sehnenlänge_gleich_bogenlänge}), weshalb diese Näherung für $\dd t \to 0$ gegen die Fläche $\dd A$ konvergiert.
+Das zweite Keplersche Gesetz ist eine direkte Konsequenz der \textbf{Drehimpulserhaltung} für eine Zentralkraft. Betrachten wir ein infinitesimales Zeitintervall $\dd t$, in dem der Planet eine Strecke $\dd s = |\ivec{v}| \dd t$ zurücklegt, dargestellt in \cref{fig: kepler2_herleitung}. Die dabei überstrichene Fläche $\dd A$ kann durch die Fläche eines Dreiecks mit den Eckpunkten ($S, P_1, P_2$) angenähert werden. Die Seitenlängen betragen $\ivec{r}(t)$, $\ivec{r}(t+\dd t)$ und $\dd\ivec{r}$, wobei $\dd \ivec{r} = \ivec{r}(t+\dd t) - \ivec{r}(t)$. Wir wissen ja bereits aus \cref{subsec: herleitung_bogenlaenge_sehnenlaenge}, dass $|\Delta \ivec{r}|/\Delta s \to 1$ für $\Delta \varphi \to 0$ (\cref{eq: sehnenlänge_gleich_bogenlänge}), weshalb diese Näherung für $\dd t \to 0$ gegen die Fläche $\dd A$ konvergiert.
 \begin{figure}[htb]
     \centering
      %\includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_KeplerGesetze/zweites_keplersches_gesetz_Zeitintervall.png} 
@@ -157,11 +157,11 @@ Dies impliziert, dass der Quotient $T^2/a^3 = \const$ für alle Planeten, die um
 \section{Newtonsches Gravitationsgesetz}\label{sec: newton_gravitation}
 Während Keplers Gesetze die Planetenbewegungen phänomenologisch beschrieben, war es Isaac Newton, der die dahinterliegende physikalische Ursache aufdeckte. Er postulierte, dass dieselbe Kraft, die einen Apfel zu Boden fallen lässt, auch die Planeten auf ihren Bahnen um die Sonne hält: die universelle \textbf{Massenanziehung} oder \textbf{Gravitation}. In diesem Abschnitt möchten wir zeigen, dass die Form der Gravitationskraft direkt aus den Keplerschen Gesetzen folgt.\\ 
 
-Nach Newtons drittem Axiom (\gDQ{Actio gleich Reactio}) muss die Anziehungskraft zwischen zwei Körpern proportional zu beiden Massen, $m_1$ und $m_2$, sein: 
+Da alle Körper im Schwerefeld gleich schnell fallen, muss die Kraft auf einen Körper proportional zu seiner Masse sein. Nach Newtons drittem Axiom (\gDQ{Actio gleich Reactio}) wirkt auf beide Körper eine gleich große Kraft -- sie muss daher proportional zu beiden Massen $m_1$ und $m_2$ sein: 
 \begin{equation}
     F_{\text{G}} \propto m_1 \cdot m_2 \mDot
 \end{equation}
-Nun setzen wir einen Proportionalitätsfaktor $G$ ein. Außerdem wissen wir aus dem zweiten Keplerschen Gesetz, dass die Kraft vom Abstand $r$ der beiden Massen abhängen muss: 
+Nun setzen wir einen Proportionalitätsfaktor $G$ ein. Aus dem zweiten Keplerschen Gesetz folgt, dass die Kraft eine Zentralkraft ist (sie wirkt entlang der Verbindungslinie). Wie sie vom Abstand $r$ abhängt, lassen wir zunächst offen: 
 \begin{equation}
     F_{\text{G}} = G \cdot m_1 \cdot m_2 \cdot f(r) \mDot
 \end{equation}
@@ -252,7 +252,7 @@ Einsetzen der gegebenen Werte für die Erde ergibt
 \begin{equation}
     v_I = \sqrt{\frac{(\SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}) \cdot (\SI{5.972e24}{\kilo\gram})}{\SI{6.371e6}{\meter}}} \approx \SI{7909}{\meter\per\second} \approx \SI{7.91}{\kilo\meter\per\second} \mDot
 \end{equation}
-Wenn ein Körper mit $v_I \approx \SI{7.91}{\kilo\meter\per\second}$ horizontal von der Erdoberfläche gestartet wird, umkreist der Körper die Erde in einer stabilen Umlaufbahn, ohne jemals auf die Oberfläche zu treffen.
+Wenn ein Körper mit $v_I \approx \SI{7.91}{\kilo\meter\per\second}$ horizontal von der Erdoberfläche gestartet wird, umkreist der Körper die Erde in einer stabilen Umlaufbahn, ohne jemals auf die Oberfläche zu treffen (idealisiert: ohne Luftwiderstand und ohne Berge).
 
 \section{Zweite kosmische Geschwindigkeit (Fluchtgeschwindigkeit)}\label{sec: zweite_kosmische_geschwindigkeit}
 Mit dem Gravitationsgesetz können wir berechnen, welche Geschwindigkeit ein Objekt benötigt, um das Schwerefeld eines Himmelskörpers, wie zum Beispiel der Erde, dauerhaft zu verlassen. Diese Geschwindigkeit wird als zweite kosmische Geschwindigkeit oder \textbf{Fluchtgeschwindigkeit} bezeichnet.

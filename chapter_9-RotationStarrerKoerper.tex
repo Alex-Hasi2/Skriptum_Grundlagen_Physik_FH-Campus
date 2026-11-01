@@ -5,7 +5,7 @@ Nachdem wir uns bisher mit der Bewegung von Massenpunkten beschäftigt haben (Tr
 Ein starrer Körper ist ein physikalisches Modell, bei dem die Abstände zwischen allen Punkten des Körpers konstant bleiben, unabhängig von den auf ihn wirkenden Kräften. Das bedeutet, dass der Körper sich nicht verformt und seine Form unter Belastung beibehält. Dieses Modell ist eine Vereinfachung der realen Welt, da alle materiellen Objekte in gewissem Maße verformbar sind. Dennoch ist das Modell des starren Körpers in vielen Bereichen der Physik und Technik äußerst nützlich, da es die Analyse von Bewegungen und Kräften erheblich vereinfacht -- insbesondere Rotationen werden dadurch deutlich einfacher zu beschreiben.
 
 \subsection{Volumenintegral}
-Um die Bewegung eines starren Körpers zu analysieren, betrachten wir ihn als eine Ansammlung von vielen kleinen Massenpunkten $i = 1,2,\ldots,N$, die alle starr miteinander verbunden sind. Diese Massenpunkte haben die Volumina $\Delta V_i$ und die Massen $\Delta m_i$. Das Volumen des Körpers $V$ und seine Gesamtmasse $M$ ergibt sich aus der Summe über alle Elemente 
+Um die Bewegung eines starren Körpers zu analysieren, betrachten wir ihn als eine Ansammlung von vielen kleinen Massenpunkten $i = 1,2,\ldots,N$, die alle starr miteinander verbunden sind. Diese Massenelemente haben die Volumina $\Delta V_i$ und die Massen $\Delta m_i$. Das Volumen des Körpers $V$ und seine Gesamtmasse $M$ ergibt sich aus der Summe über alle Elemente 
 \begin{equation}\label{eq: volumen_masse_endlicheTeile_starrer_koerper}
     V = \sum_{i=1}^{N} \Delta V_i \mComma \quad M = \sum_{i=1}^{N} \Delta m_i \mDot
 \end{equation}
@@ -37,7 +37,7 @@ Bei homogenen Körpern mit konstanter Dichte $\rho$ vereinfacht sich \cref{eq: g
 was der gewohnten Formel für die Masse eines homogenen Körpers entspricht.
 
 \subsection{Massenschwerpunkt}\label{subsec: massenschwerpunkt}
-Der \textbf{Massenschwerpunkt} (auch Schwerpunkt oder Massenmittelpunkt genannt) eines starren Körpers ist der gewichtete Mittelpunkt aller Massenpunkte des Körpers. Die Gewichtung erfolgt über den Abstand der Massenpunkte. Der Schwerpunkt eines Körpers muss nicht unbedingt innerhalb des physischen Körpers liegen, \zB bei einem Hohlkörper oder einem zweiatomigen Molekül.
+Der \textbf{Massenschwerpunkt} (auch Schwerpunkt oder Massenmittelpunkt genannt) eines starren Körpers ist der gewichtete Mittelpunkt aller Massenpunkte des Körpers. Jeder Ortsvektor wird dabei mit der Masse des jeweiligen Massenelements gewichtet. Der Schwerpunkt eines Körpers muss nicht unbedingt innerhalb des physischen Körpers liegen, \zB bei einem Hohlkörper oder einem zweiatomigen Molekül.
 
 Der Ortsvektor des Schwerpunkts $\ivec{r}_S$ berechnet sich über 
 \begin{equation}
@@ -52,7 +52,7 @@ Der Ortsvektor des Schwerpunkts $\ivec{r}_S$ berechnet sich über
 \end{importantbox}
 
 \subsubsection{Überlagerung von Translation und Rotation}\label{subsubsec: ueberlagerung_schwerpunktsbew_rotation}
-Die Bedeutung des Schwerpunkts wird ersichtlich, wenn man die Bewegung von einzelnen Volumenelementen $\dd V_i$ innerhalb eines starren Körpers betrachet. Der Ortsvektor $\ivecS{r}{i}$ eines Volumenelements lässt sich schreiben als 
+Die Bedeutung des Schwerpunkts wird ersichtlich, wenn man die Bewegung von einzelnen Volumenelementen $\dd V_i$ innerhalb eines starren Körpers betrachtet. Der Ortsvektor $\ivecS{r}{i}$ eines Volumenelements lässt sich schreiben als 
 \begin{equation}\label{eq: ortsvektor_ri_schwerpunkt}
     \ivecS{r}{i} = \ivecS{r}{S} + \ivecS{r}{i,S} \mDot
 \end{equation}
@@ -60,7 +60,7 @@ Differenzieren wir \cref{eq: ortsvektor_ri_schwerpunkt} nach der Zeit, erhalten 
 \begin{equation}\label{eq: geschwindigkeit_ri_schwerpunkt}
     \ivecS{v}{i} = \ivecS{v}{S} + \frac{\dd}{\dd t}\ivecS{r}{i,S} \mDot
 \end{equation}
-Gleichzeitig wissen wir aber, dass der Körper starr ist, \gDh die Abstände zwischen den Volumenelementen bleiben konstant: $| \ivecS{r}{i,S} | = \const$. Diese Beziehung ist äquivalent zu $\ivecS{r}{i,S} \cdot \ivecS{r}{i,S} = \const$. Differenzieren wir diese Gleichung zweimal nach der Zeit, erhalten wir
+Gleichzeitig wissen wir aber, dass der Körper starr ist, \gDh die Abstände zwischen den Volumenelementen bleiben konstant: $| \ivecS{r}{i,S} | = \const$. Diese Beziehung ist äquivalent zu $\ivecS{r}{i,S} \cdot \ivecS{r}{i,S} = \const$. Differenzieren wir diese Gleichung einmal nach der Zeit, erhalten wir
 \begin{equation}
     \frac{\dd}{\dd t} \left( \ivecS{r}{i,S} \cdot \ivecS{r}{i,S} \right) = 2 \, \ivecS{r}{i,S} \cdot \ivecS{v}{i,S} = 0 \mComma
 \end{equation}
@@ -266,7 +266,7 @@ schreiben. Diese Formel ist analog zur kinetischen Energie eines Massenpunkts ($
 Das zweite Newton'sche Gesetz ($\ivec{F} = m \cdot \ivec{a}$) hat ein direktes Äquivalent in der Rotation.
 
 \begin{importantbox}{Grundgleichung der Rotation}
-    Das wirkende Gesamtdrehoment ist proportional zur Winkelbeschleunigung. Der Proportionalitätsfaktor ist das Trägheitsmoment:
+    Das wirkende Gesamtdrehmoment ist proportional zur Winkelbeschleunigung. Der Proportionalitätsfaktor ist das Trägheitsmoment:
     \begin{equation}\label{eq: grundgleichung_rotation}
         \ivec{M} = J \cdot \ivec{\alpha} \mDot
     \end{equation}
@@ -329,7 +329,7 @@ Ein klassisches Beispiel zur Veranschaulichung der Rotationsdynamik ist das Roll
     \caption{Rollen eines starren Körpers mit rundem Querschnitt und Radius $r$ auf einer schiefen Ebene. Die Gewichtskraft $\protect\ivecS{F}{G}$ greift im Schwerpunkt an und wird in eine Normalkraft $\protect\ivecS{F}{N}$ und eine parallele Komponente $\protect\ivecS{F}{\parallel}$ zerlegt. Die Kraftkomponente $\protect\ivecS{F}{\parallel}$ erzeugt um den Kontaktpunkt $A$ ein Drehmoment $\protect\ivec{M} = \protect\ivec{r} \times \protect\ivecS{F}{\parallel}$.}\label{fig: rollen_schiefe_ebene}
 \end{figure}
 
-Beim Rollen ohne Gleiten wirkt die Gewichtskraft $\ivecS{F}{G} = M \ivec{g}$ im Schwerpunkt des Körpers. Diese Kraft kann in eine Normalkraft $\ivecS{F}{N}$ senkrecht zur Ebene und eine parallele Komponente $\ivecS{F}{\parallel}$ zerlegt werden. Die parallele Komponente erzeugt um den Kontaktpunkt $A$ ein Drehmoment $\ivec{M} = \ivec{r} \times \ivecS{F}{\parallel}$, das zu einer Winkelbeschleunigung $\ivec{\alpha}$ des Körpers führt und damit wiederum zu einer Erhöhung des Betrags $\omega$ der Winkelgeschwindigkeit $\ivec{\omega}$.
+Beim Rollen ohne Gleiten wirkt die Gewichtskraft $\ivecS{F}{G} = M \ivec{g}$ im Schwerpunkt des Körpers. Diese Kraft kann in eine Normalkraft $\ivecS{F}{N}$ senkrecht zur Ebene und eine parallele Komponente $\ivecS{F}{\parallel}$ zerlegt werden. Die parallele Komponente erzeugt um den Kontaktpunkt $A$ ein Drehmoment $\ivec{M} = \ivec{r} \times \ivecS{F}{\parallel}$, das zu einer Winkelbeschleunigung $\ivec{\alpha}$ des Körpers führt und damit wiederum zu einer Erhöhung des Betrags $\omega$ der Winkelgeschwindigkeit $\ivec{\omega}$. Damit der Körper rollt statt gleitet, muss zwischen Körper und Ebene Haftreibung wirken. Sie verrichtet keine Arbeit, da der Kontaktpunkt $A$ momentan ruht.
 
 \subsubsection{Aufteilung der kinetischen Energie beim Rollen ohne Gleiten}
 Beim Rollen ohne Gleiten besitzt der Körper sowohl eine translatorische als auch eine rotatorische kinetische Energie. Die gesamte kinetische Energie ist die Summe der beiden Anteile, $E_{\kin} = E_{\trans} + E_{\rot}$. Legt der Körper eine Strecke $s$ zurück, so wird potentielle Energie in kinetische Energie umgewandelt und es stellt sich die Frage, wie sich diese kinetische Energie aufteilt.
@@ -341,11 +341,11 @@ Diese Energie wird aufgeteilt in die beiden kinetischen Energieanteile
 \begin{equation}\label{eq: kinetische_Energie_aufteilung_rollen}
     E_{\kin} = E_{\trans} + E_{\rot} = \frac{1}{2} M v^2 + \frac{1}{2} J_S \,\omega^2 \mComma
 \end{equation}
-wobei $J_S$ das Trägheitsmoment bezüglich der Drehachse durch den Schwerpunkt ist -- hier hilft uns der \textit{Steiner'sche Satz}. Da der Körper ohne Gleiten rollt, besteht die Beziehung $v = r \cdot \omega$ zwischen der Bahngeschwindigkeit $v$ des Schwerpunkts und der Winkelgeschwindigkeit $\omega$. Damit lässt sich \cref{eq: kinetische_Energie_aufteilung_rollen} umschreiben zu
+wobei $J_S$ das Trägheitsmoment bezüglich der Drehachse durch den Schwerpunkt ist. (Rechnet man stattdessen mit der Drehung um den Kontaktpunkt $A$, braucht man den \textit{Steiner'schen Satz}, $J_A = J_S + M r^2$ -- man erhält dasselbe Ergebnis.) Da der Körper ohne Gleiten rollt, besteht die Beziehung $v = r \cdot \omega$ zwischen der Bahngeschwindigkeit $v$ des Schwerpunkts und der Winkelgeschwindigkeit $\omega$. Damit lässt sich \cref{eq: kinetische_Energie_aufteilung_rollen} umschreiben zu
 \begin{equation}\label{eq: kinetische_Energie_aufteilung_rollbew}
     E_{\kin} = \frac{1}{2} M v^2 + \frac{1}{2} J_S \left(\frac{v}{r}\right)^2 = \frac{1}{2} M v^2 \left( 1 + \frac{J_S}{M r^2} \right) \mDot
 \end{equation}
-Der dimensionslose Term $b = \frac{J_S}{M r^2}$ ($b \in [0,1]$) gibt an, welcher Anteil der kinetischen Energie in die Rotationsenergie fließt.\footnote{Für eine Punktmasse wäre $J_S = 0$ und somit $b=0$. Eine Punktmasse hat nur translatorische kinetische Energie.} Setzen wir nun die freigesetzte potentielle Energie aus \cref{eq: potentielle_Energie_schiefeEbene_rollen} gleich der kinetischen Energie aus \cref{eq: kinetische_Energie_aufteilung_rollbew}, so erhalten wir
+Der dimensionslose Term $b = \frac{J_S}{M r^2}$ gibt das Verhältnis von Rotationsenergie zu Translationsenergie an, $b = E_{\rot}/E_{\trans}$. Der Anteil der Rotationsenergie an der gesamten kinetischen Energie ist $b/(1+b)$. Für die Körper in \cref{tab: traegheitsfaktor_standardkoerper} gilt $b \in [0,1]$.\footnote{Für eine Punktmasse wäre $J_S = 0$ und somit $b=0$. Eine Punktmasse hat nur translatorische kinetische Energie.} Setzen wir nun die freigesetzte potentielle Energie aus \cref{eq: potentielle_Energie_schiefeEbene_rollen} gleich der kinetischen Energie aus \cref{eq: kinetische_Energie_aufteilung_rollbew}, so erhalten wir
 \begin{equation}\begin{aligned}\label{eq: energieerhaltung_rollen_schiefe_ebene}
     M g s \sin(\alpha) &= \frac{1}{2} M v^2 \left( 1 + b \right) \\
     v^2 &= \frac{2 g s \sin(\alpha)}{1 + b} \\
@@ -356,12 +356,12 @@ Die zugehörige Beschleunigung $a$ bekommt man am einfachsten über das Ableiten
     \frac{\dd}{\dd t} v^2 &= 2 v \cdot a = \frac{2 g \sin(\alpha)}{1 + b} \cdot \frac{\dd s}{\dd t} = \frac{2 g v \sin(\alpha)}{1 + b} \\
     \implies a &= \frac{\dd v}{\dd t} = \frac{g \sin(\alpha)}{1 + b} \mDot
 \end{aligned}\end{equation}
-Die Beschleunigung $a$ ist also um den Faktor $\beta = \frac{1}{1+b} < 1$ kleiner als die Beschleunigung eines gleitenden Körpers auf der schiefen Ebene ($a = g \sin(\alpha)$, siehe \cref{eq: beschleunigung_reibungsfreies_gleiten}). Je größer also der Anteil $b$ der Rotationsenergie ist, desto geringer ist die Beschleunigung des rollenden Körpers. Die Geschwindigkeit ist um einen Faktor $\sqrt{\beta} = \sqrt{\frac{1}{1+b}}$ kleiner als die Geschwindigkeit eines gleitenden Körpers nach der Strecke $s$.
+Die Beschleunigung $a$ ist also um den Faktor $\beta = \frac{1}{1+b} < 1$ kleiner als die Beschleunigung eines reibungsfrei gleitenden Körpers auf der schiefen Ebene ($a = g \sin(\alpha)$, siehe \cref{eq: beschleunigung_reibungsfreies_gleiten}). Je größer also der Anteil $b$ der Rotationsenergie ist, desto geringer ist die Beschleunigung des rollenden Körpers. Die Geschwindigkeit ist um einen Faktor $\sqrt{\beta} = \sqrt{\frac{1}{1+b}}$ kleiner als die Geschwindigkeit eines gleitenden Körpers nach der Strecke $s$.
 
 \subsubsection{Trägheitszahl $b$ einiger Standardkörper}\label{subsubsec: traegheit_b_standardkoerper}
 Die vorhergehenden Ergebnisse für $E_{\kin}$ [\cref{eq: kinetische_Energie_aufteilung_rollbew}], die Beschleunigung $a$ [\cref{eq: beschleunigung_rollen_schiefe_ebene_1}] und die Geschwindigkeit $v$ [\cref{eq: energieerhaltung_rollen_schiefe_ebene}] gelten ganz allgemein für starre Körper mit Radius $r$ und Masse $M$, die ohne Gleiten auf einer schiefen Ebene rollen -- beispielsweise für Vollzylinder, Hohlzylinder, Vollkugeln und Hohlkugeln. Der einzige Unterschied zwischen den verschiedenen Körpern liegt in der Trägheitszahl $b = \frac{J_S}{M r^2}$, die vom Trägheitsmoment $J_S$ bezüglich der Drehachse durch den Schwerpunkt abhängt. Je größer das Trägheitsmoment eines Körpers ist, desto langsamer rollt er die schiefe Ebene hinunter, weil anteilig mehr Energie in die Rotation fließt. In \cref{tab: traegheitsfaktor_standardkoerper} sind die Trägheitsmomente und die zugehörigen Trägheitszahlen und Trägheitsfaktoren einiger Standardkörper zusammengefasst.
 
-Der Hohlzylinder hat das größte Trägheitsmoment, weil die gesamte Masse in einem dünnen Ring am weitesten von der Drehachse entfernt ist. Damit hat er auch die maximale Trägheitszahl $b=1$ und rollt am langsamsten die schiefe Ebene hinunter. Die Hohlkugel hat das nächstkleinere Trägheitsmoment und die Trägheitszahl $b=\frac{2}{3} \approx 0.66 $. Danach kommt der Vollzylinder mit  $b=\frac{1}{2}= 0.5$ und schließlich die Vollkugel mit dem kleinsten Trägheitsmoment und einer Trägheitszahl von $b=\frac{2}{5}= 0.4$, die somit am schnellsten die schiefe Ebene hinunterrollt.
+Der Hohlzylinder hat das größte Trägheitsmoment, weil die gesamte Masse in einem dünnen Ring am weitesten von der Drehachse entfernt ist. Damit hat er auch die maximale Trägheitszahl $b=1$ und rollt am langsamsten die schiefe Ebene hinunter. Die Hohlkugel hat das nächstkleinere Trägheitsmoment und die Trägheitszahl $b=\frac{2}{3} \approx 0.67$. Danach kommt der Vollzylinder mit  $b=\frac{1}{2}= 0.5$ und schließlich die Vollkugel mit dem kleinsten Trägheitsmoment und einer Trägheitszahl von $b=\frac{2}{5}= 0.4$, die somit am schnellsten die schiefe Ebene hinunterrollt.
 \begin{table}[htb]
     \centering
     \renewcommand{\arraystretch}{1.3}
@@ -380,7 +380,7 @@ Der Hohlzylinder hat das größte Trägheitsmoment, weil die gesamte Masse in ei
 
 
 \section{Analogie: Translation und Rotation}\label{sec: analogie_trans_rot}
-Die mathematische Struktur der Formeln für Translation und Rotation ist identisch. Dies erleichtert das Lernen erheblich, da man oft nur die Variablen austauschen muss. Die wichtigsten korrespondieren physikalischen Größen sind in \cref{tab: analogie_translation_rotation} zusammengefasst.
+Die mathematische Struktur der Formeln für Translation und Rotation ist identisch. Dies erleichtert das Lernen erheblich, da man oft nur die Variablen austauschen muss. Die wichtigsten korrespondierenden physikalischen Größen sind in \cref{tab: analogie_translation_rotation} zusammengefasst.
 
 \begin{table}[ht]
     \centering

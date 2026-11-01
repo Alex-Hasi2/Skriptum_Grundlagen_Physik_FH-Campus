@@ -40,7 +40,7 @@ In diesem Kapitel möchten wir uns mit den Bewegungsformen von Körpern in Kraft
 \begin{rememberbox}{Mechanik}
     Die Untersuchung der Bewegung von Körpern sowie die Konzepte der Kraft, Masse und Energie bilden den Bereich der Mechanik.
     Die Mechanik wird in zwei Subbereiche unterteilt: die \textbf{Kinematik} und die \textbf{Dynamik}.
-    Die Kinematik charakterisiert die Bewegung eines Körpers und vernachlässigt dabei zunächst die Ausdehnung des Körpers. Die Dynamik befasst sich mit der Frage \textit{warum} ein Körper eine Bewegung ausführt und behandelt somit das Konzept von Kräften.
+    Die Kinematik beschreibt die Bewegung eines Körpers, ohne nach ihren Ursachen (den Kräften) zu fragen. Die Dynamik befasst sich mit der Frage \textit{warum} ein Körper eine Bewegung ausführt und behandelt somit das Konzept von Kräften.
 \end{rememberbox}
 \section{Das Modell des Massenpunktes}\label{sec: Modell_Massenpunkt}
 Bei vielen Problemen in der Physik kann man von der räumlichen Ausdehnung der Körper absehen und die Körper wie punktförmige Gebilde mit der Masse $m$ behandeln, die wir \textbf{Massenpunkte} nennen. Die Lage eines Massenpunktes kann mithilfe eines geeigneten Koordinatensystems durch seine Koordinaten $(x, y, z)$ in kartesischen Koordinaten oder $(r, \theta, \phi)$ in Kugelkoordinaten angegeben werden. 
@@ -118,7 +118,7 @@ Der Ortsvektor $\ivec{r}=(x,y,z)$ fasst die drei Koordinaten zusammen. Bei einer
     \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Kinematik/bahnkurve.png}
     \caption[Bahnkurve eines Massenpunktes im $3$-dimensionalen Raum. (Quelle:~\cite{Demtroeder2018}, S.~38)]{Darstellung einer Bahnkurve eines Massenpunktes im $3$-dimensionalen Raum. Die Bahnkurve (rot) ist die Menge aller Punkte $P$, die der Körper während der Bewegung durchläuft. (Quelle:~\cite[S.~38]{Demtroeder2018})}\label{fig: bahnkurve_allg}
 \end{figure}
-Die Bewegung, die der Massenpunkt beim Durchlaufen der Bahnkurve erfährt, heißt \textbf{Translation}. Als Rotation wird die Bewegung eines Körpers um eine Rotationsachse bezeichnet. Da ein Massenpunkt keine Ausdehnung hat, kann er keine Rotation ausführen.\footnote{Kreisbewegungen eines Massenpunktes sind keine Rotation, sondern eine Translation.}
+Die Bewegung, die der Massenpunkt beim Durchlaufen der Bahnkurve erfährt, heißt \textbf{Translation}. Als Rotation wird die Bewegung eines Körpers um eine Rotationsachse bezeichnet. Da ein Massenpunkt keine Ausdehnung hat, kann er keine Rotation ausführen.\footnote{Bewegt sich ein Massenpunkt auf einer Kreisbahn, spricht man von einer Bahnbewegung. Eine Drehung um die eigene Achse (Eigenrotation) ist für einen Massenpunkt nicht möglich. Trotzdem besitzt ein Massenpunkt auf einer Kreisbahn einen Drehimpuls (siehe \cref{sec: Drehimpuls_Drehmoment}).}
 \begin{rememberbox}{Bahnkurve}
     Die Funktion $\ivec{r} = \ivec{r}(t)$ stellt eine Kurve im Raum dar, die der Massenpunkt im Laufe der Zeit durchläuft. Die Bahnkurve ist die Menge aller Punkte $P(t)$, die der Körper während der Bewegung durchläuft.
 \end{rememberbox}
@@ -126,7 +126,7 @@ Die Darstellung $\ivec{r}(t)$ heißt Parameterdarstellung, da die Koordinaten de
 \begin{examplebox}{Beispiele}
     \begin{enumerate}
         \item \textit{Geradlinige Bewegung}\newline
-        Eine geradlinige Bewegung liegt vor, sofern alle Koordinaten maximal linear von der Zeit abhängen, \zB $x(t) = x_0 + a\cdot t$, $y(t) = b\cdot t$, $z(t) = 0$, wobei $a,b, x_0 \in \Real$.
+        Eine geradlinige Bewegung liegt zum Beispiel dann vor, wenn alle Koordinaten höchstens linear von der Zeit abhängen, \zB $x(t) = x_0 + a\cdot t$, $y(t) = b\cdot t$, $z(t) = 0$, wobei $a,b, x_0 \in \Real$.
         \item \textit{Ebene Kreisbewegung} \newline
         Eine ebene Kreisbewegung lässt sich am elegantesten in Polarkoordinaten $(r,\varphi)$ darstellen, $x(t) = r\cdot \cos(\omega t)$, $y(t) = r\cdot \sin(\omega t)$, $z(t)=0$, wobei $\omega = \dd \varphi/\dd t$. 
     \end{enumerate}
@@ -320,7 +320,7 @@ Um die Bewegung eines Teilchens zu beschreiben, geben wir zunächst seinen Ort m
 Die Verschiebung $\Delta x$ gibt auch die Richtung der Ortsänderung an und kann auch negativ sein, wenn sich das Objekt in die negative Richtung der Koordinatenachse bewegt.
 
 \begin{rememberbox}{Notation: Das Delta-Symbol}
-    Änderungen physikalischer Größen (hier: Ortskoordinate) werden mit einem (nicht-kursiven) großen Delta $\Delta$ vorangestellt. Die Änderung von $x$ ist demnach $\Delta x$. Im eindimensionalen Fall verzichtet man meist auf eine Vektorschreibweise ($\Delta x$ statt $\Delta \ivec{x}$), obwohl es sich hier streng genommen um einen Vektor handelt.
+    Änderungen physikalischer Größen (hier: Ortskoordinate) werden mit einem (nicht-kursiven) großen Delta $\Delta$ vorangestellt. Die Änderung von $x$ ist demnach $\Delta x$. Im eindimensionalen Fall verzichtet man auf eine Vektorschreibweise: $\Delta x$ ist die $x$-Komponente des Verschiebungsvektors, also eine Zahl mit Vorzeichen (ein Skalar).
 \end{rememberbox}
 \noindent Die Position eines Massenpunktes wird durch einen Ortsvektor $\ivec{r}$ beschrieben. Mit Hilfe von Einheitsvektoren kann man den Ortsvektor in kartesischen Koordinaten schreiben als
 \begin{equation}\label{eq: vektor_aufteilung_einheitsvektoren}
@@ -384,10 +384,10 @@ Die Bahnkurve des Massenpunktes gibt den Ort des Teilchens zu jedem Zeitpunkt $t
 \begin{equation}
     \Delta t=t_{E} - t_{A}\mDot
 \end{equation}
-Auch eine Zeitänderung hat ein Vorzeichen und somit eine Richtung. 
+Auch ein Zeitintervall hat ein Vorzeichen; es bleibt aber ein Skalar (die Zeit hat keine Raumrichtung). 
 
 \subsection{Weg-Zeit-Diagramm}\label{subsec: weg-zeit-diagramm}
-Ein Weg-Zeit-Diagramm ist eine weitere grafische Repräsentation der Bewegung eines Teilchens. \Cref{fig: Weg_zeit_Diagramm_Bsp} zeigt ein Weg-Zeit-Diagramm für eine eindimensionale Bewegung, bei dem üblicherweise die Zeit auf der Abszisse (horizontale Achse) und der Weg auf der Ordinate (vertikale Achse) aufgetragen wird. Während die Zeit $t$ auf der Abszisse voranschreitet, kann sich der Massenpunkt sowohl in die positive $x$-Richtung ($\Delta x > 0$) als auch in die negative $x$-Richtung ($\Delta x < 0$) bewegen. Jeder Punkt entlang der Bahnkurve repräsentiert einen Zeitpunkt und den zugehörigen Ort, $P = (t,x)$.
+Ein Weg-Zeit-Diagramm (genauer: Ort-Zeit-Diagramm, da der Ort $x$ und nicht der zurückgelegte Weg aufgetragen wird) ist eine weitere grafische Repräsentation der Bewegung eines Teilchens. Achtung: Die Kurve im Diagramm ist der Graph von $x(t)$, nicht die Bahnkurve im Raum. \Cref{fig: Weg_zeit_Diagramm_Bsp} zeigt ein Weg-Zeit-Diagramm für eine eindimensionale Bewegung, bei dem üblicherweise die Zeit auf der Abszisse (horizontale Achse) und der Weg auf der Ordinate (vertikale Achse) aufgetragen wird. Während die Zeit $t$ auf der Abszisse voranschreitet, kann sich der Massenpunkt sowohl in die positive $x$-Richtung ($\Delta x > 0$) als auch in die negative $x$-Richtung ($\Delta x < 0$) bewegen. Jeder Punkt auf dem Graphen repräsentiert einen Zeitpunkt und den zugehörigen Ort, $P = (t,x)$.
 \begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[
@@ -457,11 +457,11 @@ Ein Weg-Zeit-Diagramm ist eine weitere grafische Repräsentation der Bewegung ei
 
 
 \section{Geschwindigkeit}\label{sec: Geschwindigkeit}
-Bewegte Körper unterscheiden sich von ruhenden durch eine von Null verschiedene Geschwindigkeit. Die Geschwindigkeit gibt an, wie schnell (in welchem Zeitintervall $\Delta t$) eine bestimmte Verschiebung $\Delta\ivec{r}$ stattgefunden hat. Betrachten wir zunächst noch einmal \cref{fig: Weg_zeit_Diagramm_Bsp}: Die Verschiebung $\Delta x$ ist hier die Differenz zweier Orte, \zB $\Delta x_{1,2} = x_2 - x_1$. Diese Verschiebung hat im Zeitintervall $\Delta t_{1,2} = t_2-t_1$ stattgefunden. Die Geschwindigkeit dieser Verschiebung gibt das Verhältnis von zurückgelegtem Weg zu benötigter Zeit an, also 
+Bewegte Körper unterscheiden sich von ruhenden durch eine von Null verschiedene Geschwindigkeit. Die Geschwindigkeit gibt an, wie schnell (in welchem Zeitintervall $\Delta t$) eine bestimmte Verschiebung $\Delta\ivec{r}$ stattgefunden hat. Betrachten wir zunächst noch einmal \cref{fig: Weg_zeit_Diagramm_Bsp}: Die Verschiebung $\Delta x$ ist hier die Differenz zweier Orte, \zB $\Delta x_{1,2} = x_2 - x_1$. Diese Verschiebung hat im Zeitintervall $\Delta t_{1,2} = t_2-t_1$ stattgefunden. Die Geschwindigkeit gibt das Verhältnis von Verschiebung zu benötigter Zeit an, also 
 \begin{equation}\label{eq: geschwindigkeit_def_verhältnis_bsp}
     v_{1,2} = \Delta x_{1,2}/\Delta t_{1,2}\mDot
 \end{equation}
-Die Geschwindigkeit wird demnach größer, wenn mehr Weg zurückgelegt wird oder die dafür benötigte Zeit sinkt. Man beachte, dass die Geschwindigkeit in \cref{eq: geschwindigkeit_def_verhältnis_bsp} eine Richtung hat und auch negativ werden kann. Die Geschwindigkeit selbst ist also ein Vektor und wird hier wieder aufgrund der eindimensionalen Beschreibung ohne Vektorpfeil notiert.
+Die Geschwindigkeit wird demnach größer, wenn mehr Weg zurückgelegt wird oder die dafür benötigte Zeit sinkt. Man beachte, dass die Geschwindigkeit in \cref{eq: geschwindigkeit_def_verhältnis_bsp} eine Richtung hat und auch negativ werden kann. Im eindimensionalen Fall ist $v$ die $x$-Komponente des Geschwindigkeitsvektors und wird daher ohne Vektorpfeil notiert.
 Das Prinzip der Geschwindigkeit bleibt bei mehr als einer Dimension dasselbe. Zunächst nehmen wir an, dass sich die Geschwindigkeit während des Zeitintervalls $\Delta t$ nicht ändert. Dann ist die mittlere Geschwindigkeit in jedem Intervall gleich der Momentangeschwindigkeit. 
 
 \begin{rememberbox}{Definition: Mittlere Geschwindigkeit}
@@ -584,7 +584,7 @@ Der Geschwindigkeitsvektor $\ivec{v}$ ist hier der Richtungsvektor der Geraden. 
 \begin{equation}
     |\ivec{v}| = \left| \frac{\Delta \ivec{r}}{\Delta t}\right| = \frac{|\Delta \ivec{r}|}{|\Delta t|} \mDot
 \end{equation}
-Zwei beliebige Punkte der Bahnkurven reichen aus für eine vollständige Charakterisierung einer gleichförmigen geradlinigen Bewegung. Seien die Punkte $P(t_i, \ivecS{r}{i})$ und $Q(t_j, \ivecS{r}{j})$ bekannt, dann kann der Startpunkt als $\ivecS{r}{0} = \ivecS{r}{i}$ gewählt werden. Die Geschwindigkeit berechnet sich aus $\ivec{v} = (|\ivecS{r}{j} - \ivecS{r}{i}|)/(|t_j-t_i|)$, womit die Parameterform \cref{eq: bahnkurve_parameterform_gleichf_geradl_Bew} aufgestellt werden kann.
+Zwei beliebige Punkte der Bahnkurven reichen aus für eine vollständige Charakterisierung einer gleichförmigen geradlinigen Bewegung. Seien die Punkte $P(t_i, \ivecS{r}{i})$ und $Q(t_j, \ivecS{r}{j})$ bekannt, dann kann der Startpunkt als $\ivecS{r}{0} = \ivecS{r}{i}$ gewählt werden. Die Geschwindigkeit berechnet sich aus $\ivec{v} = (\ivecS{r}{j} - \ivecS{r}{i})/(t_j-t_i)$, womit die Parameterform \cref{eq: bahnkurve_parameterform_gleichf_geradl_Bew} aufgestellt werden kann.
 \begin{figure}[htbp]
     \centering
     % \includegraphics[width=0.55\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Kinematik/bahnkurve_geradlinigeBew_Geschw.png}
@@ -761,7 +761,7 @@ Die \textbf{Momentanbeschleunigung} erhält man wiederum aus der Durchschnittsbe
 \end{importantbox}
 
 \begin{rememberbox}{Eigenschaften der Beschleunigung}
-    Die Beschleunigung $\ivec{a}(t)={(a_{x}(t),a_{y}(t),a_{z}(t))}^\T$ ist ein Vektor. Sie zeigt entlang der Tangente an die Geschwindigkeitskurve $\ivec{v}(t)$ und ist gleich der Krümmung (zweite Ableitung) der Weg-Zeit-Funktion $\ivec{r}(t)$. Die Maßeinheit der Beschleunigung ist $[a] = \SI{1}{\meter\per\second\squared}$.
+    Die Beschleunigung $\ivec{a}(t)={(a_{x}(t),a_{y}(t),a_{z}(t))}^\T$ ist ein Vektor. Sie zeigt entlang der Tangente an die Geschwindigkeitskurve $\ivec{v}(t)$ und ist die zweite zeitliche Ableitung des Ortsvektors $\ivec{r}(t)$. Die Maßeinheit der Beschleunigung ist $[a] = \SI{1}{\meter\per\second\squared}$.
 \end{rememberbox}
 Ganz allgemein hat eine physikalische Größe und deren Differenzen und Differentiale immer dieselbe Einheit, \zB $[\ivec{r}] = [\Delta \ivec{r}] = [\dd \ivec{r}] = \SI{1}{\meter}$.
 
@@ -821,7 +821,7 @@ Die Integrationskonstante $\ivecS{C}{2}$ ergibt sich hier durch die Festlegung d
 Die beiden gängigsten Beispiele für eine gleichförmig beschleunigte Bewegung sind \textit{der freie Fall} und \textit{der schräge Wurf}, die als nächstes behandelt werden. 
 
 \subsection{Der freie Fall}\label{subsec: freier_Fall}
-Der freie Fall ist eine Art der eindimensionalen gleichförmig beschleunigten Bewegung, bei der die konstante Beschleunigung entlang der negativen $z$-Achse wirkt und durch die Gravitationsbeschleunigung gegeben ist, $\ivec{a} = \ivec{g} = \inlrowThree{0}{0}{-9.81}\,\si{\meter\per\second\squared}$ ($|\ivec{g}| = \SI{9.81}{\meter\per\second\squared}$). Der Massenpunkt habe keine Anfangsgeschwindigkeit, $\ivecS{v}{0} = \inlrowThree{0}{0}{0}$\,\si{\meter\per\second}, und die Anfangsposition $\ivecS{r}{0}$ sei durch die Anfangshöhe $h > 0$ vollständig definiert, $\ivecS{r}{0} = \inlrowThree{0}{0}{h}$. 
+Der freie Fall (ohne Luftwiderstand) ist eine Art der eindimensionalen gleichförmig beschleunigten Bewegung, bei der die konstante Beschleunigung entlang der negativen $z$-Achse wirkt und durch die Gravitationsbeschleunigung gegeben ist, $\ivec{a} = \ivec{g} = \inlrowThree{0}{0}{-9.81}\,\si{\meter\per\second\squared}$ ($|\ivec{g}| = \SI{9.81}{\meter\per\second\squared}$). Der Massenpunkt habe keine Anfangsgeschwindigkeit, $\ivecS{v}{0} = \inlrowThree{0}{0}{0}$\,\si{\meter\per\second}, und die Anfangsposition $\ivecS{r}{0}$ sei durch die Anfangshöhe $h > 0$ vollständig definiert, $\ivecS{r}{0} = \inlrowThree{0}{0}{h}$. 
 
 Die gesamte Bewegung beim freien Fall spielt sich entlang der $z$-Achse ab, \gDh $x(t) \equiv 0$ und $y(t) \equiv 0$. Setzt man die Definitionen für den freien Fall in \cref{eq: formel_r_gleichf_beschl_bewegung} ein, erhält man die Bewegungsgleichung
 \begin{equation}\label{eq: bewegungsgleichung_z_freier_fall}
@@ -831,7 +831,7 @@ sowie die Momentangeschwindigkeit
 \begin{equation}
     v(t) = -g\cdot t \mDot
 \end{equation}
-Die Geschwindigkeit ist negativ, sie zeigt also entlang der negativen $z$-Achse und steigt linear mit der Zeit. 
+Die Geschwindigkeit ist negativ, sie zeigt also entlang der negativen $z$-Achse, und ihr Betrag $|v| = g\cdot t$ wächst linear mit der Zeit. 
 \begin{figure}[htb]
     \centering
     % \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Mechanik/Kapitel_Kinematik/freierFall_edit.png}
@@ -867,9 +867,9 @@ Die Geschwindigkeit ist negativ, sie zeigt also entlang der negativen $z$-Achse 
             \draw (\tiklenMin,\z) -- (-\tiklenMin,\z);
         }
     \end{tikzpicture}
-    \caption{Die Höhe $z(t)$ beim freien Fall mit Anfangshöhe $z(0) = h$ als Funktion der Zeit $t$. Zum Zeitpunkt $t_\mathrm{E}$ erreicht den Massenpunkt den Boden [$z(t_\mathrm{E} = 0$)].}\label{fig: freier_Fall}
+    \caption{Die Höhe $z(t)$ beim freien Fall mit Anfangshöhe $z(0) = h$ als Funktion der Zeit $t$. Zum Zeitpunkt $t_\mathrm{E}$ erreicht der Massenpunkt den Boden [$z(t_\mathrm{E}) = 0$].}\label{fig: freier_Fall}
 \end{figure}
-Die Bewegungsgleichung $z(t)$ ist in \cref{fig: freier_Fall} dargestellt. Der Massenpunkt beschreibt eine Parabel in der $(t,z)$-Ebene mit Scheitelpunkt $z=h$. Die Falldauer $t_\mathrm{E}$ ist jener Zeitpunkt, zu dem die $z$-Koordinate verschwindet, \gDh $z(t_\mathrm{E}) = 0$. Die Falldauer lässt sich aus \cref{eq: bewegungsgleichung_z_freier_fall} bestimmen:
+Die Bewegungsgleichung $z(t)$ ist in \cref{fig: freier_Fall} dargestellt. Der Graph von $z(t)$ ist eine Parabel in der $(t,z)$-Ebene mit Scheitelpunkt $z=h$ -- der Massenpunkt selbst bewegt sich dabei auf einer Geraden. Die Falldauer $t_\mathrm{E}$ ist jener Zeitpunkt, zu dem die $z$-Koordinate verschwindet, \gDh $z(t_\mathrm{E}) = 0$. Die Falldauer lässt sich aus \cref{eq: bewegungsgleichung_z_freier_fall} bestimmen:
 \begin{align}
   0 \eqexcl z(t_\mathrm{E}) &= -\frac{g}{2}t_E^2 + h & &| -h \notag \\
   0-h &= -\frac{g}{2}t_\mathrm{E}^2 & &| \cdot \left(-\frac{2}{g}\right) \notag \\
@@ -878,7 +878,7 @@ Die Bewegungsgleichung $z(t)$ ist in \cref{fig: freier_Fall} dargestellt. Der Ma
 \end{align}
 
 \subsection{Der schräge Wurf}\label{subsec: schräge_wurf}
-Der schräge Wurf ist ein weiteres Beispiel für eine gleichförmig beschleunigte Bewegung. Beim schrägen Wurf wird ein Massenpunkt von einer gewissen Höhe $z(0) = h$ mit einer Anfangsgeschwindigkeit $\ivecS{v}{0} \neq 0$ unter dem Einfluss der Gravitationsbeschleunigung [$\ivec{a} = \ivec{g} = \inlrowThree{0}{0}{\qty{-9.81}}\,\si{\meter\per\second\squared}$] abgeschossen. Ohne Beschränkung der Allgemeinheit fixieren wir die Bewegungsebene als die $(x,z)$-Ebene, womit $y \equiv 0$ und $v_y \equiv 0$ für alle Zeiten $t$. Die wirkende Beschleunigung ist wiederum die Gravitationsbeschleunigung. Die Anfangsbedingungen sind demnach 
+Der schräge Wurf ist ein weiteres Beispiel für eine gleichförmig beschleunigte Bewegung. Beim schrägen Wurf wird ein Massenpunkt von einer gewissen Höhe $z(0) = h$ mit einer Anfangsgeschwindigkeit $\ivecS{v}{0} \neq 0$ unter dem Einfluss der Gravitationsbeschleunigung (ohne Luftwiderstand) [$\ivec{a} = \ivec{g} = \inlrowThree{0}{0}{\qty{-9.81}}\,\si{\meter\per\second\squared}$] abgeschossen. Ohne Beschränkung der Allgemeinheit fixieren wir die Bewegungsebene als die $(x,z)$-Ebene, womit $y \equiv 0$ und $v_y \equiv 0$ für alle Zeiten $t$. Die wirkende Beschleunigung ist wiederum die Gravitationsbeschleunigung. Die Anfangsbedingungen sind demnach 
 \begin{equation}\label{eq: anfangsbed_schräger_wurf}
     \ivecS{r}{0} = \icolThree{x(0)}{y(0)}{z(0)} = \icolThree{0}{0}{h} \mComma \quad \ivecS{v}{0} = \icolThree{v_{0,x}}{0}{v_{0,z}} = \icolThree{v_0 \cos(\varphi)}{0}{v_0 \sin(\varphi)} \mComma
 \end{equation}
@@ -950,7 +950,7 @@ Dies ist die Gleichung einer Parabel $z(x) = a x^2 + b x + c$ in der $(x,z)$-Ebe
     \frac{\dd z}{\dd x} = - \frac{g}{v_{0,x}^2} x_s + \frac{v_{0,z}}{v_{0,x}} = 0 \\
 \Rightarrow x_s = \frac{v_{0,x} \cdot v_{0,z}}{g} = \frac{v_0^2 \sin(\varphi)\cos(\varphi)}{g} = \frac{v_0^2 \sin(2\varphi)}{2g}\mDot
 \end{gathered}\end{equation}
-Hier haben wir aus \cref{eq: anfangsbed_schräger_wurf} verwendet, dass $v_{0,x} = v_0 \cos(\varphi)$ und $v_{0,z} = v_0 \sin(\varphi)$. Außerdem wurde ein trigonometrisches Theorem angewendet: $2\sin(\varphi)\cos(\varphi) = \sin(2\varphi)$. Die Wurfweite $x_\mathrm{W}$ berechnet sich über die Tatsache, dass bei der maximalen Wurfweite die Höhe $0$ wird: $z(x_\mathrm{W}) \eqexcl 0$. Damit ergibt sich aus \cref{eq: wurfparabel_z_x_schräger_wurf}
+Hier haben wir aus \cref{eq: anfangsbed_schräger_wurf} verwendet, dass $v_{0,x} = v_0 \cos(\varphi)$ und $v_{0,z} = v_0 \sin(\varphi)$. Außerdem wurde ein trigonometrisches Theorem angewendet: $2\sin(\varphi)\cos(\varphi) = \sin(2\varphi)$. Die Wurfweite $x_\mathrm{W}$ berechnet sich über die Tatsache, dass am Ende des Wurfs die Höhe $0$ wird: $z(x_\mathrm{W}) \eqexcl 0$. Damit ergibt sich aus \cref{eq: wurfparabel_z_x_schräger_wurf}
 \begin{equation}
     - \frac{1}{2} \frac{g}{v_{0,x}^2} \cdot x_\mathrm{W}^2 + \frac{v_{0,z}}{v_{0,x}} \cdot x_\mathrm{W} + h \eqexcl 0 \mDot
 \end{equation}
@@ -958,11 +958,11 @@ Die quadratische Gleichung in der Variablen $x_\mathrm{W}$ hat die Lösungen (gr
 \begin{equation}\label{eq: wurfweite_kartesisch_schräger_wurf}
     x_\mathrm{W} = \frac{v_{0,x}\cdot v_{0,z}}{g} \pm \sqrt{\left[ {\left( \frac{v_{0,x} v_{0,z}}{g}\right)}^2 + \frac{2 v_{0,x}^2}{g}h \right]} \mDot
 \end{equation}
-Die Formel für die Wurfweite kann in Polarkoordinaten angegeben werden, \gDh $x_\mathrm{W}(\varphi, v_0)$, da $v_{x,0}\cdot v_{z,0} = \frac{1}{2}v_0^2 \sin(2\varphi)$. Damit wird \cref{eq: wurfweite_kartesisch_schräger_wurf} nun 
+Die Formel für die Wurfweite kann in Polarkoordinaten angegeben werden, \gDh $x_\mathrm{W}(\varphi, v_0)$, da $v_{0,x}\cdot v_{0,z} = \frac{1}{2}v_0^2 \sin(2\varphi)$. Damit wird \cref{eq: wurfweite_kartesisch_schräger_wurf} nun 
 \begin{equation}\label{eq: wurfweite_polar_schräger_wurf}
     x_\mathrm{W} = \frac{v_{0}\sin(2\varphi)}{2g} \left[ v_0 + \sqrt{v_0^2 + \frac{2gh}{\sin^2(\varphi)}} \right] \mDot
 \end{equation}
-Diese Gleichung kann dann dazu verwendet werden, den optimalen Winkel für die maximale Wurfweite zu berechnen. Ohne Beweis wird hier festgehalten, dass der optimale Wurfwinkel, für den die maximale Wurfweite erzielt wird, $\varphi_{\mathrm{opt}} = \pi/4 = \SI{45}{\degree}$ ist.
+Diese Gleichung kann dann dazu verwendet werden, den optimalen Winkel für die maximale Wurfweite zu berechnen. Ohne Beweis wird hier festgehalten: Für eine Abwurfhöhe $h = 0$ ist der optimale Wurfwinkel, für den die maximale Wurfweite erzielt wird, $\varphi_{\mathrm{opt}} = \pi/4 = \SI{45}{\degree}$. Für $h > 0$ ist der optimale Winkel kleiner als \SI{45}{\degree}.
 
 \section{Nicht-gleichförmig beschleunigte Bewegung}
 Bisher haben wir gleichförmige Bewegungen ($\ivec{a} = \ivec{0}$) und gleichförmig beschleunigte Bewegungen ($\ivec{a} = \const$) betrachtet. Nun analysieren wir Bewegungen, bei denen sich auch die Beschleunigung mit der Zeit ändert, \gDh $\ivec{a} = \ivec{a}(t)$. Dabei muss sich nicht unbedingt der Betrag der Beschleunigung ändern. Auch eine zeitliche Änderung der Richtung der Beschleunigung entspricht einer nicht-gleichförmig beschleunigten Bewegung. Zu dieser letzten Gruppe gehört die gleichförmige Kreisbewegung. 
@@ -1081,7 +1081,7 @@ Setzen wir $\varphi(t) = \omega \cdot t + \varphi_0$ in \cref{eq: koordinaten_xy
         \ivec{r}(t) = R \icolTwo{\cos(\omega t + \varphi_0)}{\sin(\omega t + \varphi_0)} = R \cdot \ivecS{e}{r}(t)\mDot
     \end{equation} 
 \end{importantbox}
-Der radiale Einheitsvektor $\ivecS{e}{r}(t)$ zeigt immer vom Ursprung des Kreises zur Position des Massenpunktes am Kreis. Ist der Mittelpunkt der Kreisbewegung nicht der Ursprung, dann muss zu \cref{eq: ortsvektor_gleichf_kreisbewegung_polar} noch der Ortsvektor des Ursprungs ($\ivecS{r}{M} = \inlrowTwo{x_M}{y_M}^\T$) addiert werden: 
+Der radiale Einheitsvektor $\ivecS{e}{r}(t)$ zeigt immer vom Ursprung des Kreises zur Position des Massenpunktes am Kreis. Ist der Mittelpunkt der Kreisbewegung nicht der Ursprung, dann muss zu \cref{eq: ortsvektor_gleichf_kreisbewegung_polar} noch der Ortsvektor des Mittelpunkts ($\ivecS{r}{M} = \inlrowTwo{x_M}{y_M}^\T$) addiert werden: 
 \begin{equation}
     \ivec{r}(t) = \ivecS{r}{M} + R\cdot \ivecS{e}{r}(t) = \icolTwo{x_M}{y_M} + R \icolTwo{\cos(\omega t + \varphi_0)}{\sin(\omega t + \varphi_0)} \mDot
 \end{equation}
@@ -1139,7 +1139,7 @@ Wir können mithilfe des Skalarproduktes zeigen, dass der Einheitsvektor der Ges
     \ivecS{e}{v} \cdot \ivecS{e}{r} = \icolTwo{-\sin(\omega t)}{\cos(\omega t)} \cdot \icolTwo{\cos(\omega t)}{\sin(\omega t)} = -\sin(\omega t)\cos(\omega t) + \cos(\omega t)\sin(\omega t) = 0 \\
     \implies  \ivecS{e}{v} \perp \ivecS{e}{r} \mDot
 \end{gather*}
-Das kann auch geometrisch anhand von \cref{fig: geschw_senkrecht_ortsvektor_kreisbew} leicht überprüft werden. Für den Ortsvektor gilt, dass $\frac{y}{x} = \tan(\varphi)$ ist, während für den Geschwindigkeitsvektor $\frac{v_y}{v_x} = -\tan^{-1}(\varphi) = \tan(\varphi + \pi/2)$. Die letzte Gleichheit ist ein bekanntes Theorem für den Tangens. Sei die Richtung des Ortsvektors durch $\varphi$ gegeben, so ist die Richtung des Geschwindigkeitsvektors demnach $\varphi + \pi/2$ (bei mathematisch positiver Umlaufrichtung).  
+Das kann auch geometrisch anhand von \cref{fig: geschw_senkrecht_ortsvektor_kreisbew} leicht überprüft werden. Für den Ortsvektor gilt, dass $\frac{y}{x} = \tan(\varphi)$ ist, während für den Geschwindigkeitsvektor $\frac{v_y}{v_x} = -\frac{1}{\tan(\varphi)} = \tan(\varphi + \pi/2)$. Die letzte Gleichheit ist ein bekanntes Theorem für den Tangens. Sei die Richtung des Ortsvektors durch $\varphi$ gegeben, so ist die Richtung des Geschwindigkeitsvektors demnach $\varphi + \pi/2$ (bei mathematisch positiver Umlaufrichtung).  
 
 
 \subsubsection{Beschleunigung}\label{subsubsec: beschleunigung_gleichf_kreisbew}
@@ -1149,7 +1149,7 @@ Die Beschleunigung der gleichförmigen Kreisbewegung kann ebenso geometrisch und
 \end{equation}
 wobei hier $\Delta \ivec{v}(t) = \ivec{v}(t+\Delta t) - \ivec{v}(t)$.
 \paragraph{Geometrische Betrachtung}
-Man betrachte eine gleichförmige Kreisbewegung mit Radius $R$ und Mittelpunkt $C$ zu zwei verschiedenen Zeitpunkten mit Positionen $A$ und $B$, dargestellt in \cref{fig: beschleunigung_geometrisch_aehnliche_dreiecke}. Das Dreieck $\triangle ABC$ ist ein gleichschenkeliges Dreieck mit Seitenlänge $R$. Der spitze Winkel $\Delta \varphi$ hat eine gegenüberliegende Seitenlänge $\Delta \ivec{r} = \ivecS{r}{B}-\ivecS{r}{A}$ (blaue, strichlierte Linie). Da die Geschwindigkeitsvektoren $\ivecS{v}{A}$ und $\ivecS{v}{B}$ senkrecht auf ihre Ortsvektoren stehen und ihre Beträge gleich sind ($|\ivecS{v}{A}| = |\ivecS{v}{B}| = v$), ist das Dreieck, das von $\ivecS{v}{A}$, $\ivecS{v}{B}$ und $\Delta\ivec{v}$ gebildet wird, ein ähnliches Dreieck zum Dreieck $\triangle ABC$.
+Man betrachte eine gleichförmige Kreisbewegung mit Radius $R$ und Mittelpunkt $C$ zu zwei verschiedenen Zeitpunkten mit Positionen $A$ und $B$, dargestellt in \cref{fig: beschleunigung_geometrisch_aehnliche_dreiecke}. Das Dreieck $\triangle ABC$ ist ein gleichschenkeliges Dreieck mit Schenkellänge $R$. Der spitze Winkel $\Delta \varphi$ hat eine gegenüberliegende Seitenlänge $\Delta \ivec{r} = \ivecS{r}{B}-\ivecS{r}{A}$ (blaue, strichlierte Linie). Da die Geschwindigkeitsvektoren $\ivecS{v}{A}$ und $\ivecS{v}{B}$ senkrecht auf ihre Ortsvektoren stehen und ihre Beträge gleich sind ($|\ivecS{v}{A}| = |\ivecS{v}{B}| = v$), ist das Dreieck, das von $\ivecS{v}{A}$, $\ivecS{v}{B}$ und $\Delta\ivec{v}$ gebildet wird, ein ähnliches Dreieck zum Dreieck $\triangle ABC$.
 \begin{figure}[tb]
     \centering
     \resizebox{0.7\linewidth}{!}{
@@ -1212,9 +1212,9 @@ Nun dividieren wir \cref{eq: verhältnis_dv_dr_gleichf_kreisbew} durch $|\Delta 
 \end{equation}
 \Cref{eq: betrag_beschl_gleichf_kreisbew_noch_mit_limes} enthält auf der rechten Seite allerdings noch den Ausdruck $|\Delta \ivec{r}/\Delta t|$, der die Sehnenlänge $|\Delta \ivec{r}|$ enthält. Für endliche Winkeländerungen $\Delta \varphi$ entspricht die Sehnenlänge nicht dem zurückgelegten Weg des Massenpunktes (siehe \cref{fig: beschleunigung_geometrisch_aehnliche_dreiecke}), weshalb $|\Delta \ivec{r}/\Delta t| \neq |\ivec{v}(t)|$ ist. In \cref{subsec: herleitung_bogenlaenge_sehnenlaenge} haben wir jedoch gezeigt, dass
 \begin{equation}
-    \lim_{\Delta t \to 0} |\Delta \ivec{r}| = \Delta s
+    \lim_{\Delta t \to 0} \frac{|\Delta \ivec{r}|}{\Delta s} = 1
 \end{equation} 
-[siehe \cref{eq: sehnenlänge_gleich_bogenlänge}] -- \gDh die Länge der Sehne $\overline{AB}$ konvergiert im Grenzübergang $\Delta t \to 0$ gegen die Bogenlänge. \\
+[siehe \cref{eq: sehnenlänge_gleich_bogenlänge}] -- \gDh die Länge der Sehne $\overline{AB}$ nähert sich im Grenzübergang $\Delta t \to 0$ immer mehr der Bogenlänge an (ihr Verhältnis geht gegen 1). \\
 
 Schließlich können wir im Limes die Sehnenlänge durch die Bogenlänge ersetzen und somit wird $\lim_{\Delta t \to 0} |\Delta \ivec{r}/\Delta t| = v$. In \cref{eq: betrag_beschl_gleichf_kreisbew_noch_mit_limes} wird der Betrag der Beschleunigung dann
 \begin{equation}
@@ -1238,7 +1238,7 @@ sein. Dass $\dd \ivec{v} \parallel \ivecS{e}{a}$, erschließt sich aus der Defin
 \end{equation}
 ist und somit zeigt der Beschleunigungsvektor $\ivec{a}$ zum Mittelpunkt des Kreises (antiparallel zum Ortsvektor) 
 \begin{equation}
-    \ivec{a}(t) = \frac{v}{R^2} \ivecS{e}{a} = -\frac{v}{R^2} \ivecS{e}{r}\mDot
+    \ivec{a}(t) = \frac{v^2}{R} \ivecS{e}{a} = -\frac{v^2}{R} \ivecS{e}{r}\mDot
 \end{equation}
 
 
@@ -1264,7 +1264,7 @@ wobei wir wieder \oBdA $\varphi_0 = 0$ gewählt haben. Damit erhält man für de
 \end{importantbox}
 
 \section{Die allgemeine krummlinige Bewegung}
-Bei der gleichförmigen Kreisbewegung nimmt die Beschleunigung eine sehr einfache Form an, da der Betrag der Geschwindigkeit konstant ist, $|\ivec{v}| = \const$. Im allgemeinen Fall wird sich $\ivec{v}$ aber nach Betrag und Richtung ändern und zwar weil sich die Beschleunigung sowohl nach Betrag als auch nach Richtung ändert. \\
+Bei der gleichförmigen Kreisbewegung nimmt die Beschleunigung eine sehr einfache Form an, da der Betrag der Geschwindigkeit konstant ist, $|\ivec{v}| = \const$. Im allgemeinen Fall ändert sich $\ivec{v}$ aber nach Betrag und Richtung, weil die Beschleunigung im Allgemeinen weder parallel noch senkrecht zu $\ivec{v}$ steht. \\
 
 Die Geschwindigkeit $\ivec{v}$ steht jedoch -- unabhängig von der Bewegungsform -- immer tangential zur Bahnkurve. Es ergibt sich nämlich aus der Definition $\ivec{v} = \frac{\dd \ivec{r}}{\dd t}$, dass die Geschwindigkeit parallel zur differentiellen Verschiebung ist. Die Beschleunigung $\ivec{a}$ kann eine beliebige Richtung aufweisen und lässt sich in zwei Komponenten zerlegen: 
 
@@ -1282,7 +1282,7 @@ und in die Tangential- und Normalbeschleunigung zerlegt werden.
 \end{figure}
 \begin{rememberbox}{Tangential- und Normalbeschleunigung}
     \begin{itemize}
-        \item \textbf{Die Tangentialbeschleunigung $\ivecS{a}{t} = \frac{\dd v}{\dd t} \cdot \ivecS{e}{v}$} ist ein Vektor, der in Tangentialrichtung der Bahnkurve zeigt, also parallel zu $\ivec{v}$. Sein Betrag $|\ivecS{a}{t}| = \frac{\dd v}{\dd t}$ beschreibt die Änderungsrate des Betrages der Geschwindigkeit.
+        \item \textbf{Die Tangentialbeschleunigung $\ivecS{a}{t} = \frac{\dd v}{\dd t} \cdot \ivecS{e}{v}$} ist ein Vektor, der in Tangentialrichtung der Bahnkurve zeigt, also parallel zu $\ivec{v}$. Sein Betrag $|\ivecS{a}{t}| = \left|\frac{\dd v}{\dd t}\right|$ beschreibt die Änderungsrate des Betrages der Geschwindigkeit.
         \item \textbf{Die Normalbeschleunigung $\ivecS{a}{n} = v \cdot \frac{\dd\ivecS{e}{v}}{\dd t}$} ist ein Vektor, der senkrecht auf die Geschwindigkeit und damit senkrecht auf die Tangente steht. Dieser Anteil beschreibt die Änderung der Richtung der Geschwindigkeit.
     \end{itemize}
 \end{rememberbox}

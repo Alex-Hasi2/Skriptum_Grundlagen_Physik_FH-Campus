@@ -5,8 +5,8 @@ Komplexe Naturvorgänge sollen auf einfache Gesetzmäßigkeiten zurückgeführt,
     Radioaktivität
     \begin{itemize}
         \item Spontaner Zerfall der Atomkerne führt zu Emission von Teilchen oder Strahlung
-        \item Quantifizierung dieses Prozesses über Zerfallsreihen 
-        \item Voraussagbar über Halbwertszeit
+        \item Quantifizierung dieses Prozesses über das Zerfallsgesetz $N(t) = N_0\, e^{-\lambda t}$ 
+        \item Voraussagbar über die Halbwertszeit -- allerdings nur statistisch: Wann ein einzelner Kern zerfällt, ist zufällig
     \end{itemize}
     \tcblower
     \centering
@@ -25,7 +25,7 @@ Dabei wird besonderen Wert auf die Eliminierung aller störenden Einflüsse gele
 \begin{examplebox}[sidebyside, sidebyside align=top seam, lower separated=false, righthand width=6.5cm]{Beispiel}
     Pendel-Experiment zur Bestimmung der Gravitationsbeschleunigung $\ivec{g}$.
     
-\textbf{Hypothese:} Die Schwingungsdauer eines Pendels hängt von der Länge des Pendels und der Erdbeschleunigung ab, aber nicht von der Masse des Pendels.
+\textbf{Hypothese:} Die Schwingungsdauer eines Pendels hängt (bei kleinen Auslenkungen) von der Länge des Pendels und der Erdbeschleunigung ab, aber nicht von der Masse des Pendels.
 
 \textbf{Störende Einflüsse:} Das Experiment wird in einem Raum ohne Luftzug durchgeführt. Die Startauslenkung kann mit bekannter Genauigkeit eingestellt werden.
 
@@ -84,10 +84,10 @@ Dabei wird besonderen Wert auf die Eliminierung aller störenden Einflüsse gele
 
         % Gravitationskraft (blauer Pfeil nach unten)
         \draw[->, blue!70!black, line width=2pt] (mass) -- ++(0,-\lenG) 
-            node[below, right, font=\large] {$\ivec{g}$};
+            node[below, right, font=\large] {$m\ivec{g}$};
         
-        % Spannkraft entlang des Fadens (grüner Pfeil)
-        % Diese zeigt vom Massenpunkt in Richtung Aufhängepunkt
+        % Radialkomponente der Gewichtskraft (grüner Pfeil)
+        % Diese zeigt vom Aufhängepunkt weg (in Fadenrichtung)
         \draw[->, green!60!black, line width=2pt] (mass) -- ++({-(\lenG*cos(\angle))*sin(\angle)}, {-(\lenG*cos(\angle))*cos(\angle)});
         
         % Rücktreibende Kraft (roter Pfeil tangential zur Kreisbahn)
@@ -129,7 +129,7 @@ Wenn man Salz in Wasser auflöst, dann erhöht sich der Siedepunkt des Wassers.
 
 \textit{Beispiele:} \newline
 Durch zwei Punkte kann genau eine Gerade gelegt werden.\newline
-Zwei parallele Linien schneiden sich nie.
+Zu einer Geraden und einem Punkt außerhalb gibt es genau eine Parallele durch diesen Punkt (Parallelenaxiom der euklidischen Geometrie -- auf einer Kugeloberfläche gilt es \zB nicht).
 
 
 \subsection{Satz (Theorem)}\label{subsec: Theorem}
@@ -139,8 +139,8 @@ Ein Satz, in der Wissenschaft oft als Theorem bezeichnet, ist eine logische Schl
 \end{rememberbox}
 
 \textit{Beispiele:} \newline 
-[Satz von Thales] Alle von einem Halbkreis umschriebenen Dreiecke sind rechtwinklig. \newline
-[Satz von Fermat] Für $n > 2$ gibt es keine positiven ganzen Zahlen $a, b, c$ die die Gleichung $a^n + b^n = c^n$ erfüllen.
+[Satz von Thales] Liegt die dritte Ecke eines Dreiecks auf einem Kreis, dessen Durchmesser die gegenüberliegende Seite ist, so ist das Dreieck rechtwinklig. \newline
+[Großer Fermatscher Satz] Für ganze Zahlen $n > 2$ gibt es keine positiven ganzen Zahlen $a, b, c$, die die Gleichung $a^n + b^n = c^n$ erfüllen.
 
 
 \subsection{Gesetz}\label{subsec: Gesetz}
@@ -150,8 +150,8 @@ Ein physikalisches Gesetz beschreibt eine grundlegende und regelmäßig wiederke
 \end{rememberbox}
 
 \textit{Beispiele:} \newline
-[Ohm'sche Gesetz] ($U = R\cdot I$) beschreibt den Zusammenhang zwischen Spannung, Widerstand und Stromstärke, ohne die mikroskopischen Ursachen des elektrischen Widerstands zu erklären.\newline
-[Gravitationsgesetz] Jede Masse zieht jede andere Masse mit einer Kraft an, die direkt proportional zum Produkt ihrer Massen und umgekehrt proportional zum Quadrat des Abstands zwischen ihren Schwerpunkten ist, $F = G \frac{M_1 \cdot M_2}{r^2}$.
+[Ohm'sches Gesetz] Bei vielen Leitern ist der Widerstand $R = U/I$ (bei konstanter Temperatur) unabhängig von Spannung und Stromstärke, also $U \propto I$. Das Gesetz beschreibt diesen Zusammenhang, ohne die mikroskopischen Ursachen des elektrischen Widerstands zu erklären.\newline
+[Gravitationsgesetz] Jede Masse zieht jede andere Masse mit einer Kraft an, die direkt proportional zum Produkt ihrer Massen und umgekehrt proportional zum Quadrat ihres Abstands ist (für Punktmassen bzw. kugelsymmetrische Körper: Abstand der Mittelpunkte), $F = G \frac{M_1 \cdot M_2}{r^2}$.
 
 
 \subsection{Theorie}\label{subsec: Theorie}

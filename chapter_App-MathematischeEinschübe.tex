@@ -3,7 +3,7 @@
 \subsubsection{Folgen}\label{subsec: Folgen}
 Eine \textbf{Folge} ist eine geordnete Liste von Zahlen, die entweder komplett angegeben ist oder nach einer bestimmten Regel gebildet wird. Jedes Glied der Folge wird als Element bezeichnet. Folgen können endlich oder unendlich sein. \\ 
 
-\noindent\textit{Beispiel:} Man möchte die Folge $\{1, \frac{1}{2},\frac{1}{4}, \frac{1}{8}, \frac{1}{16}, \cdots \}$ untersuchen. Die Beschreibung in der Klammer lässt aber keinen vollständigen Schluss zu, wie die Folge weitergeht, obwohl dies zunächst so scheint. Daher definiert man die Folge durch $(a_n)_{n \in \Real} = \frac{1}{n}$. Das bedeutet, dass das $n$-te Glied der Folge $\frac{1}{n}$ ist. Nun sind alle Glieder der Folge eindeutig bestimmt. 
+\noindent\textit{Beispiel:} Man möchte die Folge $\{1, \frac{1}{2},\frac{1}{4}, \frac{1}{8}, \frac{1}{16}, \cdots \}$ untersuchen. Die Beschreibung in der Klammer lässt aber keinen vollständigen Schluss zu, wie die Folge weitergeht, obwohl dies zunächst so scheint. Daher definiert man die Folge durch eine Vorschrift, hier $a_n = \left(\frac{1}{2}\right)^n$ mit $n = 0, 1, 2, \dots$ Das bedeutet, dass das Glied mit dem Index $n$ den Wert $\frac{1}{2^n}$ hat. Nun sind alle Glieder der Folge eindeutig bestimmt. 
 
 
 \subsubsection{Reihen}\label{subsec: Reihen}
@@ -11,7 +11,7 @@ Eine \textbf{Reihe} ist die Summe der Glieder einer Folge. Wenn man die Glieder 
 
 \noindent \textit{Beispiel:} Die Summe der Glieder der Folge von oben schreiben wir als
 \begin{equation*}
-    \sum_{n=1}^{\infty} \frac{1}{n^2} = 1 + \frac{1}{4} + \frac{1}{9} + \cdot .
+    \sum_{n=0}^{\infty} \left(\frac{1}{2}\right)^n = 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots = 2 \mDot
 \end{equation*}
 Wenn sich die Summe einem endlichen Wert annähert und im Limes diesen Wert annimmt, spricht man von einer \textbf{konvergenten Reihe}. Oszilliert die Summe um einen bestimmten Wert oder wächst unbeschränkt und nimmt daher im Limes keinen endlichen Wert an, nennt man sie \textbf{divergente Reihe}.
 \newpage
@@ -312,7 +312,7 @@ Im $\Real^3$ benötigt man zwei Winkel ($\varphi, \theta$) zur Beschreibung der 
     \includegraphics[width=0.95\linewidth]{Bilder/Kapitel_MathEinschübe/tan_arctan.png}
     \caption{Graphen von Tangens und Arkustangens}\label{fig: abb_tangens_arkustanges}
 \end{figure}
-Die manuelle Korrektur des Arkustangens ist notwendig, da das Argument aus dem Bruch $(\frac{y}{x})$ besteht. Für einen Winkel im 1. Quadranten ist $x > 0$ und $y > 0$ und demnach ist der Bruch $(\frac{y}{x}) > 0$. Zwar gilt für einen Punkt im 3. Quadranten $x < 0$ und $y < 0$, aber da sich beide negativen Vorzeichen im Argument aufheben, ist der Bruch $(\frac{y}{x}) > 0$. Das bedeutet, dass man ohne Korrektur für Punkte im 3. Quadranten einen Winkel $\varphi \in [0, \pi/2]$ (1. Quadrant) bekommen würde. Für Punkte im 4. Quadranten würde man aus demselben Grund (beide Male gilt $(\frac{y}{x}) < 0$) Winkel im 2. Quadranten ($\varphi \in [\pi/2, \pi]$) erhalten. Indem man $\pi$ zu einem Winkel im 1. Quadranten (2. Quadranten) addiert, landet man beim äquivalenten Winkel im 3. Quadranten (4. Quadranten). Dieses Verhalten sieht man auch im Graph des Arkustangens in \cref{fig: abb_tangens_arkustanges}.  
+Die manuelle Korrektur des Arkustangens ist notwendig, da das Argument aus dem Bruch $(\frac{y}{x})$ besteht und der Arkustangens nur Winkel zwischen $-\pi/2$ und $\pi/2$ liefert (1. und 4. Quadrant). Für einen Punkt im 3. Quadranten gilt $x < 0$ und $y < 0$; die beiden negativen Vorzeichen heben sich im Bruch auf, $(\frac{y}{x}) > 0$, und man erhält ohne Korrektur einen Winkel im 1. Quadranten. Für einen Punkt im 2. Quadranten ($x<0$, $y>0$) ist $(\frac{y}{x}) < 0$, und man erhält einen Winkel im 4. Quadranten. Addiert man in beiden Fällen $\pi$, landet man beim richtigen Winkel im 3. \bzw 2. Quadranten. Dieses Verhalten sieht man auch im Graph des Arkustangens in \cref{fig: abb_tangens_arkustanges}. (Viele Programmiersprachen bieten dafür die Funktion \texttt{atan2(y, x)} an, die den Quadranten automatisch berücksichtigt.)  
 
 
 \section{Einheitsvektor und Normierung}\label{sec: Einheitsvektor_Normierung}
@@ -552,11 +552,11 @@ mit $\ivecS{r}{1} = (x_1, y_1,\,\dots)$ und $\ivecS{r}{2} = (x_2, y_2, \,\dots)$
 Die Multiplikation von Skalaren entspricht einer wiederholten Addition: \[5 \cdot 3 = 5 + 5 + 5 = 15\mDot\]
 Für Vektoren definieren wir die sogenannte Skalarmultiplikation auf dieselbe Weise.
 \begin{rememberbox}[]{Skalarmultiplikation}
-    Die Skalarmultiplikation eines Vektors $\ivec{r} = (x,y,\,\dots)$ mit einem Skalar $s$ entspricht einer $s$-fachen Vektoraddition mit sich selbst,
+    Die Skalarmultiplikation eines Vektors $\ivec{r} = (x,y,\,\dots)$ mit einem Skalar $s$ entspricht für natürliche Zahlen $s$ einer $s$-fachen Vektoraddition mit sich selbst. Allgemein (für reelle $s$) ist sie definiert als
     \begin{equation}
         \ivec{u} = s \cdot \ivec{r} := s\cdot (x,y,\,\dots) = (s \cdot x, s \cdot y, \,\dots)\mDot
     \end{equation}
-    Das Resultat der Skalarmultiplikation ist ein Vektor mit derselben Richtung $(\ivec{u} \parallel \ivec{r})$ und der skalierten Länge $|\ivec{u}| = s \cdot |\ivec{r}|$.
+    Das Resultat der Skalarmultiplikation ist ein zu $\ivec{r}$ paralleler Vektor $(\ivec{u} \parallel \ivec{r})$ mit der skalierten Länge $|\ivec{u}| = |s| \cdot |\ivec{r}|$. Für $s > 0$ zeigt er in dieselbe, für $s < 0$ in die entgegengesetzte Richtung.
 \end{rememberbox}
 
 \begin{itemize}[itemsep=1.5pt]
@@ -636,17 +636,17 @@ Für Vektoren definieren wir die sogenannte Skalarmultiplikation auf dieselbe We
         \node[anchor=south west, color=blue] at (3.0,0.8) {\LARGE $\ivec{u}$};
     \end{tikzpicture}
     }
-    \caption{Die Skalarmultiplikation, $\protect\ivec{u} = s \cdot \protect\ivec{r}$, entspricht einer wiederholten Vektoraddition. Der Vektor $\protect\ivec{r}$ wird 4-mal addiert zu $\protect\ivec{u}$ aufsummiert, \gDh $s = 4$.}\label{fig: skalarmultiplikation}
+    \caption{Die Skalarmultiplikation, $\protect\ivec{u} = s \cdot \protect\ivec{r}$, entspricht einer wiederholten Vektoraddition. Der Vektor $\protect\ivec{r}$ wird 4-mal zu $\protect\ivec{u}$ aufsummiert, \gDh $s = 4$.}\label{fig: skalarmultiplikation}
 \end{figure}
 
 
 \section{Skalarprodukt (Inneres Produkt)}\label{sec: Skalarprodukt_InneresProdukt}
 Das Skalarprodukt -- nicht zu verwechseln mit der Skalarmultiplikation -- ist das Produkt der Multiplikation zweier Vektoren, dessen Resultat ein Skalar ist. 
-\begin{rememberbox}[sidebyside, sidebyside align=center, lower separated=false,righthand width=3.5cm]{Skalarmultiplikation}
+\begin{rememberbox}[sidebyside, sidebyside align=center, lower separated=false,righthand width=3.5cm]{Skalarprodukt}
     Das Skalarprodukt $(\,\cdot\,)$\footnotemark{} ist eine positiv definite symmetrische
     Bilinearform $(\ivec{u}, \ivec{v}, \ivec{w} \in V, \lambda \in \Real)$
     \begin{equation}
-        \ivec{u} \cdot \ivec{v} :\, V \times V \in \Real\mComma
+        \cdot :\, V \times V \to \Real\mComma
     \end{equation}
     mit den Eigenschaften 
     \begin{itemize}[nosep]
@@ -714,9 +714,9 @@ Der Vollständigkeit halber sei hier erwähnt, was die oben erwähnten Eigenscha
 \section{Kreuzprodukt (Äußeres Produkt)}\label{sec: Kreuzprodukt_AeusseresProdukt}
 Das Kreuzprodukt ist ein Produkt zweier Vektoren, dessen Ergebnis ein Vektor ist, der auf beide Faktoren (Vektoren) orthogonal steht. 
 \begin{rememberbox}[]{Kreuzprodukt}
-    Das Kreuzprodukt $(\,\times\,)$ ist eine Bilinearform $(\ivec{u}, \ivec{v}, \ivec{w} \in V,\; \lambda,\mu \in \Real)$
+    Das Kreuzprodukt $(\,\times\,)$ ist eine bilineare Abbildung $(\ivec{u}, \ivec{v}, \ivec{w} \in V,\; \lambda,\mu \in \Real)$
     \begin{equation}
-        \ivec{u} \times \ivec{v} :\; V \times V \in V\mComma
+        \times :\; V \times V \to V\mComma
     \end{equation}
     mit den Eigenschaften 
     \begin{itemize}[nosep]
@@ -968,7 +968,7 @@ Die Auswertestelle muss dabei nicht angegeben werden -- dann erhält man die all
 
 \textit{Beispiel:}
 Die Funktion
-$$ f(x,y) = \cos(x) + \sin(x)$$
+$$ f(x,y) = \cos(x) + \sin(y)$$
 ist in \cref{fig: partielleAbleitung_sattel} dargestellt. Die partiellen Ableitungen nach $x$ und $y$ ergeben
 $$ \frac{\partial f}{\partial x} = -\sin(x) + \underbrace{\frac{\partial (\sin(y))}{\partial x}}_{=0}$$ 
 und
@@ -1112,7 +1112,7 @@ Das Integral wird als \textbf{bestimmtes Integral} bezeichnet, wenn die Grenzen 
     \caption{Flächen unterhalb der $x$-Achse ergeben einen negativen Beitrag zum Integral, da dort $f(t) < 0$ ist. Flächen oberhalb der $x$-Achse sind positiv.}\label{fig: pos_neg_flächen_integral}
 \end{figure}
 
-An der Definition des Riemann-Integrals erkannt man, dass Flächen, die unter der $x$-Achse liegen, negativ gezählt werden, da dort $f(t) < 0$ ist. In \cref{fig: pos_neg_flächen_integral} ist schematisch dargstellt, welches Vorzeichen die einzelnen Teilflächen unter der Kurve haben. Ist dieser Effekt unerwünscht -- wenn beispielsweise die gesamte Fläche unabhängig vom Vorzeichen berechnet werden soll -- teilt man das Integral in Abschnitte auf und addiert die Beträge der Flächen. Es gilt nämlich allgemein
+An der Definition des Riemann-Integrals erkennt man, dass Flächen, die unter der $x$-Achse liegen, negativ gezählt werden, da dort $f(t) < 0$ ist. In \cref{fig: pos_neg_flächen_integral} ist schematisch dargestellt, welches Vorzeichen die einzelnen Teilflächen unter der Kurve haben. Ist dieser Effekt unerwünscht -- wenn beispielsweise die gesamte Fläche unabhängig vom Vorzeichen berechnet werden soll -- teilt man das Integral in Abschnitte auf und addiert die Beträge der Flächen. Es gilt nämlich allgemein
 \begin{equation}
     A = \int_{a}^{b}f(t)\,\dd t = \int_{a}^{t_{(1)}}f(t)\,\dd t + \int_{t_{(1)}}^{t_{(2)}}f(t)\,\dd t + \dots + \int_{t_{(n)}}^{b}f(t)\,\dd t \mDot
 \end{equation}
@@ -1156,7 +1156,7 @@ Für eine Funktion $f(x) = x^n$ ergibt das unbestimmte Integral
 \end{equation}
 Ein Sonderfall ist die Funktion $f(x) = \frac{1}{x} = x^{-1}$
 \begin{equation}
-    \int \frac{1}{x} \,\dd x = c \ln{|x|} + C \mDot
+    \int \frac{1}{x} \,\dd x = \ln{|x|} + C \mDot
 \end{equation}
 
 \subsubsection{Integration einer Exponentialfunktion}
@@ -1173,7 +1173,7 @@ wobei wieder $\ln{e} = 1$ verwendet wurde.
 \subsubsection{Integration einer Logarithmusfunktion}
 Für eine Funktion $f(x) = \log_a{x}$ ergibt das unbestimmte Integral
 \begin{equation}
-    \int \log{x}\,\dd x = \frac{1}{\ln{a}}\left(x\ln{x} - x\right) + C\mComma
+    \int \log_a{x}\,\dd x = \frac{1}{\ln{a}}\left(x\ln{x} - x\right) + C\mComma
 \end{equation}
 und somit ist das Integral des natürlichen Logarithmus
 \begin{equation}
@@ -1326,7 +1326,7 @@ verwendet -- manchmal auch $A = \int_A \,\dd A$ -- obwohl nicht explizit klar is
     \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_MathematischeEinschuebe/area_int_with_curtain_crop.png}
     \caption{Der Flächeninhalt eines Rechtecks kann über ein Doppelintegral berechnet werden, wobei die Funktion $f(x,y) = 1$ gewählt wird. Somit entspricht das Volumen unter der Fläche genau dem Flächeninhalt des Rechtecks. Das innere Integral ergibt $g(x) = \int_{0}^{2} \dd y$. Die Funktion $g(x)$ gibt für einen gegebenen Wert $x$ die blaue Fläche entlang der $y$-Achse an (hier ist $g(x)$ unabhängig von $x$).}\label{fig: flaecheninhalt_rechteck}
 \end{figure}
-In \cref{fig: flaecheninhalt_rechteck} möchten wir die Fläche des strichlierten Rechtecks berechnen. Dazu verwenden wir das Doppelintegral, setzen $f(x,y) = 1$ und integrieren über den Rand des Rechtecks ($[0,3] \times [0,2]$). Das Doppelintegral ist angeschrieben 
+In \cref{fig: flaecheninhalt_rechteck} möchten wir die Fläche des strichlierten Rechtecks berechnen. Dazu verwenden wir das Doppelintegral, setzen $f(x,y) = 1$ und integrieren über das Rechteck ($[0,3] \times [0,2]$). Das Doppelintegral ist angeschrieben 
 \begin{equation}
     A= \iint_{D} 1 \,\dd A = \int_{0}^{3} \int_{0}^{2} 1 \,\dd y \,\dd x \mDot
 \end{equation}

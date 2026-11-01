@@ -37,13 +37,13 @@ Betrachten wir spezielle Prozesse für ideale Gase, vereinfacht sich der erste H
     \item \textbf{Isochorer Prozess ($V = \const$, $\dd V=0$):}\\
     Es wird keine Volumenarbeit verrichtet ($\dd W=0$). Die gesamte zugeführte Wärme führt direkt zu einer Erhöhung der inneren Energie:
     \begin{equation}
-        \dd Q = \dd U = C_V \cdot \dd T \mDot
+        \dd Q = \dd U = \nu \cdot C_V \cdot \dd T \mDot
     \end{equation}
 
     \item \textbf{Isobarer Prozess ($p = \const$, $\dd p=0$):}\\
     Das System kann expandieren, wodurch ein Teil der zugeführten Wärme als Volumenarbeit abgegeben wird:
     \begin{equation}
-        \dd Q = \dd U + p \cdot \dd V = C_p \cdot \dd T \mDot
+        \dd Q = \dd U + p \cdot \dd V = \nu \cdot C_p \cdot \dd T \mDot
     \end{equation}
     Hier erweist es sich als sinnvoll, eine neue Zustandsgröße einzuführen, die \textbf{Enthalpie} $H$ (siehe auch \cref{sec: thermodynamische_potentiale}):
     \begin{equation}
@@ -83,11 +83,11 @@ Adiabaten sind Kurven, bei denen kein Wärmeaustausch mit der Umgebung stattfind
 \begin{equation}\label{eq: adiabatenbeziehungen}
     p(V) = \text{const} \cdot V^{-\kappa} \quad \text{mit} \quad \kappa = \frac{C_p}{C_V} \mDot
 \end{equation}
-Hierbei ist $\kappa$ das \textbf{Adiabatenexponent}, das Verhältnis der spezifischen Wärmekapazitäten bei konstantem Druck ($C_p$) und konstantem Volumen ($C_V$). Für ein ideales Gas ist $\kappa > 1$, weshalb Adiabaten im $(p,V)$-Diagramm steiler fallen als Isothermen.
+Hierbei ist $\kappa$ der \textbf{Adiabatenexponent}, das Verhältnis der molaren Wärmekapazitäten bei konstantem Druck ($C_p$) und konstantem Volumen ($C_V$). Für ein ideales Gas ist $\kappa > 1$, weshalb Adiabaten im $(p,V)$-Diagramm steiler fallen als Isothermen.
 
 
 \section{Der Zweite Hauptsatz der Thermodynamik}\label{sec: zweiter_hauptsatz}
-Der Erste Hauptsatz erlaubt Prozesse, solange die Energiebilanz stimmt. Er verbietet beispielsweise nicht, dass ein Glas Wasser spontan gefriert und dabei Wärme an die warme Umgebung abgibt, oder dass sich Wärme spontan von kalt nach warm bewegt. Da solche Prozesse in der Natur jedoch nicht beobachtet werden, benötigen wir den \textbf{Zweiten Hauptsatz}. Er trifft Aussagen über die \textit{Richtung} thermodynamischer Prozesse und die Qualität von Energie. Der zweite Hauptsatz beantwortet die Frage, welcher Bruchteil der zugeführten Wärme in Arbeit umgewandelt werden kann und erlässt somit eine obere Grenze für die Effizienz von Wärmekraftmaschinen.
+Der Erste Hauptsatz erlaubt Prozesse, solange die Energiebilanz stimmt. Er verbietet beispielsweise nicht, dass ein Glas Wasser spontan gefriert und dabei Wärme an die warme Umgebung abgibt, oder dass sich Wärme spontan von kalt nach warm bewegt. Da solche Prozesse in der Natur jedoch nicht beobachtet werden, benötigen wir den \textbf{Zweiten Hauptsatz}. Er trifft Aussagen über die \textit{Richtung} thermodynamischer Prozesse und die Qualität von Energie. Der zweite Hauptsatz beantwortet die Frage, welcher Bruchteil der zugeführten Wärme in Arbeit umgewandelt werden kann und liefert somit eine obere Grenze für die Effizienz von Wärmekraftmaschinen.
 
 Es gibt mehrere, historisch gewachsene Formulierungen, die physikalisch äquivalent sind:
 \begin{importantbox}{Formulierungen des Zweiten Hauptsatzes}
@@ -98,7 +98,7 @@ Es gibt mehrere, historisch gewachsene Formulierungen, die physikalisch äquival
     Es ist unmöglich, eine periodisch arbeitende Maschine zu konstruieren, die nichts anderes bewirkt, als Wärme aus einem Reservoir aufzunehmen und diese vollständig in Arbeit umzuwandeln (\textit{Unmöglichkeit des Perpetuum mobile zweiter Art}).
 \end{importantbox}
 
-Kurz gesagt: Wärme fließt von selbst immer nur von Warm nach Kalt. Um die Flussrichtung umzukehren (z.\,B. im Kühlschrank), muss Arbeit aufgewendet werden. Zudem kann Wärmeenergie nie vollständig in mechanische Arbeit verwandelt werden (Dissipation), während Arbeit vollständig in Wärme umgewandelt werden kann (Reibung).
+Kurz gesagt: Wärme fließt von selbst immer nur von Warm nach Kalt. Um die Flussrichtung umzukehren (z.\,B. im Kühlschrank), muss Arbeit aufgewendet werden. Zudem kann eine periodisch arbeitende Maschine Wärme nie vollständig in mechanische Arbeit verwandeln, während Arbeit vollständig in Wärme umgewandelt werden kann (\zB durch Reibung). Bei einem einzelnen Prozessschritt, etwa einer isothermen Expansion, ist die vollständige Umwandlung dagegen möglich -- dann bleibt das Gas aber verändert zurück (größeres Volumen).
 
 Der zweite Hauptsatz impliziert, dass Prozesse in isolierten Systemen immer in Richtung eines Zustands größerer Unordnung oder Wahrscheinlichkeit ablaufen. Diese Prozesse sind \textbf{irreversibel}.
 
@@ -129,7 +129,7 @@ Für reale, \textbf{irreversible} Prozesse (wie Wärmeleitung bei endlicher Temp
     \dd S > \frac{\dd Q_{\text{irrev}}}{T} \mDot
 \end{equation}
 
-Daraus folgt für abgeschlossene (adiabatische, $\dd Q=0$) Systeme eine der wichtigsten Aussagen der Physik:
+Daraus folgt für abgeschlossene Systeme (kein Energie- und Stoffaustausch, insbesondere $\dd Q=0$) eine der wichtigsten Aussagen der Physik:
 
 \begin{rememberbox}{Der Entropiesatz (Prinzip der Irreversibilität)}
     In einem abgeschlossenen System kann die Entropie niemals abnehmen. Sie bleibt bei reversiblen Prozessen konstant und nimmt bei irreversiblen (natürlichen) Prozessen zu.
@@ -165,7 +165,7 @@ Neben der inneren Energie $U$ und der Entropie $S$ gibt es weitere Zustandsgrö�
         \end{equation}
         
         \item \textbf{Freie Energie $F(T,V)$ (Helmholtz-Energie)}:
-        Relevant für Prozesse bei konstanter Temperatur und konstantem Volumen. Sie gibt an, wie viel Arbeit das System maximal verrichten kann (abzüglich der Wärme, die zur Aufrechterhaltung der Entropie nötig ist).
+        Relevant für Prozesse bei konstanter Temperatur und konstantem Volumen. Bei konstanter Temperatur gibt $-\Delta F$ an, wie viel Arbeit das System maximal verrichten kann.
         \begin{equation}
             F = U - TS \quad \implies \quad \dd F = -S\dd T - p\dd V \mDot
         \end{equation}
@@ -185,7 +185,7 @@ Neben der inneren Energie $U$ und der Entropie $S$ gibt es weitere Zustandsgrö�
 \subsection{Kreisprozesse}
 Um die theoretischen Grenzen der Energieumwandlung zu verstehen, analysierte Sadi Carnot einen idealisierten Kreisprozess. Der Carnot-Prozess ist reversibel und besteht aus zwei Isothermen und zwei Adiabaten. Er liefert den theoretisch maximal möglichen Wirkungsgrad für eine Wärmekraftmaschine, die zwischen zwei Temperaturen $T_1$ (heiß) und $T_2$ (kalt) arbeitet. Als Kreisprozess bezeichnet man Prozesse, bei denen ein (thermodynamisches) System verschiedene Zustände durchläuft, aber wieder zu seinem Ausgangszustand zurückgeführt wird.
 
-Kann ein Kreisprozess in beide Richtungen ablaufen, so nennt man ihn reversibel. Die meisten makroskopischen (Vielteilchensysteme) Prozesse laufen irreversibel ab. Wir werden sehen, dass alle periodisch arbeitenden Wärmekraftmaschinen irreversible Prozesse durchlaufen.
+Lässt sich ein Prozess so umkehren, dass sowohl das System als auch seine Umgebung wieder in den Ausgangszustand gelangen, so nennt man ihn reversibel. Die meisten makroskopischen (Vielteilchensysteme) Prozesse laufen irreversibel ab. Wir werden sehen, dass alle periodisch arbeitenden Wärmekraftmaschinen irreversible Prozesse durchlaufen.
 
 \textit{Beispiel eines irreversiblen Prozesses:} 
 Man bringe einen Körper der Temperatur $T_1$ und einen Körper Temperatur $T_2>T_1$ in Kontakt. Der wärmere Körper wird sich abkühlen und der kältere wird sich erwärmen bis die beiden Körper bei der Temperatur $T_{\text{eq}}$ im thermischen Gleichgewicht sind. 
@@ -197,7 +197,7 @@ Der umgekehrte Prozess kommt in der Natur nie vor: Bringt man zwei Körper, die 
 \end{figure}
 
 \subsection{Einschub: Arbeit im $(p,V)$-Diagramm}\label{subsec: arbeit_pV_diagramm_erklaerung}
-In der Thermodynamik trägt man thermodynamische Prozesse gern in einem $(p,V)$-Diagramm auf. Zunächst halten wir erneut fest, dass die physikalische Größe $p \cdot V$ eine Arbeit ist. Eine Dimensionsanalyse liefert: 
+In der Thermodynamik trägt man thermodynamische Prozesse gern in einem $(p,V)$-Diagramm auf. Zunächst halten wir fest, dass die Größe $p \cdot V$ die Einheit einer Energie (Arbeit) hat. Eine Dimensionsanalyse liefert: 
 \begin{equation}
     [p] \cdot [V] = \frac{[F]}{[A]} \cdot [V] = \left( \frac{\frac{\si{\kilo\gram \meter}}{\si{\second}^2}}{\si{\meter}^2} \right) \cdot \si{\meter}^3 = \frac{\si{\kilo\gram} \cdot \si{\meter}^2}{\si{\second}^2} = \si{\joule} = [W] \mDot 
 \end{equation}
@@ -330,11 +330,11 @@ Die im Schritt $2\to 3$ vom Gas verrichtete Arbeit beträgt $\Delta W_{2\to 3} =
 Da das System nach einem vollständigen Zyklus wieder im Ausgangszustand ist, gilt für die Änderung der inneren Energie $\Delta U = 0$. Somit vereinfacht sich die Gleichung zu
 \begin{equation}\begin{aligned}
     \Delta W &= \Delta W_{1\to 2} + \Delta W_{3\to 4} = -\Delta Q_1 - \Delta Q_2 = \\
-    & R \cdot T_1 \ln\left(\frac{V_1}{V_2}\right) + R \cdot T_2 \ln\left(\frac{V_3}{V_4}\right) \mDot
+    & \nu R \cdot T_1 \ln\left(\frac{V_1}{V_2}\right) + \nu R \cdot T_2 \ln\left(\frac{V_3}{V_4}\right) \mDot
 \end{aligned}\end{equation}
-Man kann mithilfe der Adiabatenbeziehungen (\cref{eq: adiabatenbeziehungen}) die Volumina $V_1, V_2, V_3, V_4$ in Verbindung setzen, da 
+Man kann mithilfe der Adiabatenbeziehungen (\cref{eq: adiabatenbeziehungen}) die Volumina $V_1, V_2, V_3, V_4$ in Verbindung setzen. Mit $pV = \nu RT$ folgt aus $pV^\kappa = \const$ die Form $T\cdot V^{\kappa-1} = \const$ und damit 
 \begin{equation}
-    T_1 \cdot V_2^{\kappa} = T_2 \cdot V_3^{\kappa} \quad \text{und} \quad T_1 \cdot V_1^{\kappa} = T_2 \cdot V_4^{\kappa} \mDot
+    T_1 \cdot V_2^{\kappa-1} = T_2 \cdot V_3^{\kappa-1} \quad \text{und} \quad T_1 \cdot V_1^{\kappa-1} = T_2 \cdot V_4^{\kappa-1} \mDot
 \end{equation}
 Durch Division der beiden Gleichungen und Umstellen erhält man
 \begin{equation}\label{eq: carnot_volumenverhaeltnis}
@@ -342,7 +342,7 @@ Durch Division der beiden Gleichungen und Umstellen erhält man
 \end{equation}
 Schließlich ergibt sich durch Einsetzen von \cref{eq: carnot_volumenverhaeltnis} in die Gleichung für die Gesamtarbeit 
 \begin{equation}
-    \Delta W = R \cdot \ln\left(\frac{V_1}{V_2}\right) \cdot (T_1 - T_2) \mDot
+    \Delta W = \nu R \cdot \ln\left(\frac{V_1}{V_2}\right) \cdot (T_1 - T_2) \mDot
 \end{equation}
 Da $T_1 > T_2$ und $V_2 > V_1$ gilt, ist die verrichtete Arbeit $\Delta W < 0$, also leistet das System Arbeit an der Umgebung.
 
@@ -379,15 +379,15 @@ Es stellt sich nun die Frage, ob nur der Carnot-Prozess diese Limitierung des Wi
 \subsection{Entropieänderung im Carnot-Prozess}
 Beim Carnot-Prozess kann die Entropieänderung explizit berechnet werden, wodurch man zeigen kann, dass die Entropieänderung über einen vollständigen Zyklus null ist (da $S$ eine Zustandsgröße ist und $\dd S$ ein vollständiges Differential). Während der isothermen Expansion ($1 \to 2$) bei der Temperatur $T_1$ nimmt das System eine Wärmemenge $\Delta Q_1$ auf, was zu einer Entropieänderung von
 \begin{equation}
-    \Delta S_{1\to 2} = \frac{\Delta Q_1}{T_1} = \frac{R \cdot T_1 \ln(V_1/V_2)}{T_1} = R \ln\left(\frac{V_1}{V_2}\right)
+    \Delta S_{1\to 2} = \frac{\Delta Q_1}{T_1} = \frac{\nu R \cdot T_1 \ln(V_2/V_1)}{T_1} = \nu R \ln\left(\frac{V_2}{V_1}\right) > 0
 \end{equation}
 führt. Während der isothermen Kompression ($3 \to 4$) bei der Temperatur $T_2$ gibt das System eine Wärmemenge $\Delta Q_2$ ab, was zu einer Entropieänderung von
 \begin{equation}
-    \Delta S_{3\to 4} = \frac{\Delta Q_2}{T_2} = \frac{R \cdot T_2 \ln(V_3/V_4)}{T_2} = R \ln\left(\frac{V_3}{V_4}\right)
+    \Delta S_{3\to 4} = \frac{\Delta Q_2}{T_2} = \frac{\nu R \cdot T_2 \ln(V_4/V_3)}{T_2} = \nu R \ln\left(\frac{V_4}{V_3}\right) < 0
 \end{equation}
 führt. Mithilfe der Beziehung aus \cref{eq: carnot_volumenverhaeltnis} folgt, dass 
 \begin{equation}
-    \Delta S_{3\to 4} = R \ln\left(\frac{V_3}{V_4}\right) = -R \ln\left(\frac{V_1}{V_2}\right) = -\Delta S_{1\to 2} \mDot
+    \Delta S_{3\to 4} = \nu R \ln\left(\frac{V_4}{V_3}\right) = -\nu R \ln\left(\frac{V_2}{V_1}\right) = -\Delta S_{1\to 2} \mDot
 \end{equation}
 Die Gesamtentropieänderung über einen vollständigen Carnot-Zyklus ist daher
 \begin{equation}
@@ -398,24 +398,24 @@ Die Gesamtentropieänderung über einen vollständigen Carnot-Zyklus ist daher
 \section{Thermodynamische Maschinen}\label{sec: thermodynamische_maschinen}
 Thermodynamische Maschinen sind Vorrichtungen, die thermodynamische Prozesse nutzen, um Arbeit zu verrichten oder Wärme zu übertragen. Es gibt verschiedene Arten von thermodynamischen Maschinen, die auf unterschiedlichen Prinzipien basieren:
 \begin{itemize}
-    \item \textbf{Wärmekraftmaschinen:} Diese Maschinen wandeln Wärmeenergie in mechanische Arbeit um. Beispiele sind Dampfmaschinen, Verbrennungsmotoren und Gasturbinen. Sie arbeiten typischerweise nach dem Carnot-Prinzip, indem sie Wärme von einem heißen Reservoir aufnehmen, Arbeit verrichten und Abwärme an ein kaltes Reservoir abgeben. Der Wirkungsgrad $\eta$ einer Wärmekraftmaschine ist definiert als das Verhältnis der verrichteten Arbeit $W$ zur aufgenommenen Wärme $Q_1$:
+    \item \textbf{Wärmekraftmaschinen:} Diese Maschinen wandeln Wärmeenergie in mechanische Arbeit um. Beispiele sind Dampfmaschinen, Verbrennungsmotoren und Gasturbinen. Sie nehmen Wärme von einem heißen Reservoir auf, verrichten Arbeit und geben Abwärme an ein kaltes Reservoir ab (der Kreisprozess ist dabei meist kein Carnot-Prozess). Der Wirkungsgrad $\eta$ einer Wärmekraftmaschine ist definiert als das Verhältnis der verrichteten Arbeit $W$ zur aufgenommenen Wärme $Q_1$:
     \begin{equation}
-        \eta = \frac{W}{Q_1} = 1 - \frac{Q_2}{Q_1} = 1 - \frac{T_2}{T_1} \mDot
+        \eta = \frac{|W|}{Q_1} = 1 - \frac{|Q_2|}{Q_1} \le 1 - \frac{T_2}{T_1} \mDot
     \end{equation}
-    Eine Wärmekraftmaschine ist umso effizienter, je größer die Temperaturdifferenz zwischen dem heißen und dem kalten Reservoir ist.
+    Das Gleichheitszeichen gilt nur für die ideale (reversible) Carnot-Maschine. Eine Wärmekraftmaschine kann umso effizienter sein, je größer die Temperaturdifferenz zwischen dem heißen und dem kalten Reservoir ist.
 
     \item \textbf{Kältemaschinen:} Kältemaschinen entziehen einem kälteren Raum Wärme und geben diese an einen wärmeren Raum ab. Beispiele sind Kühlschränke und Klimaanlagen. Sie arbeiten gegen den natürlichen Wärmefluss und benötigen dafür mechanische Arbeit, die oft durch einen Kompressor bereitgestellt wird. \\
     Dem zu kühlenden Raum wird Wärme $Q_2$ entzogen, während an den wärmeren Raum die Wärme $Q_1 = Q_2 + W$ abgegeben wird. Die aufgewendete Arbeit $W$ muss dabei hineingesteckt werden. Die Leistungszahl (Güteziffer) $\varepsilon$ einer Kältemaschine ist definiert als das Verhältnis der entzogenen Wärme $Q_2$ zur aufgewendeten Arbeit $W$:
     \begin{equation}
-        \varepsilon = \frac{Q_2}{W} = \frac{T_2}{T_1 - T_2} \mDot
+        \varepsilon = \frac{Q_2}{W} \le \frac{T_2}{T_1 - T_2} \mDot
     \end{equation} 
-    Daher arbeiten Kältemaschinen effizienter, wenn die Temperaturdifferenz zwischen dem kalten und dem warmen Reservoir gering ist.
+    Die Obergrenze erreicht nur die ideale (reversible) Maschine. Kältemaschinen arbeiten daher effizienter, wenn die Temperaturdifferenz zwischen dem kalten und dem warmen Reservoir gering ist.
 
     \item \textbf{Wärmepumpen:} Wärmepumpen funktionieren ähnlich wie Kältemaschinen, aber ihr Hauptzweck ist es, Wärme von einem kälteren Ort zu einem wärmeren Ort zu transportieren, um Räume zu heizen. Sie sind effizienter als direkte elektrische Heizungen, da sie mehr Wärmeenergie liefern können, als sie an elektrischer Energie verbrauchen. Auch hier muss die mechanische Arbeit $W$ aufgewendet werden, um die Wärme $Q_2$ aus dem kalten Reservoir zu entziehen und die Wärme $Q_1 = Q_2 + W$ an das warme Reservoir abzugeben. Die Leistungszahl (Güteziffer) $\varepsilon$ einer Wärmepumpe ist definiert als das Verhältnis der abgegebenen Wärme $Q_1$ zur aufgewendeten Arbeit $W$:
     \begin{equation}
-        \varepsilon = \frac{Q_1}{W} = \frac{T_1}{T_1 - T_2} \mDot
+        \varepsilon = \frac{Q_1}{W} \le \frac{T_1}{T_1 - T_2} \mDot
     \end{equation}
-    Hier ist die Leistungszahl $\varepsilon > 1$, weil $T_1 - T_2 < T_1$. Wärmepumpen sind besonders effizient, wenn die Temperaturdifferenz zwischen dem kalten und dem warmen Reservoir gering ist.
+    Die ideale Leistungszahl ist stets größer als 1, weil $T_1 - T_2 < T_1$; auch reale Wärmepumpen erreichen typischerweise $\varepsilon > 1$. Wärmepumpen sind besonders effizient, wenn die Temperaturdifferenz zwischen dem kalten und dem warmen Reservoir gering ist.
 \end{itemize}
 
 \subsection{Verschiedene Wärmekraftmaschinen}
@@ -452,11 +452,11 @@ Der dritte Hauptsatz, auch Nernst-Theorem genannt, macht eine Aussage über das 
     \end{equation}
     Am absoluten Nullpunkt befindet sich das System in seinem energetisch tiefstmöglichen Zustand, dem Grundzustand. Dieser Zustand maximaler Ordnung hat nur eine einzige Realisierungsmöglichkeit, weshalb die Entropie null ist. Eine Konsequenz des dritten Hauptsatzes ist, dass der absolute Nullpunkt unerreichbar ist.
 \end{importantbox}
-Die Entropie wird auch oft über die statistischen Realisierungsmöglichkeiten $W$ eines makroskopischen Zustands definiert:
+Die Entropie wird auch oft über die statistischen Realisierungsmöglichkeiten $\Omega$ eines makroskopischen Zustands definiert:
 \begin{equation}
-    S = \kB \ln(W) \mDot
+    S = \kB \ln(\Omega) \mDot
 \end{equation}
-Hierbei ist $\kB$ die Boltzmann-Konstante. Am absoluten Nullpunkt hat ein perfekter Kristall nur eine Realisierungsmöglichkeit ($W=1$), was zu $S = \kB \ln(1) = 0$ führt.
+Hierbei ist $\kB$ die Boltzmann-Konstante. Am absoluten Nullpunkt hat ein perfekter Kristall nur eine Realisierungsmöglichkeit ($\Omega=1$), was zu $S = \kB \ln(1) = 0$ führt.
 
 % Chapter end - always start new page after chapter
 \newpage

@@ -7,8 +7,8 @@ In der Alltagssprache wird der Begriff \gDQ{Arbeit} vielfältig verwendet, doch 
 \begin{rememberbox}[]{Definition: Mechanische Arbeit}
     Mechanische Arbeit $W$ (\textit{Engl.:} \gDQ{work}) ist die Übertragung von Energie von einem System auf ein anderes durch das Wirken einer Kraft entlang eines Weges. Arbeit ist eine skalare Größe, die positiv, negativ oder null sein kann. 
     \begin{itemize}[itemsep=1pt]
-        \item Die von einem Körper A an einem Körper B verrichtete Arbeit $W$ ist \textbf{positiv}, wenn Energie von A auf B übertragen wird. A leistet eine Arbeit, $W > 0$.
-        \item Sie ist \textbf{negativ}, wenn Energie von B auf A übertragen wird. An A wird eine Arbeit verrichtet $W < 0$. 
+        \item Die von einem Körper A an einem Körper B verrichtete Arbeit $W$ ist \textbf{positiv}, wenn Energie von A auf B übertragen wird ($W > 0$).
+        \item Sie ist \textbf{negativ}, wenn Energie von B auf A übertragen wird ($W < 0$). Dann verrichtet in Wahrheit B Arbeit an A. 
         \item Wird keine Energie übertragen, ist die Arbeit \textbf{null}. 
     \end{itemize}
 \end{rememberbox}
@@ -19,13 +19,13 @@ Legt ein Massepunkt, der sich im Einfluss eines Kraftfeldes $\ivec{F}(\ivec{r})$
 \end{equation}
 Beachte, dass es sich bei der Multiplikation in \cref{eq: arbeit_infinitesimal} um ein inneres Produkt (Skalarprodukt) aus $\ivec{F}$ und $\Delta \ivec{r}$ handelt und die Arbeit damit ein Skalar ist. Nur die Komponente der Kraft, die parallel zum Wegstück $\Delta\ivec{r}$ liegt, trägt zur Arbeit bei. Eine Kraft, die senkrecht zum Weg wirkt, verrichtet keine Arbeit, da das Skalarprodukt in diesem Fall null ist: 
 \begin{equation}
-    \ivec{F} \cdot \Delta \ivec{r} = 0 \Longleftrightarrow W = 0 \mDot
+    \ivec{F} \cdot \Delta \ivec{r} = 0 \Longleftrightarrow \Delta W = 0 \mDot
 \end{equation}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_ArbeitEnergie/bahnkurve_def_arbeit.png}
-    \caption{Ein Massenpunkt bewegt sich unter dem Einfluss der Kraft $\protect\ivec{F}$ entlang seiner Bahnkurve das Wegelement $\Delta \protect\ivec{r}$ zurück und verrichtet dabei die Arbeit $\Delta W = \protect\ivec{F} \cdot \Delta \protect\ivec{r}$. (Quelle:~\cite[S.~54]{Demtroeder2018})}\label{fig: bahnkurve_arbeit_delta_r}
+    \caption{Ein Massenpunkt legt unter dem Einfluss der Kraft $\protect\ivec{F}$ entlang seiner Bahnkurve das Wegelement $\Delta \protect\ivec{r}$ zurück. Die Kraft verrichtet dabei am Massenpunkt die Arbeit $\Delta W = \protect\ivec{F} \cdot \Delta \protect\ivec{r}$. (Quelle:~\cite[S.~54]{Demtroeder2018})}\label{fig: bahnkurve_arbeit_delta_r}
 \end{figure}
 
 Bewegt sich der Massenpunkt entlang einer beliebigen Bahnkurve von einem Punkt $P_1$ nach $P_2$, dargestellt in \cref{fig: bahnkurve_arbeit_delta_r} so setzt sich die Gesamtarbeit aus den Beiträgen aller kleinen Wegstücke $\Delta\ivecS{r}{i}$ zusammen:
@@ -59,7 +59,7 @@ Damit berechnet sich die Arbeit über:
     W &= \int_{P_1}^{P_2} \ivec{F}(\ivec{r}) \cdot \dd \ivec{r} \\
     &= \int_{x_1}^{x_2} F_x(x,y,z) \dd x + \int_{y_1}^{y_2} F_y(x,y,z) \dd y + \int_{z_1}^{z_2} F_z(x,y,z) \dd z \mComma
 \end{aligned}\end{equation}
-wobei $P_1 = (x_1, y_1, z_1)$ und $P_2 = (x_2, y_2, z_2)$. 
+wobei $P_1 = (x_1, y_1, z_1)$ und $P_2 = (x_2, y_2, z_2)$. \textbf{Achtung:} Im Integral über $x$ müssen $y$ und $z$ als Funktionen von $x$ entlang des Weges $\mathcal{C}$ eingesetzt werden (analog für die beiden anderen Integrale). Erst dadurch geht die Information über den Weg in die Rechnung ein. 
 
 \section{Kraftfelder}\label{sec: kraftfelder}
 Ein Kraftfeld ist ein Raumbereich, in dem auf einen Probekörper an jedem Punkt eine definierte Kraft (nach Betrag und Richtung) wirkt: 
@@ -250,15 +250,15 @@ Das gilt ganz grundsätzlich auch in jeder alltäglichen Situation, in der \gDQ{
 \begin{examplebox}[breakable]{Beispiel: Energieumwandlung beim Autofahren}
     Betrachten wir ein Auto, das mit konstanter Geschwindigkeit fährt. Seine Hauptenergieform ist die \textbf{kinetische Energie} (Bewegungsenergie). Um die Geschwindigkeit zu halten, muss das Auto konstant Energie nachführen, ansonsten würde das Auto langsamer werden. Man könnte meinen, dass also durchwegs Energie \gDQ{verloren} gehe, aber tatsächlich wurde sie nur umgewandelt:
     \begin{itemize}
-        \item \textbf{Rollreibung:} Die Reibung zwischen den Reifen und der Straße erzeugt Wärme. Die kinetische Energie des Autos wird in Wärmeenergie in den Reifen und im Straßenbelag umgewandelt.
-        \item \textbf{Luftreibung:} Das Auto muss die Luft vor sich verdrängen. Diese Wechselwirkung erwärmt die Luftmoleküle. Ein Teil der kinetischen Energie wird also in Wärmeenergie der umgebenden Luft umgewandelt.
+        \item \textbf{Rollreibung:} Die ständige Verformung der Reifen beim Abrollen (Walkarbeit) erzeugt Wärme. Die nachgeführte Energie wird in Wärmeenergie in den Reifen und im Straßenbelag umgewandelt.
+        \item \textbf{Luftreibung:} Das Auto muss die Luft vor sich verdrängen. Diese Wechselwirkung erwärmt die Luftmoleküle. Ein Teil der nachgeführten Energie wird also in Wärmeenergie der umgebenden Luft umgewandelt.
         \item \textbf{Motor-Ineffizienz:} Weniger als die Hälfte der chemischen Energie des Brennstoffs kann in mechanische Energie an den Antriebsstrang übertragen werden. Auch das Getriebe und andere bewegliche Teile tragen durch Reibung zur Wärmeerzeugung bei.
     \end{itemize}
-    Die ursprüngliche kinetische Energie des Fahrzeugs wird also nicht vernichtet, sondern vollständig in andere Energieformen -- hauptsächlich Wärme und zu einem kleinen Teil auch Schallenergie -- umgewandelt. Der Energieerhaltungssatz bleibt somit erfüllt, wenn man die Systemgrenze so zieht, dass alle Körper, die Energie aufnehmen oder abgegeben mitberücksichtigt. 
+    Die vom Motor aus dem Treibstoff bereitgestellte Energie wird also nicht vernichtet, sondern vollständig in andere Energieformen -- hauptsächlich Wärme und zu einem kleinen Teil auch Schallenergie -- umgewandelt. Der Energieerhaltungssatz bleibt somit erfüllt, wenn man die Systemgrenze so zieht, dass alle Körper, die Energie aufnehmen oder abgeben, mitberücksichtigt werden. 
 \end{examplebox}
 
 \subsection{Kinetische Energie}\label{subsec: kinetische_energie}
-Wenn eine resultierende äußere Kraft\footnote{Als \gDQ{äußere Kraft} bezeichnet man eine Kraft, die nicht zum betrachteten System gehört. Diese Kraft kann demnach die Energie des Systems ändern} an einem freien Körper Arbeit verrichtet, führt dies zu einer Änderung seiner Bewegungsenergie. Betrachten wir eine konstante Kraft $\ivec{F} = F_x \ivecS{e}{x}$, die auf eine Masse $m$ entlang der $x$-Achse wirkt. Die verrichtete Arbeit ist:
+Wenn eine resultierende äußere Kraft\footnote{Als \gDQ{äußere Kraft} bezeichnet man eine Kraft, die nicht zum betrachteten System gehört. Diese Kraft kann demnach die Energie des Systems ändern} an einem Körper (Massenpunkt) Arbeit verrichtet, führt dies zu einer Änderung seiner Bewegungsenergie. Betrachten wir eine konstante Kraft $\ivec{F} = F_x \ivecS{e}{x}$, die auf eine Masse $m$ entlang der $x$-Achse wirkt. Die verrichtete Arbeit ist:
 \begin{equation}\label{eq: arbeit_integration_entlang_x}
     W = \int_{x_\text{A}}^{x_\text{E}} F_x \cdot \dd x \mDot
 \end{equation}
@@ -335,14 +335,14 @@ Das obige Ergebnis --
 -- ist als Arbeit-Energie-Satz bekannt.
 
 \begin{rememberbox}[]{Arbeit-Energie-Satz}
-    Die von allen äußeren Kräften an einem freien Körper verrichtete Gesamtarbeit $W_{\text{ges}}$ entspricht der Änderung seiner kinetischen Energie $\Delta E_{\text{kin}}$
+    Die von allen äußeren Kräften an einem Massenpunkt verrichtete Gesamtarbeit $W_{\text{ges}}$ entspricht der Änderung seiner kinetischen Energie $\Delta E_{\text{kin}}$
     \begin{equation}\label{eq: arbeit_energie_satz}
         W_{\text{ges}} = \Delta E_{\text{kin}}\mDot
     \end{equation}
 \end{rememberbox}
 
 \subsection{Potenzielle Energie}\label{subsec: potentielle_energie}
-Während die Arbeit an einem freien Teilchen nur dessen kinetische Energie ändert, kann die \textbf{Arbeit}, die \textbf{an einem System} (\zB Erde-Teilchen-System) mit inneren konservativen Kräften verrichtet wird, als \textbf{potenzielle Energie (Lageenergie)} gespeichert werden. 
+Während die Arbeit an einem einzelnen Teilchen nur dessen kinetische Energie ändert, kann die \textbf{Arbeit}, die \textbf{an einem System} (\zB Erde-Teilchen-System) mit inneren konservativen Kräften verrichtet wird, als \textbf{potenzielle Energie (Lageenergie)} gespeichert werden. 
 \begin{figure}[htb]
     \centering
     \resizebox{0.5\linewidth}{!}{    
@@ -395,7 +395,6 @@ Da die Bewegung langsam erfolgt, ist die Geschwindigkeitsänderung und somit $\D
     W^{\text{ext}} = \Delta E_{\text{pot}} \mDot
 \end{equation}
 Wenn wir die Situation aus der Sicht des konservativen Kraftfeldes (hier: Gravitationsfeld) betrachten, so wird gegen das Gravitationsfeld Arbeit verrichtet $W_{\text{G}} = -W^{\text{ext}} = -mg \Delta h$. Die externe Arbeit leistet gegen das Gravitationskraftfeld eine Arbeit und erhöht dabei die potenzielle Energie des Systems. Dies motiviert die folgende allgemeine Definition für konservative Kräfte:
-{\text{ext}}
 \begin{importantbox}[]{Definition: Potenzielle Energie}
     Die Änderung der potenziellen Energie $\Delta E_{\text{pot}}$ in einem konservativen Kraftfeld ist definiert als die negative Arbeit, die vom konservativen Kraftfeld $\ivec{F} = \ivecS{F}{\text{kons}}$ verrichtet wird: 
     \begin{equation}\label{eq: potenzielle_energie_def}
@@ -482,8 +481,8 @@ Die Arbeit, die von der Feder verrichtet wird, wenn der Block von einer Anfangsp
 \end{equation}
 Da die Arbeit nur von den Endpunkten abhängt, ist die Federkraft eine konservative Kraft. Das Resultat zeigt, dass für 
 \begin{itemize}
-    \item $x_\text{E} > x_\text{A} \Rightarrow W_\text{Feder} < 0$ -- die Feder verrichtet Arbeit am Block, 
-    \item $x_\text{A} > x_\text{E} \Rightarrow W_\text{Feder} > 0$ -- der Block verrichtet Arbeit an der Feder.
+    \item $|x_\text{E}| > |x_\text{A}| \Rightarrow W_\text{Feder} < 0$ -- die Feder wird stärker gespannt: Der Block verrichtet Arbeit an der Feder (Energie wird in der Feder gespeichert), 
+    \item $|x_\text{E}| < |x_\text{A}| \Rightarrow W_\text{Feder} > 0$ -- die Feder entspannt sich: Die Feder verrichtet Arbeit am Block.
 \end{itemize}
 
 \subsection{Potenzielle Energie einer Feder}\label{subsec: potentielle_energie_feder}
@@ -547,10 +546,10 @@ Der Energieerhaltungssatz ist jedoch ein universelles Prinzip, wenn man \textit{
     \end{equation}
     Für ein \textbf{offenes} System kann sich die Gesamtenergie ändern, aber nur um den Betrag, der mit der Umgebung ausgetauscht wird. 
 \end{importantbox}
-Zwei Beispiele für nichtkonservative Systeme: 
+Zwei Beispiele, bei denen weitere Energieformen berücksichtigt werden müssen: 
 \begin{itemize}
     \item Bei chemischen Reaktionen kann die Summe aus mechanischer Energie und Wärmeenergie unter Umständen nicht erhalten bleiben, wenn ein Anteil der Energie in gewissen Molekülstrukturen und deren Umwandlung gespeichert wird. 
-    \item Bei der Kernspaltung zerfällt ein Atom in kleinere Atome. Das größere Ausgangsatom hat eine größere Bindungsenergie als die Zerfallsprodukte und ein Teil der dabei freiwerdenden Energie wird in Form von elektromagnetische Strahlung ($\gamma$-Strahlung) oder Teilchenstrahlung ($\alpha$- und $\beta$-Strahlung) abgegeben. 
+    \item Bei der Kernspaltung zerfällt ein schwerer Atomkern in zwei mittelschwere Kerne. Die Spaltprodukte sind stärker gebunden (höhere Bindungsenergie pro Nukleon) als der Ausgangskern. Die Differenz wird frei -- vor allem als Bewegungsenergie der Spaltprodukte, außerdem in Form von Neutronen und elektromagnetischer Strahlung ($\gamma$-Strahlung). 
 \end{itemize}
 
 % Chapter end - always start new page after chapter

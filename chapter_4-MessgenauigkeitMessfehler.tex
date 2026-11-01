@@ -21,7 +21,7 @@ Signifikante Stellen sind nicht dasselbe wie Nachkommastellen.
 \num{15.23} & 4 & 2 \\
 \num{0.1523} & 4 & 4 \\
 \num{1.523e3} & 4 & 3 \\
-\num{4500} & 2 & 0 \\
+\num{4500} & 2--4 (mehrdeutig) & 0 \\
 \num{4500.0} & 5 & 1 \\
 \num{4.5e3} & 2 & 1 \\
 \num{4.50e2} & 3 & 2 \\
@@ -42,7 +42,7 @@ Vorsicht ist geboten beim Wechsel von Einheiten oder Zehnerpotenzen (die Genauig
 \end{equation}
 Die Umrechnung stimmt und die Meterangabe hat definitiv 2 signifikante Stellen. Die Zentimeterangabe könnte allerdings 2 oder 3 signifikante Stellen haben. Besser wäre es also $\SI{3.2e2}{\centi\meter}$ zu schreiben.
 
-Eine Zahl in nicht wissenschaftlichem Format wird meist so interpretiert, dass die letzte Stelle gerundet ist. Die Zahl $50$ kann also zwischen $\num{49.5}$ und $\num{50.4}$ liegen. Die signifikanten Stellen enden an der letzten Stelle, die nach dem Runden noch angegeben werden kann.
+Eine Zahl in nicht wissenschaftlichem Format wird meist so interpretiert, dass die letzte Stelle gerundet ist. Die Zahl $50$ steht dann für einen Wert $\num{49.5} \le x < \num{50.5}$. Ist die Null dagegen nur Platzhalter (1 signifikante Stelle), so gilt $45 \le x < 55$ -- eindeutig wird es erst in wissenschaftlicher Schreibweise ($\num{5.0e1}$ bzw. $\num{5e1}$). Die signifikanten Stellen enden an der letzten Stelle, die nach dem Runden noch angegeben werden kann.
 
 \section{Messgenauigkeit und Messfehler}\label{sec: Messgenauigkeit_Messfehler}
 \textbf{Jede Messung ist fehlerbehaftet}. Der Messwert muss daher mit einer Fehlerangabe versehen werden, um seine Genauigkeit feststellen zu können. 
@@ -99,41 +99,67 @@ nähert sich dem wahren Wert bei unendlich vielen Messungen
     \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Grundlagen/stat_Verteilung_messwerte.png}
     \caption[Typische Verteilung von Messwerten um den Mittelwert bei statistischer Fehlerverteilung]{Typische Verteilung von Messwerten $x_i$ um den Mittelwert $\bar{x}$ bei statistischer Fehlerverteilung.}\label{fig: stat_Verteilung_Messwerte}
 \end{figure}
-Liegen nur statistische Fehler vor, erhält man für die Verteilung der Messwerte eine Normalverteilung bei einer hohen Anzahl an Messwerten.\footnote{Vorausgesetzt die Messgröße ist kontinuierlich und die Schwankung auch.}
+Liegen nur statistische Fehler vor, die sich aus vielen kleinen, voneinander unabhängigen Störungen zusammensetzen, so erhält man bei einer hohen Anzahl an Messwerten näherungsweise eine Normalverteilung.\footnote{Vorausgesetzt die Messgröße ist kontinuierlich und die Schwankung auch.}
 
 \begin{importantbox}[]{}
     Das \textbf{arithmetische Mittel der Einzelmessungen}
     \begin{equation}
         \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i \mDot
     \end{equation}
-    Die \textbf{Standardabweichung der Einzelmessungen}
+    Die \textbf{Standardabweichung der Einzelmessungen} -- sie gibt an, wie stark die einzelnen Messwerte um den Mittelwert streuen:
     \begin{equation}
         \sigma = \sqrt{\frac{\sum {\left( \bar{x} - x_i \right)}^2}{n-1}} \mDot
     \end{equation}
-    Mittlere Fehler des arithmetischen Mittels
+    Der \textbf{mittlere Fehler des arithmetischen Mittels} (Standardabweichung des Mittelwerts) -- er gibt an, wie genau der Mittelwert den wahren Wert trifft:
     \begin{equation}
         \sigma_m = \frac{\sigma}{\sqrt{n}} = \sqrt{\frac{\sum {\left(\bar{x} - x_i \right)}^2}{n(n-1)}} \mDot
     \end{equation}
 \end{importantbox}
-Bei sehr vielen Messungen nähert sich der Mittelwert dem wahren Wert
-\begin{equation}
-    x_\mathrm{W} = \lim_{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^n x_i
-\end{equation}
-Die Definition der Standardabweichung bedingt, dass bei sogenannten Normalverteilungen 
+
+\subsubsection*{Standardabweichung $\sigma$ oder mittlerer Fehler $\sigma_m$?}
+Die beiden Größen sehen ähnlich aus, beantworten aber zwei verschiedene Fragen:
 \begin{itemize}[itemsep=1.5pt]
-    \item $68,3 \%$ der Werte innerhalb der \\einfachen Standardabweichung $[\bar{x} - \sigma,\, \bar{x}+\sigma]$,
-    \item $95,4\%$ der Werte innerhalb der \\zweifachen Standardabweichung $[\bar{x} - 2\sigma,\, \bar{x} + 2\sigma]$, und
-    \item $99,7\%$ der Werte liegen innerhalb der \\dreifachen Standardabweichung $[\bar{x} - 3\sigma,\, \bar{x} + 3\sigma]$
+    \item $\sigma$ beschreibt die \textbf{Messmethode}: Wie weit liegt eine \textit{einzelne} Messung typischerweise neben dem Mittelwert? Diese Streuung wird durch mehr Messungen \textit{nicht} kleiner -- $\sigma$ nähert sich bei vielen Messungen einem festen Wert, der für das Messverfahren charakteristisch ist.
+    \item $\sigma_m$ beschreibt das \textbf{Messergebnis}: Wie genau ist der \textit{Mittelwert} aus $n$ Messungen? Weil sich zufällige Abweichungen nach oben und unten beim Mitteln teilweise aufheben, wird $\sigma_m$ mit wachsendem $n$ kleiner -- allerdings nur mit $1/\sqrt{n}$: Für die halbe Unsicherheit braucht man viermal so viele Messungen.
 \end{itemize}
-liegen.
+Bei sehr vielen Messungen geht daher $\sigma_m \to 0$, und der Mittelwert nähert sich dem wahren Wert
+\begin{equation}
+    x_\mathrm{W} = \lim_{n \rightarrow \infty} \frac{1}{n} \sum_{i=1}^n x_i \mDot
+\end{equation}
+
+Bei normalverteilten Messwerten liegen
+\begin{itemize}[itemsep=1.5pt]
+    \item $68,3 \%$ der Einzelwerte innerhalb der \\einfachen Standardabweichung $[\bar{x} - \sigma,\, \bar{x}+\sigma]$,
+    \item $95,4\%$ der Einzelwerte innerhalb der \\zweifachen Standardabweichung $[\bar{x} - 2\sigma,\, \bar{x} + 2\sigma]$, und
+    \item $99,7\%$ der Einzelwerte innerhalb der \\dreifachen Standardabweichung $[\bar{x} - 3\sigma,\, \bar{x} + 3\sigma]$.
+\end{itemize}
+Für den Mittelwert gilt dasselbe mit $\sigma_m$: Mit etwa \SI{68}{\percent} Wahrscheinlichkeit liegt der wahre Wert im Intervall $[\bar{x} - \sigma_m,\, \bar{x}+\sigma_m]$.
+
+\begin{rememberbox}[]{Welche Größe gehört ins Messergebnis?}
+    Ein Messergebnis wird als Mittelwert mit dem mittleren Fehler des Mittelwerts angegeben,
+    \begin{equation*}
+        x = \bar{x} \pm \sigma_m \mComma
+    \end{equation*}
+    \textbf{nicht} mit der Standardabweichung $\sigma$ der Einzelmessung. $\sigma$ verwendet man, wenn man wissen möchte, wie genau \textit{eine} Messung mit dieser Methode ist.
+
+    Achtung: $\sigma_m$ erfasst nur die \textbf{statistischen} Fehler. Systematische Fehler (\zB eine falsch gehende Uhr) werden durch Mitteln nicht kleiner und müssen gesondert abgeschätzt werden.
+\end{rememberbox}
 
 \begin{examplebox}[sidebyside, sidebyside align=top, lower separated=false, righthand width=5.0cm]{Beispiel}
     Schwingungsdauer\footnotemark{} eines Fadenpendels: \newline
-    Man misst 
-    Daraus ergibt sich ein Mittelwert von $\SI{2.00}{\second}$ und eine Standardabweichung von $\sigma = \SI{0.05}{\second}$: 
+    Man misst $n = 10$-mal die Schwingungsdauer (Tabelle rechts).
+    \begin{itemize}[itemsep=1.5pt]
+        \item Mittelwert: $\bar{T} = \SI{2.000}{\second}$
+        \item Standardabweichung der Einzelmessung: $\sigma \approx \SI{0.046}{\second}$. \newline
+        Eine einzelne Messung liegt also typischerweise um etwa \SI{0.05}{\second} daneben. Tatsächlich liegen 7 der 10 Werte im Intervall $[\SI{1.954}{\second},\, \SI{2.046}{\second}]$ -- passend zu den erwarteten \SI{68}{\percent}.
+        \item Mittlerer Fehler des Mittelwerts: $\sigma_m = \sigma/\sqrt{10} \approx \SI{0.015}{\second}$. \newline
+        Der Mittelwert aus 10 Messungen ist also etwa dreimal genauer als eine Einzelmessung.
+    \end{itemize}
+    Das Messergebnis lautet daher
     \begin{equation*}
-        T_W = \SI{2.00 \pm 0.05}{\second}
+        T = \SI{2.000 \pm 0.015}{\second} \mDot
     \end{equation*}
+    Hätte man nur einmal gemessen, wäre die Unsicherheit $\pm\SI{0.05}{\second}$ gewesen. Für $\pm\SI{0.0075}{\second}$ (halbe Unsicherheit) bräuchte man 40 Messungen.
     \tcblower
     \begin{center}
     \begin{tabular}{C{1.6cm} | C{1.6cm}}

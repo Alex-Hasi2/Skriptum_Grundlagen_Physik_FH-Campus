@@ -42,10 +42,10 @@ $\approx$ & ungefähr gleich & $\frac{\partial}{\partial x}$ & partielle Ableitu
 $\sim$ & (asymptotisch) ähnlich & $x'$ & 1. Ableitung \\
 $\propto$ & proportional zu & $\dot{x}$ & 1. Ableitung nach der Zeit \\
 $\gg$ & viel größer als & $\int$ & Integral \\
-$\ll$ & viel kleiner als & $\Sigma$ & Summe \\
+$\ll$ & viel kleiner als & $\sum$ & Summe \\
 $\hat{=}$ & entspricht & $:=$ & Definition \\
 $\wedge$ & mathematisches \gDQ{Und} & $\stackrel{?}{=}$ & Hypothese/Frage \\
-$\vee$ & mathematisches \gDQ{Oder} & $\stackrel{!}{=}$ & bekannte Gleichheit \\
+$\vee$ & mathematisches \gDQ{Oder} & $\stackrel{!}{=}$ & Forderung (soll gleich sein) \\
 \oBdA & ohne Beschränkung der Allgemeinheit & $\infty$ & unendlich\\
 \end{tabular}
 \end{center}
@@ -90,9 +90,9 @@ Manchmal kommt es vor, dass man spezielle (physikalische) Begriffe zwar schon h�
     stationär & zeitlich unveränderlich \\
     periodisch & sich in gleichen Zeitabständen wiederholend \\
     transient & vorübergehend, nicht dauerhaft, Einschwingvorgang \\
-    reversibel & umkehrbar (ohne Energieverlust) \\
-    irreversibel & nicht umkehrbar (mit Energieverlust) \\
-    konservativ & Energie bleibt erhalten \\
+    reversibel & umkehrbar (ohne Entropiezunahme, keine bleibende Änderung der Umgebung) \\
+    irreversibel & nicht umkehrbar (mit Entropiezunahme) \\
+    konservativ & mechanische Energie bleibt erhalten \\
     dissipativ & Energie wird in andere Formen umgewandelt (z.B. Wärme) \\
     \bottomrule
   \end{tabularx}
@@ -148,7 +148,7 @@ Ladung & Coulomb & \si{\coulomb} & \si{\ampere\,\second} & $Q, q$ \\
 
 \section*{Einheitenpräfixe}\label{sec: Einheitenpräfixe}
 \addcontentsline{toc}{section}{Einheitenpräfixe} 
-Einheitenpräfixe, auch Vorsilben genannt, vereinfachen den Umgang mit (sehr) großen oder (sehr) kleinen Zahlenwerten. Ihre Aufgabe ist es, eine Basiseinheit (wie Meter, Gramm oder Sekunde) mit einer festen Zehnerpotenz zu skalieren (multiplizieren).
+Einheitenpräfixe, auch Vorsilben genannt, vereinfachen den Umgang mit (sehr) großen oder (sehr) kleinen Zahlenwerten. Ihre Aufgabe ist es, eine Einheit (wie Meter, Gramm oder Sekunde) mit einer festen Zehnerpotenz zu skalieren (multiplizieren).
 
 Man verwendet sie, um lange Ziffernfolgen zu vermeiden und Zahlen lesbarer und verständlicher zu machen. Anstatt zum Beispiel $\SI{1000}{\meter}$ zu schreiben, verwendet man das Präfix \textit{Kilo} und schreibt \SI{1}{\kilo\meter}. Genauso ist es bei sehr kleinen Werten praktischer, \SI{1}{\nano\meter} (Nanometer) statt \SI{0,000000001}{\meter} zu schreiben. Diese kompakte Schreibweise reduziert die Fehleranfälligkeit und erleichtert das alltägliche Arbeiten mit physikalischen Größen erheblich.
 
@@ -197,7 +197,7 @@ dezi    & d       & $10^{-1}$  & deka   & da & $10^{1}$  \\
 
 \vspace{1em} % Ein kleiner vertikaler Abstand
 
-Jede dieser Vorsilben kann mit beliebigen Einheiten kombiniert werden. Das Präfix steht dabei immer direkt vor der Einheit, die skaliert werden soll: Die Einheit $\si{\kilo\gram\meter\second^{-1}}$ ist demnach nicht dasselbe wie $\si{\gram\kilo\meter\second^{-1}}$.
+Jede dieser Vorsilben kann mit beliebigen Einheiten kombiniert werden. Das Präfix steht dabei immer direkt vor der Einheit, die skaliert werden soll: Bei Potenzen wird das Präfix mitpotenziert: $1\,\mathrm{km}^2 = (10^3\,\mathrm{m})^2 = 10^6\,\mathrm{m}^2$ und nicht $10^3\,\mathrm{m}^2$.
 
 \subsubsection*{Beispiele:}
 \begin{multicols}{3}
