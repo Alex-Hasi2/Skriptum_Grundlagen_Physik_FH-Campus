@@ -44,9 +44,9 @@ Diese Skala, die heute vor allem in den USA gebräuchlich ist, wurde von Daniel 
     \caption{Vergleich der Celsius- und Fahrenheit-Skala mit ihren jeweiligen Fixpunkten (in rot). (Quelle:~\cite[S.~267]{Demtroeder2018})}\label{fig: temp_skalen_vergleich}
 \end{figure}
 
-Die Umrechnung von Fahrenheit ($T_F$) nach Celsius ($T_C$) erfolgt über folgende Formel:
+Die Umrechnung von Fahrenheit ($T_F$) nach Celsius ($\theta$) erfolgt über folgende Formel:
 \begin{equation}\label{eq: fahrenheit_celsius_umrechnung}
-    T_C\, [\si{\celsius}] = \frac{5}{9} (T_F\, [\si{\fahrenheit}]- 32) \mDot
+    \theta\, [\si{\celsius}] = \frac{5}{9} (T_F\, [\si{\fahrenheit}]- 32) \mDot
 \end{equation}
 
 \subsection{Die Kelvin-Skala}\label{subsec: Kelvin_Skala}
@@ -66,7 +66,7 @@ Im Gegensatz zur Celsius-Skala benötigt die Kelvin-Skala eigentlich nur einen e
 
 Die Celsius-Skala ist heute über die Kelvin-Skala definiert. Die Umrechnung lautet:
 \begin{equation}\label{eq: kelvin_celsius_umrechnung}
-    T_C\, [\si{\celsius}] = T\,[\si{\kelvin}] - \num{273.15} \mDot
+    \theta\, [\si{\celsius}] = T\,[\si{\kelvin}] - \num{273.15} \mDot
 \end{equation}
 
 \begin{importantbox}[]{Temperaturdifferenzen}
@@ -218,22 +218,22 @@ In \cref{tab: volumen_ausdehnungskoeffizienten} sind einige Volumenausdehnungsko
 \subsection{Ausdehnung von Gasen (Gesetze von Gay-Lussac)}\label{subsec: ausdehnung_gase}
 Auch Gase dehnen sich bei Erwärmung aus, jedoch deutlich stärker als Festkörper oder Flüssigkeiten. Die Ausdehnungskoeffizienten von Gasen sind etwa zwei Größenordnungen größer als die von Festkörpern und etwa eine Größenordnung größer als die von Flüssigkeiten. Die \textbf{Gesetze von Gay-Lussac} beschreiben dieses Verhalten für ideale Gase:
 \begin{enumerate}
-    \item \textbf{Bei konstantem Druck (isobar):} Hält man den Druck eines Gases konstant, so ist das Volumen direkt proportional zur \textbf{absoluten Temperatur} $T$ (in Kelvin). Wir starten mit der Volumenausdehnung als Funktion der Celsius-Temperatur $\vartheta$:
+    \item \textbf{Bei konstantem Druck (isobar):} Hält man den Druck eines Gases konstant, so ist das Volumen direkt proportional zur \textbf{absoluten Temperatur} $T$ (in Kelvin). Wir starten mit der Volumenausdehnung als Funktion der Celsius-Temperatur $\theta$:
     \begin{equation}\label{eq: gay_lussac_isobar}
-        V(\vartheta) = V_0(1 + \gamma \vartheta), % \quad \text{oder} \quad \frac{V}{T} = \const
+        V(\theta) = V_0(1 + \gamma \theta), % \quad \text{oder} \quad \frac{V}{T} = \const
     \end{equation}
-    wobei für ideale Gase $\gamma = \dfrac{1}{\num{273.15}}\,\si{\celsius^{-1}}$ eine Konstante ist und $\vartheta$ die Temperatur in $\si{\celsius}$ ist. Bezieht man die Volumenänderung auf eine Referenztemperatur von $\vartheta_0 = \SI{0}{\celsius}$ ($T_0 = \SI{273.15}{\kelvin}$), so lässt sich \cref{eq: gay_lussac_isobar} auch auf die absolute Temperatur $T = \qty{273.15} + \vartheta$ umformen  
+    wobei für ideale Gase $\gamma = \dfrac{1}{\num{273.15}}\,\si{\celsius^{-1}}$ eine Konstante ist und $\theta$ die Temperatur in $\si{\celsius}$ ist. Bezieht man die Volumenänderung auf eine Referenztemperatur von $\theta_0 = \SI{0}{\celsius}$ ($T_0 = \SI{273.15}{\kelvin}$), so lässt sich \cref{eq: gay_lussac_isobar} auch auf die absolute Temperatur $T = \qty{273.15} + \theta$ umformen  
     \begin{equation} \begin{gathered}
-        V(\vartheta) = V_0(1+\gamma \vartheta) = V_0 \left(1 + \frac{\vartheta}{\num{273.15}} \right) = V_0\left( \frac{\num{273.15} + \vartheta}{\num{273.15}} \right) = \\
+        V(\theta) = V_0(1+\gamma \theta) = V_0 \left(1 + \frac{\theta}{\num{273.15}} \right) = V_0\left( \frac{\num{273.15} + \theta}{\num{273.15}} \right) = \\
         \implies V(T) = V_0 \left( \frac{T}{T_0} \right) \mDot
     \end{gathered}\end{equation}
     Somit findet man, dass 
     \begin{equation}\label{eq: gay_lussac_V_ueber_V0}
         \frac{V}{V_0} = \frac{T}{T_0} \quad \text{oder} \quad \frac{V}{T} = \frac{V_0}{T_0} = \const \mDot
     \end{equation}
-    \item \textbf{Bei konstantem Volumen (isochor):} Hält man das Volumen eines Gases konstant, so ist der Druck eines Gases direkt proportional zur absoluten Temperatur. Auch hier beginnt man mit der Druckänderung als Funktion der Celsius-Temperatur $\vartheta$
+    \item \textbf{Bei konstantem Volumen (isochor):} Hält man das Volumen eines Gases konstant, so ist der Druck eines Gases direkt proportional zur absoluten Temperatur. Auch hier beginnt man mit der Druckänderung als Funktion der Celsius-Temperatur $\theta$
     \begin{equation}
-        p(\vartheta) = p_0(1 + \gamma_p \vartheta)
+        p(\theta) = p_0(1 + \gamma_p \theta)
     \end{equation}
     und formt dies auf die absolute Temperatur $T$ (in Kelvin) um. Somit erhält man 
     \begin{equation}\label{eq: gay_lussac_p_ueber_p0}
@@ -359,46 +359,46 @@ Um dem gemessenen Druck eine Temperatur in Grad Celsius zuzuordnen, muss das The
     \end{equation}
 \end{enumerate}
 
-Da der Druck bei konstantem Volumen linear mit der Temperatur steigt (Gesetz von Amontons), kann nun für jeden beliebigen gemessenen Druck $p_T$ die zugehörige Temperatur $T$ interpoliert werden.
+Da der Druck bei konstantem Volumen linear mit der Temperatur steigt (Gesetz von Amontons), kann nun für jeden beliebigen gemessenen Druck $p_\theta$ die zugehörige Temperatur $\theta$ interpoliert werden.
 
 \begin{rememberbox}{Temperaturskala am Gasthermometer}
-    Die Temperatur $T$ in Grad Celsius ergibt sich aus dem Verhältnis der Druckänderung zur Druckdifferenz der beiden Fixpunkte:
+    Die Temperatur $\theta$ in Grad Celsius ergibt sich aus dem Verhältnis der Druckänderung zur Druckdifferenz der beiden Fixpunkte:
     \begin{equation}\label{eq: formel_gasthermometer_celsius}
-        T[\si{\celsius}] = \frac{p_T - p_0}{p_{100} - p_0} \cdot \SI{100}{\celsius} \mDot
+        \theta = \frac{p_\theta - p_0}{p_{100} - p_0} \cdot \SI{100}{\celsius} \mDot
     \end{equation}
-    Hierbei ist $p_T$ der Druck bei der zu messenden Temperatur und $p_0$ \bzw $p_{100}$ sind die Drücke am Gefrier- \bzw Siedepunkt von Wasser.
+    Hierbei ist $p_\theta$ der Druck bei der zu messenden Temperatur und $p_0$ \bzw $p_{100}$ sind die Drücke am Gefrier- \bzw Siedepunkt von Wasser.
 \end{rememberbox}
 
 \subsubsection{Herleitung der Formel}
-Die Herleitung von \cref{eq: formel_gasthermometer_celsius} basiert auf der Annahme, dass sich der Druck eines idealen Gases bei konstantem Volumen linear mit der Temperatur ändert (Gesetz von Amontons). Geometrisch entspricht dies einer Geraden im $(p, T)$-Diagramm, die durch zwei experimentell bestimmte Punkte verläuft: Den Eispunkt $(p_0, T_0)$ und den Siedepunkt $(p_{100}, T_{100})$ von Wasser. Wir verwenden die Zweipunktform der Geradengleichung mit dem unbekannten Punkt $(p_T, T)$:
+Die Herleitung von \cref{eq: formel_gasthermometer_celsius} basiert auf der Annahme, dass sich der Druck eines idealen Gases bei konstantem Volumen linear mit der Temperatur ändert (Gesetz von Amontons). Geometrisch entspricht dies einer Geraden im $(p, \theta)$-Diagramm, die durch zwei experimentell bestimmte Punkte verläuft: Den Eispunkt $(p_0, \theta_0)$ und den Siedepunkt $(p_{100}, \theta_{100})$ von Wasser. Wir verwenden die Zweipunktform der Geradengleichung mit dem unbekannten Punkt $(p_\theta, \theta)$:
 \begin{equation}\begin{aligned}
-    \frac{T - T_{0}}{p_T - p_{0}} &= \frac{T_{100} - T_{0}}{p_{100} - p_{0}} \mComma \\
-    \frac{T - 0}{p_T - p_0} &= \frac{100 - 0}{p_{100} - p_0} \mDot
+    \frac{\theta - \theta_{0}}{p_\theta - p_{0}} &= \frac{\theta_{100} - \theta_{0}}{p_{100} - p_{0}} \mComma \\
+    \frac{\theta - 0}{p_\theta - p_0} &= \frac{100 - 0}{p_{100} - p_0} \mDot
 \end{aligned}\end{equation}
-Durch Umformen nach $T$ folgt direkt die gesuchte Beziehung:
+Durch Umformen nach $\theta$ folgt direkt die gesuchte Beziehung:
 \begin{align}
-    \frac{T}{p_T - p_0} &= \frac{100}{p_{100} - p_0} & | \cdot (p_T - p_0) \notag \\
-    T &= \frac{100}{p_{100} - p_0} \cdot (p_T - p_0) \notag \\
-    T &= \frac{p_T - p_0}{p_{100} - p_0} \cdot \SI{100}{\celsius} \mDot \label{eq: herleitung_ende}
+    \frac{\theta}{p_\theta - p_0} &= \frac{100}{p_{100} - p_0} & | \cdot (p_\theta - p_0) \notag \\
+    \theta &= \frac{100}{p_{100} - p_0} \cdot (p_\theta - p_0) \notag \\
+    \theta &= \frac{p_\theta - p_0}{p_{100} - p_0} \cdot \SI{100}{\celsius} \mDot \label{eq: herleitung_ende}
 \end{align}
 Diese lineare Skala ist die \textbf{empirische Celsiusskala} des Gasthermometers.
 \subsubsection*{Vereinfachung in der Praxis}
 In der Praxis ist es oft nicht nötig, die absoluten Drücke zu berechnen. Setzen wir die Definition des hydrostatischen Drucks $p = p_{\atm} + \rho_{\text{Hg}} g h$ in die Temperaturformel ein, so sehen wir, dass sich der Atmosphärendruck $p_{\atm}$ durch die Differenzbildung eliminiert:
 \begin{align}
-    p_T - p_0 &= (p_{\atm} + \rho_{\text{Hg}} g h_T) - (p_{\atm} + \rho_{\text{Hg}} g h_0) \notag \\
-    &= \rho_{\text{Hg}} g (h_T - h_0) \mDot
+    p_\theta - p_0 &= (p_{\atm} + \rho_{\text{Hg}} g h_\theta) - (p_{\atm} + \rho_{\text{Hg}} g h_0) \notag \\
+    &= \rho_{\text{Hg}} g (h_\theta - h_0) \mDot
 \end{align}
 Dasselbe gilt für den Nenner ($p_{100} - p_0$). Setzt man dies in \cref{eq: formel_gasthermometer_celsius} ein, kürzen sich auch die Dichte $\rho_{\text{Hg}}$ und die Erdbeschleunigung $g$ heraus:
 
 \begin{equation}
-    T = \frac{\cancel{\rho_{\text{Hg}} g} (h_T - h_0)}{\cancel{\rho_{\text{Hg}} g} (h_{100} - h_0)} \cdot 100 
-    = \frac{h_T - h_0}{h_{100} - h_0} \cdot \SI{100}{\celsius} \mDot
+    \theta = \frac{\cancel{\rho_{\text{Hg}} g} (h_\theta - h_0)}{\cancel{\rho_{\text{Hg}} g} (h_{100} - h_0)} \cdot 100 
+    = \frac{h_\theta - h_0}{h_{100} - h_0} \cdot \SI{100}{\celsius} \mDot
 \end{equation}
 
 \begin{importantbox}{Praktische Messung}
     Solange der Atmosphärendruck während der Kalibrierung und Messung konstant bleibt, genügt es, die \textbf{Höhendifferenzen} der Quecksilbersäulen zu messen. Die Temperatur ist proportional zum Verhältnis der Höhenänderungen:
     \begin{equation}
-        T[\si{\celsius}] = \frac{h_T - h_0}{h_{100} - h_0} \cdot \SI{100}{\celsius} \mDot
+        \theta = \frac{h_\theta - h_0}{h_{100} - h_0} \cdot \SI{100}{\celsius} \mDot
     \end{equation}
 \end{importantbox}
 
@@ -1254,12 +1254,12 @@ Betrachten wir ein Experiment, bei dem Eis mit einer Anfangstemperatur von $\SI{
 
             % --- 1. Achsen zeichnen ---
             \draw[axis] (0, \yMelt) -- (\xEnd+0.5, \yMelt) node[right] {$t \,[\si{\second}]$}; 
-            \draw[axis] (0, 0) -- (0, \yBox+1) node[left] {\large $T\, [\si{\celsius}]$};
+            \draw[axis] (0, 0) -- (0, \yBox+1) node[left] {\large $\theta\, [\si{\celsius}]$};
             
             % --- 2. Ticks und Labels Y-Achse ---
             \draw[thick] (-0.15, \yStart) -- (0.15, \yStart) node[left=0.3cm] {$T_a$}; % Anfang
-            \draw[thick] (-0.15, \yMelt) -- (0.15, \yMelt) node[left=0.3cm] {$T_s = \SI{0}{\celsius}$};
-            \draw[thick] (-0.15, \yBoil) -- (0.15, \yBoil) node[left=0.3cm] {$T_v = \SI{100}{\celsius}$};
+            \draw[thick] (-0.15, \yMelt) -- (0.15, \yMelt) node[left=0.3cm] {$\theta_s = \SI{0}{\celsius}$};
+            \draw[thick] (-0.15, \yBoil) -- (0.15, \yBoil) node[left=0.3cm] {$\theta_v = \SI{100}{\celsius}$};
             \draw[thick, dashed, gray] (0, \yBoil) -- (\xEnd+0.5, \yBoil); % Hilfslinie bei Siedetemp.
             % --- 3. Kurve zeichnen ---
             \draw[curve] 
@@ -1305,8 +1305,8 @@ Betrachten wir ein Experiment, bei dem Eis mit einer Anfangstemperatur von $\SI{
 
 Man beobachtet zwei markante Bereiche (Plateaus), in denen die Temperatur trotz Wärmezufuhr konstant bleibt:
 \begin{enumerate}
-    \item Beim Schmelzpunkt ($T_S = \SI{0}{\celsius}$) schmilzt das Eis zu Wasser.
-    \item Beim Siedepunkt ($T_V = \SI{100}{\celsius}$) verdampft das Wasser zu Wasserdampf.
+    \item Beim Schmelzpunkt ($\theta_S = \SI{0}{\celsius}$) schmilzt das Eis zu Wasser.
+    \item Beim Siedepunkt ($\theta_V = \SI{100}{\celsius}$) verdampft das Wasser zu Wasserdampf.
 \end{enumerate}
 Erst wenn die gesamte Substanz den Phasenübergang vollzogen hat, steigt die Temperatur wieder an. Die Steigung der Erwärmungskurve in den Bereichen zwischen den Plateaus hängt von der spezifischen Wärmekapazität des jeweiligen Aggregatzustands ab. Je größer die Wärmekapazität, desto langsamer steigt die Temperatur bei gegebener Wärmezufuhr. Für Wasser gilt:
 \begin{equation}
@@ -1384,7 +1384,7 @@ Trägt man den Druck $p$ als Funktion des Volumens $V$ für verschiedene Tempera
     \item \textbf{Kritische Temperatur ($T_K$):} Bei einer bestimmten Temperatur (für $\text{CO}_2$ ca. \SI{304}{\kelvin}) besitzt die Isotherme einen Sattelpunkt (kritischer Punkt). Oberhalb dieser Temperatur kann das Gas durch Druck allein \textit{nicht} mehr verflüssigt werden.
     \item \textbf{Niedrige Temperaturen ($T < T_K$):} Die theoretische Van-der-Waals-Kurve zeigt einen schlangenförmigen Verlauf (\gDQ{Van-der-Waals-Schleife}). In der Realität findet hier ein Phasenübergang statt: Das Gas verflüssigt sich. Der Druck bleibt dabei konstant (horizontales Plateau), bis das gesamte Gas kondensiert ist (Maxwell-Konstruktion).
 \end{itemize}
-Das heißt die van-der-Waals-Gleichung beschreibt das Verhalten realer Gase nur näherungsweise und weicht bei Phasenübergängen vom gemessenen Verhalten ab. Die van-der-Waals-Isotherme in \cref{fig: vanderwaals_isothermen} zeigt dies exemplarisch für $\text{CO}_2$ bei einer Temperatur unterhalb der kritischen Temperatur. Komprimiert man $\text{CO}_2$-Gas bei $T = \SI{0}{\celsius}$, so folgt die gemessene Kurve zunächst der van-der-Waals-Kurve bis zum Punkt $A$. Danach bleibt der Druck konstant (horizontales Plateau) bis zum Punkt $C$, während das Gas verflüssigt wird. Erst danach steigt der Druck wieder an. Zwischen
+Das heißt die van-der-Waals-Gleichung beschreibt das Verhalten realer Gase nur näherungsweise und weicht bei Phasenübergängen vom gemessenen Verhalten ab. Die van-der-Waals-Isotherme in \cref{fig: vanderwaals_isothermen} zeigt dies exemplarisch für $\text{CO}_2$ bei einer Temperatur unterhalb der kritischen Temperatur. Komprimiert man $\text{CO}_2$-Gas bei $\theta = \SI{0}{\celsius}$, so folgt die gemessene Kurve zunächst der van-der-Waals-Kurve bis zum Punkt $A$. Danach bleibt der Druck konstant (horizontales Plateau) bis zum Punkt $C$, während das Gas verflüssigt wird. Erst danach steigt der Druck wieder an. Zwischen
 $A$ und $C$ können also Gas und Flüssigkeit gleichzeitig existieren
 (Koexistenzbereich). Der steile Anstieg von $p$ nach Erreichen des Punktes $C$ liegt an der im Vergleich mit Gasen sehr kleinen Kompressibilität von Flüssigkeiten.
 
@@ -1478,7 +1478,7 @@ Die spezifische Verdampfungswärme $\lambda_v$ ist die Energie, die aufgebracht 
 Der zweite Anteil ist in der Regel wesentlich größer als der erste, wie das folgende Beispiel zeigt.
 
 \begin{examplebox}{Beispiel: Verdampfung von Wasser}
-    Wir betrachten $m = \SI{1}{\kilogram}$ Wasser, das bei $T = \SI{100}{\celsius}$ und einem äußeren Druck von $p = \SI{1.013}{\barPr}$ ($\approx \SI{1e5}{\pascal}$) verdampft wird.
+    Wir betrachten $m = \SI{1}{\kilogram}$ Wasser, das bei $\theta = \SI{100}{\celsius}$ und einem äußeren Druck von $p = \SI{1.013}{\barPr}$ ($\approx \SI{1e5}{\pascal}$) verdampft wird.
     \begin{itemize}
         \item Volumen der Flüssigkeit: $V_{Fl} \approx \SI{1}{\deci\meter\cubed} = \SI{0.001}{\cubic\meter}$.
         \item Volumen des Dampfes: $V_D \approx \SI{1700}{\deci\meter\cubed} = \SI{1.7}{\cubic\meter}$.
