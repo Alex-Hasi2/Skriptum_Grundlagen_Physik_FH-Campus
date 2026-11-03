@@ -38,6 +38,173 @@
 \begin{document}
 
 %%% ---------------------------------------------------------------
+%%% [ERLEDIGT - in Kapitel 8 eingebaut, hier auskommentiert]
+%%% NEU: Trägheitsmomente von Standardkörpern (Kap. 8, Abb. 8.4, Neuzeichnung)
+%%% Tabelle als eine TikZ-Grafik: Figur | Körper | Trägheitsmoment.
+%%% Die Drehachse geht jeweils durch den Schwerpunkt.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     >=Latex,
+%     font=\large,
+%     achse/.style={line width=1.1pt},
+%     kante/.style={line width=0.8pt},
+% ]
+%     \definecolor{koerperHell}{RGB}{184,215,237}
+%     \definecolor{koerperDunkel}{RGB}{106,160,202}
+%     \definecolor{kopfFarbe}{RGB}{199,227,209}
+%     \definecolor{zeileGrau}{RGB}{241,245,248}
+%     \colorlet{pfeilFarbe}{green!45!black}
+
+%     % Drehpfeil um eine senkrechte Achse an der Stelle (#1,#2):
+%     % flache Ellipse, die vorne über die Achse läuft und hinten eine
+%     % Lücke lässt (dort liegt die Achse davor); die Spitze zeigt nach hinten.
+%     \def\drehpfeil#1#2{%
+%         \draw[pfeilFarbe, line width=1pt, -{Stealth[length=2.4mm, width=2.2mm]}]
+%             ($(#1,#2)+(112:0.38 and 0.12)$) arc[start angle=112, end angle=438, x radius=0.38, y radius=0.12];
+%     }
+
+%     % --- Spalten (x) und Zeilen (y) ---
+%     \def\xA{0}\def\xB{4.6}\def\xC{9.4}\def\xD{14.0}
+%     % Zeilengrenzen
+%     \def\yKopf{0}\def\yA{-0.8}\def\yB{-3.8}\def\yC{-6.9}\def\yD{-10.0}\def\yE{-12.2}\def\yF{-15.2}\def\yG{-18.2}\def\yH{-22.9}
+
+%     % Hintergründe
+%     \fill[kopfFarbe] (\xA,\yKopf) rectangle (\xD,\yA);
+%     \fill[zeileGrau] (\xA,\yA) rectangle (\xD,\yB);
+%     \fill[zeileGrau] (\xA,\yC) rectangle (\xD,\yD);
+%     \fill[zeileGrau] (\xA,\yE) rectangle (\xD,\yF);
+%     \fill[zeileGrau] (\xA,\yG) rectangle (\xD,\yH);
+%     % Linien
+%     \foreach \y in {\yKopf,\yA,\yH} {\draw[line width=1pt] (\xA,\y) -- (\xD,\y);}
+%     \foreach \y in {\yB,\yC,\yD,\yE,\yF,\yG} {\draw[gray!60] (\xA,\y) -- (\xD,\y);}
+%     \foreach \x in {\xB,\xC} {\draw[gray!60] (\x,\yKopf) -- (\x,\yH);}
+
+%     % Kopfzeile
+%     \node[font=\large\bfseries] at ({(\xA+\xB)/2},{(\yKopf+\yA)/2}) {Figur};
+%     \node[font=\large\bfseries] at ({(\xB+\xC)/2},{(\yKopf+\yA)/2}) {Körper};
+%     \node[font=\large\bfseries] at ({(\xC+\xD)/2},{(\yKopf+\yA)/2}) {Trägheitsmoment};
+
+%     % Hilfsmakros für Textspalten
+%     \def\koerper#1#2{\node[align=center] at ({(\xB+\xC)/2},#1) {#2};}
+%     \def\formel#1#2{\node[align=center] at ({(\xC+\xD)/2},#1) {#2};}
+
+%     % ================= 1. Dünne Scheibe =================
+%     \begin{scope}[shift={(2.3,{(\yA+\yB)/2 + 0.03})}]
+%         \draw[achse] (0,-1.0) -- (0,0.95);
+%         \fill[koerperDunkel] (0,-0.13) ellipse (1.2 and 0.38);
+%         \draw[kante] (-1.2,0) -- (-1.2,-0.13) arc[start angle=180, end angle=360, x radius=1.2, y radius=0.38] -- (1.2,0);
+%         \filldraw[fill=koerperHell, kante] (0,0) ellipse (1.2 and 0.38);
+%         \draw[achse] (0,0) -- (0,0.95);
+%         \fill (0,0) circle (1.5pt) node[below left=-1pt, font=\normalsize] {$S$};
+%         \draw[kante] (0,0) -- (0.95,-0.23) node[midway, below, font=\normalsize] {$R$};
+%         \drehpfeil{0}{0.75}
+%     \end{scope}
+%     \koerper{{(\yA+\yB)/2}}{Dünne Scheibe}
+%     \formel{{(\yA+\yB)/2}}{$J = \dfrac{1}{2} M R^2$}
+
+%     % ================= 2. Vollzylinder =================
+%     \begin{scope}[shift={(2.3,{(\yB+\yC)/2 - 0.12})}]
+%         \draw[achse] (0,-1.1) -- (0,1.1);
+%         \fill[koerperHell] (-0.8,0.65) -- (-0.8,-0.65) arc[start angle=180, end angle=360, x radius=0.8, y radius=0.24] -- (0.8,0.65) -- cycle;
+%         \draw[kante] (-0.8,0.65) -- (-0.8,-0.65) arc[start angle=180, end angle=360, x radius=0.8, y radius=0.24] -- (0.8,0.65);
+%         \draw[kante, dashed] (0.8,-0.65) arc[start angle=0, end angle=180, x radius=0.8, y radius=0.24];
+%         \filldraw[fill=koerperDunkel, kante] (0,0.65) ellipse (0.8 and 0.24);
+%         \draw[achse] (0,0.65) -- (0,1.35);
+%         \draw[kante] (0,0.65) -- (0.8,0.65) node[midway, below, font=\normalsize] {$R$};
+%         \drehpfeil{0}{1.15}
+%     \end{scope}
+%     \koerper{{(\yB+\yC)/2}}{Vollzylinder}
+%     \formel{{(\yB+\yC)/2}}{$J = \dfrac{1}{2} M R^2$}
+
+%     % ================= 3. Dünnwandiger Hohlzylinder =================
+%     \begin{scope}[shift={(2.3,{(\yC+\yD)/2 - 0.12})}]
+%         \draw[achse] (0,-1.1) -- (0,1.1);
+%         \fill[koerperHell] (-0.8,0.65) -- (-0.8,-0.65) arc[start angle=180, end angle=360, x radius=0.8, y radius=0.24] -- (0.8,0.65) -- cycle;
+%         \draw[kante] (-0.8,0.65) -- (-0.8,-0.65) arc[start angle=180, end angle=360, x radius=0.8, y radius=0.24] -- (0.8,0.65);
+%         \draw[kante, dashed] (0.8,-0.65) arc[start angle=0, end angle=180, x radius=0.8, y radius=0.24];
+%         \filldraw[fill=koerperDunkel, kante] (0,0.65) ellipse (0.8 and 0.24);
+%         \filldraw[fill=white, kante] (0,0.65) ellipse (0.68 and 0.19);
+%         \draw[achse] (0,0.65) -- (0,1.35);
+%         \draw[achse] (0,-0.89) -- (0,0.46);
+%         \draw[kante] (0,0.65) -- (0.8,0.65) node[pos=0.55, below=1pt, font=\normalsize] {$R$};
+%         \drehpfeil{0}{1.15}
+%     \end{scope}
+%     \koerper{{(\yC+\yD)/2}}{Dünnwandiger\\Hohlzylinder}
+%     \formel{{(\yC+\yD)/2}}{$J = M R^2$}
+
+%     % ================= 4. Dünne Stange =================
+%     \begin{scope}[shift={(2.3,{(\yD+\yE)/2 + 0.08})}]
+%         \draw[achse] (0,-0.55) -- (0,0.65);
+%         \fill[koerperHell] (-1.5,0.13) rectangle (1.5,-0.13);
+%         \draw[kante] (-1.5,0.13) -- (1.5,0.13);
+%         \draw[kante] (-1.5,-0.13) -- (1.5,-0.13);
+%         \draw[kante] (1.5,0.13) arc[start angle=90, end angle=-90, x radius=0.05, y radius=0.13];
+%         \filldraw[fill=koerperDunkel, kante] (-1.5,0) ellipse (0.05 and 0.13);
+%         \draw[achse] (0,0.13) -- (0,0.65);
+%         \drehpfeil{0}{0.5}
+%         \draw[<->, kante] (-1.5,-0.42) -- (1.5,-0.42);
+%         \node[font=\normalsize, below] at (0.75,-0.44) {$L$};
+%     \end{scope}
+%     \koerper{{(\yD+\yE)/2}}{Dünne Stange ($L \gg r$),\\Achse durch die Mitte}
+%     \formel{{(\yD+\yE)/2}}{$J = \dfrac{1}{12} M L^2$}
+
+%     % ================= 5. Vollkugel =================
+%     \begin{scope}[shift={(2.3,{(\yE+\yF)/2 - 0.12})}]
+%         \shade[ball color=koerperHell] (0,0) circle (0.85);
+%         \draw[kante] (0,0) circle (0.85);
+%         \draw[achse] (0,-1.05) -- (0,1.3);
+%         \draw[kante] (0,0) -- (35:0.85) node[pos=0.55, above left=-2pt, font=\normalsize] {$R$};
+%         \drehpfeil{0}{1.12}
+%     \end{scope}
+%     \koerper{{(\yE+\yF)/2}}{Homogene Vollkugel}
+%     \formel{{(\yE+\yF)/2}}{$J = \dfrac{2}{5} M R^2$}
+
+%     % ================= 6. Dünnwandige Hohlkugel =================
+%     \begin{scope}[shift={(2.3,{(\yF+\yG)/2 - 0.12})}]
+%         \fill[koerperHell] (0,0) circle (0.85);
+%         \fill[white] (0,0) circle (0.76);
+%         \draw[kante] (0,0) circle (0.85);
+%         \draw[kante] (0,0) circle (0.76);
+%         \draw[kante, dashed, gray] (0.76,0) arc[start angle=0, end angle=180, x radius=0.76, y radius=0.2];
+%         \draw[kante, gray] (-0.76,0) arc[start angle=180, end angle=360, x radius=0.76, y radius=0.2];
+%         \draw[achse] (0,-1.05) -- (0,1.3);
+%         \draw[kante] (0,0) -- (35:0.85) node[pos=0.55, above left=-2pt, font=\normalsize] {$R$};
+%         \drehpfeil{0}{1.12}
+%     \end{scope}
+%     \koerper{{(\yF+\yG)/2}}{Dünnwandige Hohlkugel}
+%     \formel{{(\yF+\yG)/2}}{$J = \dfrac{2}{3} M R^2$}
+
+%     % ================= 7. Quader =================
+%     \begin{scope}[shift={(2.6,{(\yG+\yH)/2 - 0.35})}]
+%         % Achse unten (sichtbar unter dem Quader)
+%         \draw[achse] (0.05,-1.55) -- (0.05,-0.6);
+%         % Flächen: Front (b x c), rechte Seite (a x c), Deckfläche (b x a)
+%         \filldraw[fill=koerperHell, kante] (-1.0,-1.1) -- (0.4,-1.1) -- (0.4,0.8) -- (-1.0,0.8) -- cycle;
+%         \filldraw[fill=koerperDunkel, kante] (0.4,-1.1) -- (1.1,-0.65) -- (1.1,1.25) -- (0.4,0.8) -- cycle;
+%         \filldraw[fill=koerperHell!70!white, kante] (-1.0,0.8) -- (0.4,0.8) -- (1.1,1.25) -- (-0.3,1.25) -- cycle;
+%         % Achse oben (aus der Mitte der Deckfläche)
+%         \draw[achse] (0.05,1.025) -- (0.05,1.95);
+%         \fill (0.05,1.025) circle (1.2pt);
+%         \drehpfeil{0.05}{1.72}
+%         \node[font=\normalsize, above] at (0.05,1.95) {$z$};
+%         % Kanten beschriften
+%         \node[font=\normalsize, below] at (-0.3,-1.1) {$b$};
+%         \node[font=\normalsize, left] at (-1.0,-0.15) {$c$};
+%         \node[font=\normalsize, below right=-2pt] at (0.75,-0.875) {$a$};
+%         % kleines Koordinatensystem
+%         \begin{scope}[shift={(-2.15,-1.6)}, ->, line width=0.7pt]
+%             \draw (0,0) -- (0,0.6) node[above, font=\small] {$z$};
+%             \draw (0,0) -- (0.6,0) node[right, font=\small] {$y$};
+%             \draw (0,0) -- (0.42,0.27) node[above right=-2pt, font=\small] {$x$};
+%         \end{scope}
+%     \end{scope}
+%     \koerper{{(\yG+\yH)/2}}{Quader mit den Kanten-\\längen $a$, $b$, $c$ in\\$x$-, $y$-, $z$-Richtung}
+%     \formel{{(\yG+\yH)/2}}{$J_x = \dfrac{1}{12} M \left(b^2 + c^2\right)$\\[10pt]$J_y = \dfrac{1}{12} M \left(a^2 + c^2\right)$\\[10pt]$J_z = \dfrac{1}{12} M \left(a^2 + b^2\right)$}
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% ---------------------------------------------------------------
 %%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
 %%% NEU: Schiefe Ebene mit Seil und Rolle (Kap. 6, Abb. 5.13, Neuzeichnung)
 %%% Kiste m_1 auf der schiefen Ebene (theta = 37 Grad), über ein Seil
