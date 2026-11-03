@@ -261,68 +261,8 @@ Die Volumenänderung bei konstantem Druck lässt sich analog herleiten. Zusammen
 Das 2. Gesetz von Gay-Lussac wird auch als \textbf{Gesetz von Amontons} bezeichnet.
 \end{importantbox}
 
-\subsubsection*{Makroskopische Einführung des Drucks}
-\begin{rememberbox}{Druck}
-    Der Druck $p$ gibt an, wie groß die senkrecht auf eine Fläche wirkende Kraft pro Fläche ist:
-    \begin{equation}
-        p = \frac{F_\perp}{A} \mDot
-    \end{equation}
-    Der Druck selbst ist eine \textbf{skalare} Größe. Wir werden lediglich den \textbf{absoluten Druck} betrachten, daher gilt $p \ge 0$. Die SI-Einheit des Drucks ist
-    \begin{equation}
-        [p] = \si{\pascal} = \SI{1}{\newton\per\square\meter} \mDot
-    \end{equation}
-\end{rememberbox}
-
-\begin{figure}[htb]
-    \centering
-    \resizebox{0.48\linewidth}{!}{
-    \begin{tikzpicture}[>=Latex, line cap=round, line join=round]
-        \def\cylW{3.2}
-        \def\cylH{6.0}
-        \def\pistY{2.5}
-        \def\pistH{0.22}
-        \def\fluidTop{5.4}
-
-        % Zylinder, Flüssigkeit, Kolben und Gas
-        \draw[thick] (0,\cylH) -- (0,0) -- (\cylW,0) -- (\cylW,\cylH);
-        \fill[blue!15] (0,\pistY+\pistH) rectangle (\cylW,\fluidTop);
-        \fill[pattern=dots, pattern color=red!70!black] (0,0) rectangle (\cylW,\pistY);
-        \filldraw[fill=gray!45, draw=black, thick] (0,\pistY) rectangle (\cylW,\pistY+\pistH);
-
-        \draw[<->, thick] (\cylW+0.45,\pistY+\pistH) -- (\cylW+0.45,\fluidTop) node[midway, right] {$h$};
-
-        \draw[->, ultra thick] (1.6,\cylH+0.8) -- (1.6,\fluidTop+0.05);
-        \node[right] at (1.6,\cylH+0.45) {$p_{\text{ext}}$};
-
-        \draw[->, ultra thick] (1.6,1.3) -- (1.6,\pistY-0.05);
-        \node[right] at (1.6,1.75) {$p_{\text{Gas}}$};
-
-        \node at (1.6,0.6) {Gas};
-        \node at (1.6,4.2) {Flüssigkeit,};
-        \node at (1.6,3.8) {Festkörper: $\rho_{\text{F}}$};
-        \node[left] at (-1,\pistY) {Kolben, $A$};
-    \end{tikzpicture}
-    }
-    \caption{Makroskopisches Druckgleichgewicht: Der Druck des Gases auf den masselosen Kolben muss genau den äußeren Druck $p_{\text{ext}}$ und den Gewichtsdruck (auch Schweredruck) der Flüssigkeitssäule $\rho_{\text{F}} \cdot g \cdot h$ tragen.}\label{fig: druck_fluessigkeitssaeule_kolben}
-\end{figure}
-
-Ein einfaches Beispiel ist in \cref{fig: druck_fluessigkeitssaeule_kolben} dargestellt: Ein Gas sei durch einen masselosen, beweglichen Kolben der Fläche $A$ abgeschlossen, auf dem eine ruhende Flüssigkeitssäule der Höhe $h$ und Dichte $\rho_{\text{F}}$ mit Masse $m_\text{F}$ lastet. Im statischen Gleichgewicht muss die nach oben gerichtete Kraft des Gases genau den nach unten gerichteten Kräften entsprechen, ansonsten müsste sich der Kolben bewegen. Damit gilt für den Kolben folgendes Gleichgewicht
-\begin{equation}\label{eq: druckgleichgewicht_kolben_fluessigkeit}
-    p_{\text{Gas}} \cdot A = p_{\text{ext}} \cdot A + m_\text{F} \cdot g \mComma
-\end{equation}
-Ersetzen wir die Masse der Flüssigkeitssäule durch $m_\text{F} = \rho_\text{F} \cdot V_\text{F} = \rho_\text{F} \cdot A \cdot h$, so erhalten wir
-\begin{equation}
-    p_{\text{Gas}} \cdot A = p_{\text{ext}} \cdot A + \rho_\text{F} \cdot A \cdot h \cdot g \quad \implies \quad p_{\text{Gas}} = p_{\text{ext}} + \rho_\text{F} \cdot g \cdot h \mDot
-\end{equation}    
-Ist die Flüssigkeitssäule oben offen, so ist $p_{\text{ext}} = p_{\atm}$. Der Term $\rho_\text{F} \cdot g \cdot h$ wird als \textbf{Schweredruck} oder \textbf{Gewichtsdruck} bezeichnet. Er gibt an, wie viel Druck die Flüssigkeitssäule aufgrund ihrer eigenen Masse auf den Kolben ausübt. Je höher die Flüssigkeitssäule und je dichter die Flüssigkeit, desto größer ist der Schweredruck. Das Gleichgewicht in \cref{eq: druckgleichgewicht_kolben_fluessigkeit} zeigt, dass der Druck des Gases auf den Kolben genau den äußeren Druck $p_{\text{ext}}$ und den Schweredruck der Flüssigkeitssäule tragen muss, damit der Kolben im Gleichgewicht bleibt.
-
-\begin{rememberbox}{Schweredruck in Flüssigkeiten}
-    Für eine ruhende \textbf{inkompressible} Flüssigkeit ist die Dichte näherungsweise konstant, also $\rho = \const$, und unabhängig von der Tiefe. Daher nimmt der Druck mit der Tiefe linear zu. Misst man die Tiefe $h$ von der Oberfläche nach unten, so ist der Druck in der Tiefe $h$ gegeben durch
-    \begin{equation}\label{eq: schweredruck_fluessigkeit}
-        p(h) = p_{\text{ext}} + \rho g h \mDot
-    \end{equation}
-    Der Zusatzterm $\rho g h$ ist der Schweredruck der Flüssigkeitssäule.
-\end{rememberbox}
+\subsubsection*{Druck und Schweredruck}
+Für die folgenden Abschnitte benötigen wir den Druck $p = F_\perp/A$ und den Schweredruck einer Flüssigkeitssäule, $p(h) = p_{\text{ext}} + \rho g h$ (\cref{eq: schweredruck_fluessigkeit}). Beide wurden in \cref{chap: ruhende_fluide} eingeführt. In der Wärmelehre ist mit $p$ stets der \textbf{Absolutdruck} gemeint (siehe \cref{sec: absolut_ueberdruck}), daher gilt immer $p \ge 0$.
 
 \subsection{Gasthermometer}\label{subsec: Gasthermometer}
 Bei einem \textbf{Gasthermometer} mit konstantem Volumen dient die Druckänderung als Maß für die Temperatur. Da sich Gase sehr gleichmäßig ausdehnen und Flüssigkeiten näherungsweise inkompressibel sind, sind Gasthermometer besonders präzise und werden zur Kalibrierung anderer Thermometer verwendet. 
@@ -715,17 +655,8 @@ Die \textbf{Druckabnahme} einer isothermen Lufthülle folgt also einem \textbf{E
     \caption{Gegenüberstellung von Gas (kompressibel) und Flüssigkeit (inkompressibel) bezüglich Druck- und Dichteverteilung. Gase zeigen einen exponentiellen Druckabfall mit steigender Höhe, während Flüssigkeiten eine lineare Abnahme aufweisen.}\label{fig: gassaeule_fluessigkeit_gegenueberstellung}
 \end{figure}
 
-\subsubsection{Archimedisches Prinzip}
-Gleich wie bei Flüssigkeiten gilt auch in Gasen das Archimedische Prinzip:
-\begin{rememberbox}{Archimedisches Prinzip für Gase}
-    Ein in ein Gas eingetauchter Körper erfährt eine Auftriebskraft $F_A$, die dem Gewicht des von ihm verdrängten Gases entspricht:
-    \begin{equation}\label{eq: auftrieb_gase}
-        F_{\text{Auf}} = \rho_{\text{Gas}} \cdot V_{\text{Körper}} \cdot g = m_{\text{verdr. Gas}} \cdot g \mDot
-    \end{equation}
-    Die Auftriebskraft zeigt der Gewichtskraft des Körpers entgegen (nach oben). Der Körper schwebt, wenn beide Kräfte gleich groß sind.
-\end{rememberbox}
-Für Gase ist die Dichte $\rho_{\text{Gas}}$ eigentlich nicht konstant über die Höhe des Körpers. In der Praxis ist die Variation jedoch meist vernachlässigbar klein, weshalb \cref{eq: auftrieb_gase} praktisch exakt ist.
-
+\subsubsection{Auftrieb in Gasen}
+Das Archimedische Prinzip (\cref{sec: auftrieb}) gilt auch in Gasen: Ein Körper erfährt in Luft eine Auftriebskraft, die der Gewichtskraft der verdrängten Luft entspricht. Dass die Luftdichte mit der Höhe abnimmt, spielt dabei keine Rolle, weil sich die Dichte über die Höhe eines Körpers praktisch nicht ändert.
 
 
 \section{Kinetische Gastheorie}\label{sec: kinetische_gastheorie}

@@ -1,0 +1,496 @@
+\chapter{Ruhende Flüssigkeiten und Gase}\label{chap: ruhende_fluide}
+Flüssigkeiten und Gase fasst man unter dem Begriff \textbf{Fluide} zusammen. Im Gegensatz zu festen Körpern haben sie keine feste Form: Sie können fließen und passen sich der Form ihres Behälters an. Flüssigkeiten haben dabei ein nahezu festes Volumen und bilden eine freie Oberfläche, während Gase jeden verfügbaren Raum ausfüllen.
+
+Eine wichtige Eigenschaft ruhender Fluide ist, dass sie keine Kräfte parallel zu einer Fläche (Scherkräfte) aufnehmen können -- sonst würden sie zu fließen beginnen. Ein ruhendes Fluid übt deshalb auf jede Fläche, die es berührt, nur Kräfte \textbf{senkrecht} zu dieser Fläche aus. Diese Kräfte beschreibt man mit dem Begriff des Drucks.
+
+In diesem Kapitel behandeln wir Fluide in Ruhe (\textbf{Hydrostatik} für Flüssigkeiten, \textbf{Aerostatik} für Gase). Strömende Fluide folgen im nächsten Kapitel.
+
+\section{Dichte}\label{sec: dichte}
+Die \textbf{Dichte} $\rho$ eines Stoffes ist seine Masse pro Volumen:
+\begin{equation}\label{eq: dichte}
+    \rho = \frac{m}{V} \mComma \qquad [\rho] = \si{\kilogram\per\meter\cubed} \mDot
+\end{equation}
+Häufig wird die Dichte auch in $\si{\gram\per\centi\meter\cubed}$ angegeben; es gilt $\SI{1}{\gram\per\centi\meter\cubed} = \SI{1000}{\kilogram\per\meter\cubed}$. Die Dichte hängt von der Temperatur und vom Druck ab. Bei Flüssigkeiten und Festkörpern ist dieser Einfluss klein, bei Gasen dagegen groß (siehe \cref{subsec: kompressibilitaet}). Wasser hat seine größte Dichte bei etwa \SI{4}{\celsius} (Anomalie des Wassers, siehe \cref{subsec: volumenausdehnung}).
+
+\begin{table}[htb]
+    \centering
+    \caption{Dichte einiger Stoffe bei \SI{20}{\celsius} und \SI{1013}{\hecto\pascal} (sofern nicht anders angegeben).}\label{tab: dichten}
+    \vspace{4pt}
+    \begin{tabular}{l r @{\hspace{1.5cm}} l r}
+        \toprule
+        \textbf{Stoff} & \textbf{$\rho$ (\si{\kilogram\per\meter\cubed})} & \textbf{Stoff} & \textbf{$\rho$ (\si{\kilogram\per\meter\cubed})} \\
+        \midrule
+        Helium & \num{0.166} & Eis (\SI{0}{\celsius}) & \num{917} \\
+        Luft & \num{1.20} & Wasser & \num{998} \\
+        Luft (\SI{0}{\celsius}) & \num{1.29} & Meerwasser & \num{1025} \\
+        Holz (Fichte, trocken) & ca.\ \num{450} & Aluminium & \num{2700} \\
+        Ethanol & \num{789} & Stahl & ca.\ \num{7850} \\
+        & & Quecksilber & \num{13546} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Druck}\label{sec: druck_definition}
+\begin{rememberbox}{Druck}
+    Der Druck $p$ gibt an, wie groß die senkrecht auf eine Fläche wirkende Kraft $F_\perp$ pro Flächeninhalt $A$ ist:
+    \begin{equation}\label{eq: druck_definition}
+        p = \frac{F_\perp}{A} \mDot
+    \end{equation}
+    Die SI-Einheit des Drucks ist das \textbf{Pascal}: $\SI{1}{\pascal} = \SI{1}{\newton\per\square\meter}$.
+\end{rememberbox}
+
+Obwohl der Druck aus einer Kraft berechnet wird, ist er eine \textbf{skalare} Größe: An einer Stelle in einem ruhenden Fluid wirkt er in alle Richtungen gleich stark. Die Richtung der Kraft ergibt sich erst durch die Fläche, auf die der Druck wirkt -- die Kraft steht immer senkrecht auf dieser Fläche. Auf ein kleines Flächenstück $\dd A$ mit dem nach außen zeigenden Normalen-Einheitsvektor $\ivec{n}$ wirkt die Kraft $\dd\ivec{F} = -p \, \ivec{n}\, \dd A$ (also in die Fläche hinein).
+
+\subsubsection*{Druckeinheiten}
+Das Pascal ist eine sehr kleine Einheit: Der Luftdruck beträgt etwa \SI{100000}{\pascal}. Deshalb verwendet man häufig Vielfache oder die Einheit \textbf{Bar}. Daneben sind einige ältere Einheiten noch gebräuchlich, etwa in der Medizin (Blutdruck in Millimeter Quecksilbersäule) oder bei Reifen (psi). Für Berechnungen sollten alle Drücke in Pascal umgerechnet werden.
+
+\begin{table}[htb]
+    \centering
+    \caption{Umrechnung gebräuchlicher Druckeinheiten (vgl.~\cite[S.~456]{Giancoli2010}).}\label{tab: druckeinheiten}
+    \vspace{4pt}
+    \small
+    \begin{tabular}{l l l}
+        \toprule
+        \textbf{Einheit} & \textbf{Umrechnung} & \textbf{Verwendung} \\
+        \midrule
+        Hektopascal & $\SI{1}{\hecto\pascal} = \SI{100}{\pascal}$ & Wetterbericht \\
+        Bar & $\SI{1}{\barPr} = \SI{e5}{\pascal} = \SI{1000}{\hecto\pascal}$ & Technik, Reifendruck \\
+        Millibar & $\SI{1}{\milli\barPr} = \SI{1}{\hecto\pascal}$ & Meteorologie \\
+        Atmosphäre &$\SI{1}{atm} = \SI{101325}{\pascal} = \SI{1.01325}{\barPr}$ & Normdruck \\
+        mm Quecksilbersäule &$\SI{1}{mmHg} \approx \SI{1}{Torr} \approx \SI{133.3}{\pascal}$ & Blutdruck, Vakuumtechnik \\
+        Meter Wassersäule & $\SI{1}{mWS} \approx \SI{9807}{\pascal} \approx \SI{0.1}{\barPr}$ & Pumpen, Wasserversorgung \\
+        Pound per square inch & $\SI{1}{psi} \approx \SI{6895}{\pascal}$ & Reifendruck (USA) \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{examplebox}[]{Beispiel: Stöckelschuh oder Elefant?}
+    Eine Person mit $m = \SI{60}{\kilo\gram}$ steht mit ihrem ganzen Gewicht auf einem Absatz mit der Fläche $A = \SI{1}{\centi\meter\squared} = \SI{e-4}{\meter\squared}$:
+    \begin{equation*}
+        p = \frac{m g}{A} = \frac{\SI{60}{\kilo\gram} \cdot \SI{9.81}{\meter\per\second\squared}}{\SI{e-4}{\meter\squared}} \approx \SI{5.9e6}{\pascal} \approx \SI{59}{\barPr} \mDot
+    \end{equation*}
+    Ein Elefant mit $m = \SI{5000}{\kilo\gram}$ verteilt sein Gewicht auf vier Füße mit je etwa $\SI{0.12}{\meter\squared}$ Fläche, insgesamt also $A \approx \SI{0.48}{\meter\squared}$:
+    \begin{equation*}
+        p = \frac{\SI{5000}{\kilo\gram} \cdot \SI{9.81}{\meter\per\second\squared}}{\SI{0.48}{\meter\squared}} \approx \SI{1.0e5}{\pascal} \approx \SI{1}{\barPr} \mDot
+    \end{equation*}
+    Der Absatz drückt also rund 60-mal stärker auf den Boden als der Elefantenfuß -- entscheidend ist nicht die Kraft allein, sondern die Kraft pro Fläche.
+\end{examplebox}
+
+\section{Das Pascal'sche Prinzip}\label{sec: pascal}
+Übt man auf ein eingeschlossenes, ruhendes Fluid von außen einen Druck aus (zum Beispiel mit einem Kolben), so breitet sich dieser Druck in alle Richtungen aus.
+\begin{rememberbox}{Pascal'sches Prinzip}
+    Ein von außen auf ein eingeschlossenes, ruhendes Fluid ausgeübter Druck wird unverändert an jede Stelle des Fluids und an die Gefäßwände weitergegeben. Der Druck steigt also überall um denselben Betrag.
+\end{rememberbox}
+Das Prinzip ist nach dem französischen Gelehrten Blaise Pascal (1623--1662) benannt. Den zusätzlichen Druck durch das Gewicht des Fluids selbst (Schweredruck, \cref{sec: schweredruck}) lassen wir hier noch außer Acht; er addiert sich einfach dazu.
+
+\subsection{Die hydraulische Presse}\label{subsec: hydraulische_presse}
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[>=Latex, thick, scale=0.9]
+        % Flüssigkeit
+        \fill[blue!15] (0,0) rectangle (6,0.8);
+        \fill[blue!15] (0,0.8) rectangle (0.8,3);
+        \fill[blue!15] (3,0.8) rectangle (6,3);
+        % Wände
+        \draw (0,4) -- (0,0) -- (6,0) -- (6,4);
+        \draw (0.8,4) -- (0.8,0.8) -- (3,0.8) -- (3,4);
+        % Kolben
+        \filldraw[fill=gray!50] (0,3) rectangle (0.8,3.25);
+        \filldraw[fill=gray!50] (3,3) rectangle (6,3.25);
+        % Last auf dem großen Kolben
+        \filldraw[fill=figOrange!40, draw=figOrange!70!black] (3.7,3.25) rectangle (5.3,4.3);
+        \node at (4.5,3.78) {Last};
+        % Kräfte
+        \draw[->, ultra thick, figRed] (0.4,4.9) -- (0.4,3.3) node[pos=0.15, left] {$\ivecS{F}{1}$};
+        \draw[->, ultra thick, figRed] (5.65,3.3) -- (5.65,5.0) node[pos=0.85, right] {$\ivecS{F}{2}$};
+        % Flächen und Druck
+        \node[font=\small] at (0.4,2.1) {$A_1$};
+        \node[font=\small] at (4.5,2.1) {$A_2$};
+        \node[font=\small] at (1.9,0.4) {$p$};
+        \node[font=\small] at (4.5,1.2) {$p$};
+    \end{tikzpicture}
+    \caption{Hydraulische Presse: Eine kleine Kraft $\protect\ivecS{F}{1}$ auf den kleinen Kolben (Fläche $A_1$) erzeugt im Fluid den Druck $p = F_1/A_1$. Dieser Druck wirkt auch auf den großen Kolben (Fläche $A_2$) und erzeugt dort die große Kraft $F_2 = p A_2$.}\label{fig: hydraulische_presse}
+\end{figure}
+
+Eine wichtige Anwendung des Pascal'schen Prinzips ist die in \cref{fig: hydraulische_presse} gezeigte \textbf{hydraulische Presse}. Die Kraft $F_1$ auf den kleinen Kolben erzeugt den Druck $p = F_1/A_1$. Da dieser Druck auch am großen Kolben herrscht, wirkt dort die Kraft $F_2 = p\,A_2$:
+\begin{equation}\label{eq: hydraulische_presse}
+    p = \frac{F_1}{A_1} = \frac{F_2}{A_2} \quad \implies \quad F_2 = F_1 \cdot \frac{A_2}{A_1} \mDot
+\end{equation}
+Die Kraft wird also im Verhältnis der Kolbenflächen verstärkt. Nach diesem Prinzip arbeiten Hebebühnen, Bagger und die Bremsanlage im Auto.
+
+\begin{importantbox}[]{Keine Energie geschenkt}
+    Die hydraulische Presse verstärkt die Kraft, aber nicht die Energie. Da die Flüssigkeit (nahezu) inkompressibel ist, wird das Volumen, das der kleine Kolben verdrängt, vom großen Kolben aufgenommen: $A_1 s_1 = A_2 s_2$. Der kleine Kolben muss daher einen viel längeren Weg $s_1$ zurücklegen. Für die Arbeit gilt
+    \begin{equation*}
+        W_1 = F_1 s_1 = (p A_1) \cdot s_1 = p \cdot (A_1 s_1) = p \cdot (A_2 s_2) = F_2 s_2 = W_2 \mDot
+    \end{equation*}
+    Genau wie beim Hebel gilt: Was man an Kraft gewinnt, muss man an Weg zusetzen.
+\end{importantbox}
+
+\begin{examplebox}[]{Beispiel: Hebebühne}
+    Eine hydraulische Hebebühne hat einen kleinen Kolben mit $d_1 = \SI{2}{\centi\meter}$ und einen großen Kolben mit $d_2 = \SI{20}{\centi\meter}$ Durchmesser. Das Flächenverhältnis ist $A_2/A_1 = (d_2/d_1)^2 = 100$. Um ein Auto mit $m = \SI{1000}{\kilo\gram}$ zu heben, genügt am kleinen Kolben die Kraft
+    \begin{equation*}
+        F_1 = F_2 \cdot \frac{A_1}{A_2} = \frac{\SI{1000}{\kilo\gram} \cdot \SI{9.81}{\meter\per\second\squared}}{100} \approx \SI{98}{\newton} \mComma
+    \end{equation*}
+    also etwa die Gewichtskraft von \SI{10}{\kilo\gram}. Soll das Auto um \SI{10}{\centi\meter} angehoben werden, muss der kleine Kolben allerdings um $100 \cdot \SI{10}{\centi\meter} = \SI{10}{\meter}$ bewegt werden -- in der Praxis durch viele Pumpstöße.
+\end{examplebox}
+
+\section{Der Schweredruck}\label{sec: schweredruck}
+In einem Fluid im Schwerefeld der Erde kommt zum äußeren Druck noch der Druck hinzu, der vom Gewicht des darüberliegenden Fluids herrührt. Diesen Druck nennt man \textbf{Schweredruck} oder \textbf{hydrostatischen Druck}.
+
+\begin{figure}[htb]
+    \centering
+    \resizebox{0.48\linewidth}{!}{
+    \begin{tikzpicture}[>=Latex, line cap=round, line join=round]
+        \def\cylW{3.2}
+        \def\cylH{6.0}
+        \def\pistY{2.5}
+        \def\pistH{0.22}
+        \def\fluidTop{5.4}
+
+        % Zylinder, Flüssigkeit, Kolben und Gas
+        \draw[thick] (0,\cylH) -- (0,0) -- (\cylW,0) -- (\cylW,\cylH);
+        \fill[blue!15] (0,\pistY+\pistH) rectangle (\cylW,\fluidTop);
+        \fill[pattern=dots, pattern color=red!70!black] (0,0) rectangle (\cylW,\pistY);
+        \filldraw[fill=gray!45, draw=black, thick] (0,\pistY) rectangle (\cylW,\pistY+\pistH);
+
+        \draw[<->, thick] (\cylW+0.45,\pistY+\pistH) -- (\cylW+0.45,\fluidTop) node[midway, right] {$h$};
+
+        \draw[->, ultra thick] (1.6,\cylH+0.8) -- (1.6,\fluidTop+0.05);
+        \node[right] at (1.6,\cylH+0.45) {$p_{\text{ext}}$};
+
+        \draw[->, ultra thick] (1.6,1.3) -- (1.6,\pistY-0.05);
+        \node[right] at (1.6,1.75) {$p_{\text{Gas}}$};
+
+        \node at (1.6,0.6) {Gas};
+        \node at (1.6,4.2) {Flüssigkeit,};
+        \node at (1.6,3.8) {Dichte $\rho_{\text{F}}$};
+        \node[left] at (-0.2,\pistY) {Kolben, $A$};
+    \end{tikzpicture}
+    }
+    \caption{Druckgleichgewicht: Der Druck des Gases auf den (masselosen) Kolben muss den äußeren Druck $p_{\text{ext}}$ und den Schweredruck $\rho_{\text{F}} \cdot g \cdot h$ der darüberliegenden Flüssigkeitssäule tragen.}\label{fig: druck_fluessigkeitssaeule_kolben}
+\end{figure}
+
+Wir betrachten dazu die Anordnung in \cref{fig: druck_fluessigkeitssaeule_kolben}: Ein Gas ist durch einen masselosen, beweglichen Kolben der Fläche $A$ abgeschlossen, auf dem eine ruhende Flüssigkeitssäule der Höhe $h$ und Dichte $\rho_{\text{F}}$ mit der Masse $m_\text{F}$ lastet. Im Gleichgewicht muss die nach oben gerichtete Kraft des Gases genau den nach unten gerichteten Kräften entsprechen, sonst würde sich der Kolben bewegen:
+\begin{equation}\label{eq: druckgleichgewicht_kolben_fluessigkeit}
+    p_{\text{Gas}} \cdot A = p_{\text{ext}} \cdot A + m_\text{F} \cdot g \mDot
+\end{equation}
+Ersetzen wir die Masse der Flüssigkeitssäule durch $m_\text{F} = \rho_\text{F} \cdot V_\text{F} = \rho_\text{F} \cdot A \cdot h$, so erhalten wir
+\begin{equation}
+    p_{\text{Gas}} \cdot A = p_{\text{ext}} \cdot A + \rho_\text{F} \cdot A \cdot h \cdot g \quad \implies \quad p_{\text{Gas}} = p_{\text{ext}} + \rho_\text{F} \cdot g \cdot h \mDot
+\end{equation}
+Die Fläche $A$ kürzt sich heraus. Ist die Flüssigkeit oben offen, so ist $p_{\text{ext}}$ der Luftdruck $p_{\atm}$. Dieselbe Überlegung gilt für jede gedachte Fläche in der Tiefe $h$ einer Flüssigkeit -- der Kolben ist dafür nicht nötig.
+
+\begin{rememberbox}{Schweredruck in Flüssigkeiten}
+    Für eine ruhende Flüssigkeit mit konstanter Dichte $\rho$ (inkompressibel) nimmt der Druck linear mit der Tiefe zu. Misst man die Tiefe $h$ von der Oberfläche nach unten, so gilt
+    \begin{equation}\label{eq: schweredruck_fluessigkeit}
+        p(h) = p_{\text{ext}} + \rho g h \mDot
+    \end{equation}
+    Der Zusatzterm $\rho g h$ ist der Schweredruck der Flüssigkeitssäule. Er hängt nur von der Tiefe und der Dichte ab.
+\end{rememberbox}
+
+\begin{examplebox}[]{Beispiel: Druck unter Wasser}
+    In $h = \SI{10}{\meter}$ Wassertiefe beträgt der Schweredruck
+    \begin{equation*}
+        \rho g h = \SI{1000}{\kilogram\per\meter\cubed} \cdot \SI{9.81}{\meter\per\second\squared} \cdot \SI{10}{\meter} \approx \SI{98000}{\pascal} \approx \SI{1}{\barPr} \mDot
+    \end{equation*}
+    \textbf{Faustregel:} Alle \SI{10}{\meter} Wassertiefe steigt der Druck um etwa \SI{1}{\barPr}. Eine Taucherin in \SI{30}{\meter} Tiefe ist also einem Druck von etwa $\SI{1}{\barPr} + \SI{3}{\barPr} = \SI{4}{\barPr}$ ausgesetzt (Luftdruck plus Schweredruck).
+\end{examplebox}
+
+\subsection{Hydrostatisches Paradoxon und verbundene Gefäße}\label{subsec: hydrostatisches_paradoxon}
+Nach \cref{eq: schweredruck_fluessigkeit} hängt der Druck am Boden eines Gefäßes nur von der Füllhöhe ab -- nicht von der Form des Gefäßes und nicht von der Menge der Flüssigkeit. Füllt man Gefäße mit gleicher Bodenfläche, aber unterschiedlicher Form gleich hoch, so wirkt auf alle Böden dieselbe Kraft $F = p\,A$, obwohl die Gefäße sehr unterschiedlich viel Wasser enthalten. Dieses zunächst überraschende Ergebnis heißt \textbf{hydrostatisches Paradoxon}. Die Auflösung: In einem sich nach oben verbreiternden Gefäß tragen die schrägen Wände einen Teil des Wassergewichts; in einem sich verengenden Gefäß drücken die Wände zusätzlich nach unten.
+
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[>=Latex, thick, scale=0.95]
+        % Füllungen (Wasserstand y = 3)
+        \fill[blue!15] (0.6,0) rectangle (8.2,0.5);
+        \fill[blue!15] (0.6,0.5) rectangle (1.4,3);
+        \fill[blue!15] (2.9,0.5) -- (3.5,0.5) -- (4.108,3) -- (2.292,3) -- cycle;
+        \fill[blue!15] (5.0,0.5) -- (6.8,0.5) -- (6.327,3) -- (5.473,3) -- cycle;
+        \fill[blue!15] (7.6,0.5) -- (8.2,0.5) -- (9.011,3) -- (8.411,3) -- cycle;
+        % Wände
+        \draw (0.6,4.2) -- (0.6,0) -- (8.2,0) -- (8.2,0.5) -- (9.4,4.2);
+        \draw (1.4,4.2) -- (1.4,0.5) -- (2.9,0.5) -- (2.0,4.2);
+        \draw (4.4,4.2) -- (3.5,0.5) -- (5.0,0.5) -- (5.7,4.2);
+        \draw (6.1,4.2) -- (6.8,0.5) -- (7.6,0.5) -- (8.8,4.2);
+        % gleicher Wasserstand
+        \draw[dashed, gray] (0,3) -- (10.2,3);
+        \draw[<->] (10.0,0) -- (10.0,3) node[midway, right] {$h$};
+        \node[font=\small, anchor=south] at (5,4.3) {gleiche Füllhöhe $\Rightarrow$ gleicher Druck $p = p_{\atm} + \rho g h$ am Boden};
+    \end{tikzpicture}
+    \caption{Verbundene (kommunizierende) Gefäße: Unabhängig von ihrer Form stellt sich in allen Gefäßen dieselbe Füllhöhe ein, weil in derselben Tiefe überall derselbe Druck herrschen muss.}\label{fig: verbundene_gefaesse}
+\end{figure}
+
+Eng damit verwandt sind \textbf{verbundene (kommunizierende) Gefäße} (\cref{fig: verbundene_gefaesse}). Sind mehrere oben offene Gefäße unten miteinander verbunden, so steht die Flüssigkeit in allen gleich hoch, egal welche Form die Gefäße haben. Wäre der Wasserstand in einem Gefäß höher, so wäre am gemeinsamen Boden der Druck auf dieser Seite größer, und die Flüssigkeit würde so lange fließen, bis die Höhen gleich sind. Anwendungen sind die Schlauchwaage auf der Baustelle, Wassertürme zur Druckversorgung von Leitungsnetzen und der Geruchsverschluss (Siphon) unter dem Waschbecken.
+
+\begin{examplebox}[]{Beispiel: Kraft auf eine Staumauer (nach \cite[S.~167]{Demtroeder2018})}
+    Eine senkrechte Staumauer der Länge $L$ hält Wasser der Tiefe $H$ zurück. Da der Schweredruck mit der Tiefe zunimmt, ist die Kraft auf die Mauer nicht einfach \gDQ{Druck mal Fläche}. Wir zerlegen die Mauer in waagrechte Streifen der Höhe $\dd z$ (Fläche $\dd A = L\,\dd z$) in der Tiefe $z$ unter der Wasseroberfläche. Auf jeden Streifen wirkt die Kraft $\dd F = \rho g z \cdot L \, \dd z$ (den Luftdruck lassen wir weg, er wirkt auf beide Seiten der Mauer). Integration über die gesamte Wassertiefe ergibt
+    \begin{equation*}
+        F = \int_0^H \rho g L \, z \, \dd z = \rho g L \left[\frac{z^2}{2}\right]_0^H = \frac{1}{2} \rho g L H^2 \mDot
+    \end{equation*}
+    Für $H = \SI{50}{\meter}$ und $L = \SI{200}{\meter}$ ist $F = \frac{1}{2} \cdot \SI{1000}{\kilogram\per\meter\cubed} \cdot \SI{9.81}{\meter\per\second\squared} \cdot \SI{200}{\meter} \cdot (\SI{50}{\meter})^2 \approx \SI{2.5e9}{\newton}$. Weil der Druck nach unten zunimmt, werden Staumauern unten dicker gebaut.
+\end{examplebox}
+
+\subsection{Kompressibilität: Flüssigkeiten und Gase im Vergleich}\label{subsec: kompressibilitaet}
+Bei der Herleitung von \cref{eq: schweredruck_fluessigkeit} haben wir angenommen, dass die Dichte überall gleich ist. Wie gut das stimmt, beschreibt die \textbf{Kompressibilität}
+\begin{equation}\label{eq: kompressibilitaet}
+    \kappa = -\frac{1}{V} \frac{\dd V}{\dd p} \mComma \qquad [\kappa] = \si{\per\pascal} \mComma
+\end{equation}
+also die relative Volumenänderung pro Druckänderung. Das Minuszeichen sorgt dafür, dass $\kappa$ positiv ist, denn bei steigendem Druck wird das Volumen kleiner.
+\begin{itemize}[itemsep=1.5pt]
+    \item \textbf{Wasser} hat $\kappa \approx \SI{4.6e-10}{\per\pascal}$. Selbst in \SI{1000}{\meter} Meerestiefe ($\Delta p \approx \SI{e7}{\pascal}$) wird Wasser nur um etwa $\SI{0.5}{\percent}$ zusammengedrückt. Flüssigkeiten darf man daher meist als \textbf{inkompressibel} behandeln.
+    \item \textbf{Gase} lassen sich dagegen leicht zusammendrücken. Für ein ideales Gas bei konstanter Temperatur folgt aus $p V = \const$ (Boyle-Mariotte, \cref{subsec: boyle_mariotte}) $\kappa = 1/p$. Bei Normaldruck ist das $\kappa \approx \SI{e-5}{\per\pascal}$ -- rund \num{20000}-mal mehr als bei Wasser.
+\end{itemize}
+Deshalb nimmt der Druck in einer Flüssigkeit linear mit der Tiefe zu, in der Atmosphäre dagegen exponentiell mit der Höhe ab (barometrische Höhenformel, \cref{sec: barometrische_hoehenformel}).
+
+\section{Der Luftdruck}\label{sec: luftdruck}
+Auch die Luft hat ein Gewicht. Wir leben am Boden eines \gDQ{Luftmeeres}, und der \textbf{Luftdruck} (Atmosphärendruck) $p_{\atm}$ ist der Schweredruck der darüberliegenden Luftsäule. Auf Meereshöhe beträgt er im Mittel
+\begin{equation}
+    p_{\atm} \approx \SI{1013}{\hecto\pascal} \approx \SI{1}{\barPr} \mDot
+\end{equation}
+Der festgelegte \textbf{Normdruck} ist $p_\text{n} = \SI{101325}{\pascal}$. Je nach Wetterlage schwankt der Luftdruck auf Meereshöhe etwa zwischen \SI{950}{\hecto\pascal} (kräftiges Tiefdruckgebiet) und \SI{1050}{\hecto\pascal} (kräftiges Hochdruckgebiet).
+
+Auf jeden Quadratmeter wirkt damit eine Kraft von rund \SI{100000}{\newton} -- so viel wie die Gewichtskraft einer Masse von etwa \SI{10}{\tonne}. Wir spüren davon nichts, weil im Inneren unseres Körpers nahezu derselbe Druck herrscht und die Kräfte sich ausgleichen (vgl.~\cite[S.~456]{Giancoli2010}). Erst wenn auf einer Seite der Druck fehlt, wird die Kraft sichtbar.
+
+\begin{examplebox}[]{Beispiel: Die Magdeburger Halbkugeln}
+    Otto von Guericke legte 1654 zwei Halbkugeln mit einem Durchmesser von etwa \SI{42}{\centi\meter} aneinander und pumpte die Luft heraus. Selbst zwei Pferdegespanne konnten die Kugeln nicht auseinanderziehen. Bei vollständig evakuiertem Inneren drückt der Luftdruck die Halbkugeln mit der Kraft
+    \begin{equation*}
+        F = p_{\atm} \cdot \pi r^2 = \SI{101325}{\pascal} \cdot \pi \cdot (\SI{0.21}{\meter})^2 \approx \SI{1.4e4}{\newton}
+    \end{equation*}
+    zusammen. Für die Kraft zählt dabei nur die Querschnittsfläche $\pi r^2$ (der Kreis, in dem sich die Halbkugeln berühren), nicht die gekrümmte Oberfläche: Die schräg angreifenden Druckkräfte heben sich seitlich auf.
+\end{examplebox}
+
+\subsubsection*{Abnahme des Luftdrucks mit der Höhe}
+Steigt man nach oben, so liegt weniger Luft über einem, und der Luftdruck sinkt. In Bodennähe ist die Luftdichte etwa $\rho \approx \SI{1.2}{\kilogram\per\meter\cubed}$, der Druck nimmt also um $\rho g \approx \SI{12}{\pascal}$ pro Meter ab -- etwa \SI{1}{\hecto\pascal} pro \SI{8}{\meter} Höhenunterschied. Weil Luft kompressibel ist, nimmt die Dichte mit der Höhe ebenfalls ab, und der Druck fällt nicht linear, sondern näherungsweise exponentiell. Diese \textbf{barometrische Höhenformel} leiten wir in \cref{sec: barometrische_hoehenformel} mithilfe der Gasgesetze her: In etwa \SI{5.5}{\kilo\meter} Höhe ist der Luftdruck nur noch halb so groß wie auf Meereshöhe.
+
+\subsubsection*{Der Versuch von Torricelli}
+Evangelista Torricelli füllte 1643 ein einseitig geschlossenes Glasrohr mit Quecksilber und stellte es mit der Öffnung nach unten in eine Schale mit Quecksilber (\cref{fig: torricelli_barometer}). Das Quecksilber sank ab, bis die Säule etwa \SI{760}{\milli\meter} hoch war. Darüber entstand ein (nahezu) leerer Raum. Die Quecksilbersäule wird vom Luftdruck getragen, der auf die Oberfläche in der Schale drückt:
+\begin{equation}
+    p_{\atm} = \rho_\text{Hg} \, g \, h \quad \implies \quad h = \frac{p_{\atm}}{\rho_\text{Hg}\, g} = \frac{\SI{101325}{\pascal}}{\SI{13546}{\kilogram\per\meter\cubed} \cdot \SI{9.81}{\meter\per\second\squared}} \approx \SI{0.76}{\meter} \mDot
+\end{equation}
+Daher stammt die Einheit \gDQ{Millimeter Quecksilbersäule}. Mit Wasser statt Quecksilber wäre die Säule etwa $13{,}6$-mal höher, nämlich rund \SI{10.3}{\meter}.
+
+\begin{importantbox}[]{Warum man Wasser nicht beliebig hoch \gDQ{ansaugen} kann}
+    Eine Saugpumpe (oder ein Strohhalm) zieht die Flüssigkeit nicht nach oben. Sie verringert nur den Druck über der Flüssigkeit; hinaufgedrückt wird die Flüssigkeit vom äußeren Luftdruck. Selbst mit einem perfekten Vakuum kann der Luftdruck eine Wassersäule von höchstens etwa \SI{10.3}{\meter} tragen. In der Praxis sind es deutlich weniger (etwa \SIrange{7}{8}{\meter}), weil das Wasser bei sehr niedrigem Druck zu verdampfen beginnt (siehe Dampfdruck, \cref{subsec: dampfdruckkurve_clausius_clapeyron}) und in der Leitung Strömungsverluste auftreten. Um Wasser höher zu fördern, muss die Pumpe unten sitzen und das Wasser hinaufdrücken.
+\end{importantbox}
+
+\section{Absolutdruck, Überdruck und Unterdruck}\label{sec: absolut_ueberdruck}
+Drücke kann man auf zwei Arten angeben:
+\begin{itemize}[itemsep=1.5pt]
+    \item Der \textbf{Absolutdruck} $p_\text{abs}$ wird gegenüber dem leeren Raum (Vakuum, $p = 0$) gemessen. Er ist immer positiv oder null.
+    \item Der \textbf{Überdruck} $p_\text{ü}$ ist die Differenz zum umgebenden Luftdruck. Ist $p_\text{ü}$ negativ, spricht man von \textbf{Unterdruck}.
+\end{itemize}
+\begin{rememberbox}{Absolutdruck und Überdruck}
+    \begin{equation}\label{eq: absolutdruck_ueberdruck}
+        p_\text{abs} = p_{\atm} + p_\text{ü} \mDot
+    \end{equation}
+    Viele Messgeräte (Reifendruckprüfer, Manometer an Heizungsanlagen) zeigen den \textbf{Überdruck} an. In physikalischen Gesetzen, insbesondere in der Gasgleichung $p V = \nu R T$, muss dagegen immer der \textbf{Absolutdruck} verwendet werden.
+\end{rememberbox}
+
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[>=Latex, thick, scale=0.95]
+        % Achse
+        \draw[->] (0,0) -- (0,5.2) node[above] {Druck};
+        % Vakuum
+        \draw[line width=2pt] (0,0) -- (7.8,0);
+        \node[anchor=east, font=\small, align=right] at (-0.2,0) {absolutes Vakuum\\$p_\text{abs} = 0$};
+        % Atmosphärendruck
+        \draw[dashed, figOrange!80!black] (0,2.5) -- (7.8,2.5);
+        \node[anchor=east, font=\small, align=right, figOrange!80!black] at (-0.2,2.5) {Luftdruck\\$p_{\atm} \approx \SI{1}{\barPr}$};
+        % Fall Überdruck
+        \draw[densely dotted] (1.0,4.3) -- (3.5,4.3);
+        \fill (3.5,4.3) circle (2.5pt) node[right=3pt, font=\small] {Reifen, Heizung};
+        \draw[->, pointblue] (1.0,0) -- (1.0,4.3) node[pos=0.3, right, font=\small] {$p_\text{abs}$};
+        \draw[->, figRed] (2.4,2.5) -- (2.4,4.3) node[midway, right, font=\small] {$p_\text{ü} > 0$};
+        % Fall Unterdruck
+        \draw[densely dotted] (4.8,1.2) -- (6.6,1.2);
+        \fill (6.6,1.2) circle (2.5pt) node[right=3pt, font=\small] {Staubsauger};
+        \draw[->, pointblue] (4.8,0) -- (4.8,1.2) node[midway, left, font=\small] {$p_\text{abs}$};
+        \draw[->, figRed] (5.9,2.5) -- (5.9,1.2) node[midway, right, font=\small] {$p_\text{ü} < 0$};
+    \end{tikzpicture}
+    \caption{Absolutdruck und Überdruck: Der Absolutdruck wird vom Vakuum aus gemessen, der Überdruck vom Luftdruck aus. Ein negativer Überdruck heißt Unterdruck.}\label{fig: absolut_ueberdruck}
+\end{figure}
+
+\begin{examplebox}[]{Beispiel: Reifendruck}
+    Ein Reifendruckprüfer zeigt \SI{2.2}{\barPr} an. Das ist der Überdruck. Der Absolutdruck im Reifen beträgt $p_\text{abs} = \SI{1.0}{\barPr} + \SI{2.2}{\barPr} = \SI{3.2}{\barPr}$. Ein platter Reifen zeigt \SI{0}{\barPr} an -- in ihm herrscht aber natürlich noch der Luftdruck von etwa \SI{1}{\barPr} (vgl.~\cite[S.~456]{Giancoli2010}).
+\end{examplebox}
+In der Technik wird die Art des Drucks oft an der Einheit kenntlich gemacht, zum Beispiel \gDQ{bar(ü)} oder \gDQ{barg} (\textit{gauge}) für den Überdruck und \gDQ{bar(a)} für den Absolutdruck.
+
+\section{Druckmessung}\label{sec: druckmessung}
+Zur Druckmessung gibt es viele Verfahren. Die wichtigsten beruhen entweder auf dem Schweredruck einer Flüssigkeitssäule oder auf der Verformung eines elastischen Bauteils.
+
+\subsection{Flüssigkeitsmanometer und Flüssigkeitsbarometer}\label{subsec: fluessigkeitsmanometer}
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.52\textwidth}
+        \centering
+        \begin{tikzpicture}[>=Latex, thick, scale=0.85]
+            % Gas (Behälter, Verbindungsrohr, linker Schenkel über der Flüssigkeit)
+            \fill[pattern=dots, pattern color=red!70!black] (-2.4,2.4) rectangle (-0.6,4.4);
+            \fill[pattern=dots, pattern color=red!70!black] (-0.6,3.2) rectangle (0.4,3.6);
+            \fill[pattern=dots, pattern color=red!70!black] (0,1.4) rectangle (0.4,3.6);
+            % Flüssigkeit
+            \fill[blue!25] (0,0) rectangle (2,0.4);
+            \fill[blue!25] (0,0.4) rectangle (0.4,1.4);
+            \fill[blue!25] (1.6,0.4) rectangle (2,2.8);
+            % Behälter
+            \draw (-0.6,3.6) -- (-0.6,4.4) -- (-2.4,4.4) -- (-2.4,2.4) -- (-0.6,2.4) -- (-0.6,3.2);
+            % U-Rohr
+            \draw (-0.6,3.6) -- (0.4,3.6) -- (0.4,0.4) -- (1.6,0.4) -- (1.6,4.2);
+            \draw (-0.6,3.2) -- (0,3.2) -- (0,0) -- (2,0) -- (2,4.2);
+            \node[fill=white, inner sep=1.5pt, font=\small] at (-1.5,3.4) {Gas, $p$};
+            % Luftdruck
+            \draw[->, figOrange!80!black] (1.8,5.0) -- (1.8,4.25) node[pos=0, above, font=\small] {$p_{\atm}$};
+            % Höhendifferenz
+            \draw[gray, dashed, thin] (0.4,1.4) -- (2.8,1.4);
+            \draw[gray, dashed, thin] (2,2.8) -- (2.8,2.8);
+            \draw[<->] (2.6,1.4) -- (2.6,2.8) node[midway, right] {$\Delta h$};
+        \end{tikzpicture}
+        \caption{Offenes U-Rohr-Manometer}\label{fig: u_rohr_manometer}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.44\textwidth}
+        \centering
+        \begin{tikzpicture}[>=Latex, thick, scale=0.85]
+            % Quecksilber in Schale und Rohr
+            \fill[gray!40] (-1.5,0) rectangle (2,0.6);
+            \fill[gray!40] (0,0.6) rectangle (0.5,4.0);
+            % Schale
+            \draw (-1.5,1.0) -- (-1.5,0) -- (2,0) -- (2,1.0);
+            % Rohr (oben geschlossen)
+            \draw (0,0.25) -- (0,5) -- (0.5,5) -- (0.5,0.25);
+            \node[font=\small, anchor=west] at (0.6,4.6) {Vakuum, $p \approx 0$};
+            % Luftdruck auf die Oberfläche
+            \draw[->, figOrange!80!black] (-0.9,1.7) -- (-0.9,0.65) node[pos=0, above, font=\small] {$p_{\atm}$};
+            \draw[->, figOrange!80!black] (1.5,1.7) -- (1.5,0.65);
+            % Höhe
+            \draw[gray, dashed, thin] (0.5,4.0) -- (1.3,4.0);
+            \draw[<->] (1.1,0.6) -- (1.1,4.0) node[midway, right, font=\small] {$h \approx \SI{760}{\milli\meter}$};
+            \node[font=\small] at (-0.75,0.3) {Hg};
+        \end{tikzpicture}
+        \caption{Quecksilberbarometer nach Torricelli}\label{fig: torricelli_barometer}
+    \end{subfigure}
+    \caption{Druckmessung mit Flüssigkeitssäulen. (a) Das offene U-Rohr misst den Überdruck $p - p_{\atm} = \rho g \Delta h$. (b) Das oben geschlossene Barometer misst den absoluten Luftdruck $p_{\atm} = \rho_\text{Hg}\, g\, h$.}\label{fig: fluessigkeitsmanometer}
+\end{figure}
+
+Das einfachste Druckmessgerät ist das in \cref{fig: u_rohr_manometer} gezeigte \textbf{U-Rohr-Manometer}. Ein U-förmiges Rohr ist teilweise mit einer Flüssigkeit (Wasser, Alkohol oder Quecksilber) gefüllt. Ein Schenkel ist mit dem Behälter verbunden, dessen Druck $p$ gemessen werden soll, der andere ist zur Umgebung hin offen. Ist $p$ größer als der Luftdruck, wird die Flüssigkeit im linken Schenkel nach unten gedrückt. In der Höhe des tieferen Flüssigkeitsspiegels muss in beiden Schenkeln derselbe Druck herrschen, daher gilt
+\begin{equation}\label{eq: u_rohr_manometer}
+    p = p_{\atm} + \rho \, g \, \Delta h \qquad \text{bzw.} \qquad p_\text{ü} = p - p_{\atm} = \rho \, g \, \Delta h \mDot
+\end{equation}
+Das offene U-Rohr misst also den \textbf{Überdruck}. Für kleine Druckunterschiede (etwa in Lüftungskanälen) verwendet man Wasser oder Alkohol und neigt den offenen Schenkel (\textbf{Schrägrohrmanometer}): Der Flüssigkeitsfaden wandert dann entlang des Rohres um die Länge $l = \Delta h/\sin\alpha$, was sich viel genauer ablesen lässt.
+
+Verschließt man den offenen Schenkel und pumpt die Luft darüber ab, so misst die Flüssigkeitssäule den Druck gegenüber dem Vakuum, also den \textbf{Absolutdruck}. Das ist das Prinzip des \textbf{Quecksilberbarometers} (\cref{fig: torricelli_barometer}). Auch das Gasthermometer in \cref{subsec: Gasthermometer} verwendet ein Quecksilbermanometer.
+
+\subsection{Mechanische und elektronische Druckmesser}
+\begin{itemize}
+    \item \textbf{Rohrfedermanometer} (Bourdon-Rohr): Ein zu einem Bogen gekrümmtes, flach gedrücktes Metallrohr ist an einem Ende geschlossen. Steigt der Druck im Inneren, versucht sich das Rohr zu strecken (ähnlich wie ein aufgerollter Partytröten-Schlauch beim Hineinblasen). Die Bewegung des freien Endes wird über ein Zahnradgetriebe auf einen Zeiger übertragen. Außen wirkt der Luftdruck, angezeigt wird daher der Überdruck. Rohrfedermanometer sind die typischen Zeigermanometer an Heizungen, Druckluftanlagen und Gasflaschen.
+    \item \textbf{Dosenbarometer} (Aneroidbarometer): Eine luftleer gepumpte, dünnwandige Metalldose wird vom Luftdruck mehr oder weniger stark zusammengedrückt. Eine Feder verhindert, dass sie ganz zusammenfällt. Die Verformung wird auf einen Zeiger übertragen. Da innen Vakuum herrscht, wird der Absolutdruck gemessen. So funktionieren Wetterbarometer und mechanische Höhenmesser.
+    \item \textbf{Elektronische Drucksensoren}: Der Druck verformt eine dünne Membran. Diese Verformung wird elektrisch erfasst, zum Beispiel über Dehnungsmessstreifen (Widerstandsänderung), über die Änderung einer Kapazität oder piezoelektrisch. Je nachdem, ob hinter der Membran Vakuum oder Umgebungsluft ist, messen sie Absolut- oder Überdruck.
+\end{itemize}
+
+\begin{table}[htb]
+    \centering
+    \caption{Übersicht über gebräuchliche Druckmessgeräte.}\label{tab: druckmessgeraete}
+    \vspace{4pt}
+    \small
+    \begin{tabular}{l l l}
+        \toprule
+        \textbf{Messgerät} & \textbf{Messprinzip} & \textbf{Misst} \\
+        \midrule
+        U-Rohr-Manometer (offen) & Schweredruck einer Flüssigkeitssäule & Überdruck \\
+        Quecksilberbarometer & Schweredruck, Vakuum über der Säule & Absolutdruck \\
+        Rohrfedermanometer & Verformung eines gebogenen Rohres & Überdruck \\
+        Dosenbarometer & Verformung einer evakuierten Dose & Absolutdruck \\
+        Elektronischer Sensor & Membranverformung, elektrisch erfasst & beides möglich \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Auftrieb und das Archimedische Prinzip}\label{sec: auftrieb}
+Ein Körper, der in eine Flüssigkeit (oder ein Gas) eintaucht, scheint leichter zu werden. Die Ursache ist der Schweredruck: Er ist an der Unterseite des Körpers größer als an der Oberseite.
+
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[>=Latex, thick, scale=0.9]
+        % Flüssigkeit
+        \fill[blue!12] (0,0) rectangle (6.5,4.6);
+        \draw[blue!50!black] (0,4.6) -- (6.5,4.6);
+        \node[blue!50!black, font=\small, anchor=south east] at (6.5,4.6) {Oberfläche};
+        % Körper
+        \filldraw[fill=figOrange!35, draw=figOrange!70!black] (2.5,1.0) rectangle (4.5,2.8);
+        \node at (3.5,1.9) {$V$};
+        \node[font=\small, anchor=north west] at (2.5,2.8) {$A$};
+        % Druckkräfte oben (klein) und unten (groß)
+        \foreach \x in {2.9,3.5,4.1} {
+            \draw[->, figRed] (\x,3.45) -- (\x,2.85);
+            \draw[->, figRed] (\x,0.0) -- (\x,0.95);
+        }
+        \node[figRed, font=\small, anchor=west] at (4.6,3.25) {$F_\text{oben} = p_1 A$};
+        \node[figRed, font=\small, anchor=west] at (4.6,0.45) {$F_\text{unten} = p_2 A$};
+        % seitliche Kräfte (heben sich auf)
+        \draw[->, gray] (1.75,1.9) -- (2.45,1.9);
+        \draw[->, gray] (5.25,1.9) -- (4.55,1.9);
+        % Tiefen
+        \draw[<->] (1.0,4.6) -- (1.0,2.8) node[midway, left] {$h_1$};
+        \draw[<->] (0.4,4.6) -- (0.4,1.0) node[pos=0.7, left] {$h_2$};
+        \draw[gray, dashed, thin] (0.3,2.8) -- (2.5,2.8);
+        \draw[gray, dashed, thin] (0.3,1.0) -- (2.5,1.0);
+    \end{tikzpicture}
+    \caption{Herleitung des Auftriebs: Auf die Unterseite des Körpers (Tiefe $h_2$) wirkt ein größerer Druck als auf die Oberseite (Tiefe $h_1$). Die seitlichen Druckkräfte heben sich gegenseitig auf. Übrig bleibt eine nach oben gerichtete Kraft, der Auftrieb.}\label{fig: auftrieb_herleitung}
+\end{figure}
+
+Wir betrachten einen Quader mit der Grund- und Deckfläche $A$, der vollständig in eine Flüssigkeit der Dichte $\rho_\text{F}$ eingetaucht ist (\cref{fig: auftrieb_herleitung}). Die Druckkräfte auf die Seitenflächen heben sich paarweise auf. Auf die Oberseite in der Tiefe $h_1$ wirkt die Kraft $F_\text{oben} = p_1 A$ nach unten, auf die Unterseite in der Tiefe $h_2$ die größere Kraft $F_\text{unten} = p_2 A$ nach oben. Mit \cref{eq: schweredruck_fluessigkeit} ergibt sich die resultierende Kraft nach oben:
+\begin{equation}\begin{aligned}
+    F_\text{Auf} &= F_\text{unten} - F_\text{oben} = \left(p_{\atm} + \rho_\text{F} g h_2\right) A - \left(p_{\atm} + \rho_\text{F} g h_1\right) A \\
+    &= \rho_\text{F}\, g\, (h_2 - h_1)\, A = \rho_\text{F}\, g\, V \mDot
+\end{aligned}\end{equation}
+Dabei ist $V = A\,(h_2 - h_1)$ das Volumen des Körpers. Das Produkt $\rho_\text{F} V$ ist genau die Masse der Flüssigkeit, die der Körper verdrängt. Dieses Ergebnis gilt für Körper beliebiger Form, denn man kann jeden Körper aus vielen schmalen senkrechten Säulen zusammensetzen.
+
+\begin{rememberbox}{Archimedisches Prinzip}
+    Ein Körper, der ganz oder teilweise in ein Fluid eintaucht, erfährt eine nach oben gerichtete \textbf{Auftriebskraft}. Sie ist so groß wie die Gewichtskraft des verdrängten Fluids:
+    \begin{equation}\label{eq: auftrieb}
+        F_\text{Auf} = \rho_\text{F} \cdot V_\text{verdr} \cdot g = m_\text{verdr} \cdot g \mDot
+    \end{equation}
+    Dabei ist $\rho_\text{F}$ die Dichte des Fluids und $V_\text{verdr}$ das eingetauchte (verdrängte) Volumen. Das Prinzip gilt für Flüssigkeiten und Gase.
+\end{rememberbox}
+Das Prinzip geht auf Archimedes von Syrakus (etwa 287--212 v.\,Chr.) zurück. Bei Gasen ändert sich die Dichte zwar mit der Höhe, über die Höhe eines Körpers ist diese Änderung aber vernachlässigbar klein, sodass \cref{eq: auftrieb} auch dort praktisch exakt gilt.
+
+\subsection{Sinken, Schweben, Steigen und Schwimmen}
+Auf einen vollständig eingetauchten Körper der Masse $m_\text{K}$ und des Volumens $V_\text{K}$ wirken die Gewichtskraft $F_\text{G} = \rho_\text{K} V_\text{K} g$ nach unten und die Auftriebskraft $F_\text{Auf} = \rho_\text{F} V_\text{K} g$ nach oben. Da das Volumen in beiden Kräften gleich ist, entscheidet allein der Vergleich der (mittleren) Dichte $\rho_\text{K} = m_\text{K}/V_\text{K}$ des Körpers mit der Dichte $\rho_\text{F}$ des Fluids:
+\begin{itemize}[itemsep=1.5pt]
+    \item $\rho_\text{K} > \rho_\text{F}$: Der Körper \textbf{sinkt} (Stein in Wasser).
+    \item $\rho_\text{K} = \rho_\text{F}$: Der Körper \textbf{schwebt} (U-Boot, Fisch mit Schwimmblase).
+    \item $\rho_\text{K} < \rho_\text{F}$: Der Körper \textbf{steigt} auf, bis er an der Oberfläche \textbf{schwimmt} (Holz, Eis, Heliumballon in Luft).
+\end{itemize}
+Ein schwimmender Körper taucht gerade so weit ein, dass das verdrängte Fluid so viel wiegt wie er selbst: $\rho_\text{F}\, V_\text{ein}\, g = \rho_\text{K}\, V_\text{K}\, g$. Der eingetauchte Anteil ist daher
+\begin{equation}\label{eq: eingetauchter_anteil}
+    \frac{V_\text{ein}}{V_\text{K}} = \frac{\rho_\text{K}}{\rho_\text{F}} \mDot
+\end{equation}
+
+\begin{examplebox}[]{Beispiel: Die Spitze des Eisbergs}
+    Eis hat die Dichte $\rho_\text{Eis} = \SI{917}{\kilogram\per\meter\cubed}$, Meerwasser $\rho_\text{MW} = \SI{1025}{\kilogram\per\meter\cubed}$. Nach \cref{eq: eingetauchter_anteil} liegt der Anteil
+    \begin{equation*}
+        \frac{V_\text{ein}}{V_\text{K}} = \frac{917}{1025} \approx \num{0.89}
+    \end{equation*}
+    unter Wasser. Nur etwa \SI{11}{\percent} eines Eisbergs ragen aus dem Wasser -- daher die Redewendung von der \gDQ{Spitze des Eisbergs}.
+\end{examplebox}
+
+\begin{examplebox}[]{Beispiel: Wie viel kann ein Heliumballon tragen?}
+    Ein Ballon enthält $V = \SI{1}{\meter\cubed}$ Helium ($\rho_\text{He} = \SI{0.166}{\kilogram\per\meter\cubed}$) in Luft ($\rho_\text{L} = \SI{1.20}{\kilogram\per\meter\cubed}$, \SI{20}{\celsius}). Die Auftriebskraft abzüglich der Gewichtskraft des Heliums ist
+    \begin{equation*}
+        F = (\rho_\text{L} - \rho_\text{He})\, V\, g = (\num{1.20} - \num{0.166})\,\si{\kilogram\per\meter\cubed} \cdot \SI{1}{\meter\cubed} \cdot \SI{9.81}{\meter\per\second\squared} \approx \SI{10}{\newton} \mDot
+    \end{equation*}
+    Ein Kubikmeter Helium kann also insgesamt etwa \SI{1}{\kilo\gram} tragen -- einschließlich der Ballonhülle. Ein Heißluftballon nutzt dasselbe Prinzip: Warme Luft hat eine geringere Dichte als kalte (siehe \cref{subsec: ausdehnung_gase}).
+\end{examplebox}
+
+\begin{examplebox}[]{Beispiel: Dichtebestimmung durch Wägen}
+    Mit dem Archimedischen Prinzip lässt sich die Dichte eines Körpers beliebiger Form bestimmen -- der Legende nach prüfte Archimedes so, ob eine Krone aus reinem Gold war. Ein Metallstück hat an der Luft die Gewichtskraft $F_\text{G} = \SI{2.70}{\newton}$. Unter Wasser zeigt die Federwaage nur noch $F' = \SI{1.70}{\newton}$ an. Die Differenz ist die Auftriebskraft $F_\text{Auf} = F_\text{G} - F' = \SI{1.00}{\newton} = \rho_\text{W} V g$. Daraus folgt
+    \begin{equation*}
+        \rho_\text{K} = \frac{m}{V} = \frac{F_\text{G}/g}{F_\text{Auf}/(\rho_\text{W}\, g)} = \rho_\text{W} \cdot \frac{F_\text{G}}{F_\text{Auf}} = \SI{1000}{\kilogram\per\meter\cubed} \cdot \frac{\SI{2.70}{\newton}}{\SI{1.00}{\newton}} = \SI{2700}{\kilogram\per\meter\cubed} \mDot
+    \end{equation*}
+    Nach \cref{tab: dichten} handelt es sich vermutlich um Aluminium.
+\end{examplebox}
+
+% Chapter end - always start new page after chapter
+\newpage
