@@ -45,6 +45,53 @@
 
 %%% ---------------------------------------------------------------
 %%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
+%%% NEU: Fahrstuhlexperiment mit Federwaage (Kap. 6, Abb. 5.16, Neuzeichnung)
+%%% Fahrstuhl beschleunigt mit a nach unten: |F_Feder| = m(g - a) < m g,
+%%% daher ist der Pfeil der Federkraft kürzer als der der Gewichtskraft.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     font=\large,
+%     kraft/.style={-{Latex[length=3mm,width=2.4mm]}, line width=1.6pt},
+% ]
+%     \colorlet{kraftFeder}{blue!70!black}
+%     \colorlet{beschl}{red!75!black}
+%     \definecolor{kisteFill}{RGB}{255,226,138}
+%     \definecolor{streifRot}{RGB}{215,50,40}
+
+%     % --- Fahrstuhlkabine ---
+%     \draw[line width=1.2pt, black!80] (-0.6,0) rectangle (4.6,9);
+
+%     % --- Federwaage ---
+%     \fill (2,9) circle (2.5pt);
+%     \draw[line width=1pt] (2,9) -- (2,8.6);
+%     % Skala (rot-weiß gestreift)
+%     \foreach \i in {0,...,7} {
+%         \pgfmathsetmacro{\yu}{7.0+\i*0.2}
+%         \ifodd\i \def\sf{white}\else \def\sf{streifRot}\fi
+%         \fill[\sf] (1.78,\yu) rectangle (2.22,\yu+0.2);
+%     }
+%     \draw[line width=0.8pt, black!80] (1.78,7.0) rectangle (2.22,8.6);
+%     % Gehäuse
+%     \filldraw[fill=white, draw=black!80, line width=0.8pt] (1.6,5.4) rectangle (2.4,7.0);
+%     \draw[line width=1pt] (2,5.4) -- (2,4.9);
+
+%     % --- Masse ---
+%     \filldraw[fill=kisteFill, draw=gray!60, line width=1pt, rounded corners=1pt] (1.2,3.6) rectangle (2.8,4.9);
+%     \node[left=4pt] at (1.2,4.25) {$m$};
+
+%     % --- Kräfte auf die Masse ---
+%     \draw[kraft, black] (2,3.6) -- (2,1.2) node[right=2pt, pos=0.75] {$\ivecS{F}{\mathrm{G}} = m\ivec{g}$};
+%     \draw[kraft, kraftFeder] (2.6,4.9) -- (2.6,6.5) node[right=1pt, pos=0.7] {$\ivecS{F}{\mathrm{Feder}}$};
+
+%     % --- Koordinate z und Beschleunigung a (außerhalb) ---
+%     \draw[vkAchse] (-1.5,6.4) -- (-1.5,8.6) node[left=2pt, pos=0.8] {$z$};
+%     \draw[kraft, beschl] (-1.5,5.6) -- (-1.5,3.4) node[left=2pt, midway] {$\ivec{a}$};
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% ---------------------------------------------------------------
+%%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
 %%% NEU: Kräftediagramm Kiste mit Haftreibung (Kap. 6, Abb. 5.9 links, Neuzeichnung)
 %%% Haftfall: F_N = -F_G (gleich lang), F_R,h = -F_A (gleich lang).
 %%% ---------------------------------------------------------------
