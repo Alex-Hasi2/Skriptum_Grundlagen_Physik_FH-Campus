@@ -18,6 +18,15 @@
   textfont=normal, % Normaler Text für die restliche Caption
 }
 
+% Breitere Nummernspalten in den Verzeichnissen, damit zweistellige Nummern
+% (z.B. 11.10, 11.11.1, Abbildung 11.24) nicht am Titel kleben
+\RedeclareSectionCommand[tocnumwidth=2.1em]{chapter}
+\RedeclareSectionCommand[tocindent=2.1em, tocnumwidth=2.9em]{section}
+\RedeclareSectionCommand[tocindent=5.0em, tocnumwidth=3.9em]{subsection}
+\RedeclareSectionCommand[tocindent=8.9em, tocnumwidth=4.8em]{subsubsection}
+\DeclareTOCStyleEntry[indent=1.5em, numwidth=2.9em]{tocline}{figure}
+\DeclareTOCStyleEntry[indent=1.5em, numwidth=2.9em]{tocline}{table}
+
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta, angles, calc, quotes, decorations.pathmorphing, decorations.pathreplacing, decorations.markings, patterns}
 \usepackage{tikz-3dplot} % Für bessere 3D-Kontrolle
