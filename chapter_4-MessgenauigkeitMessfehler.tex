@@ -96,7 +96,52 @@ nähert sich dem wahren Wert bei unendlich vielen Messungen
 \end{equation}
 \begin{figure}
     \centering
-    \includegraphics[width=0.6\linewidth]{Bilder/Kapitel_Grundlagen/stat_Verteilung_messwerte.png}
+    \resizebox{0.8\textwidth}{!}{%
+    \begin{tikzpicture}
+        \definecolor{balken}{RGB}{150,195,230}
+        \definecolor{balkenRand}{RGB}{70,130,190}
+        \definecolor{wahrFarbe}{RGB}{200,60,45}
+        \def\xm{98.77}\def\sig{7.99}
+        \begin{axis}[
+            width=13cm, height=7.5cm,
+            xmin=69, xmax=123, ymin=0, ymax=15.5,
+            axis lines=left,
+            axis line style={line width=0.8pt, -{Stealth[length=2.8mm, width=2.4mm]}},
+            tick style={line width=0.6pt, black},
+            xtick={70,80,...,120}, ytick={0,2,...,14},
+            xlabel={Messwerte $x_i$}, ylabel={Häufigkeit $n_i$},
+            label style={font=\large},
+            ymajorgrids, grid style={gray!20},
+            legend style={at={(0.02,0.97)}, anchor=north west, draw=gray!50, font=\small, fill=white, fill opacity=0.9, text opacity=1},
+            legend cell align=left,
+        ]
+            % Bereich +- sigma um den Mittelwert
+            \addplot[fill=gray!20, draw=none, area legend] coordinates {(\xm-\sig,0) (\xm-\sig,15.5) (\xm+\sig,15.5) (\xm+\sig,0)} \closedcycle;
+            \addlegendentry{Bereich $\bar{x}\pm\sigma$}
+            % Histogramm der Messwerte (Klassenbreite 2)
+            \addplot[hist={bins=26, data min=70, data max=122}, fill=balken, draw=balkenRand, line width=0.6pt, area legend]
+                table[y index=0, row sep=crcr] {
+                x\\
+                106.5\\ 106.0\\ 85.2\\ 98.9\\ 104.3\\ 103.2\\ 92.3\\ 94.3\\ 102.0\\ 90.8\\
+                98.4\\ 87.3\\ 100.1\\ 90.0\\ 100.7\\ 110.3\\ 110.6\\ 108.9\\ 86.9\\ 104.3\\
+                95.5\\ 89.6\\ 101.4\\ 105.5\\ 117.1\\ 97.8\\ 110.2\\ 71.8\\ 97.0\\ 99.7\\
+                94.8\\ 108.1\\ 97.8\\ 108.0\\ 108.4\\ 91.8\\ 98.5\\ 99.2\\ 98.3\\ 93.1\\
+                93.3\\ 103.6\\ 92.4\\ 95.5\\ 106.6\\ 106.0\\ 100.0\\ 89.8\\ 83.3\\ 100.9\\
+                99.6\\ 107.8\\ 107.7\\ 96.2\\ 98.3\\ 99.8\\ 100.6\\ 103.9\\ 111.2\\ 103.5\\
+                102.6\\ 97.7\\ 93.9\\ 94.1\\ 94.6\\ 100.6\\ 107.9\\ 93.1\\ 91.9\\ 102.3\\
+                120.0\\ 90.5\\ 90.8\\ 97.3\\ 96.9\\ 94.4\\ 102.7\\ 91.6\\ 84.6\\ 102.1\\
+                94.3\\ 102.6\\ 99.8\\ 101.9\\ 94.3\\ 91.6\\ 91.2\\ 102.4\\ 83.1\\ 101.1\\
+                99.5\\ 108.6\\ 86.0\\ 99.0\\ 103.4\\ 91.0\\ 111.8\\ 92.2\\ 93.2\\ 115.3\\
+                };
+            \addlegendentry{Messwerte}
+            % Mittelwert und wahrer Wert
+            \addplot[black, dashed, line width=1.5pt] coordinates {(\xm,0) (\xm,15.5)};
+            \addlegendentry{Mittelwert $\bar{x}$}
+            \addplot[wahrFarbe, line width=1.5pt] coordinates {(100,0) (100,15.5)};
+            \addlegendentry{Wahrer Wert $x_\mathrm{W}$}
+        \end{axis}
+    \end{tikzpicture}%
+    }
     \caption[Typische Verteilung von Messwerten um den Mittelwert bei statistischer Fehlerverteilung]{Typische Verteilung von Messwerten $x_i$ um den Mittelwert $\bar{x}$ bei statistischer Fehlerverteilung.}\label{fig: stat_Verteilung_Messwerte}
 \end{figure}
 Liegen nur statistische Fehler vor, die sich aus vielen kleinen, voneinander unabhängigen Störungen zusammensetzen, so erhält man bei einer hohen Anzahl an Messwerten näherungsweise eine Normalverteilung.\footnote{Vorausgesetzt die Messgröße ist kontinuierlich und die Schwankung auch.}
