@@ -30,6 +30,12 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta, angles, calc, quotes, decorations.pathmorphing, decorations.pathreplacing, decorations.markings, patterns}
 \usepackage{tikz-3dplot} % Für bessere 3D-Kontrolle
+% Einheitliche Achsen und Skalenstriche für Koordinatensysteme (z.B. Vektorrechnung)
+\tikzset{
+    vkAchse/.style={line width=0.8pt, -{Stealth[length=2.8mm, width=2.4mm]}},
+    vkTick/.style={line width=0.6pt},
+    vkTickKlein/.style={line width=0.4pt},
+}
 
 \usepackage{subcaption} % needed for labelphantom
 % \usepackage{subfigure} % outdated and replaced by subcaption
