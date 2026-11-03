@@ -45,6 +45,66 @@
 
 %%% ---------------------------------------------------------------
 %%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
+%%% NEU: Kräftediagramm Kiste mit Haftreibung (Kap. 6, Abb. 5.9 links, Neuzeichnung)
+%%% Haftfall: F_N = -F_G (gleich lang), F_R,h = -F_A (gleich lang).
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     font=\large,
+%     kraft/.style={-{Latex[length=3mm,width=2.4mm]}, line width=1.6pt},
+% ]
+%     \colorlet{kraftN}{green!50!black}
+%     \colorlet{kraftA}{blue!70!black}
+%     \colorlet{kraftR}{red!70!black}
+%     \definecolor{kisteFill}{RGB}{255,226,138}
+%     \def\fg{2.5}   % Länge F_G = F_N
+%     \def\fa{1.7}   % Länge F_A = F_R,h
+%     % Boden
+%     \fill[brown!20] (-3.6,-0.6) rectangle (3.6,0);
+%     \draw[gray!60, line width=1pt] (-3.6,0) -- (3.6,0);
+%     % Kiste
+%     \filldraw[fill=kisteFill, draw=gray!60, line width=1pt, rounded corners=1pt] (-1.5,0) rectangle (1.5,1.8);
+%     \node at (-1.0,1.4) {$m$};
+%     \coordinate (S) at (0,0.9);
+%     % Kräfte
+%     \draw[kraft, black] ($(S)+(-0.12,0)$) -- ++(0,-\fg) node[below=1pt] {$\ivecS{F}{\mathrm{G}} = m\ivec{g}$};
+%     \draw[kraft, kraftN] (0.12,0) -- ++(0,\fg) node[above=1pt] {$\ivecS{F}{\mathrm{N}}$};
+%     \draw[kraft, kraftA] (1.5,0.9) -- ++(\fa,0) node[above left=1pt] {$\ivecS{F}{\mathrm{A}}$};
+%     \draw[kraft, kraftR] (-1.5,0.04) -- ++(-\fa,0) node[above right=1pt] {$\ivecS{F}{\mathrm{R,h}}$};
+%     \fill ($(S)+(-0.12,0)$) circle (2pt);
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% ---------------------------------------------------------------
+%%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
+%%% NEU: Reibungskraft über Zugkraft (Kap. 6, Abb. 5.9 rechts, Neuzeichnung)
+%%% Haften: |F_R,h| = |F_A| (Steigung 1) bis zum Maximalwert, dann Sprung
+%%% auf die kleinere, konstante Gleitreibungskraft |F_R,g|.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[font=\large]
+%     \definecolor{kurve}{RGB}{40,100,175}
+%     \def\Fmax{3.2}\def\Fg{2.4}
+%     % Achsen
+%     \draw[vkAchse] (0,0) -- (6.4,0) node[below left=2pt] {$|\ivecS{F}{\mathrm{A}}|$};
+%     \draw[vkAchse] (0,0) -- (0,4.6) node[left=2pt] {$|\ivecS{F}{\mathrm{R}}|$};
+%     % Hilfslinie zum Maximalwert
+%     \draw[black!60, dashed, line width=0.6pt] (0,\Fmax) -- (\Fmax,\Fmax);
+%     \draw[vkTick] (-0.09,\Fmax) -- (0.09,\Fmax);
+%     \node[left=2pt] at (0,\Fmax) {$|\ivecS{F}{\mathrm{R,h,max}}|$};
+%     % Kennlinie
+%     \draw[kurve, line width=2.2pt] (0,0) -- (\Fmax,\Fmax);
+%     \draw[kurve, line width=2.2pt, densely dotted] (\Fmax,\Fmax) -- (\Fmax,\Fg);
+%     \draw[kurve, line width=2.2pt] (\Fmax,\Fg) -- (6.0,\Fg);
+%     % Beschriftungen mit Hinweislinien
+%     \draw[black!70, line width=0.5pt] (1.6,1.6) -- (2.6,0.55) node[right=0pt, text=black] {$|\ivecS{F}{\mathrm{R,h}}| = |\ivecS{F}{\mathrm{A}}|$};
+%     \draw[black!70, line width=0.5pt] (\Fmax,\Fmax) -- (2.6,4.0) node[above=0pt, text=black] {$|\ivecS{F}{\mathrm{R,h,max}}| = \mu_\mathrm{R,h}\,|\ivecS{F}{\mathrm{N}}|$};
+%     \draw[black!70, line width=0.5pt] (5.0,\Fg) -- (5.3,1.6) node[below=0pt, text=black] {$|\ivecS{F}{\mathrm{R,g}}| = \mu_\mathrm{R,g}\,|\ivecS{F}{\mathrm{N}}|$};
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% ---------------------------------------------------------------
+%%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
 %%% NEU: Drehimpuls bei ebener Bewegung (Kap. 6, Abb. 5.15, Neuzeichnung)
 %%% Schräge Parallelprojektion: x nach rechts, y in die Tiefe, z nach oben.
 %%% Die Bewegung liegt in der xy-Ebene (r-v-Ebene), L zeigt in z-Richtung.
