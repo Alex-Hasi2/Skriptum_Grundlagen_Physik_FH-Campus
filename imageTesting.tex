@@ -37,6 +37,100 @@
 
 \begin{document}
 
+%%% ---------------------------------------------------------------
+%%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
+%%% NEU: Schiefe Ebene mit Seil und Rolle (Kap. 6, Abb. 5.13, Neuzeichnung)
+%%% Kiste m_1 auf der schiefen Ebene (theta = 37 Grad), über ein Seil
+%%% und eine Umlenkrolle mit der hängenden Masse m_2 verbunden.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     >=Latex,
+%     font=\LARGE,
+% ]
+%     % --- Parameter ---
+%     \def\thE{37}         % Neigungswinkel der Ebene (theta)
+%     \def\Lx{7.0}         % horizontale Länge der Ebene
+%     \def\bs{2.1}         % Kantenlänge der Kiste m_1
+%     \def\ps{3.3}         % Position von m_1 entlang der Oberfläche (von oben gemessen)
+%     \def\rr{0.45}        % Radius der Umlenkrolle
+%     \def\dr{1.3}         % Abstand der Rolle von der Kante der Ebene (entlang der Ebene)
+%     \def\mtwo{1.7}       % Kantenlänge der Kiste m_2
+%     \def\ytwo{1.2}       % Höhe der Unterkante von m_2
+%     \colorlet{seil}{brown!85!black}
+%     \definecolor{kisteFill}{RGB}{255,226,138}
+%     \definecolor{ebeneFill}{RGB}{209,236,231}
+
+%     % Richtung entlang der Ebene (bergab) und Normale (aus der Ebene heraus)
+%     \pgfmathsetmacro{\ux}{cos(\thE)}
+%     \pgfmathsetmacro{\uy}{-sin(\thE)}
+%     \pgfmathsetmacro{\nx}{sin(\thE)}
+%     \pgfmathsetmacro{\ny}{cos(\thE)}
+
+%     % --- Boden ---
+%     \fill[brown!20] (-2.6,-0.6) rectangle (\Lx+0.6,0);
+%     \draw[gray!60, line width=1pt] (-2.6,0) -- (\Lx+0.6,0);
+
+%     % --- Schiefe Ebene (hoch links, fällt nach rechts ab) ---
+%     \coordinate (O) at (0,0);
+%     \coordinate (B) at (\Lx,0);
+%     \coordinate (T) at (0,{\Lx*tan(\thE)});
+%     \filldraw[fill=ebeneFill, draw=gray!60, line width=1pt] (O) -- (B) -- (T) -- cycle;
+
+%     % --- Umlenkrolle: Seil verläuft im Abstand bs/2 parallel zur Ebene ---
+%     \coordinate (C) at ($(T)+({-\dr*\ux+(\bs/2-\rr)*\nx},{-\dr*\uy+(\bs/2-\rr)*\ny})$);
+%     % Halterung der Rolle: Fußplatte auf der Oberfläche der Ebene + Stab zur Achse
+%     \coordinate (H) at ($(T)+({0.75*\ux},{0.75*\uy})$);   % Mitte der Fußplatte
+%     \coordinate (J) at ($(H)+({0.09*\nx},{0.09*\ny})$);    % Gelenk auf der Fußplatte
+%     \begin{scope}[shift={(H)}, rotate=-\thE]
+%         \filldraw[fill=gray!45, draw=gray!60!black, line width=0.8pt, rounded corners=0.5pt]
+%             (-0.5,0) rectangle (0.5,0.18);
+%         \fill[gray!70!black] (-0.36,0.09) circle (0.035) (0.36,0.09) circle (0.035);  % Schrauben
+%     \end{scope}
+%     \draw[gray!60!black, line width=5.5pt, line cap=round] (J) -- (C);   % Kontur des Stabs
+%     \draw[gray!45, line width=4pt, line cap=round] (J) -- (C);
+%     \filldraw[fill=gray!45, draw=gray!60!black, line width=0.8pt] (J) circle (0.1);
+
+%     % --- Kiste m_1 (Auflagepunkt P auf der Oberfläche) ---
+%     \coordinate (P) at ($(T)+({\ps*\ux},{\ps*\uy})$);
+%     % Befestigungspunkt des Seils (Mitte der oberen Seitenfläche)
+%     \coordinate (A) at ($(P)+({-\bs/2*\ux+\bs/2*\nx},{-\bs/2*\uy+\bs/2*\ny})$);
+%     % Seil: von m_1 parallel zur Ebene zur Rolle, über die Rolle, senkrecht zu m_2
+%     \coordinate (Rtop) at ($(C)+({\rr*\nx},{\rr*\ny})$);
+%     \coordinate (Rleft) at ($(C)+(-\rr,0)$);
+%     \coordinate (M2) at (Rleft |- 0,\ytwo);   % Mitte der Unterkante von m_2
+%     \coordinate (M2top) at ($(M2)+(0,\mtwo)$); % Aufhängepunkt an m_2
+%     \draw[seil, line width=1.8pt] (A) -- (Rtop)
+%         arc[start angle={90-\thE}, end angle=180, radius=\rr]
+%         -- (M2top);
+%     % Rolle
+%     \filldraw[fill=gray!15, draw=gray!60!black, line width=1pt] (C) circle (\rr);
+%     \filldraw[fill=gray!50, draw=gray!60!black] (C) circle (0.09);
+
+%     % Kiste m_1
+%     \begin{scope}[shift={(P)}, rotate=-\thE]
+%         \filldraw[fill=kisteFill, draw=gray!60, line width=1pt, rounded corners=1pt]
+%             (-\bs/2,0) rectangle (\bs/2,\bs);
+%         \node[align=center] at (0,\bs/2) {$m_1 =$\\$\SI{10.0}{\kilo\gram}$};
+%     \end{scope}
+
+%     % --- Hängende Kiste m_2 ---
+%     \filldraw[fill=kisteFill, draw=gray!60, line width=1pt, rounded corners=1pt]
+%         ($(M2)+(-\mtwo/2,0)$) rectangle ($(M2)+(\mtwo/2,\mtwo)$);
+%     \node at ($(M2)+(0,\mtwo/2)$) {$m_2$};
+
+%     % --- Winkel theta ---
+%     \draw[line width=0.9pt] ({\Lx-1.7},0) arc[start angle=180, end angle={180-\thE}, radius=1.7];
+%     \node[anchor=east] at ({\Lx-1.75},{0.45}) {$\theta = \SI{37}{\degree}$};
+
+%     % --- Koordinatenachsen (x entlang der Ebene bergab, y senkrecht dazu) ---
+%     \begin{scope}[shift={(\Lx-0.6,{0.62*\Lx*tan(\thE)})}, rotate=-\thE]
+%         \draw[->, line width=2pt] (0,0) -- (0,1.5) node[above] {$y$};
+%         \draw[->, line width=2pt] (0,0) -- (1.5,0) node[below right=-2pt] {$x$};
+%     \end{scope}
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
 %%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
 %%% NEU: Schiefe Ebene, Gleitreibung (Kap. 6, Neuzeichnung)
 %%% Die Kiste gleitet bergab: Die Gleitreibungskraft F_{R,g} (bergauf)
