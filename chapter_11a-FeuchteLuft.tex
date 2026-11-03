@@ -1,0 +1,205 @@
+\chapter{Feuchte Luft}\label{chap: feuchte_luft}
+Luft enthält immer etwas Wasserdampf. Wie viel, entscheidet darüber, ob wir ein Raumklima als angenehm, schwül oder trocken empfinden, ob Fenster beschlagen, ob sich an kalten Wänden Schimmel bildet und ob es draußen regnet. Physikalisch ist feuchte Luft ein Gemisch aus trockener Luft und Wasserdampf. Das Besondere daran: Die Menge des Wasserdampfs ist nach oben begrenzt, und diese Grenze hängt stark von der Temperatur ab.
+
+In diesem Kapitel verbinden wir dazu drei Themen aus der Wärmelehre: das ideale Gas (\cref{sec: ideales_gas}), den Sättigungsdampfdruck (\cref{subsec: dampfdruckkurve_clausius_clapeyron}) und die Verdampfungswärme (\cref{subsec: schmelz_verdampfungswaerme}).
+
+\section{Gasgemische und Partialdruck}\label{sec: partialdruck}
+Luft ist ein Gemisch verschiedener Gase. Trockene Luft besteht (nach Volumenanteilen) zu etwa \SI{78}{\percent} aus Stickstoff, \SI{21}{\percent} aus Sauerstoff und \SI{0.9}{\percent} aus Argon; der Rest sind Spurengase wie Kohlendioxid. In einem Gemisch idealer Gase bewegt sich jede Gasart so, als wären die anderen gar nicht da. Jede Komponente $i$ übt daher den Druck aus, den sie allein im gesamten Volumen hätte, ihren \textbf{Partialdruck}
+\begin{equation}\label{eq: partialdruck}
+    p_i = \frac{\nu_i R T}{V} \mDot
+\end{equation}
+
+\begin{rememberbox}{Gesetz von Dalton}
+    Der Gesamtdruck eines Gemisches idealer Gase ist die Summe der Partialdrücke seiner Komponenten:
+    \begin{equation}\label{eq: dalton}
+        p = p_1 + p_2 + p_3 + \ldots = \sum_i p_i \mDot
+    \end{equation}
+    Der Partialdruck einer Komponente ist proportional zu ihrem Stoffmengenanteil (= Volumenanteil): $p_i = \dfrac{\nu_i}{\nu} \, p$.
+\end{rememberbox}
+
+\begin{examplebox}[]{Beispiel: Sauerstoff im Hochgebirge}
+    Auf Meereshöhe ($p \approx \SI{1013}{\hecto\pascal}$) beträgt der Partialdruck des Sauerstoffs $p_{\text{O}_2} = \num{0.21} \cdot \SI{1013}{\hecto\pascal} \approx \SI{210}{\hecto\pascal}$. Auf dem Gipfel des Mount Everest ist der Luftdruck auf etwa ein Drittel gesunken (\cref{sec: barometrische_hoehenformel}). Der Sauerstoffanteil der Luft ist dort zwar immer noch \SI{21}{\percent}, der Partialdruck aber nur noch etwa \SI{70}{\hecto\pascal}. Für die Atmung zählt der Partialdruck -- deshalb ist die Luft in großer Höhe \gDQ{dünn} (vgl.~\cite[S.~638]{Giancoli2010}).
+\end{examplebox}
+
+Für \textbf{feuchte Luft} schreiben wir den Gesamtdruck als Summe aus dem Partialdruck der trockenen Luft $p_\text{L}$ und dem Partialdruck des Wasserdampfs $p_\text{D}$:
+\begin{equation}\label{eq: druck_feuchte_luft}
+    p = p_\text{L} + p_\text{D} \mDot
+\end{equation}
+Der Wasserdampfpartialdruck ist klein: Bei Raumtemperatur liegt er typischerweise bei \SIrange{10}{20}{\hecto\pascal}, also bei ein bis zwei Prozent des Luftdrucks.
+
+\section{Der Sättigungsdampfdruck von Wasser}\label{sec: saettigungsdampfdruck}
+Steht Wasser in einem abgeschlossenen Gefäß, so verdampft so lange Wasser, bis der Dampf den \textbf{Sättigungsdampfdruck} $p_\text{s}$ erreicht hat. Dann treten pro Zeit gleich viele Moleküle aus der Flüssigkeit aus wie in sie zurückkehren (\cref{subsec: dampfdruckkurve_clausius_clapeyron}). Dasselbe gilt in feuchter Luft: Der Partialdruck des Wasserdampfs kann den Sättigungsdampfdruck nicht (dauerhaft) überschreiten. Was darüber hinausgeht, kondensiert zu Tröpfchen.
+
+\begin{importantbox}[]{Der Sättigungsdampfdruck hängt nur von der Temperatur ab}
+    Der Sättigungsdampfdruck ist eine Eigenschaft des Wassers und hängt nur von der Temperatur ab -- nicht vom Luftdruck und nicht davon, ob überhaupt Luft vorhanden ist. Die Luft verlangsamt nur, wie schnell sich das Gleichgewicht einstellt (vgl.~\cite[S.~637]{Giancoli2010}). Die verbreitete Formulierung \gDQ{Warme Luft kann mehr Wasser aufnehmen} ist daher physikalisch ungenau: Nicht die Luft nimmt das Wasser auf, sondern bei höherer Temperatur kann mehr Wasserdampf neben der Luft existieren.
+\end{importantbox}
+
+\begin{table}[htb]
+    \centering
+    \caption{Sättigungsdampfdruck von Wasser (über Eis für $\theta < \SI{0}{\celsius}$; nach \cite[S.~637]{Giancoli2010}).}\label{tab: saettigungsdampfdruck}
+    \vspace{4pt}
+    \begin{tabular}{r r @{\hspace{1.5cm}} r r}
+        \toprule
+        \textbf{$\theta$ (\si{\celsius})} & \textbf{$p_\text{s}$ (\si{\hecto\pascal})} & \textbf{$\theta$ (\si{\celsius})} & \textbf{$p_\text{s}$ (\si{\hecto\pascal})} \\
+        \midrule
+        $-10$ & \num{2.60} & 25 & \num{31.7} \\
+        0 & \num{6.11} & 30 & \num{42.4} \\
+        5 & \num{8.72} & 40 & \num{73.7} \\
+        10 & \num{12.3} & 50 & \num{123} \\
+        15 & \num{17.1} & 60 & \num{199} \\
+        20 & \num{23.3} & 100 & \num{1013} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Für Rechnungen im Bereich der Raum- und Außentemperaturen verwendet man oft eine Näherungsformel, die \textbf{Magnus-Formel}:
+\begin{equation}\label{eq: magnus}
+    p_\text{s}(\theta) = \SI{6.112}{\hecto\pascal} \cdot \exp\left(\frac{\num{17.62} \cdot \theta}{\SI{243.12}{\celsius} + \theta}\right) \qquad (\theta \text{ in } \si{\celsius}, \text{ über Wasser}) \mDot
+\end{equation}
+Sie stimmt zwischen etwa \SI{-45}{\celsius} und \SI{60}{\celsius} auf wenige Promille mit Messwerten überein. Der Sättigungsdampfdruck steigt annähernd exponentiell mit der Temperatur an: Er verdoppelt sich ungefähr alle \SI{11}{\kelvin} (\cref{fig: saettigungsdampfdruck}).
+
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.75\textwidth, height=6.5cm,
+            axis lines=left,
+            xmin=-10, xmax=40, ymin=0, ymax=75,
+            xtick={-10,0,10,20,30,40}, ytick={0,10,20,30,40,50,60,70},
+            xlabel={Temperatur $\theta$ (\si{\celsius})}, ylabel={Druck (\si{\hecto\pascal})},
+            grid=major, grid style={gray!20},
+            samples=100, domain=-10:40,
+            legend pos=north west,
+            legend style={draw=none, fill=white, fill opacity=0.85, text opacity=1, font=\small, cells={anchor=west}},
+        ]
+            \addplot[very thick, figRed] {6.112*exp(17.62*x/(243.12+x))};
+            \addlegendentry{Sättigungsdampfdruck $p_\text{s}$ ($\varphi = \SI{100}{\percent}$)}
+            \addplot[thick, pointblue, dashed] {0.5*6.112*exp(17.62*x/(243.12+x))};
+            \addlegendentry{$\varphi = \SI{50}{\percent}$}
+            % Beispiel: 20 °C, 50 % -> Taupunkt
+            \addplot[only marks, mark=*, mark size=2pt] coordinates {(20,11.65)};
+            \draw[thick, ->, black!70] (axis cs:20,11.65) -- (axis cs:9.4,11.65);
+            \draw[densely dotted, thick] (axis cs:9.2,11.65) -- (axis cs:9.2,0);
+            \node[anchor=north west, font=\small] at (axis cs:20.3,10.8) {Raumluft: \SI{20}{\celsius}, \SI{50}{\percent}};
+            \node[anchor=south east, font=\small] at (axis cs:9.0,12.8) {Taupunkt $\approx \SI{9}{\celsius}$};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Sättigungsdampfdruck von Wasser nach der Magnus-Formel. Raumluft mit \SI{20}{\celsius} und \SI{50}{\percent} relativer Feuchte hat den Dampfpartialdruck $p_\text{D} \approx \SI{11.7}{\hecto\pascal}$. Kühlt man sie ab, ohne Wasser zu entziehen (waagrechter Pfeil), so erreicht sie bei etwa \SI{9}{\celsius} die Sättigung: den Taupunkt.}\label{fig: saettigungsdampfdruck}
+\end{figure}
+
+\section{Maße für die Luftfeuchte}\label{sec: feuchtemasse}
+Wie viel Wasserdampf die Luft enthält, kann man auf verschiedene Weise angeben. Jedes Maß hat seinen Zweck.
+
+\subsubsection*{Absolute Feuchte}
+Die \textbf{absolute Feuchte} ist die Masse des Wasserdampfs pro Volumen feuchter Luft, also die Dichte des Wasserdampfs. Mit dem idealen Gasgesetz für den Dampf allein ($p_\text{D} V = \frac{m_\text{D}}{M_\text{W}} R T$, Molmasse von Wasser $M_\text{W} = \SI{18.0}{\gram\per\mol}$) folgt
+\begin{equation}\label{eq: absolute_feuchte}
+    \rho_\text{D} = \frac{m_\text{D}}{V} = \frac{p_\text{D}}{R_\text{D}\, T} \mComma \qquad R_\text{D} = \frac{R}{M_\text{W}} = \SI{461.5}{\joule\per\kilogram\per\kelvin} \mDot
+\end{equation}
+Gesättigte Luft bei \SI{20}{\celsius} enthält zum Beispiel $\rho_\text{D} = \SI{2330}{\pascal}/(\SI{461.5}{\joule\per\kilogram\per\kelvin} \cdot \SI{293}{\kelvin}) \approx \SI{17}{\gram\per\meter\cubed}$ Wasserdampf.
+
+\subsubsection*{Relative Feuchte}
+Die \textbf{relative Feuchte} gibt an, wie nahe die Luft an der Sättigung ist. Sie ist das Verhältnis aus dem tatsächlichen Dampfpartialdruck und dem Sättigungsdampfdruck bei derselben Temperatur:
+\begin{rememberbox}{Relative Luftfeuchte}
+    \begin{equation}\label{eq: relative_feuchte}
+        \varphi = \frac{p_\text{D}}{p_\text{s}(\theta)} \mDot
+    \end{equation}
+    Sie wird meist in Prozent angegeben. Bei $\varphi = \SI{100}{\percent}$ ist die Luft gesättigt; dann beginnt Wasserdampf zu kondensieren.
+\end{rememberbox}
+Da $\rho_\text{D} \propto p_\text{D}$ ist, gilt bei gleicher Temperatur ebenso $\varphi = \rho_\text{D}/\rho_\text{D,s}$. Die relative Feuchte bestimmt, wie schnell Wasser verdunstet und wie behaglich wir ein Raumklima empfinden; in Innenräumen gelten etwa \SIrange{40}{60}{\percent} als angenehm.
+
+\begin{examplebox}[]{Beispiel: Relative Feuchte an einem Sommertag}
+    An einem Sommertag mit \SI{30}{\celsius} beträgt der Dampfpartialdruck $p_\text{D} = \SI{28}{\hecto\pascal}$. Nach \cref{tab: saettigungsdampfdruck} ist $p_\text{s}(\SI{30}{\celsius}) = \SI{42.4}{\hecto\pascal}$, also
+    \begin{equation*}
+        \varphi = \frac{\SI{28}{\hecto\pascal}}{\SI{42.4}{\hecto\pascal}} \approx \SI{66}{\percent} \quad \text{(vgl.~\cite[S.~638]{Giancoli2010}).}
+    \end{equation*}
+\end{examplebox}
+
+\subsubsection*{Wassergehalt (Feuchtegrad)}
+Die relative Feuchte hat einen Nachteil: Sie ändert sich, wenn sich die Temperatur ändert, auch wenn kein Wasser hinzukommt oder verschwindet. Für Rechnungen bei Temperaturänderungen bezieht man den Wasserdampf daher auf die Masse der \textit{trockenen} Luft, die bei solchen Vorgängen gleich bleibt. Der \textbf{Wassergehalt} (auch Feuchtegrad oder Mischungsverhältnis) ist
+\begin{equation}\label{eq: wassergehalt}
+    x = \frac{m_\text{D}}{m_\text{L}} = \frac{M_\text{W}}{M_\text{L}} \cdot \frac{p_\text{D}}{p - p_\text{D}} = \num{0.622} \cdot \frac{p_\text{D}}{p - p_\text{D}} \mComma
+\end{equation}
+meist angegeben in Gramm Wasser pro Kilogramm trockener Luft. Die zweite Form folgt aus dem idealen Gasgesetz für Dampf und trockene Luft (Molmasse $M_\text{L} = \SI{28.96}{\gram\per\mol}$) mit $p_\text{L} = p - p_\text{D}$.
+
+\begin{examplebox}[]{Beispiel: Wassergehalt von Raumluft}
+    Raumluft mit \SI{20}{\celsius} und $\varphi = \SI{50}{\percent}$ bei $p = \SI{1013}{\hecto\pascal}$: Der Dampfpartialdruck ist $p_\text{D} = \num{0.50} \cdot \SI{23.3}{\hecto\pascal} \approx \SI{11.7}{\hecto\pascal}$ und damit
+    \begin{equation*}
+        x = \num{0.622} \cdot \frac{\SI{11.7}{\hecto\pascal}}{\SI{1013}{\hecto\pascal} - \SI{11.7}{\hecto\pascal}} \approx \num{0.0072} = \SI{7.2}{\gram\per\kilogram} \mDot
+    \end{equation*}
+    Jedes Kilogramm trockener Luft trägt also etwa \SI{7}{\gram} Wasserdampf mit sich.
+\end{examplebox}
+
+\section{Der Taupunkt}\label{sec: taupunkt}
+Kühlt man feuchte Luft ab, ohne Wasser hinzuzufügen oder zu entziehen, so bleibt der Dampfpartialdruck $p_\text{D}$ gleich (bei konstantem Gesamtdruck). Der Sättigungsdampfdruck sinkt aber, und die relative Feuchte steigt. Bei einer bestimmten Temperatur erreicht sie \SI{100}{\percent} (\cref{fig: saettigungsdampfdruck}).
+\begin{rememberbox}{Taupunkt}
+    Der \textbf{Taupunkt} $\theta_\tau$ ist die Temperatur, bei der feuchte Luft beim Abkühlen (ohne Änderung ihres Wassergehalts) gesättigt ist:
+    \begin{equation}\label{eq: taupunkt_def}
+        p_\text{s}(\theta_\tau) = p_\text{D} \mDot
+    \end{equation}
+    Kühlt man die Luft unter den Taupunkt ab, kondensiert Wasserdampf als Tau, Nebel oder Beschlag.
+\end{rememberbox}
+Löst man die Magnus-Formel \cref{eq: magnus} nach der Temperatur auf (siehe \cref{subsec: exponentialgleichungen}), erhält man den Taupunkt direkt aus dem Dampfpartialdruck:
+\begin{equation}\label{eq: taupunkt_magnus}
+    \theta_\tau = \SI{243.12}{\celsius} \cdot \frac{\ln\left(p_\text{D}/\SI{6.112}{\hecto\pascal}\right)}{\num{17.62} - \ln\left(p_\text{D}/\SI{6.112}{\hecto\pascal}\right)} \mDot
+\end{equation}
+
+Taupunkt-Effekte begegnen uns ständig: Ein kaltes Getränkeglas beschlägt, Fenster und Brillengläser laufen an, morgens liegt Tau auf dem Gras. In Gebäuden ist der Taupunkt besonders wichtig: An Oberflächen, die kälter als der Taupunkt der Raumluft sind, schlägt sich Wasser nieder. Auf Dauer können dort Feuchteschäden und Schimmel entstehen.
+
+\begin{examplebox}[]{Beispiel: Schwitzwasser an der Kaltwasserleitung}
+    In einem Kellerraum herrschen \SI{22}{\celsius} und $\varphi = \SI{60}{\percent}$. Durch eine ungedämmte Leitung fließt Trinkwasser mit etwa \SI{10}{\celsius}. Mit der Magnus-Formel ist $p_\text{s}(\SI{22}{\celsius}) \approx \SI{26.4}{\hecto\pascal}$, also $p_\text{D} = \num{0.60} \cdot \SI{26.4}{\hecto\pascal} \approx \SI{15.8}{\hecto\pascal}$. Der Taupunkt ist nach \cref{eq: taupunkt_magnus}
+    \begin{equation*}
+        \theta_\tau = \SI{243.12}{\celsius} \cdot \frac{\ln(\num{15.8}/\num{6.112})}{\num{17.62} - \ln(\num{15.8}/\num{6.112})} = \SI{243.12}{\celsius} \cdot \frac{\num{0.950}}{\num{16.67}} \approx \SI{14}{\celsius} \mDot
+    \end{equation*}
+    Die Rohroberfläche (etwa \SI{10}{\celsius}) liegt unter dem Taupunkt: An der Leitung bildet sich Schwitzwasser. Eine Dämmung hält die Oberfläche über dem Taupunkt und verhindert das.
+\end{examplebox}
+
+\section{Erwärmen und Abkühlen feuchter Luft}\label{sec: feuchte_luft_erwaermen}
+Bei Temperaturänderungen ohne Zugabe oder Entzug von Wasser bleibt der Wassergehalt $x$ (und bei konstantem Gesamtdruck auch $p_\text{D}$) gleich. Die relative Feuchte ändert sich aber stark, weil sich der Sättigungsdampfdruck ändert.
+
+\begin{examplebox}[]{Beispiel: Trockene Heizungsluft im Winter}
+    Außenluft mit \SI{0}{\celsius} und $\varphi = \SI{80}{\percent}$ hat $p_\text{D} = \num{0.80} \cdot \SI{6.11}{\hecto\pascal} \approx \SI{4.9}{\hecto\pascal}$. Wird sie beim Lüften ins Haus geholt und auf \SI{20}{\celsius} erwärmt, bleibt $p_\text{D}$ gleich, und die relative Feuchte sinkt auf
+    \begin{equation*}
+        \varphi = \frac{\SI{4.9}{\hecto\pascal}}{\SI{23.3}{\hecto\pascal}} \approx \SI{21}{\percent} \mDot
+    \end{equation*}
+    Obwohl draußen \gDQ{feuchtes} Wetter herrscht, ist die erwärmte Luft sehr trocken. Deshalb ist die Raumluft im Winter oft unangenehm trocken.
+\end{examplebox}
+
+Umgekehrt kann man Luft entfeuchten, indem man sie unter den Taupunkt abkühlt: Der überschüssige Wasserdampf kondensiert und wird abgeleitet. Danach wird die Luft wieder erwärmt. So arbeiten Klimaanlagen und Luftentfeuchter.
+
+\begin{examplebox}[]{Beispiel: Entfeuchtung durch Abkühlen}
+    Schwüle Außenluft mit \SI{30}{\celsius} und $\varphi = \SI{60}{\percent}$ hat $p_\text{D} = \num{0.60} \cdot \SI{42.4}{\hecto\pascal} \approx \SI{25.4}{\hecto\pascal}$ und damit den Wassergehalt $x_1 = \num{0.622} \cdot \num{25.4}/(\num{1013} - \num{25.4}) \approx \SI{16.0}{\gram\per\kilogram}$. Ihr Taupunkt liegt bei etwa \SI{21}{\celsius}.
+    \begin{enumerate}[itemsep=1.5pt]
+        \item Ein Kühlregister kühlt die Luft auf \SI{12}{\celsius}. Dabei wird sie gesättigt, und überschüssiger Dampf kondensiert. Danach ist $p_\text{D} = p_\text{s}(\SI{12}{\celsius}) \approx \SI{14.0}{\hecto\pascal}$ (Magnus-Formel) und $x_2 = \num{0.622} \cdot \num{14.0}/(\num{1013} - \num{14.0}) \approx \SI{8.7}{\gram\per\kilogram}$.
+        \item Pro Kilogramm trockener Luft fallen also $x_1 - x_2 \approx \SI{7.3}{\gram}$ Kondensat an.
+        \item Anschließend wird die Luft auf \SI{22}{\celsius} erwärmt. Ihre relative Feuchte ist dann $\varphi = \SI{14.0}{\hecto\pascal}/\SI{26.4}{\hecto\pascal} \approx \SI{53}{\percent}$ -- ein angenehmes Raumklima.
+    \end{enumerate}
+    Beim Kondensieren wird die Verdampfungswärme wieder frei (\cref{subsec: schmelz_verdampfungswaerme}). Das Kühlregister muss sie zusätzlich zur Abkühlung der Luft abführen -- ein großer Teil der Kühlleistung einer Klimaanlage geht in die Entfeuchtung.
+\end{examplebox}
+
+\section{Messung der Luftfeuchte}\label{sec: feuchtemessung}
+\begin{itemize}
+    \item \textbf{Taupunktspiegel:} Eine polierte Metallfläche wird langsam abgekühlt, bis sie beschlägt. Die Temperatur der Fläche in diesem Moment ist der Taupunkt; daraus folgen $p_\text{D}$ und mit der Lufttemperatur auch $\varphi$. Dies ist das genaueste Verfahren (vgl.~\cite[S.~639]{Giancoli2010}).
+    \item \textbf{Psychrometer:} Zwei Thermometer werden belüftet; eines ist mit einem feuchten Stoffstrumpf umwickelt. Am feuchten Thermometer verdunstet Wasser und entzieht ihm dabei die Verdampfungswärme, es zeigt eine tiefere Temperatur an. Je trockener die Luft, desto stärker verdunstet das Wasser und desto größer ist der Temperaturunterschied. Aus beiden Temperaturen bestimmt man mit Tabellen die relative Feuchte. Dieselbe \textbf{Verdunstungskühlung} kühlt uns, wenn wir schwitzen -- und sie funktioniert bei hoher Luftfeuchte schlecht, weshalb schwül-warmes Wetter so belastend ist.
+    \item \textbf{Haarhygrometer:} Menschenhaar dehnt sich bei steigender Luftfeuchte um einige Promille aus; diese Längenänderung wird auf einen Zeiger übertragen.
+    \item \textbf{Elektronische Sensoren:} Eine dünne Kunststoffschicht nimmt je nach relativer Feuchte unterschiedlich viel Wasser auf und ändert dadurch ihre elektrische Kapazität oder ihren Widerstand.
+\end{itemize}
+
+\section{Ausblick: Enthalpie feuchter Luft und h,x-Diagramm}\label{sec: hx_diagramm}
+Will man berechnen, wie viel Wärme zum Erwärmen, Befeuchten oder Entfeuchten von Luft nötig ist, so braucht man die Enthalpie der feuchten Luft (zur Enthalpie siehe \cref{subsec: spezielle_zustaende}). Man bezieht sie auf \SI{1}{\kilogram} trockene Luft und wählt den Nullpunkt bei \SI{0}{\celsius} (trockene Luft und flüssiges Wasser):
+\begin{equation}\label{eq: enthalpie_feuchte_luft}
+    h_{1+x} = c_{p,\text{L}}\, \theta + x \left( r_0 + c_{p,\text{D}}\, \theta \right) \mDot
+\end{equation}
+Dabei ist $c_{p,\text{L}} \approx \SI{1.005}{\kilo\joule\per\kilogram\per\kelvin}$ die spezifische Wärmekapazität der trockenen Luft, $c_{p,\text{D}} \approx \SI{1.86}{\kilo\joule\per\kilogram\per\kelvin}$ die des Wasserdampfs und $r_0 \approx \SI{2501}{\kilo\joule\per\kilogram}$ die Verdampfungswärme von Wasser bei \SI{0}{\celsius}. Der erste Term ist die \gDQ{fühlbare} Wärme der Luft, der zweite die Wärme, die im Wasserdampf steckt -- vor allem die \gDQ{latente} Verdampfungswärme.
+
+\begin{examplebox}[]{Beispiel: Enthalpie von Raumluft}
+    Für Raumluft mit \SI{20}{\celsius} und $x = \SI{7.2}{\gram\per\kilogram}$ ist
+    \begin{equation*}
+        h_{1+x} = \num{1.005} \cdot 20\,\si{\kilo\joule\per\kilogram} + \num{0.0072} \cdot \left(2501 + \num{1.86} \cdot 20\right) \si{\kilo\joule\per\kilogram} \approx (\num{20.1} + \num{18.3})\,\si{\kilo\joule\per\kilogram} \approx \SI{38}{\kilo\joule\per\kilogram} \mDot
+    \end{equation*}
+    Obwohl der Wasserdampf weniger als ein Prozent der Masse ausmacht, steckt in ihm fast die Hälfte der Enthalpie.
+\end{examplebox}
+
+In der Klimatechnik trägt man die Zustände feuchter Luft in das \textbf{h,x-Diagramm nach Mollier} ein: Auf den Achsen stehen der Wassergehalt $x$ und die Enthalpie $h_{1+x}$, eingezeichnet sind Linien gleicher Temperatur und gleicher relativer Feuchte. Viele Vorgänge lassen sich darin als einfache Linien ablesen. Reines Erwärmen oder Abkühlen verläuft zum Beispiel bei konstantem $x$, und beim Mischen zweier Luftströme liegt der Mischzustand auf der Verbindungsgeraden der beiden Ausgangszustände. Die physikalischen Grundlagen dafür sind die in diesem Kapitel behandelten Größen: Partialdruck, Sättigungsdampfdruck, Wassergehalt und Enthalpie.
+
+% Chapter end - always start new page after chapter
+\newpage
