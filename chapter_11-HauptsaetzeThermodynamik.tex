@@ -71,19 +71,66 @@ Betrachten wir spezielle Prozesse für ideale Gase, vereinfacht sich der erste H
     \caption{Darstellung der vier speziellen Zustandsänderungen in einem $(p,T)$-Diagramm (links) und einem $(p,V)$-Diagramm (rechts). Die Zustände in den Punkten $O_{1,2}$ lauten: $O_1 = (p=\SI{1}{\barPr}, V=\SI{24.9}{\deci\meter^3}, T=\SI{300}{\kelvin})$ und $O_2 = (p=\SI{0.5}{\barPr}, V=\SI{116.4}{\deci\meter^3}, T=\SI{700}{\kelvin})$. Beachten Sie, dass Adiabaten im $(p,V)$-Diagramm steiler verlaufen als Isothermen.}\label{fig: pv_diagramm_prozesse}
 \end{figure}
 
-\subsubsection{Isothermen und Adiabaten}
-Es ist recht nützlich, die Verläufe von Isothermen und Adiabaten in einem $(p,V)$-Diagramm zu kennen. 
+\subsubsection{Übersicht: Arbeit, Wärme und innere Energie}\label{subsubsec: uebersicht_zustandsaenderungen}
+Für die Anwendung ist es praktisch, für jede der vier Zustandsänderungen die am Gas verrichtete Arbeit $W$, die zugeführte Wärme $Q$ und die Änderung der inneren Energie $\Delta U$ zusammenzustellen. Die Werte folgen aus dem ersten Hauptsatz $\Delta U = Q + W$, aus $W = -\int p \, \dd V$ (\cref{subsec: arbeit_pV_diagramm_erklaerung}) und aus $\Delta U = \nu C_V \Delta T$, das für ein ideales Gas bei jeder Zustandsänderung gilt. Wie im ganzen Kapitel ist $W > 0$, wenn am Gas Arbeit verrichtet wird (Kompression), und $Q > 0$, wenn dem Gas Wärme zugeführt wird.
+
+\begin{table}[htb]
+    \centering
+    \caption{Zustandsänderungen eines idealen Gases ($\nu$ Mol) vom Zustand 1 in den Zustand 2.}\label{tab: zustandsaenderungen}
+    \vspace{4pt}
+    \renewcommand{\arraystretch}{1.4}
+    \small
+    \begin{tabular}{l l l l l}
+        \toprule
+        \textbf{Prozess} & \textbf{Gesetz} & \textbf{Arbeit $W$} & \textbf{Wärme $Q$} & \textbf{$\Delta U$} \\
+        \midrule
+        isochor ($V = \const$) & $p/T = \const$ & $0$ & $\nu C_V (T_2 - T_1)$ & $\nu C_V (T_2 - T_1)$ \\
+        isobar ($p = \const$) & $V/T = \const$ & $-p\,(V_2 - V_1)$ & $\nu C_p (T_2 - T_1)$ & $\nu C_V (T_2 - T_1)$ \\
+        isotherm ($T = \const$) & $p V = \const$ & $\nu R T \ln(V_1/V_2)$ & $\nu R T \ln(V_2/V_1)$ & $0$ \\
+        adiabatisch ($Q = 0$) & $p V^\kappa = \const$ & $\nu C_V (T_2 - T_1)$ & $0$ & $\nu C_V (T_2 - T_1)$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Für die molaren Wärmekapazitäten gilt $C_p = C_V + R$ (\cref{subsec: waermekapazitaet_gase}). Ihr Verhältnis heißt \textbf{Adiabatenexponent} $\kappa = C_p/C_V$. Für einatomige Gase (Helium, Argon) ist $\kappa = 5/3 \approx \num{1.67}$, für zweiatomige Gase wie Stickstoff, Sauerstoff und damit auch Luft bei Raumtemperatur $\kappa = 7/5 = \num{1.4}$.
+
+\subsubsection{Isothermen und Adiabaten}\label{subsubsec: isothermen_adiabaten}
+Es ist recht nützlich, die Verläufe von Isothermen und Adiabaten in einem $(p,V)$-Diagramm zu kennen.
 
 Für ein ideales Gas gilt das ideale Gasgesetz $ p \cdot V = \nu R T $, weshalb die \textbf{Isothermen} durch
 \begin{equation}
     p(V) = \frac{\nu R T}{V}
 \end{equation}
 beschrieben werden, wobei die Proportionalität $ p \sim \frac{1}{V} $ gilt. Isothermen sind also Hyperbeln im $(p,V)$-Diagramm.
-Adiabaten sind Kurven, bei denen kein Wärmeaustausch mit der Umgebung stattfindet ($dQ=0$). Für ein ideales Gas gilt für \textbf{Adiabaten} die Beziehung
-\begin{equation}\label{eq: adiabatenbeziehungen}
-    p(V) = \text{const} \cdot V^{-\kappa} \quad \text{mit} \quad \kappa = \frac{C_p}{C_V} \mDot
-\end{equation}
-Hierbei ist $\kappa$ der \textbf{Adiabatenexponent}, das Verhältnis der molaren Wärmekapazitäten bei konstantem Druck ($C_p$) und konstantem Volumen ($C_V$). Für ein ideales Gas ist $\kappa > 1$, weshalb Adiabaten im $(p,V)$-Diagramm steiler fallen als Isothermen.
+
+Adiabaten sind Kurven, bei denen kein Wärmeaustausch mit der Umgebung stattfindet ($\dd Q=0$). Ihre Gleichung leiten wir nun her. Nach dem ersten Hauptsatz ist bei einer (reversiblen) adiabatischen Zustandsänderung $\dd U = \dd W$, also
+\begin{equation*}
+    \nu C_V \, \dd T = -p \, \dd V = -\frac{\nu R T}{V} \, \dd V \mDot
+\end{equation*}
+Dabei haben wir den Druck mit dem idealen Gasgesetz ersetzt. Wir trennen die Variablen, indem wir durch $\nu C_V T$ teilen, und integrieren vom Zustand 1 zum Zustand 2:
+\begin{equation*}
+    \int_{T_1}^{T_2} \frac{\dd T}{T} = -\frac{R}{C_V} \int_{V_1}^{V_2} \frac{\dd V}{V}
+    \quad \implies \quad
+    \ln\frac{T_2}{T_1} = -\frac{R}{C_V} \ln\frac{V_2}{V_1} = \ln\left(\frac{V_1}{V_2}\right)^{R/C_V} \mDot
+\end{equation*}
+Mit $R/C_V = (C_p - C_V)/C_V = \kappa - 1$ folgt $T_2 V_2^{\kappa-1} = T_1 V_1^{\kappa-1}$. Ersetzt man noch $T = pV/(\nu R)$, so erhält man die Gleichung der Adiabaten in der Form $pV^\kappa = \const$.
+
+\begin{rememberbox}{Adiabatengleichungen (Poisson'sche Gleichungen)}
+    Für die reversible adiabatische Zustandsänderung eines idealen Gases gilt
+    \begin{equation}\label{eq: adiabatenbeziehungen}
+        p \, V^{\kappa} = \const \qquad \text{und} \qquad T \, V^{\kappa - 1} = \const \qquad \text{mit} \quad \kappa = \frac{C_p}{C_V} \mDot
+    \end{equation}
+\end{rememberbox}
+Für ein ideales Gas ist $\kappa > 1$. Deshalb fallen Adiabaten im $(p,V)$-Diagramm steiler ab als Isothermen (\cref{fig: pv_diagramm_prozesse}): Bei einer adiabatischen Kompression steigt der Druck nicht nur wegen des kleineren Volumens, sondern zusätzlich, weil sich das Gas erwärmt.
+
+\begin{examplebox}[]{Beispiel: Warum ein Dieselmotor keine Zündkerze braucht}
+    Im Dieselmotor wird Luft ($\kappa = \num{1.4}$, $T_1 = \SI{293}{\kelvin}$, $p_1 = \SI{1}{\barPr}$) so schnell auf ein Zwanzigstel ihres Volumens verdichtet, dass kaum Wärme an die Zylinderwand abgegeben wird. Nach \cref{eq: adiabatenbeziehungen} ist dann
+    \begin{align*}
+        T_2 &= T_1 \left(\frac{V_1}{V_2}\right)^{\kappa - 1} = \SI{293}{\kelvin} \cdot 20^{\num{0.4}} \approx \SI{970}{\kelvin} \approx \SI{700}{\celsius} \mComma \\
+        p_2 &= p_1 \left(\frac{V_1}{V_2}\right)^{\kappa} = \SI{1}{\barPr} \cdot 20^{\num{1.4}} \approx \SI{66}{\barPr} \mDot
+    \end{align*}
+    Die Luft ist danach so heiß, dass sich der eingespritzte Kraftstoff von selbst entzündet. Bei einer isothermen Kompression wäre der Druck dagegen nur auf \SI{20}{\barPr} gestiegen. Dasselbe Prinzip erklärt, warum eine Fahrradpumpe beim schnellen Pumpen warm wird.
+\end{examplebox}
 
 
 \section{Der Zweite Hauptsatz der Thermodynamik}\label{sec: zweiter_hauptsatz}
@@ -332,7 +379,7 @@ Da das System nach einem vollständigen Zyklus wieder im Ausgangszustand ist, gi
     \Delta W &= \Delta W_{1\to 2} + \Delta W_{3\to 4} = -\Delta Q_1 - \Delta Q_2 = \\
     & \nu R \cdot T_1 \ln\left(\frac{V_1}{V_2}\right) + \nu R \cdot T_2 \ln\left(\frac{V_3}{V_4}\right) \mDot
 \end{aligned}\end{equation}
-Man kann mithilfe der Adiabatenbeziehungen (\cref{eq: adiabatenbeziehungen}) die Volumina $V_1, V_2, V_3, V_4$ in Verbindung setzen. Mit $pV = \nu RT$ folgt aus $pV^\kappa = \const$ die Form $T\cdot V^{\kappa-1} = \const$ und damit 
+Mit der Adiabatengleichung in der Form $T V^{\kappa-1} = \const$ (\cref{eq: adiabatenbeziehungen}) lassen sich die Volumina $V_1, V_2, V_3, V_4$ in Verbindung setzen, denn
 \begin{equation}
     T_1 \cdot V_2^{\kappa-1} = T_2 \cdot V_3^{\kappa-1} \quad \text{und} \quad T_1 \cdot V_1^{\kappa-1} = T_2 \cdot V_4^{\kappa-1} \mDot
 \end{equation}
@@ -418,6 +465,22 @@ Thermodynamische Maschinen sind Vorrichtungen, die thermodynamische Prozesse nut
     Die ideale Leistungszahl ist stets größer als 1, weil $T_1 - T_2 < T_1$; auch reale Wärmepumpen erreichen typischerweise $\varepsilon > 1$. Wärmepumpen sind besonders effizient, wenn die Temperaturdifferenz zwischen dem kalten und dem warmen Reservoir gering ist.
 \end{itemize}
 
+\subsubsection*{Ideale und reale Maschinen: der Gütegrad}
+Reale Maschinen erreichen die Carnot-Grenze nicht, weil in ihnen irreversible Vorgänge ablaufen: Wärme fließt über endliche Temperaturunterschiede, es gibt Reibung, Strömungsverluste und Wärmeverluste an die Umgebung. Das Verhältnis aus tatsächlicher und idealer Leistungszahl (bzw. idealem Wirkungsgrad) heißt \textbf{Gütegrad},
+\begin{equation}\label{eq: guetegrad}
+    \eta_\text{G} = \frac{\varepsilon_\text{real}}{\varepsilon_\text{Carnot}} \mDot
+\end{equation}
+Gute Wärmepumpen erreichen Gütegrade von etwa \SI{50}{\percent}.
+
+\begin{examplebox}[]{Beispiel: Wärmepumpe mit Fußbodenheizung oder Heizkörpern}
+    Eine Wärmepumpe entzieht der Außenluft bei $T_2 = \SI{0}{\celsius} = \SI{273}{\kelvin}$ Wärme. Die ideale Leistungszahl hängt stark von der Temperatur ab, auf die geheizt werden muss:
+    \begin{itemize}[itemsep=1.5pt]
+        \item Fußbodenheizung mit $T_1 = \SI{35}{\celsius} = \SI{308}{\kelvin}$: \quad $\varepsilon_\text{Carnot} = \dfrac{\SI{308}{\kelvin}}{\SI{35}{\kelvin}} \approx \num{8.8}$,
+        \item Heizkörper mit $T_1 = \SI{55}{\celsius} = \SI{328}{\kelvin}$: \quad $\varepsilon_\text{Carnot} = \dfrac{\SI{328}{\kelvin}}{\SI{55}{\kelvin}} \approx \num{6.0}$.
+    \end{itemize}
+    Mit einem Gütegrad von \SI{50}{\percent} liefert die Wärmepumpe im ersten Fall etwa \num{4.4}, im zweiten etwa \num{3.0} Kilowattstunden Wärme pro Kilowattstunde elektrischer Energie. Die physikalische Lehre: Je kleiner der Temperaturunterschied, den die Wärmepumpe überwinden muss, desto effizienter arbeitet sie.
+\end{examplebox}
+
 \subsection{Verschiedene Wärmekraftmaschinen}
 In \cref{fig: stirling_otto_diesel_motor_prozess} sind die Kreisprozesse verschiedener Wärmekraftmaschinen im $(p,V)$-Diagramm dargestellt.
 \begin{figure}[htb]
@@ -440,6 +503,41 @@ In \cref{fig: stirling_otto_diesel_motor_prozess} sind die Kreisprozesse verschi
     \end{subfigure}
     \caption{Kreisprozesse verschiedener Wärmekraftmaschinen im $(p,V)$-Diagramm: (a) Stirling-Motor, (b) Otto-Motor, (c) Diesel-Motor. Jeder Prozess hat seine eigenen charakteristischen Merkmale und Wirkungsgrade, die jedoch alle durch den zweiten Hauptsatz der Thermodynamik (Carnot-Wirkungsgrad) begrenzt sind. (Quelle:~\cite[S.~312]{Demtroeder2018})}\label{fig: stirling_otto_diesel_motor_prozess}
 \end{figure}
+
+\subsubsection{Der Otto-Prozess}\label{subsubsec: otto_prozess}
+Der Kreisprozess eines Benzinmotors lässt sich idealisiert durch den \textbf{Otto-Prozess} (auch Gleichraumprozess) beschreiben (\cref{fig: stirling_otto_diesel_motor_prozess}b). Er besteht aus zwei adiabatischen und zwei isochoren Schritten; die Indizes 1 bis 4 bezeichnen hier die Zustände im Diagramm:
+\begin{itemize}[itemsep=1.5pt]
+    \item \textbf{1 $\to$ 2: adiabatische Kompression.} Das Benzin-Luft-Gemisch wird verdichtet und erwärmt sich dabei.
+    \item \textbf{2 $\to$ 3: isochore Wärmezufuhr.} Die Zündung verbrennt das Gemisch so schnell, dass sich das Volumen dabei kaum ändert. Dem Gas wird die Wärme $Q_1 = \nu C_V (T_3 - T_2)$ zugeführt, Druck und Temperatur steigen steil an.
+    \item \textbf{3 $\to$ 4: adiabatische Expansion} (Arbeitstakt). Das heiße Gas schiebt den Kolben nach außen und verrichtet Arbeit.
+    \item \textbf{4 $\to$ 1: isochore Wärmeabgabe.} Beim Öffnen des Auslassventils fällt der Druck; im Modell gibt das Gas die Wärme $|Q_2| = \nu C_V (T_4 - T_1)$ ab.
+\end{itemize}
+Wärme wird nur in den beiden isochoren Schritten ausgetauscht. Der Wirkungsgrad ist daher
+\begin{equation*}
+    \eta = 1 - \frac{|Q_2|}{Q_1} = 1 - \frac{T_4 - T_1}{T_3 - T_2} \mDot
+\end{equation*}
+Das Verhältnis aus größtem und kleinstem Volumen heißt \textbf{Verdichtungsverhältnis} $\epsilon = V_1/V_2$ (hier mit $\epsilon$ geschrieben, um es von der Leistungszahl $\varepsilon$ zu unterscheiden). Für die beiden Adiabaten gilt nach \cref{eq: adiabatenbeziehungen} $T_2 = T_1\, \epsilon^{\kappa - 1}$ und $T_3 = T_4\, \epsilon^{\kappa - 1}$, also $T_3 - T_2 = \epsilon^{\kappa - 1} (T_4 - T_1)$. Damit kürzen sich alle Temperaturen heraus:
+\begin{rememberbox}{Wirkungsgrad des Otto-Prozesses}
+    \begin{equation}\label{eq: otto_wirkungsgrad}
+        \eta_\text{Otto} = 1 - \frac{1}{\epsilon^{\kappa - 1}} \mComma \qquad \epsilon = \frac{V_1}{V_2} \mDot
+    \end{equation}
+    Der Wirkungsgrad hängt nur vom Verdichtungsverhältnis und vom Adiabatenexponenten ab. Je stärker verdichtet wird, desto höher ist er (vgl.~\cite[S.~703]{Giancoli2010}, \cite[S.~605]{Tipler2015}).
+\end{rememberbox}
+
+\begin{examplebox}[]{Beispiel: Wirkungsgrad eines Benzinmotors}
+    Für ein Verdichtungsverhältnis $\epsilon = 10$ und Luft ($\kappa = \num{1.4}$) ergibt sich
+    \begin{equation*}
+        \eta_\text{Otto} = 1 - \frac{1}{10^{\num{0.4}}} = 1 - \num{0.40} = \num{0.60} = \SI{60}{\percent} \mDot
+    \end{equation*}
+    Reale Benzinmotoren erreichen nur etwa \SIrange{30}{35}{\percent}: Das Gas ist kein ideales Gas, die Verbrennung ist nicht unendlich schnell und unvollständig, Wärme geht an die Zylinderwände verloren, und es gibt Reibung. Noch höher verdichten kann man nicht beliebig, weil sich das Gemisch sonst schon bei der Kompression von selbst entzündet (\gDQ{Klopfen}).
+
+    Zum Vergleich: Ein Carnot-Prozess zwischen der Ansaugtemperatur von etwa \SI{300}{\kelvin} und der Spitzentemperatur der Verbrennung von etwa \SI{2500}{\kelvin} hätte $\eta_\text{Carnot} = 1 - 300/2500 = \SI{88}{\percent}$. Der Otto-Prozess liegt darunter, weil die Wärme nicht bei der höchsten Temperatur, sondern während des Druckanstiegs bei steigender Temperatur zugeführt wird.
+\end{examplebox}
+
+\subsubsection*{Diesel- und Stirling-Prozess}
+Beim \textbf{Diesel-Prozess} (\cref{fig: stirling_otto_diesel_motor_prozess}c) wird nur Luft verdichtet, und der Kraftstoff wird erst danach eingespritzt (siehe das Beispiel in \cref{subsubsec: isothermen_adiabaten}). Er verbrennt langsamer, sodass die Wärme näherungsweise bei konstantem Druck zugeführt wird. Da keine Selbstzündung des Gemisches droht, sind viel höhere Verdichtungsverhältnisse ($\epsilon \approx$ \numrange{15}{22}) möglich -- deshalb sind Dieselmotoren effizienter als Benzinmotoren.
+
+Der \textbf{Stirling-Prozess} (\cref{fig: stirling_otto_diesel_motor_prozess}a) besteht aus zwei Isothermen und zwei Isochoren. Die bei der isochoren Abkühlung abgegebene Wärme wird in einem Wärmespeicher (Regenerator) zwischengespeichert und bei der isochoren Erwärmung wieder zugeführt. Im Idealfall erreicht der Stirling-Prozess dadurch den Carnot-Wirkungsgrad. Da die Wärme von außen zugeführt wird, kann ein Stirling-Motor mit beliebigen Wärmequellen betrieben werden, zum Beispiel mit Sonnenenergie oder Abwärme.
 
 
 
