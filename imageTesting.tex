@@ -44,6 +44,71 @@
 \begin{document}
 
 %%% ---------------------------------------------------------------
+%%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
+%%% NEU: Drehimpuls bei ebener Bewegung (Kap. 6, Abb. 5.15, Neuzeichnung)
+%%% Schräge Parallelprojektion: x nach rechts, y in die Tiefe, z nach oben.
+%%% Die Bewegung liegt in der xy-Ebene (r-v-Ebene), L zeigt in z-Richtung.
+%%% v ist tangential zur Bahnkurve, v = v_r + v_phi.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     >=Stealth, font=\large,
+%     x={(1cm,0cm)}, y={(0.5cm,0.62cm)}, z={(0cm,1cm)},
+%     vek/.style={line width=1.3pt, -{Stealth[length=3mm, width=2.6mm]}},
+% ]
+%     \definecolor{ebene}{RGB}{214,232,245}
+%     \definecolor{bahnFarbe}{RGB}{200,60,45}
+%     \definecolor{vFarbe}{RGB}{40,100,175}
+
+%     % Ort von m und Richtungen in der Ebene
+%     \pgfmathsetmacro{\mx}{3.1}\pgfmathsetmacro{\my}{-0.6}
+%     \pgfmathsetmacro{\rl}{sqrt(\mx*\mx+\my*\my)}
+%     \pgfmathsetmacro{\erx}{\mx/\rl}\pgfmathsetmacro{\ery}{\my/\rl}   % radial
+%     \pgfmathsetmacro{\epx}{-\ery}\pgfmathsetmacro{\epy}{\erx}        % tangential (azimutal)
+%     \pgfmathsetmacro{\vr}{2.4}\pgfmathsetmacro{\vp}{2.0}             % Beträge v_r, v_phi
+%     \coordinate (O) at (0,0,0);
+%     \coordinate (M) at (\mx,\my,0);
+%     \coordinate (Vr) at ({\mx+\vr*\erx},{\my+\vr*\ery},0);
+%     \coordinate (Vp) at ({\mx+\vp*\epx},{\my+\vp*\epy},0);
+%     \coordinate (V)  at ({\mx+\vr*\erx+\vp*\epx},{\my+\vr*\ery+\vp*\epy},0);
+%     % Einheitsvektoren von v (tangential zur Bahn) und senkrecht dazu
+%     \pgfmathsetmacro{\vx}{\vr*\erx+\vp*\epx}\pgfmathsetmacro{\vy}{\vr*\ery+\vp*\epy}
+%     \pgfmathsetmacro{\vl}{sqrt(\vx*\vx+\vy*\vy)}
+%     \pgfmathsetmacro{\tx}{\vx/\vl}\pgfmathsetmacro{\ty}{\vy/\vl}
+%     \pgfmathsetmacro{\nx}{-\ty}\pgfmathsetmacro{\ny}{\tx}
+
+%     % --- r-v-Ebene ---
+%     \filldraw[fill=ebene, draw=black!70, line width=0.8pt]
+%         (-1.6,-2.9,0) -- (7.4,-2.9,0) -- (7.4,2.6,0) -- (-1.6,2.6,0) -- cycle;
+%     \node[anchor=south west] at (-1.4,-2.8,0) {$\ivec{r}$-$\ivec{v}$-Ebene};
+
+%     % --- Bahnkurve (Tangente in m ist v) ---
+%     \draw[bahnFarbe, line width=1.6pt]
+%         plot[domain=-2.15:1.3, samples=40, variable=\s]
+%         ({\mx+\s*\tx-0.16*\s*\s*\nx},{\my+\s*\ty-0.16*\s*\s*\ny},0);
+%     \node[bahnFarbe, rotate=28] at ({\mx-1.5*\tx-0.16*2.25*\nx+0.45*\nx},{\my-1.5*\ty-0.16*2.25*\ny+0.45*\ny},0) {Bahnkurve};
+
+%     % --- Ortsvektor und Drehimpuls ---
+%     \draw[vek] (O) -- (M) node[pos=0.5, above=3pt] {$\ivec{r}(t)$};
+%     \draw[vek] (O) -- (0,0,2.6) node[above=1pt] {$\ivec{L}(t)$};
+%     % rechter Winkel zwischen L und r
+%     \draw[line width=0.5pt] (0,0,0.32) -- ({0.32*\erx},{0.32*\ery},0.32) -- ({0.32*\erx},{0.32*\ery},0);
+
+%     % --- Zerlegung der Geschwindigkeit ---
+%     \draw[black!60, dashed, line width=0.7pt] (Vp) -- (V) -- (Vr);
+%     \draw[vek, vFarbe] (M) -- (V) node[pos=0.6, below right=0pt] {$\ivec{v}$};
+%     \draw[vek] (M) -- (Vr) node[below=2pt] {$\ivecS{v}{r} \parallel \ivec{r}$};
+%     \draw[vek] (M) -- (Vp) node[above=2pt] {$\ivecS{v}{\varphi} \perp \ivec{r}$};
+%     % rechter Winkel zwischen r und v_phi
+%     \draw[line width=0.5pt] ({\mx+0.3*\erx},{\my+0.3*\ery},0) -- ({\mx+0.3*\erx+0.3*\epx},{\my+0.3*\ery+0.3*\epy},0) -- ({\mx+0.3*\epx},{\my+0.3*\epy},0);
+
+%     % --- Punkte ---
+%     \fill (O) circle (2pt) node[left=2pt] {$O$};
+%     \fill (M) circle (3.2pt) node[below=3pt] {$m$};
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% ---------------------------------------------------------------
 %%% [ERLEDIGT - in Kapitel 5 eingebaut, hier auskommentiert]
 %%% NEU: Krummlinige Bewegung, Tangential- und Normalbeschleunigung (Kap. 5, Abb. 4.19, Neuzeichnung)
 %%% Bahnkurve y = 3,2 + 0,12 (x-4) + 0,035 (x-4)^3 (Wendepunkt bei x = 4):
