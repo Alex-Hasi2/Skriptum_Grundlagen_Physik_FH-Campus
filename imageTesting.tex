@@ -39,6 +39,141 @@
 
 %%% ---------------------------------------------------------------
 %%% [ERLEDIGT - im Anhang eingebaut, hier auskommentiert]
+%%% NEU: Vollkugel, Trägheitsmoment um die z-Achse (Anhang, Abb. A.4, Neuzeichnung)
+%%% Kugelkoordinaten (r, theta, phi), Normalabstand a = r sin(theta) zur z-Achse,
+%%% Volumenelement dV = r^2 sin(theta) dr dtheta dphi.
+%%% Projektion: Drehung um z um 25 Grad, Blick von 25 Grad über der xy-Ebene.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     >=Stealth, font=\large,
+%     kante/.style={line width=0.8pt, draw=black!80},
+%     achse/.style={line width=0.9pt},
+%     mass/.style={line width=0.7pt, black!85},
+%     gestr/.style={line width=0.7pt, black!80, dashed},
+%     % Kugelkoordinaten (Radius, theta, phi) -> Bildebene (u, v)
+%     declare function={ku(\kr,\kt,\kp)=\kr*sin(\kt)*(sin(\kp)*0.9063-cos(\kp)*0.4226);
+%         kv(\kr,\kt,\kp)=\kr*cos(\kt)*0.9063-\kr*sin(\kt)*(cos(\kp)*0.9063+sin(\kp)*0.4226)*0.4226;},
+% ]
+%     \definecolor{koerperHell}{RGB}{184,215,237}
+%     \definecolor{koerperDunkel}{RGB}{106,160,202}
+%     \colorlet{pfeilFarbe}{green!45!black}
+
+%     % Projektion: u = y cosA - x sinA, w = x cosA + y sinA, v = z cosE - w sinE
+%     \def\cA{0.9063}\def\sA{0.4226}\def\cE{0.9063}\def\sE{0.4226}
+%     \newcommand{\pt}[4]{\coordinate (#1) at ({(#3)*\cA-(#2)*\sA},{(#4)*\cE-((#2)*\cA+(#3)*\sA)*\sE});}
+%     \def\R{3.0}
+
+%     % Punkt P (Radius \rr, Polarwinkel \th, Azimut \ph)
+%     \pgfmathsetmacro{\rr}{2.3}
+%     \pgfmathsetmacro{\th}{38}
+%     \pgfmathsetmacro{\ph}{110}
+%     \pgfmathsetmacro{\Px}{\rr*sin(\th)*cos(\ph)}
+%     \pgfmathsetmacro{\Py}{\rr*sin(\th)*sin(\ph)}
+%     \pgfmathsetmacro{\Pz}{\rr*cos(\th)}
+%     \pgfmathsetmacro{\aa}{\rr*sin(\th)}
+%     \pgfmathsetmacro{\rho}{sqrt(\R*\R-\Pz*\Pz)}   % Radius der Schnittfläche
+%     \pt{O}{0}{0}{0}
+%     \pt{P}{\Px}{\Py}{\Pz}
+%     \pt{F}{\Px}{\Py}{0}
+%     \pt{C}{0}{0}{\Pz}
+%     \pt{Xe}{1}{0}{0}
+%     \coordinate (Lrand) at (-\R,0);   % linker Äquatorpunkt
+
+%     % --- Kugel ---
+%     \shade[ball color=koerperHell, opacity=0.4] (0,0) circle (\R);
+%     \draw[kante] (0,0) circle (\R);
+
+%     % --- Äquatorebene (Scheibe, vorne durchgezogen, hinten gestrichelt) ---
+%     \fill[koerperDunkel, opacity=0.35] plot[variable=\t, domain=0:360, samples=73]
+%         ({\R*(sin(\t)*\cA-cos(\t)*\sA)},{-\R*(cos(\t)*\cA+sin(\t)*\sA)*\sE}) -- cycle;
+%     \draw[kante, dashed] plot[variable=\t, domain=115:295, samples=40]
+%         ({\R*(sin(\t)*\cA-cos(\t)*\sA)},{-\R*(cos(\t)*\cA+sin(\t)*\sA)*\sE});
+%     \draw[kante] plot[variable=\t, domain=295:475, samples=40]
+%         ({\R*(sin(\t)*\cA-cos(\t)*\sA)},{-\R*(cos(\t)*\cA+sin(\t)*\sA)*\sE});
+
+%     % --- Schnittebene in der Höhe z = r cos(theta) (reicht bis zum Kugelrand) ---
+%     \fill[koerperDunkel, opacity=0.35] plot[variable=\t, domain=0:360, samples=73]
+%         ({\rho*(sin(\t)*\cA-cos(\t)*\sA)},{\Pz*\cE-\rho*(cos(\t)*\cA+sin(\t)*\sA)*\sE}) -- cycle;
+%     \draw[kante, dashed] plot[variable=\t, domain=115:295, samples=40]
+%         ({\rho*(sin(\t)*\cA-cos(\t)*\sA)},{\Pz*\cE-\rho*(cos(\t)*\cA+sin(\t)*\sA)*\sE});
+%     \draw[kante] plot[variable=\t, domain=295:475, samples=40]
+%         ({\rho*(sin(\t)*\cA-cos(\t)*\sA)},{\Pz*\cE-\rho*(cos(\t)*\cA+sin(\t)*\sA)*\sE});
+
+%     % --- Achsen ---
+%     \draw[achse, ->] ($(O)+(0,-\R*0.9)$) -- (0,{\R+1.0}) node[right=2pt] {$z$};
+%     \pt{Xend}{3.7}{0}{0}
+%     \pt{Yend}{0}{3.7}{0}
+%     \draw[achse, ->] (O) -- (Xend) node[below left=-1pt] {$x$};
+%     \draw[achse, ->] (O) -- (Yend) node[below right=-1pt] {$y$};
+
+%     % --- Radius R der Kugel (in der Äquatorebene) ---
+%     \draw[mass, <->] (Lrand) -- (O) node[midway, above=1pt] {$R$};
+
+%     % --- Ortsvektor r, Fußpunkt F, Hilfslinien ---
+%     \draw[kante, line width=1pt] (O) -- (P) node[pos=0.5, left=2pt, above=-1pt] {$r$};
+%     \draw[gestr] (P) -- (F);
+%     \draw[gestr] (O) -- (F);
+%     \draw[kante] (C) -- (P) node[pos=0.55, above=1pt] {$a$};
+%     \fill (C) circle (1.2pt);
+%     \fill (O) circle (1.4pt);
+
+%     % --- Winkel theta (zur z-Achse) und phi (zur x-Achse) ---
+%     \draw[mass] plot[variable=\s, domain=0:\th, samples=20]
+%         ({0.9*sin(\s)*cos(\ph)*\cA*0+ (0.9*sin(\s)*sin(\ph))*\cA-(0.9*sin(\s)*cos(\ph))*\sA},
+%          {0.9*cos(\s)*\cE-((0.9*sin(\s)*cos(\ph))*\cA+(0.9*sin(\s)*sin(\ph))*\sA)*\sE});
+%     \node at ($(O)+(0.22,0.52)$) {$\vartheta$};
+%     \draw[mass] plot[variable=\s, domain=0:\ph, samples=20]
+%         ({(0.8*sin(\s))*\cA-(0.8*cos(\s))*\sA},{-((0.8*cos(\s))*\cA+(0.8*sin(\s))*\sA)*\sE});
+%     \node at ($(O)+(0.28,-0.55)$) {$\varphi$};
+
+%     % --- Drehpfeil um die z-Achse ---
+%     \draw[pfeilFarbe, line width=1.1pt, -{Stealth[length=2.6mm, width=2.4mm]}]
+%         ($(0,{\R+0.45})+(112:0.5 and 0.16)$) arc[start angle=112, end angle=438, x radius=0.5, y radius=0.16];
+
+%     % --- Volumenelement (vergrößert): Ausschnitt einer Kugelschale ---
+%     % r von \ra bis \rb, theta von \ta bis \tb, phi von \pa bis \pb; sichtbar
+%     % sind die Außenfläche (r = \rb), die Deckfläche (theta = \ta) und die
+%     % Seitenfläche (phi = \pa). \pb ist so gewählt, dass die ganze
+%     % Außenfläche zum Betrachter zeigt (sonst entsteht eine Beule im Umriss).
+%     \def\ra{2.1}\def\rb{3.0}\def\ta{58}\def\tb{84}\def\pa{80}\def\pb{114}
+%     \pgfmathsetmacro{\eu}{ku(2.55,71,97)}
+%     \pgfmathsetmacro{\ev}{kv(2.55,71,97)}
+%     \begin{scope}[shift={(5.0,2.1)}, scale=1.45]
+%     \begin{scope}[shift={(-\eu,-\ev)}]
+%         % Seitenfläche phi = \pa
+%         \filldraw[fill=koerperDunkel!80, kante, line join=round]
+%             plot[variable=\t, domain=\ta:\tb, samples=20] ({ku(\rb,\t,\pa)},{kv(\rb,\t,\pa)})
+%             -- ({ku(\ra,\tb,\pa)},{kv(\ra,\tb,\pa)})
+%             -- plot[variable=\t, domain=\tb:\ta, samples=20] ({ku(\ra,\t,\pa)},{kv(\ra,\t,\pa)})
+%             -- cycle;
+%         % Deckfläche theta = \ta
+%         \filldraw[fill=koerperHell!60!white, kante, line join=round]
+%             plot[variable=\p, domain=\pa:\pb, samples=20] ({ku(\rb,\ta,\p)},{kv(\rb,\ta,\p)})
+%             -- ({ku(\ra,\ta,\pb)},{kv(\ra,\ta,\pb)})
+%             -- plot[variable=\p, domain=\pb:\pa, samples=20] ({ku(\ra,\ta,\p)},{kv(\ra,\ta,\p)})
+%             -- cycle;
+%         % Außenfläche r = \rb (Teil der Kugeloberfläche)
+%         \filldraw[fill=koerperHell, kante, line join=round]
+%             plot[variable=\p, domain=\pa:\pb, samples=20] ({ku(\rb,\ta,\p)},{kv(\rb,\ta,\p)})
+%             -- plot[variable=\t, domain=\ta:\tb, samples=20] ({ku(\rb,\t,\pb)},{kv(\rb,\t,\pb)})
+%             -- plot[variable=\p, domain=\pb:\pa, samples=20] ({ku(\rb,\tb,\p)},{kv(\rb,\tb,\p)})
+%             -- plot[variable=\t, domain=\tb:\ta, samples=20] ({ku(\rb,\t,\pa)},{kv(\rb,\t,\pa)})
+%             -- cycle;
+%         % Beschriftung der Kanten
+%         \node[below right=1pt] at ({ku(\rb,\tb,97)},{kv(\rb,\tb,97)}) {$a\,\dd\varphi$};
+%         \node[left=2pt] at ({ku(\ra,71,\pa)},{kv(\ra,71,\pa)}) {$r\,\dd\vartheta$};
+%         \node[below=2pt] at ({ku(2.55,\tb,\pa)},{kv(2.55,\tb,\pa)}) {$\dd r$};
+%         \coordinate (Eanker) at ({ku(\ra,62,\pa)},{kv(\ra,52,\pa)});
+%     \end{scope}
+%     \end{scope}
+%     \draw[black!60, dashed, line width=0.9pt] (P) -- (Eanker);
+%     \fill (P) circle (1.6pt);
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% ---------------------------------------------------------------
+%%% [ERLEDIGT - im Anhang eingebaut, hier auskommentiert]
 %%% NEU: Dünnwandiger Hohlzylinder (Anhang, Abb. A.3, Neuzeichnung)
 %%% Außenradius R, Innenradius r, Wanddicke d, Höhe h, Drehung um die z-Achse.
 %%% ---------------------------------------------------------------
