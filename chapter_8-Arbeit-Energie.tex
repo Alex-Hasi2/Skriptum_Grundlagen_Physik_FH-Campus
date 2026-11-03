@@ -507,8 +507,39 @@ Für das System aus Masse und (masseloser) Feder lautet die mechanische Gesamten
 Da keine nicht-konservativen Kräfte (wie Reibung) wirken, bleibt diese Gesamtenergie erhalten. Die Energie wird nur periodisch zwischen potenzieller und kinetischer Energie umgewandelt, während ihre Summe konstant bleibt.
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.7\textwidth]{Bilder/Kapitel_ArbeitEnergie/energieerhaltung_federpendel.png}
-    \caption{Die, auf die Gesamtenergie normierte, potenzielle (blau), kinetische (orangen) und konstante Gesamtenergie (grün) eines idealen Federpendels als Funktion der normierten Auslenkung $x/x_\maxText$.}\label{fig: federpendel_energie_diagramm}
+    \resizebox{0.8\textwidth}{!}{%
+    \begin{tikzpicture}
+        \definecolor{ePot}{RGB}{31,119,180}
+        \definecolor{eKin}{RGB}{230,145,56}
+        \definecolor{eGes}{RGB}{39,150,90}
+        \begin{axis}[
+            width=12cm, height=7.2cm,
+            xmin=-1.1, xmax=1.1, ymin=0, ymax=1.12,
+            xtick={-1,-0.5,0,0.5,1},
+            xticklabels={$-1$,$-0{,}5$,$0$,$0{,}5$,$1$},
+            ytick={0,0.25,0.5,0.75,1},
+            yticklabels={$0$,$0{,}25$,$0{,}5$,$0{,}75$,$1$},
+            xlabel={Normierte Auslenkung $x/x_{\max}$},
+            ylabel={Normierte Energie $E/E_{\mathrm{ges}}$},
+            grid=major, grid style={gray!25},
+            axis line style={line width=0.8pt},
+            tick style={line width=0.6pt},
+            legend style={at={(0.5,0.60)}, anchor=north, draw=gray!60, fill=white, fill opacity=0.9, text opacity=1, font=\small},
+            legend cell align=left,
+            every axis plot/.append style={line width=1.6pt},
+        ]
+            \addplot[eGes, domain=-1:1, samples=2] {1};
+            \addplot[ePot, domain=-1:1, samples=101] {x^2};
+            \addplot[eKin, domain=-1:1, samples=101] {1-x^2};
+            \legend{$E_{\mathrm{ges}}$, $E_{\mathrm{pot}}=\tfrac12 kx^2$, $E_{\mathrm{kin}}=\tfrac12 mv^2$}
+            % Schnittpunkte bei E_pot = E_kin = E_ges/2
+            \addplot[only marks, mark=*, mark size=2pt, black] coordinates {(-0.70711,0.5) (0.70711,0.5)};
+            \draw[black!70, dashed, line width=0.7pt] (axis cs:0.70711,0) -- (axis cs:0.70711,0.5);
+            \draw[black!70, dashed, line width=0.7pt] (axis cs:-0.70711,0) -- (axis cs:-0.70711,0.5);
+        \end{axis}
+    \end{tikzpicture}%
+    }
+    \caption{Die, auf die Gesamtenergie normierte, potenzielle (blau), kinetische (orange) und konstante Gesamtenergie (grün) eines idealen Federpendels als Funktion der normierten Auslenkung $x/x_\maxText$. Bei $x/x_\maxText = \pm 1/\sqrt{2} \approx \pm 0{,}71$ sind potenzielle und kinetische Energie gleich groß (jeweils die Hälfte der Gesamtenergie).}\label{fig: federpendel_energie_diagramm}
 \end{figure}
 
 \begin{examplebox}[breakable]{Schwingung eines Federpendels}
