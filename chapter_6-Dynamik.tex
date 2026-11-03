@@ -512,7 +512,7 @@ Zieht man nun mit einer horizontalen Kraft $\ivecS{F}{\text{A}}$ am Körper, bau
 % \end{figure}
 \begin{figure}[h!]
     \centering
-    \begin{subfigure}{0.44\textwidth}
+    \begin{subfigure}{0.42\textwidth}
         \centering
     \resizebox{0.95\textwidth}{!}{%
     \begin{tikzpicture}[
@@ -542,11 +542,11 @@ Zieht man nun mit einer horizontalen Kraft $\ivecS{F}{\text{A}}$ am Körper, bau
     }
         \caption*{}\label{fig: haftreibung_kraftdiagramm_kiste}
     \end{subfigure}
-    \hfill    
-    \begin{subfigure}{0.44\textwidth}
+    \hspace{0.01\textwidth}
+    \begin{subfigure}{0.55\textwidth}
         \centering
-    \resizebox{0.95\textwidth}{!}{%
-    \begin{tikzpicture}[font=\large]
+    \resizebox{1.0\textwidth}{!}{%
+    \begin{tikzpicture}[font=\Large]
         \definecolor{kurve}{RGB}{40,100,175}
         \def\Fmax{3.2}\def\Fg{2.4}
         % Achsen
@@ -561,9 +561,9 @@ Zieht man nun mit einer horizontalen Kraft $\ivecS{F}{\text{A}}$ am Körper, bau
         \draw[kurve, line width=2.2pt, densely dotted] (\Fmax,\Fmax) -- (\Fmax,\Fg);
         \draw[kurve, line width=2.2pt] (\Fmax,\Fg) -- (6.0,\Fg);
         % Beschriftungen mit Hinweislinien
-        \draw[black!70, line width=0.5pt] (1.6,1.6) -- (2.6,0.55) node[right=0pt, text=black] {$|\ivecS{F}{\mathrm{R,h}}| = |\ivecS{F}{\mathrm{A}}|$};
-        \draw[black!70, line width=0.5pt] (\Fmax,\Fmax) -- (2.6,4.0) node[above=0pt, text=black] {$|\ivecS{F}{\mathrm{R,h,max}}| = \mu_\mathrm{R,h}\,|\ivecS{F}{\mathrm{N}}|$};
-        \draw[black!70, line width=0.5pt] (5.0,\Fg) -- (5.3,1.6) node[below=0pt, text=black] {$|\ivecS{F}{\mathrm{R,g}}| = \mu_\mathrm{R,g}\,|\ivecS{F}{\mathrm{N}}|$};
+        \draw[black!70, line width=0.5pt] (1.6,1.6) -- (2.6,0.45) node[right=0pt, text=black] {$|\ivecS{F}{\mathrm{R,h}}| = |\ivecS{F}{\mathrm{A}}|$};
+        \draw[black!70, line width=0.5pt] (\Fmax,\Fmax) -- (4.0,4.1) node[above=0pt, text=black] {$|\ivecS{F}{\mathrm{R,h,max}}| = \mu_\mathrm{R,h}\,|\ivecS{F}{\mathrm{N}}|$};
+        \draw[black!70, line width=0.5pt] (5.0,\Fg) -- (5.6,1.75) node[below=0pt, text=black] {$|\ivecS{F}{\mathrm{R,g}}| = \mu_\mathrm{R,g}\,|\ivecS{F}{\mathrm{N}}|$};
     \end{tikzpicture}%
     }
         \caption*{}\label{fig: haftreibungskraft_zugkraft_diagramm}
