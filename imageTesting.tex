@@ -45,6 +45,53 @@
 
 %%% ---------------------------------------------------------------
 %%% [ERLEDIGT - in Kapitel 5 eingebaut, hier auskommentiert]
+%%% NEU: Momentangeschwindigkeit an der Bahnkurve (Kap. 5, Abb. 4.11, Neuzeichnung)
+%%% Gleiche Darstellung wie Abb. 4.3. Bahnkurve
+%%%   x(t) = 1 + 0,3 sin(t),  y(t) = t,  z(t) = 3 + 1,1 sin(0,9 (t-1))   (t in rad).
+%%% P_1 bei t = 2,6, P_2 bei t + Delta t = 3,9; v ist jeweils die exakte Ableitung.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     font=\large,
+%     x={(-0.62cm,-0.55cm)}, y={(0.95cm,-0.30cm)}, z={(0cm,1cm)},
+%     declare function={bx(\t)=1+0.3*sin(\t r); by(\t)=\t; bz(\t)=3+1.1*sin(0.9*(\t-1) r);
+%                       dbx(\t)=0.3*cos(\t r); dby(\t)=1; dbz(\t)=0.99*cos(0.9*(\t-1) r);},
+%     vek/.style={line width=1.3pt, -{Stealth[length=3mm, width=2.6mm]}},
+% ]
+%     \definecolor{bahnFarbe}{RGB}{200,60,45}
+%     \definecolor{vFarbe}{RGB}{40,100,175}
+%     \pgfmathsetmacro{\ta}{2.6}\pgfmathsetmacro{\tb}{3.9}
+%     \coordinate (O) at (0,0,0);
+%     \coordinate (P1) at ({bx(\ta)},{by(\ta)},{bz(\ta)});
+%     \coordinate (P2) at ({bx(\tb)},{by(\tb)},{bz(\tb)});
+
+%     % --- Achsen ---
+%     \draw[vkAchse] (O) -- (3.6,0,0) node[below left=-1pt] {$x$};
+%     \draw[vkAchse] (O) -- (0,7.4,0) node[below right=-1pt] {$y$};
+%     \draw[vkAchse] (O) -- (0,0,5.6) node[right=2pt] {$z$};
+
+%     % --- Bahnkurve ---
+%     \draw[bahnFarbe, line width=1.6pt] plot[domain=1.0:6.8, samples=80, variable=\t] ({bx(\t)},{by(\t)},{bz(\t)});
+%     \node[bahnFarbe, below right=0pt] at ({bx(6.8)},{by(6.8)},{bz(6.8)}) {Bahnkurve};
+
+%     % --- Ortsvektoren ---
+%     \draw[vek] (O) -- (P1) node[pos=0.6, left=2pt] {$\ivec{r}(t)$};
+%     \draw[vek] (O) -- (P2) node[pos=0.55, below right=-1pt] {$\ivec{r}(t+\Delta t)$};
+
+%     % --- Verschiebung (Sekante) ---
+%     \draw[vek] (P1) -- (P2) node[pos=0.5, below left=-1pt] {$\Delta\ivec{r}$};
+
+%     % --- Momentangeschwindigkeiten (Tangenten) ---
+%     \draw[vek, vFarbe] (P1) -- ++({1.3*dbx(\ta)},{1.3*dby(\ta)},{1.3*dbz(\ta)}) node[above=1pt] {$\ivec{v}(t)$};
+%     \draw[vek, vFarbe] (P2) -- ++({1.3*dbx(\tb)},{1.3*dby(\tb)},{1.3*dbz(\tb)}) node[right=1pt] {$\ivec{v}(t+\Delta t)$};
+
+%     \fill (P1) circle (2.2pt) node[above left=1pt] {$P_1$};
+%     \fill (P2) circle (2.2pt) node[above right=0pt] {$P_2$};
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% ---------------------------------------------------------------
+%%% [ERLEDIGT - in Kapitel 5 eingebaut, hier auskommentiert]
 %%% NEU: Bahnkurve im Raum (Kap. 5, Abb. 4.3, Neuzeichnung)
 %%% Bahnkurve r(t) = (x(t), y(t), z(t)) mit
 %%%   x(t) = 1,2 + 0,8 sin(t),  y(t) = t,  z(t) = 4,3 + 0,6 sin(1,6 t)   (t in rad).

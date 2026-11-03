@@ -666,7 +666,7 @@ Zwei beliebige Punkte der Bahnkurven reichen aus für eine vollständige Charakt
         % Ortsvektor r_0 von O nach S
         \draw[ortsvek] (O) -- (S) node[midway,pos=0.4, right=1pt] {\large $\ivec{r}(t^*)$};
         % Geschwindigkeitsvektor v_0 an S in Richtung der Geraden
-3        \draw[geschwvek] (S) -- ++(\lenV, \lenV*\kSteig) node[midway, above=2pt, sloped] {\large $\ivec{v}(t^*)$};
+         \draw[geschwvek] (S) -- ++(\lenV, \lenV*\kSteig) node[midway, above=2pt, sloped] {\large $\ivec{v}(t^*)$};
 
         % Beschriftung \Delta x/\Delta t = v_0
         \node[black] at (1.2,4.2) {\Large $\frac{\Delta x}{\Delta t} = v$};
@@ -683,8 +683,46 @@ Im Allgemeinen ist die Geschwindigkeit $\ivec{v}$ nicht konstant, sondern eine F
 als die mittlere Geschwindigkeit zwischen $P_1$ und $P_2$. 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.55\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Kinematik/momentangeschwindigkeit.png}
-    \caption[Die Momentangeschwindigkeit $\protect\ivec{v}(t)$ zeigt entlang der Tangente an die Bahnkurve. (Quelle:~\cite{Demtroeder2018}, S.~40)]{Während der Verschiebungsvektor $\Delta \protect\ivec{r}$ die Sekante zwischen $P_1$ und $P_2$ bildet und damit die Durchschnittsgeschwindigkeit $\overline{\protect\ivec{v}} \propto \Delta \protect\ivec{r}$ ebenso parallel zur Sekante ist, zeigt der Vektor der Momentangeschwindigkeit $\protect\ivec{v}(t)$ zu jedem Zeitpunkt entlang der Tangente an die Bahnkurve. (Quelle:~\cite[S.~40]{Demtroeder2018})}\label{fig: momentangeschwindigkeit_bahnkurve}
+    \resizebox{0.55\textwidth}{!}{%
+    \begin{tikzpicture}[
+        font=\large,
+        x={(-0.62cm,-0.55cm)}, y={(0.95cm,-0.30cm)}, z={(0cm,1cm)},
+        declare function={bx(\t)=1+0.3*sin(\t r); by(\t)=\t; bz(\t)=3+1.1*sin(0.9*(\t-1) r);
+                          dbx(\t)=0.3*cos(\t r); dby(\t)=1; dbz(\t)=0.99*cos(0.9*(\t-1) r);},
+        vek/.style={line width=1.3pt, -{Stealth[length=3mm, width=2.6mm]}},
+    ]
+        \definecolor{bahnFarbe}{RGB}{200,60,45}
+        \definecolor{vFarbe}{RGB}{40,100,175}
+        \pgfmathsetmacro{\ta}{2.6}\pgfmathsetmacro{\tb}{3.9}
+        \coordinate (O) at (0,0,0);
+        \coordinate (P1) at ({bx(\ta)},{by(\ta)},{bz(\ta)});
+        \coordinate (P2) at ({bx(\tb)},{by(\tb)},{bz(\tb)});
+
+        % --- Achsen ---
+        \draw[vkAchse] (O) -- (3.6,0,0) node[below left=-1pt] {$x$};
+        \draw[vkAchse] (O) -- (0,7.4,0) node[below right=-1pt] {$y$};
+        \draw[vkAchse] (O) -- (0,0,5.6) node[right=2pt] {$z$};
+
+        % --- Bahnkurve ---
+        \draw[bahnFarbe, line width=1.6pt] plot[domain=1.0:6.8, samples=80, variable=\t] ({bx(\t)},{by(\t)},{bz(\t)});
+        \node[bahnFarbe, below right=0pt] at ({bx(6.8)},{by(6.8)},{bz(6.8)}) {Bahnkurve};
+
+        % --- Ortsvektoren ---
+        \draw[vek] (O) -- (P1) node[pos=0.6, left=2pt] {$\ivec{r}(t)$};
+        \draw[vek] (O) -- (P2) node[pos=0.55, below right=-1pt] {$\ivec{r}(t+\Delta t)$};
+
+        % --- Verschiebung (Sekante) ---
+        \draw[vek] (P1) -- (P2) node[pos=0.5, below left=-1pt] {$\Delta\ivec{r}$};
+
+        % --- Momentangeschwindigkeiten (Tangenten) ---
+        \draw[vek, vFarbe] (P1) -- ++({1.3*dbx(\ta)},{1.3*dby(\ta)},{1.3*dbz(\ta)}) node[above=1pt] {$\ivec{v}(t)$};
+        \draw[vek, vFarbe] (P2) -- ++({1.3*dbx(\tb)},{1.3*dby(\tb)},{1.3*dbz(\tb)}) node[right=1pt] {$\ivec{v}(t+\Delta t)$};
+
+        \fill (P1) circle (2.2pt) node[above left=1pt] {$P_1$};
+        \fill (P2) circle (2.2pt) node[above right=0pt] {$P_2$};
+    \end{tikzpicture}%
+    }
+    \caption[Die Momentangeschwindigkeit $\protect\ivec{v}(t)$ zeigt entlang der Tangente an die Bahnkurve]{Während der Verschiebungsvektor $\Delta \protect\ivec{r}$ die Sekante zwischen $P_1$ und $P_2$ bildet und damit die Durchschnittsgeschwindigkeit $\overline{\protect\ivec{v}} \propto \Delta \protect\ivec{r}$ ebenso parallel zur Sekante ist, zeigt der Vektor der Momentangeschwindigkeit $\protect\ivec{v}(t)$ zu jedem Zeitpunkt entlang der Tangente an die Bahnkurve (nach~\cite[S.~40]{Demtroeder2018}).}\label{fig: momentangeschwindigkeit_bahnkurve}
 \end{figure}
 
 Um eine (variable) Geschwindigkeit zu einem exakten Zeitpunkt $t$ zu bestimmen, lassen wir den Punkt $P_2$ immer näher an $P_1$ heranrücken, wodurch das Zeitintervall $\Delta t$ infinitesimal klein wird: $\Delta t \to 0$. Für sich genommen würde der Quotient \cref{eq: quotient_durchschnittsgeschwindigkeit} damit divergieren. Da aber der Zähler ebenso gegen $0$ geht, kann der Quotient einen endlichen Wert annehmen. Die \textbf{Momentangeschwindigkeit} $\ivec{v}(t)$ ist daher der Grenzwert der Durchschnittsgeschwindigkeit für ein gegen Null gehendes Zeitintervall. Mathematisch entspricht diese Grenzwertbildung der Ableitung.
