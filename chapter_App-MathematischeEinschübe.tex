@@ -43,6 +43,349 @@ Ein Tupel ist eine geordnete Liste von Elementen. Im Kontext von mehrdimensional
 Ein Tupel von Koordinaten kann keine Richtung vermitteln. Das Tupel beschreibt lediglich einen Ort im $n$-dimensionalen Raum. Zusammenfassend lässt sich sagen, dass ein Tupel eine mathematische Struktur ist, die es ermöglicht, die Koordinaten eines Punktes in einem mehrdimensionalen Raum zu erfassen.
 
 \newpage
+\chapter{Potenzen, Exponentialfunktion und Logarithmus}\label{chap: Potenzen_Exp_Log}
+In der Physik begegnen uns Potenzen, Exponentialfunktionen und Logarithmen ständig: Messwerte werden mit Zehnerpotenzen geschrieben, der Luftdruck nimmt mit der Höhe exponentiell ab (\cref{sec: barometrische_hoehenformel}), radioaktive Kerne zerfallen exponentiell, und in der Wärmelehre taucht der Boltzmann-Faktor $e^{-E/(k_B T)}$ auf. Mit dem Logarithmus lassen sich solche Zusammenhänge nach der gesuchten Größe auflösen. Dieses Kapitel fasst die wichtigsten Rechenregeln zusammen.
+
+\section{Potenzen}\label{sec: Potenzen}
+Eine Potenz ist eine abgekürzte Schreibweise für die wiederholte Multiplikation einer Zahl mit sich selbst:
+\begin{equation}
+    a^n = \underbrace{a \cdot a \cdot \ldots \cdot a}_{n \text{ Faktoren}} \mDot
+\end{equation}
+Die Zahl $a$ heißt \textbf{Basis}, die Zahl $n$ heißt \textbf{Exponent} (Hochzahl). Zum Beispiel ist $2^3 = 2 \cdot 2 \cdot 2 = 8$.
+
+\begin{rememberbox}[]{Potenzgesetze}
+    Für Basen $a, b > 0$ und beliebige reelle Exponenten $m, n$ gilt:
+    \begin{center}
+    \renewcommand{\arraystretch}{1.6}
+    \begin{tabular}{l l l}
+        Multiplikation, gleiche Basis & $a^m \cdot a^n = a^{m+n}$ & $10^2 \cdot 10^3 = 10^5$ \\
+        Division, gleiche Basis & $\dfrac{a^m}{a^n} = a^{m-n}$ & $\dfrac{10^5}{10^2} = 10^3$ \\
+        Potenz einer Potenz & $\left(a^m\right)^n = a^{m \cdot n}$ & $\left(10^3\right)^2 = 10^6$ \\
+        Gleicher Exponent & $a^n \cdot b^n = (a \cdot b)^n$ & $2^3 \cdot 5^3 = 10^3$ \\
+        Exponent null & $a^0 = 1$ & $7^0 = 1$ \\
+        Negativer Exponent & $a^{-n} = \dfrac{1}{a^n}$ & $10^{-3} = \dfrac{1}{1000}$ \\
+        Bruch als Exponent & $a^{1/n} = \sqrt[n]{a}$ & $8^{1/3} = \sqrt[3]{8} = 2$ \\
+    \end{tabular}
+    \end{center}
+\end{rememberbox}
+
+Die Regeln für $a^0$ und $a^{-n}$ sind keine Willkür, sondern folgen aus der Divisionsregel: Teilt man eine Potenz durch sich selbst, so ergibt sich einerseits $a^n/a^n = 1$ und andererseits $a^n/a^n = a^{n-n} = a^0$. Also muss $a^0 = 1$ sein. Ebenso folgt aus $a^n \cdot a^{-n} = a^{n-n} = a^0 = 1$, dass $a^{-n} = 1/a^n$ ist. Und weil $\left(a^{1/n}\right)^n = a^{n/n} = a$ gilt, ist $a^{1/n}$ diejenige Zahl, die $n$-mal mit sich selbst multipliziert wieder $a$ ergibt -- also die $n$-te Wurzel.
+
+\begin{examplebox}[]{Beispiel: Zehnerpotenzen und Einheiten}
+    \textbf{Wissenschaftliche Schreibweise} (siehe \cref{sec: signifikante_Stellen}): Beim Multiplizieren werden die Mantissen multipliziert und die Exponenten addiert,
+    \begin{equation*}
+        \left(3 \cdot 10^{4}\right) \cdot \left(2 \cdot 10^{-7}\right) = (3 \cdot 2) \cdot 10^{4 + (-7)} = 6 \cdot 10^{-3} \mDot
+    \end{equation*}
+    \textbf{Präfixe bei Flächen und Volumina} (siehe Abschnitt \gDQ{Einheitenpräfixe} auf S.~\pageref{sec: Einheitenpräfixe}): Das Präfix gehört zur Einheit und wird mitpotenziert,
+    \begin{equation*}
+        \SI{1}{\kilo\meter\squared} = \left(10^3\,\mathrm{m}\right)^2 = 10^6\,\mathrm{m}^2 \mComma \qquad
+        \SI{1}{\centi\meter\cubed} = \left(10^{-2}\,\mathrm{m}\right)^3 = 10^{-6}\,\mathrm{m}^3 \mDot
+    \end{equation*}
+\end{examplebox}
+
+\begin{importantbox}[]{Häufige Fehler beim Rechnen mit Potenzen}
+    \begin{itemize}[itemsep=1.5pt]
+        \item $(a + b)^2 \neq a^2 + b^2$. Richtig ist $(a+b)^2 = a^2 + 2ab + b^2$.
+        \item $a^m + a^n \neq a^{m+n}$. Die Exponenten addieren sich nur beim \textit{Multiplizieren}: $10^2 + 10^3 = 1100$, aber $10^{2+3} = \num{100000}$.
+        \item $\left(a^m\right)^n \neq a^{\left(m^n\right)}$: $\left(2^3\right)^2 = 8^2 = 64$, aber $2^{\left(3^2\right)} = 2^9 = 512$.
+        \item $-2^2 = -4$, aber $(-2)^2 = +4$. Der Exponent bezieht sich nur auf das, was direkt davor steht.
+    \end{itemize}
+    \textbf{Tipp:} Im Zweifel setzt man für die Variablen einfache Zahlen ein und prüft, ob beide Seiten denselben Wert ergeben.
+\end{importantbox}
+
+\section{Die Exponentialfunktion}\label{sec: Exponentialfunktion}
+Bei einer Potenzfunktion wie $f(x) = x^2$ steht die Variable in der Basis. Steht die Variable dagegen im Exponenten, so spricht man von einer \textbf{Exponentialfunktion}:
+\begin{equation}\label{eq: exponentialfunktion_allg}
+    f(x) = a^x \mComma \qquad a > 0,\; a \neq 1 \mDot
+\end{equation}
+Der Unterschied ist gewaltig: Für $x = 10$ ist $x^2 = 100$, aber $2^x = 1024$; für $x = 30$ ist $x^2 = 900$, aber $2^x \approx 10^9$. Eine Exponentialfunktion mit $a > 1$ wächst auf Dauer schneller als jede Potenzfunktion.
+
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.62\textwidth, height=6.2cm,
+            axis lines=middle,
+            xmin=-2.7, xmax=2.7, ymin=0, ymax=7.6,
+            xtick={-2,-1,1,2}, ytick={1,2,3,4,5,6,7},
+            xlabel={$x$}, ylabel={$f(x)$},
+            every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+            every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+            samples=120,
+            legend pos=outer north east,
+            legend style={draw=none, font=\small, cells={anchor=west}},
+        ]
+            \addplot[very thick, pointblue, domain=-2.6:2.6] {2^x};
+            \addlegendentry{$2^x$}
+            \addplot[very thick, figRed, domain=-2.6:2.02] {exp(x)};
+            \addlegendentry{$e^x$}
+            \addplot[very thick, figGreen, dashed, domain=-2.6:2.6] {0.5^x};
+            \addlegendentry{$\left(\frac{1}{2}\right)^x = 2^{-x}$}
+            \addplot[only marks, mark=*, mark size=2pt] coordinates {(0,1)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Exponentialfunktionen $a^x$ für $a = 2$, $a = e \approx \num{2.718}$ und $a = \frac{1}{2}$. Alle gehen durch den Punkt $(0,1)$ und sind stets positiv. Für $a > 1$ steigen sie, für $0 < a < 1$ fallen sie.}\label{fig: exponentialfunktionen}
+\end{figure}
+
+\Cref{fig: exponentialfunktionen} zeigt die wichtigsten Eigenschaften:
+\begin{itemize}[itemsep=1.5pt]
+    \item $a^x$ ist für alle $x$ \textbf{positiv} -- eine Exponentialfunktion wird nie null oder negativ.
+    \item Wegen $a^0 = 1$ gehen alle Exponentialfunktionen durch den Punkt $(0,1)$.
+    \item Für $a > 1$ steigt die Funktion (Wachstum), für $0 < a < 1$ fällt sie (Abnahme). Wegen $a^{-x} = (1/a)^x$ ist die fallende Kurve das Spiegelbild der steigenden an der $y$-Achse.
+\end{itemize}
+
+\subsection{Die Euler'sche Zahl $e$}
+Unter allen möglichen Basen spielt die \textbf{Euler'sche Zahl}
+\begin{equation}\label{eq: eulersche_zahl}
+    e = \lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = \num{2.71828}\ldots
+\end{equation}
+eine besondere Rolle. Anschaulich kann man sich diese Zahl über die Zinseszinsrechnung vorstellen: Ein Guthaben wird mit \SI{100}{\percent} pro Jahr verzinst. Bei einer einzigen Zinszahlung pro Jahr verdoppelt es sich (Faktor 2). Wird halbjährlich mit je \SI{50}{\percent} verzinst, wächst es um den Faktor $\num{1.5}^2 = \num{2.25}$, bei monatlicher Verzinsung um $\left(1 + \frac{1}{12}\right)^{12} \approx \num{2.613}$. Verzinst man immer häufiger, nähert sich der Faktor der Zahl $e \approx \num{2.718}$.
+
+Die Funktion $f(x) = e^x$ (auch $\exp(x)$ geschrieben) heißt \textbf{natürliche Exponentialfunktion} oder kurz $e$-Funktion. Sie hat eine einzigartige Eigenschaft: Ihre Ableitung ist sie selbst (siehe \cref{sec: Ableitung_spezFunktionen}),
+\begin{equation}
+    \frac{\dd}{\dd x} e^x = e^x \mDot
+\end{equation}
+Die Änderungsrate der $e$-Funktion ist also an jeder Stelle genau so groß wie ihr Wert. Genau deshalb tritt die $e$-Funktion in der Natur immer dann auf, wenn sich eine Größe umso schneller ändert, je mehr von ihr vorhanden ist (siehe \cref{sec: exponentielle_Abnahme}).
+
+Jede Exponentialfunktion lässt sich mit der Basis $e$ schreiben, denn mit dem natürlichen Logarithmus (\cref{sec: Logarithmus}) gilt $a = e^{\ln a}$ und damit
+\begin{equation}\label{eq: ax_als_ex}
+    a^x = e^{x \ln a} \mDot
+\end{equation}
+
+\section{Der Logarithmus}\label{sec: Logarithmus}
+Der Logarithmus beantwortet die Frage: \textit{Mit welcher Zahl muss man die Basis $a$ potenzieren, um $y$ zu erhalten?}
+\begin{rememberbox}[]{Definition: Logarithmus}
+    Für $a > 0$, $a \neq 1$ und $y > 0$ gilt
+    \begin{equation}\label{eq: def_logarithmus}
+        y = a^x \quad \Longleftrightarrow \quad x = \log_a y \mDot
+    \end{equation}
+    Der Logarithmus ist die Umkehrfunktion der Exponentialfunktion: $a^{\log_a y} = y$ und $\log_a\left(a^x\right) = x$.
+\end{rememberbox}
+\textit{Beispiele:} $\log_{10} 1000 = 3$, da $10^3 = 1000$. \quad $\log_{10} \num{0.01} = -2$, da $10^{-2} = \num{0.01}$. \quad $\log_2 8 = 3$, da $2^3 = 8$.
+
+In der Praxis verwendet man vor allem drei Basen:
+\begin{itemize}[itemsep=1.5pt]
+    \item den \textbf{natürlichen Logarithmus} zur Basis $e$: $\ln x = \log_e x$,
+    \item den \textbf{Zehnerlogarithmus} (dekadischer Logarithmus): $\lg x = \log_{10} x$,
+    \item den \textbf{Zweierlogarithmus} (binärer Logarithmus): $\operatorname{lb} x = \log_2 x$.
+\end{itemize}
+\textbf{Achtung:} Auf den meisten Taschenrechnern bedeutet die Taste \texttt{log} den Zehnerlogarithmus. In vielen Büchern und in Programmiersprachen (\zB Python, Excel: \texttt{LN} vs.\ \texttt{LOG}) steht \texttt{log} dagegen oft für den natürlichen Logarithmus. Im Zweifel prüft man mit $\log(10)$: Ergibt sich 1, ist es der Zehnerlogarithmus, ergibt sich $\num{2.303}$, ist es der natürliche.
+
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.55\textwidth, height=0.55\textwidth,
+            axis lines=middle,
+            xmin=-3.2, xmax=6.7, ymin=-3.2, ymax=6.7,
+            axis equal image,
+            xtick={-2,4,6}, ytick={-2,2,4,6},
+            xlabel={$x$}, ylabel={$y$},
+            every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+            every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+            samples=150,
+            legend pos=outer north east,
+            legend style={draw=none, font=\small, cells={anchor=west}},
+        ]
+            \addplot[very thick, figRed, domain=-3.2:1.9] {exp(x)};
+            \addlegendentry{$e^x$}
+            \addplot[very thick, pointblue, domain=0.04:6.7] {ln(x)};
+            \addlegendentry{$\ln x$}
+            \addplot[thin, gray, dashed, domain=-3.2:6.7] {x};
+            \addlegendentry{$y = x$}
+            \addplot[only marks, mark=*, mark size=2pt] coordinates {(0,1) (1,0)};
+            \node[anchor=east, font=\small] at (axis cs:-0.1,1.1) {$(0,1)$};
+            \node[anchor=north, font=\small] at (axis cs:1.15,-0.15) {$(1,0)$};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Die natürliche Exponentialfunktion $e^x$ und der natürliche Logarithmus $\ln x$ sind Umkehrfunktionen: Ihre Graphen gehen durch Spiegelung an der Geraden $y = x$ auseinander hervor. Der Logarithmus ist nur für positive Zahlen definiert.}\label{fig: exp_ln_umkehrfunktion}
+\end{figure}
+
+\begin{rememberbox}[]{Logarithmengesetze}
+    Für $x, y > 0$ und eine beliebige Basis $a$ gilt:
+    \begin{center}
+    \renewcommand{\arraystretch}{1.6}
+    \begin{tabular}{l l l}
+        Produkt & $\log_a(x \cdot y) = \log_a x + \log_a y$ & $\lg(100 \cdot 1000) = 2 + 3 = 5$ \\
+        Quotient & $\log_a\left(\dfrac{x}{y}\right) = \log_a x - \log_a y$ & $\lg\left(\dfrac{1000}{10}\right) = 3 - 1 = 2$ \\
+        Potenz & $\log_a\left(x^r\right) = r \cdot \log_a x$ & $\lg\left(10^{6}\right) = 6 \cdot \lg 10 = 6$ \\
+        Sonderwerte & $\log_a 1 = 0$, \quad $\log_a a = 1$ & $\ln 1 = 0$, \quad $\ln e = 1$ \\
+        Basiswechsel & $\log_b x = \dfrac{\ln x}{\ln b}$ & $\log_2 5 = \dfrac{\ln 5}{\ln 2} \approx \num{2.32}$ \\
+    \end{tabular}
+    \end{center}
+\end{rememberbox}
+
+Die Logarithmengesetze sind nichts anderes als die Potenzgesetze in umgekehrter Richtung: Schreibt man $x = a^m$ und $y = a^n$, so ist $x \cdot y = a^{m+n}$ und damit $\log_a(x \cdot y) = m + n = \log_a x + \log_a y$. Der Logarithmus verwandelt also eine Multiplikation in eine Addition.
+
+\begin{importantbox}[]{Häufige Fehler beim Rechnen mit Logarithmen}
+    \begin{itemize}[itemsep=1.5pt]
+        \item $\log(x + y) \neq \log x + \log y$. Für eine Summe im Argument gibt es keine Vereinfachung.
+        \item $\dfrac{\ln x}{\ln y} \neq \ln\left(\dfrac{x}{y}\right)$. Richtig ist $\ln\left(\dfrac{x}{y}\right) = \ln x - \ln y$.
+        \item $\log 0$ und der Logarithmus negativer Zahlen sind nicht definiert, da $a^x$ immer positiv ist.
+    \end{itemize}
+\end{importantbox}
+
+\begin{importantbox}[]{Physik: Das Argument muss dimensionslos sein}
+    In Exponentialfunktionen und Logarithmen dürfen nur \textbf{reine Zahlen ohne Einheit} stehen. Ausdrücke wie $e^{\SI{5}{\meter}}$ oder $\ln(\SI{3}{\second})$ sind sinnlos. Das sieht man an der Reihenentwicklung $e^x = 1 + x + \frac{x^2}{2} + \ldots$: Wäre $x$ eine Länge, müsste man Meter und Quadratmeter addieren.
+
+    Deshalb stehen in physikalischen Formeln immer Verhältnisse gleichartiger Größen, zum Beispiel $e^{-h/H}$ in der barometrischen Höhenformel (Höhe durch Skalenhöhe) oder $\ln(p/p_0)$ (Druck durch Bezugsdruck). Eine Differenz $\ln p - \ln p_0 = \ln(p/p_0)$ ist dagegen erlaubt, weil sich die Einheiten im Verhältnis herauskürzen.
+\end{importantbox}
+
+\subsection{Exponentialgleichungen lösen}\label{subsec: exponentialgleichungen}
+Steht die Unbekannte im Exponenten, hilft der Logarithmus. Das Vorgehen ist immer gleich:
+\begin{enumerate}[itemsep=1.5pt]
+    \item Die Exponentialfunktion auf einer Seite der Gleichung isolieren.
+    \item Auf beiden Seiten den Logarithmus bilden (meist $\ln$).
+    \item Mit dem Potenzgesetz des Logarithmus den Exponenten \gDQ{herunterholen} und nach der Unbekannten auflösen.
+\end{enumerate}
+
+\begin{examplebox}[]{Beispiel: In welcher Höhe hat sich der Luftdruck halbiert?}
+    Nach der barometrischen Höhenformel (\cref{eq: barometrische_hoehenformel}) gilt für eine isotherme Atmosphäre $p(h) = p_0 \, e^{-h/H}$ mit der Skalenhöhe $H \approx \SI{8}{\kilo\meter}$. Gesucht ist die Höhe $h_{1/2}$, in der $p = p_0/2$ ist:
+    \begin{align*}
+        \frac{p_0}{2} &= p_0 \, e^{-h_{1/2}/H} && | : p_0 \\
+        \frac{1}{2} &= e^{-h_{1/2}/H} && | \ln(\ldots) \\
+        \ln\left(\frac{1}{2}\right) = -\ln 2 &= -\frac{h_{1/2}}{H} && | \cdot (-H) \\
+        h_{1/2} &= H \cdot \ln 2 \approx \SI{8}{\kilo\meter} \cdot \num{0.693} \approx \SI{5.5}{\kilo\meter} \mDot
+    \end{align*}
+    Bemerkenswert: Das Ergebnis hängt nicht vom Anfangsdruck $p_0$ ab. Auch zwischen \SI{5.5}{\kilo\meter} und \SI{11}{\kilo\meter} halbiert sich der Druck wieder.
+\end{examplebox}
+
+\section{Exponentielle Abnahme und exponentielles Wachstum}\label{sec: exponentielle_Abnahme}
+Viele Vorgänge in der Natur folgen derselben Regel: \textit{Die Änderung pro Zeit ist proportional zur vorhandenen Menge.} Beim radioaktiven Zerfall zerfallen umso mehr Kerne pro Sekunde, je mehr Kerne noch vorhanden sind. Mathematisch ist das die Differentialgleichung $\frac{\dd N}{\dd t} = -\lambda N$, deren Lösung in \cref{subsubsec: dgl_radioaktiver_zerfall} hergeleitet wird:
+\begin{equation}\label{eq: exponentielle_abnahme}
+    N(t) = N_0 \, e^{-\lambda t} \mDot
+\end{equation}
+Dabei ist $N_0 = N(0)$ die Anfangsmenge und $\lambda > 0$ die \textbf{Zerfallskonstante} (Einheit $\si{\per\second}$). Bei positivem Vorzeichen im Exponenten, $N(t) = N_0 \, e^{+k t}$, erhält man exponentielles \textbf{Wachstum}.
+
+Die entscheidende Eigenschaft: In gleichen Zeitabständen $\Delta t$ ändert sich die Menge immer um denselben \textit{Faktor},
+\begin{equation}
+    \frac{N(t + \Delta t)}{N(t)} = \frac{N_0 \, e^{-\lambda (t + \Delta t)}}{N_0 \, e^{-\lambda t}} = e^{-\lambda \Delta t} \mComma
+\end{equation}
+unabhängig davon, wann man hinsieht. Bei einer linearen Abnahme verschwindet dagegen in gleichen Zeitabständen dieselbe \textit{Menge}.
+
+\subsection{Halbwertszeit und Zeitkonstante}
+Zur Beschreibung der Geschwindigkeit einer exponentiellen Abnahme verwendet man zwei anschauliche Zeiten:
+\begin{itemize}[itemsep=1.5pt]
+    \item Die \textbf{Halbwertszeit} $T_{1/2}$ ist die Zeit, nach der nur noch die Hälfte vorhanden ist. Aus $N_0/2 = N_0\,e^{-\lambda T_{1/2}}$ folgt (genau wie im Beispiel oben)
+    \begin{equation}\label{eq: halbwertszeit}
+        T_{1/2} = \frac{\ln 2}{\lambda} \approx \frac{\num{0.693}}{\lambda} \mDot
+    \end{equation}
+    \item Die \textbf{Zeitkonstante} (mittlere Lebensdauer) $\tau = 1/\lambda$ ist die Zeit, nach der die Menge auf den Bruchteil $1/e \approx \SI{36.8}{\percent}$ gesunken ist.
+\end{itemize}
+Beide hängen über $T_{1/2} = \tau \cdot \ln 2$ zusammen. Mit der Halbwertszeit lässt sich das Zerfallsgesetz besonders anschaulich schreiben:
+\begin{equation}\label{eq: zerfallsgesetz_halbwertszeit}
+    N(t) = N_0 \left(\frac{1}{2}\right)^{t/T_{1/2}} \mDot
+\end{equation}
+Nach einer Halbwertszeit ist noch die Hälfte vorhanden, nach zwei Halbwertszeiten ein Viertel, nach drei ein Achtel, nach $n$ Halbwertszeiten der Bruchteil $1/2^n$ (siehe \cref{fig: exponentielle_abnahme_linear}). Beim exponentiellen Wachstum heißt die entsprechende Größe \textbf{Verdopplungszeit}, $T_2 = \ln 2 / k$.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\linewidth, height=5.6cm,
+                axis lines=left,
+                xmin=0, xmax=5.3, ymin=0, ymax=1.1,
+                xtick={0,1,2,3,4,5},
+                ytick={0.25,0.5,1},
+                yticklabels={$\frac{1}{4}$,$\frac{1}{2}$,$1$},
+                xlabel={$t / T_{1/2}$}, ylabel={$N / N_0$},
+                samples=120, domain=0:5.2,
+            ]
+                \addplot[very thick, figRed] {0.5^x};
+                % Halbwertszeiten markieren
+                \foreach \n/\v in {1/0.5, 2/0.25, 3/0.125} {
+                    \edef\temp{\noexpand\draw[gray, dashed] (axis cs:0,\v) -- (axis cs:\n,\v) -- (axis cs:\n,0);}
+                    \temp
+                }
+                % Zeitkonstante tau = T_{1/2}/ln 2
+                \draw[pointblue, densely dotted, thick] (axis cs:0,0.3679) -- (axis cs:1.4427,0.3679) -- (axis cs:1.4427,0);
+                \node[pointblue, anchor=south west, font=\small] at (axis cs:1.45,0.37) {$\tau$: Rest $1/e$};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Lineare Achsen}\label{fig: exponentielle_abnahme_linear}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{semilogyaxis}[
+                width=\linewidth, height=5.6cm,
+                axis lines=left,
+                xmin=0, xmax=10.3, ymin=8e-4, ymax=1.3,
+                xtick={0,2,4,6,8,10},
+                ytick={1,0.1,0.01,0.001},
+                yticklabels={$1$,$10^{-1}$,$10^{-2}$,$10^{-3}$},
+                grid=major, grid style={gray!25},
+                xlabel={$t / T_{1/2}$}, ylabel={$N / N_0$},
+                samples=50, domain=0:10.2,
+            ]
+                \addplot[very thick, figRed] {0.5^x};
+            \end{semilogyaxis}
+        \end{tikzpicture}
+        \caption{Logarithmische $y$-Achse}\label{fig: exponentielle_abnahme_log}
+    \end{subfigure}
+    \caption{Exponentielle Abnahme $N(t) = N_0 \left(\frac{1}{2}\right)^{t/T_{1/2}}$. (a) Nach jeder Halbwertszeit halbiert sich die Menge; nach der Zeitkonstante $\tau \approx \num{1.44}\,T_{1/2}$ ist noch der Bruchteil $1/e \approx \SI{37}{\percent}$ übrig. (b) Dieselbe Kurve mit logarithmischer $y$-Achse wird zu einer Geraden.}\label{fig: exponentielle_abnahme}
+\end{figure}
+
+\begin{rememberbox}[]{Exponentielle Abnahme}
+    \begin{equation*}
+        N(t) = N_0 \, e^{-\lambda t} = N_0 \left(\frac{1}{2}\right)^{t/T_{1/2}} \mComma \qquad T_{1/2} = \frac{\ln 2}{\lambda} \mComma \qquad \tau = \frac{1}{\lambda} \mDot
+    \end{equation*}
+    In gleichen Zeitabständen nimmt die Menge immer um denselben Faktor ab. Typische Beispiele im Skriptum sind der radioaktive Zerfall, die Abnahme des Luftdrucks mit der Höhe (dort spielt die Skalenhöhe $H$ die Rolle von $\tau$) und der Boltzmann-Faktor $e^{-E/(k_B T)}$.
+\end{rememberbox}
+
+\begin{examplebox}[]{Beispiel: Radiokarbonmethode}
+    Das Kohlenstoff-Isotop $^{14}\mathrm{C}$ hat eine Halbwertszeit von $T_{1/2} = \SI{5730}{a}$ (\cite[S.~1424]{Giancoli2010}).
+
+    \textbf{(a)} Welcher Anteil ist nach \SI{11460}{a} noch vorhanden? \newline
+    Das sind genau zwei Halbwertszeiten, also $N/N_0 = \left(\frac{1}{2}\right)^2 = \frac{1}{4} = \SI{25}{\percent}$.
+
+    \textbf{(b)} In einer Probe sind noch \SI{30}{\percent} des ursprünglichen $^{14}\mathrm{C}$ vorhanden. Wie alt ist sie? \newline
+    Aus $\num{0.30} = \left(\frac{1}{2}\right)^{t/T_{1/2}}$ folgt durch Logarithmieren
+    \begin{equation*}
+        \ln(\num{0.30}) = \frac{t}{T_{1/2}} \cdot \ln\left(\frac{1}{2}\right)
+        \quad\implies\quad
+        t = T_{1/2} \cdot \frac{\ln(1/\num{0.30})}{\ln 2} = \SI{5730}{a} \cdot \frac{\num{1.204}}{\num{0.693}} \approx \SI{9950}{a} \mDot
+    \end{equation*}
+    Die Probe ist also rund \num{10000} Jahre alt. Plausibilitätsprüfung: \SI{30}{\percent} liegt zwischen \SI{50}{\percent} (eine Halbwertszeit) und \SI{25}{\percent} (zwei Halbwertszeiten), das Alter muss also zwischen \SI{5730}{a} und \SI{11460}{a} liegen.
+\end{examplebox}
+
+\section{Logarithmische Darstellung}\label{sec: logarithmische_Darstellung}
+Exponentielle Vorgänge überstreichen oft viele Größenordnungen. In einem Diagramm mit linearen Achsen sind kleine Werte dann nicht mehr ablesbar (\cref{fig: exponentielle_abnahme_linear}: schon nach 5 Halbwertszeiten ist die Kurve kaum noch von der Achse zu unterscheiden).
+
+Abhilfe schafft eine \textbf{logarithmische Achse}: Auf ihr hat jeder Faktor 10 denselben Abstand -- der Schritt von $\num{0.001}$ nach $\num{0.01}$ ist genauso lang wie der von $\num{0.1}$ nach $1$. Ist nur die $y$-Achse logarithmisch, spricht man von einem \textbf{halblogarithmischen Diagramm}.
+
+\subsubsection*{Exponentialfunktionen werden zu Geraden}
+Logarithmiert man das Zerfallsgesetz \cref{eq: exponentielle_abnahme}, so erhält man mit den Logarithmengesetzen
+\begin{equation}
+    \ln N(t) = \ln N_0 - \lambda \cdot t \mDot
+\end{equation}
+Das ist eine Geradengleichung in der Variablen $t$ mit der Steigung $-\lambda$. In einem halblogarithmischen Diagramm erscheint eine Exponentialfunktion daher als \textbf{Gerade} (\cref{fig: exponentielle_abnahme_log}). Das hat zwei praktische Vorteile:
+\begin{itemize}[itemsep=1.5pt]
+    \item Man erkennt sofort, ob Messdaten exponentiell verlaufen: Sie liegen dann auf einer Geraden.
+    \item Aus zwei Punkten $(t_1, N_1)$ und $(t_2, N_2)$ der Geraden lässt sich die Zerfallskonstante bestimmen:
+    \begin{equation*}
+        \lambda = -\frac{\ln N_2 - \ln N_1}{t_2 - t_1} = \frac{\ln(N_1/N_2)}{t_2 - t_1} \mDot
+    \end{equation*}
+\end{itemize}
+
+\subsubsection*{Potenzfunktionen im doppelt logarithmischen Diagramm}
+Sind beide Achsen logarithmisch, so werden \textbf{Potenzgesetze} $y = c \cdot x^n$ zu Geraden, denn
+\begin{equation}
+    \lg y = \lg c + n \cdot \lg x \mDot
+\end{equation}
+Die Steigung der Geraden ist der Exponent $n$. Ein Beispiel ist das dritte Keplersche Gesetz (\cref{eq: kepler3}): Wegen $T^2 \propto a^3$ gilt $T \propto a^{3/2}$, und trägt man die Umlaufzeiten der Planeten doppelt logarithmisch gegen die großen Halbachsen auf, liegen alle Planeten auf einer Geraden mit der Steigung $\num{1.5}$.
+
+\begin{rememberbox}[]{Welches Diagramm für welchen Zusammenhang?}
+    \begin{itemize}[itemsep=1.5pt]
+        \item \textbf{Exponentialfunktion} $y = c \cdot e^{kx}$: halblogarithmisch ($y$-Achse logarithmisch) $\Rightarrow$ Gerade mit Steigung $k$ (bezogen auf $\ln y$).
+        \item \textbf{Potenzfunktion} $y = c \cdot x^n$: doppelt logarithmisch $\Rightarrow$ Gerade mit Steigung $n$.
+    \end{itemize}
+\end{rememberbox}
+
+\newpage
 \chapter{Vektorrechnung}\label{chapter: Vektorrechnung}
 \section{Unterschied zwischen Vektoren und Skalaren}\label{sec: Vektor_vs_Skalar}
 In mehrdimensionalen Räumen sind \textbf{Punkte} $P = (x,y,\ldots)$ die Verallgemeinerung von \textbf{Skalaren}. \textbf{Punkte} vermitteln \textbf{keine Richtung} -- sie sind ein $n$-Tupel von Skalaren. Punkte sind „ortsfest“, aber ihre Koordinaten hängen vom gewählten Koordinatensystem ab.
@@ -1603,7 +1946,7 @@ bringen lässt. Man schreibt $y' = \frac{\dd y}{\dd x}$ und \gDQ{trennt} dann di
 Anschließend integriert man beide Seiten:
 \[ \int \frac{\dd y}{g(y)} = \int f(x) \, \dd x + C \]
 
-\subsubsection{Beispiel: Radioaktiver Zerfall}
+\subsubsection{Beispiel: Radioaktiver Zerfall}\label{subsubsec: dgl_radioaktiver_zerfall}
 Die Zerfallsrate eines radioaktiven Materials ist proportional zur vorhandenen Menge $N(t)$.
 \[ N'(t) = -\lambda \cdot N(t) \quad (\lambda > 0 \text{ ist die Zerfallskonstante}) \]
 Wir trennen die Variablen:
