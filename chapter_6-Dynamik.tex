@@ -237,31 +237,31 @@ Vereint man den Gamma-Faktor mit der Ruhemasse, kann man eine \textbf{relativist
         % --- Kugel 1 (links, kleiner) ---
         \shade[ball color=goldblue] (M1) circle (\sizeMI cm);
         \draw[line width=1.6pt] (M1) circle (\sizeMI cm);
-        \node at (0, -2.3) {\Large $m_1$};
+        \node at (0, -2.3) {$m_1$};
 
         % --- Kugel 2 (rechts, größer) ---
         \shade[ball color=goldblue] (M2) circle (\sizeMII cm);
         \draw[line width=1.6pt] (M2) circle (\sizeMII cm);
-        \node at (8, -2.3) {\Large $m_2$};
+        \node at (8, -2.3) {$m_2$};
 
         % --- Kraftvektoren (Dark Blue) ---
         % F1 (nach rechts)
         \draw[-{Latex[length=5mm, width=3mm]}, darkblue, line width=3.4pt] 
             (M1) -- ++(\lenVec, 0) 
-            node[pos=0.6, below=2pt, black] {\LARGE $\vec{F}_1$};
+            node[pos=0.6, below=2pt, black] {$\vec{F}_1$};
         \draw[-{Latex[length=5mm, width=3mm]}, darkblue, line width=3.4pt] 
             (M2) -- ++(-\lenVec, 0) 
-            node[pos=0.65, below=2pt, black] {\LARGE $\vec{F}_2$};
+            node[pos=0.65, below=2pt, black] {$\vec{F}_2$};
 
         % --- Abstandsmaß r ---
         \draw[gray, line width=0.5pt] (0, 2.75-\offset) -- (0, 3.25-\offset);
         \draw[gray, line width=0.5pt] (8, 2.75-\offset) -- (8, 3.25-\offset);
         % Der Doppelpfeil für r
         \draw[{Latex}-{Latex}, line width=1pt] (0, 3-\offset) -- (8, 3-\offset) 
-            node[midway, fill=white] {\Huge $r$};
+            node[midway, fill=white] {$r$};
 
         % Gravitationskraft F_G Gleichung unten 
-        \node at (4, -2.5) {\LARGE $|\vec{F}| = G\, \frac{m_1 m_2}{r^2}$};
+        \node at (4, -2.5) {$|\vec{F}| = G\, \frac{m_1 m_2}{r^2}$};
     \end{tikzpicture}
     % \includegraphics[width=0.45\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Dynamik/aktions-reaktions-paar.png}
     \caption{Die Gravitationskraft zwischen zwei Massen $m_1$ und $m_2$ ist ein Beispiel für ein Aktions-Reaktions-Paar ($\protect\ivecS{F}{1}=-\protect\ivecS{F}{2}$).}\label{fig: actio_reactio_reaktionspaar}
