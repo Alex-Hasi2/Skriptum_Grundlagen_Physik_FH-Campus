@@ -4,6 +4,12 @@
 % \usetikzlibrary {arrows.meta}
 % \usetikzlibrary{positioning,arrows.meta, calc, quotes, angles}
 \usetikzlibrary{positioning,arrows.meta, calc, quotes, angles, decorations.pathmorphing, decorations.markings, patterns}
+% Einheitliche Achsen (wie in main.tex)
+\tikzset{
+    vkAchse/.style={line width=0.8pt, -{Stealth[length=2.8mm, width=2.4mm]}},
+    vkTick/.style={line width=0.6pt},
+    vkTickKlein/.style={line width=0.4pt},
+}
 
 \usepackage{tikz-3dplot}
 \usepackage{sansmath}     % Für serifenlose Schrift in Formeln
@@ -36,6 +42,62 @@
 \newcommand{\ivecS}[2]{\vv*{#1}{\!#2}} % using esvect package
 
 \begin{document}
+
+%%% ---------------------------------------------------------------
+%%% [ERLEDIGT - in Kapitel 5 eingebaut, hier auskommentiert]
+%%% NEU: Krummlinige Bewegung, Tangential- und Normalbeschleunigung (Kap. 5, Abb. 4.19, Neuzeichnung)
+%%% Bahnkurve y = 3,2 + 0,12 (x-4) + 0,035 (x-4)^3 (Wendepunkt bei x = 4):
+%%% links davon nach unten gekrümmt, rechts davon nach oben gekrümmt.
+%%% a_n zeigt jeweils zur Innenseite der Krümmung, a_t und v tangential.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     >=Stealth, font=\large,
+%     declare function={bahn(\x)=3.2+0.12*(\x-4)+0.035*(\x-4)^3;
+%                       steig(\x)=0.12+0.105*(\x-4)^2;},
+%     vek/.style={line width=1.3pt, -{Stealth[length=3mm, width=2.6mm]}},
+% ]
+%     \definecolor{bahnFarbe}{RGB}{200,60,45}
+%     \definecolor{vFarbe}{RGB}{40,100,175}
+
+%     % --- Achsen ---
+%     \draw[vkAchse] (0,0) -- (8.3,0) node[below=2pt] {$x$};
+%     \draw[vkAchse] (0,0) -- (0,5.0) node[right=2pt] {$y$};
+%     \draw[vkAchse] (0,0) -- (-1.5,-1.15) node[below=1pt] {$z$};
+
+%     % --- Bahnkurve ---
+%     \draw[bahnFarbe, line width=1.8pt, -{Stealth[length=3.5mm, width=3mm]}]
+%         plot[domain=1:6.4, samples=80] ({\x},{bahn(\x)});
+%     \node[bahnFarbe, right=2pt] at (6.4,{bahn(6.4)}) {Bahnkurve};
+
+%     % --- Punkt P_1 (Zeitpunkt t_1), Kurve hier nach unten gekrümmt ---
+%     \pgfmathsetmacro{\xa}{2.0}
+%     \pgfmathsetmacro{\ya}{bahn(\xa)}
+%     \pgfmathsetmacro{\ka}{steig(\xa)}
+%     \pgfmathsetmacro{\la}{sqrt(1+\ka*\ka)}
+%     \coordinate (P1) at (\xa,\ya);
+%     \coordinate (T1) at ({1/\la},{\ka/\la});     % Tangenten-Einheitsvektor
+%     \coordinate (N1) at ({\ka/\la},{-1/\la});    % Normale zur Innenseite (nach unten)
+%     \draw[vek, vFarbe] (P1) -- ($(P1)+2.4*(T1)$) node[above left=0pt] {$\ivec{v}(t_1)$};
+%     \draw[vek] (P1) -- ($(P1)+1.3*(T1)$) node[pos=0.55, above left=0pt] {$\ivecS{a}{t}(t_1)$};
+%     \draw[vek] (P1) -- ($(P1)+1.0*(N1)$) node[below=1pt] {$\ivecS{a}{n}(t_1)$};
+%     \draw[line width=0.5pt] ($(P1)+0.22*(T1)$) -- ($(P1)+0.22*(T1)+0.22*(N1)$) -- ($(P1)+0.22*(N1)$);
+%     \fill (P1) circle (2.2pt) node[left=3pt] {$P_1$};
+
+%     % --- Punkt P_2 (Zeitpunkt t_2), Kurve hier nach oben gekrümmt ---
+%     \pgfmathsetmacro{\xb}{5.0}
+%     \pgfmathsetmacro{\yb}{bahn(\xb)}
+%     \pgfmathsetmacro{\kb}{steig(\xb)}
+%     \pgfmathsetmacro{\lb}{sqrt(1+\kb*\kb)}
+%     \coordinate (P2) at (\xb,\yb);
+%     \coordinate (T2) at ({1/\lb},{\kb/\lb});
+%     \coordinate (N2) at ({-\kb/\lb},{1/\lb});    % Normale zur Innenseite (nach oben)
+%     \draw[vek] (P2) -- ($(P2)+1.5*(T2)$) node[below right=-1pt] {$\ivecS{a}{t}(t_2)$};
+%     \draw[vek] (P2) -- ($(P2)+1.1*(N2)$) node[above=1pt] {$\ivecS{a}{n}(t_2)$};
+%     \draw[line width=0.5pt] ($(P2)+0.22*(T2)$) -- ($(P2)+0.22*(T2)+0.22*(N2)$) -- ($(P2)+0.22*(N2)$);
+%     \fill (P2) circle (2.2pt) node[below=3pt] {$P_2$};
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
 
 %%% ---------------------------------------------------------------
 %%% [ERLEDIGT - in Kapitel 4 eingebaut, hier auskommentiert]
