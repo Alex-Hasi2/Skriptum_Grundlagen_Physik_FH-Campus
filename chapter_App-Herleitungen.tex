@@ -95,8 +95,47 @@ Im Folgenden werden die Herleitungen der Trägheitsmomente einiger Standardkörp
 Wir betrachten eine homogene dünne Scheibe mit dem Radius $R$ und der Masse $M$, die sich um die $z$-Achse dreht, die senkrecht zur Scheibenebene durch deren Mittelpunkt (Schwerpunkt) verläuft (siehe \cref{fig: traegheitsmoment_duenne_scheibe}).
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=0.3\linewidth]{Bilder/Kapitel_Herleitungen/DuenneScheibe_Traegheitsmoment.png}
-    \caption{Dünne Scheibe mit dem Radius $R$, Höhe $h \ll R$ und der Masse $M$, die sich um die $z$-Achse dreht, die senkrecht zur Scheibenebene durch deren Mittelpunkt (Schwerpunkt $S$) verläuft. (Quelle:~\cite[S.~137]{Demtroeder2018})}\label{fig: traegheitsmoment_duenne_scheibe}
+    \resizebox{0.4\textwidth}{!}{%
+    \begin{tikzpicture}[
+        >=Stealth, font=\large,
+        achse/.style={line width=0.9pt},
+        kante/.style={line width=0.8pt, draw=black!80},
+    ]
+        \definecolor{koerperHell}{RGB}{184,215,237}
+        \definecolor{koerperDunkel}{RGB}{106,160,202}
+        \colorlet{pfeilFarbe}{green!45!black}
+
+        % --- Scheibe ---
+        \fill[koerperDunkel] (0,-0.22) ellipse (2.5 and 0.85);
+        \draw[kante] (-2.5,0) -- (-2.5,-0.22) arc[start angle=180, end angle=360, x radius=2.5, y radius=0.85] -- (2.5,0);
+        \filldraw[fill=koerperHell, kante] (0,0) ellipse (2.5 and 0.85);
+
+        % --- Achsen ---
+        % z-Achse: oben mit Pfeil, unten unter der Scheibe, dazwischen gestrichelt
+        \draw[achse, ->] (0,0) -- (0,3.0) node[right=2pt] {$z$};
+        \draw[achse, dashed] (0,0) -- (0,-1.02);
+        \draw[achse] (0,-1.07) -- (0,-1.7);
+        % y-Achse
+        \draw[achse, ->] (-3.0,0) -- (3.4,0) node[below right=-1pt] {$y$};
+        % x-Achse (zeigt schräg nach vorne links unten)
+        \draw[achse] (0.9,1.7) -- (0,0);
+        \draw[achse, ->] (0,0) -- (-1.35,-2.2) node[below=2pt] {$x$};
+
+        % --- Schwerpunkt und Radius ---
+        \fill (0,0) circle (1.6pt);
+        \node[anchor=south east, inner sep=1pt] at (-0.06,0.06) {$S$};
+        \draw[kante] (0,0) -- (1.95,-0.55) node[pos=0.42, below=1pt] {$R$};
+
+        % --- Drehpfeil um die z-Achse ---
+        \draw[pfeilFarbe, line width=1.1pt, -{Stealth[length=2.6mm, width=2.4mm]}]
+            ($(0,2.3)+(112:0.5 and 0.16)$) arc[start angle=112, end angle=438, x radius=0.5, y radius=0.16];
+
+        % --- Höhe h ---
+        \draw[black!60, line width=0.6pt] (2.4,-0.31) -- (3.1,-0.75);
+        \node[right=0pt] at (3.1,-0.8) {$h$};
+    \end{tikzpicture}%
+    }
+    \caption{Dünne Scheibe mit dem Radius $R$, Höhe $h \ll R$ und der Masse $M$, die sich um die $z$-Achse dreht, die senkrecht zur Scheibenebene durch deren Mittelpunkt (Schwerpunkt $S$) verläuft (nach~\cite[S.~137]{Demtroeder2018}).}\label{fig: traegheitsmoment_duenne_scheibe}
 \end{figure}
 Das Trägheitsmoment $J_z$ der Scheibe bezüglich der $z$-Achse berechnet sich durch Integration, 
 \begin{align*}\label{eq: traegheitsmoment_Jz_duenneScheibe}
