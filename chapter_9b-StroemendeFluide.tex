@@ -178,6 +178,8 @@ Reale Fluide sind nicht reibungsfrei. Zwischen benachbarten Schichten eines str√
     \begin{subfigure}[b]{0.46\textwidth}
         \centering
         \begin{tikzpicture}[>=Latex, scale=0.85]
+            % gemeinsamer Rahmen f√ºr (a) und (b), damit beide Teilbilder b√ºndig sind
+            \useasboundingbox (-0.8,-0.6) rectangle (6.2,2.75);
             \fill[blue!12] (0,0) rectangle (4.5,2.4);
             \draw[line width=2.5pt] (0,0) -- (4.5,0);
             \filldraw[fill=gray!40] (0,2.4) rectangle (4.5,2.65);
@@ -197,6 +199,9 @@ Reale Fluide sind nicht reibungsfrei. Zwischen benachbarten Schichten eines str√
     \begin{subfigure}[b]{0.46\textwidth}
         \centering
         \begin{tikzpicture}[>=Latex, scale=0.85]
+            % gleicher Rahmen wie (a); Fluid liegt auf gleicher H√∂he (0 bis 2.4), Inhalt mittig
+            \useasboundingbox (-0.8,-0.6) rectangle (6.2,2.75);
+            \begin{scope}[shift={(0.8,1.2)}]
             \fill[blue!12] (0,-1.2) rectangle (4.5,1.2);
             \draw[line width=2.5pt] (0,1.2) -- (4.5,1.2);
             \draw[line width=2.5pt] (0,-1.2) -- (4.5,-1.2);
@@ -208,6 +213,8 @@ Reale Fluide sind nicht reibungsfrei. Zwischen benachbarten Schichten eines str√
             \draw[dashed, domain=-1.2:1.2, samples=40, variable=\y] plot ({1.0+2.4*(1-(\y/1.2)^2)},\y);
             \node[figOrange, right] at (3.4,0) {$v_\text{max}$};
             \draw[<->] (-0.3,-1.2) -- (-0.3,1.2) node[midway, left] {$d$};
+            \node[font=\small, anchor=north] at (2.25,-1.25) {Rohrwand};
+            \end{scope}
         \end{tikzpicture}
         \caption{Im Rohr}\label{fig: viskositaet_rohr}
     \end{subfigure}
