@@ -37,6 +37,279 @@
 
 \begin{document}
 
+%%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
+%%% NEU: Schiefe Ebene, Gleitreibung (Kap. 6, Neuzeichnung)
+%%% Die Kiste gleitet bergab: Die Gleitreibungskraft F_{R,g} (bergauf)
+%%% ist kleiner als die Hangabtriebskraft F_A, daher beschleunigt die
+%%% Kiste mit a. Die Normalkraft F_N kompensiert F_{G,perp}.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     >=Latex,
+%     font=\large,
+%     kraft/.style={-{Latex[length=3mm,width=2.4mm]}, line width=1.6pt},
+%     komp/.style={kraft, gray!70!black},
+% ]
+%     % --- Parameter ---
+%     \def\al{20}          % Neigungswinkel der Ebene
+%     \def\Lx{9.0}         % horizontale Länge der Ebene
+%     \def\fg{3.4}         % Länge von F_G
+%     \def\bs{2.0}         % Kantenlänge der Kiste
+%     \def\ps{4.6}         % Position der Kiste entlang der Oberfläche (von oben links)
+%     \def\kfr{0.65}      % Länge von F_{R,g} relativ zu F_A (Gleitreibung < Hangabtrieb)
+%     \colorlet{kraftN}{green!50!black}
+%     \definecolor{kisteFill}{RGB}{255,226,138}
+%     \definecolor{ebeneFill}{RGB}{209,236,231}
+
+%     % --- Schiefe Ebene (hoch links, fällt nach rechts ab) ---
+%     \coordinate (O) at (0,0);
+%     \coordinate (B) at (\Lx,0);
+%     \coordinate (C) at (0,{\Lx*tan(\al)});
+%     \filldraw[fill=ebeneFill, draw=gray!60, line width=1pt] (O) -- (B) -- (C) -- cycle;
+%     % Boden
+%     \fill[brown!20] (-0.6,-0.6) rectangle (\Lx+0.6,0);
+%     \draw[gray!60, line width=1pt] (-0.6,0) -- (\Lx+0.6,0);
+
+%     % --- Kiste, Auflagepunkt P auf der Oberfläche ---
+%     \coordinate (P) at ($(C)+({\ps*cos(\al)},{-\ps*sin(\al)})$);
+%     \begin{scope}[shift={(P)}, rotate=-\al]
+%         \filldraw[fill=kisteFill, draw=gray!60, line width=1pt, rounded corners=1pt]
+%             (-\bs/2,0) rectangle (\bs/2,\bs);
+%         \node at ({-\bs*0.27},{\bs*0.27}) {$m$};
+%     \end{scope}
+
+%     % Schwerpunkt S (Mitte der Kiste)
+%     \coordinate (S) at ($(P)+({\bs/2*sin(\al)},{\bs/2*cos(\al)})$);
+%     \fill (S) circle (2pt);
+
+%     % --- Kräfte ---
+%     % Gewichtskraft F_G
+%     \draw[kraft, black] (S) -- ++(0,-\fg) coordinate (Gtip)
+%         node[midway, right=2pt] {$\ivec{F}_\mathrm{G}$};
+
+%     % Senkrechte Komponente F_{G,perp}: senkrecht in die Ebene hinein
+%     \draw[komp] (S) -- ++({-\fg*cos(\al)*sin(\al)},{-\fg*cos(\al)*cos(\al)}) coordinate (Ptip)
+%         node[midway, left=1pt] {$\ivec{F}_{\mathrm{G},\perp}$};
+
+%     % Hangabtriebskraft F_A: parallel zur Ebene (ergänzt F_{G,perp} zu F_G)
+%     \draw[komp] (Ptip) -- (Gtip)
+%         node[midway, below=3pt] {$\ivec{F}_\mathrm{A}$};
+
+%     % Normalkraft F_N der Unterlage: senkrecht aus der Ebene heraus, gleich groß wie F_{G,perp}
+%     \draw[kraft, kraftN] (S) -- ++({\fg*cos(\al)*sin(\al)},{\fg*cos(\al)*cos(\al)})
+%         node[midway, right=2pt] {$\ivec{F}_\mathrm{N}$};
+
+%     % Gleitreibungskraft F_{R,g}: parallel zur Ebene, bergauf, kürzer als F_A
+%     % (Start an der linken unteren Ecke der Kiste, damit der Pfeil frei liegt)
+%     \draw[kraft, black]
+%         ($(P)+({-(\bs/2)*cos(\al)},{(\bs/2)*sin(\al)})$)
+%         -- ++({-\kfr*\fg*sin(\al)*cos(\al)},{\kfr*\fg*sin(\al)*sin(\al)})
+%         coordinate[midway] (FRmid);
+%     % Beschriftung senkrecht zur Ebene versetzt, damit sie den Pfeil nicht berührt
+%     \node at ($(FRmid)+({0.0*sin(\al)},{0.6*cos(\al)})$) {$\ivec{F}_{\mathrm{R,g}}$};
+
+%     % Gleitreibungskoeffizient: Beschriftung der Kontaktfläche
+%     \coordinate (Q) at ($(P)+({(\bs/2+0.25)*cos(\al)},{-(\bs/2+0.25)*sin(\al)})$);
+%     \draw[line width=0.8pt] (Q) -- ++(1.0,0.35) node[right] {$\mu_{\mathrm{R,g}}$};
+
+%     % Beschleunigung a: parallel zur Ebene, bergab (oberhalb der Ebene, neben der Kiste)
+%     \draw[-{Latex[length=3mm,width=2.4mm]}, gray!70!black, line width=1.6pt]
+%         ($(P)+({(\bs/2+0.35)*cos(\al)+(\bs*0.78)*sin(\al)},{-(\bs/2+0.35)*sin(\al)+(\bs*0.78)*cos(\al)})$)
+%         -- ++({1.5*cos(\al)},{-1.5*sin(\al)}) node[midway, above right=-1pt] {$\ivec{a}$};
+
+%     % --- Winkel alpha ---
+%     % Winkel der Ebene
+%     \draw[line width=0.9pt] ({\Lx-1.9},0) arc[start angle=180, end angle={180-\al}, radius=1.9];
+%     \node at ({\Lx-2.35},{0.30}) {$\alpha$};
+%     % Winkel zwischen F_G und F_{G,perp} bei S
+%     \pgfmathsetmacro{\argStart}{-90}
+%     \pgfmathsetmacro{\argEnd}{-90-\al}
+%     \draw[line width=0.9pt] ($(S)+(0,-1.15)$) arc[start angle=\argStart, end angle=\argEnd, radius=1.15];
+%     \node at ($(S)+({-0.55*sin(\al)-0.12},-1.45)$) {$\alpha$};
+
+%     % --- Koordinatenachsen ---
+%     \begin{scope}[shift={(\Lx-0.2,{\Lx*tan(\al)+0.3})}]
+%         \draw[->, line width=2pt] (0,0) -- (0,1.7) node[above left=-1pt] {$y$};
+%         \draw[->, line width=2pt] (0,0) -- (1.7,0) node[below right=-2pt] {$x$};
+%     \end{scope}
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
+%%% NEU: Schiefe Ebene, Haftreibung (Kap. 6, Neuzeichnung)
+%%% Die Kiste ruht: Die Hangabtriebskraft F_A wird von der
+%%% Haftreibungskraft F_{R,h} (bergauf, gleich groß) kompensiert.
+%%% Die Normalkraft F_N kompensiert F_{G,perp}.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     >=Latex,
+%     font=\large,
+%     kraft/.style={-{Latex[length=3mm,width=2.4mm]}, line width=1.6pt},
+%     komp/.style={kraft, gray!70!black},
+% ]
+%     % --- Parameter ---
+%     \def\al{20}          % Neigungswinkel der Ebene
+%     \def\Lx{9.0}         % horizontale Länge der Ebene
+%     \def\fg{3.4}         % Länge von F_G
+%     \def\bs{2.0}         % Kantenlänge der Kiste
+%     \def\ps{4.6}         % Position der Kiste entlang der Oberfläche (von oben links)
+%     \colorlet{kraftN}{green!50!black}
+%     \definecolor{kisteFill}{RGB}{255,226,138}
+%     \definecolor{ebeneFill}{RGB}{209,236,231}
+
+%     % --- Schiefe Ebene (hoch links, fällt nach rechts ab) ---
+%     \coordinate (O) at (0,0);
+%     \coordinate (B) at (\Lx,0);
+%     \coordinate (C) at (0,{\Lx*tan(\al)});
+%     \filldraw[fill=ebeneFill, draw=gray!60, line width=1pt] (O) -- (B) -- (C) -- cycle;
+%     % Boden
+%     \fill[brown!20] (-0.6,-0.6) rectangle (\Lx+0.6,0);
+%     \draw[gray!60, line width=1pt] (-0.6,0) -- (\Lx+0.6,0);
+
+%     % --- Kiste, Auflagepunkt P auf der Oberfläche ---
+%     \coordinate (P) at ($(C)+({\ps*cos(\al)},{-\ps*sin(\al)})$);
+%     \begin{scope}[shift={(P)}, rotate=-\al]
+%         \filldraw[fill=kisteFill, draw=gray!60, line width=1pt, rounded corners=1pt]
+%             (-\bs/2,0) rectangle (\bs/2,\bs);
+%         \node at ({-\bs*0.27},{\bs*0.27}) {$m$};
+%     \end{scope}
+
+%     % Schwerpunkt S (Mitte der Kiste)
+%     \coordinate (S) at ($(P)+({\bs/2*sin(\al)},{\bs/2*cos(\al)})$);
+%     \fill (S) circle (2pt);
+
+%     % --- Kräfte ---
+%     % Gewichtskraft F_G
+%     \draw[kraft, black] (S) -- ++(0,-\fg) coordinate (Gtip)
+%         node[midway, right=2pt] {$\ivec{F}_\mathrm{G}$};
+
+%     % Senkrechte Komponente F_{G,perp}: senkrecht in die Ebene hinein
+%     \draw[komp] (S) -- ++({-\fg*cos(\al)*sin(\al)},{-\fg*cos(\al)*cos(\al)}) coordinate (Ptip)
+%         node[midway, left=1pt] {$\ivec{F}_{\mathrm{G},\perp}$};
+
+%     % Hangabtriebskraft F_A: parallel zur Ebene (ergänzt F_{G,perp} zu F_G)
+%     \draw[komp] (Ptip) -- (Gtip)
+%         node[midway, below=3pt] {$\ivec{F}_\mathrm{A}$};
+
+%     % Normalkraft F_N der Unterlage: senkrecht aus der Ebene heraus, gleich groß wie F_{G,perp}
+%     \draw[kraft, kraftN] (S) -- ++({\fg*cos(\al)*sin(\al)},{\fg*cos(\al)*cos(\al)})
+%         node[midway, right=2pt] {$\ivec{F}_\mathrm{N}$};
+
+%     % Haftreibungskraft F_{R,h}: parallel zur Ebene, bergauf, gleich lang wie F_A
+%     % (Start an der linken unteren Ecke der Kiste, damit der Pfeil frei liegt)
+%     \draw[kraft, black]
+%         ($(P)+({-(\bs/2)*cos(\al)},{(\bs/2)*sin(\al)})$)
+%         -- ++({-\fg*sin(\al)*cos(\al)},{\fg*sin(\al)*sin(\al)})
+%         coordinate[midway] (FRmid);
+%     % Beschriftung senkrecht zur Ebene versetzt, damit sie den Pfeil nicht berührt
+%     \node at ($(FRmid)+({0.4*sin(\al)},{0.67*cos(\al)})$) {$\ivec{F}_{\mathrm{R,h}}$};
+
+%     % Haftreibungskoeffizient: Beschriftung der Kontaktfläche
+%     \coordinate (Q) at ($(P)+({(\bs/2+0.25)*cos(\al)},{-(\bs/2+0.25)*sin(\al)})$);
+%     \draw[line width=0.8pt] (Q) -- ++(1.0,0.35) node[right] {$\mu_{\mathrm{R,h}}$};
+
+%     % --- Winkel alpha ---
+%     % Winkel der Ebene
+%     \draw[line width=0.9pt] ({\Lx-1.9},0) arc[start angle=180, end angle={180-\al}, radius=1.9];
+%     \node at ({\Lx-2.35},{0.30}) {$\alpha$};
+%     % Winkel zwischen F_G und F_{G,perp} bei S
+%     \pgfmathsetmacro{\argStart}{-90}
+%     \pgfmathsetmacro{\argEnd}{-90-\al}
+%     \draw[line width=0.9pt] ($(S)+(0,-1.15)$) arc[start angle=\argStart, end angle=\argEnd, radius=1.15];
+%     \node at ($(S)+({-0.55*sin(\al)-0.12},-1.45)$) {$\alpha$};
+
+%     % --- Koordinatenachsen ---
+%     \begin{scope}[shift={(\Lx-0.2,{\Lx*tan(\al)+0.3})}]
+%         \draw[->, line width=2pt] (0,0) -- (0,1.7) node[above left=-1pt] {$y$};
+%         \draw[->, line width=2pt] (0,0) -- (1.7,0) node[below right=-2pt] {$x$};
+%     \end{scope}
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% [ERLEDIGT - in Kapitel 6 eingebaut, hier auskommentiert]
+%%% NEU: Schiefe Ebene, reibungsfreies Gleiten (Kap. 6, Neuzeichnung)
+%%% Gewichtskraft F_G wird zerlegt in F_{G,perp} (senkrecht zur Ebene)
+%%% und die Hangabtriebskraft F_A (parallel zur Ebene).
+%%% Die Normalkraft F_N der Unterlage kompensiert F_{G,perp}.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     >=Latex,
+%     font=\large,
+%     kraft/.style={-{Latex[length=3mm,width=2.4mm]}, line width=1.6pt},
+%     komp/.style={kraft, gray!70!black},
+% ]
+%     % --- Parameter ---
+%     \def\al{20}          % Neigungswinkel der Ebene
+%     \def\Lx{9.0}         % horizontale Länge der Ebene
+%     \def\fg{3.4}         % Länge von F_G
+%     \def\bs{2.0}         % Kantenlänge der Kiste
+%     \def\ps{4.6}         % Position der Kiste entlang der Oberfläche (von oben links)
+%     \colorlet{kraftN}{green!50!black}
+%     \definecolor{kisteFill}{RGB}{255,226,138}
+%     \definecolor{ebeneFill}{RGB}{209,236,231}
+
+%     % --- Schiefe Ebene (hoch links, fällt nach rechts ab) ---
+%     \coordinate (O) at (0,0);
+%     \coordinate (B) at (\Lx,0);
+%     \coordinate (C) at (0,{\Lx*tan(\al)});
+%     \filldraw[fill=ebeneFill, draw=gray!60, line width=1pt] (O) -- (B) -- (C) -- cycle;
+%     % Boden
+%     \fill[brown!20] (-0.6,-0.6) rectangle (\Lx+0.6,0);
+%     \draw[gray!60, line width=1pt] (-0.6,0) -- (\Lx+0.6,0);
+
+%     % --- Kiste, Auflagepunkt P auf der Oberfläche ---
+%     \coordinate (P) at ($(C)+({\ps*cos(\al)},{-\ps*sin(\al)})$);
+%     \begin{scope}[shift={(P)}, rotate=-\al]
+%         \filldraw[fill=kisteFill, draw=gray!60, line width=1pt, rounded corners=1pt]
+%             (-\bs/2,0) rectangle (\bs/2,\bs);
+%         \node at ({-\bs*0.27},{\bs*0.27}) {$m$};
+%     \end{scope}
+
+%     % Schwerpunkt S (Mitte der Kiste)
+%     \coordinate (S) at ($(P)+({\bs/2*sin(\al)},{\bs/2*cos(\al)})$);
+%     \fill (S) circle (2pt);
+
+%     % --- Kräfte ---
+%     % Gewichtskraft F_G
+%     \draw[kraft, black] (S) -- ++(0,-\fg) coordinate (Gtip)
+%         node[midway, right=2pt] {$\ivec{F}_\mathrm{G}$};
+
+%     % Senkrechte Komponente F_{G,perp}: senkrecht in die Ebene hinein
+%     \draw[komp] (S) -- ++({-\fg*cos(\al)*sin(\al)},{-\fg*cos(\al)*cos(\al)}) coordinate (Ptip)
+%         node[midway, left=1pt] {$\ivec{F}_{\mathrm{G},\perp}$};
+
+%     % Hangabtriebskraft F_A: parallel zur Ebene (ergänzt F_{G,perp} zu F_G)
+%     \draw[komp] (Ptip) -- (Gtip)
+%         node[midway, below=3pt] {$\ivec{F}_\mathrm{A}$};
+
+%     % Normalkraft F_N der Unterlage: senkrecht aus der Ebene heraus, gleich groß wie F_{G,perp}
+%     \draw[kraft, kraftN] (S) -- ++({\fg*cos(\al)*sin(\al)},{\fg*cos(\al)*cos(\al)})
+%         node[midway, right=2pt] {$\ivec{F}_\mathrm{N}$};
+
+%     % Beschleunigung a: parallel zur Ebene, bergab (neben der Kiste)
+%     \draw[-{Latex[length=3mm,width=2.4mm]}, gray!70!black, line width=1.6pt]
+%         ($(P)+({(\bs/2+0.35)*cos(\al)+(\bs*0.5)*sin(\al)},{-(\bs/2+0.35)*sin(\al)+(\bs*0.5)*cos(\al)})$)
+%         -- ++({1.5*cos(\al)},{-1.5*sin(\al)}) node[midway, above right=-1pt] {$\ivec{a}$};
+
+%     % --- Winkel alpha ---
+%     % Winkel der Ebene
+%     \draw[line width=0.9pt] ({\Lx-1.9},0) arc[start angle=180, end angle={180-\al}, radius=1.9];
+%     \node at ({\Lx-2.35},{0.30}) {$\alpha$};
+%     % Winkel zwischen F_G und F_{G,perp} bei S
+%     \pgfmathsetmacro{\argStart}{-90}
+%     \pgfmathsetmacro{\argEnd}{-90-\al}
+%     \draw[line width=0.9pt] ($(S)+(0,-1.15)$) arc[start angle=\argStart, end angle=\argEnd, radius=1.15];
+%     \node at ($(S)+({-0.55*sin(\al)-0.12},-1.45)$) {$\alpha$};
+
+%     % --- Koordinatenachsen ---
+%     \begin{scope}[shift={(\Lx-0.2,{\Lx*tan(\al)+0.3})}]
+%         \draw[->, line width=2pt] (0,0) -- (0,1.7) node[above left=-1pt] {$y$};
+%         \draw[->, line width=2pt] (0,0) -- (1.7,0) node[below right=-2pt] {$x$};
+%     \end{scope}
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
 
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------
@@ -44,63 +317,63 @@
 
 % Zur ersten kosmischen Geschwindigkeit: Ein schwarzer Kreis, der einen Planeten mit dem Radius $R$ darstellt. Ein Vektor $v_0$ zeigt von der Oberfläche des Planeten nach oben. Ein weiterer Vektor $\hat{r}$ zeigt vom Zentrum des Planeten nach oben. Die Entfernung von der Oberfläche bis zum Ende von $v_0$ ist mit $h = r - R$ beschriftet, wobei $r$ die Entfernung vom Zentrum des Planeten bis zum Ende von $v_0$ ist. Beide Vektoren haben Pfeilspitzen und sind entsprechend beschriftet.
 
-\begin{tikzpicture}[
-    >=Latex, font=\large,
-    dimline/.style={|-|, thick}
-    ]
+% \begin{tikzpicture}[
+%     >=Latex, font=\large,
+%     dimline/.style={|-|, thick}
+%     ]
 
-    % --- Definitionen ---
-    \def\R{2.5}      % Radius des Planeten
-    \def\rDist{6.0}  % Gesamtabstand r (vom Zentrum bis oben)
-    \def\Angle{-20}  % Winkel für den Radius R
+%     % --- Definitionen ---
+%     \def\R{2.5}      % Radius des Planeten
+%     \def\rDist{6.0}  % Gesamtabstand r (vom Zentrum bis oben)
+%     \def\Angle{-20}  % Winkel für den Radius R
 
-    % --- 1. Kugel (Planet) ---
-    \draw[thick] (0,0) circle (\R);
-    \node[below=5pt] at (0,0) {M};
+%     % --- 1. Kugel (Planet) ---
+%     \draw[thick] (0,0) circle (\R);
+%     \node[below=5pt] at (0,0) {M};
 
-    % Radius R einzeichnen
-    \draw[thick] (0,0) -- (\Angle:\R) node[midway, below] {R};
+%     % Radius R einzeichnen
+%     \draw[thick] (0,0) -- (\Angle:\R) node[midway, below] {R};
 
-    % --- 2. Vertikale Achse ---
-    % Dünne Hilfslinie vom Zentrum nach oben
-    \draw[thin] (0,0) -- (0, \rDist);
+%     % --- 2. Vertikale Achse ---
+%     % Dünne Hilfslinie vom Zentrum nach oben
+%     \draw[thin] (0,0) -- (0, \rDist);
 
-    % --- 3. Vektoren (Rot) ---
+%     % --- 3. Vektoren (Rot) ---
     
-    % Einheitsvektor r_hat (vom Zentrum aus)
-    \draw[->, red, line width=1.5pt] (0,0) -- (0, 1.2) 
-        node[midway, right, text=black] {$\hat{r}$};
+%     % Einheitsvektor r_hat (vom Zentrum aus)
+%     \draw[->, red, line width=1.5pt] (0,0) -- (0, 1.2) 
+%         node[midway, right, text=black] {$\hat{r}$};
 
-    % Geschwindigkeitsvektor v0 (ab der Oberfläche)
-    \draw[->, red, line width=1.5pt] (0, \R) -- (0, \R + 1.8) 
-        node[midway, left, text=black] {$v_0$};
+%     % Geschwindigkeitsvektor v0 (ab der Oberfläche)
+%     \draw[->, red, line width=1.5pt] (0, \R) -- (0, \R + 1.8) 
+%         node[midway, left, text=black] {$v_0$};
 
-    % --- 4. Bemaßung (Die "Klammern" als Pfeile) ---
+%     % --- 4. Bemaßung (Die "Klammern" als Pfeile) ---
     
-    % Maßlinie für r (links)
-    % Vom Zentrum (0,0) bis zur Spitze (\rDist)
-    % Wir schieben sie etwas nach links (x = -0.8)
-    \draw[dimline] (-0.8, 0) -- (-0.8, \rDist) 
-        node[midway, fill=white] {$r$};
+%     % Maßlinie für r (links)
+%     % Vom Zentrum (0,0) bis zur Spitze (\rDist)
+%     % Wir schieben sie etwas nach links (x = -0.8)
+%     \draw[dimline] (-0.8, 0) -- (-0.8, \rDist) 
+%         node[midway, fill=white] {$r$};
 
-    % Hilfslinie gestrichelt von der Spitze zur Maßlinie r
-    \draw[dashed, gray] (0, \rDist) -- (-0.8, \rDist);
-    % Hilfslinie gestrichelt vom Zentrum zur Maßlinie r
-    \draw[dashed, gray] (0, 0) -- (-0.8, 0);
+%     % Hilfslinie gestrichelt von der Spitze zur Maßlinie r
+%     \draw[dashed, gray] (0, \rDist) -- (-0.8, \rDist);
+%     % Hilfslinie gestrichelt vom Zentrum zur Maßlinie r
+%     \draw[dashed, gray] (0, 0) -- (-0.8, 0);
 
 
-    % Maßlinie für h = r - R (rechts)
-    % Von der Oberfläche (\R) bis zur Spitze (\rDist)
-    % Wir schieben sie etwas nach rechts (x = 0.8), damit sie v0 nicht stört
-    \draw[dimline] (0.8, \R) -- (0.8, \rDist) 
-        node[midway, right, xshift=5pt] {$h = r - R$};
+%     % Maßlinie für h = r - R (rechts)
+%     % Von der Oberfläche (\R) bis zur Spitze (\rDist)
+%     % Wir schieben sie etwas nach rechts (x = 0.8), damit sie v0 nicht stört
+%     \draw[dimline] (0.8, \R) -- (0.8, \rDist) 
+%         node[midway, right, xshift=5pt] {$h = r - R$};
 
-    % Hilfslinie gestrichelt von der Oberfläche zur Maßlinie h
-    \draw[dashed, gray] (0, \R) -- (0.8, \R);
-    % Hilfslinie gestrichelt von der Spitze zur Maßlinie h
-    \draw[dashed, gray] (0, \rDist) -- (0.8, \rDist);
+%     % Hilfslinie gestrichelt von der Oberfläche zur Maßlinie h
+%     \draw[dashed, gray] (0, \R) -- (0.8, \R);
+%     % Hilfslinie gestrichelt von der Spitze zur Maßlinie h
+%     \draw[dashed, gray] (0, \rDist) -- (0.8, \rDist);
 
-\end{tikzpicture}
+% \end{tikzpicture}
 
 %%%   -----------------------------------------------------------
 %%%   -----------------------------------------------------------

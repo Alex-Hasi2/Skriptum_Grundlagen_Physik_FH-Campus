@@ -307,8 +307,8 @@ Ein klassisches Beispiel zur Veranschaulichung der Rotationsdynamik ist das Roll
         % Gewichtskraft F_G
         \draw[-{latex}, black, line width=1.5pt] (Center) -- ++(0,-\fgLen) node[midway, pos=0.7, right=0pt] {\large $\ivecS{F}{G} = M \ivec{g}$};
 
-        % Normalkraft F_N setzt am Ende von F_N an und zeigt senkrecht zur schiefen Ebene nach unten
-        \draw[->, darkGreen, thick] (Center)++({\alphaV+180}:{sin(\alphaV)*\fgLen}) -- ++({\alphaV+90}:-{cos(\alphaV)*\fgLen}) node[midway, pos=0.6, left] {\large $\ivecS{F}{N}$};
+        % Senkrechte Komponente der Gewichtskraft F_perp (setzt am Ende von F_parallel an und zeigt senkrecht in die schiefe Ebene hinein)
+        \draw[->, darkGreen, thick] (Center)++({\alphaV+180}:{sin(\alphaV)*\fgLen}) -- ++({\alphaV+90}:-{cos(\alphaV)*\fgLen}) node[midway, pos=0.6, left] {\large $\ivecS{F}{\perp}$};
 
 
         % Kraft im Schwerpunkt parallel zur schiefen Ebene nach unten
@@ -326,10 +326,10 @@ Ein klassisches Beispiel zur Veranschaulichung der Rotationsdynamik ist das Roll
         % --- Omega Pfeil für Drehung des Rades ---
         \draw[-{Stealth}, gray!70!black, line width=1.pt] (Center)++({\alphaV-30}:\R*0.5) arc({\alphaV-30}:{\alphaV+90}:\R*0.5);
     \end{tikzpicture}
-    \caption{Rollen eines starren Körpers mit rundem Querschnitt und Radius $r$ auf einer schiefen Ebene. Die Gewichtskraft $\protect\ivecS{F}{G}$ greift im Schwerpunkt an und wird in eine Normalkraft $\protect\ivecS{F}{N}$ und eine parallele Komponente $\protect\ivecS{F}{\parallel}$ zerlegt. Die Kraftkomponente $\protect\ivecS{F}{\parallel}$ erzeugt um den Kontaktpunkt $A$ ein Drehmoment $\protect\ivec{M} = \protect\ivec{r} \times \protect\ivecS{F}{\parallel}$.}\label{fig: rollen_schiefe_ebene}
+    \caption{Rollen eines starren Körpers mit rundem Querschnitt und Radius $r$ auf einer schiefen Ebene. Die Gewichtskraft $\protect\ivecS{F}{G}$ greift im Schwerpunkt an und wird in eine Komponente $\protect\ivecS{F}{\perp}$ senkrecht zur Ebene und eine parallele Komponente $\protect\ivecS{F}{\parallel}$ zerlegt. Die senkrechte Komponente wird von der Normalkraft der Unterlage (nicht eingezeichnet) kompensiert. Die Kraftkomponente $\protect\ivecS{F}{\parallel}$ erzeugt um den Kontaktpunkt $A$ ein Drehmoment $\protect\ivec{M} = \protect\ivec{r} \times \protect\ivecS{F}{\parallel}$.}\label{fig: rollen_schiefe_ebene}
 \end{figure}
 
-Beim Rollen ohne Gleiten wirkt die Gewichtskraft $\ivecS{F}{G} = M \ivec{g}$ im Schwerpunkt des Körpers. Diese Kraft kann in eine Normalkraft $\ivecS{F}{N}$ senkrecht zur Ebene und eine parallele Komponente $\ivecS{F}{\parallel}$ zerlegt werden. Die parallele Komponente erzeugt um den Kontaktpunkt $A$ ein Drehmoment $\ivec{M} = \ivec{r} \times \ivecS{F}{\parallel}$, das zu einer Winkelbeschleunigung $\ivec{\alpha}$ des Körpers führt und damit wiederum zu einer Erhöhung des Betrags $\omega$ der Winkelgeschwindigkeit $\ivec{\omega}$. Damit der Körper rollt statt gleitet, muss zwischen Körper und Ebene Haftreibung wirken. Sie verrichtet keine Arbeit, da der Kontaktpunkt $A$ momentan ruht.
+Beim Rollen ohne Gleiten wirkt die Gewichtskraft $\ivecS{F}{G} = M \ivec{g}$ im Schwerpunkt des Körpers. Diese Kraft kann in eine Komponente $\ivecS{F}{\perp}$ senkrecht zur Ebene und eine parallele Komponente $\ivecS{F}{\parallel}$ zerlegt werden. Die senkrechte Komponente drückt den Körper gegen die Ebene und wird von der Normalkraft $\ivecS{F}{N} = -\ivecS{F}{\perp}$ der Unterlage kompensiert, die im Kontaktpunkt $A$ angreift. Die parallele Komponente erzeugt um den Kontaktpunkt $A$ ein Drehmoment $\ivec{M} = \ivec{r} \times \ivecS{F}{\parallel}$, das zu einer Winkelbeschleunigung $\ivec{\alpha}$ des Körpers führt und damit wiederum zu einer Erhöhung des Betrags $\omega$ der Winkelgeschwindigkeit $\ivec{\omega}$. Damit der Körper rollt statt gleitet, muss zwischen Körper und Ebene Haftreibung wirken. Sie verrichtet keine Arbeit, da der Kontaktpunkt $A$ momentan ruht.
 
 \subsubsection{Aufteilung der kinetischen Energie beim Rollen ohne Gleiten}
 Beim Rollen ohne Gleiten besitzt der Körper sowohl eine translatorische als auch eine rotatorische kinetische Energie. Die gesamte kinetische Energie ist die Summe der beiden Anteile, $E_{\kin} = E_{\trans} + E_{\rot}$. Legt der Körper eine Strecke $s$ zurück, so wird potentielle Energie in kinetische Energie umgewandelt und es stellt sich die Frage, wie sich diese kinetische Energie aufteilt.
