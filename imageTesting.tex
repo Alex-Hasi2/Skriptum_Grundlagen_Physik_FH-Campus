@@ -38,6 +38,66 @@
 \begin{document}
 
 %%% ---------------------------------------------------------------
+%%% [ERLEDIGT - in Kapitel 11 eingebaut, hier auskommentiert]
+%%% NEU: Beispiel eines irreversiblen Prozesses (Kap. 11, Abb. 12.3, Neuzeichnung)
+%%% Zwei Körper T_2 > T_1 gleichen sich zu T_eq aus; Umkehrung läuft nie spontan ab.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}[
+%     >=Stealth,
+%     font=\large,
+%     kante/.style={line width=0.7pt, draw=black!65},
+% ]
+%     \definecolor{warmF}{RGB}{232,98,60}
+%     \definecolor{warmT}{RGB}{242,140,110}
+%     \definecolor{kaltF}{RGB}{52,112,180}
+%     \definecolor{kaltT}{RGB}{110,155,205}
+%     \definecolor{kaltS}{RGB}{38,84,140}
+%     \definecolor{gleichF}{RGB}{150,110,150}
+%     \definecolor{gleichT}{RGB}{185,150,185}
+%     \definecolor{gleichS}{RGB}{115,80,118}
+%     \definecolor{pfeilOK}{RGB}{40,90,150}
+
+%     % Quader mit Vorderseite (x,y)-(x+w,y+h), Tiefe (0.6,0.4)
+%     % #1=x #2=y #3=Breite #4=Vorderfarbe #5=Deckfarbe
+%     \newcommand{\quader}[5]{%
+%         \filldraw[fill=#4, kante] (#1,#2) rectangle (#1+#3,#2+1.6);
+%         \filldraw[fill=#5, kante] (#1,#2+1.6) -- (#1+0.6,#2+2.0) -- (#1+#3+0.6,#2+2.0) -- (#1+#3,#2+1.6) -- cycle;
+%     }
+%     \newcommand{\seite}[3]{%
+%         \filldraw[fill=#3, kante] (#1,#2) -- (#1+0.6,#2+0.4) -- (#1+0.6,#2+2.0) -- (#1,#2+1.6) -- cycle;
+%     }
+
+%     % --- oben: Ausgangszustand ---
+%     \quader{0}{4.6}{3}{warmF}{warmT}
+%     \quader{3}{4.6}{3}{kaltF}{kaltT}
+%     \seite{6}{4.6}{kaltS}
+%     \node at (1.5,7.0) {$T_2$};
+%     \node at (4.5,7.0) {$T_1$};
+%     % Wärmefluss über die Berührungsfläche
+%     \draw[->, white, line width=2pt] (1.9,5.4) -- (4.1,5.4) node[pos=0.2, below=1pt, font=\large] {$Q$};
+
+%     % --- unten: Gleichgewicht ---
+%     \quader{0}{0}{3}{gleichF}{gleichT}
+%     \quader{3}{0}{3}{gleichF}{gleichT}
+%     \seite{6}{0}{gleichS}
+%     \node at (3.3,2.55) {$T_{\mathrm{eq}}$};
+
+%     % --- linker Pfeil: läuft von selbst ab ---
+%     \draw[-{Stealth[length=6mm,width=8mm]}, line width=7pt, pfeilOK]
+%         (-0.4,5.4) to[bend right=70] (-0.4,0.8);
+%     \node[anchor=east, align=right] at (-2.05,3.1) {läuft\\von selbst ab};
+
+%     % --- rechter Pfeil: läuft nie von selbst ab ---
+%     \draw[-{Stealth[length=6mm,width=8mm]}, line width=7pt, black!18]
+%         (7.2,0.8) to[bend right=70] (7.2,5.4);
+%     \draw[red!80!black, line width=4pt, line cap=round] (7.95,2.85) -- (8.55,3.45);
+%     \draw[red!80!black, line width=4pt, line cap=round] (7.95,3.45) -- (8.55,2.85);
+%     \node[anchor=west, align=left] at (8.85,3.15) {läuft nie\\von selbst ab};
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% ---------------------------------------------------------------
 %%% [ERLEDIGT - in Kapitel 10 eingebaut, hier auskommentiert]
 %%% NEU: Aggregatzustände und Phasenübergänge (Kap. 10, Abb. 11.19, Neuzeichnung)
 %%% Drei Phasen mit Teilchenbild; Pfeile: rot = Wärme wird aufgenommen,
