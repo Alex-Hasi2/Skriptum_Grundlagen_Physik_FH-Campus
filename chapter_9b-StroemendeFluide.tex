@@ -1,0 +1,362 @@
+\chapter{Strömende Flüssigkeiten und Gase}\label{chap: stroemende_fluide}
+Im vorigen Kapitel haben wir Fluide in Ruhe betrachtet. Nun lassen wir sie strömen: Wasser fließt durch Leitungen, Luft durch Lüftungskanäle, Blut durch Adern. Dabei stellen sich zwei Fragen: Wie hängen Strömungsgeschwindigkeit und Druck zusammen? Und welche Kraft (oder welcher Druckunterschied) ist nötig, um ein Fluid gegen seine innere Reibung durch ein Rohr zu bewegen?
+
+Wir beginnen mit dem vereinfachten Modell einer \textbf{idealen Strömung} ohne Reibung (\cref{sec: kontinuitaetsgleichung,sec: bernoulli}) und berücksichtigen danach die innere Reibung, die \textbf{Viskosität} (ab \cref{sec: viskositaet}).
+
+\section{Grundbegriffe}\label{sec: stroemung_grundbegriffe}
+Um eine Strömung zu beschreiben, gibt man an jedem Ort die Geschwindigkeit $\ivec{v}$ des Fluids an. Ändert sich dieses Geschwindigkeitsfeld zeitlich nicht, spricht man von einer \textbf{stationären Strömung}. Wir betrachten im Folgenden nur stationäre Strömungen.
+
+\begin{itemize}[itemsep=1.5pt]
+    \item \textbf{Stromlinien} sind Linien, die an jedem Punkt in Richtung der Strömungsgeschwindigkeit zeigen. In einer stationären Strömung bewegen sich die Fluidteilchen entlang der Stromlinien. Stromlinien schneiden sich nie; wo sie dicht beieinander liegen, ist die Strömung schnell.
+    \item Ein Fluid heißt \textbf{inkompressibel}, wenn seine Dichte überall gleich ist. Flüssigkeiten sind in sehr guter Näherung inkompressibel (\cref{subsec: kompressibilitaet}). Auch Gase darf man bei Strömungsgeschwindigkeiten deutlich unter der Schallgeschwindigkeit (für Luft etwa bis \SI{100}{\meter\per\second}) als inkompressibel behandeln, weil sich ihre Dichte dabei nur wenig ändert.
+    \item Ein \textbf{ideales Fluid} ist inkompressibel und reibungsfrei (keine Viskosität).
+\end{itemize}
+
+\begin{rememberbox}{Volumenstrom und Massenstrom}
+    Fließt ein Fluid mit der (mittleren) Geschwindigkeit $v$ durch einen Querschnitt mit der Fläche $A$, so ist der \textbf{Volumenstrom} (das pro Zeit durchfließende Volumen)
+    \begin{equation}\label{eq: volumenstrom}
+        \dot{V} = \frac{\dd V}{\dd t} = A \cdot v \mComma \qquad [\dot{V}] = \si{\meter\cubed\per\second} \mDot
+    \end{equation}
+    Der \textbf{Massenstrom} ist $\dot{m} = \rho \cdot \dot{V} = \rho \, A \, v$ mit der Einheit \si{\kilogram\per\second}.
+\end{rememberbox}
+In der Technik werden Volumenströme oft in \si{\liter\per\second} oder \si{\meter\cubed\per\hour} angegeben: $\SI{1}{\liter\per\second} = \SI{3.6}{\meter\cubed\per\hour}$.
+
+\section{Die Kontinuitätsgleichung}\label{sec: kontinuitaetsgleichung}
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[>=Latex, scale=0.9]
+        % Fluid
+        \fill[blue!12] (0,1.5) -- (3,1.5) .. controls (4,1.5) and (4,0.75) .. (5,0.75) -- (8.5,0.75)
+                    -- (8.5,-0.75) -- (5,-0.75) .. controls (4,-0.75) and (4,-1.5) .. (3,-1.5) -- (0,-1.5) -- cycle;
+        % Stromlinien
+        \foreach \k in {-0.66,-0.33,0,0.33,0.66} {
+            \draw[blue!60!black, thin, postaction={decorate}, decoration={markings, mark=at position 0.2 with {\arrow{Latex}}, mark=at position 0.8 with {\arrow{Latex}}}]
+                (0,{1.5*\k}) -- (3,{1.5*\k}) .. controls (4,{1.5*\k}) and (4,{0.75*\k}) .. (5,{0.75*\k}) -- (8.5,{0.75*\k});
+        }
+        % Wände
+        \draw[very thick] (0,1.5) -- (3,1.5) .. controls (4,1.5) and (4,0.75) .. (5,0.75) -- (8.5,0.75);
+        \draw[very thick] (0,-1.5) -- (3,-1.5) .. controls (4,-1.5) and (4,-0.75) .. (5,-0.75) -- (8.5,-0.75);
+        % Querschnitte
+        \draw[figRed, thick, dashed] (1.5,-1.5) -- (1.5,1.5);
+        \draw[figRed, thick, dashed] (6.8,-0.75) -- (6.8,0.75);
+        \node[figRed, above] at (1.5,1.55) {$A_1$};
+        \node[figRed, above] at (6.8,0.8) {$A_2$};
+        % Geschwindigkeiten
+        \draw[->, ultra thick, figOrange] (1.5,-2.0) -- (2.5,-2.0) node[right, black] {$v_1$};
+        \draw[->, ultra thick, figOrange] (6.8,-1.25) -- (8.8,-1.25) node[right, black] {$v_2$};
+    \end{tikzpicture}
+    \caption{Strömung durch ein Rohr mit Verengung. Durch jeden Querschnitt fließt pro Zeit dasselbe Volumen. Im engen Teil liegen die Stromlinien dichter, das Fluid strömt schneller: $A_1 v_1 = A_2 v_2$.}\label{fig: kontinuitaetsgleichung}
+\end{figure}
+
+\Cref{fig: kontinuitaetsgleichung} zeigt ein Rohr mit veränderlichem Querschnitt. Fließt ein inkompressibles Fluid hindurch, so kann es sich nirgends anstauen und nirgends verschwinden. Durch jeden Querschnitt muss daher pro Zeit dasselbe Volumen fließen.
+\begin{rememberbox}{Kontinuitätsgleichung}
+    Für ein inkompressibles Fluid ist der Volumenstrom entlang einer Strömungsröhre konstant:
+    \begin{equation}\label{eq: kontinuitaetsgleichung}
+        \dot{V} = A_1 v_1 = A_2 v_2 = \const \mDot
+    \end{equation}
+    Die Strömungsgeschwindigkeit ist also umgekehrt proportional zur Querschnittsfläche: Wo das Rohr enger wird, fließt das Fluid schneller. Allgemein (auch für kompressible Fluide) bleibt der Massenstrom $\rho_1 A_1 v_1 = \rho_2 A_2 v_2$ erhalten.
+\end{rememberbox}
+Bei einem kreisförmigen Rohr ist $A = \pi d^2/4$. Halbiert man den Durchmesser, so sinkt die Fläche auf ein Viertel, und die Geschwindigkeit steigt auf das Vierfache. Jeder kennt das vom Gartenschlauch: Hält man den Daumen auf die Öffnung, spritzt das Wasser schneller und weiter.
+
+\begin{examplebox}[]{Beispiel: Lüftungskanal für einen Seminarraum}
+    Ein Seminarraum mit $V = \SI{200}{\meter\cubed}$ soll dreimal pro Stunde mit frischer Luft versorgt werden (vgl.~\cite[S.~464]{Giancoli2010}). Der benötigte Volumenstrom ist
+    \begin{equation*}
+        \dot{V} = \frac{3 \cdot \SI{200}{\meter\cubed}}{\SI{3600}{\second}} \approx \SI{0.167}{\meter\cubed\per\second} \quad (= \SI{600}{\meter\cubed\per\hour}) \mDot
+    \end{equation*}
+    Damit die Strömung leise bleibt, soll die Luft im Kanal mit höchstens $v = \SI{3}{\meter\per\second}$ strömen. Nach \cref{eq: volumenstrom} braucht der Kanal dann den Querschnitt
+    \begin{equation*}
+        A = \frac{\dot{V}}{v} = \frac{\SI{0.167}{\meter\cubed\per\second}}{\SI{3}{\meter\per\second}} \approx \SI{0.056}{\meter\squared} \mComma
+    \end{equation*}
+    zum Beispiel ein quadratischer Kanal mit etwa $\SI{24}{\centi\meter} \times \SI{24}{\centi\meter}$.
+\end{examplebox}
+
+\section{Die Bernoulli-Gleichung}\label{sec: bernoulli}
+Im engen Teil eines Rohres strömt das Fluid schneller, es wird also beschleunigt. Dafür muss eine Kraft wirken -- und diese Kraft kann nur von einem Druckunterschied herrühren: Der Druck muss vor der Verengung größer sein als in ihr. Wo das Fluid schneller strömt, ist der Druck kleiner. Diesen Zusammenhang beschreibt die Gleichung von Daniel Bernoulli (1700--1782).
+
+\subsection{Herleitung aus der Energieerhaltung}
+Wir betrachten ein kleines Fluidvolumen $\Delta V$ mit der Masse $\Delta m = \rho \, \Delta V$, das sich in einem ideal (reibungsfrei) strömenden, inkompressiblen Fluid von der Stelle 1 (Druck $p_1$, Geschwindigkeit $v_1$, Höhe $h_1$) zur Stelle 2 (Druck $p_2$, Geschwindigkeit $v_2$, Höhe $h_2$) bewegt. Das umgebende Fluid schiebt es an der Stelle 1 mit der Druckkraft $p_1 A_1$ um die Strecke $\Delta s_1$ voran und bremst es an der Stelle 2 mit der Kraft $p_2 A_2$ über die Strecke $\Delta s_2$. Die Druckkräfte verrichten damit insgesamt die Arbeit
+\begin{equation*}
+    W = p_1 A_1 \Delta s_1 - p_2 A_2 \Delta s_2 = (p_1 - p_2) \, \Delta V \mComma
+\end{equation*}
+denn wegen der Kontinuitätsgleichung ist $A_1 \Delta s_1 = A_2 \Delta s_2 = \Delta V$. Nach dem Arbeit-Energie-Satz (\cref{chap: Arbeit_und_Energie}) ändert diese Arbeit die kinetische und die potenzielle Energie des Volumens:
+\begin{equation*}
+    (p_1 - p_2)\, \Delta V = \frac{1}{2} \rho \, \Delta V \left(v_2^2 - v_1^2\right) + \rho \, \Delta V \, g \, (h_2 - h_1) \mDot
+\end{equation*}
+Teilt man durch $\Delta V$ und sortiert nach den Stellen 1 und 2, erhält man die Bernoulli-Gleichung.
+
+\begin{importantbox}[]{Bernoulli-Gleichung}
+    Für die stationäre Strömung eines idealen (inkompressiblen und reibungsfreien) Fluids gilt entlang einer Stromlinie
+    \begin{equation}\label{eq: bernoulli}
+        p_1 + \frac{1}{2}\rho v_1^2 + \rho g h_1 = p_2 + \frac{1}{2}\rho v_2^2 + \rho g h_2 \qquad \text{bzw.} \qquad p + \frac{1}{2}\rho v^2 + \rho g h = \const \mDot
+    \end{equation}
+\end{importantbox}
+
+Alle drei Terme haben die Einheit eines Drucks, und man kann sie als Energie pro Volumen deuten:
+\begin{itemize}[itemsep=1.5pt]
+    \item $p$ heißt \textbf{statischer Druck}. Ihn würde ein Messgerät anzeigen, das mit der Strömung mitschwimmt.
+    \item $\frac{1}{2}\rho v^2$ heißt \textbf{dynamischer Druck} oder \textbf{Staudruck}. Er entspricht der kinetischen Energie pro Volumen.
+    \item $\rho g h$ ist der \textbf{Schweredruck} (geodätischer Druck), also die potenzielle Energie pro Volumen.
+\end{itemize}
+Die Summe heißt \textbf{Gesamtdruck}. Die Bernoulli-Gleichung ist also nichts anderes als der Energieerhaltungssatz für ein strömendes Fluid. Für ein ruhendes Fluid ($v_1 = v_2 = 0$) erhält man daraus wieder den Schweredruck aus \cref{eq: schweredruck_fluessigkeit}: $p_2 = p_1 + \rho g (h_1 - h_2)$.
+
+\begin{rememberbox}{Hydrodynamisches Paradoxon}
+    Strömt ein Fluid in gleicher Höhe schneller, so ist sein statischer Druck kleiner. Das widerspricht zunächst der Intuition. Ein einfacher Versuch: Hält man zwei Blätter Papier parallel nebeneinander und bläst dazwischen, so bewegen sich die Blätter aufeinander zu -- zwischen ihnen strömt die Luft schnell, und der Druck ist dort kleiner als außen.
+\end{rememberbox}
+
+\begin{examplebox}[]{Beispiel: Wasserdruck im zweiten Stock}
+    Im Keller eines Hauses fließt Wasser mit $v_1 = \SI{0.50}{\meter\per\second}$ durch ein Rohr mit dem Durchmesser $d_1 = \SI{2.5}{\centi\meter}$. Das Manometer zeigt dort einen Überdruck von $p_1 = \SI{3.0}{\barPr}$. Im zweiten Stock, $h = \SI{6.0}{\meter}$ höher, hat die Leitung nur noch den halben Durchmesser (vgl.~\cite[S.~465]{Giancoli2010}).
+
+    \textit{Geschwindigkeit:} Nach der Kontinuitätsgleichung ist $v_2 = v_1 \cdot A_1/A_2 = v_1 \cdot (d_1/d_2)^2 = \SI{0.50}{\meter\per\second} \cdot 4 = \SI{2.0}{\meter\per\second}$.
+
+    \textit{Druck:} Nach der Bernoulli-Gleichung (mit $h_1 = 0$, $h_2 = h$) gilt
+    \begin{align*}
+        p_2 &= p_1 + \frac{1}{2}\rho \left(v_1^2 - v_2^2\right) - \rho g h \\
+        &= \SI{3.0e5}{\pascal} + \frac{1}{2} \cdot \SI{1000}{\kilogram\per\meter\cubed} \cdot \left(\num{0.25} - \num{4.0}\right) \si{\meter\squared\per\second\squared} - \SI{1000}{\kilogram\per\meter\cubed} \cdot \SI{9.81}{\meter\per\second\squared} \cdot \SI{6.0}{\meter} \\
+        &\approx \SI{3.0e5}{\pascal} - \SI{1.9e3}{\pascal} - \SI{5.9e4}{\pascal} \approx \SI{2.4e5}{\pascal} = \SI{2.4}{\barPr} \mDot
+    \end{align*}
+    Den größten Anteil am Druckverlust hat der Höhenunterschied (\SI{0.6}{\barPr} für \SI{6}{\meter}); die höhere Geschwindigkeit kostet nur \SI{0.02}{\barPr}. Da der Luftdruck in beiden Stockwerken praktisch gleich ist, darf man hier mit Überdrücken rechnen. In einer realen Leitung kommt noch der Druckverlust durch Reibung hinzu (\cref{sec: druckverlust_rohr}).
+\end{examplebox}
+
+\subsection{Anwendungen der Bernoulli-Gleichung}\label{subsec: bernoulli_anwendungen}
+
+\subsubsection*{Venturi-Rohr: Messung des Volumenstroms}
+\begin{figure}[htb]
+    \centering
+    \begin{tikzpicture}[>=Latex, scale=0.85]
+        % Fluid im Rohr
+        \fill[blue!12] (0,1.2) -- (2.5,1.2) .. controls (3.2,1.2) and (3.3,0.6) .. (4,0.6) -- (4.5,0.6) .. controls (5.2,0.6) and (5.3,1.2) .. (6,1.2) -- (8.5,1.2)
+                    -- (8.5,-1.2) -- (6,-1.2) .. controls (5.3,-1.2) and (5.2,-0.6) .. (4.5,-0.6) -- (4,-0.6) .. controls (3.3,-0.6) and (3.2,-1.2) .. (2.5,-1.2) -- (0,-1.2) -- cycle;
+        % Steigrohre (Flüssigkeit)
+        \fill[blue!25] (1.0,1.2) rectangle (1.4,3.6);
+        \fill[blue!25] (4.05,0.6) rectangle (4.45,2.3);
+        % Rohrwände
+        \draw[very thick] (0,1.2) -- (1.0,1.2);
+        \draw[very thick] (1.4,1.2) -- (2.5,1.2) .. controls (3.2,1.2) and (3.3,0.6) .. (4,0.6) -- (4.05,0.6);
+        \draw[very thick] (4.45,0.6) -- (4.5,0.6) .. controls (5.2,0.6) and (5.3,1.2) .. (6,1.2) -- (8.5,1.2);
+        \draw[very thick] (0,-1.2) -- (2.5,-1.2) .. controls (3.2,-1.2) and (3.3,-0.6) .. (4,-0.6) -- (4.5,-0.6) .. controls (5.2,-0.6) and (5.3,-1.2) .. (6,-1.2) -- (8.5,-1.2);
+        % Steigrohre (Wände)
+        \draw[thick] (1.0,1.2) -- (1.0,4.3); \draw[thick] (1.4,1.2) -- (1.4,4.3);
+        \draw[thick] (4.05,0.6) -- (4.05,4.3); \draw[thick] (4.45,0.6) -- (4.45,4.3);
+        % Höhendifferenz
+        \draw[gray, dashed, thin] (1.4,3.6) -- (5.4,3.6);
+        \draw[gray, dashed, thin] (4.45,2.3) -- (5.4,2.3);
+        \draw[<->] (5.2,2.3) -- (5.2,3.6) node[midway, right] {$\Delta h$};
+        % Beschriftungen
+        \node at (1.2,0) {$A_1, v_1, p_1$};
+        \node[font=\small] at (4.25,0) {$A_2, v_2, p_2$};
+        \draw[->, ultra thick, figOrange] (6.6,0) -- (8.2,0);
+    \end{tikzpicture}
+    \caption{Venturi-Rohr: In der Verengung strömt das Fluid schneller, der statische Druck ist dort kleiner. Die Steighöhen in den beiden Röhrchen zeigen den Druckunterschied $p_1 - p_2 = \rho g \Delta h$.}\label{fig: venturi_rohr}
+\end{figure}
+Ein Rohr mit einer sanften Verengung heißt \textbf{Venturi-Rohr} (\cref{fig: venturi_rohr}). Misst man den Druckunterschied $\Delta p = p_1 - p_2$ zwischen dem weiten und dem engen Teil, so kann man daraus mit der Kontinuitäts- und der Bernoulli-Gleichung die Strömungsgeschwindigkeit und damit den Volumenstrom berechnen. Mit $v_2 = v_1 A_1/A_2$ folgt aus $p_1 - p_2 = \frac{1}{2}\rho\left(v_2^2 - v_1^2\right)$:
+\begin{equation}\label{eq: venturi}
+    v_1 = \sqrt{\frac{2\,\Delta p}{\rho \left[\left(A_1/A_2\right)^2 - 1\right]}} \mComma \qquad \dot{V} = A_1 v_1 \mDot
+\end{equation}
+
+\subsubsection*{Wasserstrahlpumpe und Zerstäuber}
+Wird die Geschwindigkeit in der Verengung so groß, dass der statische Druck unter den Luftdruck sinkt, kann man dort Luft oder eine Flüssigkeit ansaugen. Darauf beruhen die Wasserstrahlpumpe im Labor, der Parfümzerstäuber und die Vergaserdüse. Auch der Zug in einem Schornstein wird verstärkt, wenn oben Wind über die Öffnung streicht.
+
+\subsubsection*{Prandtl-Rohr: Messung der Strömungsgeschwindigkeit}
+Ein \textbf{Prandtl-Rohr} (Staurohr) misst die Geschwindigkeit eines strömenden Gases, zum Beispiel in einem Lüftungskanal oder als Fahrtmesser im Flugzeug. Eine Öffnung zeigt der Strömung entgegen; dort wird das Gas bis zum Stillstand abgebremst und es herrscht der Gesamtdruck $p + \frac{1}{2}\rho v^2$. Seitliche Öffnungen messen nur den statischen Druck $p$. Die Differenz ist der Staudruck:
+\begin{equation}\label{eq: prandtl_rohr}
+    \Delta p = \frac{1}{2}\rho v^2 \quad \implies \quad v = \sqrt{\frac{2\,\Delta p}{\rho}} \mDot
+\end{equation}
+Für Luft mit $v = \SI{10}{\meter\per\second}$ ist der Staudruck nur $\Delta p = \frac{1}{2}\cdot \SI{1.2}{\kilogram\per\meter\cubed} \cdot (\SI{10}{\meter\per\second})^2 = \SI{60}{\pascal}$, das entspricht etwa \SI{6}{\milli\meter} Wassersäule. Solche kleinen Druckunterschiede misst man zum Beispiel mit einem Schrägrohrmanometer (\cref{subsec: fluessigkeitsmanometer}).
+
+\subsubsection*{Ausfluss aus einem Behälter (Torricelli)}
+Aus einer Öffnung im Boden eines offenen Behälters fließt Wasser aus. Die Wasseroberfläche (Stelle 1) liegt um $h$ höher als die Öffnung (Stelle 2). An beiden Stellen herrscht der Luftdruck, und bei einem großen Behälter sinkt die Oberfläche nur langsam ($v_1 \approx 0$). Die Bernoulli-Gleichung liefert dann
+\begin{equation}\label{eq: torricelli_ausfluss}
+    \rho g h = \frac{1}{2} \rho v_2^2 \quad \implies \quad v_2 = \sqrt{2 g h} \mDot
+\end{equation}
+Das Wasser tritt also mit derselben Geschwindigkeit aus, die ein Körper beim freien Fall aus der Höhe $h$ erreichen würde (vgl.~\cref{subsec: freier_Fall}). Bei $h = \SI{2}{\meter}$ sind das etwa \SI{6.3}{\meter\per\second}. In der Praxis ist die Geschwindigkeit wegen der Reibung etwas kleiner.
+
+\section{Viskosität}\label{sec: viskositaet}
+Reale Fluide sind nicht reibungsfrei. Zwischen benachbarten Schichten eines strömenden Fluids wirken Reibungskräfte, die schnellere Schichten bremsen und langsamere mitziehen. Diese innere Reibung heißt \textbf{Viskosität} oder Zähigkeit. Honig ist sehr viskos, Wasser wenig, Luft noch weniger.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.46\textwidth}
+        \centering
+        \begin{tikzpicture}[>=Latex, scale=0.85]
+            \fill[blue!12] (0,0) rectangle (4.5,2.4);
+            \draw[line width=2.5pt] (0,0) -- (4.5,0);
+            \filldraw[fill=gray!40] (0,2.4) rectangle (4.5,2.65);
+            \node[font=\small, anchor=north] at (2.25,-0.05) {ruhende Platte};
+            \draw[->, ultra thick, figRed] (4.6,2.52) -- (5.7,2.52) node[right] {$F$};
+            \foreach \y in {0.4,0.8,1.2,1.6,2.0,2.35} {
+                \draw[->, figOrange, thick] (1.0,\y) -- ({1.0 + 1.25*\y},\y);
+            }
+            \draw[thick] (1.0,0) -- (1.0,2.4);
+            \draw[dashed] (1.0,0) -- ({1.0+1.25*2.4},2.4);
+            \node[figOrange, right] at ({1.0+1.25*2.35},2.05) {$v$};
+            \draw[<->] (-0.3,0) -- (-0.3,2.4) node[midway, left] {$z$};
+        \end{tikzpicture}
+        \caption{Zwischen zwei Platten}\label{fig: viskositaet_platten}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.46\textwidth}
+        \centering
+        \begin{tikzpicture}[>=Latex, scale=0.85]
+            \fill[blue!12] (0,-1.2) rectangle (4.5,1.2);
+            \draw[line width=2.5pt] (0,1.2) -- (4.5,1.2);
+            \draw[line width=2.5pt] (0,-1.2) -- (4.5,-1.2);
+            \draw[thick] (1.0,-1.2) -- (1.0,1.2);
+            \foreach \y in {-1.0,-0.75,-0.5,-0.25,0,0.25,0.5,0.75,1.0} {
+                \pgfmathsetmacro{\len}{2.4*(1-(\y/1.2)^2)}
+                \draw[->, figOrange, thick] (1.0,\y) -- ({1.0+\len},\y);
+            }
+            \draw[dashed, domain=-1.2:1.2, samples=40, variable=\y] plot ({1.0+2.4*(1-(\y/1.2)^2)},\y);
+            \node[figOrange, right] at (3.4,0) {$v_\text{max}$};
+            \draw[<->] (-0.3,-1.2) -- (-0.3,1.2) node[midway, left] {$d$};
+        \end{tikzpicture}
+        \caption{Im Rohr}\label{fig: viskositaet_rohr}
+    \end{subfigure}
+    \caption{Laminare Strömung eines viskosen Fluids. (a) Zwischen einer ruhenden und einer bewegten Platte nimmt die Geschwindigkeit linear zu. (b) In einem Rohr haftet das Fluid an der Wand ($v = 0$), in der Mitte ist es am schnellsten; das Geschwindigkeitsprofil ist eine Parabel.}\label{fig: viskositaet_profile}
+\end{figure}
+
+\subsection{Das Newton'sche Reibungsgesetz}
+Zur Definition der Viskosität betrachtet man ein Fluid zwischen zwei parallelen Platten mit der Fläche $A$ und dem Abstand $z$ (\cref{fig: viskositaet_platten}). Die untere Platte ruht, die obere wird mit der konstanten Geschwindigkeit $v$ gezogen. Das Fluid haftet an beiden Platten, dazwischen gleiten dünne Schichten aufeinander ab, und die Geschwindigkeit nimmt von unten nach oben linear zu. Eine solche geordnete, schichtweise Strömung heißt \textbf{laminar} (lat.~\textit{lamina}, Schicht). Man beobachtet, dass die benötigte Kraft proportional zur Fläche und zur Geschwindigkeit und umgekehrt proportional zum Abstand ist (vgl.~\cite[S.~396]{Tipler2015}).
+
+\begin{rememberbox}{Newton'sches Reibungsgesetz, dynamische Viskosität}
+    \begin{equation}\label{eq: newton_reibungsgesetz}
+        F = \eta \, A \, \frac{v}{z} \mDot
+    \end{equation}
+    Die Proportionalitätskonstante $\eta$ ist die \textbf{dynamische Viskosität} des Fluids. Ihre SI-Einheit ist $[\eta] = \si{\newton\second\per\meter\squared} = \si{\pascal\second}$.
+\end{rememberbox}
+Teilt man die dynamische Viskosität durch die Dichte, erhält man die \textbf{kinematische Viskosität} $\eta/\rho$ (Einheit \si{\meter\squared\per\second}). Sie wird in Tabellenwerken meist mit $\nu$ bezeichnet -- nicht zu verwechseln mit der Stoffmenge. Für Wasser bei \SI{20}{\celsius} ist $\eta/\rho \approx \SI{1.0e-6}{\meter\squared\per\second}$, für Luft $\approx \SI{1.5e-5}{\meter\squared\per\second}$.
+
+\begin{table}[htb]
+    \centering
+    \caption{Dynamische Viskosität einiger Fluide (nach \cite[S.~396]{Tipler2015}).}\label{tab: viskositaet}
+    \vspace{4pt}
+    \begin{tabular}{l c r}
+        \toprule
+        \textbf{Fluid} & \textbf{Temperatur} & \textbf{$\eta$ (\si{\milli\pascal\second})} \\
+        \midrule
+        Wasser & \SI{0}{\celsius} & \num{1.8} \\
+        Wasser & \SI{20}{\celsius} & \num{1.00} \\
+        Wasser & \SI{60}{\celsius} & \num{0.65} \\
+        Blut & \SI{37}{\celsius} & \num{4.0} \\
+        Motoröl (SAE 10W) & \SI{30}{\celsius} & \num{200} \\
+        Glycerin & \SI{20}{\celsius} & \num{1410} \\
+        Luft & \SI{20}{\celsius} & \num{0.018} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Temperaturabhängigkeit}
+Die Viskosität hängt stark von der Temperatur ab -- und zwar bei Flüssigkeiten und Gasen in entgegengesetzter Richtung:
+\begin{itemize}[itemsep=1.5pt]
+    \item Bei \textbf{Flüssigkeiten} nimmt die Viskosität mit steigender Temperatur ab (Wasser von \SI{0}{\celsius} auf \SI{60}{\celsius}: fast um den Faktor 3). Die Moleküle haften durch Anziehungskräfte aneinander; je heftiger sie sich bewegen, desto leichter lösen sie sich voneinander. Kaltes Motoröl oder Honig fließen deshalb zäh.
+    \item Bei \textbf{Gasen} nimmt die Viskosität mit steigender Temperatur zu. Hier entsteht die innere Reibung dadurch, dass Moleküle zwischen schnelleren und langsameren Schichten hin- und herfliegen und dabei Impuls austauschen. Je schneller sich die Moleküle bewegen (siehe kinetische Gastheorie, \cref{sec: kinetische_gastheorie}), desto stärker ist dieser Austausch.
+\end{itemize}
+
+\section{Laminare Rohrströmung: Das Gesetz von Hagen-Poiseuille}\label{sec: hagen_poiseuille}
+Fließt ein viskoses Fluid laminar durch ein gerades Rohr mit dem Radius $r$ und der Länge $l$, so haftet es an der Wand und ist in der Mitte am schnellsten (\cref{fig: viskositaet_rohr}). Um das Fluid gegen die innere Reibung durch das Rohr zu bewegen, ist ein Druckunterschied $\Delta p = p_1 - p_2$ zwischen Anfang und Ende nötig. Die genaue Rechnung (die wir hier nicht durchführen) ergibt ein parabelförmiges Geschwindigkeitsprofil und den folgenden Zusammenhang:
+\begin{importantbox}[]{Gesetz von Hagen-Poiseuille}
+    Für die laminare Strömung durch ein Rohr mit dem Radius $r$ und der Länge $l$ gilt
+    \begin{equation}\label{eq: hagen_poiseuille}
+        \dot{V} = \frac{\pi \, r^4}{8 \, \eta \, l} \, \Delta p \mDot
+    \end{equation}
+    Die mittlere Geschwindigkeit ist halb so groß wie die Geschwindigkeit in der Rohrmitte: $\bar{v} = v_\text{max}/2$.
+\end{importantbox}
+
+Der Volumenstrom ist proportional zur \textbf{vierten Potenz} des Radius. Halbiert man den Radius, so fließt bei gleichem Druckunterschied nur noch ein Sechzehntel des Volumens durch das Rohr. Deshalb haben Ablagerungen in Wasserleitungen oder Blutgefäßen eine so große Wirkung (vgl.~\cite[S.~397]{Tipler2015}).
+
+Man kann \cref{eq: hagen_poiseuille} auch in der Form $\Delta p = R_\text{S} \cdot \dot{V}$ mit dem \textbf{Strömungswiderstand} $R_\text{S} = 8\eta l/(\pi r^4)$ schreiben. Das entspricht genau dem Ohm'schen Gesetz $U = R \cdot I$ der Elektrizitätslehre: Der Druckunterschied entspricht der Spannung, der Volumenstrom der Stromstärke.
+
+\begin{examplebox}[]{Beispiel: Wasser in einem dünnen Rohr}
+    Wasser (\SI{20}{\celsius}, $\eta = \SI{1.0e-3}{\pascal\second}$) fließt durch ein $l = \SI{1.0}{\meter}$ langes Rohr mit dem Innenradius $r = \SI{1.0}{\milli\meter}$. Der Druckunterschied beträgt $\Delta p = \SI{1000}{\pascal} = \SI{10}{\milli\barPr}$:
+    \begin{equation*}
+        \dot{V} = \frac{\pi \cdot (\SI{1.0e-3}{\meter})^4}{8 \cdot \SI{1.0e-3}{\pascal\second} \cdot \SI{1.0}{\meter}} \cdot \SI{1000}{\pascal} \approx \SI{3.9e-7}{\meter\cubed\per\second} \approx \SI{0.39}{\milli\liter\per\second} \mDot
+    \end{equation*}
+    Die mittlere Geschwindigkeit ist $\bar{v} = \dot{V}/(\pi r^2) \approx \SI{0.13}{\meter\per\second}$. Ob die Strömung tatsächlich laminar ist, prüfen wir im nächsten Abschnitt.
+\end{examplebox}
+
+\section{Laminare und turbulente Strömung: Die Reynolds-Zahl}\label{sec: reynolds}
+Bei kleinen Geschwindigkeiten strömt ein Fluid laminar: Die Schichten gleiten geordnet aneinander vorbei, und ein eingefärbter Faden bleibt als dünne Linie erhalten. Wird die Geschwindigkeit größer, so bilden sich plötzlich Wirbel, die Strömung wird ungeordnet und durchmischt sich -- sie wird \textbf{turbulent}. Osborne Reynolds (1842--1912) fand heraus, dass der Umschlag nicht von der Geschwindigkeit allein abhängt, sondern von einer dimensionslosen Kombination aus Geschwindigkeit, Rohrdurchmesser, Dichte und Viskosität.
+
+\begin{rememberbox}{Reynolds-Zahl}
+    Für die Strömung durch ein Rohr mit dem Durchmesser $d$ und der mittleren Geschwindigkeit $\bar{v}$ ist die \textbf{Reynolds-Zahl}
+    \begin{equation}\label{eq: reynolds}
+        \mathit{Re} = \frac{\rho \, \bar{v} \, d}{\eta} \mDot
+    \end{equation}
+    Unterhalb von $\mathit{Re} \approx 2300$ ist die Rohrströmung laminar. Oberhalb (meist ab etwa 3000) wird sie turbulent; dazwischen liegt ein Übergangsbereich, in dem kleine Störungen entscheiden (vgl.~\cite[S.~399]{Tipler2015}).
+\end{rememberbox}
+Die Reynolds-Zahl vergleicht anschaulich die Trägheit des Fluids (die Wirbel anfacht) mit der Viskosität (die Wirbel dämpft). Prüfen Sie zur Übung die Einheiten: Die Reynolds-Zahl ist dimensionslos.
+
+\begin{examplebox}[]{Beispiel: Laminar oder turbulent?}
+    \begin{itemize}[itemsep=3pt]
+        \item \textbf{Dünnes Rohr aus dem vorigen Beispiel} ($d = \SI{2}{\milli\meter}$, $\bar{v} = \SI{0.13}{\meter\per\second}$):
+        \begin{equation*}
+            \mathit{Re} = \frac{\SI{1000}{\kilogram\per\meter\cubed} \cdot \SI{0.13}{\meter\per\second} \cdot \SI{0.002}{\meter}}{\SI{1.0e-3}{\pascal\second}} \approx 260 \mDot
+        \end{equation*}
+        Die Strömung ist laminar, Hagen-Poiseuille ist anwendbar.
+        \item \textbf{Wasserleitung im Haus} ($d = \SI{2}{\centi\meter}$, $\bar{v} = \SI{1}{\meter\per\second}$):
+        \begin{equation*}
+            \mathit{Re} = \frac{\SI{1000}{\kilogram\per\meter\cubed} \cdot \SI{1}{\meter\per\second} \cdot \SI{0.02}{\meter}}{\SI{1.0e-3}{\pascal\second}} = \num{20000} \mComma
+        \end{equation*}
+        die Strömung ist turbulent.
+        \item \textbf{Lüftungskanal} ($d = \SI{25}{\centi\meter}$, $\bar{v} = \SI{3}{\meter\per\second}$, Luft mit $\eta/\rho \approx \SI{1.5e-5}{\meter\squared\per\second}$):
+        \begin{equation*}
+            \mathit{Re} = \frac{\bar{v}\, d}{\eta/\rho} = \frac{\SI{3}{\meter\per\second} \cdot \SI{0.25}{\meter}}{\SI{1.5e-5}{\meter\squared\per\second}} = \num{50000} \mComma
+        \end{equation*}
+        die Strömung ist turbulent.
+        \item \textbf{Blut in der Aorta} ($r = \SI{1.0}{\centi\meter}$, $\bar{v} = \SI{0.30}{\meter\per\second}$, $\rho = \SI{1060}{\kilogram\per\meter\cubed}$, $\eta = \SI{4.0e-3}{\pascal\second}$): $\mathit{Re} \approx 1600$ -- laminar \cite[S.~399]{Tipler2015}.
+    \end{itemize}
+    In technischen Leitungen für Wasser und Luft ist die Strömung also meist turbulent.
+\end{examplebox}
+
+\section{Druckverlust in Rohrleitungen}\label{sec: druckverlust_rohr}
+In jeder realen Leitung geht durch Reibung ein Teil der Strömungsenergie in Wärme über. Bei gleichbleibendem Querschnitt und gleicher Höhe zeigt sich das als Druckabfall entlang des Rohres. Die Bernoulli-Gleichung wird dazu um einen Verlustterm $\Delta p_\text{V}$ ergänzt:
+\begin{equation}\label{eq: bernoulli_mit_verlust}
+    p_1 + \frac{1}{2}\rho v_1^2 + \rho g h_1 = p_2 + \frac{1}{2}\rho v_2^2 + \rho g h_2 + \Delta p_\text{V} \mDot
+\end{equation}
+Für den Druckverlust in einem geraden Rohr der Länge $l$ und des Durchmessers $d$ verwendet man die Formel von Darcy und Weisbach:
+\begin{importantbox}[]{Druckverlust in einem geraden Rohr}
+    \begin{equation}\label{eq: darcy_weisbach}
+        \Delta p_\text{V} = \lambda \cdot \frac{l}{d} \cdot \frac{\rho}{2} \bar{v}^2 \mDot
+    \end{equation}
+    Die dimensionslose \textbf{Rohrreibungszahl} $\lambda$ hängt von der Reynolds-Zahl und bei turbulenter Strömung zusätzlich von der Rauigkeit der Rohrwand ab. Für laminare Strömung ist $\lambda = 64/\mathit{Re}$, für turbulente Strömung in technischen Rohren typischerweise $\lambda \approx {}$\numrange{0.02}{0.04}.
+\end{importantbox}
+Die Formel sagt: Der Druckverlust wächst proportional zur Rohrlänge und zum Staudruck und ist umso kleiner, je dicker das Rohr ist. Setzt man für laminare Strömung $\lambda = 64/\mathit{Re}$ ein, so erhält man nach kurzer Rechnung wieder das Gesetz von Hagen-Poiseuille -- eine gute Kontrolle. Bei turbulenter Strömung ist $\lambda$ nahezu konstant; dann vervierfacht sich der Druckverlust, wenn sich die Geschwindigkeit verdoppelt. Bei laminarer Strömung verdoppelt er sich nur.
+
+\begin{examplebox}[]{Beispiel: Druckverlust in einer Wasserleitung}
+    Durch eine $l = \SI{20}{\meter}$ lange Wasserleitung mit $d = \SI{2.0}{\centi\meter}$ fließt Wasser mit $\bar{v} = \SI{1.0}{\meter\per\second}$. Die Strömung ist turbulent ($\mathit{Re} = \num{20000}$); wir nehmen $\lambda = \num{0.03}$ an:
+    \begin{equation*}
+        \Delta p_\text{V} = \num{0.03} \cdot \frac{\SI{20}{\meter}}{\SI{0.020}{\meter}} \cdot \frac{\SI{1000}{\kilogram\per\meter\cubed}}{2} \cdot (\SI{1.0}{\meter\per\second})^2 = \SI{15000}{\pascal} = \SI{0.15}{\barPr} \mDot
+    \end{equation*}
+    Das ist ein Viertel des Druckverlusts, den ein Höhenunterschied von \SI{6}{\meter} verursacht. Bögen, Ventile und Armaturen verursachen zusätzliche Verluste.
+\end{examplebox}
+
+\section{Umströmte Körper: Strömungswiderstand}\label{sec: stroemungswiderstand}
+Bewegt sich ein Körper durch ein Fluid (oder strömt ein Fluid um einen ruhenden Körper), so wirkt auf ihn eine bremsende \textbf{Widerstandskraft}. Je nach Reynolds-Zahl unterscheidet man zwei Grenzfälle.
+
+\subsubsection*{Kleine Geschwindigkeiten: Stokes'sche Reibung}
+Bei kleinen Reynolds-Zahlen (langsame, kleine Körper in zähen Fluiden) ist die Strömung um den Körper laminar, und die Widerstandskraft ist proportional zur Geschwindigkeit. Für eine Kugel mit dem Radius $r$ gilt das Gesetz von Stokes:
+\begin{equation}\label{eq: stokes}
+    F_\text{W} = 6\pi \, \eta \, r \, v \mDot
+\end{equation}
+Sinkt eine Kugel (Dichte $\rho_\text{K}$) in einer Flüssigkeit (Dichte $\rho_\text{F}$), so wird sie schneller, bis Gewichtskraft, Auftrieb und Reibung im Gleichgewicht sind. Danach sinkt sie mit konstanter Geschwindigkeit $v$:
+\begin{equation*}
+    \frac{4}{3}\pi r^3 \rho_\text{K}\, g = \frac{4}{3}\pi r^3 \rho_\text{F}\, g + 6 \pi \eta r v \quad \implies \quad \eta = \frac{2\,(\rho_\text{K} - \rho_\text{F})\, g\, r^2}{9\, v} \mDot
+\end{equation*}
+Misst man die Sinkgeschwindigkeit, so erhält man daraus die Viskosität. Auf diesem Prinzip beruht das \textbf{Kugelfall-Viskosimeter} (vgl.~\cite[S.~398]{Tipler2015}).
+
+\subsubsection*{Große Geschwindigkeiten: Newton'sche Reibung}
+Bei großen Reynolds-Zahlen -- das ist der Normalfall für Autos, Radfahrer oder Bälle in Luft -- bilden sich hinter dem Körper Wirbel. Die Widerstandskraft ist dann proportional zum Staudruck $\frac{1}{2}\rho v^2$ und zur Stirnfläche $A$ (Querschnittsfläche senkrecht zur Strömung):
+\begin{equation}\label{eq: newton_widerstand}
+    F_\text{W} = c_\text{w} \cdot A \cdot \frac{1}{2}\rho v^2 \mDot
+\end{equation}
+Der dimensionslose \textbf{Widerstandsbeiwert} $c_\text{w}$ hängt von der Form des Körpers ab und wird experimentell bestimmt. Typische Werte sind etwa \num{1.1} für eine quer angeströmte Platte, \num{0.45} für eine Kugel, \numrange{0.25}{0.35} für ein modernes Auto und unter \num{0.1} für einen stromlinienförmigen Körper.
+
+\begin{examplebox}[]{Beispiel: Luftwiderstand eines Autos}
+    Ein Auto mit $c_\text{w} = \num{0.30}$ und der Stirnfläche $A = \SI{2.2}{\meter\squared}$ fährt mit $v = \SI{130}{\kilo\meter\per\hour} = \SI{36.1}{\meter\per\second}$ ($\rho_\text{Luft} = \SI{1.2}{\kilogram\per\meter\cubed}$):
+    \begin{equation*}
+        F_\text{W} = \num{0.30} \cdot \SI{2.2}{\meter\squared} \cdot \frac{1}{2} \cdot \SI{1.2}{\kilogram\per\meter\cubed} \cdot (\SI{36.1}{\meter\per\second})^2 \approx \SI{520}{\newton} \mDot
+    \end{equation*}
+    Die Leistung, die der Motor allein gegen den Luftwiderstand aufbringen muss, ist $P = F_\text{W} \cdot v \approx \SI{19}{\kilo\watt}$ (siehe \cref{sec: leistung}). Bei \SI{100}{\kilo\meter\per\hour} sind es nur etwa \SI{8.5}{\kilo\watt}: Da $F_\text{W} \propto v^2$ ist, wächst die Leistung mit $v^3$.
+\end{examplebox}
+
+% Chapter end - always start new page after chapter
+\newpage
