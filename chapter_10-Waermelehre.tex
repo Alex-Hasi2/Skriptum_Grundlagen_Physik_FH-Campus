@@ -1143,8 +1143,101 @@ Erstaunlicherweise haben fast alle einfachen Festkörper (wie Metalle) bei Raumt
 Die Zustände fest, flüssig und gasförmig werden als \textbf{Aggregatzustände} oder \textbf{Phasen} eines Stoffes bezeichnet. Die Übergänge zwischen diesen Phasen haben spezifische Namen, wie Schmelzen, Gefrieren, Verdampfen, Kondensieren, Sublimieren und Resublimieren.
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.5\linewidth]{Bilder/Kapitel_Waermelehre/Aggregatszustände.png}
-    \caption{Die drei Aggregatzustände und die Übergänge zwischen ihnen.}\label{fig: phasenuebergaenge}
+    \resizebox{0.8\textwidth}{!}{%
+    \begin{tikzpicture}[
+        >=Stealth,
+        font=\large,
+        phase/.style={circle, draw=black!70, line width=1.2pt, minimum size=3.3cm, inner sep=0pt},
+        teil/.style={circle, draw=black!70, fill=teilFarbe, line width=0.5pt, minimum size=0.27cm, inner sep=0pt},
+        bind/.style={black!60, line width=0.6pt},
+        v/.style={black!80, line width=0.6pt, -{Stealth[length=1.5mm,width=1.2mm]}},
+    ]
+        \definecolor{teilFarbe}{RGB}{70,110,175}
+        \definecolor{auf}{RGB}{214,84,48}     % Wärme aufgenommen
+        \definecolor{ab}{RGB}{48,120,200}     % Wärme abgegeben
+        \definecolor{feldFest}{RGB}{226,236,247}
+        \definecolor{feldFluessig}{RGB}{235,244,250}
+        \definecolor{feldGas}{RGB}{247,249,252}
+
+        % Mittelpunkte der Phasen
+        \coordinate (F) at (-3.9,0);
+        \coordinate (G) at (3.9,0);
+        \coordinate (L) at (0,5.6);
+
+        % --- Kreise ---
+        \node[phase, fill=feldFest]     at (F) {};
+        \node[phase, fill=feldFluessig] at (L) {};
+        \node[phase, fill=feldGas]      at (G) {};
+        \node at ($(F)+(0,0.95)$) {\bfseries fest};
+        \node at ($(L)+(0,0.95)$) {\bfseries flüssig};
+        \node at ($(G)+(0,0.95)$) {\bfseries gasförmig};
+
+        % --- fest: regelmäßiges Gitter mit Bindungen ---
+        \begin{scope}[shift={($(F)+(0,-0.35)$)}]
+            \foreach \i in {0,...,4} {\foreach \j in {0,1,2} {
+                \coordinate (f\i\j) at ({(\i-2)*0.4},{(\j-1)*0.4});
+            }}
+            \foreach \i in {0,...,4} {\draw[bind] (f\i0) -- (f\i2);}
+            \foreach \j in {0,1,2} {\draw[bind] (f0\j) -- (f4\j);}
+            \foreach \i in {0,...,4} {\foreach \j in {0,1,2} {\node[teil] at (f\i\j) {};}}
+        \end{scope}
+
+        % --- flüssig: ungeordnet, kleine Gruppen, geringe Bewegung ---
+        \begin{scope}[shift={($(L)+(0,-0.35)$)}]
+            \coordinate (a1) at (-0.75,0.30); \coordinate (a2) at (-0.42,0.52); \coordinate (a3) at (-0.50,0.05);
+            \coordinate (b1) at (0.05,0.40);  \coordinate (b2) at (0.38,0.15); \coordinate (b3) at (0.05,-0.12);
+            \coordinate (c1) at (-0.35,-0.50);\coordinate (c2) at (0.02,-0.62);\coordinate (c3) at (-0.72,-0.42);
+            \coordinate (d1) at (0.68,-0.05); \coordinate (d2) at (0.84,0.30); \coordinate (d3) at (0.45,-0.42);
+            \draw[bind] (a1)--(a2) (a1)--(a3) (b1)--(b2) (b2)--(b3) (c1)--(c2) (c1)--(c3) (d2)--(d1) (d1)--(d3);
+            \foreach \p in {a1,a2,a3,b1,b2,b3,c1,c2,c3,d1,d2,d3} {\node[teil] at (\p) {};}
+            \draw[v] ($(a2)+(0.12,0.08)$) -- +(25:0.22);
+            \draw[v] ($(b1)+(0.0,0.12)$) -- +(80:0.22);
+            \draw[v] ($(c3)+(-0.12,-0.04)$) -- +(200:0.22);
+            \draw[v] ($(d2)+(0.1,0.08)$) -- +(50:0.2);
+        \end{scope}
+
+        % --- gasförmig: weit auseinander, schnell, ohne Bindungen ---
+        \begin{scope}[shift={($(G)+(0,-0.35)$)}]
+            \node[teil] (g1) at (-0.95,0.35) {};  \draw[v] (g1) ++(-0.15,0) -- +(180:0.32);
+            \node[teil] (g2) at (-0.25,0.55) {};  \draw[v] (g2) ++(0.1,0.12) -- +(60:0.42);
+            \node[teil] (g3) at (0.70,0.25) {};   \draw[v] (g3) ++(0.15,0) -- +(0:0.45);
+            \node[teil] (g4) at (-0.55,-0.25) {}; \draw[v] (g4) ++(-0.1,-0.12) -- +(235:0.42);
+            \node[teil] (g5) at (0.20,-0.10) {};  \draw[v] (g5) ++(0.1,-0.12) -- +(-50:0.42);
+            \node[teil] (g6) at (0.72,-0.38) {};  \draw[v] (g6) ++(0.12,-0.1) -- +(-20:0.33);
+            \node[teil] (g7) at (-0.15,-0.70) {}; \draw[v] (g7) ++(-0.12,0.05) -- +(160:0.42);
+        \end{scope}
+
+        % --- Übergangspfeile ---
+        % \zweipfeil{von}{nach}{Beschriftung hin}{Beschriftung zurück}{Farbe hin}{Farbe zurück}
+        % "hin" läuft von A nach B (links der Richtung A->B), "zurück" von B nach A.
+        \def\abst{2.3cm}  % Abstand vom Kreismittelpunkt zum Pfeilanfang
+        \def\vers{0.26cm}  % seitlicher Versatz der beiden Pfeile
+        \newcommand{\zweipfeil}[6]{%
+            \coordinate (p1) at ($(#1)!\abst!(#2)$);
+            \coordinate (p2) at ($(#2)!\abst!(#1)$);
+            \draw[-{Stealth[length=3.2mm,width=3.6mm]}, line width=3pt, #5]
+                ($(p1)!\vers!90:(p2)$) -- ($(p2)!\vers!-90:(p1)$);
+            \draw[-{Stealth[length=3.2mm,width=3.6mm]}, line width=3pt, #6]
+                ($(p2)!\vers!90:(p1)$) -- ($(p1)!\vers!-90:(p2)$);
+            % Beschriftungen immer entlang A->B (Text nie kopfstehend):
+            % "hin" auf der linken, "zurück" auf der rechten Seite
+            \path (p1) -- node[sloped, above=0.40cm, font=\normalsize] {#3} (p2);
+            \path (p1) -- node[sloped, below=0.40cm, font=\normalsize] {#4} (p2);
+        }
+        \zweipfeil{F}{L}{Schmelzen}{Gefrieren / Erstarren}{auf}{ab}
+        \zweipfeil{L}{G}{Verdampfen}{Kondensieren}{auf}{ab}
+        \zweipfeil{F}{G}{Sublimieren}{Resublimieren}{auf}{ab}
+
+        % --- Legende ---
+        \begin{scope}[shift={(-5.2,-2.7)}]
+            \draw[-{Stealth[length=2.4mm,width=2.8mm]}, line width=2.4pt, auf] (0,0) -- (0.8,0);
+            \node[anchor=west, font=\normalsize] at (0.95,0) {Wärme wird aufgenommen};
+            \draw[-{Stealth[length=2.4mm,width=2.8mm]}, line width=2.4pt, ab] (6.3,0) -- (7.1,0);
+            \node[anchor=west, font=\normalsize] at (7.25,0) {Wärme wird abgegeben};
+        \end{scope}
+    \end{tikzpicture}%
+    }
+    \caption{Die drei Aggregatzustände und die Übergänge zwischen ihnen. Rote Pfeile: Der Stoff nimmt Wärme auf. Blaue Pfeile: Der Stoff gibt Wärme ab.}\label{fig: phasenuebergaenge}
 \end{figure}
 Wir wollen in diesem Abschnitt untersuchen, unter welchen Bedingungen diese Phasenübergänge stattfinden, welche Energien dafür benötigt werden und unter welchen Bedingungen verschiedene Phasen koexistieren können.
 
