@@ -115,8 +115,50 @@ Die Bewegung eines Massenpunktes wird durch die zeitliche Änderung seiner Koord
 Der Ortsvektor $\ivec{r}=(x,y,z)$ fasst die drei Koordinaten zusammen. Bei einer ebenen Bewegung hat der Ortsvektor nur zwei Koordinaten $[\ivec{r}=(x,y)]$. Der Ortsvektor zeigt vom Ursprung des Koordinatensystems zum Ort des Teilchens $P(t)$.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{Bilder/Kapitel_Mechanik/Kapitel_Kinematik/bahnkurve.png}
-    \caption[Bahnkurve eines Massenpunktes im $3$-dimensionalen Raum. (Quelle:~\cite{Demtroeder2018}, S.~38)]{Darstellung einer Bahnkurve eines Massenpunktes im $3$-dimensionalen Raum. Die Bahnkurve (rot) ist die Menge aller Punkte $P$, die der Körper während der Bewegung durchläuft. (Quelle:~\cite[S.~38]{Demtroeder2018})}\label{fig: bahnkurve_allg}
+    \resizebox{0.55\textwidth}{!}{%
+    \begin{tikzpicture}[
+        font=\large,
+        x={(-0.62cm,-0.55cm)}, y={(0.95cm,-0.30cm)}, z={(0cm,1cm)},
+        declare function={bx(\t)=1.2+0.8*sin(\t r); by(\t)=\t; bz(\t)=4.3+0.3*sin(1.6*\t r);
+                          dbx(\t)=0.8*cos(\t r); dby(\t)=1; dbz(\t)=0.6*cos(1.6*\t r);},
+        vek/.style={line width=1.3pt, -{Stealth[length=3mm, width=2.6mm]}},
+        hilf/.style={black!60, dashed, line width=0.6pt},
+    ]
+        \definecolor{bahnFarbe}{RGB}{200,60,45}
+        \definecolor{vFarbe}{RGB}{40,100,175}
+        \pgfmathsetmacro{\tP}{3.6}
+        \pgfmathsetmacro{\Px}{bx(\tP)}\pgfmathsetmacro{\Py}{by(\tP)}\pgfmathsetmacro{\Pz}{bz(\tP)}
+        \pgfmathsetmacro{\vx}{dbx(\tP)}\pgfmathsetmacro{\vy}{dby(\tP)}\pgfmathsetmacro{\vz}{dbz(\tP)}
+        \coordinate (O) at (0,0,0);
+        \coordinate (P) at (\Px,\Py,\Pz);
+        \coordinate (F) at (\Px,\Py,0);
+
+        % --- Achsen ---
+        \draw[vkAchse] (O) -- (3.6,0,0) node[below left=-1pt] {$x$};
+        \draw[vkAchse] (O) -- (0,6.0,0) node[below right=-1pt] {$y$};
+        \draw[vkAchse] (O) -- (0,0,6.0) node[right=2pt] {$z$};
+
+        % --- Hilfslinien: Koordinaten von P ---
+        \draw[hilf] (P) -- (F);
+        \draw[hilf] (F) -- (\Px,0,0);
+        \draw[hilf] (F) -- (0,\Py,0);
+        \draw[hilf] (O) -- (F);
+        \draw[hilf] (P) -- (0,0,\Pz);
+        \node[above left=0pt]  at ({\Px/2},0,0) {$x(t)$};
+        \node[above right=0pt] at (0,{\Py/2},0) {$y(t)$};
+        \node[left=2pt]        at (0,0,{\Pz/2}) {$z(t)$};
+
+        % --- Bahnkurve ---
+        \draw[bahnFarbe, line width=1.6pt] plot[domain=0.6:5.6, samples=80, variable=\t] ({bx(\t)},{by(\t)},{bz(\t)});
+        \node[bahnFarbe, below=+3pt] at ({bx(5.6)},{by(5.6)},{bz(5.6)}) {Bahnkurve};
+
+        % --- Ortsvektor und Geschwindigkeit ---
+        \draw[vek] (O) -- (P) node[pos=0.35, right=4pt] {$\ivec{r}(t)$};
+        \draw[vek, vFarbe] (P) -- ++({1.1*\vx},{1.1*\vy},{1.1*\vz}) node[above right=-1pt] {$\ivec{v}(t)$};
+        \fill (P) circle (2.2pt) node[above=3pt] {$P$};
+    \end{tikzpicture}%
+    }
+    \caption[Bahnkurve eines Massenpunktes im $3$-dimensionalen Raum]{Darstellung einer Bahnkurve eines Massenpunktes im $3$-dimensionalen Raum. Die Bahnkurve (rot) ist die Menge aller Punkte $P$, die der Körper während der Bewegung durchläuft (nach~\cite[S.~38]{Demtroeder2018}).}\label{fig: bahnkurve_allg}
 \end{figure}
 Die Bewegung, die der Massenpunkt beim Durchlaufen der Bahnkurve erfährt, heißt \textbf{Translation}. Als Rotation wird die Bewegung eines Körpers um eine Rotationsachse bezeichnet. Da ein Massenpunkt keine Ausdehnung hat, kann er keine Rotation ausführen.\footnote{Bewegt sich ein Massenpunkt auf einer Kreisbahn, spricht man von einer Bahnbewegung. Eine Drehung um die eigene Achse (Eigenrotation) ist für einen Massenpunkt nicht möglich. Trotzdem besitzt ein Massenpunkt auf einer Kreisbahn einen Drehimpuls (siehe \cref{sec: Drehimpuls_Drehmoment}).}
 \begin{rememberbox}{Bahnkurve}
