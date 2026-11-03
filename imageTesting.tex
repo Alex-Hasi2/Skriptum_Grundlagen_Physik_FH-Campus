@@ -39,6 +39,82 @@
 
 %%% ---------------------------------------------------------------
 %%% [ERLEDIGT - im Anhang eingebaut, hier auskommentiert]
+%%% NEU: Tangens und Arkustangens (Anhang D, Abb. D.6, Neuzeichnung)
+%%% Oben: tan(phi) über phi in [0, 2pi]. Unten: der Winkel, den der Arkustangens
+%%% liefert, arctan(tan phi), sowie die Korrektur +pi in Q_2 und Q_3.
+%%% ---------------------------------------------------------------
+% \begin{tikzpicture}
+%     \definecolor{kurve}{RGB}{40,100,175}
+%     \definecolor{korr}{RGB}{230,145,56}
+%     \pgfplotsset{
+%         tanStil/.style={
+%             width=14cm, xmin=0, xmax=6.9, trig format plots=rad,
+%             axis lines=middle,
+%             axis line style={line width=0.8pt, -{Stealth[length=2.8mm, width=2.4mm]}},
+%             tick style={line width=0.6pt, black},
+%             xtick={1.5708,3.1416,4.7124,6.2832},
+%             xticklabels={$\pi/2$,$\pi$,$3\pi/2$,$2\pi$},
+%             x tick label style={fill=white, inner sep=1pt},
+%             every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},
+%             every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},
+%             clip=false,
+%             tick label style={font=\normalsize},
+%             label style={font=\large},
+%         },
+%     }
+
+%     % ---------------- oben: Tangens ----------------
+%     \begin{axis}[tanStil, name=oben,
+%         height=6.2cm, ymin=-6.5, ymax=6.5,
+%         ytick={-6,-4,-2,2,4,6},
+%         xlabel={$\varphi$}, ylabel={$\tan\varphi$}]
+%         \addplot[kurve, line width=1.6pt, domain=0:1.41, samples=80] {tan(x)};
+%         \addplot[kurve, line width=1.6pt, domain=1.73:4.55, samples=120] {tan(x)};
+%         \addplot[kurve, line width=1.6pt, domain=4.87:6.2832, samples=80] {tan(x)};
+%         \draw[gray!70, dashed, line width=0.6pt] (axis cs:1.5708,-6.5) -- (axis cs:1.5708,6.5);
+%         \draw[gray!70, dashed, line width=0.6pt] (axis cs:3.1416,-6.5) -- (axis cs:3.1416,6.5);
+%         \draw[gray!70, dashed, line width=0.6pt] (axis cs:4.7124,-6.5) -- (axis cs:4.7124,6.5);
+%         \draw[gray!70, dashed, line width=0.6pt] (axis cs:6.2832,-6.5) -- (axis cs:6.2832,6.5);
+%         \node at (axis cs:0.785,-5.2) {$Q_{1}$};
+%         \node at (axis cs:2.356,-5.2) {$Q_{2}$};
+%         \node at (axis cs:3.927,-5.2) {$Q_{3}$};
+%         \node at (axis cs:5.498,-5.2) {$Q_{4}$};
+%     \end{axis}
+
+%     % ---------------- unten: Arkustangens ----------------
+%     \begin{axis}[tanStil, at={(oben.south west)}, anchor=north west, yshift=-1.4cm,
+%         height=7.5cm, ymin=-1.9, ymax=5.0,
+%         ytick={-1.5708,1.5708,3.1416,4.7124},
+%         yticklabels={$-\pi/2$,$\pi/2$,$\pi$,$3\pi/2$},
+%         y tick label style={fill=white, inner sep=1pt},
+%         xlabel={$\varphi$}, ylabel={$\arctan(\tan\varphi)$}]
+%         % Werte, die der Arkustangens liefert (nur zwischen -pi/2 und pi/2)
+%         \addplot[kurve, line width=1.6pt, domain=0:1.5708, samples=2] {x};
+%         \addplot[kurve, line width=1.6pt, domain=1.5708:4.7124, samples=2] {x-3.1416};
+%         \addplot[kurve, line width=1.6pt, domain=4.7124:6.2832, samples=2] {x-6.2832};
+%         % Sprungstellen: offene Kreise
+%         \draw[kurve, line width=1pt, fill=white] (axis cs:1.5708,1.5708) circle (2.6pt);
+%         \draw[kurve, line width=1pt, fill=white] (axis cs:1.5708,-1.5708) circle (2.6pt);
+%         \draw[kurve, line width=1pt, fill=white] (axis cs:4.7124,1.5708) circle (2.6pt);
+%         \draw[kurve, line width=1pt, fill=white] (axis cs:4.7124,-1.5708) circle (2.6pt);
+%         % Korrektur in Q_2 und Q_3: arctan(tan phi) + pi = phi
+%         \addplot[korr, line width=1.6pt, dashed, domain=1.5708:4.7124, samples=2] {x};
+%         \node[korr, anchor=south east, font=\normalsize] at (axis cs:2.9,3.3) {$\arctan(\tan\varphi)+\pi$};
+%         \draw[gray!70, dashed, line width=0.6pt] (axis cs:1.5708,-1.9) -- (axis cs:1.5708,5.0);
+%         \draw[gray!70, dashed, line width=0.6pt] (axis cs:3.1416,-1.9) -- (axis cs:3.1416,5.0);
+%         \draw[gray!70, dashed, line width=0.6pt] (axis cs:4.7124,-1.9) -- (axis cs:4.7124,5.0);
+%         \draw[gray!70, dashed, line width=0.6pt] (axis cs:6.2832,-1.9) -- (axis cs:6.2832,5.0);
+%         \node at (axis cs:0.785,-1.45) {$Q_{1}$};
+%         \node at (axis cs:2.356,-1.45) {$Q_{2}$};
+%         \node at (axis cs:3.927,-1.45) {$Q_{3}$};
+%         \node at (axis cs:5.498,-1.45) {$Q_{4}$};
+%     \end{axis}
+% \end{tikzpicture}
+%%% ---------------- Ende der Neuzeichnung ----------------------
+
+
+%%% ---------------------------------------------------------------
+%%% [ERLEDIGT - im Anhang eingebaut, hier auskommentiert]
 %%% NEU: Vollkugel, Trägheitsmoment um die z-Achse (Anhang, Abb. A.4, Neuzeichnung)
 %%% Kugelkoordinaten (r, theta, phi), Normalabstand a = r sin(theta) zur z-Achse,
 %%% Volumenelement dV = r^2 sin(theta) dr dtheta dphi.
