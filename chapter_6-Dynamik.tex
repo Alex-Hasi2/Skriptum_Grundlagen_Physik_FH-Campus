@@ -928,7 +928,7 @@ Eine Kiste mit Masse $m_1 = \SI{10.0}{\kilo\gram}$ ruht auf einer schiefen Ebene
     \resizebox{0.95\linewidth}{!}{%
     \begin{tikzpicture}[
         >=Latex,
-        font=\large,
+        font=\Large,
         kraft/.style={-{Latex[length=3mm,width=2.4mm]}, line width=1.6pt},
         komp/.style={kraft, gray!70!black},
     ]
@@ -937,7 +937,7 @@ Eine Kiste mit Masse $m_1 = \SI{10.0}{\kilo\gram}$ ruht auf einer schiefen Ebene
         \def\muH{0.4}        % Haftreibungskoeffizient
         \def\kF{3.0}          % Pfeillänge für m_1 g (Kräfte maßstabsgetreu für die Grenzfälle)
         \def\bs{1.8}         % Kantenlänge der Kiste
-        \def\dxPanel{9.0}    % Abstand der beiden Teilbilder
+        \def\dxPanel{8.2}    % Abstand der beiden Teilbilder
         \pgfmathsetmacro{\FA}{\kF*sin(\thE)}                    % Hangabtriebskraft
         \pgfmathsetmacro{\FN}{\kF*cos(\thE)}                    % Normalkraft = F_{G,perp}
         \pgfmathsetmacro{\FR}{\kF*\muH*cos(\thE)}                % maximale Haftreibungskraft
@@ -956,14 +956,14 @@ Eine Kiste mit Masse $m_1 = \SI{10.0}{\kilo\gram}$ ruht auf einer schiefen Ebene
         \begin{scope}[shift={(\px,0)}, rotate=-\thE]
             % lokales System: x entlang der Ebene (bergab), y senkrecht aus der Ebene
             % Ausschnitt der schiefen Ebene
-            \fill[ebeneFill] (-4.4,-0.6) rectangle (3.4,0);
-            \draw[gray!60, line width=1pt] (-4.4,0) -- (3.4,0);
+            \fill[ebeneFill] (-3.8,-0.6) rectangle (3.0,0);
+            \draw[gray!60, line width=1pt] (-3.8,0) -- (3.0,0);
             % Seil zur Umlenkrolle (bergauf, parallel zur Ebene)
-            \draw[seil, line width=1.2pt] (-\bs/2,\bs/2) -- (-4.4,\bs/2);
+            \draw[seil, line width=1.2pt] (-\bs/2,\bs/2) -- (-4.0,\bs/2);
             % Kiste
             \filldraw[fill=kisteFill, draw=gray!60, line width=1pt, rounded corners=1pt]
                 (-\bs/2,0) rectangle (\bs/2,\bs);
-            \node at ({-\bs*0.24},{\bs*0.75}) {$m_1$};
+            \node at ({\bs*0.25},{\bs*0.25}) {$m_1$};
             % Schwerpunkt
             \coordinate (S) at (0,\bs/2);
             % Normalkraft und senkrechte Komponente der Gewichtskraft (heben sich auf)
@@ -976,9 +976,9 @@ Eine Kiste mit Masse $m_1 = \SI{10.0}{\kilo\gram}$ ruht auf einer schiefen Ebene
             \node[gray!70!black] at ($(FAmid)+(0,0.5)$) {$\ivec{F}_\mathrm{A}$};
             % Zugkraft F_Z (bergauf, -x, entlang des Seils)
             \draw[kraft, kraftZ] (-\bs/2,\bs/2) -- ++(-\FZ,0) coordinate[midway] (FZmid);
-            \node[kraftZ] at ($(FZmid)+(0,0.52)$) {$\ivec{F}_\mathrm{Z}$};
+            \node[kraftZ] at ($(FZmid)+(-0.2,0.62)$) {$\ivec{F}_\mathrm{Z}$};
             % Koordinatenachsen
-            \begin{scope}[shift={(2.2,2.6)}]
+            \begin{scope}[shift={(2.1,2.6)}]
                 \draw[->, line width=2pt] (0,0) -- (0,1.4) node[above left=-2pt] {$y$};
                 \draw[->, line width=2pt] (0,0) -- (1.4,0) node[below left=-1pt] {$x$};
             \end{scope}
@@ -991,17 +991,17 @@ Eine Kiste mit Masse $m_1 = \SI{10.0}{\kilo\gram}$ ruht auf einer schiefen Ebene
         % Fall (i): kleine Zugkraft -> Kiste tendiert bergab -> F_R,h bergauf (-x)
         \begin{scope}[rotate=-\thE]
             \draw[kraft, black] (-\bs/2,0) -- ++(-\FR,0) coordinate[midway] (FRmid);
-            \node at ($(FRmid)+(0,-0.5)$) {$\ivec{F}_{\mathrm{R,h}}$};
+            \node at ($(FRmid)+(-0.1,-0.62)$) {$\ivec{F}_{\mathrm{R,h}}$};
         \end{scope}
         % Fall (ii): große Zugkraft -> Kiste tendiert bergauf -> F_R,h bergab (+x)
         \begin{scope}[shift={(\dxPanel,0)}, rotate=-\thE]
             \draw[kraft, black] (\bs/2,0) -- ++(\FR,0) coordinate[midway] (FRmid);
-            \node at ($(FRmid)+(0,-0.5)$) {$\ivec{F}_{\mathrm{R,h}}$};
+            \node at ($(FRmid)+(-0.1,-0.62)$) {$\ivec{F}_{\mathrm{R,h}}$};
         \end{scope}
 
         % --- Beschriftung der Teilbilder ---
-        \node[font=\Large\bfseries] at (-3.3,-1.9) {(i)};
-        \node[font=\Large\bfseries] at (\dxPanel-3.3,-1.9) {(ii)};
+        \node[font=\LARGE\bfseries] at (-2.9,-1.7) {(i)};
+        \node[font=\LARGE\bfseries] at (\dxPanel-2.9,-1.7) {(ii)};
     \end{tikzpicture}%
     }
     \captionof{figure}{Für kleine Zugkräfte $\protect\ivecS{F}{\text{Z}}$ [Fall (i)] zeigt die Haftreibungskraft $\protect\ivecS{F}{\text{R,h}}$ in die $-x$-Richtung (bergauf) und für sehr große Zugkräfte zeigt sie in die $+x$-Richtung (bergab) [Fall (ii)]. Die Normalkraft $\protect\ivecS{F}{\text{N}}$ (grün) kompensiert jeweils die Komponente $\protect\ivecS{F}{\text{G},\perp}$ der Gewichtskraft. Die Pfeillängen entsprechen den beiden Grenzfällen $m_2 = m_{2,\text{min}}$ bzw.\ $m_2 = m_{2,\maxText}$.}\label{fig: gleichgewicht_schiefe_ebene_seilrolle_fallunterscheidung}
